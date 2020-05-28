@@ -1,23 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useEffect,useState} from 'react';
+import DEFAULT_LANG from './config/language'
+import LanguageService from './services/language.service'
 import './App.css';
-
+  
 function App() {
+  const [lang,setLang]=useState({data:''});
+
+  useEffect(()=>{
+   let langData=LanguageService(DEFAULT_LANG);
+    setLang({data:langData})
+  });
+  
+  function languageEventHandler(e) {
+    console.log(e.target.value)
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <select>
+        <option onChange={languageEventHandler} defaultValue disabled>Select Language</option>
+         <option value='aze'>Azerbaijan</option>
+         <option  value='en'>English</option>
+        </select>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {lang.data.hello}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
