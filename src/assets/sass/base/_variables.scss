@@ -36,9 +36,19 @@ $button__font:16px;
 // Spacing
 $letter__spacing: 0.15px;
 
+$font__weight--normal:'normal';
+$font__weight--500:'500';
+$font__weight--600:'600';
+$font__weight--700:'700';
+$font__weight--bold:'bold';
+
+
 //line height
 $line__height:150%;
 
 //Font 
 $text__font: "Inter";
-$head__font:'Noto Serif'
+$head__font:'Noto Serif';
+
+// Breakpoints 
+$grid-breakpoints:('xs': '0', 'sm': '360px', 'md': '900px','lg': '1280px');
