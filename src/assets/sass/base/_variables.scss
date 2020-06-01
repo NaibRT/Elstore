@@ -16,6 +16,7 @@ $chips: ("orange": #FFFAE7, "red": #FFEDED);
 $border__radius: ("big": 8px, "medium": 6px,"small": 4px);
 
 // Border  sizes
+
 $border: ("bold":1.5px,"medium":1px,"light":0.5px);
 
 
@@ -29,5 +30,40 @@ $padding:('bottom-sm':9px,'bottom-md':12px,'bottom-lg':15px);
 $padding:('left-sm':9px,'left-md':12px,'left-lg':15px);
 $padding:('right-sm':9px,'right-md':12px,'right-lg':15px);
 $padding:('top-sm':9px,'top-md':12px,'top-lg':15px);
+
+
+// Heading
+$head--1: 89.7642px;
+$head--2: 67.34px;
+$head--3: 50.52px;
+$head--4: 37.9px;
+$head--5: 28.43px;
+$head--6: 21.33px;
+$title__font: 28px;
+$subtitle--L:18px;
+$subtitle--1S:16px;
+$subtitle--2S:14px;
+$button__font:16px;
+
+
+// Spacing
+$letter__spacing: 0.15px;
+
+$font__weight--normal:'normal';
+$font__weight--500:'500';
+$font__weight--600:'600';
+$font__weight--700:'700';
+$font__weight--bold:'bold';
+
+
+//line height
+$line__height:150%;
+
+//Font 
+$text__font: "Inter";
+$head__font:'Noto Serif';
+
+// Breakpoints 
+$grid-breakpoints:('xs': 0, 'sm': 360px, 'md': 900px,'lg': 1280px);
 
 
