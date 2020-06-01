@@ -17,7 +17,20 @@ $border__radius: ("big": 8px, "medium": 6px,"small": 4px);
 
 // Border  sizes
 
-$border: ("bold":"1.5px","medium":"1px","light":"0.5px");
+$border: ("bold":1.5px,"medium":1px,"light":0.5px);
+
+
+//Spancing
+$margin:('bottom-sm':9px,'bottom-md':12px,'bottom-lg':15px);
+$margin:('left-sm':9px,'left-md':12px,'left-lg':15px);
+$margin:('right-sm':9px,'right-md':12px,'right-lg':15px);
+$margin:('top-sm':9px,'top-md':12px,'top-lg':15px);
+//padding
+$padding:('bottom-sm':9px,'bottom-md':12px,'bottom-lg':15px);
+$padding:('left-sm':9px,'left-md':12px,'left-lg':15px);
+$padding:('right-sm':9px,'right-md':12px,'right-lg':15px);
+$padding:('top-sm':9px,'top-md':12px,'top-lg':15px);
+
 
 // Heading
 $head--1: 89.7642px;
@@ -51,5 +64,6 @@ $text__font: "Inter";
 $head__font:'Noto Serif';
 
 // Breakpoints 
-$grid-breakpoints:('xs': '0', 'sm': '360px', 'md': '900px','lg': '1280px');
+$grid-breakpoints:('xs': 0, 'sm': 360px, 'md': 900px,'lg': 1280px);
+
 
