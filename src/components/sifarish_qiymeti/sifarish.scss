@@ -1,0 +1,297 @@
+@import "../../assets/sass/abstracts/grid.scss";
+@import "../../assets/sass/abstracts/_display.scss";
+@import "../../assets/sass/abstracts/_flex.scss";
+.Slider{
+    height: 612px;
+    background-color: wheat;
+}
+.text__qiymet{
+    height: 5px;
+    margin-left: 17px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+    justify-content: space-between;
+    h5{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 28.43px;
+        line-height: 32px;
+        color: #1A1A1A;
+    }
+    .text--stock{
+        margin-right: -30px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        img{
+            height: 11px;
+             margin-top: 6px;
+              width: 14px;
+              margin-right: 2px;
+        }
+        p{
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 170%;
+            letter-spacing: 0.25px;
+            color: #348E39;
+            width: 77px;
+            height: 24px;
+        }
+    }
+}
+.text--qeydler{
+    h5{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 150%;
+        letter-spacing: 0.25px;
+        color: #1A1A1A;
+        margin-left: 17px;
+        margin-top: 12px;
+    
+    }
+    .text--product__melumatlar{
+        margin-left: 17px;
+        width: 100%;
+        height: auto;
+        background: #F6F6F6;
+        border-radius: 8px;
+        padding: 9px 10px;
+        margin-top: 5px;
+        p{
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16.0015px;
+            line-height: 150%;
+            letter-spacing: 0.15px;
+            color: #444444;
+        }
+        li{
+            list-style: none;
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16.0015px;
+            line-height: 150%;
+            letter-spacing: 0.15px;
+            color: #444444;
+        }
+    }
+    
+} 
+
+.text--qiymetferqi {
+    width: 370px;
+    height: 48px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 170%;
+    letter-spacing: 0.25px;
+    color: #767676;
+     margin-left: 17px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+
+}
+.bord{
+    border: 0.5px solid #CCCCCC;
+}
+@media (max-width:1200px)
+{
+    .text__qiymet{
+        height: 5px;
+        margin-left: 25px;
+        margin-top: 22px;
+        margin-bottom: 5px;
+        justify-content: space-between;
+        h5{
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 28.43px;
+            line-height: 32px;
+            color: #1A1A1A;
+        }
+        .text--stock{
+            margin-right: -23px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            img{
+                height: 11px;
+                margin-top: 7px;
+                width: 14px;
+                margin-left: -4px;
+            }
+            p{
+                font-family: Inter;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 170%;
+                letter-spacing: 0.25px;
+                color: #348E39;
+                    height: 24px;
+            }
+        }
+    }
+.text--qiymetferqi {
+    width: 275px;
+    height: 48px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 170%;
+    letter-spacing: 0.25px;
+    color: #767676;
+    margin-left: 25px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+}
+@media (max-width:992px)
+{
+    .text__qiymet{
+        height: 32px;
+        margin-left: 25px;
+        margin-top: 22px;
+        margin-bottom: 5px;
+        h5{
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 28.43px;
+            line-height: 32px;
+            color: #1A1A1A;
+        }
+    .text--stock{
+    margin-right: 40px;
+    margin-top: 27px;
+    margin-bottom: 5px;
+    p{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 170%;
+        letter-spacing: 0.25px;
+        color: #348E39;
+        width: 77px;
+        height: 24px;
+    }
+    }
+}
+.text--qiymetferqi {
+    width: 636px;
+    height: 24px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 170%;
+    letter-spacing: 0.25px;
+    color:  #767676;
+    margin-left: 25px;
+    margin-top: 5px;
+}
+}
+@media (max-width:768px)
+{
+    .text__qiymet{
+        height: 32px;
+        margin-left: 25px;
+        margin-top: 22px;
+        margin-bottom: 5px;
+        h5{
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 28.43px;
+            line-height: 32px;
+            color: #1A1A1A;
+        }
+    .text--stock{
+        margin-right: 40px;
+        margin-top: 0;
+        margin-bottom: 5px;
+    p{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 170%;
+        letter-spacing: 0.25px;
+        color: #348E39;
+        width: 77px;
+        height: 24px;
+    }
+    }
+}
+.text--qiymetferqi {
+    width: 492px;
+    height: 24px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 170%;
+    letter-spacing: 0.25px;
+    color:  #767676;
+    margin-left: 25px;
+    margin-top: 5px;
+}
+}
+@media (max-width:576px)
+{
+    .text__qiymet{
+        height: 4px;
+        margin-left: 25px;
+        margin-top: 22px;
+        margin-bottom: 5px;
+        h5{
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 32px;
+            color: #1A1A1A;
+        }
+    .text--stock{
+        margin-right: 10px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+    p{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 170%;
+        letter-spacing: 0.25px;
+        color: #348E39;
+        width: 77px;
+        height: 24px;
+     } 
+    }
+}
+.text--qiymetferqi {
+    width: 100%;
+    height: 48px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 170%;
+    letter-spacing: 0.25px;
+    color: #767676;
+    margin-left: 25px;
+    margin-top: 25px;
+}
+}
