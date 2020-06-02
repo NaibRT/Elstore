@@ -1,3 +1,152 @@
-@import '../../assets/sass/abstracts/grid.scss'
+@import "../../assets/sass/abstracts/grid.scss";
+@import "../../assets/sass/abstracts/_display.scss";
+@import "../../assets/sass/abstracts/_flex.scss";
+
+.Slider{
+    height: 612px;
+    background-color: wheat;
+}
+
+.text__main{
+    margin-bottom: 4px;
+    margin-left: 25px;
+    margin-top: 41px;
+    justify-content: space-between;
+    h4{
+    font-family: Noto Serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 37.9px;
+    line-height: 150%;
+    letter-spacing: 0.25px;
+    color: #1A1A1A;
+    }
+}
+.text__main--sub {
+    p{
+        font-family: Inter;
+font-style: normal;
+font-weight: normal;
+font-size: 16.0015px;
+line-height: 150%;
+letter-spacing: 0.15px;
+color: #444444;
+margin-left: 25px;
+margin-top: 4px;
+margin-bottom: 16.4px;
+    }
 
 
+}
+.text__main--sub2{
+
+
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16.0015px;
+    line-height: 150%;
+    letter-spacing: 0.15px;
+    color: #767676;
+    margin-top:4px;
+    margin-left: 25px;
+    
+}
+.divider{
+    margin-left: 6px;
+    margin-right: 6px;
+transform: rotate(90deg);
+}
+
+.rating__trend{  
+    width: 239px;
+    height: 36px;
+    left: 0px;
+    top: 0px;
+    padding: 6px 12px;
+    
+    .rating__trend__highrating{
+        
+        margin-left: 10px;
+        margin-bottom: 22px;
+
+    }
+    .rating__trend__trend{ 
+    margin-left: 8px;
+    }
+    
+}
+
+@media (max-width:600px)
+{
+    .text__main{
+        margin-left: 16px;
+        margin-right:16px;  
+        margin-top: 17px;
+        justify-content: space-between;
+        h4{
+            font-family: Noto Serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 28px;
+            line-height: 150%;
+            letter-spacing: 0.5px;
+            color: #1A1A1A;
+        }
+    }
+    .text__main--sub {
+        p{
+            font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 170%;
+    letter-spacing: 0.25px;
+    color: #444444;
+    margin-left: 25px;
+    margin-top: 4px;
+    margin-bottom: 16.4px;
+        }
+    
+    
+    }
+    .text__main--sub2{
+    
+    
+    
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 170%;
+        letter-spacing: 0.25px;
+        color: #767676;
+        margin-top:4px;
+        margin-left: 16px;
+        
+    }
+    .divider{
+        margin: 6px 0px;
+   
+    }
+    
+    .rating__trend{  
+        width: 228px;
+        height: 28px;
+        left: 0px;
+        top: 0px;
+        padding: 6px 12px;
+        
+        .rating__trend__highrating{
+            
+            margin-left: 16px;
+            margin-right: 12px;
+            margin-bottom: 23px;
+    
+        }
+        .rating__trend__trend{ 
+        margin-left: 12px;
+        }
+    }
+}
