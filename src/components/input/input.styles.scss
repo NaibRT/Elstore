@@ -1,0 +1,27 @@
+@import '../../assets/sass/abstracts/background';
+@import '../../assets/sass/abstracts/borders';
+@import '../../assets/sass/abstracts/sizing';
+@import '../../assets/sass/abstracts/display';
+@import '../../assets/sass/abstracts/text';
+
+.input{
+    input{
+        width: 100%;
+        height: 48px;
+        margin: 10px 16px 0px 16px;
+        padding: 12px 12px 12px 12px;
+        outline: 0px solid transparent;
+        border: 1.5px solid #1A1A1A;
+        -webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+    
+    }
+    
+    .input-notes:hover{
+        outline: 0px solid transparent;
+        border: 1.5px solid #6472B8;
+        -webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+    }
+
+}
