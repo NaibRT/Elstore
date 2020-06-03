@@ -1,0 +1,26 @@
+
+@import '../../App.scss';
+
+
+.about__product__section{
+    width: 95%;
+    margin-bottom: 28px;
+    .about__product__title{
+        border-bottom: 1px solid black;
+        width: 26%;
+        h4{
+            font-size: $subtitle--L;
+            font-family: $text__font;
+            font-weight: $font__weight--500;
+            margin-bottom: 0;
+        }
+        margin-bottom: 14px;
+    }
+    .about__product__content{
+        p{
+            font-size: $subtitle--1S;
+            font-family: $text__font;
+            font-weight: $font__weight--normal;
+        }
+    }
+}
