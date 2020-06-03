@@ -1,0 +1,53 @@
+.icons__delivery__safety__payback__section{
+    .delivery__icon{
+        width: 15%;
+        img{
+            float: left;
+            padding-top: 5px;
+            padding-right: 5px;
+        }
+        h4{
+            font-size: 16px;
+            margin: 0;
+        }
+        p{
+            font-size: 14px;
+            margin: 0;
+        }
+    }
+    .payback__icon{
+        width: 15%;
+        img{
+            float: left;
+            padding-top: 5px;
+            padding-right: 5px;
+        }
+        h4{
+            font-size: 16px;
+            margin: 0;
+        }
+        p{
+            font-size: 14px;
+            margin: 0;
+            span{
+                border-bottom: 1px solid black;
+            }
+        }
+    }
+    .safety__icon{
+        width: 15%;
+            img{
+                float: left;
+                padding-top: 5px;
+                padding-right: 5px;
+            }
+            h4{
+                font-size: 16px;
+                margin: 0;
+            }
+            p{
+                font-size: 14px;
+                margin: 0;
+            }
+    }
+}
