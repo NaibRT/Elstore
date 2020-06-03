@@ -6,7 +6,9 @@
     &__img{
         width: 78px;
         height: 78px;
+        margin-bottom: 15px;
         object-fit: cover;
+        object-position: center;
         border-radius: 5px;
     }
 }
@@ -56,6 +58,7 @@
     position: absolute;
     z-index: 123;
     bottom: 10px;
+    left: 50%;
     display: inline-block;
     padding: 2px 5px;
     border-radius: 2px;
@@ -74,6 +77,9 @@
 
 .slider__image{
     height: 618px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 @media(max-width:600px){
@@ -102,4 +108,13 @@
       .product__slider__right{
           height: 360px;
       }
+}
+
+
+.slider_container.container{
+    padding: 0 !important;
+}
+
+.slider_container_padding{
+    padding: 15px;
 }

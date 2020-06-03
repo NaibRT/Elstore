@@ -12,12 +12,14 @@ import Seller from '../components/seller/seller.component'
 function ProductInfo() {
  return (
   <section>
-    <div className="container">
+    <div className="slider_container container">
         <div className='row'>
          <div className='col-lg-8 col-md-12 col-sm-12'>
            <ProductSlider/>
-           <AboutProduct/>
-           <DeliveryInfo/>
+          <div className='slider_container_padding'>
+            <AboutProduct/>
+            <DeliveryInfo/>
+          </div>
          </div>
          <div className='col-lg-4 col-md-12 col-sm-12'>
              <HeadingChips heading="Əl işləri" subtitle="Öz home / Ev aksessuarları / Toxuma işləri" sale="214 dəfə satıldı" rating="(542)" store="340"/>
