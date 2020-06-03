@@ -11,7 +11,10 @@ const Input = () => {
             type="text"
             name="notes"
             placeholder="Qeydlər"
-          ></input>
+          />
+          <div className="input-quantity txt--right">
+            <span className="numbers txt--tertiary txt--end">0/256</span>
+          </div>
         </div>
       </div>
     </div>
