@@ -39,6 +39,3 @@ const SifarishQiymeti = (props) => {
 }
 
 export default SifarishQiymeti;
-
-// ApplicationCache js de olan hissedi atdim bura istifade eliyersen
-{/* <SifarishQiymeti price={"24 AZN"} stock={"mövcuddur"} priceabuot={"Başlanğıc qiymət ölçü, rəng, material və s. seçimlər əsasında dəyişə bilər."} sifarisqeydleri={"Sifariş qeydləri"} sifarishmetni={"Zəhmət olmasa sifarişinizdə aşağıdakıları bildirin:"} melumatlar={"Məhsulun növü"}></SifarishQiymeti> */}
