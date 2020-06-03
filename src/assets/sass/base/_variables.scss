@@ -4,6 +4,12 @@ $bg: ("primary": #6472B8, "primary--light": #929DD2, "primary--dark": #354388,"w
 // text colors 
 $text: ("light": #fff, "dark": #1A1A1A, "secondary": #444444,"tertiary":#767676,"error":#E0322C,"success":#348E39);
 
+$text-light:#fff;
+$text-dark:#1A1A1A;
+$text-secondary:#444444;
+$text-tertiary:#767676;
+$text-error:#E0322C;
+$text-success:#348E39;
 
 // Gray scale
 $gray: ("main": #CCCCCC, "light": #F1F1F1, "dark": #808080);
@@ -25,6 +31,15 @@ $margin:('bottom-sm':9px,'bottom-md':12px,'bottom-lg':15px);
 $margin:('left-sm':9px,'left-md':12px,'left-lg':15px);
 $margin:('right-sm':9px,'right-md':12px,'right-lg':15px);
 $margin:('top-sm':9px,'top-md':12px,'top-lg':15px);
+
+// Margin variables
+$margin--sm:9px;
+$margin--md:12px;
+$margin--lg:15px;
+
+
+
+
 //padding
 $padding:('bottom-sm':9px,'bottom-md':12px,'bottom-lg':15px);
 $padding:('left-sm':9px,'left-md':12px,'left-lg':15px);
