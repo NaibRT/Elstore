@@ -23,7 +23,7 @@ function ProductInfo() {
          </div>
          <div className='col-lg-4 col-md-12 col-sm-12'>
              <HeadingChips heading="Əl işləri" subtitle="Öz home / Ev aksessuarları / Toxuma işləri" sale="214 dəfə satıldı" rating="(542)" store="340"/>
-             <OrderPrize price='24 AZN' priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
+             <OrderPrize price='24 AZN' stock="movcuddur" priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
              <Input/>
              <Buttons/>
              <Delivery/>

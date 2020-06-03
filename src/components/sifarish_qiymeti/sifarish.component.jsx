@@ -20,10 +20,10 @@ const SifarishQiymeti = (props) => {
                         <div className="text--product__melumatlar">
                             <p>Zəhmət olmasa sifarişinizdə aşağıdakıları bildirin:</p>
                             <ul>
-                                <li><span>-</span>-Məhsulun növü</li>
-                                <li><span>-</span>-Məhsulun ölçüsü</li>
-                                <li><span>-</span>-Məhsulun rəngi</li>
-                                <li><span>-</span>-Əlavə istəkləriniz</li>
+                                <li><span>-</span>Məhsulun növü</li>
+                                <li><span>-</span>Məhsulun ölçüsü</li>
+                                <li><span>-</span>Məhsulun rəngi</li>
+                                <li><span>-</span>Əlavə istəkləriniz</li>
                             </ul>
                         </div>
                     </div>
