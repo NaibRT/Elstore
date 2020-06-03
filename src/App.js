@@ -1,17 +1,14 @@
-import React from 'react';
+
+import React,{useEffect,useState} from 'react';
 import './App.scss';
-import Heading from './components/heading-chips/heading-chips.component';
-import Seller from './components/seller/seller.component'
-  
+
+import IconDeliverySafetyPayback from './components/Icon-delivery-safety-payback/IconDeliverySafetyPayback.component';
+
 function App() {
-  
-  
   return (
-   <React.Fragment>
-    <Heading />
-    <Seller />
-   
-   </React.Fragment>
+    <div className="App">
+      <IconDeliverySafetyPayback/>
+    </div>
   );
 }
 
