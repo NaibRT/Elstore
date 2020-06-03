@@ -1,13 +1,13 @@
 
-import React,{useEffect,useState} from 'react';
+import React from 'react';
 import './App.scss';
-
-import IconDeliverySafetyPayback from './components/Icon-delivery-safety-payback/IconDeliverySafetyPayback.component';
-
+import ProductInfo from './pages/product-info'
 function App() {
   return (
     <div className="App">
-      <IconDeliverySafetyPayback/>
+      <main>
+       <ProductInfo/>
+      </main>
     </div>
   );
 }

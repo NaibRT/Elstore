@@ -3,18 +3,8 @@ import Chips from '../chips/chips.component'
 import './heading-chips.style.scss';
 
 function Heading(props){
-    return(
-        <div className="container">
-        <div className="row">
-                <div className="col-md-8">
-                    <div className="Slider">
-                        Slider
-                    </div>
-                </div>
-
-
-            <div className="col-md-4">           
-                                               
+    return(         
+             <>                                  
             <div className="text__main display__flex">
             <h4>{props.heading}</h4>
             </div>
@@ -54,20 +44,7 @@ function Heading(props){
             </span>
             </div>
 
-
-        
-            
-            
-            </div>
-
-
-            </div>
-        
-        
-        </div>
-       
-
-
+       </>
     )
 }
 

@@ -9,7 +9,12 @@ class ProductSlider extends React.Component {
     this.state = {
       currentIndex: 0,
       step:1,
-      items: ['https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg']
+      items: ['https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg',
+      'https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg',
+      'https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg',
+      'https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg',
+      'https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg'
+    ]
     };
   }
 
