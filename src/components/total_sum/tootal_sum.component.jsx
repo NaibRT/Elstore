@@ -15,7 +15,7 @@ const Total_Sum = (props) => {
                         </div>
                         <div className="text--delivery " >
                             <div className="text__delivery--count display__flex">
-                            <h5>{props.delivery}}</h5>
+                            <h5>{props.delivery}</h5>
                               <p>{props.deliveryamount}</p>   
                             </div>
                             <p>Çatdırılma ünvanına əsasən hesablanacaq.</p>
@@ -33,4 +33,3 @@ const Total_Sum = (props) => {
 }
 
 export default Total_Sum;
-{/* <Toltal_Sum amount="Məbləğ" count="54 AZN" delivery="Çatdırılma" deliveryamount="8 AZN +" total="Ümumi" totalcount="61 AZN" ></Toltal_Sum> */}

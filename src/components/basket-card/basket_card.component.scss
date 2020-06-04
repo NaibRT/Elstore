@@ -8,9 +8,9 @@
 .basket_card_img{
     width: 156px;
     height: 156px;;
+    border-radius: 8px;
     object-fit: cover;
     object-position: center;
-    float: right;
 }
 
 .baskert_card_header{
@@ -22,6 +22,7 @@
 
 .basket__card{
     padding: 32px;
+    margin-bottom: 32px;
 }
 
 .basket_card_firm{
@@ -159,9 +160,6 @@
     .basket__card{
         padding: 24px;
     } 
-    .basket_card_img{
-        float: none;
-    }
     
 }
 @media(max-width:360px){

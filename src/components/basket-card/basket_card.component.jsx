@@ -2,45 +2,20 @@ import React,{useEffect,useState} from 'react';
 import './basket_card.component.scss';
 import '../../assets/sass/abstracts/_text.scss';
 
-function BasketCard(){
-    const [count,setCount] = useState(1);
-    useEffect(() => {
-        var acc = document.getElementsByClassName("accordion");
-        var i;
-        
-        for (i = 0; i < acc.length; i++) {
-          acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.height) {
-              panel.style.height = null;
-            } else {
-              panel.style.height = panel.scrollHeight + "px";
-            } 
-          });
-        }
-    });
+function BasketCard(props){
+
+   
 
 
-    function minus(){
-    setCount(count-1);
-    if(count <= 1){
-        setCount(1)
-    }
-    }
 
-    function plus(){
-        setCount(count+1);
-    
-        }
 
     return (
         <div className='basket__card'>
             <div className='row'>
-            <div className='col-lg-2 col-sm-4  '>
+            <div className='col-lg-3 col-sm-4  '>
                <img className='basket_card_img' src='https://static.dezeen.com/uploads/2020/03/ikea-pizza-hut-sava-table-design-hong-kong_dezeen_2364_sq-a-852x852.jpg' />
            </div>
-           <div className='col-lg-6 col-sm-8'>
+           <div className='col-lg-5 col-sm-8'>
                <div className='basket_name_for_responsivity'>
                <h1 className='baskert_card_header'>Əl işi müxtəlif toxunmalar</h1>
                <div><span className='basket_card_firm '>Öz Home</span><span className='basket_card_firm_height text--secondary'></span>  <span className='basket_card_selling'>212 dəfə satıldı</span> </div>
@@ -68,9 +43,9 @@ function BasketCard(){
                         <div><span className='discount'>25% endirim</span><span className='oldPrice'>24 AZN</span></div>
                     </div>
                     <div className='add_minus'>
-                        <button onClick={minus}  className='add_minus_button'>-</button>
-                        <span className='add_minus_text'>{count}</span>
-                        <button onClick={plus} className='add_plus_button'>+</button>
+                        <button data-id={props.id} onClick={(e)=>{props.minus(e)}}  className='add_minus_button'>-</button>
+                        <span className='add_minus_text'>{props.count}</span>
+                        <button data-id={props.id} onClick={(e)=>{props.plus(e)}} className='add_plus_button'>+</button>
                     </div>
                </div>
            </div>
