@@ -244,6 +244,7 @@
     .text__qiymet{
         height: 4px;
         margin-top: 22px;
+        margin-left:16px;
         margin-bottom: 5px;
         h5{
             font-family: Inter;
@@ -271,8 +272,9 @@
     }
 }
 .text--qiymetferqi {
-    width: 100%;
+    width: 95%;
     height: 48px;
+    margin-left: 16px;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -282,4 +284,10 @@
     color: #767676;
     margin-top: 25px;
 }
+ .text--qeydler{
+     margin-left: 16px;
+     .text--product__melumatlar{
+         width: 100%;
+     }
+ }
 }
