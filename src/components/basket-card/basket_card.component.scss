@@ -1,0 +1,218 @@
+@import '../../assets/sass/base/variables';
+
+.basket__card{
+    border: 1.5px solid #D6D6D6;
+    border-radius: 12px;
+}
+
+.basket_card_img{
+    width: 156px;
+    height: 156px;;
+    object-fit: cover;
+    object-position: center;
+    float: right;
+}
+
+.baskert_card_header{
+    font-family: 'NotoBold';
+    font-weight: $font__weight--500 !important;
+    font-size: 25px;
+}
+
+
+.basket__card{
+    padding: 32px;
+}
+
+.basket_card_firm{
+    font-size: $subtitle--2S;
+    padding-right: 6px;
+
+}
+.basket_card_selling{
+    font-size: $subtitle--2S; 
+    padding-left: 5px;
+}
+.basket_card_firm_height{
+    height: 12px;
+    width: 0.5px;
+    background-color: $text-secondary;
+    display: inline-block;
+    position: relative;
+    top: 1px;
+}
+.basket_card_checkboxdiv{
+    margin-top: $margin--lg;
+    font-size: $subtitle--2S;
+}
+.basket__form__text{
+    margin-left: 4px;
+    font-family: 'InterRegular';
+}
+
+.basket_order_details_head{
+    letter-spacing: 0.25px;
+    margin-top: 25px;
+    font-size: $subtitle--1S;
+    text-transform: uppercase;
+    font-family: 'InterRegular';
+}
+.basket_order_details_text{
+    max-width: 417px;
+    margin-top: $margin--sm;
+    font-size: 14px;
+    line-height: 170%;
+    letter-spacing: 0.25px;
+    color: $text-secondary;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.2s ease-out;
+}
+
+.basket_card_shipping_section_head{
+    letter-spacing: 0.25px;
+    font-family: 'InterRegular';
+    font-size: $subtitle--1S; 
+    margin-top: 25px;
+    text-transform: uppercase;
+}
+
+.basket_card_shipping_section_text{
+    margin-top: 1px;
+    font-size: $subtitle--2S;
+}
+
+.basket_price{
+    &_head{
+        font-size:$head--5;
+    }
+    .discount{
+        margin-right: 2px;
+        color: $text-success;
+        font-size: $subtitle--2S;
+        line-height: 170%;
+        letter-spacing: 0.25px;
+    }
+    .oldPrice{
+        font-weight: 500;
+        font-size: $subtitle--2S;
+        color: $text-secondary;
+        line-height: 150%;
+        text-decoration: line-through;
+        margin-left: 5px;
+        letter-spacing: 0.25px;
+    }
+}
+
+.add_minus{
+    .add_minus_button{
+        padding: 17px 22px;
+        background: #F1F1F1;
+        border: 0;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+    }
+    .add_plus_button{
+        padding: 17px 22px;
+        background: #F1F1F1;
+        border: 0;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+    .add_minus_text{
+        padding: 14px 22px;
+        position: relative;
+        top: 2px;
+        background: #F1F1F1;
+        display: inline-block;
+        margin-top: 45px;
+    }
+}
+.basket_bottom_buttons{
+    text-align: right;
+}
+.price_div{
+    text-align: right; 
+}
+
+.basket_bottom_button{
+    padding: 17px 22px;
+    background: #F1F1F1;
+    border-radius: 6px;
+    border: 0;
+    margin-left: $margin--md;
+    margin-top:$margin--sm ;
+    text-transform: uppercase;
+    font-family: 'InterMedium';
+}
+.basket_bottom_button_img{
+    margin-right: 4px;
+   position: relative;
+   top: 3px;
+}
+
+.accordion{
+    cursor: pointer;
+}
+
+@media(max-width:900px){
+    .basket__card{
+        padding: 24px;
+    } 
+    .basket_card_img{
+        float: none;
+    }
+    
+}
+@media(max-width:360px){
+    .baskert_card_header{
+        font-size: 16px;
+    }
+    .price_div{
+        text-align: start; 
+    }
+    .basket_price{
+        display: flex;
+        justify-content: space-between;
+        .basket_price_head{
+            font-size: 16px;
+        }
+        .discount{
+            font-size: 12px;
+        }
+        .oldPrice{
+            font-size: 12px;
+        }
+    }
+    .basket_price_head{
+        margin-top: 20px;
+    }
+    .add_minus{
+        position: relative;
+        top: -30px;
+    }
+    .add_minus_button{
+        padding: 17px 20px;
+    }
+    .add_plus_button{
+        padding: 17px 20px;
+    }
+    .basket_card_img{
+        width: 80px;
+        height: 80px;;
+    }
+    .basket_name_for_responsivity{
+        margin-top: -80px;
+        position: relative;
+        max-width: 230px;
+        left: 90px;
+        margin-bottom: 50px;
+    }
+    
+.basket_bottom_button{
+    padding: 11px 15px;
+}
+.basket_bottom_buttons{
+    text-align: center;
+}
+}
