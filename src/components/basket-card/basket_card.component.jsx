@@ -39,8 +39,7 @@ function BasketCard(props){
            <div className='col-lg-4 col-sm-12 price_div '>
                <div className='basket_price'>
                    <div>
-                        <h2 className='basket_price_head'>18 AZN</h2>
-                        <div><span className='discount'>25% endirim</span><span className='oldPrice'>24 AZN</span></div>
+                        <h2 className='basket_price_head'>{props.price} AZN</h2>
                     </div>
                     <div className='add_minus'>
                         <button data-id={props.id} onClick={(e)=>{props.minus(e)}}  className='add_minus_button'>-</button>
