@@ -10,9 +10,7 @@ function Seller(props){
  
             <React.Fragment>
 
-            <div className="txt__seller txt--dark">
-            <h1>SATICI</h1>
-            </div>
+     
             
             <div className="box_1">
                 <div className="content">
@@ -23,7 +21,7 @@ function Seller(props){
                         
                                 <div className="texture"><div className="text_1"><h2>Öz Home</h2></div>
 
-                                <Chips rating="542 rəy" store="340" />
+                                <Chips rating="(542 rəy)" store="340" />
                                 </div>
                                 
                                 </div>
@@ -48,7 +46,9 @@ function Seller(props){
                                     <img src={require('../../assets/images/heading/add.svg')} alt=""/> 
                                             <div className="shop_click display__flex">
                                             <img src={require('../../assets/images/heading/seeshop.svg')} alt="" width="116px" height="21px" /> 
-                                            <img src={require(`../../assets/images/heading/Union.svg`)} alt=""  />
+                                            <div className="union display__flex">
+                                            <img src={require(`../../assets/images/heading/munion.svg`)} alt=""  />
+                                            </div>
                                             </div>
                                     
                                     </div>
