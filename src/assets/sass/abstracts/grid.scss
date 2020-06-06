@@ -1,3 +1,4 @@
+@import '../base/variables';
 *{
     margin: 0;
     padding: 0;
@@ -14,12 +15,20 @@
 .container-fluid
 {
     width:100%;
-    padding-right:15px;
-    padding-left:15px;
+    padding-right:$fluid_padding;
+    padding-left:$fluid_padding;
     margin-right:auto;
     margin-left:auto
 
 }
+
+@media(max-width:360px){
+    .container-fluid{
+        padding-right:$fluid_padding--sm;
+        padding-left:$fluid_padding--sm;
+    }
+}
+
 .row{
     display:flex;
     display:-webkit-box;

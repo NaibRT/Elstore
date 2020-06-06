@@ -119,7 +119,7 @@ function Basket() {
             }
     return (
         <section>
-           <div className="container">
+           <div className="container-fluid">
                <div className='row'>
 
                    <div className='col-lg-8 col-md-12 col-sm-12'>
