@@ -20,7 +20,6 @@
 
     .text--amount{
         justify-content: space-between;
-        height: 24px;
         h5{
             font-family: InterRegular;
             font-style: normal;
@@ -43,6 +42,20 @@
         .text__amount--count{
             justify-content: space-between;
         }
+        .text__tax-count{
+            justify-content: space-between;
+            margin-top: 2px;
+            p{
+                font-family: InterRegular;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 150%;
+                letter-spacing: 0.25px;
+                text-transform: uppercase;
+                color: #444444;
+            }
+        }
         .bord{
             width: 100%;
             margin-top: 10px;
@@ -52,7 +65,7 @@
     
 }
 .text--delivery{
-    margin-top: 14px;
+    margin-top: 6px;
     .text__delivery--count{
         justify-content: space-between;
         h5{
