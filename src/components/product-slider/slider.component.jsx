@@ -9,7 +9,12 @@ class ProductSlider extends React.Component {
     this.state = {
       currentIndex: 0,
       step:1,
-      items: ['https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg','https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg']
+      items: ['https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg',
+      'https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg',
+      'https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg',
+      'https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg',
+      'https://img.freepik.com/free-vector/lit-night-fountain-realistic-illustration_1284-18962.jpg?size=626&ext=jpg'
+    ]
     };
   }
 
@@ -17,13 +22,23 @@ class ProductSlider extends React.Component {
 
   onSlideChanged = (e) => this.setState({ currentIndex: e.item });
 
-  slideNext = () => this.setState({ currentIndex: this.state.currentIndex + 1, step: this.state.step + 1 });
+  slideNext = () => {
+    this.setState({ currentIndex: this.state.currentIndex + 1, step: this.state.step + 1 });
+    if(this.state.step >= this.state.items.length ){
+      this.setState({step:  1 })
+    } 
+  };
 
-  slidePrev = () => this.setState({ currentIndex: this.state.currentIndex - 1, step: this.state.step - 1 });
+  slidePrev = () =>{
+    this.setState({ currentIndex: this.state.currentIndex - 1, step:  this.state.step - 1 });
+    if(this.state.step < 1 ){
+      this.setState({step:  this.state.items.length })
+    }
+  };
 
   renderThumbs = () =>
     <ul className="thumbs__container">{this.state.items.map((item, i) =>
-      <li className='thumbs' key={i} onClick={() => this.slideTo(i)}> <img className="thumbs__img" src={item}></img></li>)}
+      <li className='thumbs' key={i} onClick={() => {this.slideTo(i) ; this.setState({step:i + 1})}}> <img className="thumbs__img" src={item}></img></li>)}
     </ul>;
 
   renderGallery() {

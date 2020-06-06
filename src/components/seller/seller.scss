@@ -1,0 +1,111 @@
+@import '../../App.scss';
+
+.txt__seller{
+
+h1{
+
+font-family: Inter;
+font-weight: $font__weight--500;
+font-size: $subtitle--L;
+line-height: $line__height;  
+margin-bottom:5px;
+
+}
+}
+
+.box{
+
+width: 384px;
+height: 216px;
+border: 2px solid #F1F1F1;
+box-sizing: border-box;
+border-radius: 8px;
+
+.box__img{
+
+img{
+ width: 64px;
+height: 64px;
+margin-left: 12px;
+margin-top: 16px;
+}
+
+    h2{
+    font-family: Inter;
+    font-weight: $font__weight--500;
+    font-size: $subtitle--1S;
+    line-height: $line__height;
+    letter-spacing: $letter__spacing;
+  
+    }
+}
+
+}
+.line{
+   
+   
+justify-content: space-between;
+width: 100%;
+height: 36px;
+
+.rating__icon{
+    margin-left: 12px;
+    img{
+      
+    }
+}
+
+
+.line__right{
+   
+justify-content: space-between;
+
+    img{
+        
+
+box-sizing: border-box;
+margin-right:5.37px;
+
+    }
+    h3{ 
+        font-family: Inter;
+        font-weight: $font__weight--500;
+        font-size: $subtitle--1S;
+        line-height: $line__height;
+        letter-spacing: $letter__spacing;
+        text-transform: uppercase;
+    }
+   
+}
+
+
+}
+
+ 
+   
+.border__hr{
+    border-bottom: 0.5px solid #CCCCCC;
+    width:100%;
+    margin-top:16px;
+
+
+}
+.bottom__line{
+    justify-content: space-between;
+    .contact{
+        h3{
+            font-family: Inter;
+            font-weight: $font__weight--500;
+            font-size: $subtitle--2S;
+            line-height: $line__height;
+            letter-spacing: $letter__spacing;
+           text-transform: uppercase;
+           margin-left: 12px;
+           margin-top:24px;
+        }
+        img{
+            position:absolute;
+            top:14px;
+        }
+    }
+}

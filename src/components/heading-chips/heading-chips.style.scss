@@ -1,0 +1,52 @@
+@import '../../App.scss';
+
+.text__main{
+    h4{
+    font-family: Noto Serif;
+    font-weight: $font__weight--500;
+    font-size: $head--4;
+    line-height: $line__height;  
+    }
+}
+
+
+.text__main--sub {
+    p{
+        font-family: Inter;
+        font-weight: $font__weight--500;
+        font-size: $button__font;
+        line-height: $line__height;  
+    }
+}
+
+.info{
+
+    .text__main--sub2{
+
+        font-family: Inter;
+        font-weight: $font__weight--500;
+        font-size: $button__font;
+        line-height: $line__height;
+           
+    }
+    .divider{
+        margin-left: 6px;
+        margin-right: 6px;
+    
+    }
+}
+
+
+.rating__trend{  
+   margin-top: 18px;
+   margin-bottom:22px;
+    
+    
+    .rating__trend__highrating{
+        padding-right:8px;
+       
+    }
+  
+    
+}
+

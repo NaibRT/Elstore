@@ -1,0 +1,71 @@
+@import '../../App.scss';
+
+.icons__delivery__safety__payback__section{
+    .delivery__icon{
+        margin-bottom: 15px;
+        img{
+            float: left;
+            padding-top: 5px;
+            padding-right: 5px;
+        }
+        h4{
+            font-size: $subtitle--1S;
+            font-family: InterMedium;
+            font-weight: $font__weight--500;
+            margin-bottom: 0;
+        }
+        p{
+            font-size: $subtitle--2S;
+            font-family: InterMedium;
+            font-weight: $font__weight--normal;
+            letter-spacing: 0.15px;
+        }
+    }
+    .payback__icon{
+        margin-bottom: 15px;
+        img{
+            float: left;
+            padding-top: 5px;
+            padding-right: 5px;
+        }
+        h4{
+            font-size: $subtitle--1S;
+            font-family: InterMedium;
+            font-weight: $font__weight--500;
+            margin-bottom: 0;
+        }
+        p{
+            font-size: $subtitle--2S;
+            font-family: InterMedium;
+            font-weight: $font__weight--normal;
+            letter-spacing: 0.15px;
+            span{
+                font-size: $subtitle--2S;
+                font-family: InterMedium;
+                font-weight: $font__weight--normal;
+                letter-spacing: 0.15px;
+                border-bottom: 1px solid black;
+            }
+        }
+    }
+    .safety__icon{
+        margin-bottom: 15px;
+            img{
+                float: left;
+                padding-top: 5px;
+                padding-right: 5px;
+            }
+            h4{
+                font-size: $subtitle--1S;
+                font-family: InterMedium;
+                font-weight: $font__weight--500;
+                margin-bottom: 0;
+            }
+            p{
+                font-size: $subtitle--2S;
+                font-family: InterMedium;
+                font-weight: $font__weight--normal;
+                letter-spacing: 0.15px;
+            }
+    }
+}

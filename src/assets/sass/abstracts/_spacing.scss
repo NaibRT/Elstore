@@ -4,13 +4,13 @@
 @each $name, $margin in $margin
  {
     .margin_#{$name}{
-     border: $margin
+     margin: $margin
   }
 }
 
 @each $name, $padding in $padding
  {
-    .margin_#{$name}{
-     border: $padding
+    .padding_#{$name}{
+     padding: $padding
   }
 }

@@ -1,3 +1,4 @@
+@import '../base/variables';
 //---------text-align
 
 .txt--center{text-align: center;};
@@ -53,16 +54,16 @@
 
  //---------------text-font-size
 
- @each $name,$size in $fontsize {
-  .txt--size--#{$name}{
-    font-size: $size;
-  }
- }
+//  @each $name,$size in $fontsize {
+//   .txt--size--#{$name}{
+//     font-size: $size;
+//   }
+//  }
 
-  //---------------text-font-weight
+//   //---------------text-font-weight
 
-  @each $name,$size in $fontweight {
-    .txt--weight--#{$name}{
-      font-size: $size;
-    }
-   }
+//   @each $name,$size in $fontweight {
+//     .txt--weight--#{$name}{
+//       font-size: $size;
+//     }
+//    }

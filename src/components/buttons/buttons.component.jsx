@@ -5,7 +5,7 @@ import Logo from './icon.svg';
 const Buttons = () => {
   return (
     <div className="btn-group">
-      <div className="container">
+      
         <div className="row">
           <button className="btn-buy-now bg-primary border__radius--big border--medium display__block txt--light">
            INDI AL
@@ -21,7 +21,6 @@ const Buttons = () => {
           </div>
 
         </div>
-      </div>
     </div>
   );
 };
