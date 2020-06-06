@@ -13,15 +13,15 @@ function Heading(props){
             <p>{props.subtitle}</p>
             </div>
 
-            <div className="info top-md ">
-            <span className="text__main--sub2 txt--secondary"> 
-            {props.sale}</span>
+                <div className="info">
+                <span className="text__main--sub2 txt--secondary"> 
+                {props.sale}</span>
 
-            <span className="divider"><img src={require('../../assets/images/heading/Divider.svg')} alt=""/></span>
+                <span className="divider"><img src={require('../../assets/images/heading/Divider.svg')} alt=""/></span>
 
-            <Chips rating="542 rəy" store="340" />
-            </div>
-            
+                <Chips rating="542 rəy" store="340" />
+                </div>
+                
 
             <div className="rating__trend display__flex">
             
