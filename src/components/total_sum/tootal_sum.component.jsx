@@ -11,6 +11,10 @@ const Total_Sum = (props) => {
                                 <h5>{props.amount}</h5>
                                 <p>{props.totalPrice}</p>
                             </div>
+                            <div className="text__tax-count display__flex">
+                                <p>ƏDV</p>
+                                <p>{props.tax} AZN</p>
+                            </div>
                             <div className="bord"></div>
                         </div>
                         <div className="text--delivery " >
