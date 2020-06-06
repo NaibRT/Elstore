@@ -13,7 +13,7 @@ const Total_Sum = (props) => {
                             </div>
                             <div className="text__tax-count display__flex">
                                 <p>ƏDV</p>
-                                <p>6 AZN</p>
+                                <p>{props.tax} AZN</p>
                             </div>
                             <div className="bord"></div>
                         </div>
