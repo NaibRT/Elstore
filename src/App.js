@@ -3,14 +3,13 @@ import React from 'react';
 import './App.scss';
 import ProductInfo from './pages/product-info'
 import BasketPage from "./pages/basket"
-import ButtonsMap from "./components/buttonsMap/buttonsMap.component.jsx"
+import Heading from './components/heading-chips/heading-chips.component'
 function App() {
   return (
     <div className="App">
       <main>
-      <ProductInfo/>
-       {/* <BasketPage/> */}
-       {/* <ButtonsMap/> */}
+       {/* <ProductInfo/> */}
+       <BasketPage/>
       </main>
     </div>
   );

@@ -1,17 +1,6 @@
 @import '../../App.scss';
 
-.txt__seller{
 
-h1{
-
-font-family: Inter;
-font-weight: $font__weight--500;
-font-size: $subtitle--L;
-line-height: $line__height;  
-margin-bottom:5px;
-
-}
-}
 
 .box_1{
 
@@ -45,7 +34,7 @@ border-radius: 8px;
                 .text_1{
                     margin-bottom: 13px;;
                     h2{
-                        font-family: Inter;
+                        font-family: InterMedium;
                         font-weight: $font__weight--500;
                         font-size: $subtitle--1S;
                         line-height: $line__height;
@@ -79,9 +68,9 @@ border-radius: 8px;
             
                 }
                 h3{ 
-                    font-family: Inter;
+                    font-family: InterMedium;
                     font-weight: $font__weight--500;
-                    font-size: $subtitle--1S;
+                    font-size: $subtitle--2S;
                     line-height: $line__height;
                     letter-spacing: $letter__spacing;
                     text-transform: uppercase;
@@ -110,10 +99,17 @@ border-radius: 8px;
                     margin-top: 5px;
                     margin-bottom: 5px;
                     margin-right: -10px;
+                    
                    
                     img{
+                        
                         margin-top:7px;
                         margin-left:4px;
+                    }
+                    .union{
+                        img{
+                            margin-top:3px;
+                        }
                     }
                 }
                
