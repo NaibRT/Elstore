@@ -7,10 +7,11 @@ import DeliveryInfo from '../components/Deliver-info/Deliver-info.component'
 import HeadingChips from '../components/heading-chips/heading-chips.component'
 import OrderPrize from '../components/sifarish_qiymeti/sifarish.component'
 import Input from '../components/input/input.component'
-import Buttonprimary from '../components/button-primary/button-primary.component'
-import Buttons from '../components/buttons/buttons.component'
 import Delivery from '../components/Icon-delivery-safety-payback/IconDeliverySafetyPayback.component'
 import Seller from '../components/seller/seller.component'
+import ButtonAdd from '../components/button-add/button-add.component';
+import ButtonBuyNow from '../components/button-buy-now/button-buy-now.component';
+
 
 function ProductInfo() {
  return (
@@ -28,8 +29,8 @@ function ProductInfo() {
              <HeadingChips heading="Əl işləri" subtitle="Öz home / Ev aksessuarları / Toxuma işləri" sale="214 dəfə satıldı" />
              <OrderPrize price='24 AZN' stock="movcuddur" priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
              <Input/>
-             <Buttonprimary className="btn-buy-now"/>
-             <Buttons/>
+             <ButtonAdd />
+             <ButtonBuyNow />
              <Delivery/>
              <Seller/>
          </div>
