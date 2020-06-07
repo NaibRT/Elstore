@@ -24,7 +24,7 @@ function BasketCard(props){
               <div className="infor_respon">
                 <div className='basket_card_checkboxdiv'>
                     <form><input  type='checkbox' /><span className='basket__form__text'>Hədiyyə paketi olaraq hazırlansın (+2 AZN)</span> </form>
-                </div>
+                </div> 
                 <div className='basket_order_details'>
                     <h6 className='basket_order_details_head accordion'>Sifarİş qeydləri <span><img src={require('../../assets/images/icons/arrowDown.png')} /></span></h6>
                     <p className='basket_order_details_text panel'>
