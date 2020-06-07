@@ -14,6 +14,7 @@
         font-family: InterRegular;
         font-style: normal;
         font-weight: 600;
+        height: 47px;
         font-size: 28.43px;
         line-height: 32px;
         color: #1A1A1A;
@@ -55,9 +56,8 @@
     .text--product__melumatlar{
         width: 100%;
         height: auto;
-        background: #F6F6F6;
+       
         border-radius: 8px;
-        padding: 9px 10px;
         margin-top: 5px;
         p{
             font-family: InterRegular;
@@ -67,6 +67,7 @@
             line-height: 150%;
             letter-spacing: 0.5px;
             color: #767676;
+            margin-bottom: 10px;
         }
         li{
             list-style: none;
@@ -77,6 +78,7 @@
             line-height: 170%;
             letter-spacing: 0.25px;
             color: #444444;
+            
         }
     }
     
@@ -88,7 +90,7 @@
     font-family: InterRegular;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 170%;
     letter-spacing: 0.25px;
     color: #767676;
