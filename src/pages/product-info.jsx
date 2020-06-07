@@ -25,7 +25,7 @@ function ProductInfo() {
           </div>
          </div>
          <div className='col-lg-4 col-md-12 col-sm-12'>
-             <HeadingChips heading="Əl işləri" subtitle="Öz home / Ev aksessuarları / Toxuma işləri" sale="214 dəfə satıldı" />
+             <HeadingChips heading="Əl işi müxtəlif toxumalar" subtitle="Öz home / Ev aksessuarları / Toxuma işlər" sale="212 dəfə satıldı" />
              <OrderPrize price='24 AZN' stock="movcuddur" priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
              <Input/>
              <Buttonprimary className="btn-buy-now"/>
