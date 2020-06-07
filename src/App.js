@@ -9,7 +9,6 @@ function App() {
     <div className="App">
       <main>
        <ProductInfo/>
-       {/* <BasketPage/> */}
       </main>
     </div>
   );
