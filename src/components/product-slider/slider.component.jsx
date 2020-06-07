@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
 import './slider.component.scss';
-import $ from 'jquery';
 
 class ProductSlider extends React.Component {
   constructor() {

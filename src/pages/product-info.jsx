@@ -9,6 +9,7 @@ import Input from '../components/input/input.component'
 import Buttonprimary from '../components/button-primary/button-primary.component'
 import Delivery from '../components/Icon-delivery-safety-payback/IconDeliverySafetyPayback.component'
 import Seller from '../components/seller/seller.component'
+import BtnAdd from '../components/button-add/button-add.component'
 
 function ProductInfo() {
  return (
@@ -28,6 +29,7 @@ function ProductInfo() {
              <OrderPrize price='24 AZN' stock="movcuddur" priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
              <Input/>
              <Buttonprimary className="btn-buy-now"/>
+             <BtnAdd/>
              <Delivery/>
              <Seller/>
          </div>
