@@ -1,15 +1,12 @@
 import React from "react";
-import "./buttons.styles.scss";
-import Logo from "../buttons/Bag.svg";
+import Logo from "./Bag.svg";
+import './button-buy-now.styles.scss';
 
-const Buttons = () => {
+const ButtonBuyNow = () => {
   return (
     <div className="btn-group">
       <div className="container">
         <div className="row">
-          <button className="btn-add bg-primary border__radius--big border--medium display__block txt--light">
-            səbətə əlavə et
-          </button>
 
           <button className="btn-buy-now border__radius--big border--medium display__block txt--secondary">
             indi al
@@ -30,4 +27,4 @@ const Buttons = () => {
     </div>
   );
 };
-export default Buttons;
+export default ButtonBuyNow;
