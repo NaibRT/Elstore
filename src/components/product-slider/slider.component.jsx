@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
 import './slider.component.scss';
+import $ from 'jquery';
 
 class ProductSlider extends React.Component {
   constructor() {
@@ -31,7 +32,7 @@ class ProductSlider extends React.Component {
   slideNext = () => {
     this.setState({ currentIndex: this.state.currentIndex + 1, step: this.state.step + 1 });
     if(this.state.step >= this.state.items.length ){
-      this.setState({step:  1 })
+      this.setState({step:  1 });
     } 
   };
 
@@ -44,13 +45,15 @@ class ProductSlider extends React.Component {
 
   renderThumbs = () =>
     <ul className="thumbs__container">{this.state.items.map((item, i) =>
-      <li className='thumbs' key={i} onClick={() => {this.slideTo(i) ; this.setState({step:i + 1})}}> <img className="thumbs__img" src={require(`../../assets/images/slider/${item}`)}></img></li>)}
+      <li  className='thumbs'  key={i} onClick={() => {this.slideTo(i);
+      this.setState({step:i + 1})}}> <img value={i} tabIndex="-1" className="thumbs__img" src={require(`../../assets/images/slider/${item}`)}></img></li>)}
     </ul>;
 
   renderGallery() {
     const { currentIndex, items } = this.state;
 
     return (<AliceCarousel
+    
       dotsDisabled={true}
       buttonsDisabled={true}
       slideToIndex={currentIndex}
