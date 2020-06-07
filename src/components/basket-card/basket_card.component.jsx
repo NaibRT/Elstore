@@ -11,6 +11,7 @@ function BasketCard(props){
 
     return (
         <div className='basket__card'>
+            <button className='basket_header_text'>Bu məhsul yalnız Bakı şəhəri daxilində çatdırılır.</button>
             <div className='card-flex'>
             <div className='card_left'> 
                <img className='basket_card_img' src={require('../../assets/images/slider/hero.jpg')} />
@@ -28,7 +29,7 @@ function BasketCard(props){
                     <h6 className='basket_order_details_head accordion'>Sifarİş qeydləri <span><img src={require('../../assets/images/icons/arrowDown.png')} /></span></h6>
                     <p className='basket_order_details_text panel'>
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis.
-                    <div><a href='#'>Düzəliş et</a></div>
+                    <div><a  href='#'>Düzəliş et</a></div>
                     </p>
                 </div>
                 <div className='basket_card_shipping_section'>
@@ -46,7 +47,7 @@ function BasketCard(props){
                     </div>
                     <div className='add_minus'>
                         <button data-id={props.id} onClick={(e)=>{props.minus(e)}}  className='add_minus_button'>-</button>
-                        <span className='add_minus_text'>{props.count}</span>
+                        <button className='add_minus_text'>{props.count}</button>
                         <button data-id={props.id} onClick={(e)=>{props.plus(e)}} className='add_plus_button'>+</button>
                     </div>
                </div>

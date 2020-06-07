@@ -181,3 +181,13 @@
 }
 
 
+
+.thumbs{
+   img{
+    opacity: 0.5;
+    &:focus{
+        opacity: 1;
+        outline: none;
+    }
+   }
+}
