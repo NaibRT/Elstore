@@ -6,9 +6,9 @@ import Footer from './components/footer/footer.component'
 import Index from './pages/index';
 import Serach from './pages/search'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
+
 import SearchContext from './contexts/search';
 import CategoryContext from "./contexts/category";
-
 function App() {
   return (
     <div className="App">

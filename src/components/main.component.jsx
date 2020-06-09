@@ -6,18 +6,19 @@ import './main.component.scss';
 
 import AboutProduct from './About-product/About-product.component';
 import DeliverInfo from './Deliver-info/Deliver-info.component';
+import SearchResult from '../components/Search-reasult-page/SearchResult.component'
+
 
 function Main(){
     return(
         <section className="main_section">
-            <div className="main_container">
+            <div className="container-fluid">
                 <div className="main_row">
                     <div className="main_left_column">
-                        <AboutProduct/>
-                        <DeliverInfo/>
+                        <h1>edede</h1>
                     </div>
                     <div className="main_right_column">
-                        <h1>right</h1>
+                        <SearchResult/>
                     </div>
                 </div>
             </div>
