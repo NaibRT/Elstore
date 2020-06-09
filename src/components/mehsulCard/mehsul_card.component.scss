@@ -1,5 +1,5 @@
 @import '../../App.scss';
-.card{
+.e-card{
     width:100%;
     border-radius: 12px;
     height:248px;
@@ -19,7 +19,7 @@
         color: #FFFFFF;
     }
   }
-  .card-overlay{
+  .e-card-overlay{
     clip-path: polygon(0 1%, 61% 0, 43% 100%, 0% 100%);
     background: #A05341;
     mix-blend-mode: normal;
@@ -30,7 +30,7 @@
     top: -2px;
   }
   
-  .card-head{
+  .e-card-head{
     font-style: normal;
     font-weight: 500;
     font-size: 31.25px;
@@ -42,14 +42,14 @@
     top:22px;
     width:297px;
   }
-  .card-info-name{
+  .e-card-info-name{
     width:40px;
     height:40px;
     position:relative;
     left:24px;
     top:24px;
   }
-  .card-info-text{
+  .e-card-info-text{
     position:relative;
     top:-12px;
     left:70px;
@@ -60,7 +60,7 @@
     color: #FFFFFF;
   }
   
-  .card-go{
+  .e-card-go{
     font-family: Inter;
     font-style: normal;
     font-weight: 600;
@@ -76,36 +76,36 @@
   }
 
   @media(max-width:762px){
-      .card-head{
+      .e-card-head{
           font-size: 18px;
           width:210px;
       }
-      .card-info{
+      .e-card-info{
           margin-top: 15px;
       }
-      .card-info-text{
+      .e-card-info-text{
           font-size: 14px;
       }
-      .card-go{
+      .e-card-go{
           font-size: 12px !important;
       }
   }
 
   @media(max-width:392px){
-    .card-head{
+    .e-card-head{
         font-size: 18px;
         width:150px;
         left:10px;
     }
-    .card-info{
+    .e-card-info{
         margin-top: 15px;
         position: relative;
         left: -10px !important;
     }
-    .card-info-text{
+    .e-card-info-text{
         font-size: 14px;
     }
-    .card-go{
+    .e-card-go{
         font-size: 10px !important;
         width: 160px !important; 
         word-wrap: break-word;
