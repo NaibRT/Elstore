@@ -10,57 +10,52 @@ function Seller(props){
  
             <React.Fragment>
 
-            <div className="txt__seller txt--dark">
-            <h1>SATICI</h1>
-            </div>
+     
             
-            <div className="box">
+            <div className="box_1">
+                <div className="content">
+                                <div className="content__img display__flex">
+                                <span className="box__img">
+                                <img src={require(`../../assets/images/heading/Image.png`)} alt=""/>
+                                </span>
+                        
+                                <div className="texture"><div className="text_1"><h2>Öz Home</h2></div>
 
-                <span className="box__img display__flex">
-                <img src={require(`../../assets/images/heading/Image.png`)} alt=""/>
-               
-               <h2>Oz home</h2>
-
-                <Chips />
-                
-                </span>
-                
+                                <Chips rating="(542 rəy)" store="340" />
+                                </div>
+                                
+                                </div>
                 
                     
                                         
                                         <div className="line display__flex">
+                                                <img src={require('../../assets/images/heading/badge.svg')} alt=""/>
+                                                        <div className="line__right display__flex">
+                                                        <h3>əlaqə</h3>
+                                                        <img src={require(`../../assets/images/heading/Chevron.svg`)} alt=""/>
+                                                        </div>
+                                    
+                                        </div>
 
-                                    <span className="rating__icon">
-                                    <img src={require('../../assets/images/heading/badge.svg')} alt=""/>
-                                    </span>
-                                    
-                                            <span className="line__right display__flex">
-                                            <img src={require(`../../assets/images/heading/blackheart.svg`)} alt=""/>
-                                            <h3>Elave et</h3>
-                                            </span>
-                                    
-                                    </div>
-                                    <div className="border__hr"></div> 
+
+                                           <div className="border__hr"></div> 
 
 
                                     <div className="bottom__line display__flex">
 
-                                    <span className="contact">
-                                    <h3>Elaqe</h3>
-                                   <img src={require('../../assets/images/heading/Chevron.svg')} alt=""/> 
-                                    </span>
-                                    
-                                            <span className="shop_click display__flex">
-                                            <h3>Magazaya bax</h3>
-                                            <img src={require(`../../assets/images/heading/Union.svg`)} alt=""/>
-                                            
-                                            </span>
+                                    <img src={require('../../assets/images/heading/add.svg')} alt=""/> 
+                                            <div className="shop_click display__flex">
+                                            <img src={require('../../assets/images/heading/seeshop.svg')} alt="" width="116px" height="21px" /> 
+                                            <div className="union display__flex">
+                                            <img src={require(`../../assets/images/heading/munion.svg`)} alt=""  />
+                                            </div>
+                                            </div>
                                     
                                     </div>
 
                                     
                                     
-                
+                                    </div>
                 
                 
                 </div>
