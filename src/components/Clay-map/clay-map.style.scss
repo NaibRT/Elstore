@@ -1,0 +1,18 @@
+@import '../../assets/sass/base/variables';
+// .row{
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-around;
+//     padding: 20px 80px;
+//     margin:0 0 10 0;
+//    grid-gap: 10px;
+    
+// }
+.row{
+    
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap:20px;
+    padding: 20px 80px;
+    justify-content: space-around;
+}

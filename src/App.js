@@ -1,14 +1,12 @@
 
 import React from 'react';
 import './App.scss';
-import ProductInfo from './pages/product-info'
-import BasketPage from "./pages/basket"
-import Heading from './components/heading-chips/heading-chips.component'
+import ClayMap  from './components/Clay-map/clay.map.component'
 function App() {
   return (
     <div className="App">
       <main>
-       <ProductInfo/>
+       <ClayMap/>
 
       </main>
     </div>
