@@ -2,8 +2,7 @@ import React,{useState,useEffect} from 'react'
 import BasketCard from '../components/basket-card/basket_card.component'
 import TotalSum from '../components/total_sum/tootal_sum.component'
 import IconDeliverySafetyPayback from '../components/Icon-delivery-safety-payback/IconDeliverySafetyPayback.component'
-import BtnPtimary from '../components/button-primary/button-primary.component'
-
+import ButtonBuyNow from '../components/button-buy-now/button-buy-now.component';
 
 
 
@@ -156,7 +155,7 @@ function Basket() {
                                             <IconDeliverySafetyPayback />
                                         </div>
                                         <div className='col-lg-12 col-md-12 col-sm-12'>
-                                        <BtnPtimary/>
+                                        <ButtonBuyNow />
                                     </div>
                                     </div>
                              <div className="col-lg-12 col-md-6 col-sm-12">
