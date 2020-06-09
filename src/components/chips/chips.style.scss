@@ -1,53 +1,61 @@
-@import '../../assets/sass/abstracts/display';
+@import '../../App.scss';
+
+.star__chips{
+ 
+
+.star__text{
+
+    img{
+        margin-right: 4px;
+    }
 
 
-.rating{
-font-family: Inter;
-font-style: normal;
-font-weight: normal;
-font-size: 16.0015px;
-line-height: 150%;
-letter-spacing: 0.15px;
-color: #767676;
-margin-left: 4px;
-margin-right: 6px;
-margin-top: 12px;
+h2{
+font-family: InterRegular;
+font-weight: $font__weight--normal;
+font-size: 14px;
+line-height: 170%;
+letter-spacing: 0.25px;
+color: #444444;
 
+
+
+}
+
+.right-line{
+    width: 14px;
+    height: 0px;
+    
+    img{
+      margin-left:6px;
+      margin-top:6px;
+     
+    }
+}
+
+}
+.heart__text{
   
     
-
-}
-.star{
-    margin-bottom: 22.4px;
-}
-.right-line{
+img{
+   width: 16px;
+   height: 13.75px;
+   margin-right:8px;
+   margin-top: 5px;;
+ 
   
-
-margin-right:4.06px;
 }
-
-.heart{
-   
-    margin-right:4px;
-}
-.store{
-    position: static;
-width: 31px;
+h2{
+font-family: InterRegular;
+font-weight: $font__weight--normal;
+font-size: 14px;
+line-height: 170%;
+letter-spacing: 0.25px;
+color: #444444;
+margin-top: 1px;
+width: 28px;
 height: 24px;
-
-
-/* Body 1 */
-
-font-family: Inter;
-font-style: normal;
-font-weight: normal;
-font-size: 16.0015px;
-line-height: 150%;
-/* identical to box height, or 24px */
-
-letter-spacing: 0.15px;
-
-/* Text / Tertiary */
-
-color: #767676;
+margin-left: -4px;
+}
+}
 }
