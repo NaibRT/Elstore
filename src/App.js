@@ -1,20 +1,17 @@
 
 import React from 'react';
 import './App.scss';
-import ProductInfo from './pages/product-info'
-import BasketPage from "./pages/basket"
+import ClayMap  from './components/Clay-map/clay.map.component'
 function App() {
   return (
     <div className="App">
       <main>
-       {<ProductInfo />}
-      
+       <ClayMap/>
       </main>
     </div>
   );
 }
 
 export default App;
-
 
 
