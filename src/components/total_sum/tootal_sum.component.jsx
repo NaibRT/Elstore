@@ -2,14 +2,15 @@ import React from 'react'
 import "../total_sum/total_sum.scss"
 const Total_Sum = (props) => {
     return (
-     
-                
-                <div className="collgdord colmdalti colxsoniki ">
                     <div className="text--total-sum">
                         <div className="text--amount">
                             <div className="text__amount--count  display__flex">
                                 <h5>{props.amount}</h5>
                                 <p>{props.totalPrice}</p>
+                            </div>
+                            <div className="text__tax-count display__flex">
+                                <p>ƏDV</p>
+                                <p>{props.tax} AZN</p>
                             </div>
                             <div className="bord"></div>
                         </div>
@@ -26,9 +27,6 @@ const Total_Sum = (props) => {
                             <p>{props.totalCount}</p>
                         </div>
                     </div>
-                    
-                </div>
-            
     )
 }
 

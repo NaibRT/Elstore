@@ -11,16 +11,16 @@
 }
 
 .text--total-sum{
-    height: 254px;
+    height: 266px;
     width: 100%;
-    background: #F7F7F7;
-    border-radius: 8px;
+    background: #FFFFFF;
+    box-shadow: 0px 8px 10px rgba(119, 126, 148, 0.15), 0px 0px 10px rgba(119, 126, 148, 0.15);
+    border-radius: 12px;
     padding: 49px 46px;
 
 
     .text--amount{
         justify-content: space-between;
-        height: 24px;
         h5{
             font-family: InterRegular;
             font-style: normal;
@@ -43,6 +43,20 @@
         .text__amount--count{
             justify-content: space-between;
         }
+        .text__tax-count{
+            justify-content: space-between;
+            margin-top: 2px;
+            p{
+                font-family: InterRegular;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 150%;
+                letter-spacing: 0.25px;
+                text-transform: uppercase;
+                color: #444444;
+            }
+        }
         .bord{
             width: 100%;
             margin-top: 10px;
@@ -52,7 +66,7 @@
     
 }
 .text--delivery{
-    margin-top: 14px;
+    margin-top: 6px;
     .text__delivery--count{
         justify-content: space-between;
         h5{
@@ -88,7 +102,7 @@
     .bord{
         border: 1px solid #444444;
         width: 100%;
-        margin-top: 19px;
+        margin-top: 11px;
     }
 
 }
@@ -120,7 +134,7 @@
 @media (max-width:992px){
     .text--total-sum{
         margin-top: 39px;
-        padding: 45px 44px;
+        padding: 42px 44px;
     }
 }
 @media (max-width:576px){

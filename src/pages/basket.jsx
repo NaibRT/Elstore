@@ -2,8 +2,7 @@ import React,{useState,useEffect} from 'react'
 import BasketCard from '../components/basket-card/basket_card.component'
 import TotalSum from '../components/total_sum/tootal_sum.component'
 import IconDeliverySafetyPayback from '../components/Icon-delivery-safety-payback/IconDeliverySafetyPayback.component'
-import BtnPtimary from '../components/button-primary/button-primary.component'
-
+import ButtonBuyNow from '../components/button-buy-now/button-buy-now.component';
 
 
 
@@ -12,7 +11,7 @@ function Basket() {
     useEffect(() => {
         let totalPrice=0;
         let totalDelivery=0;
-
+        let tax=0;
         var acc = document.getElementsByClassName("accordion");
         var i;
         
@@ -29,15 +28,18 @@ function Basket() {
         };
 
         basket.baskets.forEach(x=>{
-            totalPrice+=x.price*x.count;
+            tax+=x.tax;
+            totalPrice+=(x.price*x.count);
             totalDelivery+=x.deliveryPrice;
+
         })
         setBasket({
            ...basket,
            total:{
             amount:totalPrice,
-            totalAmount:(totalPrice+totalDelivery),
-            totalDeliveryAmount:totalDelivery
+            totalAmount:(totalPrice+totalDelivery+tax),
+            totalDeliveryAmount:totalDelivery,
+            taxamount:tax
            }
         })
 
@@ -47,7 +49,7 @@ function Basket() {
       total:{
          amount:'',
          totalAmount:'',
-         totalDeliveryAmount:''
+         totalDeliveryAmount:'',
       },
       baskets:[
           {
@@ -55,14 +57,17 @@ function Basket() {
               name:'blabla',
               deliveryPrice:5,
               price:10,
+              tax:3,
               count:1,
               giftPacket:2
+              
           }, 
           {
             id:2,
             name:'blkjbdabla',
             deliveryPrice:3,
             price:15,
+            tax:2,
             count:1,
             giftPacket:5
         }
@@ -72,12 +77,14 @@ function Basket() {
     function minus(e){
         let totalPrice=0;
         let totalDelivery=0;
+        let tax=0;
         var id=e.target.getAttribute('data-id');
         let currentBasket=basket.baskets.map(x=>{   
             if(x.id==id&& x.count>1){
                 x.count--;
             }
-            totalPrice+=x.price*x.count;
+            tax+=x.tax
+            totalPrice+=(x.price*x.count);
             totalDelivery+=x.deliveryPrice;
             return x          
         });
@@ -86,8 +93,9 @@ function Basket() {
              ...basket,
              total:{
                  amount:totalPrice,
-                 totalAmount:(totalPrice+totalDelivery),
-                 totalDeliveryAmount:totalDelivery
+                 totalAmount:(totalPrice+totalDelivery+tax),
+                 totalDeliveryAmount:totalDelivery,
+                 taxamount:tax
              },
              baskets:currentBasket
          });
@@ -96,12 +104,14 @@ function Basket() {
         function plus(e){
             let totalPrice=0;
             let totalDelivery=0;
+            let tax=0;
             var id=e.target.getAttribute('data-id');
             let currentBasket=basket.baskets.map(x=>{
                 if(x.id==id){
                     x.count++;
                 }
-                totalPrice+=x.price*x.count;
+                tax+=x.tax
+                totalPrice+=(x.price*x.count);
                 totalDelivery+=x.deliveryPrice;
                 return x
                 
@@ -111,8 +121,9 @@ function Basket() {
                  ...basket,
                  total:{
                      amount:totalPrice,
-                     totalAmount:(totalPrice+totalDelivery),
-                     totalDeliveryAmount:totalDelivery
+                     totalAmount:(totalPrice+totalDelivery+tax),
+                     totalDeliveryAmount:totalDelivery,
+                     taxamount:tax
                  },
                  baskets:currentBasket
              });
@@ -138,13 +149,13 @@ function Basket() {
                            
                                     <div className="row">
                                         <div className="col-lg-12 col-md-6 col-sm-12">
-                                            <TotalSum amount="Məbləğ" delivery="Catdirilma" deliveryAmount={basket.total.totalDeliveryAmount} total="Ümumi" totalPrice={basket.total.amount} totalCount={basket.total.totalAmount} />
+                                            <TotalSum amount="Məbləğ" delivery="Catdirilma" deliveryAmount={basket.total.totalDeliveryAmount} tax={basket.total.taxamount} total="Ümumi" totalPrice={basket.total.amount} totalCount={basket.total.totalAmount} />
                                         </div>
                                         <div className="col-lg-12 col-md-6 col-sm-12">
                                             <IconDeliverySafetyPayback />
                                         </div>
                                         <div className='col-lg-12 col-md-12 col-sm-12'>
-                                        <BtnPtimary/>
+                                        <ButtonBuyNow />
                                     </div>
                                     </div>
                              <div className="col-lg-12 col-md-6 col-sm-12">

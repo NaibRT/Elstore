@@ -1,38 +1,53 @@
 @import '../../App.scss';
 
 .text__main{
+    width:418px;
     h4{
-    font-family: Noto Serif;
+    font-family: NotoRegular;
     font-weight: $font__weight--500;
-    font-size: $head--4;
-    line-height: $line__height;  
+    font-size: 31.25px;
+    line-height: $line__height; 
+   
+    
     }
 }
 
 
 .text__main--sub {
     p{
-        font-family: Inter;
+        font-family: InterRegular;
         font-weight: $font__weight--500;
-        font-size: $button__font;
+        font-size: $subtitle--2S;
         line-height: $line__height;  
+        margin-bottom: 8px;
+        color: #444444;
+        text-transform: capitalize;
     }
 }
 
 .info{
+        
 
     .text__main--sub2{
 
-        font-family: Inter;
+        font-family: InterRegular;
         font-weight: $font__weight--500;
-        font-size: $button__font;
+        font-size: $subtitle--2S;
         line-height: $line__height;
+        color: #444444;
+        margin-top:2px;
+
            
     }
     .divider{
-        margin-left: 6px;
-        margin-right: 6px;
-    
+        width: 14px;
+        height: 0px;
+        
+        img{
+          margin-left:6px;
+          margin-top:6px;
+         
+        }
     }
 }
 
@@ -43,7 +58,11 @@
     
     
     .rating__trend__highrating{
-        padding-right:8px;
+        
+        
+        img{
+            margin-right: 16px;
+        }
        
     }
   
