@@ -8,10 +8,14 @@ import Search from './pages/search';
 import {BrowserRouter} from 'react-router-dom';
 import SearchContext from './contexts/search'
 import ClayMap  from './components/Clay-map/clay.map.component'
+
 function App() {
   return (
     <div className="App">
       <main>
+       <ProductInfo/>
+        <BrandSlider/>
+        <IconSlider/>
        {/* <ProductInfo/> */}
        {/* <BasketPage/> */}
        {/* <Index /> */}

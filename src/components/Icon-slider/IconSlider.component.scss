@@ -1,0 +1,40 @@
+@import '../../App.scss';
+@import '../../../node_modules//swiper/swiper.scss';
+
+.icon_slider_section{
+    position: relative;
+    margin-top: 25px;
+    .container-fluid{
+        .icon_slider_row{
+            .icon_slider_column{
+                .swiper-container{
+                    .swiper-wrapper{
+                        .swiper-slide{
+                            text-align: center;
+                            .swiper_slide_image{
+                                img{
+
+                                }
+                            }
+                            h4{
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .icon-button-next{
+        position: absolute;
+        top:30px;
+        width: 15px;
+        height: 12px;
+        right: 13px;
+        outline: none;
+        cursor: pointer;
+        img{
+            width: 100%;
+        }
+    }
+}
