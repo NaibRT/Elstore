@@ -1,8 +1,12 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect,useContext} from 'react';
 import './navbar.component.scss';
-import { Link,  } from "react-router-dom";
+import { Link , Switch ,  Route, Redirect  } from "react-router-dom";
+import ResponsiveCat from '../responsiv_categories/responsiv_categories.component'
+import {searchContext} from '../../contexts/search';
 
-function  Navbar() {
+
+function  Navbar(props) {
+    const products = useContext(searchContext);
 
     const [toggle, setToggle] = useState({
         active: false,
@@ -12,6 +16,8 @@ function  Navbar() {
         const currentState = toggle.active;
         setToggle({ active: !currentState });
     }
+
+   
 
     return (
         <div className='navbar'>
@@ -24,9 +30,9 @@ function  Navbar() {
                     <img src={require('../../assets/images/heading/logo.svg')} />
                 </div>
                 <div className='navbar_search'>
-                <form className="search-input" action="/action_page.php">
-                    <input className='search-input-text' type="search" placeholder="Search.." name="search" />
-                    <button className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></button>
+                <form   className="search-input" >
+                    <input onChange={products.events.searchForm}  value={localStorage.getItem('search')} className='search-input-text' type="text" placeholder="Search.." name="search" />
+                    <Link to={`/categories?search:${products.state.searchKey}`} className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></Link>
                 </form>
                 </div>
                 <div className='navbar_buttons'>
@@ -60,8 +66,13 @@ function  Navbar() {
                         <Link className='responsive_nav_login_log' to='/login'>Login</Link>
                     </div>
                     <div className='responsive_nav_bottom'>
-                        <Link className='responsive_nav_bottom_item' to="/cabinet">Cabinet <img src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
+                    <Switch>
+                            <Route exact={true} path='/'>
+                            <Link className='responsive_nav_bottom_item' to="/cabinet">Cabinet <img src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
                         <Link className='responsive_nav_bottom_item' to="/categories">Kategories <img src={require('../../assets/images/icons/arrowDown.png')} /></Link>
+                            </Route>
+                            <Route exact={true} path='/categories' component={ResponsiveCat} />
+                    </Switch>
                     </div>
                 </div>
 
