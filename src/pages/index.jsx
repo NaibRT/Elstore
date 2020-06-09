@@ -6,6 +6,7 @@ import Category from '../components/Category/Category.component'
 import Clay from '../components/Clay-map/clay.map.component'
 import BrandSlider from '../components/Brand-slider/brandSlider.component'
 import IconSlider from '../components/Icon-slider/IconSlider.component'
+import MehsulCard from '../components/mehsulCard/mehsul_card.component'
 
 function Index() {
     return (
@@ -22,7 +23,8 @@ function Index() {
             <div className="container-fluid">
             <IconSlider/>
             <br/>
-            <br/>   
+            <br/> 
+            <MehsulCard/> 
              </div>
             </>
     )
