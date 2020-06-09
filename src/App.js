@@ -7,7 +7,6 @@ function App() {
     <div className="App">
       <main>
        <ClayMap/>
-
       </main>
     </div>
   );
