@@ -1,56 +1,12 @@
-import React, {useEffect,useState,} from 'react'
+import React, {useEffect,useState,useContext} from 'react'
 import "../Category/Category.scss"
-
+import { categoryContext } from "../../contexts/category";
 const Category = () => {
+    const CategoryContext = useContext(categoryContext)
 
-    const [categories,setCategories]=useState([
-        {id:1,name:'Men',
-         subCat:[
-            {id:1,name:'Men TShirt',
-            childre:[
-                {id:1,name:'Men TShirt xl'},
-                {id:2,name:'Men Jacket lg'}
-             ],
-        },
-            {id:2,name:'Men Jacket',
-            childre:[
-                {id:1,name:'Men TShirt xl'},
-                {id:2,name:'Men Jacket lg'}
-             ],
-        }
-         ]
-        },
-        {id:2,name:'Women',
-          subCat:[
-            {id:1,name:'Women TShirt',
-            childre:[
-                {id:1,name:'Men TShirt xl'},
-                {id:2,name:'Men Jacket lg'}
-             ],
-          },
-            {id:2,name:'Women Jacket'}
-         ]},
-        {id:3,name:'Kid',
-        subCat:[
-            {id:1,name:'Kid TShirt'},
-            {id:2,name:'Kid Jacket'}
-         ]}
-    ]);
-    const [subCat,setSubCat]=useState({});
-
-
+  
     
-    function handleClick(e) {
-        
-        let subCats=[];
-        let id=e.target.getAttribute('data-id');
-        console.log(id)
-        categories.forEach(x=>{
-            if(x.id==id){
-                subCats= x.subCat
-            }});
-
-        setSubCat({subCats});
+    function handleClick() {
         let boxCategory=document.querySelector(".box--category");
         let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
           
@@ -61,15 +17,10 @@ const Category = () => {
                 })
                 boxCategory.style.transition="0.5s ease";
                 boxCategory.style.width="550px";
-
-
-        console.table(subCat)
-        
+                boxCategory.style.height="auto"
        }
-       function CategoryEventHandler() {
-        
-            
-        }
+
+
         function CategoryLeave(){
             let boxCategory=document.querySelector(".box--category");
         let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
@@ -98,29 +49,30 @@ const Category = () => {
        
     }, []);
        
-    let SubCategories='';
-    if(subCat.subCats!==undefined){
-        SubCategories=subCat.subCats.map(x=>{
+    let SubCategories=[];
+    console.log(CategoryContext.state.childrens.children)
+    if(CategoryContext.state.childrens.children!==undefined){
+        SubCategories=CategoryContext.state.childrens.children.map(x=>{
+            console.log(x)
             return <ul key={x.id} className="">
             <li  className="box__subcotegory--item">
-            <a className="box--subcotegory" href="/" >{x.name}</a>
+            <a className="box--subcotegory" href="/" >{x.translation.name}</a>
                 <ul>
                  <li><a href="/">Jeans</a></li>
                 </ul>
             </li>
            </ul>
-        })                   
+        }) 
+        console.log(SubCategories)                  
     }
-
 
     return (
                     <>
                     <div className="box__category" >
                         <ul>
                             {
-                                categories.map(x=>{
-                                    return  <li  className="category__items" key={x.id} >{x.name} <span ><img data-id={x.id} onMouseEnter={(e)=>{handleClick(e);}} onClick={()=>{CategoryEventHandler();}} className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li>
-
+                                CategoryContext.state.categories.map(x=>{
+                                    return  <li  className="category__items" key={x.id} >{x.translation.name} <span ><img data-id={x.id} onMouseEnter={(e)=>{CategoryContext.event.getSubCat(e);handleClick()}}  className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li>
                                 })
                             }
                             {/* <li>Ayaqqabılar <span><img className="icon"  onClick={handleClick} src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li>
@@ -132,7 +84,7 @@ const Category = () => {
                             <li>Hədiyyələr <span><img className="icon"  onClick={handleClick} src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li> */}
                         </ul>
                     </div>
-                    <div className="box--category" onMouseLeave={()=>{CategoryLeave()}}>
+                    <div className="box--category" >
                 <div className="box__subcotegory">
                     {SubCategories}
                 </div>
