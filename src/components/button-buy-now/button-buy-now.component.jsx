@@ -5,8 +5,6 @@ import './button-buy-now.styles.scss';
 const ButtonBuyNow = () => {
   return (
     <div className="btn-group">
-      <div className="container">
-        <div className="row">
 
           <button className="btn-buy-now border__radius--big border--medium display__block txt--secondary">
             indi al
@@ -23,8 +21,6 @@ const ButtonBuyNow = () => {
             </p>
           </div>
         </div>
-      </div>
-    </div>
   );
 };
 export default ButtonBuyNow;
