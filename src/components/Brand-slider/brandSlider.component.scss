@@ -1,0 +1,175 @@
+@import '../../App.scss';
+
+@import '../../../node_modules/swiper/swiper.scss';
+
+
+.brand_slider_section{
+    position: relative;
+    margin-top: 15px;
+    .container-fluid{
+        .brand_slider_row{
+            @extend .row;
+            .brand_slider_column{
+                @extend .col-xl-12, .col-lg-12, .col-md-12, .col-sm-12;
+                .brand_slider_title{
+                    font-family: InterMedium;
+                    font-weight: $font__weight--500;
+                    font-style: normal;
+                    font-size: 25px;
+                    margin-bottom: 16px;
+                }
+                .swiper-container{
+                    .swiper-wrapper{
+                        .swiper-slide{
+                                position: relative;
+                                border: 0.5px solid #D6D6D6;
+                                border-radius: 12px;
+                                width: 308px;
+                                height: 332px;
+                                padding-top: 8px;
+                                padding-right: 8px;
+                                padding-left: 8px;
+                                padding-bottom: 8px;
+                                h4{
+                                    font-family: InterMedium;
+                                    font-size: 20px;
+                                    font-weight: $font__weight--500;
+                                    margin-top: 10px;
+                                    letter-spacing: 0.25px;
+                                }
+                                .discount{
+                                    margin-top: 3px;
+                                    font-family: InterRegular;
+                                    font-size: 12px;
+                                    font-weight: normal;
+                                    color: #228751;
+                                }
+                                p{
+                                    margin-top: 1px;
+                                    font-family: InterRegular;
+                                    font-size: $subtitle--1S;
+                                    color: #334788;
+                                }
+                                .swiper_slide_image{
+                                    img{
+                                        object-fit: cover;
+                                        width: 100%;
+                                    }
+                                }
+                        }
+                        .swiper-slide:hover{
+                            box-shadow: 0px 8px 10px rgba(119, 126, 148, 0.15), 0px 0px 10px rgba(119, 126, 148, 0.15);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .brand-button-next{
+        position: absolute;
+        top:130px;
+        width: 15px;
+        height: 12px;
+        right: 5px;
+        outline: none;
+        cursor: pointer;
+        img{
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and  (max-device-width : 320px) {
+    .swiper-slide{
+        height: 100% !important;
+    }
+    .swiper-button-next{
+        top:200px !important;
+        right: -5px !important;
+    }
+}
+
+@media only screen and (min-device-width : 321px) and (max-device-width : 360px) {
+    .swiper-slide{
+        height: 100% !important;
+    }
+    .swiper-button-next{
+        top:200px !important;
+        right: -5px !important;
+    }
+}
+
+@media only screen and (min-device-width : 361px) and (max-device-width : 375px) {
+    .swiper-slide{
+        height: 100% !important;
+    }
+    .swiper-button-next{
+        top:200px !important;
+        right: 11px !important;
+    }
+}
+
+@media only screen and (min-device-width: 376px) and (max-device-width: 414px){
+    .swiper-slide{
+        height: 100% !important;
+    }
+    .swiper-button-next{
+        top:230px !important;
+        right: 11px !important;
+    }
+}
+
+
+@media (min-width: 415px) and (max-width: 575.98px) { 
+    .swiper-slide{
+        height: 100% !important;
+    }
+    .swiper-button-next{
+        top:250px !important;
+        right: 11px !important;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .swiper-slide{
+        height: 100% !important;
+    }
+    .swiper-button-next{
+        top:200px !important;
+        right: 11px !important;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .swiper-slide{
+        height: 100% !important;
+    }
+    .swiper-button-next{
+        top:180px !important;
+        right: 11px !important;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .swiper-slide{
+        height: 315px !important;
+    }
+    .swiper-button-next{
+        top:150px !important;
+        right: 10px !important;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .swiper-button-next{
+        top:150px !important;
+        right: 10px !important;
+    }
+}
+
+
+
