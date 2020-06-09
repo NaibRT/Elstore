@@ -4,15 +4,15 @@
     display: flex;
     flex-direction: row;
     padding: 24px;
-    width: 308px;
-    height: auto;
+    width: 100%;
+    height: 100%;
     background: #FFFFFF;
     border: 1.5px solid #D6D6D6;
     border-radius: 12px;
    ul{
        width: 100%;
    }
-    li{
+    .category__items{
         list-style: none;
         border-bottom: 0.5px solid #D6D6D6;
         display: flex;
@@ -45,21 +45,22 @@
     background: #f3f3f3;
     width: 0px;
     height: auto;
-    position: relative;
+    position: absolute;
     z-index: 3;
-    bottom: 195px;
-    left: 311px;
+    left: 290px;
     border-radius: 8px;
-
-  
+    top: 0px;
+    height: 100%;
 
     
     .box__subcotegory{
         display: flex;
         .box__subcotegory--item{
-            display: none;
+            //display: none;
             list-style: none;
             padding: 15px;
+            display: flex;
+            flex-flow: column wrap;
             .box--subcotegory{
                 color: #25282a;
                 font-family: InterBold;
@@ -88,7 +89,8 @@
         height: auto;
         position: relative;
         z-index: 3;
-        left: 311px;
+        bottom: 600px;
+        left: 226px;
         border-radius: 8px;
         
         .box__subcotegory{
