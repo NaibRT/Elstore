@@ -1,0 +1,96 @@
+@import '../../App.scss';
+.filter{
+    padding: 24px;
+    border: 1.5px solid #D6D6D6;
+    box-sizing: border-box;
+    border-radius: 12px;
+    ul{
+        li{
+        font-family: 'InterRegular';;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 200%;
+        letter-spacing: 0.5px;
+        color: #1A1A1A;
+        list-style: none;
+        }
+    }
+}
+.drop{
+    cursor: pointer;
+}
+
+.filter_head{
+    font-family: 'InterRegular';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #1A1A1A;
+    display: flex;
+    
+    justify-content: space-between;
+    div{
+        font-size: 26px;
+        font-weight: bold;
+        color: #334788;
+    }
+}
+.category_list_under{
+    margin-left: 20px;
+}
+
+.category_list{
+    padding-bottom: 14px;
+    border-bottom: 1px solid #D6D6D6;
+    margin-bottom: 10px;
+}
+.form_filter{
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.filter_markets{
+    padding-top: 24px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #D6D6D6;
+    .col-lg-6{
+        margin-bottom: 10px;
+    }
+}
+
+.filter_market_title{
+    font-family: 'InterRegular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: 0.5px;
+    color: #1A1A1A;
+}
+.center{
+    text-align: center;
+}
+
+.filter_price_div{
+    margin-top: 10px;
+    display: flex;
+}
+.line_price{
+    width: 20px;
+    position: relative;
+    top: 20px;
+    height: 1px;
+    background-color: #444444;
+}
+
+.azn{
+    margin-left: -25px !important;
+    margin-top: 13px !important;
+    width: 13px;
+}
+
