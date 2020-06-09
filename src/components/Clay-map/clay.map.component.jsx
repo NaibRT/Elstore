@@ -1,7 +1,7 @@
 import React from 'react';
 import  '../Clay-map/clay.map.component'
 import Clay from '../index-clay/clay.component';
-import '../Clay-map/clay-map.style.scss'
+import './clay-map.style.scss'
 
 class ClayMap extends React.Component{
     constructor(){
@@ -72,18 +72,15 @@ render()
 { 
     return(
         <React.Fragment>
-        <div className='col-lg-8'>
         <div className='row'>
     { this.state.sections.map(({title, imageUrl, id})=>(
+      <div className='col-lg-4'>
         <Clay key = {id} title={title} imageUrl = {imageUrl}/>
+        </div>
     ))  
     }
     </div>
-    </div>
-        
-        
         </React.Fragment>
-        
     );
      }
 }

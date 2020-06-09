@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 import './brandSlider.component.scss'
-
 import Swiper from 'swiper';
 import HeartImage from '../heart-image/heartImage.component';
 import ButtonRating from '../button-rating/buttonRating.component';

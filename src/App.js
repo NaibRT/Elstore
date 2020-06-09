@@ -1,31 +1,34 @@
 
 import React from 'react';
 import './App.scss';
-import ProductInfo from './pages/product-info'
-import BasketPage from "./pages/basket";
+import Header from './components/navbar/navbar.component'
+import Footer from './components/footer/footer.component'
 import Index from './pages/index';
-import Search from './pages/search';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import SearchContext from './contexts/search'
-import ClayMap  from './components/Clay-map/clay.map.component'
 
 function App() {
   return (
     <div className="App">
+    <SearchContext>
+    <Router>
+    <Header />  
       <main>
-       <ProductInfo/>
-        <BrandSlider/>
-        <IconSlider/>
-       {/* <ProductInfo/> */}
-       {/* <BasketPage/> */}
-       {/* <Index /> */}
-       <BrowserRouter>
-       <SearchContext>
-         <Search/>
-       </SearchContext>
-       </BrowserRouter>
-       <ClayMap/>
+           <div className='container-fluid'>
+              <div className='row'>
+                <div className="col-lg-12">
+                    <Switch>
+                    <div className='row'>
+                    <Route to='/' component={Index}/>
+                    </div>
+                  </Switch>
+                </div>
+              </div>
+           </div>
       </main>
+      <Footer/>
+      </Router>
+      </SearchContext>
     </div>
   );
 }

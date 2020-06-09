@@ -7,7 +7,7 @@ import HeadingChips from '../components/heading-chips/heading-chips.component'
 import OrderPrize from '../components/sifarish_qiymeti/sifarish.component'
 import Input from '../components/input/input.component'
 
-import Buttonprimary from '../components/button-primary/button-primary.component'
+import Buttonprimary from '../components/button-buy-now/button-buy-now.component'
 import Delivery from '../components/Icon-delivery-safety-payback/IconDeliverySafetyPayback.component'
 import Seller from '../components/seller/seller.component'
 import BtnAdd from '../components/button-add/button-add.component'

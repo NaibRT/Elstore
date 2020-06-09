@@ -105,9 +105,7 @@ const Category = () => {
             <li  className="box__subcotegory--item">
             <a className="box--subcotegory" href="/" >{x.name}</a>
                 <ul>
-                {x.childre.map(y=>{
-                    return <li><a href="/">{y.name}</a></li>
-                })}
+                 <li><a href="/">Jeans</a></li>
                 </ul>
             </li>
            </ul>
@@ -116,7 +114,7 @@ const Category = () => {
 
 
     return (
-                <div className="col-lg-4 col-md-12  ">
+                    <>
                     <div className="box__category" >
                         <ul>
                             {
@@ -139,10 +137,7 @@ const Category = () => {
                     {SubCategories}
                 </div>
             </div>
-                </div>
-            
-
-        
+    </>
     )
 }
 
