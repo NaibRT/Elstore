@@ -1,5 +1,6 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import {BrowserRouter} from "react-router-dom";
+import axios from 'axios'
 import '../App.scss';
 
 import Category from '../components/Category/Category.component'
@@ -9,6 +10,12 @@ import IconSlider from '../components/Icon-slider/IconSlider.component'
 import MehsulCard from '../components/mehsulCard/mehsul_card.component'
 
 function Index() {
+    const [product,setProduct]=useState({});
+    // useEffect(()=>{
+    
+    //     axios.get('http://139.180.144.49/api/v1/az/products?include=seller,images')
+    //     .then(x=>console.log(x.data.data.data))
+    // },[])
     return (
             <>
             <div className='col-lg-3'>

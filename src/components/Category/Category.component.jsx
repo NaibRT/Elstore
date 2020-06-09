@@ -10,14 +10,13 @@ const Category = () => {
         let boxCategory=document.querySelector(".box--category");
         let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
           
-               
-               box__subcotegoryItem.forEach(x=>{
+               console.log(box__subcotegoryItem)
+               Array.from(box__subcotegoryItem).forEach(x=>{
                     x.style.display="block";
                     x.style.transition="0.5s ease";
                 })
                 boxCategory.style.transition="0.5s ease";
                 boxCategory.style.width="550px";
-                boxCategory.style.height="auto"
        }
 
 
@@ -25,7 +24,6 @@ const Category = () => {
             let boxCategory=document.querySelector(".box--category");
         let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
 
-               
                box__subcotegoryItem.forEach(x=>{
                     x.style.display="none";
                     x.style.transition="0.5s ease";
@@ -62,8 +60,7 @@ const Category = () => {
                 </ul>
             </li>
            </ul>
-        }) 
-        console.log(SubCategories)                  
+        })                 
     }
 
     return (
@@ -72,7 +69,7 @@ const Category = () => {
                         <ul>
                             {
                                 CategoryContext.state.categories.map(x=>{
-                                    return  <li  className="category__items" key={x.id} >{x.translation.name} <span ><img data-id={x.id} onMouseEnter={(e)=>{CategoryContext.event.getSubCat(e);handleClick()}}  className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li>
+                                    return  <li onMouseOver={(e)=>{CategoryContext.event.getSubCat(e);handleClick()}}  className="category__items" key={x.id} >{x.translation.name} <span ><img data-id={x.id} className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li>
                                 })
                             }
                             {/* <li>Ayaqqabılar <span><img className="icon"  onClick={handleClick} src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li>
@@ -83,12 +80,12 @@ const Category = () => {
                             <li>İdman malları <span><img className="icon"  onClick={handleClick} src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li>
                             <li>Hədiyyələr <span><img className="icon"  onClick={handleClick} src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li> */}
                         </ul>
+                        <div className="box--category" >
+                        <div className="box__subcotegory">
+                            {SubCategories}
+                        </div>
                     </div>
-                    <div className="box--category" >
-                <div className="box__subcotegory">
-                    {SubCategories}
-                </div>
-            </div>
+                    </div>
     </>
     )
 }
