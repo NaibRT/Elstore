@@ -6,13 +6,28 @@ const Category = () => {
     const [categories,setCategories]=useState([
         {id:1,name:'Men',
          subCat:[
-            {id:1,name:'Men TShirt'},
-            {id:2,name:'Men Jacket'}
+            {id:1,name:'Men TShirt',
+            childre:[
+                {id:1,name:'Men TShirt xl'},
+                {id:2,name:'Men Jacket lg'}
+             ],
+        },
+            {id:2,name:'Men Jacket',
+            childre:[
+                {id:1,name:'Men TShirt xl'},
+                {id:2,name:'Men Jacket lg'}
+             ],
+        }
          ]
         },
         {id:2,name:'Women',
           subCat:[
-            {id:1,name:'Women TShirt'},
+            {id:1,name:'Women TShirt',
+            childre:[
+                {id:1,name:'Men TShirt xl'},
+                {id:2,name:'Men Jacket lg'}
+             ],
+          },
             {id:2,name:'Women Jacket'}
          ]},
         {id:3,name:'Kid',
@@ -88,9 +103,11 @@ const Category = () => {
         SubCategories=subCat.subCats.map(x=>{
             return <ul key={x.id} className="">
             <li  className="box__subcotegory--item">
-            <a className="box--subcotegory" href="" >{x.name}</a>
+            <a className="box--subcotegory" href="/" >{x.name}</a>
                 <ul>
-                    <li><a href="">Salam1</a></li>
+                {x.childre.map(y=>{
+                    return <li><a href="/">{y.name}</a></li>
+                })}
                 </ul>
             </li>
            </ul>
