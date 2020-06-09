@@ -1,0 +1,136 @@
+@import '../../App.scss';
+.e-card{
+    width:100%;
+    border-radius: 12px;
+    height:248px;
+    overflow:hidden;
+    background-size:cover;
+    background-position:center;
+    margin-bottom: 24px;
+    a{
+        text-decoration: none;
+        font-family: 'InterRegular';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+  }
+  .e-card-overlay{
+    clip-path: polygon(0 1%, 61% 0, 43% 100%, 0% 100%);
+    background: #A05341;
+    mix-blend-mode: normal;
+    opacity: 0.8;
+    height:102%;
+    width:100%;
+    position: relative;
+    top: -2px;
+  }
+  
+  .e-card-head{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 31.25px;
+    line-height: 150%;
+    letter-spacing: 0.25px;
+    color: #FFFFFF;
+    position:relative;
+    left:24px;
+    top:22px;
+    width:297px;
+  }
+  .e-card-info-name{
+    width:40px;
+    height:40px;
+    position:relative;
+    left:24px;
+    top:24px;
+  }
+  .e-card-info-text{
+    position:relative;
+    top:-12px;
+    left:70px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.25px;
+    color: #FFFFFF;
+  }
+  
+  .e-card-go{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    position:relative;
+    top:32px;
+    left:24px;
+    
+  }
+
+  @media(max-width:762px){
+      .e-card-head{
+          font-size: 18px;
+          width:210px;
+      }
+      .e-card-info{
+          margin-top: 15px;
+      }
+      .e-card-info-text{
+          font-size: 14px;
+      }
+      .e-card-go{
+          font-size: 12px !important;
+      }
+  }
+
+  @media(max-width:392px){
+    .e-card-head{
+        font-size: 18px;
+        width:150px;
+        left:10px;
+    }
+    .e-card-info{
+        margin-top: 15px;
+        position: relative;
+        left: -10px !important;
+    }
+    .e-card-info-text{
+        font-size: 14px;
+    }
+    .e-card-go{
+        font-size: 10px !important;
+        width: 160px !important; 
+        word-wrap: break-word;
+        img{
+            position: relative;
+            top: 2px;
+        }
+    }
+    
+}
+
+
+
+  .centeredText{
+    font-family: 'InterRegular';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #334788;
+    text-decoration: none;
+  }
+  .text-center{
+      text-align: center;
+  }
