@@ -2,7 +2,8 @@ import React,{useContext,useState} from 'react';
 import '../App.scss'
 import {searchContext} from '../contexts/search';
 import Filter from '../components/filter/filter.component'
-import Navbar from '../components/navbar/navbar.component'
+import SearchResultPage from '../components/Search-reasult-page/SearchResult.component.jsx'
+
 
 function Search(props) {
     const [priceFrom,setPriceFrom]= useState(0);
@@ -19,39 +20,37 @@ function Search(props) {
     function Priceto(e){
         setPriceTo(e.target.value)
     }
-    
+                    // {
+                //     products.state.data.filter(item=> products.state.searchKey.toLowerCase().includes(item.product_name.toLowerCase()))
+                //     .filter((item)=>{ return item.product_price>=priceFrom &&  item.product_price < priceTo})
+                //     .map(({product_price,product_name,product_description})=>{
+                //         return(
+                //             <div>
+                //                 <h2>{product_price}</h2>
+                //                 <p>{product_name}</p>
+                //                 <p>{product_description}</p>
+                //                 <br />
+                //                 <br />
+                //                 <br />
+                //             </div>
+                //         )
+                //     })
+                // }
     return (
-        <searchContext>
-        <Navbar />
+        
         <div className='container'>
-        <div className='row'>
-            <div className='col-lg-3'>
-                <Filter
-                Pricefrom={Pricefrom}
-                Priceto={Priceto}
-                 />
-            </div>
-            <div className='col-lg-9'>
-                {
-                    products.state.data.filter(item=> products.state.searchKey.toLowerCase().includes(item.product_name.toLowerCase()))
-                    .filter((item)=>{ return item.product_price>=priceFrom &&  item.product_price < priceTo})
-                    .map(({product_price,product_name,product_description})=>{
-                        return(
-                            <div>
-                                <h2>{product_price}</h2>
-                                <p>{product_name}</p>
-                                <p>{product_description}</p>
-                                <br />
-                                <br />
-                                <br />
-                            </div>
-                        )
-                    })
-                }
-            </div>
+             <div className="row">
+             <div className='col-lg-3'>
+             <Filter
+             Pricefrom={Pricefrom}
+             Priceto={Priceto}
+              />
+         </div>
+         <div className='col-lg-9'>
+            <SearchResultPage/>
+         </div>
+             </div>
         </div>
-        </div>
-        </searchContext>
     )
 }
 

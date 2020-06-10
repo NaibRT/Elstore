@@ -18,6 +18,11 @@
                     font-size: 25px;
                     margin-bottom: 16px;
                 }
+                #brandSlider{
+                    .swiper_slide_image{
+                        height: 186px;
+                    }
+                }
                 .swiper-container{
                     .swiper-wrapper{
                         .swiper-slide{
@@ -36,6 +41,9 @@
                                     font-weight: $font__weight--500;
                                     margin-top: 10px;
                                     letter-spacing: 0.25px;
+                                    height: 50px;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
                                 }
                                 .discount{
                                     margin-top: 3px;
@@ -52,8 +60,9 @@
                                 }
                                 .swiper_slide_image{
                                     img{
-                                        object-fit: cover;
+                                        object-fit: contain;
                                         width: 100%;
+                                        height: 100%;
                                     }
                                 }
                         }

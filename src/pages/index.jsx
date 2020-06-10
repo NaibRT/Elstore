@@ -11,11 +11,14 @@ import MehsulCard from '../components/mehsulCard/mehsul_card.component'
 
 function Index() {
     const [product,setProduct]=useState({});
-    // useEffect(()=>{
+    useEffect(()=>{
     
-    //     axios.get('http://139.180.144.49/api/v1/az/products?include=seller,images')
-    //     .then(x=>console.log(x.data.data.data))
-    // },[])
+        axios.get('http://139.180.144.49/api/v1/az/products?include=seller,images')
+        .then(x=>{
+            setProduct(x.data.data)
+        })
+    },[])
+
     return (
             <>
             <div className='col-lg-3'>
@@ -25,7 +28,7 @@ function Index() {
             <Clay/>
             </div>
             <div className="container-fluid">
-            <BrandSlider name='Trend məhsullar'/>
+            <BrandSlider data={product} name='Trend məhsullar'/>
             </div>
             <div className="container-fluid">
             <IconSlider/>

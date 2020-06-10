@@ -1,6 +1,6 @@
 import React from 'react'
 import  "./responsiv_categories.style.scss";
-import { Link , Switch ,  Route  } from "react-router-dom";
+import { Link } from "react-router-dom";
 function ResponsiveCat() {
     return (
     <div className='responsive_nav_bottom'>

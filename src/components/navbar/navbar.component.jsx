@@ -41,9 +41,9 @@ function  Navbar(props) {
                     <Link className='navbar_buttons_link log' to='/register'>hesab yarat</Link>
                     <div>
                     <div className={`${toggle.active ? 'change': ''} menu-container navbaroutside`}    onClick={toggleNav}>
-                        <div class="bar1"></div>
-                        <div class="bar2"></div>
-                        <div class="bar3"></div>
+                        <div className="bar1"></div>
+                        <div className="bar2"></div>
+                        <div className="bar3"></div>
                     </div>
                     </div>
                 </div>
@@ -66,13 +66,8 @@ function  Navbar(props) {
                         <Link className='responsive_nav_login_log' to='/login'>Login</Link>
                     </div>
                     <div className='responsive_nav_bottom'>
-                    <Switch>
-                            <Route exact={true} path='/'>
                             <Link className='responsive_nav_bottom_item' to="/cabinet">Cabinet <img src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
                         <Link className='responsive_nav_bottom_item' to="/categories">Kategories <img src={require('../../assets/images/icons/arrowDown.png')} /></Link>
-                            </Route>
-                            <Route exact={true} path='/categories' component={ResponsiveCat} />
-                    </Switch>
                     </div>
                 </div>
 

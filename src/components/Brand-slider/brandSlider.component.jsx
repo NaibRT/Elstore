@@ -1,8 +1,10 @@
 import React,{Component} from 'react'
 import './brandSlider.component.scss'
 import Swiper from 'swiper';
+import SliderConfig from './slider.condig'
 import HeartImage from '../heart-image/heartImage.component';
 import ButtonRating from '../button-rating/buttonRating.component';
+import {Link} from 'react-router-dom'
 
 class BrandSlider extends Component{
 
@@ -45,6 +47,7 @@ class BrandSlider extends Component{
     }
 
     render(){
+        // <p className="discount">20% endirim</p>
         return (
             <section className="brand_slider_section">
                 <div className="container-fluid">
@@ -55,67 +58,22 @@ class BrandSlider extends Component{
                             </div>
                             <div id="brandSlider" className="swiper-container">
                                 <div className="swiper-wrapper">
-                                        <div className="swiper-slide">
-                                            <HeartImage/>
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Image.jpg')} alt=""/>
-                                            </div>
-                                            <h4>Məhsulun adı</h4>
-                                            <p className="discount">20% endirim</p>
-                                            <p>183 AZN</p>
-                                            <ButtonRating/>
+                                        {
+                                            this.props.data.length>0?
+                                                this.props.data.map(x=>{
+                                                    return <div className="swiper-slide">
+                                                    <HeartImage/>
+                                                    <div className="swiper_slide_image">
+                                                        <img src={x.images[0].product_image} alt=""/>
+                                                    </div>
+                                                    <h4>{x.product_name}</h4>
+                                                    <p>{x.product_price} AZN</p>
+                                                    <ButtonRating/>
+                                                </div>
+                                                }):
+                                                null
+                                        }
                                         </div>
-                                        <div className="swiper-slide">
-                                            <HeartImage/>
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Image.jpg')} alt=""/>
-                                            </div>
-                                            <h4>Məhsulun adı</h4>
-                                            <p className="discount">20% endirim</p>
-                                            <p>183 AZN</p>
-                                            <ButtonRating/>
-                                        </div>
-                                        <div className="swiper-slide">
-                                            <HeartImage/>
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Image.jpg')} alt=""/>
-                                            </div>
-                                            <h4>Məhsulun adı</h4>
-                                            <p className="discount">20% endirim</p>
-                                            <p>183 AZN</p>
-                                            <ButtonRating/>
-                                        </div>
-                                        <div className="swiper-slide">
-                                            <HeartImage/>
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Image.jpg')} alt=""/>
-                                            </div>
-                                            <h4>Məhsulun adı</h4>
-                                            <p className="discount">20% endirim</p>
-                                            <p>183 AZN</p>
-                                            <ButtonRating/>
-                                        </div>
-                                        <div className="swiper-slide">
-                                            <HeartImage/>
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Image.jpg')} alt=""/>
-                                            </div>
-                                            <h4>Məhsulun adı</h4>
-                                            <p className="discount">20% endirim</p>
-                                            <p>183 AZN</p>
-                                            <ButtonRating/>
-                                        </div>
-                                        <div className="swiper-slide">
-                                            <HeartImage/>
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Image.jpg')} alt=""/>
-                                            </div>
-                                            <h4>Məhsulun adı</h4>
-                                            <p className="discount">20% endirim</p>
-                                            <p>183 AZN</p>
-                                            <ButtonRating/>
-                                        </div>
-                                </div>
                             </div>
                         </div>
                     </div>
