@@ -1,10 +1,19 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import './filter.style.scss';
 import Markets from './markets';
-import Products from './products'
+import Products from './products';
+
+import {categoryContext} from '../../contexts/category'
+
+
+
 
 function Filter(prop) {
+
+    const categories = useContext(categoryContext);
     
+
+
     const [market,setMarket] = useState({
         magaza:Markets,
         products:Products,
@@ -15,6 +24,30 @@ function Filter(prop) {
     })
 
     const filteredMerkets = market.magaza.filter(item=> item.name.toLowerCase().includes(searchMarket.searchField.toLowerCase()));
+   
+    
+
+
+  let SubCategories=[];
+  
+  if(categories.state.childrens.children!==undefined){
+    SubCategories = categories.state.childrens.children.map(x=>{
+        console.log(x)
+        return <ul className='category_list_under'>
+        <li>
+        <label class="container-check">{x.translation.name}
+            <input type="checkbox"/>
+            <span class="checkmark"></span>
+        </label> 
+        </li>
+        </ul>
+        
+
+    })                 
+}
+
+console.log(SubCategories)
+
 
     return (
         <div className='filter'>
@@ -22,14 +55,40 @@ function Filter(prop) {
         <div className='category_list'>
         <div className='panel2'>
         <ul>
-                <li>
-                        <label class="container-check">Category
-                            <input type="checkbox"/>
-                            <span class="checkmark"></span>
-                        </label> 
-                </li>
-                <li>
+        {
+         categories.state.categories.map(x => {
+             console.log(x)
+            return (
+            <div>
+                <li> <input  className='category_checkbox'  type="checkbox"/> {x.translation.name}</li>
+                {(x.children != null) ? x.children.map(item => { return(<li  className='category_list_under' ><input  className='category_checkbox' type="checkbox"/>{item.translation.name}</li>)}) : ''}
+            </div>
+            )
+        })
+        }
 
+
+        {/* {
+            categories.state.categories.map(item=>{
+                
+                return (
+                    <li>
+                        {item.translation.name}
+                            <input data-id={item.id} onClick={(e)=>{categories.event.getSubCat(e);}}  type="checkbox"/>
+                           
+                    </li>
+                )
+
+            })
+           
+        }
+        
+                 */}
+
+
+
+
+                {/* <li>
                         <label class="container-check">Category
                             <input type="checkbox"/>
                             <span class="checkmark"></span>
@@ -55,31 +114,13 @@ function Filter(prop) {
                             </label> 
                         </li>
                     </ul>
-                </li>
-                <li>
-                    <label class="container-check">Category
-                        <input type="checkbox"/>
-                        <span class="checkmark"></span>
-                    </label> 
-                </li>
-                <li>
-                    <label class="container-check">Category
-                        <input type="checkbox"/>
-                        <span class="checkmark"></span>
-                    </label> 
-                </li>
-                <li>
-                 <label class="container-check">Category
-                        <input type="checkbox"/>
-                        <span class="checkmark"></span>
-                    </label> 
-                </li>
-                <li>
-                    <label class="container-check">Category
-                        <input type="checkbox"/>
-                        <span class="checkmark"></span>
-                    </label> 
-                </li>
+                </li> */}
+
+
+      
+      
+
+
             </ul>
         </div>
         </div>
