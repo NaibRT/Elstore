@@ -21,7 +21,6 @@ export class SearchResult extends Component {
         .then(res => {
             this.setState({products: res.data.data});
         })
-        
     }
     render() {
         // let divs=[];

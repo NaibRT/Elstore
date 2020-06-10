@@ -6,6 +6,7 @@ const categoryContextConsumer=categoryContext.Consumer
 
 
 function CategoryContext(props){
+    
     const [categories,setCategories]=useState([]);
     
     const [childrens,setChildrens]=useState([]);
@@ -26,6 +27,7 @@ function CategoryContext(props){
     }
 
     console.log(childrens)
+
   const url = 'http://139.180.144.49/api/v1/az/categories';
 
    useEffect(()=>{
