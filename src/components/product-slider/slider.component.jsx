@@ -9,24 +9,20 @@ class ProductSlider extends React.Component {
     this.state = {
       currentIndex: 0,
       step:1,
-      items: ['hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg'
-      
-    ]
+      items:[]
     };
   }
 
-  slideTo = (i) => this.setState({ currentIndex: i });
+  slideTo = (i) => this.setState((prevProps)=>({ 
+    ...prevProps,
+    currentIndex: i }
+    ));
 
-  onSlideChanged = (e) => this.setState({ currentIndex: e.item });
+  onSlideChanged = (e) => this.setState((prevProps)=>(
+    { 
+      ...prevProps,
+      currentIndex: e.item }
+    ));
 
   slideNext = () => {
     this.setState({ currentIndex: this.state.currentIndex + 1, step: this.state.step + 1 });
@@ -38,35 +34,50 @@ class ProductSlider extends React.Component {
   slidePrev = () =>{
     this.setState({ currentIndex: this.state.currentIndex - 1, step:  this.state.step - 1 });
     if(this.state.step <= 1 ){
-      this.setState({step:  this.state.items.length })
+      this.setState({step:  this.props.items.length })
     }
   };
 
-  renderThumbs = () =>
-    <ul className="thumbs__container">{this.state.items.map((item, i) =>
+  renderThumbs = () =>{
+    if(this.props.images!==undefined){
+    return <ul className="thumbs__container">{this.props.images.map((item, i) =>
       <li  className='thumbs'  key={i} onClick={() => {this.slideTo(i);
-      this.setState({step:i + 1})}}> <img value={i} tabIndex="-1" className="thumbs__img" src={require(`../../assets/images/slider/${item}`)}></img></li>)}
+      this.setState({step:i + 1})}}> <img value={i} tabIndex="-1" className="thumbs__img" src={item.product_image}></img></li>)}
     </ul>;
+      }
+  }
+
 
   renderGallery() {
     const { currentIndex, items } = this.state;
-
-    return (<AliceCarousel
-    
+    if(this.props.images!==undefined){
+      return (<AliceCarousel
       dotsDisabled={true}
       buttonsDisabled={true}
       slideToIndex={currentIndex}
       onSlideChanged={this.onSlideChanged}
     >
-      { items.map((item, i) => <div key={i} className="yours-custom-class"><img className='slider__image' src={require(`../../assets/images/slider/${item}`)} /></div>) }
+    {console.log(this.props.images)}
+      { this.props.images.map((item, i) => <div key={i} className="yours-custom-class"><img className='slider__image' src={item.product_image} /></div>) }
     </AliceCarousel>);
+
+    }
+
   }
 
   slideThumb(){
     document.getElementsByClassName('product__slider__left')[0].scrollTo(2000,2000);
   }
     
+    // componentDidMount(){
+    //   this.setState((prevState)=>({
+    //      ...prevState,
+    //      items:this.props.images
+    //   }))
+    // }
   render() {
+   
+    
     return (
       <div className='product__slider__container'>
       <div className="product__slider__left">
