@@ -27,7 +27,7 @@ function  Navbar(props) {
             </div>
             <div className='navbar_center'>
                 <div className='navbar_logo'>
-                    <img src={require('../../assets/images/heading/logo.svg')} />
+                    <Link to='/'><img src={require('../../assets/images/heading/logo.svg')} /></Link>
                 </div>
                 <div className='navbar_search'>
                 <form   className="search-input" >
