@@ -3,14 +3,12 @@ import React from 'react';
 import './App.scss';
 import Header from './components/navbar/navbar.component'
 import Footer from './components/footer/footer.component'
-import IndexPage from './pages/index';
-import SerachPage from './pages/search'
-import BasketPage from './pages/basket'
-import SearchResultPage from './components/Search-reasult-page/SearchResult.component.jsx'
+import Index from './pages/index';
+import Serach from './pages/search'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
-import ProductPage from './pages/product-info'
 import SearchContext from './contexts/search';
 import CategoryContext from "./contexts/category";
+import Main from './pages/container-page'
 function App() {
   return (
     <div className="App">
@@ -21,24 +19,7 @@ function App() {
     <br/>
     <br/>
       <main>
-           <div className='container-fluid'>
-              <div className='row'>
-                <div className="col-lg-12">
-                    <div className='row'>
-                    <Switch>
-                    <Route to='/' exact={true}  component={IndexPage}/>
-                    <Route to='/product-info' exact   component={BasketPage}/>
-                    <Route to='/categories' exact  component={SerachPage}/>
-                    <Route to='/product-info/:id'  component={ProductPage}/>
-                  
-                    
-                    
-                    <Route to='/search' exact   component={SearchResultPage}/>
-                    </Switch>
-                    </div>
-                </div>
-              </div>
-           </div>
+          <Main/>
       </main>
       <Footer/>
       </Router>

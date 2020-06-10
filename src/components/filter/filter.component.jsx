@@ -22,18 +22,64 @@ function Filter(prop) {
         <div className='category_list'>
         <div className='panel2'>
         <ul>
-                <li><input  type='checkbox' /> Category</li>
-                <li><input type='checkbox' /> Category
+                <li>
+                        <label class="container-check">Category
+                            <input type="checkbox"/>
+                            <span class="checkmark"></span>
+                        </label> 
+                </li>
+                <li>
+
+                        <label class="container-check">Category
+                            <input type="checkbox"/>
+                            <span class="checkmark"></span>
+                        </label> 
+
                     <ul className='category_list_under'>
-                        <li><input type='checkbox' /> Category</li>
-                        <li><input type='checkbox' /> Category</li>
-                        <li><input type='checkbox' /> Category</li>
+                        <li>
+                        <label class="container-check">Category
+                            <input type="checkbox"/>
+                            <span class="checkmark"></span>
+                        </label> 
+                        </li>
+                        <li>
+                            <label class="container-check">Category
+                                <input type="checkbox"/>
+                                <span class="checkmark"></span>
+                            </label> 
+                        </li>
+                        <li>
+                            <label class="container-check">Category
+                                <input type="checkbox"/>
+                                <span class="checkmark"></span>
+                            </label> 
+                        </li>
                     </ul>
                 </li>
-                <li><input type='checkbox' /> Category</li>
-                <li><input type='checkbox' /> Category</li>
-                <li><input type='checkbox' /> Category</li>
-                <li><input type='checkbox' /> Category</li>
+                <li>
+                    <label class="container-check">Category
+                        <input type="checkbox"/>
+                        <span class="checkmark"></span>
+                    </label> 
+                </li>
+                <li>
+                    <label class="container-check">Category
+                        <input type="checkbox"/>
+                        <span class="checkmark"></span>
+                    </label> 
+                </li>
+                <li>
+                 <label class="container-check">Category
+                        <input type="checkbox"/>
+                        <span class="checkmark"></span>
+                    </label> 
+                </li>
+                <li>
+                    <label class="container-check">Category
+                        <input type="checkbox"/>
+                        <span class="checkmark"></span>
+                    </label> 
+                </li>
             </ul>
         </div>
         </div>
