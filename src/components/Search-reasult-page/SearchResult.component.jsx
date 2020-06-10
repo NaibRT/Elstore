@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-
 import './SearchResult.component.scss'
-
 import ButtonRating from '../button-rating/buttonRating.component';
 import HeartImage from '../heart-image/heartImage.component';
-
+import {Link} from 'react-router-dom'
 export class SearchResult extends Component {
 
     constructor(){
@@ -58,7 +56,7 @@ export class SearchResult extends Component {
 
                         })
                     }
-                    <h5>{y.product_name}</h5>
+                    <h5><Link to={`/product/${y.id}/${y.product_name}`}>{y.product_name}</Link></h5>
                     <p>355</p>
                     <ButtonRating/>
                 </div>
