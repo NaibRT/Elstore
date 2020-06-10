@@ -13,6 +13,7 @@ const products=useContext(searchContext);
 
 
 
+
         return (
             <section className="search_result__section">
                 <div className="select__search">
