@@ -167,3 +167,26 @@
 
 
 // checkbox
+
+
+.category_checkbox{
+    width: 20px;
+    
+
+}
+
+.mycheck{
+    z-index:1;
+  position:fixed;
+  top:40px;
+  right:100px;
+  cursor:pointer;
+  -webkit-appearance:none;
+}
+.mycheck:before{
+    content:'Dark';
+    color:#fff;
+    position:absolute;
+    background:#000;
+    padding:10px 20px;
+  }

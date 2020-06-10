@@ -1,10 +1,43 @@
-import React,{useState} from 'react';
+import React,{useState,useContext,useEffect} from 'react';
 import './filter.style.scss';
 import Markets from './markets';
-import Products from './products'
+import Products from './products';
+import axios from 'axios'
+import {categoryContext} from '../../contexts/category'
+
+
+
 
 function Filter(prop) {
+
+    const categories = useContext(categoryContext);
     
+    const [filterCat, setCatFilter] = useState(0)
+
+    const [filteredData, setfilteredData] = useState({
+        filteredData:"",
+    })
+
+    const url = `http://139.180.144.49/api/v1/az/search/product?filter[category_id]=${filterCat}`;
+ 
+
+
+
+    const  filterCategory =(e)=>{
+        setCatFilter(Number(e.target.value))
+        alert(e.target.value)
+        console.log(filteredData.filteredData)
+        console.log(url)
+        console.log(filterCat);
+
+        fetch(url)
+        .then(response => response.json())
+        .then(data => console.log(data));
+    }
+
+  
+
+
     const [market,setMarket] = useState({
         magaza:Markets,
         products:Products,
@@ -15,6 +48,9 @@ function Filter(prop) {
     })
 
     const filteredMerkets = market.magaza.filter(item=> item.name.toLowerCase().includes(searchMarket.searchField.toLowerCase()));
+   
+    
+
 
     return (
         <div className='filter'>
@@ -22,64 +58,27 @@ function Filter(prop) {
         <div className='category_list'>
         <div className='panel2'>
         <ul>
-                <li>
-                        <label class="container-check">Category
-                            <input type="checkbox"/>
-                            <span class="checkmark"></span>
-                        </label> 
+        {
+         categories.state.categories.map(x => {
+            return (
+            <div>
+                <li> 
+                <label class="container-check">{x.translation.name}
+                    <input value={x.id}   onClick={filterCategory}   type="checkbox" />
+                    <span class="checkmark"></span>
+                    </label>
                 </li>
-                <li>
+                {(x.children != null) ? x.children.map(item => { return(<li className='category_list_under'>
+                    <label class="container-check">{item.translation.name}
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                    </label>
+                </li>)}) : ''}
+            </div>
+            )
+        })
+        }
 
-                        <label class="container-check">Category
-                            <input type="checkbox"/>
-                            <span class="checkmark"></span>
-                        </label> 
-
-                    <ul className='category_list_under'>
-                        <li>
-                        <label class="container-check">Category
-                            <input type="checkbox"/>
-                            <span class="checkmark"></span>
-                        </label> 
-                        </li>
-                        <li>
-                            <label class="container-check">Category
-                                <input type="checkbox"/>
-                                <span class="checkmark"></span>
-                            </label> 
-                        </li>
-                        <li>
-                            <label class="container-check">Category
-                                <input type="checkbox"/>
-                                <span class="checkmark"></span>
-                            </label> 
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <label class="container-check">Category
-                        <input type="checkbox"/>
-                        <span class="checkmark"></span>
-                    </label> 
-                </li>
-                <li>
-                    <label class="container-check">Category
-                        <input type="checkbox"/>
-                        <span class="checkmark"></span>
-                    </label> 
-                </li>
-                <li>
-                 <label class="container-check">Category
-                        <input type="checkbox"/>
-                        <span class="checkmark"></span>
-                    </label> 
-                </li>
-                <li>
-                    <label class="container-check">Category
-                        <input type="checkbox"/>
-                        <span class="checkmark"></span>
-                    </label> 
-                </li>
             </ul>
         </div>
         </div>
