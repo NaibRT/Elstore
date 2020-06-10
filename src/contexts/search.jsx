@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from "axios"
 
 const searchContext=React.createContext({});
 const searchContextConsumer=searchContext.Consumer
@@ -12,44 +13,17 @@ class SearchContext extends React.Component{
   this.state = {
     'searchKey':"",
 
-    "data": [
-      {
-        "id": 1,
-        "product_price": 8,
-        "product_name": "komputer",
-        "product_description": ""
-      },
-      {
-        "id": 1,
-        "product_price": 8,
-        "product_name": "computer",
-        "product_description": ""
-      },
-      {
-        "id": 4,
-        "product_price": 124,
-        "product_name": "Macbook",
-        "product_description": ""
-      },
-
-      {
-        "id": 4,
-        "product_price": 234234,
-        "product_name": "Macbook",
-        "product_description": ""
-      },
-
-
-      {
-        "id": 4,
-        "product_price": 50,
-        "product_name": "Macbook",
-        "product_description": ""
-      },
-
-    ]
+    "data":[] 
   }
  }
+
+ componentWillMount(){
+  axios.get(`http://139.180.144.49/api/v1/az/products?include=seller,images`)
+  .then(res => {
+      this.setState({data: res.data.data});
+  })
+  
+}
  
    searchForm=(e)=>{
      e.preventDefault();
