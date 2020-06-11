@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
-
+import axios from 'axios';
+import {searchContext} from "../../contexts/search"
 import './SearchResult.component.scss'
-import {searchContext} from '../../contexts/search';
 import ButtonRating from '../button-rating/buttonRating.component';
 import HeartImage from '../heart-image/heartImage.component';
-
+import {Link} from 'react-router-dom'
+export class SearchResult extends Component {
 function SearchResult() {
-
 const products=useContext(searchContext);
 
 
@@ -55,8 +55,9 @@ const products=useContext(searchContext);
 
                         })
                     }
-                    <h5>{y.product_name}</h5>
-                    <p>{y.price} AZN</p>
+                    <h5><Link to={`/product/${y.id}/${y.product_name}`}>{y.product_name}</Link></h5>
+                    <p>355</p>
+
                     <ButtonRating/>
                 </div>
                     ) 
