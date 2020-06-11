@@ -6,7 +6,7 @@ import ButtonRating from '../button-rating/buttonRating.component';
 import HeartImage from '../heart-image/heartImage.component';
 import {Link} from 'react-router-dom'
 
-function SearchResult() {
+    function SearchResult() {
 const products=useContext(searchContext);
 
 
