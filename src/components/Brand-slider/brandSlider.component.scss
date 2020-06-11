@@ -33,6 +33,11 @@
                                         height: 50px;
                                         overflow: hidden;
                                         text-overflow: ellipsis;
+                                        a{
+                                            text-decoration: none;
+                                            color: black;
+                                            text-decoration-style:none;
+                                        }
                                     }
                                     .discount{
                                         margin-top: 3px;
