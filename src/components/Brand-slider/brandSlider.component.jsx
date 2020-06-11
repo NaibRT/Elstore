@@ -69,7 +69,7 @@ class BrandSlider extends Component{
                                                             })
                                                         }
                                                     </div>
-                                                    <h4>{x.product_name}</h4>
+                                                    <h4><Link to={`/product/${x.id}/${x.product_name}`}>{x.product_name}</Link></h4>
                                                     <p>{x.product_price} AZN</p>
                                                     <ButtonRating/>
                                                 </div>

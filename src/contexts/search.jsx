@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from "axios"
 
 const searchContext=React.createContext({});
 const searchContextConsumer=searchContext.Consumer
@@ -11,46 +12,34 @@ class SearchContext extends React.Component{
  
   this.state = {
     'searchKey':"",
-
-    "data": [
-      {
-        "id": 1,
-        "product_price": 8,
-        "product_name": "komputer",
-        "product_description": ""
-      },
-      {
-        "id": 1,
-        "product_price": 8,
-        "product_name": "computer",
-        "product_description": ""
-      },
-      {
-        "id": 4,
-        "product_price": 124,
-        "product_name": "Macbook",
-        "product_description": ""
-      },
-
-      {
-        "id": 4,
-        "product_price": 234234,
-        "product_name": "Macbook",
-        "product_description": ""
-      },
-
-
-      {
-        "id": 4,
-        "product_price": 50,
-        "product_name": "Macbook",
-        "product_description": ""
-      },
-
-    ]
+    "data":[] ,
+    "filteredData":[]
   }
  }
+
+ componentWillMount(){
+  axios.get(`http://139.180.144.49/api/v1/az/products?include=seller,images`)
+  .then(res => {
+      this.setState({data: res.data.data});
+  })
+  
+}
+
+
+    filterCategory =(e)=>{
+    this.setState({
+      filterCat : Number(e.target.value)
+    });
+    // alert(e.target.value)
+    axios.get(`http://139.180.144.49/api/v1/az/search/product?filter[category_id]=${e.target.value}`)
+    .then(res => {
+        this.setState({filteredData: res.data.data});
+        console.log(res.data.data)
+    })
  
+  }
+
+
    searchForm=(e)=>{
      e.preventDefault();
      e.stopPropagation()
@@ -69,7 +58,8 @@ class SearchContext extends React.Component{
      <searchContext.Provider value={{
          state:this.state,
          events:{
-            searchForm:this.searchForm  
+            searchForm:this.searchForm,
+            filterCategory:this.filterCategory
          }
          }}>
        {this.props.children}
