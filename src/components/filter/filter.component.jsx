@@ -4,13 +4,14 @@ import Markets from './markets';
 import Products from './products';
 import axios from 'axios'
 import {categoryContext} from '../../contexts/category'
-
+import {searchContext} from '../../contexts/search';
 
 
 
 function Filter(prop) {
 
     const categories = useContext(categoryContext);
+    const search = useContext(searchContext);
     
     const [filterCat, setCatFilter] = useState(0)
 
@@ -18,24 +19,7 @@ function Filter(prop) {
         filteredData:"",
     })
 
-    const url = `http://139.180.144.49/api/v1/az/search/product?filter[category_id]=${filterCat}`;
- 
 
-
-
-    const  filterCategory =(e)=>{
-        setCatFilter(Number(e.target.value))
-        alert(e.target.value)
-        console.log(filteredData.filteredData)
-        console.log(url)
-        console.log(filterCat);
-
-        fetch(url)
-        .then(response => response.json())
-        .then(data => console.log(data));
-    }
-
-  
 
 
     const [market,setMarket] = useState({
@@ -64,16 +48,32 @@ function Filter(prop) {
             <div>
                 <li> 
                 <label class="container-check">{x.translation.name}
-                    <input value={x.id}   onClick={filterCategory}   type="checkbox" />
+                    <input value={x.id}   onClick={search.events.filterCategory}   type="checkbox" />
                     <span class="checkmark"></span>
                     </label>
                 </li>
                 {(x.children != null) ? x.children.map(item => { return(<li className='category_list_under'>
                     <label class="container-check">{item.translation.name}
-                    <input type="checkbox" />
+                    <input  value={item.id}   onClick={search.events.filterCategory} type="checkbox" />
                     <span class="checkmark"></span>
                     </label>
+                    
+                    {
+                        (item.children!=null)?
+                            item.children.map(itemchildren=>{
+                            return (<li className='category_list_under_under'>
+                                <label class="container-check">{itemchildren.translation.name}
+                            <input  value={itemchildren.id}   onClick={search.events.filterCategory} type="checkbox" />
+                            <span class="checkmark"></span>
+                            </label> 
+                            </li>
+                            )
+                        }):
+                        ''
+                    }
+
                 </li>)}) : ''}
+
             </div>
             )
         })

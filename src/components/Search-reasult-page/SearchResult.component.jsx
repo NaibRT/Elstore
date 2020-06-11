@@ -23,10 +23,27 @@ const products=useContext(searchContext);
                     </select>
                 </div>
                 <div className="search_result__content">
-                    {console.log(products.state)}
-               {
 
-                products.state.data.map(y=><div key={y.id} className="search__result">
+                {(products.state.filteredData.length==0)?
+                    products.state.data.map(y=><div key={y.id} className="search__result">
+                    <HeartImage/>
+                    {
+                        y.images.map(f=>{
+                            if(f.is_main){
+                                return <div key={f.id} className="swiper_slide_image">
+                                    <img src={f.product_thumbnail_image} alt=""/>
+                                </div> 
+                            }
+
+                        })
+                    }
+                    <h5>{y.product_name}</h5>
+                    <p>{y.price} AZN</p>
+                    <ButtonRating/>
+                </div>
+                    ) 
+                :
+                products.state.filteredData.map(y=><div key={y.id} className="search__result">
                     <HeartImage/>
                     {
                         y.images.map(f=>{
@@ -43,8 +60,16 @@ const products=useContext(searchContext);
 
                     <ButtonRating/>
                 </div>
-                    )   
+                    ) 
+                }
+                    
+               {
+
+  
                }
+
+
+
             </div>
             </section>
             
