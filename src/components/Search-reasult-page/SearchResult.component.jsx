@@ -5,7 +5,6 @@ import './SearchResult.component.scss'
 import ButtonRating from '../button-rating/buttonRating.component';
 import HeartImage from '../heart-image/heartImage.component';
 import {Link} from 'react-router-dom'
-export class SearchResult extends Component {
 function SearchResult() {
 const products=useContext(searchContext);
 
