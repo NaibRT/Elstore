@@ -22,27 +22,27 @@ function Index() {
     return (
             <>
             <div className='container-fluid'>
-              <div className='row'>
-                <div className="col-lg-12">
-                    <div className='row'>          
-                            <div className='col-lg-3'>
-                            <Category/>
-                            </div>
-                            <div className='col-lg-9'>
-                            <Clay/>
-                            </div>
-                            <div className="container-fluid">
-                            <BrandSlider data={product} name='Trend məhsullar'/>
-                            </div>
-                            <div className="container-fluid">
-                            <IconSlider/>
-                            <br/>
-                            <br/> 
-                            <MehsulCard/> 
-                            </div>
-                            </div>
+                <div className='row'>   
+                    <div className='col-lg-3'>
+                    <Category/>
+                    </div>
+                    <div className='col-lg-9'>
+                    <Clay/>
+                    </div>
                 </div>
-              </div>
+                <div className="row">
+                    <div className="col-lg-12">
+                        <BrandSlider data={product} name='Trend məhsullar'/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-lg-12">
+                        <IconSlider/>
+                        <br/>
+                        <br/> 
+                        <MehsulCard/> 
+                    </div>
+                </div>
            </div>
 
             </>

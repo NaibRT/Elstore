@@ -8,9 +8,9 @@ import {Link} from 'react-router-dom'
 
 class BrandSlider extends Component{
 
-    componentDidMount(props){
+    componentDidUpdate(props){
         this.swiper = new Swiper('#brandSlider.swiper-container',{
-            slidesPerView : 4,
+            slidesPerView : 8,
             slidesPerGroup: 1,
             loop: true,
             speed:1000,
@@ -50,9 +50,6 @@ class BrandSlider extends Component{
         // <p className="discount">20% endirim</p>
         return (
             <section className="brand_slider_section">
-                <div className="container-fluid">
-                    <div className="brand_slider_row">
-                        <div className="brand_slider_column">
                             <div className="brand_slider_title">
                              <h4>{this.props.name}</h4>
                             </div>
@@ -64,7 +61,13 @@ class BrandSlider extends Component{
                                                     return <div className="swiper-slide">
                                                     <HeartImage/>
                                                     <div className="swiper_slide_image">
-                                                        <img src={x.images[0].product_image} alt=""/>
+                                                        {
+                                                            x.images.map(f=>{
+                                                                if(f.is_main){
+                                                                    return <img src={f.product_thumbnail_image} alt=""/>
+                                                                }
+                                                            })
+                                                        }
                                                     </div>
                                                     <h4><Link to={`/product/${x.id}/${x.product_name}`}>{x.product_name}</Link></h4>
                                                     <p>{x.product_price} AZN</p>
@@ -73,11 +76,8 @@ class BrandSlider extends Component{
                                                 }):
                                                 null
                                         }
-                                        </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
                 <div className="brand-button-next"> <img src={require('../../assets/images/icons/next-icon.svg')} alt=""/> </div>
             </section>
         )
