@@ -5,7 +5,7 @@ import './SearchResult.component.scss'
 import ButtonRating from '../button-rating/buttonRating.component';
 import HeartImage from '../heart-image/heartImage.component';
 import {Link} from 'react-router-dom'
-export class SearchResult extends Component {
+
 function SearchResult() {
 const products=useContext(searchContext);
 
@@ -37,7 +37,11 @@ const products=useContext(searchContext);
 
                         })
                     }
-                    <h5>{y.product_name}</h5>
+                    <h5>
+                        <a>
+                            {y.product_name}
+                        </a>
+                    </h5>
                     <p>{y.price} AZN</p>
                     <ButtonRating/>
                 </div>

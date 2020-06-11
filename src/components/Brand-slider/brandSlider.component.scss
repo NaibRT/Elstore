@@ -33,6 +33,11 @@
                                         height: 50px;
                                         overflow: hidden;
                                         text-overflow: ellipsis;
+                                        a{
+                                            text-decoration: none;
+                                            color: black;
+                                            text-decoration-style: none;
+                                        }
                                     }
                                     .discount{
                                         margin-top: 3px;
@@ -51,6 +56,7 @@
                                         height: 186px;
                                         img{
                                             object-fit: contain;
+                                            object-position: center;
                                             width: 100%;
                                             height: 100%;
                                         }
@@ -64,12 +70,26 @@
 
     .brand-button-next{
         position: absolute;
-        top:130px;
-        width: 15px;
+        top:175px;
+        width: 21px;
         height: 12px;
-        right: -21px;
+        right: 5px;
         outline: none;
         cursor: pointer;
+        z-index: 1;
+        img{
+            width: 100%;
+        }
+    }
+    .brand-button-preview{
+        position: absolute;
+        top:175px;
+        width: 21px;
+        height: 12px;
+        left: 5px;
+        outline: none;
+        cursor: pointer;
+        z-index: 1;
         img{
             width: 100%;
         }
@@ -84,6 +104,12 @@
         top:200px !important;
         right: -5px !important;
     }
+    .brand-button-next{
+        display: none;
+    }
+    .brand-button-preview{
+        display: none;
+    }
 }
 
 @media only screen and (min-device-width : 321px) and (max-device-width : 360px) {
@@ -93,6 +119,12 @@
     .swiper-button-next{
         top:200px !important;
         right: -5px !important;
+    }
+    .brand-button-next{
+        display: none;
+    }
+    .brand-button-preview{
+        display: none;
     }
 }
 
@@ -104,6 +136,12 @@
         top:200px !important;
         right: 11px !important;
     }
+    .brand-button-next{
+        display: none;
+    }
+    .brand-button-preview{
+        display: none;
+    }
 }
 
 @media only screen and (min-device-width: 376px) and (max-device-width: 414px){
@@ -113,6 +151,12 @@
     .swiper-button-next{
         top:230px !important;
         right: 11px !important;
+    }
+    .brand-button-next{
+        display: none;
+    }
+    .brand-button-preview{
+        display: none;
     }
 }
 
@@ -124,6 +168,12 @@
     .swiper-button-next{
         top:250px !important;
         right: 11px !important;
+    }
+    .brand-button-next{
+        display: none;
+    }
+    .brand-button-preview{
+        display: none;
     }
 }
 
