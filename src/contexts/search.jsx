@@ -12,8 +12,8 @@ class SearchContext extends React.Component{
  
   this.state = {
     'searchKey':"",
-
-    "data":[] 
+    "data":[] ,
+    "filteredData":[]
   }
  }
 
@@ -24,7 +24,22 @@ class SearchContext extends React.Component{
   })
   
 }
+
+
+    filterCategory =(e)=>{
+    this.setState({
+      filterCat : Number(e.target.value)
+    });
+    // alert(e.target.value)
+    axios.get(`http://139.180.144.49/api/v1/az/search/product?filter[category_id]=${e.target.value}`)
+    .then(res => {
+        this.setState({filteredData: res.data.data});
+        console.log(res.data.data)
+    })
  
+  }
+
+
    searchForm=(e)=>{
      e.preventDefault();
      e.stopPropagation()
@@ -43,7 +58,8 @@ class SearchContext extends React.Component{
      <searchContext.Provider value={{
          state:this.state,
          events:{
-            searchForm:this.searchForm  
+            searchForm:this.searchForm,
+            filterCategory:this.filterCategory
          }
          }}>
        {this.props.children}
