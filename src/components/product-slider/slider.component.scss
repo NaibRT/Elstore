@@ -152,6 +152,15 @@
   }
 
   @media(max-width:586px){
+    .product-slider-container{
+      height: 240px;
+    }
+          .slider_like{
+          top: 75% !important;           
+        }
+        .gallery-top {
+           height: 240px; 
+        }
       .mobile-container{
           padding: 15px;
       }
@@ -167,10 +176,14 @@
       }
       .gallery-top{
         margin-left: 0px;
+        .swiper-button-next{
+          display: none;
+        }
         .swiper-button-prev{
             right: 16px;
             margin-top: 65%;
             height: 50px;
+            display: none;
             width: 50px;
             background: rgba(255, 255, 255, 0.75);
             border-radius: 50%;
