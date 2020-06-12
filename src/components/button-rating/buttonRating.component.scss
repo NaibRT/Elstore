@@ -1,25 +1,38 @@
 
+@import '../../assets/sass/base/variables';
 
 .button_rating_content{
     margin-top: 8px;
     .button_rating{
         border: none;
-        width: 153px;
+        width: max-content;
         height: 36px;
         font-size: 11px;
         display: flex;
         font-family: InterRegular;
         justify-content: center;
         justify-content: space-between;
-        background-color: #FFFBD8;
         align-items: center;
         font-weight: normal;
         padding: 6px 12px;
         box-sizing: border-box;
+        border-radius: 4px;
         img{
             width: 20px;
             height: 19px;
             float: left;
+            margin-right:6px;
         }
     }
 }
+
+.bg-gold{
+    background-color: #FFFBD8;
+}
+.bg-grey{
+    background-color: $text-tertiary;
+}
+.bg-rose{
+    background-color:#FFEBEB;
+}
+

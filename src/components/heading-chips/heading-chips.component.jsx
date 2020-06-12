@@ -1,5 +1,6 @@
 import React from 'react';
 import Chips from '../chips/chips.component'
+import ButtonRating from '../button-rating/buttonRating.component'
 import './heading-chips.style.scss';
 
 function Heading(props){
@@ -24,14 +25,9 @@ function Heading(props){
                 
 
             <div className="rating__trend display__flex">
-            
-            <span className="rating__trend__highrating">
-            <img src={require('../../assets/images/heading/badge.svg')} alt=""/>
-            </span>
-
-            <span className="rating__trend__trend">
-            <img src={require('../../assets/images/heading/trend.svg')} alt=""/>
-            </span>
+            <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
+            <br/>
+            <ButtonRating name='Trend' class='bg-rose' icon={require('../../assets/images/icons/Union.svg')}/>
             </div>
 
        </React.Fragment>
