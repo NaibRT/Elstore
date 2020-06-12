@@ -3,10 +3,16 @@ import './checkout_first.style.scss';
 import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
 import InputGroup from "../InputGroup/InputGroup.component";
+import {Link} from 'react-router-dom';
+import Selectbox from '../Select-box/SelectBox.component'
 function CheckoutFrist(props) {
 
     const {values,handleChange} = props
     
+    const sherler = ['Baku','Ganja','Mingechevir']
+    const rayonlar = ['Sirvan','Ucar','Kurdamir']
+    const kend = ['Bilge','Kurdakhani','Mastaga']
+
     function goNextPage(e){
         e.preventDefault();
         props.nextStep();
@@ -17,7 +23,11 @@ function CheckoutFrist(props) {
 
     return (
         <>
-           
+            <Link className='goBasket' to='/basket' ><img src={require('../../assets/images/icons/next-icon.svg')} /> səbətə gerİ dön</Link>
+            <br/>
+            <h2 className='complateordertxt'>Sifarişi tamamla</h2>
+            <br/>
+            <br/>
             <div className='checkout_header'>
             <Badge class='badge badge-active' icon={require('../../assets/images/icons/Box.svg')} name='Catdirilma'/>
             <div className='badge_href' />
@@ -28,6 +38,7 @@ function CheckoutFrist(props) {
             <br/>
             <Card>
             <Card.Header name='Elaqe Melumatlari' />
+            <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
                         <InputGroup placeholder='Adınız' />
@@ -46,9 +57,12 @@ function CheckoutFrist(props) {
             <Card.Header name='Çatdırılma ünvanı' />
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <InputGroup placeholder='Adınız' />
+                        <Selectbox class='selectboxcheckout' options={sherler} />
                         <br/>
-                        <InputGroup  placeholder='Telefon nömrəsi' />
+                        <Selectbox class='selectboxcheckout' options={rayonlar} />
+                        <br/>
+                        <Selectbox class='selectboxcheckout' options={kend} />
+                        <br/>
                         <br/>
                         <InputGroup  placeholder='Ünvan' />
                     </div>
