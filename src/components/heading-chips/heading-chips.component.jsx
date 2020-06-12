@@ -20,7 +20,7 @@ function Heading(props){
 
                 <span className="divider"><img src={require('../../assets/images/heading/Divider.svg')} alt=""/></span>
 
-               <Chips rating="(542 rəy)" store="340" />
+               <Chips   stars={props.stars} rating="(542 rəy)" store="340" />
                 </div>
                 
 
@@ -28,6 +28,8 @@ function Heading(props){
             <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
             <br/>
             <ButtonRating name='Trend' class='bg-rose' icon={require('../../assets/images/icons/Union.svg')}/>
+
+           
             </div>
 
        </React.Fragment>
