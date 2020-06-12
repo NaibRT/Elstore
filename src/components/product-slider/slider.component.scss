@@ -95,21 +95,39 @@
             display: flex;
             flex-flow: column;
         }
+
+    }
+
+    }
+
     
-        .swiper-button-prev{
-            height: 54px;
-            width: 100%;
-            position: absolute;
-            bottom: 0px;
-            opacity: 1 !important;
-            background: rgba(255, 255, 255,0.8);
-            z-index: 1287312;
-            img{
-                transform: rotate(90deg);
-                position: relative;
-                left: 30px;
-                top: 10px;
-            }
+  .gallery-thumbs {
+    height: 100%;
+    width: 84px;
+    box-sizing: border-box;
+    padding: 10px 0;
+    // position: absolute;
+    top: 0px;
+    left: 0px;
+    .swiper-wrapper{
+        display: flex;
+        flex-flow: column;
+    }
+
+    .swiper-button-prev{
+        height: 54px;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        opacity: 1 !important;
+        background: rgba(255, 255, 255,0.8);
+        z-index: 1287312;
+        img{
+            transform: rotate(90deg);
+            position: relative;
+            left: 30px;
+            top: 10px;
+
         }
       }
       .gallery-thumbs .swiper-slide {
