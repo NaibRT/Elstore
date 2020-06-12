@@ -1,7 +1,6 @@
 @import "../../App.scss";
 
 .box__category{
-    display: flex;
     position: relative;
     flex-direction: row;
     padding: 24px;
@@ -48,7 +47,7 @@
     height: auto;
     position: absolute;
     z-index: 3;
-    left: 304px;
+    left: calc(100% - 0px);
     border-radius: 8px;
     top: 0px;
     height: 100%;
@@ -138,4 +137,7 @@
     .box__category{
       display: none;
     }
+}
+.box_category{
+    display: flex;
 }
