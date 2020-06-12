@@ -87,6 +87,7 @@ const Category = () => {
 
     return (
                     <>
+                    <div>
                     <div className="box__category" >
                         <ul>
                             {
@@ -95,11 +96,13 @@ const Category = () => {
                                 })
                             }
                         </ul>
-                        <div className="box--category" onMouseLeave={CategoryLeave} >
-                        <div className="box__subcotegory">
-                            {SubCategories}
-                        </div>
+                        
                     </div>
+                    <div className="box--category" onMouseLeave={CategoryLeave} >
+                            <div className="box__subcotegory">
+                            {SubCategories}
+                            </div>
+                        </div>
                     </div>
     </>
     )
