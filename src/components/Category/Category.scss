@@ -100,7 +100,7 @@
         position: absolute;
         z-index: 3;
         bottom: 0;
-        left: 234px;
+        left: 270px;
         border-radius: 8px;
         
         .box__subcotegory{
@@ -130,4 +130,15 @@
         
     }
 }
+}
+@media(max-width:576px){
+    .box__category{
+        display: none;
+    }
+}
+
+@media(max-width:1000px){
+    .box__category{
+        display: none;
+    }
 }
