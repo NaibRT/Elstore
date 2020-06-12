@@ -1,15 +1,11 @@
 import React from "react";
 import Logo from "./Bag.svg";
-import './button-buy-now.styles.scss';
+import './button-group.styles.scss';
 
-const ButtonBuyNow = () => {
+const ButtonGroup = (props) => {
   return (
     <div className="btn-group">
-
-          <button className="btn-buy-now border__radius--big border--medium display__block txt--secondary">
-            indi al
-          </button>
-
+           {props.children}
           <div className="add-basket">
             <img
               className="add-basket-icon display__inline-block"
@@ -23,4 +19,4 @@ const ButtonBuyNow = () => {
         </div>
   );
 };
-export default ButtonBuyNow;
+export default ButtonGroup;
