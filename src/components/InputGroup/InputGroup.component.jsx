@@ -3,12 +3,12 @@ import './InputGroup.styles.scss';
 
 
 
-function InputGroup({label,helper,countertext,formIcon}) {
+function InputGroup({label,helper,countertext,formIcon,placeholder,otherProps}) {
     return (
         <div  tabindex="0" className='inputForm'>
             <label id='scripted'  className='inputForm_label'>Label</label>
             <div className='inputForm_iconcontainer'>
-            <input className='inputForm_input' />
+            <input placeholder={placeholder} {...otherProps} className='inputForm_input' />
             <span className='inputForm_icon'><img src={formIcon} /></span>
             </div>
             <div className='inputForm_helpcontainer'>

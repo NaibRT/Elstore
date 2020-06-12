@@ -8,12 +8,21 @@ import Serach from './pages/search'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import SearchContext from './contexts/search';
 import CategoryContext from "./contexts/category";
-import Main from './pages/container-page';
-import InputGroup from './components/InputGroup/InputGroup.component';
+import Main from './pages/container-page'
 function App() {
   return (
     <div className="App">
-        <InputGroup/>
+    <CategoryContext>
+    <SearchContext>
+    <Router>
+    <Header />
+    <br/>
+    <br/>
+          <Main/>
+      <Footer/>
+      </Router>
+      </SearchContext>
+      </CategoryContext>
     </div>
   );
 }
