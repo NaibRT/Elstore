@@ -1,0 +1,19 @@
+@import '../../assets/sass/base/variables';
+.my-card{
+ width: 100%;
+ height: auto;
+ padding: 24px;
+ box-sizing: border-box;
+ box-shadow: 0px 8px 10px rgba(119, 126, 148, 0.15), 0px 0px 10px rgba(119, 126, 148, 0.15);
+border-radius: 12px;
+ .card-header{
+  h5{
+  height: 30px;
+  width: auto;
+   font-size: 20px;
+   font-weight: $font__weight--500;
+   font-family: $text__font;
+   color: $text-dark;
+  }
+ }
+}

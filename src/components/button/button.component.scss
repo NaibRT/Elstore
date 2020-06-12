@@ -6,7 +6,7 @@
 @import "../../assets/sass/abstracts/spacing";
 @import "../../assets/sass/abstracts/grid.scss";
 
-button {
+.btn {
     cursor: pointer;
     outline: 0px solid transparent;
     border: 1px solid transparent;
@@ -33,3 +33,4 @@ button {
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
   }
+  

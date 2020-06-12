@@ -4,6 +4,7 @@ import Index from '../pages/index';
 import ProductInfo from '../pages/product-info';
 import Basket from '../pages/basket';
 import Search from '../pages/search';
+import CheckoutAddress from '../pages/checkout-adress'
 
 function Main() {
 

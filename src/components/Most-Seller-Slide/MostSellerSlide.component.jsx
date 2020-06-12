@@ -1,16 +1,17 @@
-import React,{Component} from 'react'
-import './brandSlider.component.scss'
+import React, { Component } from 'react'
+import './MostSellerSlide.component.scss'
+
 import Swiper from 'swiper';
-import SliderConfig from './slider.condig'
-import HeartImage from '../heart-image/heartImage.component';
-import ButtonRating from '../button-rating/buttonRating.component';
 import {Link} from 'react-router-dom'
 
-class BrandSlider extends Component{
 
+import HeartImage from '../heart-image/heartImage.component';
+import ButtonRating from '../button-rating/buttonRating.component';
+
+export class MostSellerSlide extends Component {
     componentDidUpdate(props){
-        this.swiper = new Swiper('#brandSlider.swiper-container',{
-            slidesPerView : 8,
+        var mostSeller = new Swiper('#mostSlider.swiper-container',{
+            slidesPerView : 4,
             slidesPerGroup: 1,
             loop: true,
             speed:1000,
@@ -22,8 +23,8 @@ class BrandSlider extends Component{
             //     disableOnInteraction: false,
             // },
             navigation:{
-                nextEl: '.brand-button-next',
-                prevEl: '.brand-button-preview'
+                nextEl: '.most-button-next',
+                prevEl: '.most-button-preview'
             },
             breakpoints:{
                 320:{
@@ -50,11 +51,11 @@ class BrandSlider extends Component{
     render(){
         // <p className="discount">20% endirim</p>
         return (
-            <section className="brand_slider_section">
-                            <div className="brand_slider_title">
+            <section className="most_seller_slider_section">
+                            <div className="most_slider_title">
                              <h4>{this.props.name}</h4>
                             </div>
-                            <div id="brandSlider" className="swiper-container">
+                            <div id="mostSlider" className="swiper-container">
                                 <div className="swiper-wrapper">
                                         {
                                             this.props.data.length>0?
@@ -83,11 +84,11 @@ class BrandSlider extends Component{
                                         }
                                 </div>
                             </div>
-                <div className="brand-button-next"> <img src={require('../../assets/images/icons/chevron-right-solid.svg')} alt=""/> </div>
-                <div className="brand-button-preview"> <img src={require('../../assets/images/icons/chevron-left-solid.svg')} alt=""/> </div>
+                <div className="most-button-next"> <img src={require('../../assets/images/icons/chevron-right-solid.svg')} alt=""/> </div>
+                <div className="most-button-preview"> <img src={require('../../assets/images/icons/chevron-left-solid.svg')} alt=""/> </div>
             </section>
         )
     }
 }
 
-export default BrandSlider
+export default MostSellerSlide
