@@ -1,9 +1,7 @@
 @import "../../App.scss";
 
-.listitme-ul{
+.listitme-li{
     width: 100%;
-
-li{
     list-style: none;
     border-bottom: 0.5px solid #D6D6D6;
     display: flex;
@@ -22,5 +20,5 @@ li{
         color:#334788;
         transition: 0.5s ease;
     }
-}
+    
 }
