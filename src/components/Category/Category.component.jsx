@@ -10,7 +10,6 @@ const Category = () => {
         let boxCategory=document.querySelector(".box--category");
         let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
           
-               console.log(box__subcotegoryItem)
                box__subcotegoryItem.forEach(x=>{
                     x.style.display="block";
                     x.style.transition="0.5s ease";
@@ -48,10 +47,8 @@ const Category = () => {
     }, []);
        
     let SubCategories=[];
-    console.log(CategoryContext.state.childrens.children)
     if(CategoryContext.state.childrens.children!==undefined){
         SubCategories=CategoryContext.state.childrens.children.map(x=>{
-            console.log(x)
             return <ul key={x.id} className="">
             <li  className="box__subcotegory--item">
             <a data-id={x.id} className="box--subcotegory" href="/" >{x.translation.name}</a>
