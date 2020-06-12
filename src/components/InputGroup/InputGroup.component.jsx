@@ -1,10 +1,12 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './InputGroup.styles.scss';
+
+
 
 function InputGroup({label,helper,countertext,formIcon}) {
     return (
-        <form className='inputForm'>
-            <label  className='inputForm_label'>{label}</label>
+        <div  tabindex="0" className='inputForm'>
+            <label id='scripted'  className='inputForm_label'>Label</label>
             <div className='inputForm_iconcontainer'>
             <input className='inputForm_input' />
             <span className='inputForm_icon'><img src={formIcon} /></span>
@@ -13,7 +15,7 @@ function InputGroup({label,helper,countertext,formIcon}) {
                 <span className='inputForm_helper_text'>{helper}</span>
                 <span className='inputForm_counter' >{countertext}</span>
             </div>
-        </form>
+        </div>
     )
 }
 
