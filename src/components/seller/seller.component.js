@@ -1,5 +1,6 @@
 import React from 'react';
 import Chips from '../chips/chips.component'
+import ButtonRating from '../button-rating/buttonRating.component'
 import './seller.scss';
 
 function Seller(props){
@@ -29,7 +30,7 @@ function Seller(props){
                     
                                         
                                         <div className="line display__flex">
-                                                <img src={require('../../assets/images/heading/badge.svg')} alt=""/>
+                                        <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
                                                         <div className="line__right display__flex">
                                                         <h3>əlaqə</h3>
                                                         <img src={require(`../../assets/images/heading/Chevron.svg`)} alt=""/>

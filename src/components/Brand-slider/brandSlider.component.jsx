@@ -76,7 +76,7 @@ class BrandSlider extends Component{
                                                         </a>
                                                     </h4>
                                                     <p>{x.product_price} AZN</p>
-                                                    <ButtonRating/>
+                                                    <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
                                                 </div>
                                                 }):
                                                 null
