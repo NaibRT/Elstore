@@ -18,9 +18,7 @@ function App() {
     <Header />
     <br/>
     <br/>
-      <main>
           <Main/>
-      </main>
       <Footer/>
       </Router>
       </SearchContext>

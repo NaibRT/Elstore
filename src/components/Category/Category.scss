@@ -47,7 +47,7 @@
     height: auto;
     position: absolute;
     z-index: 3;
-    left: 320px;
+    left: 357px;
     border-radius: 8px;
     top: 0px;
     height: 100%;
@@ -131,14 +131,9 @@
     }
 }
 }
-@media(max-width:576px){
-    .box__category{
-        display: none;
-    }
-}
 
-@media(max-width:1000px){
+@media  (max-width:992px){
     .box__category{
-        display: none;
+      display: none;
     }
 }

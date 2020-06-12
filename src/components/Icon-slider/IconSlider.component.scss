@@ -4,16 +4,14 @@
 .icon_slider_section{
     position: relative;
     margin-top: 25px;
-    .container-fluid{
-        .icon_slider_row{
-            .icon_slider_column{
                 .swiper-container{
                     .swiper-wrapper{
                         .swiper-slide{
                             text-align: center;
                             .swiper_slide_image{
                                 img{
-
+                                    object-fit: contain;
+                                    object-position: center;
                                 }
                             }
                             h4{
@@ -22,19 +20,77 @@
                         }
                     }
                 }
-            }
-        }
-    }
     .icon-button-next{
         position: absolute;
         top:30px;
-        width: 15px;
+        width: 21px;
         height: 12px;
         right: 13px;
         outline: none;
+        z-index: 1;
         cursor: pointer;
         img{
             width: 100%;
         }
+    }
+    .icon-button-preview{
+        position: absolute;
+        top:30px;
+        width: 21px;
+        height: 12px;
+        left: 5px;
+        outline: none;
+        z-index: 1;
+        cursor: pointer;
+        img{
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and  (max-device-width : 320px) {
+    .icon-button-next{
+        display: none;
+    }
+    .icon-button-preview{
+        display: none;
+    }
+}
+
+@media only screen and (min-device-width : 321px) and (max-device-width : 360px) {
+    .icon-button-next{
+        display: none;
+    }
+    .icon-button-preview{
+        display: none;
+    }
+}
+
+@media only screen and (min-device-width : 361px) and (max-device-width : 375px) {
+    .icon-button-next{
+        display: none;
+    }
+    .icon-button-preview{
+        display: none;
+    }
+}
+
+@media only screen and (min-device-width: 376px) and (max-device-width: 414px){
+    .icon-button-next{
+        display: none;
+    }
+    .icon-button-preview{
+        display: none;
+    }
+}
+
+
+@media (min-width: 415px) and (max-width: 575.98px) { 
+
+    .icon-button-next{
+        display: none;
+    }
+    .icon-button-preview{
+        display: none;
     }
 }

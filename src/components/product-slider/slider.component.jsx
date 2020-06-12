@@ -1,89 +1,71 @@
-import React,{useState,useEffect} from 'react'
-import AliceCarousel from 'react-alice-carousel'
-import 'react-alice-carousel/lib/alice-carousel.css'
+import React,{useEffect} from 'react'
 import './slider.component.scss';
+import Swiper from 'swiper';
+import HeartImage from '../heart-image/heartImage.component'
 
-class ProductSlider extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      currentIndex: 0,
-      step:1,
-      items: ['hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg',
-      'hero.jpg'
+function ProductSlider(props){
+useEffect(()=>{
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+      spaceBetween: 10,
+      slidesPerView: "auto",
+      loop: true,
+      freeMode: true,
+      loopedSlides: 'auto', //looped slides should be the same
+      watchSlidesVisibility: true,
+      watchSlidesProgress: true,
+      direction: 'vertical',
+      navigation: {
+        nextEl: '.myprev',
+      },
+    });
+    var galleryTop = new Swiper('.gallery-top', {
+      spaceBetween: 10,
+      loop:true,
+      loopedSlides: 5, //looped slides should be the same
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      thumbs: {
+        swiper: galleryThumbs,
+      },
+    });
+})
+
+  return (
+    <div className='product-slider-container'>
+    <div class="swiper-container gallery-top">
+    <button className='slider_like'> <img src={require('../../assets/images/icons/Enabled.svg')} alt=""/></button>
+    <div class="swiper-wrapper">
+      {
+        props.images.map(x=>{
+         return <div key={x.id} class="swiper-slide" style={{backgroundImage:`url(${x.product_image})`}}></div>
+        })
+      }
       
-    ]
-    };
-  }
-
-  slideTo = (i) => this.setState({ currentIndex: i });
-
-  onSlideChanged = (e) => this.setState({ currentIndex: e.item });
-
-  slideNext = () => {
-    this.setState({ currentIndex: this.state.currentIndex + 1, step: this.state.step + 1 });
-    if(this.state.step >= this.state.items.length ){
-      this.setState({step:  1 });
-    } 
-  };
-
-  slidePrev = () =>{
-    this.setState({ currentIndex: this.state.currentIndex - 1, step:  this.state.step - 1 });
-    if(this.state.step <= 1 ){
-      this.setState({step:  this.state.items.length })
-    }
-  };
-
-  renderThumbs = () =>
-    <ul className="thumbs__container">{this.state.items.map((item, i) =>
-      <li  className='thumbs'  key={i} onClick={() => {this.slideTo(i);
-      this.setState({step:i + 1})}}> <img value={i} tabIndex="-1" className="thumbs__img" src={require(`../../assets/images/slider/${item}`)}></img></li>)}
-    </ul>;
-
-  renderGallery() {
-    const { currentIndex, items } = this.state;
-
-    return (<AliceCarousel
-    
-      dotsDisabled={true}
-      buttonsDisabled={true}
-      slideToIndex={currentIndex}
-      onSlideChanged={this.onSlideChanged}
-    >
-      { items.map((item, i) => <div key={i} className="yours-custom-class"><img className='slider__image' src={require(`../../assets/images/slider/${item}`)} /></div>) }
-    </AliceCarousel>);
-  }
-
-  slideThumb(){
-    document.getElementsByClassName('product__slider__left')[0].scrollTo(2000,2000);
-  }
-    
-  render() {
-    return (
-      <div className='product__slider__container'>
-      <div className="product__slider__left">
-        { this.renderThumbs() }
-        <button onClick={this.slideThumb} className='thumb_slider'><img src={require('../../assets/images/slider/icons/next.png')} /></button>
-      </div>
-      <div className="product__slider__right">
-          <button className='heart_product'><img src={require('../../assets/images/icons/heart.png')} /></button>
-          { this.renderGallery() }
-          <button className="prev_btn" onClick={() => this.slidePrev()}><img src={require('../../assets/images/slider/icons/next.png')} /></button>
-          <button className="next_btn" onClick={() => this.slideNext()}><img src={require('../../assets/images/slider/icons/next.png')} /></button>
-          <span className='sliderCount'>{this.state.step+"/"+this.state.items.length}</span>
-      </div>
     </div>
-    );
-  }
-}
+    <div class="swiper-button-next swiper-button-white">
+      <img src={require('../../assets/images/icons/next-icon.svg')} />
+    </div>
+    <div class="swiper-button-prev swiper-button-white">
+    <img src={require('../../assets/images/icons/next-icon.svg')} />
+    </div>
+  </div>
+  <div class="swiper-container gallery-thumbs">
+    <div class="swiper-wrapper">
+     {
+      props.images.map(x=>{
+        return <div class="swiper-slide" style={{backgroundImage:`url(${x.product_image})`}}></div>
+        })
+     }
 
+    </div>
+    <div class="swiper-button-prev myprev swiper-button-white">
+    <img src={require('../../assets/images/icons/next-icon.svg')} />
+    </div>
+  </div>
+  </div>
+  );
+}
 
 export default ProductSlider
