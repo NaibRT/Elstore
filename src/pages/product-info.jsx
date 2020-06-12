@@ -7,10 +7,10 @@ import HeadingChips from '../components/heading-chips/heading-chips.component'
 import OrderPrize from '../components/sifarish_qiymeti/sifarish.component'
 import Input from '../components/input/input.component'
 
-import Buttonprimary from '../components/button-buy-now/button-buy-now.component'
+import Button from '../components/button/button.component'
+import ButtonGroup from '../components/button-group/button-group.component'
 import Delivery from '../components/Icon-delivery-safety-payback/IconDeliverySafetyPayback.component'
 import Seller from '../components/seller/seller.component'
-import BtnAdd from '../components/button-add/button-add.component'
 import UrlGenerator from '../services/url-generator'
 
 function ProductInfo(props) {
@@ -44,20 +44,20 @@ function ProductInfo(props) {
             <DeliveryInfo/>
           </div>
          </div>
-        <div className='mobile-container'>
+  
         <div className='col-lg-4 col-md-12 col-sm-12 '>
              <HeadingChips  heading={product.product_name} subtitle="Öz home / Ev aksessuarları / Toxuma işlər" sale="212 dəfə satıldı" />
              <OrderPrize price={`${product.price} AZN`} stock="movcuddur" priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
              <Input/>
-
-             <Buttonprimary className="btn-buy-now"/>
-             <BtnAdd/>
+             <Button className="bg-primary txt--dark" name='Sebete Elave ET'/>
+             <ButtonGroup>
+             <Button className="btn-buy-now txt--light" name='Indi Al'/>
+             </ButtonGroup>         
              <Delivery/>
              <Seller/>
          </div>
         </div>
         </div>
-    </div>
     
   </section>
  )
