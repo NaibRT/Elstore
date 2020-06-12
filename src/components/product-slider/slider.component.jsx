@@ -7,10 +7,10 @@ function ProductSlider(props){
 useEffect(()=>{
     var galleryThumbs = new Swiper('.gallery-thumbs', {
       spaceBetween: 10,
-      slidesPerView: "auto",
+      slidesPerView: 4,
       loop: true,
       freeMode: true,
-      loopedSlides: 'auto', //looped slides should be the same
+      loopedSlides: 5, //looped slides should be the same
       watchSlidesVisibility: true,
       watchSlidesProgress: true,
       direction: 'vertical',
