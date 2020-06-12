@@ -17,13 +17,13 @@ const Category = () => {
                 x.style.display="block";
                 x.style.transition="0.5s ease";
             })
-        }, 1000);
+        }, 1200);
         
         setTimeout(() => {
            
-            boxCategory.style.transition="0.5s ease";
+            boxCategory.style.transition="0.2s ease";
             boxCategory.style.width="550px";
-        }, 1000);
+        }, 200);
                
        }
 
@@ -46,6 +46,7 @@ const Category = () => {
         }
         
        
+       
     useEffect(() => {
         
    
@@ -63,9 +64,11 @@ const Category = () => {
                     boxCategory.style.width="0px";
                 } 
             })
-        }, 1000);
+        }, 500);
     }, []);
        
+
+    
     let SubCategories=[];
     console.log(CategoryContext.state.childrens.children)
     if(CategoryContext.state.childrens.children!==undefined){

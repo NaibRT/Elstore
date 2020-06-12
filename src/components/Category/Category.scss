@@ -2,6 +2,7 @@
 
 .box__category{
     display: flex;
+    position: relative;
     flex-direction: row;
     padding: 24px;
     width: 100%;
@@ -47,10 +48,11 @@
     height: auto;
     position: absolute;
     z-index: 3;
-    left: 357px;
+    left: 304px;
     border-radius: 8px;
     top: 0px;
     height: 100%;
+    overflow: hidden;
 
     
     .box__subcotegory{
@@ -85,6 +87,7 @@
 @media (max-width:1200px){
     .box__category{
         display: flex;
+        position: relative;
         flex-direction: row;
         padding: 24px;
         width: 100%;
@@ -100,13 +103,12 @@
         position: absolute;
         z-index: 3;
         bottom: 0;
-        left: 270px;
+        left: 240px;
         border-radius: 8px;
         
         .box__subcotegory{
-            display: flex;
+            display: flex; 
             .box__subcotegory--item{
-                display: none;
                 list-style: none;
                 padding: 15px;
                 .box--subcotegory{
