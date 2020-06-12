@@ -3,6 +3,7 @@ import './checkout_first.style.scss';
 import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
 import InputGroup from "../InputGroup/InputGroup.component";
+import SelectBox from '../Select-box/SelectBox.component'
 function CheckoutFrist(props) {
 
     const {values,handleChange} = props
@@ -12,7 +13,9 @@ function CheckoutFrist(props) {
         props.nextStep();
     };
     
-
+    const Cities = ['Baku','Stockholm','Shangai']
+    const States = ['Mingechevir','Ujar','Guba']
+    const villages = ['Yasamal','Mastaga','Zabrat']
 
 
     return (
@@ -29,7 +32,7 @@ function CheckoutFrist(props) {
             <Card>
             <Card.Header name='Elaqe Melumatlari' />
                 <div className='row'>
-                    <div className='col-sm-12 col-lg-6'>
+                    <div className='col-sm-12 col-lg-6 '>
                         <InputGroup placeholder='Adınız' />
                         <br/>
                         <InputGroup formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='Telefon nömrəsi' />
@@ -45,12 +48,16 @@ function CheckoutFrist(props) {
             <Card>
             <Card.Header name='Çatdırılma ünvanı' />
                 <div className='row'>
-                    <div className='col-sm-12 col-lg-6'>
-                        <InputGroup placeholder='Adınız' />
+                    <div className='col-sm-12 col-lg-6 '>
+                        <SelectBox class='fullpageselect' options={Cities} />
                         <br/>
-                        <InputGroup  placeholder='Telefon nömrəsi' />
+                        <SelectBox class='fullpageselect' options={States} />
                         <br/>
-                        <InputGroup  placeholder='Ünvan' />
+                        <SelectBox class='fullpageselect' options={villages} />
+                        <br/>
+                        <br/>
+                        <InputGroup placeholder='Ünvan' />
+                       
                     </div>
                     <div className='col-lg-6 col-sm-12'></div>
                 </div>

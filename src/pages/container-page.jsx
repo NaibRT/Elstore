@@ -4,7 +4,7 @@ import Index from '../pages/index';
 import ProductInfo from '../pages/product-info';
 import Basket from '../pages/basket';
 import Search from '../pages/search';
-import CheckoutAddress from '../pages/checkout-adress'
+import CheckoutAddress from '../pages/checkout-adress';
 
 function Main() {
 
@@ -16,6 +16,7 @@ function Main() {
   <Route  path='/product/:id/:name' component={ProductInfo} />
   <Route exact={true} path='/basket' component={Basket} />
   <Route exact={true} path='/search' component={Search} />
+  <Route exact={true} path='/checkout' component={CheckoutAddress} />
   </Switch>
   </main>
  )

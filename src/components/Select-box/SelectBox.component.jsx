@@ -4,18 +4,15 @@ import './SelectBox.component.scss';
 
 
 
-function SelectBox() {
+function SelectBox(props) {
     return (
-        <div className="select__search">
+        <div className={`select__search ${props.class}`} >
             <form>
                 <label htmlFor="" id="labelId"></label>
                 <select name="" id="searchSelect">
-                    <option value="">Sirala
-                    </option>
-                    <option value="">Ucuzdan bahaya doğru</option>
-                    <option value="">Bahadan ucuza doğru</option>
-                    <option value="">Ən çox satılanlar</option>
-                    <option value="">Ən yenilər</option>
+                   {props.options.map((item)=>{
+                       return ( <option value="">{item}</option>)
+                   })}
                 </select>
             </form>
         </div>
