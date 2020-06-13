@@ -19,7 +19,7 @@ function CheckoutAddress() {
             setStep(step-1)
           };
 
-    const [step,setStep] = useState(1);
+    const [step,setStep] = useState(0);
 
 
     const [state,setState] = useState({
@@ -43,22 +43,6 @@ function CheckoutAddress() {
         case 1:
             return (
                 <div className='container-fluid'>
-                   <div className='row'>
-                       <div className='col-lg-8'>
-                       <CheckoutFrist value={values}  nextStep = {nextStep} prevStep = {prevStep} />
-                       </div>
-                       <div className='col-lg-4'>
-                            <TotalSum/>
-                            <br/>
-                            <IconDeliverySafetyPayback/>
-                       </div>
-                   </div>
-                </div>
-            );
-           
-        case 2:
-            return (
-                <div className='container-fluid'>
                 <div className='row'>
                     <div className='col-lg-8'>
                     <CheckoutSecond value={values} nextStep = {nextStep} prevStep = {prevStep} />
@@ -72,7 +56,7 @@ function CheckoutAddress() {
              </div>
                 
             );
-        case 3:
+        case 2:
             return (
                 <div className='container-fluid'>
                 <div className='row'>
@@ -87,7 +71,22 @@ function CheckoutAddress() {
                 </div>
              </div>
                
-            );       
+            );
+            default:
+                return (
+                    <div className='container-fluid'>
+                       <div className='row'>
+                           <div className='col-lg-8'>
+                           <CheckoutFrist value={values}  nextStep = {nextStep} prevStep = {prevStep} />
+                           </div>
+                           <div className='col-lg-4'>
+                                <TotalSum/>
+                                <br/>
+                                <IconDeliverySafetyPayback/>
+                           </div>
+                       </div>
+                    </div>
+                );       
                
         
     }

@@ -12,7 +12,7 @@ function Main() {
  return (
   <main>
   <Switch>
-  <Route exact={true} path='/' component={Profile} />
+  <Route exact={true} path='/' component={CheckoutAddress} />
   <Route exact={true} path='/product' component={ProductInfo} />
   <Route  path='/product/:id/:name' component={ProductInfo} />
   <Route exact={true} path='/basket' component={Basket} />
