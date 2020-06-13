@@ -10,7 +10,7 @@ useEffect(()=>{
       slidesPerView: "auto",
       loop: true,
       freeMode: true,
-      loopedSlides: 'auto', //looped slides should be the same
+      loopedSlides: "auto", //looped slides should be the same
       watchSlidesVisibility: true,
       watchSlidesProgress: true,
       direction: 'vertical',

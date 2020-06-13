@@ -8,7 +8,9 @@ import SelectBox from '../Select-box/SelectBox.component';
 import {Link} from 'react-router-dom'
 
 
+
     function SearchResult() {
+
 const products=useContext(searchContext);
 
 
