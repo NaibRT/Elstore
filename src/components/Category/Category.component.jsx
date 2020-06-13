@@ -70,10 +70,8 @@ const Category = () => {
 
     
     let SubCategories=[];
-    console.log(CategoryContext.state.childrens.children)
     if(CategoryContext.state.childrens.children!==undefined){
         SubCategories=CategoryContext.state.childrens.children.map(x=>{
-            console.log(x)
             return <ul key={x.id} className="">
             <li  className="box__subcotegory--item">
             <a data-id={x.id} className="box--subcotegory" href="/" >{x.translation.name}</a>
@@ -96,6 +94,7 @@ const Category = () => {
                                 })
                             }
                         </ul>
+
                         
                     </div>
                     <div className="box--category" onMouseLeave={CategoryLeave} >

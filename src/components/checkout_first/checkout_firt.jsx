@@ -3,11 +3,20 @@ import './checkout_first.style.scss';
 import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
 import InputGroup from "../InputGroup/InputGroup.component";
+<<<<<<< HEAD
 import SelectBox from '../Select-box/SelectBox.component'
+=======
+import {Link} from 'react-router-dom';
+import Selectbox from '../Select-box/SelectBox.component'
+>>>>>>> 309ae72612bbf0fdaaf0a05c91d4ee29e1971016
 function CheckoutFrist(props) {
 
     const {values,handleChange} = props
     
+    const sherler = ['Baku','Ganja','Mingechevir']
+    const rayonlar = ['Sirvan','Ucar','Kurdamir']
+    const kend = ['Bilge','Kurdakhani','Mastaga']
+
     function goNextPage(e){
         e.preventDefault();
         props.nextStep();
@@ -20,7 +29,11 @@ function CheckoutFrist(props) {
 
     return (
         <>
-           
+            <Link className='goBasket' to='/basket' ><img src={require('../../assets/images/icons/next-icon.svg')} /> səbətə gerİ dön</Link>
+            <br/>
+            <h2 className='complateordertxt'>Sifarişi tamamla</h2>
+            <br/>
+            <br/>
             <div className='checkout_header'>
             <Badge class='badge badge-active' icon={require('../../assets/images/icons/Box.svg')} name='Catdirilma'/>
             <div className='badge_href' />
@@ -31,6 +44,7 @@ function CheckoutFrist(props) {
             <br/>
             <Card>
             <Card.Header name='Elaqe Melumatlari' />
+            <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6 '>
                         <InputGroup placeholder='Adınız' />
@@ -48,12 +62,21 @@ function CheckoutFrist(props) {
             <Card>
             <Card.Header name='Çatdırılma ünvanı' />
                 <div className='row'>
+<<<<<<< HEAD
                     <div className='col-sm-12 col-lg-6 '>
                         <SelectBox class='fullpageselect' options={Cities} />
                         <br/>
                         <SelectBox class='fullpageselect' options={States} />
                         <br/>
                         <SelectBox class='fullpageselect' options={villages} />
+=======
+                    <div className='col-sm-12 col-lg-6'>
+                        <Selectbox class='selectboxcheckout' options={sherler} />
+                        <br/>
+                        <Selectbox class='selectboxcheckout' options={rayonlar} />
+                        <br/>
+                        <Selectbox class='selectboxcheckout' options={kend} />
+>>>>>>> 309ae72612bbf0fdaaf0a05c91d4ee29e1971016
                         <br/>
                         <br/>
                         <InputGroup placeholder='Ünvan' />

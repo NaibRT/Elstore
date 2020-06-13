@@ -24,8 +24,45 @@
     }
 }
 
+<<<<<<< HEAD
     .fullpageselect select{
         width: 100% !important;
         height: 50px !important;
         border: 1px solid #444444;
     }
+=======
+.goBasket{
+    img{
+        transform: rotate(180deg);
+        position: relative;
+        height: 10px;
+    }
+    font-family: 'InterRegular';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1A1A1A;
+}
+
+.complateordertxt{
+    font-family: 'InterRegular';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 31.25px;
+    line-height: 150%;
+    letter-spacing: 0.25px;
+    color: #1A1A1A;
+}
+
+.selectboxcheckout{
+    select {
+        width: 100% !important;
+        height: 50px;
+        border: 1px solid #444444 !important;
+    }
+}
+>>>>>>> 309ae72612bbf0fdaaf0a05c91d4ee29e1971016
