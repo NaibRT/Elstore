@@ -19,8 +19,8 @@ function clickAll(e){
 
 function ButtonRadio(props) {
     return (
-        <div onClick={(e) => clickAll(e)} tabIndex="-1" id="radioButtonBody" className="radio_button__body">
-            <div className="radio_button__content">
+        <div className={`radio_button__body ${props.class}`}  onClick={(e) => clickAll(e)} tabIndex="-1" id="radioButtonBody">
+            <div  className="radio_button__content">
                 <div id="radioButtonContent" className="radio-box">
                     <input id="radioButton" type="radio" name="choosed"/>
                     <span></span>
@@ -28,7 +28,7 @@ function ButtonRadio(props) {
             </div>
             <div className="radio_button__text">
                 <p>{props.name}</p>
-                <p>{props.name}</p>
+                <p>{props.nextName}</p>
             </div>
         </div>
 

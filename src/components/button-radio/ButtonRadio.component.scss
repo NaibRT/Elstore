@@ -75,15 +75,22 @@
     }
     .radio_button__text{
         p{
-            font-family: InterRgular;
+            font-family: 'InterRegular';
             font-weight: normal;
             font-size: $subtitle--1S;
             margin-bottom: 1px;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 170%;
+            letter-spacing: 0.25px;
+            color: #444444;
+
         }
     }
 
     .radio_button__text:last-child p{
-        font-family: InterRgular;
+        font-family: 'InterRegular';
         font-weight: normal;
         font-size: $subtitle--2S;
         margin-top: 2px;
