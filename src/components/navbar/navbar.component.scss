@@ -215,6 +215,13 @@
 
  
   @media(max-width:992px){
+      .responsive_nav_top{
+          display: flex;
+          justify-content: space-around;
+      }
+      .navbar_select{
+          display: none;
+      }
       
     .navbar_logo{
         width: 100px;

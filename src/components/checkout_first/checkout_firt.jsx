@@ -3,12 +3,8 @@ import './checkout_first.style.scss';
 import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
 import InputGroup from "../InputGroup/InputGroup.component";
-<<<<<<< HEAD
-import SelectBox from '../Select-box/SelectBox.component'
-=======
 import {Link} from 'react-router-dom';
 import Selectbox from '../Select-box/SelectBox.component'
->>>>>>> 309ae72612bbf0fdaaf0a05c91d4ee29e1971016
 function CheckoutFrist(props) {
 
     const {values,handleChange} = props
@@ -22,9 +18,7 @@ function CheckoutFrist(props) {
         props.nextStep();
     };
     
-    const Cities = ['Baku','Stockholm','Shangai']
-    const States = ['Mingechevir','Ujar','Guba']
-    const villages = ['Yasamal','Mastaga','Zabrat']
+
 
 
     return (
@@ -46,7 +40,7 @@ function CheckoutFrist(props) {
             <Card.Header name='Elaqe Melumatlari' />
             <br/>
                 <div className='row'>
-                    <div className='col-sm-12 col-lg-6 '>
+                    <div className='col-sm-12 col-lg-6'>
                         <InputGroup placeholder='Adınız' />
                         <br/>
                         <InputGroup formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='Telefon nömrəsi' />
@@ -62,25 +56,15 @@ function CheckoutFrist(props) {
             <Card>
             <Card.Header name='Çatdırılma ünvanı' />
                 <div className='row'>
-<<<<<<< HEAD
-                    <div className='col-sm-12 col-lg-6 '>
-                        <SelectBox class='fullpageselect' options={Cities} />
-                        <br/>
-                        <SelectBox class='fullpageselect' options={States} />
-                        <br/>
-                        <SelectBox class='fullpageselect' options={villages} />
-=======
                     <div className='col-sm-12 col-lg-6'>
                         <Selectbox class='selectboxcheckout' options={sherler} />
                         <br/>
                         <Selectbox class='selectboxcheckout' options={rayonlar} />
                         <br/>
                         <Selectbox class='selectboxcheckout' options={kend} />
->>>>>>> 309ae72612bbf0fdaaf0a05c91d4ee29e1971016
                         <br/>
                         <br/>
-                        <InputGroup placeholder='Ünvan' />
-                       
+                        <InputGroup  placeholder='Ünvan' />
                     </div>
                     <div className='col-lg-6 col-sm-12'></div>
                 </div>
@@ -99,5 +83,4 @@ function CheckoutFrist(props) {
        </>
     )
 }
-
 export default CheckoutFrist
