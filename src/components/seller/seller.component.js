@@ -1,5 +1,6 @@
 import React from 'react';
 import Chips from '../chips/chips.component'
+import ButtonRating from '../button-rating/buttonRating.component'
 import './seller.scss';
 
 function Seller(props){
@@ -29,8 +30,9 @@ function Seller(props){
                     
                                         
                                         <div className="line display__flex">
-                                                <img src={require('../../assets/images/heading/badge.svg')} alt=""/>
-                                                        <div className="line__right display__flex">
+                                        <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
+                                                     <br />   
+                                        <div className="line__right display__flex">
                                                         <h3>əlaqə</h3>
                                                         <img src={require(`../../assets/images/heading/Chevron.svg`)} alt=""/>
                                                         </div>
@@ -42,10 +44,13 @@ function Seller(props){
 
 
                                     <div className="bottom__line display__flex">
-
-                                    <img src={require('../../assets/images/heading/add.svg')} alt=""/> 
+                                    
+                                        <div className="gray">
+                                        <ButtonRating name='Əlavə et' class='bg-gray' icon={require('../../assets/images/index/Union.svg')}/>
+                                        </div>
+                                    
                                             <div className="shop_click display__flex">
-                                            <img src={require('../../assets/images/heading/seeshop.svg')} alt="" width="116px" height="21px" /> 
+                                            <img src={require(`../../assets/images/heading/seeshop.svg`)} alt="" width="116px" height="21px" /> 
                                             <div className="union display__flex">
                                             <img src={require(`../../assets/images/heading/munion.svg`)} alt=""  />
                                             </div>

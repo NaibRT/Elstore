@@ -4,6 +4,7 @@ import SelectBox from '../Select-box/SelectBox.component';
 import SearchResultComp from '../search-result-component/SearchResultComp.component';
 
 
+
     function SearchResult() {
         return (
             <section className="search_result__section">

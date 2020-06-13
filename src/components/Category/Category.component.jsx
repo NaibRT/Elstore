@@ -10,42 +10,65 @@ const Category = () => {
         let boxCategory=document.querySelector(".box--category");
         let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
           
-               box__subcotegoryItem.forEach(x=>{
-                    x.style.display="block";
-                    x.style.transition="0.5s ease";
-                })
-                boxCategory.style.transition="0.5s ease";
-                boxCategory.style.width="550px";
+        console.log(CategoryContext.state.childrens.children);
+        
+        setTimeout(() => {
+            box__subcotegoryItem.forEach(x=>{
+                x.style.display="block";
+                x.style.transition="0.5s ease";
+            })
+        }, 1200);
+        
+        setTimeout(() => {
+           
+            boxCategory.style.transition="0.2s ease";
+            boxCategory.style.width="550px";
+        }, 200);
+               
        }
+
+      
 
 
         function CategoryLeave(){
-            let boxCategory=document.querySelector(".box--category");
-        let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
 
-               box__subcotegoryItem.forEach(x=>{
-                    x.style.display="none";
-                    x.style.transition="0.5s ease";
-                })
-                boxCategory.style.width="0px";
+            setTimeout(() => {
+                let boxCategory=document.querySelector(".box--category");
+                let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
+        
+                       box__subcotegoryItem.forEach(x=>{
+                            x.style.display="none";
+                            x.style.transition="0.3s ease";
+                        })
+                        boxCategory.style.width="0px";
+            }, 1000);
+           
         }
-        // let body=document.getElementsByTagName("body")[0];
-        // body.addEventListener("click",function(e){
-        //     let boxCategory=document.querySelector(".box--category");
-        //     let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
-        //     if(e.path[5]!=boxCategory ){
-        //         box__subcotegoryItem.forEach(x=>{
-        //             x.style.display="none";
-        //             x.style.transition="0.5s ease";
-        //         })
-        //         boxCategory.style.width="0px";
-        //     } 
-        // })
+        
+       
        
     useEffect(() => {
-       
+        
+   
+        
+        let body=document.querySelector(".box__category");
+        setTimeout(() => {
+            body.addEventListener("mouseleave",function(e){
+                let boxCategory=document.querySelector(".box--category");
+                let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
+                if(e.path[5]!=boxCategory ){
+                    box__subcotegoryItem.forEach(x=>{
+                        x.style.display="none";
+                        x.style.transition="0.5s ease";
+                    })
+                    boxCategory.style.width="0px";
+                } 
+            })
+        }, 500);
     }, []);
        
+
+    
     let SubCategories=[];
     if(CategoryContext.state.childrens.children!==undefined){
         SubCategories=CategoryContext.state.childrens.children.map(x=>{
@@ -62,19 +85,23 @@ const Category = () => {
 
     return (
                     <>
+                    <div>
                     <div className="box__category" >
                         <ul>
                             {
                                 CategoryContext.state.categories.map(x=>{
-                                    return  <li onMouseOver={(e)=>{CategoryContext.event.getSubCat(e);handleClick()}}  className="category__items" key={x.id} >{x.translation.name} <span ><img data-id={x.id} className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li>
+                                    return  <li   className="category__items" key={x.id} >{x.translation.name} <span ><img onMouseOver={(e)=>{CategoryContext.event.getSubCat(e);handleClick()}} data-id={x.id} className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li>
                                 })
                             }
                         </ul>
-                        <div className="box--category" onMouseLeave={CategoryLeave} >
-                        <div className="box__subcotegory">
-                            {SubCategories}
-                        </div>
+
+                        
                     </div>
+                    <div className="box--category" onMouseLeave={CategoryLeave} >
+                            <div className="box__subcotegory">
+                            {SubCategories}
+                            </div>
+                        </div>
                     </div>
     </>
     )

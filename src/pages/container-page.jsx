@@ -5,13 +5,14 @@ import ProductInfo from '../pages/product-info';
 import Basket from '../pages/basket';
 import Search from '../pages/search';
 import CheckoutAddress from '../pages/checkout-adress'
+import Profile from './profile';
 
 function Main() {
 
  return (
   <main>
   <Switch>
-  <Route exact={true} path='/' component={Index} />
+  <Route exact={true} path='/' component={CheckoutAddress} />
   <Route exact={true} path='/product' component={ProductInfo} />
   <Route  path='/product/:id/:name' component={ProductInfo} />
   <Route exact={true} path='/basket' component={Basket} />
