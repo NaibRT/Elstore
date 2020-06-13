@@ -2,26 +2,6 @@
 
 
 .search_result__section{
-    .select__search{
-        margin-top: 24px;
-        text-align: right;
-        select{
-            width: 240px;
-            height: 44px;
-            background: #FFFFFF;
-            border: 1.5px solid #D6D6D6;
-            box-sizing: border-box;
-            border-radius: 8px;
-            outline: none;
-            font-family: InterRegular;
-            font-weight: normal;
-            font-size: 16px;
-            letter-spacing: 0.5px;
-            padding-left: 12px;
-            padding-top: 6px;
-            padding-bottom: 6px;
-        }
-    }
     .search_result__content{
         margin-top: 16px;
         display: grid;

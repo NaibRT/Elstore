@@ -4,10 +4,13 @@ import {searchContext} from "../../contexts/search"
 import './SearchResult.component.scss'
 import ButtonRating from '../button-rating/buttonRating.component';
 import HeartImage from '../heart-image/heartImage.component';
+import SelectBox from '../Select-box/SelectBox.component';
 import {Link} from 'react-router-dom'
 
 
+
     function SearchResult() {
+
 const products=useContext(searchContext);
 
 
@@ -15,16 +18,8 @@ const products=useContext(searchContext);
 
         return (
             <section className="search_result__section">
-                <div className="select__search">
-                    <select name="" id="">
-                        <option value="">Sirala</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                    </select>
-                </div>
+                <SelectBox/>
                 <div className="search_result__content">
-
                 {(products.state.filteredData.length==0)?
                     products.state.data.map(y=><div key={y.id} className="search__result">
                     <HeartImage/>

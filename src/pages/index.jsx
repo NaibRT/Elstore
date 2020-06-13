@@ -9,6 +9,7 @@ import BrandSlider from '../components/Brand-slider/brandSlider.component'
 import MostSellerSlide from '../components/Most-Seller-Slide/MostSellerSlide.component'
 import IconSlider from '../components/Icon-slider/IconSlider.component'
 import MehsulCard from '../components/mehsulCard/mehsul_card.component'
+import ButtonRadio from '../components/button-radio/ButtonRadio.component'
 
 function Index() {
     const [product,setProduct]=useState({});
@@ -47,6 +48,7 @@ function Index() {
                 <div className="row">
                     <div className="col-lg-12">
                         <MostSellerSlide data={product} name='Çox satılanlar'/>
+                        <ButtonRadio/>
                     </div>
                 </div>
            </div>

@@ -17,13 +17,13 @@ const Category = () => {
                 x.style.display="block";
                 x.style.transition="0.5s ease";
             })
-        }, 1000);
+        }, 1200);
         
         setTimeout(() => {
            
-            boxCategory.style.transition="0.5s ease";
+            boxCategory.style.transition="0.2s ease";
             boxCategory.style.width="550px";
-        }, 1000);
+        }, 200);
                
        }
 
@@ -46,6 +46,7 @@ const Category = () => {
         }
         
        
+       
     useEffect(() => {
         
    
@@ -63,14 +64,14 @@ const Category = () => {
                     boxCategory.style.width="0px";
                 } 
             })
-        }, 1000);
+        }, 500);
     }, []);
        
+
+    
     let SubCategories=[];
-    console.log(CategoryContext.state.childrens.children)
     if(CategoryContext.state.childrens.children!==undefined){
         SubCategories=CategoryContext.state.childrens.children.map(x=>{
-            console.log(x)
             return <ul key={x.id} className="">
             <li  className="box__subcotegory--item">
             <a data-id={x.id} className="box--subcotegory" href="/" >{x.translation.name}</a>
@@ -84,6 +85,7 @@ const Category = () => {
 
     return (
                     <>
+                    <div>
                     <div className="box__category" >
                         <ul>
                             {
@@ -92,11 +94,13 @@ const Category = () => {
                                 })
                             }
                         </ul>
-                        <div className="box--category" onMouseLeave={CategoryLeave} >
-                        <div className="box__subcotegory">
-                            {SubCategories}
-                        </div>
+                        
                     </div>
+                    <div className="box--category" onMouseLeave={CategoryLeave} >
+                            <div className="box__subcotegory">
+                            {SubCategories}
+                            </div>
+                        </div>
                     </div>
     </>
     )
