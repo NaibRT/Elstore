@@ -4,6 +4,10 @@ import { Link , Switch ,  Route, Redirect  } from "react-router-dom";
 import ResponsiveCat from '../responsiv_categories/responsiv_categories.component'
 import {searchContext} from '../../contexts/search';
 import Modal from "../Modal/Modal.component"
+import LangToggler from "../lang_currency_toggler/lang_currency_toggler";
+import Selectbox from "../Select-box/SelectBox.component";
+const Langs =  ['Azerbaijan','Turkish','Ukranian'];
+const Currency =  ['AZN','EURO','USD'];
 
 function  Navbar(props) {
     const products = useContext(searchContext);
@@ -23,6 +27,23 @@ function  Navbar(props) {
        console.log(modal)
        
    }
+    useEffect(()=>{
+        var acc = document.getElementsByClassName("accordion_lang");
+            var i;
+    
+            for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.height) {
+                panel.style.height = null;
+                } else {
+                panel.style.height = panel.scrollHeight + "px";
+                } 
+            });
+            }
+    })
+   
 
     return (
         <div className='navbar'>
@@ -39,6 +60,9 @@ function  Navbar(props) {
                     <input onChange={products.events.searchForm}  value={localStorage.getItem('search')} className='search-input-text' type="text" placeholder="Search.." name="search" />
                     <Link to={`/categories?search:${products.state.searchKey}`} className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></Link>
                 </form>
+                </div>
+                <div className='navbar_select'>
+                    <LangToggler/>
                 </div>
                 <div className='navbar_buttons'>
                     <Link className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/heading/Bag.svg')} /></Link>
@@ -63,8 +87,8 @@ function  Navbar(props) {
 
             <div className={`${toggle.active ? 'opennav': ''} responsive_nav`}>
                     <div className='responsive_nav_top'>
-                        <Link className='responsive_nav_top_lang' to='/eng'>Eng</Link>
-                        <Link className='responsive_nav_top_lang' to='/ru'>Ru</Link>
+                    <Selectbox  value={Langs} class='accordion_select'  options={Langs}/>
+                    <Selectbox   value={Currency} class='accordion_select'  options={Currency}/>
                     </div>
                     <div className='responsive_nav_login'>
                         <Link className='responsive_nav_login_log' to='/register'>Register</Link>

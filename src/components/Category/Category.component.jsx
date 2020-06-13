@@ -70,9 +70,9 @@ const Category = () => {
 
     
     let SubCategories=[];
-    console.log(CategoryContext.state.childrens.children)
     if(CategoryContext.state.childrens.children!==undefined){
         SubCategories=CategoryContext.state.childrens.children.map(x=>{
+
             console.log(x)
             return <ul key={x.id} className="box--subcotegory_flexx">
             <li  className="box__subcotegory--item">
@@ -96,6 +96,7 @@ const Category = () => {
                                 })
                             }
                         </ul>
+
                         
                         <div className="box--category" onMouseLeave={CategoryLeave} >
                             <div className="display__flex">
