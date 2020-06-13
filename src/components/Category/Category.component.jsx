@@ -94,6 +94,7 @@ const Category = () => {
                                 })
                             }
                         </ul>
+
                         
                     </div>
                     <div className="box--category" onMouseLeave={CategoryLeave} >
