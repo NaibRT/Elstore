@@ -9,6 +9,17 @@
     align-items: center;
     border-radius: 12px;
     cursor: pointer;
+    &:focus{
+        border:1px solid #6472B8;
+        outline: none;
+
+        background-color: #EDEFFF;
+
+         p:first-child{
+                color: #6472B8;
+        }
+
+    }
 
     .radio_button__content{
         margin: 0;
@@ -32,7 +43,6 @@
                 width: 100%;
                 height: 100%;
                 opacity: 0;
-                z-index: 1;
             }
             span{
                 width: 100%;
