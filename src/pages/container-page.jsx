@@ -5,7 +5,7 @@ import ProductInfo from '../pages/product-info';
 import Basket from '../pages/basket';
 import Search from '../pages/search';
 import CheckoutAddress from '../pages/checkout-adress'
-import Profile from '../pages/profile'
+import Profile from './profile';
 
 function Main() {
 

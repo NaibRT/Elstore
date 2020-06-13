@@ -3,6 +3,9 @@ import name from '../components/card/card.component'
 import Card from '../components/card/card.component'
 import ListItem from '../components/List-Item/Listitem.component'
 
+import OrderCard from '../components/order-card/order-card.component'
+
+
 function Profile() {
  return (
   <div className='container-fluid'>
@@ -17,7 +20,7 @@ function Profile() {
          </Card>
         </div>
         <div className='col-lg-8'>
-        
+          <OrderCard/>
         </div>
      </div>
   </div>
