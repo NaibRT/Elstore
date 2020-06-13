@@ -9,10 +9,10 @@ function SelectBox(props) {
         <div className={`select__search ${props.class}`} >
             <form>
                 <label htmlFor="" id="labelId">{props.label}</label>
-                <select name="" id="searchSelect">
+                <select name={props.name} onChange={props.handleChange}  id="searchSelect">
                    {
                     props.options.map(item=>{
-                        return <option value="">{item}</option>
+                        return <option  value={item}>{item}</option>
                     })
                    }
                 </select>
@@ -23,4 +23,3 @@ function SelectBox(props) {
 
 
 export default SelectBox
-

@@ -5,6 +5,8 @@ import Card from '../card/card.component'
 import InputGroup from "../InputGroup/InputGroup.component";
 import {Link} from 'react-router-dom';
 
+import ButtonRadio from "../button-radio/ButtonRadio.component";
+
 function CheckoutSecond(props) {
 
     function goNextPage(e){
@@ -31,7 +33,9 @@ function CheckoutSecond(props) {
             <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <InputGroup placeholder='Adınız' />
+                        <ButtonRadio />
+                        <br/>
+                        <ButtonRadio />
                         <br/>
                         <Card.Header name='Kart məlumatlarını daxil edin' />
                         <br/>
