@@ -43,7 +43,7 @@ function CheckoutThird() {
                     </div>
                 </div>
                 <p className='checkout_bottomcardtext'>
-                    <h5>Əlavə məlumat </h5>
+                <Card.Header name='Elave Melumatlar' />
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis.
                 </p>
             </Card>
