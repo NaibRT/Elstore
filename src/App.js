@@ -8,10 +8,12 @@ import Serach from './pages/search'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import SearchContext from './contexts/search';
 import CategoryContext from "./contexts/category";
-import Main from './pages/container-page'
+import Main from './pages/container-page';
+import Modal from "./components/Modal/Modal.component"
 function App() {
   return (
     <div className="App">
+      <Modal/>
     <CategoryContext>
     <SearchContext>
     <Router>
@@ -23,6 +25,7 @@ function App() {
       </Router>
       </SearchContext>
       </CategoryContext>
+      
     </div>
   );
 }

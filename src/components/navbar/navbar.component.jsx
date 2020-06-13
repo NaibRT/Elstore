@@ -3,7 +3,7 @@ import './navbar.component.scss';
 import { Link , Switch ,  Route, Redirect  } from "react-router-dom";
 import ResponsiveCat from '../responsiv_categories/responsiv_categories.component'
 import {searchContext} from '../../contexts/search';
-
+import Modal from "../Modal/Modal.component"
 
 function  Navbar(props) {
     const products = useContext(searchContext);
@@ -17,7 +17,12 @@ function  Navbar(props) {
         setToggle({ active: !currentState });
     }
 
-   
+   function Sign(){
+       let modal= document.getElementById("login__modal");
+       modal.style.display="block";
+       console.log(modal)
+       
+   }
 
     return (
         <div className='navbar'>
@@ -37,8 +42,8 @@ function  Navbar(props) {
                 </div>
                 <div className='navbar_buttons'>
                     <Link className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/heading/Bag.svg')} /></Link>
-                    <Link className='navbar_buttons_link log' to='/login'>daxİl ol</Link>
-                    <Link className='navbar_buttons_link log' to='/register'>hesab yarat</Link>
+                    <Link className='navbar_buttons_link log login' onClick={Sign} >daxİl ol</Link>
+                    <Link className='navbar_buttons_link log signup' to='/register'>hesab yarat</Link>
                     <div>
                     <div className={`${toggle.active ? 'change': ''} menu-container navbaroutside`}    onClick={toggleNav}>
                         <div className="bar1"></div>

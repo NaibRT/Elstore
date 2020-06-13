@@ -22,7 +22,7 @@ const Category = () => {
         setTimeout(() => {
            
             boxCategory.style.transition="0.2s ease";
-            boxCategory.style.width="550px";
+            boxCategory.style.width="1000px";
         }, 200);
                
        }
@@ -74,7 +74,7 @@ const Category = () => {
     if(CategoryContext.state.childrens.children!==undefined){
         SubCategories=CategoryContext.state.childrens.children.map(x=>{
             console.log(x)
-            return <ul key={x.id} className="">
+            return <ul key={x.id} className="box--subcotegory_flexx">
             <li  className="box__subcotegory--item">
             <a data-id={x.id} className="box--subcotegory" href="/" >{x.translation.name}</a>
                 <ul>
@@ -97,12 +97,15 @@ const Category = () => {
                             }
                         </ul>
                         
-                    </div>
-                    <div className="box--category" onMouseLeave={CategoryLeave} >
-                            <div className="box__subcotegory">
-                            {SubCategories}
+                        <div className="box--category" onMouseLeave={CategoryLeave} >
+                            <div className="display__flex">
+                                <div className="box__subcotegory">
+                                {SubCategories}
+                                </div>
                             </div>
+                            
                         </div>
+                    </div>
                     </div>
     </>
     )
