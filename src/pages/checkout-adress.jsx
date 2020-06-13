@@ -19,7 +19,7 @@ function CheckoutAddress() {
             setStep(step-1)
           };
 
-    const [step,setStep] = useState(0);
+    const [step,setStep] = useState(1);
 
 
     const [state,setState] = useState({
@@ -38,58 +38,34 @@ function CheckoutAddress() {
     const {firstName,lastName, states ,village,adress,country,odenisusulu,bitmetarixi,cvv,kartnomresi} = state;
     const values = {states, firstName,lastName,village,adress,country,odenisusulu,bitmetarixi,cvv,kartnomresi};
 
+    function renderCheckout() {
+        switch (step) {
+            case 2:
+                return  <CheckoutSecond value={values} nextStep = {nextStep} prevStep = {prevStep} />
 
-    switch (step) {
-        case 1:
-            return (
-                <div className='container-fluid'>
-                <div className='row'>
-                    <div className='col-lg-8'>
-                    <CheckoutSecond value={values} nextStep = {nextStep} prevStep = {prevStep} />
-                    </div>
-                    <div className='col-lg-4'>
-                         <TotalSum/>
-                         <br/>
-                         <IconDeliverySafetyPayback/>
-                    </div>
-                </div>
-             </div>
-                
-            );
-        case 2:
-            return (
-                <div className='container-fluid'>
-                <div className='row'>
-                    <div className='col-lg-8'>
-                    <CheckoutThird value={values} nextStep = {nextStep} prevStep = {prevStep}  />
-                    </div>
-                    <div className='col-lg-4'>
-                         <TotalSum/>
-                         <br/>
-                         <IconDeliverySafetyPayback/>
-                    </div>
-                </div>
-             </div>
-               
-            );
-            default:
-                return (
-                    <div className='container-fluid'>
-                       <div className='row'>
-                           <div className='col-lg-8'>
-                           <CheckoutFrist value={values}  nextStep = {nextStep} prevStep = {prevStep} />
-                           </div>
-                           <div className='col-lg-4'>
-                                <TotalSum/>
-                                <br/>
-                                <IconDeliverySafetyPayback/>
-                           </div>
-                       </div>
-                    </div>
-                );       
-               
-        
+            case 3:
+                    return   <CheckoutThird value={values} nextStep = {nextStep} prevStep = {prevStep}  />
+            
+            case 1: 
+                 return    <CheckoutFrist value={values}  nextStep = {nextStep} prevStep = {prevStep} />
+        }
     }
+
+    return (
+        <div className='container-fluid'>
+        <div className='row'>
+            <div className='col-lg-8'>
+            {renderCheckout()}
+            </div>
+            <div className='col-lg-4'>
+                <TotalSum/>
+                <br/>
+                <IconDeliverySafetyPayback/>
+            </div>
+        </div>
+        </div>
+    )
+ 
     
 
 }
