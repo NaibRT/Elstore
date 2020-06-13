@@ -72,9 +72,7 @@ export class MostSellerSlide extends Component {
                                                         }
                                                     </div>
                                                     <h4>
-                                                        <a>
                                                             <Link to={`/product/${x.id}/${x.product_name}`}>{x.product_name}</Link>
-                                                        </a>
                                                     </h4>
                                                     <p>{x.product_price} AZN</p>
                                                     <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>

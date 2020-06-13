@@ -155,7 +155,7 @@ function Basket() {
                                             <IconDeliverySafetyPayback />
                                         </div>
                                         <div className='col-lg-12 col-md-12 col-sm-12'>
-                                        <Button className='bg-primary_light' name='Sifaris ver'/>
+                                        <Button className='bg-primary--light' name='Sifaris ver'/>
                                     </div>
                                     </div>
                              <div className="col-lg-12 col-md-6 col-sm-12">

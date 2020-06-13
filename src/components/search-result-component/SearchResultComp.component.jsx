@@ -3,6 +3,7 @@ import {searchContext} from "../../contexts/search"
 import ButtonRating from '../button-rating/buttonRating.component';
 import HeartImage from '../heart-image/heartImage.component';
 import {Link} from 'react-router-dom'
+import Card from '../card/card.component'
 
 
 import './SearchResultComp.component.scss'
@@ -11,6 +12,7 @@ function SearchResultComp() {
     const products=useContext(searchContext);
 
     return (
+        <Card>
         <section className="search_result__section">
             <div className="search_result__content">
             {(products.state.filteredData.length==0)?
@@ -27,9 +29,7 @@ function SearchResultComp() {
                     })
                 }
                 <h5>
-                    <a>
-                        {y.product_name}
-                    </a>
+                <Link to={`/product/${y.id}/${y.product_name}`}>{y.product_name}</Link>}
                 </h5>
                 <p>{y.price} AZN</p>
                 <ButtonRating/>
@@ -65,6 +65,7 @@ function SearchResultComp() {
 
         </div>
         </section>
+        </Card>
         
     )
 }
