@@ -65,9 +65,10 @@ function  Navbar(props) {
                     <LangToggler/>
                 </div>
                 <div className='navbar_buttons'>
-                    <Link className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/heading/Bag.svg')} /></Link>
-                    <Link className='navbar_buttons_link log login' onClick={Sign} >daxİl ol</Link>
-                    <Link className='navbar_buttons_link log signup' to='/register'>hesab yarat</Link>
+                    <Link className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/heading/Bag.svg')} /></Link>   
+                    <Link className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+                    {/* <Link className='navbar_buttons_link log login' onClick={Sign} >daxİl ol</Link>
+                    <Link className='navbar_buttons_link log signup' to='/register'>hesab yarat</Link> */}
                     <div>
                     <div className={`${toggle.active ? 'change': ''} menu-container navbaroutside`}    onClick={toggleNav}>
                         <div className="bar1"></div>
