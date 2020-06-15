@@ -1,22 +1,18 @@
-import React,{useContext} from 'react'
-import {searchContext} from "../../contexts/search"
+import React from 'react'
 import ButtonRating from '../button-rating/buttonRating.component';
 import HeartImage from '../heart-image/heartImage.component';
 import {Link} from 'react-router-dom'
-import Card from '../card/card.component'
 
 
 import './SearchResultComp.component.scss'
 
-function SearchResultComp() {
-    const products=useContext(searchContext);
+function SearchResultComp(props) {
 
     return (
-        <Card>
         <section className="search_result__section">
             <div className="search_result__content">
-            {(products.state.filteredData.length==0)?
-                products.state.data.map(y=><div key={y.id} className="search__result">
+            {(props.data.length > 0)?
+                props.data.map(y=><div  className="search__result">
                 <HeartImage/>
                 {
                     y.images.map(f=>{
@@ -29,7 +25,7 @@ function SearchResultComp() {
                     })
                 }
                 <h5>
-                <Link to={`/product/${y.id}/${y.product_name}`}>{y.product_name}</Link>}
+                <Link to={`/product/${y.id}/${y.product_name}`}>{y.product_name}</Link>
                 </h5>
                 <p>{y.price} AZN</p>
                 <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
@@ -37,7 +33,7 @@ function SearchResultComp() {
             </div>
                 ) 
             :
-            products.state.filteredData.map(y=><div key={y.id} className="search__result">
+            props.data.map(y=><div key={y.id} className="search__result">
                 <HeartImage/>
                 {
                     y.images.map(f=>{
@@ -55,18 +51,8 @@ function SearchResultComp() {
             </div>
                 ) 
             }
-                
-           {
-
-
-           }
-
-
-
         </div>
         </section>
-        </Card>
-        
     )
 }
 
