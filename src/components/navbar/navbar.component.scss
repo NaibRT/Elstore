@@ -207,14 +207,17 @@
         flex: 2;
         margin-right: 25px;
     }
-  .navbaroutside{
-      position: relative;
-      left: 20px;
-      top: -10px;
-  }
+//   .navbaroutside{
+//       position: relative;
+//       left: 20px;
+//       top: -10px;
+//   }
 
  
   @media(max-width:992px){
+      .profile{
+        left: -50px;
+      }
       .responsive_nav_top{
           display: flex;
           justify-content: space-around;
@@ -247,11 +250,11 @@
         display: none;
     }
     
-    .navbaroutside{
-        position: relative;
-        left: 20px;
-        top: -15px;
-    }
+    // .navbaroutside{
+    //     position: relative;
+    //     left: 20px;
+    //     top: -15px;
+    // }
     .search{
         position: relative;
         left: -90px;
@@ -259,15 +262,16 @@
     }
     .bag{
         position: relative;
-        left: -45px;
+        left: -27px;
     }
     .navbar_center{
         padding: 0 5px !important;
     }
     .menu-container{
-        position: relative;
-        left: -5px;
-        top: -6px;
+    top: 25px;
+    position: absolute;
+    right: 20px;
+
     }
     .navbar_search{
         margin: 0 !important;
@@ -278,7 +282,7 @@
     width: 100%;
     padding: 10px 0;
     position: relative;
-    z-index: 1231231;
+    z-index: 2;
 }
 
 
@@ -319,4 +323,33 @@
 
 .search{
     display: none;
+}
+
+
+.profile_dropwdown{
+    height: auto;
+    padding: 10px 5px;
+    background-color: white !important;
+    position: relative;
+    top: 24px;
+    visibility: hidden;
+    border-radius: 4px;
+    transition: display 1s ease;
+    border: 1px solid $text-secondary;
+    z-index: 2;
+    &_li{
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+        list-style: none;
+        a{
+            color:$text-dark;
+            text-decoration: none;
+            
+        }
+        
+    }
+}
+
+.active{
+    visibility: visible;
 }
