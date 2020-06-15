@@ -97,6 +97,7 @@
 }
 
 @media only screen and  (max-device-width : 320px) {
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
@@ -110,9 +111,11 @@
     .brand-button-preview{
         display: none;
     }
+ }
 }
 
 @media only screen and (min-device-width : 321px) and (max-device-width : 360px) {
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
@@ -126,9 +129,11 @@
     .brand-button-preview{
         display: none;
     }
+ }
 }
 
 @media only screen and (min-device-width : 361px) and (max-device-width : 375px) {
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
@@ -142,9 +147,11 @@
     .brand-button-preview{
         display: none;
     }
+ }
 }
 
 @media only screen and (min-device-width: 376px) and (max-device-width: 414px){
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
@@ -158,10 +165,12 @@
     .brand-button-preview{
         display: none;
     }
+ }
 }
 
 
 @media (min-width: 415px) and (max-width: 575.98px) { 
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
@@ -175,10 +184,12 @@
     .brand-button-preview{
         display: none;
     }
+ }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) and (max-width: 767.98px) {
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
@@ -186,33 +197,41 @@
         top:200px !important;
         right: 11px !important;
     }
+ }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) and (max-width: 991.98px) { 
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
+
     .swiper-button-next{
         top:180px !important;
         right: 11px !important;
     }
 }
+}
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .swiper-button-next{
-        top:150px !important;
-        right: 10px !important;
-    }
+    .brand_slider_section{
+        .swiper-button-next{
+            top:150px !important;
+            right: 10px !important;
+        }
+  }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
+    .brand_slider_section{
     .swiper-button-next{
         top:150px !important;
         right: 10px !important;
     }
+ }
 }
 
 
