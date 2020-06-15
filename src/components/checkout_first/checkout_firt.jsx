@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
+import axios from 'axios'
 import './checkout_first.style.scss';
 import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
@@ -8,11 +9,32 @@ import Selectbox from '../Select-box/SelectBox.component'
 function CheckoutFrist(props) {
 
     const {values,handleChange} = props
-    
-    const sherler = ['Baku','Ganja','Mingechevir']
-    const rayonlar = ['Sirvan','Ucar','Kurdamir']
-    const kend = ['Bilge','Kurdakhani','Mastaga']
+    const [cities,setCities] = useState({
+        data:[]
+    })
+    const [region,setRegion] = useState({
+        data:[]
+    })
+    // const sherler = ['Baku','Ganja','Mingechevir']
+    // const rayonlar = ['Sirvan','Ucar','Kurdamir']
+    // const kend = ['Bilge','Kurdakhani','Mastaga']
 
+    function takeSelectboxValue(e){
+        console.log(e.target.value);
+      fetch(`http://139.180.144.49/api/v1/az/regions?city_id=${e.target.value}`)
+      .then(response => response.json())
+      .then(data => setRegion({ data: data }));
+
+    }
+
+    useEffect(() => {
+      fetch('http://139.180.144.49/api/v1/az/cities')
+      .then(response => response.json())
+      .then(data => setCities({ data: data }));
+    }, [])
+
+
+   
     function goNextPage(e){
         e.preventDefault();
         props.nextStep();
@@ -57,11 +79,11 @@ function CheckoutFrist(props) {
             <Card.Header name='Çatdırılma ünvanı' />
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <Selectbox class='selectboxcheckout' options={sherler} />
+                        <Selectbox firstopt='Cities' handleChange={takeSelectboxValue} class='selectboxcheckout' options={cities.data.data} />
                         <br/>
-                        <Selectbox class='selectboxcheckout' options={rayonlar} />
+                        <Selectbox firstopt='Region' class='selectboxcheckout' options={region.data.data} />
                         <br/>
-                        <Selectbox class='selectboxcheckout' options={kend} />
+                        <Selectbox class='selectboxcheckout' options={cities.data.data} />
                         <br/>
                         <br/>
                         <InputGroup  placeholder='Ünvan' />
