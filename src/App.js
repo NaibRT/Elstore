@@ -24,7 +24,7 @@ function App() {
     <Header />
     <br/>
     <br/>
-          <Succespayment/>
+          <Main/>
       <Footer/>
        <LoginModal/>
       </Router>
