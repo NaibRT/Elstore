@@ -57,7 +57,7 @@ const Modal = () => {
             <form action="">
                 <Input  placeholder={"Email"} type="email"/>
                 <Input placeholder={"Email"} type="password"/>
-                <label htmlFor="">şifrəmi unutmuşam</label>
+                <a href="">şifrəmi unutmuşam</a>
                 <Button className="bg-primary" type={"submit"} name={"Daxil ol"}  />
 
             </form>
