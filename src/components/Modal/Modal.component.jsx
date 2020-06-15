@@ -1,11 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useContext } from 'react'
 import "../../components/Modal/Modal.scss"
 import ReactDom from "react-dom"
 import Input from "../InputGroup/InputGroup.component"
 import Button from "../button/button.component"
+import UrlGenerator from '../../services/url-generator'
+import {useForm} from 'react-hook-form'
+import {appContext} from '../../contexts/appContext'
 
-const Modal = () => {
 
+function Modal(){
+    const {register,handleSubmit,errors}=useForm();
+    const AppContext=useContext(appContext)
     function Signin(){
           
         let signup_view= document.getElementById("signup_view");
@@ -29,6 +34,10 @@ const Modal = () => {
         border__size.style.border ="2px solid #6472B8";
         border__size_active.style.border ="2px solid #D0D0D0";
     }
+    //  function emaliValidation(email){
+    //     const re = ;
+    //     return re.test(email);
+    //  }
 
     let body=document.getElementsByTagName("body")[0];
     body.addEventListener("click", function(e){
@@ -38,7 +47,24 @@ const Modal = () => {
         }
     })
    
-
+    const loginSubmit=(data)=>{
+       let url=UrlGenerator('az','auth/login')
+      fetch(url,{
+          headers:{
+            'Content-Type': 'application/json'
+          },
+          method:"Post",
+          body:JSON.stringify(data)
+      })
+      .then(async res=>{
+          let data=await res.json();
+          console.log(data)
+         AppContext.events.AddToken(data)
+         document.getElementById('login__modal').style.display='none';
+      })
+      .catch((err) =>console.log(err))
+      console.log(errors.email)
+   }
     return ReactDom.createPortal(
     <div id="login__modal" className="modal__bacground">
         <div className="modal__view">
@@ -54,22 +80,35 @@ const Modal = () => {
             </div>
 
             <section id="signin_view">
-            <form action="">
-                <Input  placeholder={"Email"} type="email"/>
-                <Input placeholder={"Email"} type="password"/>
+            <form onSubmit={handleSubmit(loginSubmit)}>
+                <Input  
+                     name='email' placeholder={"Email"} type="email"
+                     register={register({
+                        required:{value:true,message:'must be added'},
+                       pattern:{value:/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                                message:"email not valid"}
+                     })}
+                      helper={errors.email&&errors.email.message}/>
+
+                <Input  name='password'  placeholder={"Email"} type="password" register={register({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors.password&&errors.password.message}/>
                 <label htmlFor="">şifrəmi unutmuşam</label>
                 <Button className="bg-primary" type={"submit"} name={"Daxil ol"}  />
 
             </form>
             </section>
             <section  id="signup_view">
-                <form action="">
-                <Input placeholder={"Email"} type="email"/>
-                <Input placeholder={"Email"} type="password"/>
+           <form action="">
+                <Input name='email'  placeholder={"Email"} type="email" 
+                register={register({
+                    required:{value:true,message:'must be added'},
+                   pattern:{value:/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                            message:"email not valid"}
+                 })}
+                  helper={errors.email&&errors.email.message}/>
+                <Input  name='password'  placeholder={"Email"} type="password" register={register({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors.password&&errors.password.message}/>
                 <br/>
                 <Button className="bg-primary" type={"submit"} name={"Hesab yarat"}  />
-
-                </form>
+                    </form>
             </section>
         </div>
         </div>

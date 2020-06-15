@@ -6,6 +6,7 @@ import {BrowserRouter as Router,Link,Route} from 'react-router-dom'
 import SearchResult from '../components/search-result-component/SearchResultComp.component'
 
 import OrderCard from '../components/order-card/order-card.component'
+import FavoritBrandShops from '../pages/profile-favoit-brand-shop'
 
 
 function Profile() {
@@ -13,15 +14,18 @@ function Profile() {
   <div className='container-fluid'>
   <Router>
   <div className='row'>
-  <div className='col-lg-4'>
+  <div className='col-lg-3'>
    <Card>
     <Link to='/profie/orders' exact><ListItem name='Sifarislerim'/></Link>
     <Link to='/profie/orderCard' exact><ListItem name='Tamamlanmis Sifarisler'/></Link>
+    <Link to='/profie/favorit-shop' exact><ListItem name='Beyenilen Magazalar'/></Link>
+    <Link to='/profie/orderCard' exact><ListItem name='Tamamlanmis Sifarisler'/></Link>
    </Card>
   </div>
-  <div className='col-lg-8'>
+  <div className='col-lg-9'>
     <Route path='/profie/orders' component={OrderCard}/>
     <Route path='/profie/orderCard' component={SearchResult}/>
+    <Route path='/profie/favorit-shop' component={FavoritBrandShops}/>
   </div>
 </div>
   </Router>
