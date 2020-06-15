@@ -6,21 +6,20 @@ import {searchContext} from '../../contexts/search';
 import Modal from "../Modal/Modal.component"
 import LangToggler from "../lang_currency_toggler/lang_currency_toggler";
 import Selectbox from "../Select-box/SelectBox.component";
-const Langs =  ['Azerbaijan','Turkish','Ukranian'];
+
+const Langs =  [
+    {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
 const Currency =  ['AZN','EURO','USD'];
 
 
 function  Navbar(props) {
     const products = useContext(searchContext);
+    const [visiblepp,setVisiblepp] =useState(false);
 
 
-
-const [visiblepp,setVisiblepp] =useState(false);
-
-
-function showbar(){
-    setVisiblepp(!visiblepp)
-}
+    function showbar(){
+        setVisiblepp(!visiblepp)
+    }
 
 
     const [toggle, setToggle] = useState({

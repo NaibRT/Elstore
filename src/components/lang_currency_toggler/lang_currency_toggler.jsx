@@ -3,7 +3,7 @@ import './lang_currency_toggler.scss';
 import Selectbox from '../Select-box/SelectBox.component'
 
 
-const Langs =  ['Azerbaijanian','Turkish','Ukranian'];
+const Langs =  [{id:'AZE',name:'Azerbaijan'},{id:'TUR',name:'Turkish'},{id:'UKR',name:'Ukranian'}];
 const  langval =  ['AZE','TR','UKR'];
 const Currency =  ['AZN','EURO','USD'];
 
@@ -30,8 +30,6 @@ function LangToggler() {
     function handleChange(e){
         const { value, name } = e.target;
         console.log(name,value)
-
-
 
         setLanguageCurrency({
             ...languageCurrency,

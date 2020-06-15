@@ -1,9 +1,7 @@
-import React,{useContext} from 'react'
-import {searchContext} from "../../contexts/search"
+import React from 'react'
 import ButtonRating from '../button-rating/buttonRating.component';
 import HeartImage from '../heart-image/heartImage.component';
 import {Link} from 'react-router-dom'
-import Card from '../card/card.component'
 
 
 import './SearchResultComp.component.scss'
