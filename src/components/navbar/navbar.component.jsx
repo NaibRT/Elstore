@@ -9,8 +9,19 @@ import Selectbox from "../Select-box/SelectBox.component";
 const Langs =  ['Azerbaijan','Turkish','Ukranian'];
 const Currency =  ['AZN','EURO','USD'];
 
+
 function  Navbar(props) {
     const products = useContext(searchContext);
+
+
+
+const [visiblepp,setVisiblepp] =useState(false);
+
+
+function showbar(){
+    setVisiblepp(!visiblepp)
+}
+
 
     const [toggle, setToggle] = useState({
         active: false,
@@ -65,8 +76,17 @@ function  Navbar(props) {
                     <LangToggler/>
                 </div>
                 <div className='navbar_buttons'>
-                    <Link className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/heading/Bag.svg')} /></Link>   
-                    <Link className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+                    <Link   className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/heading/Bag.svg')} /></Link>   
+                    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+                    <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
+                        <ul className='profile_dropwdown_ul'>
+                            <li className='profile_dropwdown_li'> <Link to='/orders'>Sifarişlərim (6)</Link></li>
+                            <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən məhsullar</Link></li>
+                            <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən brendlər və mağazalar</Link></li>
+                            <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
+                            <li className='profile_dropwdown_li'><Link to='/orders'>Logout</Link></li>
+                        </ul>
+                    </div>
                     {/* <Link className='navbar_buttons_link log login' onClick={Sign} >daxİl ol</Link>
                     <Link className='navbar_buttons_link log signup' to='/register'>hesab yarat</Link> */}
                     <div>
