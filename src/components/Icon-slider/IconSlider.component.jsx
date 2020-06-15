@@ -40,6 +40,7 @@ export class IconSlider extends Component {
         return (
             <section className="icon_slider_section">
                             <div id="icon_slider__container" className="swiper-container">
+                                
                                 <div className="swiper-wrapper">
                                         <div className="swiper-slide">
                                             <div className="swiper_slide_image">
@@ -47,48 +48,7 @@ export class IconSlider extends Component {
                                             </div>  
                                             <p>Store name texts</p>
                                         </div>
-                                        <div className="swiper-slide">
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Icon-Image.svg')} alt=""/>
-                                            </div>  
-                                            <p>Store name texts</p>
-                                        </div>
-                                        <div className="swiper-slide">
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Icon-Image.svg')} alt=""/>
-                                            </div>  
-                                            <p>Store name texts</p>
-                                        </div>
-                                        <div className="swiper-slide">
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Icon-Image.svg')} alt=""/>
-                                            </div>  
-                                            <p>Store name texts</p>
-                                        </div>
-                                        <div className="swiper-slide">
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Icon-Image.svg')} alt=""/>
-                                            </div>  
-                                            <p>Store name texts</p>
-                                        </div>
-                                        <div className="swiper-slide">
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Icon-Image.svg')} alt=""/>
-                                            </div>  
-                                            <p>Store name texts</p>
-                                        </div>
-                                        <div className="swiper-slide">
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Icon-Image.svg')} alt=""/>
-                                            </div>  
-                                            <p>Store name texts</p>
-                                        </div>
-                                        <div className="swiper-slide">
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Icon-Image.svg')} alt=""/>
-                                            </div>  
-                                            <p>Store name texts</p>
-                                        </div>
+
                                 </div>
                             </div>
                 <div className="icon-button-next"> <img src={require('../../assets/images/icons/chevron-right-solid.svg')} alt=""/> </div>

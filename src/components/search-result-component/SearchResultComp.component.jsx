@@ -32,7 +32,8 @@ function SearchResultComp() {
                 <Link to={`/product/${y.id}/${y.product_name}`}>{y.product_name}</Link>}
                 </h5>
                 <p>{y.price} AZN</p>
-                <ButtonRating/>
+                <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
+
             </div>
                 ) 
             :
@@ -50,8 +51,7 @@ function SearchResultComp() {
                 }
                 <h5><Link to={`/product/${y.id}/${y.product_name}`}>{y.product_name}</Link></h5>
                 <p>355</p>
-
-                <ButtonRating/>
+                <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
             </div>
                 ) 
             }

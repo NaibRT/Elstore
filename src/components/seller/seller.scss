@@ -3,15 +3,13 @@
 
 
 .box_1{
-
-width: 418px;
 height: 284px;
 border: 1px solid #D6D6D6;
 box-sizing: border-box;
 border-radius: 8px;
+padding: 0px 16px;
 
 .content{
-    width: 386px;
     height: 252px;  
     .content__img{
       .box__img{
@@ -19,7 +17,6 @@ border-radius: 8px;
          width: 104px;
         height: 104px;
         margin-right: 12px;
-        margin-left:16px;
         margin-top:16px;
         
         }
@@ -44,23 +41,15 @@ border-radius: 8px;
             justify-content: space-between;
             margin-top:24px;
             align-items: center;
-            margin-left: 16px;
-            
-            img{
-                margin-left: 16px;
-            }
               
         .line__right{
-            
             margin-top: 5px;
             margin-bottom: 5px;
-            margin-right: -10px;
             img{
                 width: 14px;
                 height: 7px;  
                 margin-top:7px;
                 margin-left:4px;
-            
                 }
                 h3{ 
                     font-family: InterMedium;
@@ -77,30 +66,21 @@ border-radius: 8px;
            
         .border__hr{
             border-bottom: 0.5px solid #CCCCCC;
-            margin-left: 16px;
             margin-top: 16px;
-            margin-right: -10px;
-        
         }
         .bottom__line{
             justify-content: space-between;
             margin-top:24px;
             .button_rating_content{
                 button{
-                    
-                    margin-left: 16px;
-                    width: 125px;
-                    height: 44px;
+                    // width: 125px;
+                    // height: 44px;
                     margin-top: -14px;
                 }
             }
                 
                 .shop_click{
                     margin-top: -2px;
-                   
-                    margin-right: -10px;
-                    
-                   
                     img{
                         
                         margin-top:7px;

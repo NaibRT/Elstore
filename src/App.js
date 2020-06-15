@@ -8,25 +8,30 @@ import Serach from './pages/search'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import SearchContext from './contexts/search';
 import CategoryContext from "./contexts/category";
+import AppContextProvider from './contexts/appContext'
 import Main from './pages/container-page';
-import Modal from "./components/Modal/Modal.component"
 import Succespayment from './components/succespayment/succespayment'
+import LoginModal from './components/Modal/Modal.component'
 function App() {
   return (
+    
     <div className="App">
-      <Modal/>
+    <AppContextProvider>
     <CategoryContext>
     <SearchContext>
+
     <Router>
     <Header />
     <br/>
     <br/>
           <Succespayment/>
       <Footer/>
+       <LoginModal/>
       </Router>
+  
       </SearchContext>
       </CategoryContext>
-      
+      </AppContextProvider>
     </div>
   );
 }
