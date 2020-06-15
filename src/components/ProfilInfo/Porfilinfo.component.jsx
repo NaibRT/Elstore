@@ -83,7 +83,8 @@ function Porfilinfo(props) {
     return (
        
                <>
-                    <div className="col-lg-6 col-md-12 col-xs-12">
+                    <div className="row">
+                    <div className="col-lg-9 col-md-12 col-xs-12">
                             <div className="profil__info-owner">
                                 <div className="profil__info--offer">
                                     <div onClick={Personal} id="profile__info-clikced">
@@ -170,6 +171,7 @@ function Porfilinfo(props) {
                             <Button className="button__magaza" name="fərdİ mağaza aç"/>
                             <Button className="button__magaza" name="şİrkət mağazası aç"/>
                             <Button className="button__magaza" name="kuryer olaraq çalış"/>
+                    </div>
                     </div>
                     </>  
         )

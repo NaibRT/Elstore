@@ -4,8 +4,8 @@ import Card from '../components/card/card.component'
 import ListItem from '../components/List-Item/Listitem.component'
 import {BrowserRouter as Router,Link,Route} from 'react-router-dom'
 import SearchResult from '../components/search-result-component/SearchResultComp.component'
-
 import OrderCard from '../components/order-card/order-card.component'
+import ProfileInfo from '../components/ProfilInfo/Porfilinfo.component'
 
 
 function Profile() {
@@ -17,11 +17,13 @@ function Profile() {
    <Card>
     <Link to='/profie/orders' exact><ListItem name='Sifarislerim'/></Link>
     <Link to='/profie/orderCard' exact><ListItem name='Tamamlanmis Sifarisler'/></Link>
+    <Link to='/profie/profile-info' exact><ListItem name='Info'/></Link>
    </Card>
   </div>
   <div className='col-lg-8'>
     <Route path='/profie/orders' component={OrderCard}/>
     <Route path='/profie/orderCard' component={SearchResult}/>
+    <Route path='/profie/profile-info' component={ProfileInfo}/>
   </div>
 </div>
   </Router>

@@ -10,11 +10,10 @@ import SearchContext from './contexts/search';
 import CategoryContext from "./contexts/category";
 import Main from './pages/container-page';
 import Modal from "./components/Modal/Modal.component";
-import ProfilInfo from "./components/ProfilInfo/Porfilinfo.component"
 function App() {
   return (
     <div className="App">
-      {/* <Modal/>
+       <Modal/>
     <CategoryContext>
     <SearchContext>
     <Router>
@@ -25,8 +24,7 @@ function App() {
       <Footer/>
       </Router>
       </SearchContext>
-      </CategoryContext> */}
-      <ProfilInfo/>
+      </CategoryContext>
     </div>
   );
 }
