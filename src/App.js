@@ -10,6 +10,7 @@ import SearchContext from './contexts/search';
 import CategoryContext from "./contexts/category";
 import Main from './pages/container-page';
 import Modal from "./components/Modal/Modal.component"
+import Succespayment from './components/succespayment/succespayment'
 function App() {
   return (
     <div className="App">
@@ -20,7 +21,7 @@ function App() {
     <Header />
     <br/>
     <br/>
-          <Main/>
+          <Succespayment/>
       <Footer/>
       </Router>
       </SearchContext>
