@@ -56,19 +56,27 @@ const Modal = () => {
             <section id="signin_view">
             <form action="">
                 <Input  placeholder={"Email"} type="email"/>
-                <Input placeholder={"Email"} type="password"/>
+                <Input placeholder={"Password"} type="password"/>
                 <a href="">şifrəmi unutmuşam</a>
                 <Button className="bg-primary" type={"submit"} name={"Daxil ol"}  />
+                <br/>
 
             </form>
             </section>
             <section  id="signup_view">
                 <form action="">
+                <Input placeholder={"Ad"} type="text"/>
+                <Input placeholder={"Soyad"} type="text"/>
                 <Input placeholder={"Email"} type="email"/>
-                <Input placeholder={"Email"} type="password"/>
+                <Input placeholder={"Password"} type="password"/>
+                <Input placeholder={"Telefon"} type="number"/>
+                <Input placeholder={"Rayon"} type="text"/>
+                <Input placeholder={"Unvan"} type="text"/>
+
                 <br/>
                 <Button className="bg-primary" type={"submit"} name={"Hesab yarat"}  />
 
+                <br/>
                 </form>
             </section>
         </div>
@@ -79,3 +87,5 @@ const Modal = () => {
 }
 
 export default Modal;
+
+

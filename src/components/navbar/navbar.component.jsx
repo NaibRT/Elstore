@@ -59,7 +59,7 @@ function  Navbar(props) {
         <div className='navbar'>
             <div className='navbar_top'>
                 <Link className="navbar_top_link" to='#'>Kuryer olmaq istəyirsiniz?</Link>
-                <Link className="navbar_top_link navbar_top_link--end " to='#'>Mağaza aç</Link>
+                <Link className="navbar_top_link navbar_top_link--end " to='/open-store'>Mağaza aç</Link>
             </div>
             <div className='navbar_center'>
                 <div className='navbar_logo'>
@@ -76,7 +76,7 @@ function  Navbar(props) {
                 </div>
                 <div className='navbar_buttons'>
                     <Link   className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/heading/Bag.svg')} /></Link>   
-                    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+                    <Link onClick={showbar} className={`navbar_buttons_link profile login`}> <img onClick={Sign} src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
                     <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
                         <ul className='profile_dropwdown_ul'>
                             <li className='profile_dropwdown_li'> <Link to='/orders'>Sifarişlərim (6)</Link></li>

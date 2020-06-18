@@ -10,6 +10,8 @@ import SearchContext from './contexts/search';
 import CategoryContext from "./contexts/category";
 import Main from './pages/container-page';
 import Modal from "./components/Modal/Modal.component";
+
+import Store from "./components/StoreRegistr/StoreRegistr.component"
 function App() {
   return (
     <div className="App">

@@ -7,6 +7,7 @@ import Search from '../pages/search';
 import CheckoutAddress from '../pages/checkout-adress'
 import Profile from './profile';
 import LangToggler from '../components/lang_currency_toggler/lang_currency_toggler'
+import StoreRegistr from "../components/StoreRegistr/StoreRegistr.component"
 function Main() {
 
  return (
@@ -23,6 +24,7 @@ function Main() {
   <Route  path='/product/:id/:name' component={ProductInfo} />
   <Route exact={true} path='/basket' component={Basket} />
   <Route exact={true} path='/search' component={Search} />
+  <Route exact={true} path='/open-store' component={StoreRegistr} />
   </Switch>
   </main>
  )
