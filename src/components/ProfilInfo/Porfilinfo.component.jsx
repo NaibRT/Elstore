@@ -107,7 +107,7 @@ function Porfilinfo(props) {
                                     <div className="profile__photo">
                                         <div className="profil__images">
                                             <input onChange={previewFile} type="file"/>
-                                            <img className="profilePhoto" src={require(`../../assets/images/slider/icons/Group 142.svg`)} alt=""/>
+                                            <img className="profilePhoto" src={require(`../../assets/images/icons/Increase.svg`)} alt=""/>
                                         </div>
                                         <Button name="Yukle"/>                      
                                     </div>
@@ -168,11 +168,7 @@ function Porfilinfo(props) {
                             </section>
                             
                     </div>
-                  <div className="col-lg-3 col-md-12 col-xs-12">
-                            <Button className="button__magaza" name="fərdİ mağaza aç"/>
-                            <Button className="button__magaza" name="şİrkət mağazası aç"/>
-                            <Button className="button__magaza" name="kuryer olaraq çalış"/>
-                    </div>
+                  
                     </div>
                     </>  
         )
