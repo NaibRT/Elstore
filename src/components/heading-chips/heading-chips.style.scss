@@ -1,7 +1,6 @@
 @import '../../App.scss';
 
 .text__main{
-    width:418px;
     h4{
     font-family: NotoRegular;
     font-weight: $font__weight--500;
@@ -71,7 +70,6 @@
 @media (max-width:440px){
 
     .text__main{
-        width:418px;
 
         h4{
         font-family: NotoRegular;

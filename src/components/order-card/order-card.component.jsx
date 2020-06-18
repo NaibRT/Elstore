@@ -4,7 +4,7 @@ import './order-card.component.scss';
 import ButtonRating from '../button-rating/buttonRating.component'
 function OrderCard(props) {
  return (
-  <Card>
+  <>
         <div className='card_profile-flex'>
             <div className='card_profile_left'> 
                <img className='basket_card_profile_img' src={require('../../assets/images/slider/hero.jpg')} />
@@ -21,7 +21,7 @@ function OrderCard(props) {
               
            </div>
             </div>     
-  </Card>
+  </>
  )
 }
 

@@ -12,7 +12,7 @@ function SelectBox(props) {
                 <select name={props.name}  onChange={props.handleChange}  id="searchSelect">
                     <option>{props.firstopt}</option>
                    {
-                    (props.options!=undefined)?props.options.map(item =>{
+                    (props.options!==undefined)?props.options.map(item =>{
                         return <option value={item.id}>{item.name}</option>
                         }):''
                    }
