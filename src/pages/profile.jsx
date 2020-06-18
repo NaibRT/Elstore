@@ -6,6 +6,7 @@ import {BrowserRouter as Router,Link,Route} from 'react-router-dom'
 import SearchResult from '../components/search-result-component/SearchResultComp.component'
 import OrderCard from '../components/order-card/order-card.component'
 import FavoritBrandShops from '../pages/profile-favoit-brand-shop'
+import ProfileInfo from '../components/ProfilInfo/Porfilinfo.component'
 
 
 function Profile() {
@@ -17,6 +18,7 @@ function Profile() {
    <Card className='card-border'>
     <Link to='/profie' exact><ListItem name='Sifarislerim'/></Link>
     <Link to='/profie/orderCard' exact><ListItem name='Tamamlanmis Sifarisler'/></Link>
+    <Link to='/profie/profile-info' exact><ListItem name='Info'/></Link>
     <Link to='/profie/favorit-shop' exact><ListItem name='Beyenilen Magazalar'/></Link>
    </Card>
   </div>
@@ -24,6 +26,7 @@ function Profile() {
     <Route exact strict path='/profile' component={OrderCard}/>
     <Route exact strict path='/profie/orderCard' component={SearchResult}/>
     <Route exact strict  path='/profie/favorit-shop' component={FavoritBrandShops}/>
+    <Route path='/profie/profile-info' component={ProfileInfo}/>
   </div>
 </div>
   </Router>

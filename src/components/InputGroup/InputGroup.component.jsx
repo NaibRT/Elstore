@@ -9,6 +9,7 @@ function InputGroup({register,required,type,label,helper,countertext,formIcon,pl
             <label id='scripted'  className='inputForm_label'>{label}</label>
             <div className='inputForm_iconcontainer'>
             <input name={name} required={required} type={type} placeholder={placeholder} {...otherProps} ref={register} className='inputForm_input' />
+
             <span className='inputForm_icon'><img src={formIcon} /></span>
             </div>
             <div className='inputForm_helpcontainer'>

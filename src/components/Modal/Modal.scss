@@ -48,8 +48,12 @@
 
     form{
        
-        label{
-            font-family: Inter;
+
+        a{
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 21px;
+            font-family: InterRegular;
             font-style: normal;
             font-weight: normal;
             font-size: 14px;
@@ -58,8 +62,20 @@
             text-decoration-line: underline;
             color: #1A1A1A;
             cursor: pointer;
-            display: flex;
-            justify-content: flex-end;
+            margin-right: 12px;
+            margin-top: 21px;
+            margin-bottom: 18px;
+        }
+        label{
+            font-family: InterRegular;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 150%;
+            letter-spacing: 0.4px;
+            text-decoration-line: underline;
+            color: #1A1A1A;
+            cursor: pointer;
             margin-right: 12px;
             margin-top: 21px;
             margin-bottom: 18px;
