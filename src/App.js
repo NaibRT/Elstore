@@ -12,11 +12,12 @@ import AppContextProvider from './contexts/appContext'
 import Main from './pages/container-page';
 import Succespayment from './components/succespayment/succespayment'
 import LoginModal from './components/Modal/Modal.component'
+import Delivery from "./components/DeliveryRegistr/DeliveryRegistr.component"
 function App() {
   return (
     
     <div className="App">
-    <AppContextProvider>
+    {/* <AppContextProvider>
     <CategoryContext>
     <SearchContext>
 
@@ -31,7 +32,10 @@ function App() {
   
       </SearchContext>
       </CategoryContext>
-      </AppContextProvider>
+      </AppContextProvider> */}
+      <Router>
+      <Delivery/>
+      </Router>
     </div>
   );
 }
