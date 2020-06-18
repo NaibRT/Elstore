@@ -17,7 +17,7 @@ function App() {
   return (
     
     <div className="App">
-    {/* <AppContextProvider>
+    <AppContextProvider>
     <CategoryContext>
     <SearchContext>
 
@@ -32,10 +32,8 @@ function App() {
   
       </SearchContext>
       </CategoryContext>
-      </AppContextProvider> */}
-      <Router>
-      <Delivery/>
-      </Router>
+      </AppContextProvider>
+    
     </div>
   );
 }
