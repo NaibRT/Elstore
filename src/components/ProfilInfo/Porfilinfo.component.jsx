@@ -39,7 +39,8 @@ function Porfilinfo(props) {
         active__border.style.border="2px solid #D0D0D0";
      }
      function previewFile() {
-        const preview = document.querySelector('img');
+        const preview = document.querySelector('.profilePhoto');
+
         const file = document.querySelector('input[type=file]').files[0];
         const reader = new FileReader();
       
@@ -106,7 +107,7 @@ function Porfilinfo(props) {
                                     <div className="profile__photo">
                                         <div className="profil__images">
                                             <input onChange={previewFile} type="file"/>
-                                            <img src={require(`../../assets/images/slider/icons/Group 142.svg`)} alt=""/>
+                                            <img className="profilePhoto" src={require(`../../assets/images/slider/icons/Group 142.svg`)} alt=""/>
                                         </div>
                                         <Button name="Yukle"/>                      
                                     </div>
