@@ -38,9 +38,8 @@
     }
     .swiper-button-next{
         position: absolute;
-        top: 0px;
+        top: calc(100% / 2 - 25px);
         left: 16px;
-        margin-top: 7%;
         height: 50px;
         width: 50px;
         background: rgba(255, 255, 255, 0.75);
@@ -55,9 +54,8 @@
     }
     .swiper-button-prev{
         position: absolute;
-        top: 0px;
+        top: calc(100% / 2 - 25px);
         right: 16px;
-        margin-top: 32%;
         height: 50px;
         width: 50px;
         background: rgba(255, 255, 255, 0.75);
@@ -88,7 +86,7 @@
         height: 54px;
         width: 100%;
         position: absolute;
-        bottom: 0px;
+        top: calc(100% / 2 - 25px) !important;
         opacity: 1 !important;
         background: rgba(255, 255, 255,0.8);
         z-index: 1287312;
@@ -119,9 +117,8 @@
         width: 100%;
         .swiper-button-next{
             position: absolute;
-            top: 0px;
+            top: calc(100% / 2 - 25px);
             left: 16px;
-            margin-top: 6%;
             height: 50px;
             width: 50px;
             background: rgba(255, 255, 255, 0.75);
@@ -136,9 +133,8 @@
         }
         .swiper-button-prev{
             position: absolute;
-            top: 0px;
+            top: calc(100% / 2 - 25px);
             right: 16px;
-            margin-top: 52%;
             height: 50px;
             width: 50px;
             background: rgba(255, 255, 255, 0.75);
@@ -172,7 +168,6 @@
         margin-left: 0px;
         .swiper-button-prev{
             right: 16px;
-            margin-top: 65%;
             height: 50px;
             width: 50px;
             background: rgba(255, 255, 255, 0.75);

@@ -48,9 +48,6 @@ const Category = () => {
        
        
     useEffect(() => {
-        
-   
-        
         let body=document.querySelector(".box__category");
         setTimeout(() => {
             body.addEventListener("mouseleave",function(e){
