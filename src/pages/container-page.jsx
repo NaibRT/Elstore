@@ -8,6 +8,7 @@ import CheckoutAddress from '../pages/checkout-adress'
 import Profile from './profile';
 import LangToggler from '../components/lang_currency_toggler/lang_currency_toggler'
 import {appContext} from '../contexts/appContext'
+import Verify from './verify'
 
 
 function Main() {
@@ -21,14 +22,15 @@ function Main() {
     
   <Route exact={true} path='/' component={Index} />
   <Route exact={true} path='/checkout' component={CheckoutAddress} />
-  <Route exact={true} path='/homeandoffice' render={()=>(
-    AppContext.events.IsAuthorized()?(<Profile/>):
-    (<Redirect to='/'/>)
-  )}/>
+  <Route exact={true} path='/homeandoffice'/>
   <Route exact={true} path='/product' component={ProductInfo} />
   <Route  path='/product/:id/:name' component={ProductInfo} />
   <Route exact={true} path='/basket' component={Basket} />
-  <Route exact={true} path='/search' component={Search} />
+  <Route  path='/verify/:token' component={Verify} />
+  <Route exact path='/profile' render={()=>(
+    AppContext.app.isAuthorized?(<Profile/>):
+    (<Redirect to='/'/>)
+  )}/>
   </Switch>
   </main>
  )

@@ -1,9 +1,9 @@
 import React from 'react'
 import './card.component.scss'
 
-function Card({children}) {
+function Card({children,className}) {
  return (
-  <div className='my-card'>
+  <div className={ `my-card ${className}`}>
    {children}
   </div>
  )

@@ -6,6 +6,7 @@ import {searchContext} from '../../contexts/search';
 import Modal from "../Modal/Modal.component"
 import LangToggler from "../lang_currency_toggler/lang_currency_toggler";
 import Selectbox from "../Select-box/SelectBox.component";
+import {appContext} from '../../contexts/appContext'
 
 const Langs =  [
     {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
@@ -13,14 +14,15 @@ const Currency =  ['AZN','EURO','USD'];
 
 
 function  Navbar(props) {
+
     const products = useContext(searchContext);
     const [visiblepp,setVisiblepp] =useState(false);
+    const AppContext=useContext(appContext);
 
 
     function showbar(){
         setVisiblepp(!visiblepp)
     }
-
 
     const [toggle, setToggle] = useState({
         active: false,
@@ -54,6 +56,19 @@ function  Navbar(props) {
             }
     })
    
+    const userProfle=<><Link onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+<div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
+    <ul className='profile_dropwdown_ul'>
+        <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
+        <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən məhsullar</Link></li>
+        <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən brendlər və mağazalar</Link></li>
+        <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
+        <li className='profile_dropwdown_li'><Link to='/orders'>Logout</Link></li>
+    </ul>
+</div></>;
+
+const loginRegister=<><Link className='navbar_buttons_link log login' onClick={Sign} >daxİl ol</Link>
+                      <Link className='navbar_buttons_link log signup' to='/register'>hesab yarat</Link></>
 
     return (
         <div className='navbar'>
@@ -75,19 +90,12 @@ function  Navbar(props) {
                     <LangToggler/>
                 </div>
                 <div className='navbar_buttons'>
-                    <Link   className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/heading/Bag.svg')} /></Link>   
-                    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
-                    <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
-                        <ul className='profile_dropwdown_ul'>
-                            <li className='profile_dropwdown_li'> <Link to='/orders'>Sifarişlərim (6)</Link></li>
-                            <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən məhsullar</Link></li>
-                            <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən brendlər və mağazalar</Link></li>
-                            <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
-                            <li className='profile_dropwdown_li'><Link to='/orders'>Logout</Link></li>
-                        </ul>
-                    </div>
-                    {/* <Link className='navbar_buttons_link log login' onClick={Sign} >daxİl ol</Link>
-                    <Link className='navbar_buttons_link log signup' to='/register'>hesab yarat</Link> */}
+                    <Link   className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/heading/Bag.svg')} /></Link> 
+                    {
+                        AppContext.app.isAuthorized?
+                            userProfle:
+                            loginRegister
+                    }
                     <div>
                     <div className={`${toggle.active ? 'change': ''} menu-container navbaroutside`}    onClick={toggleNav}>
                         <div className="bar1"></div>
