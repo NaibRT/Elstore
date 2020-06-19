@@ -7,7 +7,7 @@ import Modal from "../Modal/Modal.component"
 import LangToggler from "../lang_currency_toggler/lang_currency_toggler";
 import Selectbox from "../Select-box/SelectBox.component";
 import {appContext} from '../../contexts/appContext'
-
+import $ from 'jquery'
 const Langs =  [
     {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
 const Currency =  ['AZN','EURO','USD'];
@@ -54,6 +54,34 @@ function  Navbar(props) {
                 } 
             });
             }
+
+
+
+            $(function() {
+                $(".navbar_bottom_link").click(function() {
+                   // remove classes from all
+                   $(".navbar_bottom_link").removeClass("activenav");
+                   // add class to the one we clicked
+                   $(this).addClass("activenav");
+                   
+                });
+                $(".navbar_logo a").click(function() {
+                    $(".navbar_bottom_link").removeClass("activenav");
+                 });
+             });
+             
+             if(window.location.href.split('/')[3]==='' && window.location.href.split('/')[3] === 'index'){
+                $(".navbar_bottom_link").removeClass("activenav");
+             }
+          
+
+
+
+
+
+
+
+
     })
    
     const userProfle=<><Link onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
