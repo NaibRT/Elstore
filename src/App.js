@@ -12,7 +12,7 @@ import AppContextProvider from './contexts/appContext'
 import Main from './pages/container-page';
 import Succespayment from './components/succespayment/succespayment'
 import LoginModal from './components/Modal/Modal.component';
-import DatatableCheck from './components/datatable checkbox/datatable_checkbox'
+import DatatableOrder from './components/datatable order/datatable_order'
 
 const th = ['sİfarİş kodu','məhsulun adı', 'say', 'qİymət','Status', 'Düzəlİş' ];
 var sifaris = [
@@ -58,7 +58,7 @@ function App() {
     <Header />
     <br/>
     <br/>
-          <DatatableCheck thead ={th} tbody={sifaris}/>
+          <DatatableOrder thead ={th} tbody={sifaris}/>
       <Footer/>
        <LoginModal/>
       </Router>

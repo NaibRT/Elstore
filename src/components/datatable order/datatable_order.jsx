@@ -3,7 +3,6 @@ import '../datatable/datatable.jquery.scss';
 import '../datatable/datatable.scss';
 import InputGroup from '../InputGroup/InputGroup.component'
 import SelectBox from '../Select-box/SelectBox.component';
-import Checkbox from '../checkbox/checkbox'
 var $  = require( 'jquery' );
 var dt = require( 'datatables.net' );
 
@@ -23,7 +22,7 @@ const kategories = [
 ]
 
 
-function DatatableCheck(params) {
+function DatatableOrder(params) {
    
     const [filter,SetFilter]  = useState({
         kategories:[],
@@ -88,13 +87,14 @@ function DatatableCheck(params) {
                 params.tbody.map(bodyItems=>{
                     return (
                         <tr>
-                            <td>
-                               <Checkbox/>
-                            </td>
+                            <td>{bodyItems.kod}</td>
                             <td>{bodyItems.ad}</td>
                             <td>{bodyItems.say}</td>
                             <td>{bodyItems.qiymət}</td>
-                            <td>{bodyItems.status}</td>
+                            <td>
+                            <SelectBox class='datatable_selectbox_row' firstopt="Kateqoriya" options={kategories}/>
+                            </td>
+                            <td><a href="#">Duzelish</a> <a href="#">Sil</a></td>
                         </tr>
                     )
                 })
@@ -106,5 +106,5 @@ function DatatableCheck(params) {
     )
 }
 
-export default DatatableCheck
+export default DatatableOrder
 
