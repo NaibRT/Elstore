@@ -6,6 +6,7 @@
     label{
      display: none;
     }
+   
 }
 .dataTables_length{
     label{
@@ -22,6 +23,14 @@ th{
     letter-spacing: 0.25px;
     text-transform: uppercase;
     color: #1A1A1A;
+}
+td{
+    .select__search {
+        select{
+            background-color: #FFFBD8 !important;
+        }
+        
+    }
 }
 
 .datatable_search{
@@ -89,10 +98,5 @@ th{
     border: 1px solid #FFFBD8 ;
     
 }
-.select__search {
-    select{
-        background-color: #FFFBD8 !important;
-    }
-    
-}
+
 
