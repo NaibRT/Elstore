@@ -11,39 +11,45 @@ import CategoryContext from "./contexts/category";
 import AppContextProvider from './contexts/appContext'
 import Main from './pages/container-page';
 import Succespayment from './components/succespayment/succespayment'
+
 import LoginModal from './components/Modal/Modal.component';
 import DatatableOrder from './components/datatable order/datatable_order'
 
-const th = ['sİfarİş kodu','məhsulun adı', 'say', 'qİymət','Status', 'Düzəlİş' ];
-var sifaris = [
-  {
-    'kod':'0259416',
-    'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
-    'say': '1',
-    'qiymət':'18 ₼',
-    'status': 'Hazırlanır',
-  },
-  {
-    'kod':'0259416',
-    'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
-    'say': '1',
-    'qiymət':'18 ₼',
-    'status': 'Hazırlanır',
-  }, {
-    'kod':'0259416',
-    'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
-    'say': '1',
-    'qiymət':'23 ₼',
-    'status': 'Hazırlanır',
-  }, {
-    'kod':'0259416',
-    'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
-    'say': '1',
-    'qiymət':'34 ₼',
-    'status': 'Hazırlanır',
-  }
+// const th = ['sİfarİş kodu','məhsulun adı', 'say', 'qİymət','Status', 'Düzəlİş' ];
+// var sifaris = [
+//   {
+//     'kod':'0259416',
+//     'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
+//     'say': '1',
+//     'qiymət':'18 ₼',
+//     'status': 'Hazırlanır',
+//   },
+//   {
+//     'kod':'0259416',
+//     'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
+//     'say': '1',
+//     'qiymət':'18 ₼',
+//     'status': 'Hazırlanır',
+//   }, {
+//     'kod':'0259416',
+//     'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
+//     'say': '1',
+//     'qiymət':'23 ₼',
+//     'status': 'Hazırlanır',
+//   }, {
+//     'kod':'0259416',
+//     'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
+//     'say': '1',
+//     'qiymət':'34 ₼',
+//     'status': 'Hazırlanır',
+//   }
   
-]
+// ]
+
+
+import LoginModal from './components/Modal/Modal.component'
+import Delivery from "./components/DeliveryRegistr/DeliveryRegistr.component"
+import CompanyAdd from "./components/CompanyAdd/CompanyAdd.component"
 
 
 function App() {
@@ -66,6 +72,7 @@ function App() {
       </SearchContext>
       </CategoryContext>
       </AppContextProvider>
+      
     </div>
   );
 }
