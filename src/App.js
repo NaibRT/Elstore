@@ -13,6 +13,8 @@ import Main from './pages/container-page';
 import Succespayment from './components/succespayment/succespayment'
 import LoginModal from './components/Modal/Modal.component'
 import Delivery from "./components/DeliveryRegistr/DeliveryRegistr.component"
+import CompanyAdd from "./components/CompanyAdd/CompanyAdd.component"
+
 function App() {
   return (
     
@@ -33,7 +35,7 @@ function App() {
       </SearchContext>
       </CategoryContext>
       </AppContextProvider>
-    
+      
     </div>
   );
 }
