@@ -12,6 +12,14 @@
         display: none
     }
 }
+td{
+    .select__search {
+        select{
+            background-color: #FFFBD8 !important;
+        }
+        
+    }
+}
 
 th{
     font-family: 'InterRegular';
@@ -34,6 +42,7 @@ th{
             margin-right: 8px;
         }
     }
+    
 }
 .datatable_selectbox{
     background: #FFFFFF;
@@ -87,11 +96,5 @@ th{
     
     border-radius: 8px !important;
     border: 1px solid #FFFBD8 ;
-    
-}
-.select__search {
-    select{
-        background-color: #FFFBD8 !important;
-    }
     
 }
