@@ -74,9 +74,9 @@ const Category = () => {
             console.log(x)
             return <ul key={x.id} className="box--subcotegory_flexx">
             <li  className="box__subcotegory--item">
-            <Link to={`/search?filter[category_id]=${x.id}`} className="box--subcotegory">{x.translation.name}</Link>
+            <Link to={`/search?filter[category_id]=${x.id}`} className="box--subcotegory">{x.name}</Link>
                 <ul>
-                {(x.children != null) ? x.children.map(y=>{return <li data-id=""><Link to={`/search/${y.id}/${y.translation.name}`}>{y.translation.name}</Link></li>}):''}
+                {(x.children != null) ? x.children.map(y=>{return <li data-id=""><Link to={`/search/${y.id}/${y.name}`}>{y.name}</Link></li>}):''}
                 </ul>
             </li>
            </ul>
@@ -90,7 +90,7 @@ const Category = () => {
                         <ul>
                             {
                                 CategoryContext.state.categories.map(x=>{
-                                    return  <Link to={`/search/${x.id}/${x.translation.name}`}><li className="category__items" key={x.id}>{x.translation.name} <span ><img onMouseOver={(e)=>{CategoryContext.event.getSubCat(e);handleClick()}} data-id={x.id} className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li></Link>
+                                    return  <Link to={`/search/${x.id}/${x.name}`}><li className="category__items" key={x.id}>{x.name} <span ><img onMouseOver={(e)=>{CategoryContext.event.getSubCat(e);handleClick()}} data-id={x.id} className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li></Link>
                                 })
                             }
                         </ul>

@@ -19,7 +19,6 @@ function Modal(){
     const AppContext=useContext(appContext)
 
     useEffect(()=>{
-        console.log('hesen')
         let url=UrlGenerator('az','cities');
         fetch(url)
         .then(response => response.json())
