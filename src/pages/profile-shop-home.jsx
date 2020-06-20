@@ -5,6 +5,7 @@ import CompanyMiniImage from '../components/Compony-mini-image/CompanyMiniImage'
 import ButtonRating from '../components/button-rating/buttonRating.component';
 import Button from '../components/button/button.component';
 import ButtonDropDown from '../components/button-dropdown/ButtonDropDown.component';
+import Filter from '../components/filter/filter.component';
 
 
 function ProfileShopHome() {
@@ -36,6 +37,23 @@ function ProfileShopHome() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="add_button__section">
+                            <ButtonRating  name='əlavə et' icon={require('../assets/images/index/Union.svg')} class=''/>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                        <div className="profil_filter_content">
+                            <Filter/>
+                        </div>
+                    </div>
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
+                        
                     </div>
                 </div>
             </div>
