@@ -68,7 +68,6 @@ function App() {
     <br/>
     <br/>
           <Main />
-
       <Footer/>
        <LoginModal/>
       </Router>
