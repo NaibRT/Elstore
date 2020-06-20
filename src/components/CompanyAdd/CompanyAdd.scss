@@ -93,10 +93,10 @@
     display: flex;
     margin-top: 14px;
     margin-left: 61px;
-    width: 640px;
+    width: 50%;
     background: #EDEFFF;
     .profil__images{
-        width: 640px;
+        width: 100%;
        
         background: url("../../assets/images/icons/Increase.svg") no-repeat center;
         background-size: 48px 48px;
@@ -135,7 +135,7 @@
 }
 .company__create{
     margin-left: 61px;
-    width: 639px;
+    width: 50%;
     background: #6472B8;
     font-family: InterRegular;
     font-style: normal;
