@@ -10,6 +10,7 @@ import LangToggler from '../components/lang_currency_toggler/lang_currency_toggl
 import StoreRegistr from "../components/StoreRegistr/StoreRegistr.component"
 import Delivery from "../components/DeliveryRegistr/DeliveryRegistr.component"
 import {appContext} from '../contexts/appContext'
+import CreateProduct from './create-product'
 import Verify from './verify'
 
 function Main() {
@@ -25,9 +26,11 @@ function Main() {
   <Route exact={true} path='/checkout' component={CheckoutAddress} />
   <Route exact={true} path='/homeandoffice'/>
   <Route exact={true} path='/product' component={ProductInfo} />
+  <Route exact={true} path='/product/create' component={CreateProduct} />
   <Route  path='/product/:id/:name' component={ProductInfo} />
   <Route exact={true} path='/basket' component={Basket} />
   <Route exact={true} path='/search' component={Search} />
+  <Route  path='/search/:id/:name' component={Search} />
   <Route exact={true} path='/open-store' component={StoreRegistr} />
   <Route exact={true} path='/worked-delivery' component={Delivery} />
   <Route  path='/verify/:token' component={Verify} />

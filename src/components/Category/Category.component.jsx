@@ -1,6 +1,7 @@
 import React, {useEffect,useState,useContext} from 'react'
 import "../Category/Category.scss"
 import { categoryContext } from "../../contexts/category";
+import {Link} from 'react-router-dom'
 const Category = () => {
     const CategoryContext = useContext(categoryContext)
 
@@ -73,9 +74,9 @@ const Category = () => {
             console.log(x)
             return <ul key={x.id} className="box--subcotegory_flexx">
             <li  className="box__subcotegory--item">
-            <a data-id={x.id} className="box--subcotegory" href="/" >{x.translation.name}</a>
+            <Link to={`/search?filter[category_id]=${x.id}`} className="box--subcotegory">{x.translation.name}</Link>
                 <ul>
-                {(x.children != null) ? x.children.map(y=>{return <li data-id=""><a href="/">{y.translation.name}</a></li>}): ''}
+                {(x.children != null) ? x.children.map(y=>{return <li data-id=""><Link to={`/search/${y.id}/${y.translation.name}`}>{y.translation.name}</Link></li>}):''}
                 </ul>
             </li>
            </ul>
@@ -89,7 +90,7 @@ const Category = () => {
                         <ul>
                             {
                                 CategoryContext.state.categories.map(x=>{
-                                    return  <li   className="category__items" key={x.id} >{x.translation.name} <span ><img onMouseOver={(e)=>{CategoryContext.event.getSubCat(e);handleClick()}} data-id={x.id} className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li>
+                                    return  <Link to={`/search/${x.id}/${x.translation.name}`}><li className="category__items" key={x.id}>{x.translation.name} <span ><img onMouseOver={(e)=>{CategoryContext.event.getSubCat(e);handleClick()}} data-id={x.id} className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li></Link>
                                 })
                             }
                         </ul>

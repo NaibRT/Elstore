@@ -1,15 +1,20 @@
-import React,{useContext,useState} from 'react';
+import React,{useContext,useState,useEffect} from 'react';
 import '../App.scss'
 import {searchContext} from '../contexts/search';
 import Filter from '../components/filter/filter.component'
 import SearchResultPage from '../components/Search-reasult-page/SearchResult.component.jsx'
+import UrlGenerator from '../services/url-generator';
 
 
 function Search(props) {
     const [priceFrom,setPriceFrom]= useState(0);
     const [priceTo,setPriceTo]= useState(1000000);
     console.log(useState)
-
+     useEffect(()=>{
+         let url=UrlGenerator('az','search/product')
+         let id=props.match.params.id;
+         fetch()
+     })
     const products = useContext(searchContext);
     console.log(products.state.data)
    

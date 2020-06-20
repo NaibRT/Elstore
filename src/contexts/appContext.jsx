@@ -6,7 +6,7 @@ function AppContextProvider(props) {
   token:{},
   isAuthorized:false,
   lang:'en',
-  currency:'aze'
+  currency:'aze',
  })
 
   function getCities(){
