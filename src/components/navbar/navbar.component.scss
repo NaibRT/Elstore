@@ -51,7 +51,7 @@
     .navbar_logo{
         flex: 0.5;
        img{
-        height: 76px;
+        // height: 6px;
        }
     }
 }
@@ -68,6 +68,7 @@
         font-family: 'InterRegular';
         font-style: normal;
         font-weight: normal;
+        text-transform: capitalize;
         font-size: 16px;
         line-height: 200%;
         letter-spacing: 0.5px;
@@ -90,6 +91,9 @@
             font-size: 12px;
         }
     } 
+    .budget,.notification{
+        display: none;
+    }
 }
 
 .opennav{
@@ -100,7 +104,7 @@
     width: 100%;
     background-color: #fff;
     height: 100vh;
-    z-index: 123;
+    z-index: 2;
     position: absolute;
     top: 70px;
     left: -100%;
@@ -227,10 +231,10 @@
       }
       
     .navbar_logo{
-        width: 100px;
-        margin-right:25px;
        img{
-       width: 100%;
+       width: 100px;
+       margin-top: 15px;
+       margin-right: 10px;
        object-fit: cover;
        }
     }
@@ -262,7 +266,7 @@
     }
     .bag{
         position: relative;
-        left: -27px;
+        left: -47px;
     }
     .navbar_center{
         padding: 0 5px !important;
