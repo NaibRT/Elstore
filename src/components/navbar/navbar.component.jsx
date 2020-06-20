@@ -101,7 +101,7 @@ const loginRegister=<><Link className='navbar_buttons_link log login' onClick={S
     return (
         <div className='navbar'>
             <div className='navbar_top'>
-                <Link className="navbar_top_link" to='#'>Kuryer olmaq istəyirsiniz?</Link>
+                <Link className="navbar_top_link" to='/worked-delivery'>Kuryer olmaq istəyirsiniz?</Link>
                 <Link className="navbar_top_link navbar_top_link--end " to='/open-store'>Mağaza aç</Link>
             </div>
             <div className='navbar_center'>
