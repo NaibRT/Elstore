@@ -3,13 +3,13 @@ import './InputGroup.styles.scss';
 
 
 
-function InputGroup({required,type,label,helper,countertext,min, max,name,formIcon,placeholder,otherProps,onChange,register}) {
+function InputGroup({required,type,label,helper,countertext,min, max,name,formIcon,placeholder,otherProps,onChange,register,classinout}) {
 
     return (
         <div  className='inputForm'>
-            <label id='scripted'  className='inputForm_label'>{label}</label>
+            <label id='scripted'  className='inputForm_label'>{label}</label> 
             <div className='inputForm_iconcontainer'>
-            <input onChange={onChange} required={required} name={name} min={min}  max={max} type={type} placeholder={placeholder} {...otherProps} ref={register} className='inputForm_input' />
+            <input onChange={onChange} required={required} name={name} min={min}  max={max} type={type} placeholder={placeholder} {...otherProps} ref={register} className={`inputForm_input ${classinout}`} />
             <span className='inputForm_icon'><img src={formIcon} /></span>
             </div>
             <div className='inputForm_helpcontainer'>

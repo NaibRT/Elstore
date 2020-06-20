@@ -1,0 +1,251 @@
+@import "../../App.scss";
+.Store__Photo--text{
+    h5{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0.25px;
+        text-transform: uppercase;
+        color: #1A1A1A;
+        margin-top: 32px;
+    }
+    .profile__photo{
+        
+        display: flex;
+        margin-top: 20px;
+        
+        .profil__images{
+            width: 80px;
+            height: 80px;
+            background: #EDEFFF;
+            border-radius: 12px;
+           
+            input{
+                opacity: 0;
+                position: absolute;
+                top: 50px;
+                cursor: pointer;
+                width: 12%;
+                height: 60%;
+            }
+            img{
+                cursor: pointer;
+                object-fit: cover;
+                width: 80px;
+                height: 80px;
+            }
+            
+        }
+        button{
+            width: 82px;
+            height: 44px;
+            padding: 11.5px 16px;
+            background: #F1F1F1;
+            border-radius: 6px;
+            font-family: InterRegular;
+            font-style: normal;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 150%;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #444444;
+            flex: none;
+            order: 1;
+            align-self: center;
+            margin: 12px;
+        }
+    }
+    .borders{
+        width: 70%;
+        border: 1px solid #EDEFFF;
+        margin-top: 20px;
+    }
+}
+.profile--image_Username{
+    .userName_edit{
+        display: flex;
+        margin-top: 20px;
+
+        h5{
+            font-family: InterRegular;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 150%;
+            letter-spacing: 0.25px;
+            text-transform: uppercase;
+            color: #1A1A1A;
+        }
+        a{
+            font-family: InterRegular;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 150%;
+            letter-spacing: 0.4px;
+            text-decoration-line: underline;
+            color: #334788;
+        }
+    }
+    .input-_area{
+        margin-top: 4px;
+        width: 142px;
+        height: 32px;
+    }
+    .borders{
+        margin-top: 40px;
+        width: 70%;
+        border: 1px solid #D6D6D6;
+    }
+}
+
+.profile--image_Store{
+    .userName_edit{
+        display: flex;
+        margin-top: 20px;
+
+        h5{
+            font-family: InterRegular;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 150%;
+            letter-spacing: 0.25px;
+            text-transform: uppercase;
+            color: #1A1A1A;
+        }
+        a{
+            font-family: InterRegular;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 150%;
+            letter-spacing: 0.4px;
+            text-decoration-line: underline;
+            color: #334788;
+        }
+    }
+     .Store__info{
+        width: 463px;
+        margin-top: 4px;
+        p{
+            word-break: break-word;
+        }
+     }
+    .borders{
+        margin-top: 40px;
+        width: 70%;
+        border: 1px solid #D6D6D6;
+    }
+}
+.number__delete{
+    display: flex;
+    margin-top: 4px;
+    p{
+     
+    font-family: InterRegular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 200%;
+    letter-spacing: 0.5px;
+    color: #1A1A1A;
+  }
+  a{
+    margin-left: 113px;
+}
+}
+.borders1{
+    margin-top: 20px;
+    width: 70%;
+    border: 1px solid #D6D6D6;
+}
+.emails a{
+    margin-left: 118px;
+}
+.store a{
+    margin-left: 76px;
+}
+.mail a{
+    margin-left: 191px;
+}
+.pass a{
+    margin-left: 192px;
+}
+.phone a{
+    margin-left: 97px;
+}
+.button_delete--acc{
+    background-color: black;
+    width: 116px;
+    height: 44px;
+    background: #FFDBDB;
+    border-radius: 6px;
+    padding: 11.5px 16px;
+    font-family: InterRegular;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #444444;
+    flex: none;
+    order: 1;
+    align-self: center;
+    margin: 20px 0px;
+}
+
+.delivery_mapping{
+    display: flex;
+    margin-top: 21px;
+    margin-bottom: 20px;
+    
+    h5{
+        font-family: InterRegular;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0.25px;
+        text-transform: uppercase;
+        color: #1A1A1A;
+    }
+    .delivery__edit{
+        
+        margin-left: 140px;
+        a{
+            margin-left: 12px;
+            font-family: InterRegular;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 150%;
+            letter-spacing: 0.4px;
+            text-decoration-line: underline;
+            color: #334788;
+        }
+    }
+    
+}
+.adress--data{
+    
+    background: #F9F9FB;
+    border-radius: 8px;
+    padding: 12px;
+    width: 307px;
+    p{
+        font-family: InterRegular;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 200%;
+        letter-spacing: 0.5px;
+        color: #444444;
+        word-break: break-word;
+    }
+}
