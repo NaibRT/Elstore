@@ -8,7 +8,7 @@ function ProductCartItem({data}) {
  console.log(data.id)
  return (
   <div  className="search__result">
-  <HeartImage id={data.id}/>
+  <HeartImage isLiked={data.is_like} id={data.id}/>
   {
       data.images.map(f=>{
           if(f.is_main){

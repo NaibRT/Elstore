@@ -4,6 +4,7 @@ import "../StoreRegistr/StoreRegistr.scss"
 import { Link } from "react-router-dom";
 import Selectbox from '../Select-box/SelectBox.component'
 import Button from "../button/button.component"
+import GoBack from '../go-back/go-back.component'
 
 
 const StoreRegistr= (props) => {
@@ -68,10 +69,7 @@ const StoreRegistr= (props) => {
             <div className="row">
                 <div className="col-lg-12 col-md-12 col-xs-12">
                     <div className="Store__Register">
-                      <div className="redirect__page">
-                          <span><img src={require(`../../assets/images/icons/Iconprev.svg`)} alt=""/></span>
-                                <Link className="rediretc__text" to="/">gerİ dön</Link>
-                       </div>
+                        <GoBack/>
                        <div className="store__registr--text">
                            <h5>Mağaza qeydiyyatı</h5>
                        </div>
