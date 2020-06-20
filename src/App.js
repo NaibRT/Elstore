@@ -67,11 +67,11 @@ function App() {
       }
     <br/>
     <br/>
-          <ProfileShopHome />
+          <Main />
+
       <Footer/>
        <LoginModal/>
       </Router>
-  
       </SearchContext>
       </CategoryContext>
       </AppContextProvider>
