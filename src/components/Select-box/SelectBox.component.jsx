@@ -10,7 +10,7 @@ function SelectBox(props) {
             <form>
                 <label htmlFor="" id="labelId">{props.label}</label>
                 <select name={props.name}  onChange={props.handleChange}  id="searchSelect">
-                    <option>{props.firstopt}</option>
+    <option>{props.firstopt} </option>
                    {
                     (props.options!==undefined)?props.options.map(item =>{
                         return <option value={item.id}>{item.name}</option>

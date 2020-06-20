@@ -61,7 +61,7 @@ function App() {
     <Header />
     <br/>
     <br/>
-          <Campaign />
+         <Main/>
       <Footer/>
        <LoginModal/>
       </Router>

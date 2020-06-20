@@ -19,7 +19,6 @@ function Modal(){
     const AppContext=useContext(appContext)
 
     useEffect(()=>{
-        console.log('hesen')
         let url=UrlGenerator('az','cities');
         fetch(url)
         .then(response => response.json())
@@ -76,9 +75,11 @@ function Modal(){
       })
       .then(async res=>{
           let data=await res.json();
-          console.log(data)
-         AppContext.events.AddToken(data)
-         document.getElementById('login__modal').style.display='none';
+          if(res.ok){
+            AppContext.events.AddToken(data)
+            document.getElementById('login__modal').style.display='none';
+          }
+     
       })
       .catch((err) =>console.log(err))
       console.log(errors.email)
