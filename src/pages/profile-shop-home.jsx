@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect, useContext} from 'react'
 import './profile-shop-home.scss'
 import Chips from '../components/chips/chips.component';
 import CompanyMiniImage from '../components/Compony-mini-image/CompanyMiniImage';
@@ -6,9 +6,28 @@ import ButtonRating from '../components/button-rating/buttonRating.component';
 import Button from '../components/button/button.component';
 import ButtonDropDown from '../components/button-dropdown/ButtonDropDown.component';
 import Filter from '../components/filter/filter.component';
+import UrlGenerator from '../services/url-generator';
+import { appContext } from '../contexts/appContext';
+import { searchContext } from '../contexts/search';
+import SearchResultComp from '../components/search-result-component/SearchResultComp.component';
 
 
 function ProfileShopHome() {
+    let AppContext=useContext(appContext)
+    let SearchContext=useContext(searchContext);
+    useEffect(()=>{
+        let token=AppContext.events.getToken();
+      let url=UrlGenerator('az','products?')
+
+      fetch(url,{
+         headers:{
+             'Authorization':`${token.token_type} ${token.access_token}`
+         } 
+      })
+    })
+
+
+
     return (
         <section className="profile_shop__home__section">
             <div className="profile_shop__home__image">
@@ -49,11 +68,11 @@ function ProfileShopHome() {
                 <div className="row">
                     <div className="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
                         <div className="profil_filter_content">
-                            <Filter/>
+                            {/* <Filter/> */}
                         </div>
                     </div>
                     <div className="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
-                        
+                     <SearchResultComp data={SearchContext.state.filteredData&&SearchContext.state.data} />
                     </div>
                 </div>
             </div>

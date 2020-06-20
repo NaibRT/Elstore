@@ -2,7 +2,6 @@ import React from 'react'
 import axios from "axios"
 
 const searchContext=React.createContext({});
-const searchContextConsumer=searchContext.Consumer
 
 
 

@@ -1,8 +1,11 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import DatatableCompaign from '../components/datatable compaign/datatable_compaign';
 import '../App.scss'
+import axios from 'axios'
 import '../assets/sass/pages/compaign.scss'
 import Button from '../components/button/button.component';
+
+
 
 const th = ['kampanİya ADI','məhsulların sayı', 'Status', 'Düzəlİş' ];
 var sifaris = [
@@ -68,6 +71,25 @@ var sifaris = [
 ]
 
 function Compaign() {
+
+
+const [product,setProduct] = useState({
+  data:[]
+})
+
+useEffect(()=>{
+  axios.get('http://139.180.144.49/api/v1/az/products?include=seller,images',{headers:{
+  }})
+  .then(res=>{
+      // setProduct(res.data.data)
+      setProduct({data:res.data.data});
+      console.log(res.data.data)
+  })
+  
+},[])
+
+
+
     return (
         <div className='container-fluid'>
             <div className="head_compaign">

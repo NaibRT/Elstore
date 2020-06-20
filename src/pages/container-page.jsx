@@ -23,7 +23,7 @@ function Main() {
     </div>
   <Switch>
     
-  <Route exact={true} path='/' component={ProfileShopHome} />
+  <Route exact={true} path='/' component={Index} />
   <Route exact={true} path='/checkout' component={CheckoutAddress} />
   <Route exact={true} path='/homeandoffice'/>
   <Route exact={true} path='/product' component={ProductInfo} />
@@ -39,9 +39,10 @@ function Main() {
     AppContext.app.isAuthorized?(<Profile/>):
     (<Redirect to='/'/>)
   )}/>
+  <Route exact={true} path='/profile/home' component={ProfileShopHome} />
   </Switch>
   </main>
  )
 }
 
-export default Main
+export default React.memo(Main)
