@@ -13,6 +13,9 @@ import Main from './pages/container-page';
 import Succespayment from './components/succespayment/succespayment'
 import CompanyAdd from "./components/CompanyAdd/CompanyAdd.component"
 import DatatableOrder from './components/datatable order/datatable_order'
+import Delivery from "./components/DeliveryRegistr/DeliveryRegistr.component"
+import LoginModal from './components/Modal/Modal.component';
+import Campaign from './pages/compaign'
 
 const th = ['sİfarİş kodu','məhsulun adı', 'say', 'qİymət','Status', 'Düzəlİş' ];
 var sifaris = [
@@ -50,7 +53,7 @@ function App() {
   return (
     
     <div className="App">
-    {/* <AppContextProvider>
+   <AppContextProvider>
     <CategoryContext>
     <SearchContext>
 
@@ -58,17 +61,14 @@ function App() {
     <Header />
     <br/>
     <br/>
-          <DatatableOrder thead ={th} tbody={sifaris}/>
+          <Campaign />
       <Footer/>
        <LoginModal/>
       </Router>
   
       </SearchContext>
       </CategoryContext>
-      </AppContextProvider> */}
-      <Router>
-      <CompanyAdd/>
-      </Router>
+      </AppContextProvider>
       
     </div>
   );

@@ -6,10 +6,19 @@
     label{
      display: none;
     }
+   
 }
 .dataTables_length{
     label{
         display: none
+    }
+}
+td{
+    .select__search {
+        select{
+            background-color: #FFFBD8 !important;
+        }
+        
     }
 }
 
@@ -23,6 +32,14 @@ th{
     text-transform: uppercase;
     color: #1A1A1A;
 }
+td{
+    .select__search {
+        select{
+            background-color: #FFFBD8 !important;
+        }
+        
+    }
+}
 
 .datatable_search{
     display: flex;
@@ -34,6 +51,7 @@ th{
             margin-right: 8px;
         }
     }
+    
 }
 .datatable_selectbox{
     background: #FFFFFF;
@@ -89,9 +107,4 @@ th{
     border: 1px solid #FFFBD8 ;
     
 }
-.select__search {
-    select{
-        background-color: #FFFBD8 !important;
-    }
-    
-}
+
