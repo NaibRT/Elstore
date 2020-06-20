@@ -1,6 +1,7 @@
 import React,{useContext} from 'react'
 import {Switch,Route,Redirect} from "react-router-dom";
 import Index from '../pages/index';
+import ProfileShopHome from '../pages/profile-shop-home';
 import ProductInfo from '../pages/product-info';
 import Basket from '../pages/basket';
 import Search from '../pages/search';
@@ -22,7 +23,7 @@ function Main() {
     </div>
   <Switch>
     
-  <Route exact={true} path='/' component={Index} />
+  <Route exact={true} path='/' component={ProfileShopHome} />
   <Route exact={true} path='/checkout' component={CheckoutAddress} />
   <Route exact={true} path='/homeandoffice'/>
   <Route exact={true} path='/product' component={ProductInfo} />

@@ -1,33 +1,7 @@
 import React,{useContext,Component} from 'react';
 import './chips.style.scss';
-import {chipsContext} from "../../contexts/ChipsHeading"
-import axios from 'axios'
-
-// const HeadingContext = useContext()
-
-// const chipsContext=useContext(chipsContext);
-
-// function Chips(this.props){
-//     return(
-//         <React.Fragment>
-//         <div className="star__chips display__flex">
-
-//                         <div className="star__text display__flex"> 
-//                          {
-//                             chipsContext.state.avg_rating.map(x=>{
-//                                 if(x.)
-//                                 return <img src={require('../../assets/images/heading/iconka.svg')} alt=""/> 
-                             
-//                             })
-//                          }
 
 
-
-
-//         </div>
-//         </React.Fragment>
-//     )
-// }
 
 class Chips extends Component{
 
