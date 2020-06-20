@@ -15,7 +15,7 @@ import CompanyAdd from "./components/CompanyAdd/CompanyAdd.component"
 import DatatableOrder from './components/datatable order/datatable_order'
 import Delivery from "./components/DeliveryRegistr/DeliveryRegistr.component"
 import LoginModal from './components/Modal/Modal.component';
-import Campaign from './pages/compaign'
+import Products from './pages/products'
 
 const th = ['sİfarİş kodu','məhsulun adı', 'say', 'qİymət','Status', 'Düzəlİş' ];
 var sifaris = [
@@ -61,7 +61,7 @@ function App() {
     <Header />
     <br/>
     <br/>
-          <Campaign />
+          <Products />
       <Footer/>
        <LoginModal/>
       </Router>
