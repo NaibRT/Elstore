@@ -1,21 +1,21 @@
 import React,{useState, useEffect,useContext} from 'react';
-import './navbar.component.scss';
+import '../navbar/navbar.component.scss';
 import { Link , Switch ,  Route, Redirect  } from "react-router-dom";
 import ResponsiveCat from '../responsiv_categories/responsiv_categories.component'
 import {searchContext} from '../../contexts/search';
 import Modal from "../Modal/Modal.component"
-import MobileModal from '../categorymobile_modal/mobilemodal'
-import axios from 'axios'
 import LangToggler from "../lang_currency_toggler/lang_currency_toggler";
 import Selectbox from "../Select-box/SelectBox.component";
 import {appContext} from '../../contexts/appContext'
+import axios from 'axios'
 import $ from 'jquery'
+import MobileModal from '../categorymobile_modal/mobilemodal'
 const Langs =  [
     {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
 const Currency =  ['AZN','EURO','USD'];
 
 
-function  Navbar(props) {
+function  NavbarProfile(props) {
 
     const products = useContext(searchContext);
     const [visiblepp,setVisiblepp] =useState(false);
@@ -224,18 +224,18 @@ const loginRegister=<>
                     </div>
                 </div>
 
-
             <div className='navbar_bottom'>
-                <Link to='/homeandoffice' className='navbar_bottom_link'>Ev və ofis aksesuarları</Link>
-                <Link to='/clothesandbags' className='navbar_bottom_link'>Geyim və çantalar</Link>
-                <Link to='/bujiteriya' className='navbar_bottom_link'>Bijuteriya və aksesuarlar</Link>
-                <Link to='/special' className='navbar_bottom_link'>Özəlləşdirilən</Link>
-                <Link to='/art' className='navbar_bottom_link'>İncəsənət nümunələri</Link>
-                <Link to='/handcraft' className='navbar_bottom_link'>Əl işləri</Link>
+                <Link to='/market' className='navbar_bottom_link'>Mağaza</Link>
+                <Link to='/clothesandbags' className='navbar_bottom_link'>Məhsullar</Link>
+                <Link to='/bujiteriya' className='navbar_bottom_link'>sİfarİşlər</Link>
+                <Link to='/special' className='navbar_bottom_link'>sİfarİş keçmİşİ</Link>
+                <Link to='/art' className='navbar_bottom_link'>Kampanİyalar</Link>
+                <Link to='/handcraft' className='navbar_bottom_link'>Kampanİya keçmİşİ</Link>
+                <Link to='/handcraft' className='navbar_bottom_link'>tənzİmləmələr</Link>
             </div>
 
         </div>
     )
 }
 
-export default Navbar
+export default NavbarProfile 

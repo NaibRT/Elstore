@@ -3,8 +3,12 @@ import './datatable.jquery.scss';
 import './datatable.scss';
 import InputGroup from '../InputGroup/InputGroup.component'
 import SelectBox from '../Select-box/SelectBox.component'
+import UrlGenerator from '../../services/url-generator';
+import axios from 'axios'
 var $  = require( 'jquery' );
 var dt = require( 'datatables.net' );
+
+
 
 const kategories = [
     {
@@ -23,12 +27,29 @@ const kategories = [
 
 
 function Datatable(params) {
-   
-    const [filter,SetFilter]  = useState({
-        kategories:[],
-        SearchName:''
-    })
 
+
+    const [category,setCategory] = useState({
+        category:[]
+      })
+      
+      let categoryUrl = UrlGenerator('az','categories');
+      
+      
+      useEffect(()=>{
+              axios.get(categoryUrl,{headers:{
+              }})
+              .then(cat=>{
+                  // setProduct(res.data.data)
+                  setCategory({category:cat.data.data});
+              })
+      },[])
+      
+      
+    
+
+
+  
    const  names = [];
 
     useEffect(()=>{
@@ -46,23 +67,50 @@ function Datatable(params) {
         
     })
 
-    const filteredName = params.tbody.filter(name =>
-         name.ad.includes(filter.searchName)
-      
-      );
+   
+    const [searchMarket, setSearch]=useState({
+        searchField:""
+    })
+     
+   
+
+    const filteredProduct = params.tbody.filter(item=> item.product_name.toLowerCase().includes(searchMarket.searchField.toLowerCase()));
 
     function searchName(e){
-        SetFilter({
-            ...filter,
-            SearchName:e.target.value
+        setSearch({
+            ...searchMarket,
+            searchField:e.target.value
+        })
+
+        console.log(searchMarket.searchField)
+    }
+    
+    const [state,setState] = useState({
+        filteredData:[]
+    })
+
+    function handleSelect(e) {
+        console.log(e.target.value);
+        axios.get(`http://139.180.144.49/api/v1/az/search/product?filter[category_id]=${e.target.value}`)
+        .then(res => {
+            setState({filteredData: res.data.data});
+            console.log(res.data.data);
+            
+            if(state.filteredData.length===0){
+                alert('Bu kateqoriyada mehsul yoxdur')
+            }
         })
     }
-  
+
+
+
+   
+
     return(
         <div>
             <div className='datatable_search'>
                 <InputGroup onChange={searchName}  placeholder='Məhsul axtar' formIcon={require('../../assets/images/icons/search.svg')} />
-                <SelectBox class='datatable_selectbox' firstopt="Kateqoriya" options={kategories}/>
+                <SelectBox class='datatable_selectbox' handleChange={handleSelect} value={category.category.id} firstopt="Kateqoriya" options={category.category}/>
                 <label >
                 <span> Sıra aralığı:</span>
                    <div className="moneydiv">
@@ -84,18 +132,37 @@ function Datatable(params) {
         </thead>
         <tbody>
             {
-                params.tbody.map(bodyItems=>{
+                (state.filteredData.length===0)? (params!=null)?
+
+                filteredProduct.map(bodyItems=>{
                     return (
                         <tr>
-                            <td>{bodyItems.kod}</td>
-                            <td>{bodyItems.ad}</td>
+                            <td>{bodyItems.product_name}</td>
+                            <td>{bodyItems.Kateqorİya}</td>
                             <td>{bodyItems.say}</td>
-                            <td>{bodyItems.qiymət}</td>
-                            <td>{bodyItems.status}</td>
+                            <td><InputGroup value={bodyItems.price} /></td>
+                            <td><SelectBox firstopt='Status' name={bodyItems.status} /></td>
                             <td><a href="#">Duzelish</a> <a href="#">Sil</a></td>
                         </tr>
                     )
                 })
+                :null 
+                : state.filteredData.map((bodyItems,i)=>{
+                    return (
+                        <tr>
+                            <td>{bodyItems.product_name}</td>
+                            <td>{bodyItems.Kateqorİya}</td>
+                            <td>{bodyItems.say}</td>
+                            <td><InputGroup value={bodyItems.price} /></td>
+                            <td><SelectBox firstopt='Status' name={bodyItems.status} /></td>
+                            <td><a href="#">Duzelish</a> <a href="#">Sil</a></td>
+                        </tr>
+                    )
+                })
+            }
+
+            {
+               
             }
            
         </tbody>
