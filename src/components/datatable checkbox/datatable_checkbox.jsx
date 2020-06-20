@@ -5,7 +5,7 @@ import InputGroup from '../InputGroup/InputGroup.component'
 import SelectBox from '../Select-box/SelectBox.component';
 import Checkbox from '../checkbox/checkbox'
 var $  = require( 'jquery' );
-var dt = require( 'datatables.net' );
+var dt = require( 'datatables.net');
 
 const kategories = [
     {

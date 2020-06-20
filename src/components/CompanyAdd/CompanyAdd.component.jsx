@@ -3,6 +3,8 @@ import {Link} from "react-router-dom"
 import "../CompanyAdd/CompanyAdd.scss"
 import Input from "../InputGroup/InputGroup.component"
 import Button from "../button/button.component"
+import Checkbox from '../checkbox/checkbox'
+import DataTable from "../datatable checkbox/datatable_checkbox"
 
 
 const CompanyAdd = () => {
@@ -32,7 +34,7 @@ const CompanyAdd = () => {
                     <Link className="rediretc__text" to="/">Kampaniyalara gerİ dön</Link>
                  </div>
                  <div className="store__registr--text">
-                           <h5>Mağaza qeydiyyatı</h5>
+                    <h5>Mağaza qeydiyyatı</h5>
                 </div>
 
                 <button className='basket_header_text'>Kampaniyalar elstore tərəfindən təsdiqləndikdən sonra aktiv olur. Formu tamamlayın və kampaniyanızı təsdiq üçün əlavə edin.</button>
@@ -66,8 +68,9 @@ const CompanyAdd = () => {
                     <h5>Toplam 0 məhsul əlavə edildi.</h5>
                 </div>
                 
-
-
+                <Checkbox>
+                <DataTable/>
+                </Checkbox>
 
                 <Button name="Kampaniyanı Yarat" className="company__create"/>
                 </div>
