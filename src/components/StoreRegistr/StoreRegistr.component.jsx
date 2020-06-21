@@ -59,7 +59,7 @@ console.log(texturl)
    const AppContext=useContext(appContext)
    const registerSubmit=(data)=>{
     let url=UrlGenerator('az',`auth/${texturl.selected}/register`)
-    console.log(url)
+    console.log(data)
    fetch(url,{
        headers:{
          'Content-Type': 'application/json'
@@ -162,7 +162,9 @@ console.log(texturl)
                         <div className="add__number" id="addedNumber" onClick={AddNumber}><p>+Başqa nömrə əlavə et</p></div>
                         <div className="add__adress"><p>Ünvan</p></div>
                         <div className="select__city">
-                         <Selectbox firstopt='Cities' handleChange={takeSelectboxValue} class='selectboxcheckout' options={cities.data.data} />
+                         <Selectbox register={register2({
+                             required:{value:true,value:'can not be null'}
+                         })} name="city_id"  firstopt='Cities' handleChange={takeSelectboxValue} class='selectboxcheckout' options={cities.data.data} />
                          </div>
                         <br/>
                         
@@ -176,7 +178,7 @@ console.log(texturl)
 
                        
                         <div className="select__city">
-                       <Input name='adress' type='text' placeholder='Ünvan' register={register2({
+                       <Input name='address' type='text' placeholder='Ünvan' register={register2({
                 required:{value:true,message:'name is required'},
                 maxLength:{value:255,message:'max  255 char need'}
             })} helper={errors2.name&&errors2.name.message} />

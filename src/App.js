@@ -73,8 +73,7 @@ function App() {
       </Router>
       </SearchContext>
       </CategoryContext>
-      </AppContextProvider>
-      
+      </AppContextProvider> 
     </div>
   );
 }
