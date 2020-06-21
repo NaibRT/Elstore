@@ -1,3 +1,4 @@
+@import '../../App.scss';
 .creditCard{
     background: #FFFFFF;
     border: 1.5px solid #1A1A1A;
@@ -46,5 +47,26 @@
         line-height: 150%;
         letter-spacing: 0.25px;
         color: #1A1A1A;
+    }
+}
+
+.card_head_flex{
+    display: flex;
+    justify-content: space-between;
+    button{
+        font-family: 'InterRegular';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 150%;
+        /* identical to box height, or 21px */
+
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        background-color: transparent;
+        border: 0px;
+        /* Primary / Dark */
+
+        color: #334788;
     }
 }

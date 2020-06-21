@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
 
 import CheckoutFrist from '../components/checkout_first/checkout_firt'
 import CheckoutSecond from '../components/checkout_second/checkout_second'
@@ -6,14 +6,21 @@ import CheckoutThird from "../components/checkout_third/checkout_third";
 
 import IconDeliverySafetyPayback from '../components/Icon-delivery-safety-payback/IconDeliverySafetyPayback.component'
 import TotalSum from '../components/total_sum/tootal_sum.component'
+import {appContext} from '../contexts/appContext';
 function CheckoutAddress() {
-
+          const AppContext=useContext(appContext)
          // Proceed to next step
          const  nextStep = () => {
               setStep(step+1)
            
           };
             
+          function stepTwo(){
+            setStep(2)
+          }
+          function stepOne(){
+            setStep(1)
+          }
           // Go back to prev step
           const prevStep = () => {
             setStep(step-1)
@@ -47,7 +54,7 @@ function CheckoutAddress() {
                     return   <CheckoutThird value={values} nextStep = {nextStep} prevStep = {prevStep}  />
             
             case 1: 
-                 return    <CheckoutFrist value={values}  nextStep = {nextStep} prevStep = {prevStep} />
+                 return    <CheckoutFrist value={values} stepTwo={stepTwo} stepOne={stepOne}  nextStep = {nextStep} prevStep = {prevStep} />
         }
     }
 
@@ -58,7 +65,7 @@ function CheckoutAddress() {
             {renderCheckout()}
             </div>
             <div className='col-lg-4'>
-                <TotalSum/>
+            <TotalSum amount="Məbləğ" delivery="Catdirilma" deliveryAmount={AppContext.total.totalDeliveryAmount} tax={AppContext.total.taxamount} total="Ümumi" totalPrice={AppContext.total.amount} totalCount={AppContext.total.totalAmount} />
                 <br/>
                 <IconDeliverySafetyPayback/>
             </div>

@@ -9,14 +9,24 @@ import UrlGenerator from '../services/url-generator';
 function Search(props) {
     const [priceFrom,setPriceFrom]= useState(0);
     const [priceTo,setPriceTo]= useState(1000000);
-    console.log(useState)
+    const [catFilter, setCatFilter] = useState({
+        data:[]
+    })
+    
      useEffect(()=>{
          let url=UrlGenerator('az','search/product')
          let id=props.match.params.id;
-         fetch()
-     })
+         console.log(id)
+        //  console.log(props.match.params.id)
+         fetch(`http://139.180.144.49/api/v1/az/search/product?${id}`)
+        .then(response => response.json())
+        .then(data => {
+            setCatFilter({data:data});
+            console.log(data)
+        });
+      },[])
+
     const products = useContext(searchContext);
-    console.log(products.state.data)
    
     function Pricefrom(e){
         setPriceFrom(e.target.value)
@@ -52,7 +62,15 @@ function Search(props) {
               />
          </div>
          <div className='col-lg-9'>
-            <SearchResultPage/>
+             {/* {
+                 (catFilter.data.data!=undefined)?
+
+                 catFilter.data.data.map(item=>{
+                    return( <SearchResultPage  />)
+                })
+                :''
+             } */}
+            <SearchResultPage  catFilter={ catFilter.data.data} />
          </div>
              </div>
         </div>

@@ -1,10 +1,27 @@
-import React from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import HeartImage from '../heart-image/heartImage.component'
 import ButtonRating from '../button-rating/buttonRating.component'
 import {Link} from 'react-router-dom'
 import './product-card-item.component.scss'
+import UrlGenerator from '../../services/url-generator'
+import appContext from '../../contexts/appContext'
 
-function ProductCartItem({data}) {
+
+function ProductCartItem({data,isLiked}) {
+
+        // let firstImg = document.querySelector('.hearts_icon')
+        // if(firstImg.childNodes[0].style.display === 'block'){
+        //     firstImg.childNodes[0].style.display = 'none';
+        //     firstImg.childNodes[1].style.display = 'block';
+        // }else{
+        //     firstImg.childNodes[1].style.display = 'none';
+        //     firstImg.childNodes[0].style.display = 'block';
+        // }
+
+
+
+
+
  return (
   <div  className="search__result">
   <HeartImage isLiked={data.is_like} id={data.id}/>

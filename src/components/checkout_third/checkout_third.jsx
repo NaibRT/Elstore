@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useContext, useEffect,useState } from 'react'
 import './checkout_third.scss';
 import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
 import InputGroup from "../InputGroup/InputGroup.component";
 import {Link} from 'react-router-dom';
-function CheckoutThird() {
+import {appContext} from '../../contexts/appContext';
+import UrlGenerator from '../../services/url-generator';
+function CheckoutThird(props) {
+    const AppContext=useContext(appContext);
+    const [state,setState]=useState({
+        city:'',
+        region:''
+    })
 
+    useEffect(()=>{
+        let url=UrlGenerator('az',`cities/${AppContext.total.user.city_Id}`)
+    })
     return (
-       
         
         <>
         <Link className='goBasket' to='/basket' ><img src={require('../../assets/images/icons/next-icon.svg')} /> səbətə gerİ dön</Link>
@@ -27,24 +36,30 @@ function CheckoutThird() {
             <br/>
 
             <Card>
-            <Card.Header name='Çatdırılma ünvanı' />
+           <div className='card_head_flex'>
+            <div><Card.Header name='Çatdırılma ünvanı' /></div>
+            <div>
+                <button onClick={props.stepOne}>Düzəlİş et</button>
+            </div>
+
+           </div>
+            
             <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <p className='latest_section_checkout_p'>Ad Soyad</p>
-                        <p className='latest_section_checkout_p'>+994 70 727-72-72</p>
-                        <p className='latest_section_checkout_p'>test@gmail.com</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.name}</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.phone}</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.email}</p>
                     </div>
                     <div className='col-lg-6 col-sm-12'>
-                        <p className='latest_section_checkout_p'>Bakı şəhəri</p>
-                        <p className='latest_section_checkout_p'>Qulu Quliyev küçəsi ev 3</p>
-                        <p className='latest_section_checkout_p'>Əmircan qəsəbəsi</p>
-                        <p className='latest_section_checkout_p'>test@gmail.com</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.city}</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.address}</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.region}</p>
                     </div>
                 </div>
                 <p className='checkout_bottomcardtext'>
                 <Card.Header name='Elave Melumatlar' />
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis.
+                {AppContext.total.user.information}
                 </p>
             </Card>
             <br/>
@@ -52,7 +67,14 @@ function CheckoutThird() {
                
                 <br/>
                 <div>
-                <Card.Header name='Ödəmə üsulu' />
+                <div className='card_head_flex'>
+                    <div><Card.Header name='Ödəmə üsulu' /></div>
+                    <div>
+                        <button onClick={props.stepTwo}>Düzəlİş et</button>
+                    </div>
+                </div>
+
+              
                 <br/>
                    <div className='creditCard'>
                     <p>Onlayn ödəmə</p>
@@ -61,7 +83,7 @@ function CheckoutThird() {
                 </div>
             </Card>
             <br/>
-            <button className='form_button_multiple' >SİFARİŞ ET</button>
+            <button   className='form_button_multiple' >SİFARİŞ ET</button>
        </>
     )
 }

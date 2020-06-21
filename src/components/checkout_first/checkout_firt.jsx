@@ -10,6 +10,7 @@ import {appContext} from '../../contexts/appContext'
 import UrlGenerator from '../../services/url-generator'
 function CheckoutFrist(props) {
     const AppContext=useContext(appContext)
+    
     const {values,handleChange} = props
     const [cities,setCities] = useState({
         data:[]
@@ -38,12 +39,93 @@ function CheckoutFrist(props) {
       .then(data =>{
        setRegion({data:data})
       });
+
+      AppContext.events.setTotal({
+          ...AppContext.total,
+          user:{
+              ...AppContext.total.user,
+              city_id:e.target.value
+          }
+      })
     }
    
     function goNextPage(e){
         e.preventDefault();
         props.nextStep();
     };
+
+    function nameEventHandler(e){
+       console.log(e.target)
+      AppContext.events.setTotal({
+        ...AppContext.total,
+        user:{
+            ...AppContext.total.user,
+            name:e.target.value
+        } 
+      })
+    }
+    function phonenameEventHandler(e){
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                phone:e.target.value
+            } 
+          })
+    }
+
+    function emailEventHandler(e){
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                email:e.target.value
+            } 
+          })
+    }
+
+    function surnameEventHandler(e){
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                surname:e.target.value
+            } 
+          })
+    }
+
+    function regionEventHandler(e){
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                region_id:e.target.value
+            } 
+          })
+    }
+    function villageEventHandler(e) {
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                village_id:e.target.value
+            } 
+          })
+    }
+
+    function addressEventHandler(e) {
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                address:e.target.value
+            } 
+          })
+    }
+
+    function secoundAddres(e) {
+        console.log(e.target)
+    }
     
     return (
         
@@ -66,14 +148,14 @@ function CheckoutFrist(props) {
             <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <InputGroup placeholder='Adınız' />
+                        <InputGroup onChange={(e)=>{nameEventHandler(e)}} placeholder='Adınız' />
                         <br/>
-                        <InputGroup formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='Telefon nömrəsi' />
+                        <InputGroup onChange={(e)=>phonenameEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='Telefon nömrəsi' />
                         <br/>
-                        <InputGroup formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='E-poçt adresi' />
+                        <InputGroup onChange={(e)=>emailEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='E-poçt adresi' />
                     </div>
                     <div className='col-lg-6 col-sm-12'>
-                        <InputGroup placeholder='Soyadınız' />
+                        <InputGroup onChange={(e)=>surnameEventHandler(e)} placeholder='Soyadınız' />
                     </div>
                 </div>
             </Card>
@@ -84,12 +166,12 @@ function CheckoutFrist(props) {
                     <div className='col-sm-12 col-lg-6'>
                         <Selectbox firstopt='Cities' handleChange={getRegions} class='selectboxcheckout' options={cities.data.data} />
                         <br/>
-                        <Selectbox firstopt='Region' class='selectboxcheckout' options={region.data.data} />
+                        <Selectbox handleChange={regionEventHandler} firstopt='Region' class='selectboxcheckout' options={region.data.data} />
                         <br/>
-                        <Selectbox class='selectboxcheckout' options={cities.data.data} />
+                        <Selectbox handleChange={villageEventHandler} class='selectboxcheckout' options={cities.data.data} />
                         <br/>
                         <br/>
-                        <InputGroup  placeholder='Ünvan' />
+                        <InputGroup onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />
                     </div>
                     <div className='col-lg-6 col-sm-12'></div>
                 </div>
@@ -99,7 +181,7 @@ function CheckoutFrist(props) {
                 </p>
                 <br/>
                 <div>
-                    <InputGroup countertext='0/256' type="textarea"  placeholder='Ünvan' />  
+                    <InputGroup onChange={(e)=>secoundAddres(e)} countertext='0/256' type="textarea"  placeholder='Ünvan' />  
                 </div>
             </Card>
             <br/>
