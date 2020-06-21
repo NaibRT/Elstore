@@ -9,6 +9,13 @@ function AppContextProvider(props) {
   currency:'aze',
  })
 
+ const [basket,setBasket]=useState([]);
+
+
+  function addBasket(e){
+    console.log(e.target)
+  }
+
   function getCities(){
     let url=UrlGenerator('az','cities');
     fetch(url)
@@ -58,7 +65,8 @@ function AppContextProvider(props) {
                                IsAuthorized:IsAuthorized,
                                getCities:getCities,
                                getRegions:getRegions,
-                               getToken:getToken
+                               getToken:getToken,
+                               addBasket:addBasket
                               }
                              }}>
    {props.children}
@@ -66,5 +74,5 @@ function AppContextProvider(props) {
  )
 }
 
-export default AppContextProvider;
+export default React.memo(AppContextProvider);
 export {appContext};

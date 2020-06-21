@@ -12,7 +12,6 @@ function Filter(prop) {
 
     const categories = useContext(categoryContext);
     const search = useContext(searchContext);
-    
     const [filterCat, setCatFilter] = useState(0)
 
     const [filteredData, setfilteredData] = useState({
@@ -102,7 +101,7 @@ function Filter(prop) {
             .map(({name}) => {
                 return (
                 <div className='col-lg-6 center'>
-                    <img src={require('../../assets/images/market.svg')} />
+                    <img alt='' src={require('../../assets/images/market.svg')} />
                     <p className='filter_market_title'>{name}</p>
                 </div>
                 )
@@ -120,7 +119,7 @@ function Filter(prop) {
                 onChange={prop.Pricefrom}
                 placeholder="0" 
                 name="search" />
-                <button className='search-input-submit azn' type="submit"><img src={require('../../assets/images/azn.svg')} /></button>
+                <button className='search-input-submit azn' type="submit"><img alt='' src={require('../../assets/images/azn.svg')} /></button>
             </form>
         </div>
         <div className='line_price'>
@@ -135,7 +134,7 @@ function Filter(prop) {
                 name="search"
                 onChange={prop.Priceto}  
                     />
-                <button className='search-input-submit azn' type="submit"><img src={require('../../assets/images/azn.svg')} /></button>
+                <button className='search-input-submit azn' type="submit"><img alt='' src={require('../../assets/images/azn.svg')} /></button>
             </form>
         </div>
         

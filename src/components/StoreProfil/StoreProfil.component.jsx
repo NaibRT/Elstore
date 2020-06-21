@@ -25,8 +25,8 @@ const StoreProfil = () => {
                 <div className="col-lg-6 col-md-12 col-xs-12">
                     <div className="Store__Photo--text">
                         <h5>profİl şəklİ</h5>
-                        <div className="profile__photo">
-                                        <div className="profil__images">
+                        <div className="profile__photo1">
+                                        <div className="profil__images1">
                                             <input onChange={previewFile1} type="file"/>
                                             <img className="profilePhoto" src={require(`../../assets/images/icons/Increase.svg`)} alt=""/>
                                         </div>

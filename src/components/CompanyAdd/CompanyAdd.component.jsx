@@ -53,7 +53,7 @@ const CompanyAdd = () => {
                     <h5>Kampaniya “cover” rəsmini əlavə edin.</h5>
                     <p>Minimum ölçü 640x248</p>
                 </div>
-                <div className="profile__photo">
+                <div className="profile__photo2">
                      <div className="profil__images">
                       <input onChange={previewFile2} type="file"/>
                      <img className="profilePhoto" src="" alt=""/>

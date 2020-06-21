@@ -13,7 +13,7 @@
         display: none
     }
 }
-td{
+td{text-align: center !important;
     .select__search {
         select{
             background-color: #FFFBD8 !important;
@@ -21,7 +21,9 @@ td{
         
     }
 }
-
+.odd{
+    display: none;
+}
 th{
     font-family: 'InterRegular';
     font-style: normal;
@@ -36,6 +38,8 @@ td{
     .select__search {
         select{
             background-color: #FFFBD8 !important;
+            position: relative;
+            top: -13px;
         }
         
     }

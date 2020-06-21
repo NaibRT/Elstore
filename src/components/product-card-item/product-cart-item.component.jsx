@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 import './product-card-item.component.scss'
 
 function ProductCartItem({data}) {
- console.log(data.id)
  return (
   <div  className="search__result">
   <HeartImage isLiked={data.is_like} id={data.id}/>

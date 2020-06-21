@@ -23,7 +23,7 @@ function Main() {
     </div>
   <Switch>
     
-  <Route exact={true} path='/search/:id' component={Search} />
+  <Route exact={true} path='/' component={Index} />
   <Route exact={true} path='/checkout' component={CheckoutAddress} />
   <Route exact={true} path='/homeandoffice'/>
   <Route exact={true} path='/product' component={ProductInfo} />
@@ -31,6 +31,7 @@ function Main() {
   <Route  path='/product/:id/:name' component={ProductInfo} />
   <Route exact={true} path='/basket' component={Basket} />
   <Route exact={true} path='/search' component={Search} />
+      <Route exact={true} path='/search/:id' component={Search} />
   <Route  path='/search/:id/:name' component={Search} />
   <Route exact={true} path='/open-store' component={StoreRegistr} />
   <Route exact={true} path='/worked-delivery' component={Delivery} />
@@ -39,9 +40,10 @@ function Main() {
     AppContext.app.isAuthorized?(<Profile/>):
     (<Redirect to='/'/>)
   )}/>
+  <Route exact={true} path='/profile/home' component={ProfileShopHome} />
   </Switch>
   </main>
  )
 }
 
-export default Main
+export default React.memo(Main)

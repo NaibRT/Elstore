@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState, useContext} from 'react'
 import '../assets/sass/pages/product-info.scss'
 import ProductSlider from '../components/product-slider/slider.component'
 import AboutProduct from '../components/About-product/About-product.component'
@@ -12,8 +12,10 @@ import ButtonGroup from '../components/button-group/button-group.component'
 import Delivery from '../components/Icon-delivery-safety-payback/IconDeliverySafetyPayback.component'
 import Seller from '../components/seller/seller.component'
 import UrlGenerator from '../services/url-generator'
+import {appContext} from '../contexts/appContext'
 
 function ProductInfo(props) {
+  const AppContext=useContext(appContext)
   const [product,setProduct]=useState({
     images:[],
   });
@@ -49,7 +51,7 @@ function ProductInfo(props) {
              <HeadingChips  heading={product.product_name} stars={product.avg_rating} subtitle="Öz home / Ev aksessuarları / Toxuma işlər" sale="212 dəfə satıldı" />
              <OrderPrize price={`${product.price} AZN`} stock="movcuddur" priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
              <Input/>
-             <Button className="bg-primary txt--dark" name='Sebete Elave ET'/>
+             <Button onClick={(e)=>AppContext.events.addBasket(e)} className="bg-primary txt--dark" name='Sebete Elave ET'/>
              <ButtonGroup>
              <Button className="btn-buy-now txt--light" name='Indi Al'/>
              </ButtonGroup>         

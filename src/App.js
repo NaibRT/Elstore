@@ -71,7 +71,6 @@ function App() {
       <Footer/>
        <LoginModal/>
       </Router>
-  
       </SearchContext>
       </CategoryContext>
       </AppContextProvider>

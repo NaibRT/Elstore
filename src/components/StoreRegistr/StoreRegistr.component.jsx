@@ -1,14 +1,18 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useState,useContext} from 'react';
 import Input from "../InputGroup/InputGroup.component"
 import "../StoreRegistr/StoreRegistr.scss"
 import { Link } from "react-router-dom";
 import Selectbox from '../Select-box/SelectBox.component'
 import Button from "../button/button.component"
+import {useForm} from 'react-hook-form'
+import {appContext} from '../../contexts/appContext'
+import UrlGenerator from '../../services/url-generator'
 import GoBack from '../go-back/go-back.component'
-
+import { useHistory } from "react-router-dom";
+import SelectBox from "../Select-box/SelectBox.component"
 
 const StoreRegistr= (props) => {
-
+    let history = useHistory();
    function AddNumber(){
        const weple= document.querySelector(".weple");
        const div = document.createElement("div");
@@ -27,7 +31,55 @@ const StoreRegistr= (props) => {
    }
 
 
+   const {register:register2,handleSubmit:handleSubmit2,errors:errors2}=useForm();
+   const [texturl,setTexturl]=useState({
+       selected:'',
+       x:[
+        {
+            id:'seller',
+            name:"Fərdi"
+        },
+        {
+            id:'company',
+            name:"Korparativ"
+        }       
+     ]
+    })
 
+
+console.log(texturl)
+
+   function TextUrl(e){
+    setTexturl({
+        ...texturl,
+        selected:e.target.value
+    })
+   }
+
+   const AppContext=useContext(appContext)
+   const registerSubmit=(data)=>{
+    let url=UrlGenerator('az',`auth/${texturl.selected}/register`)
+    console.log(url)
+   fetch(url,{
+       headers:{
+         'Content-Type': 'application/json'
+       },
+       method:"Post",
+       body:JSON.stringify(data)
+   })
+   .then(async res=>{
+       if(res.ok){
+        let data=await res.json();
+        AppContext.events.AddToken(data)
+        
+        history.push("/");
+        
+       }
+      
+   })
+   .catch((err) =>console.log(err))
+   console.log(errors2.email)
+}
 
     const [cities,setCities] = useState({
         data:[]
@@ -69,25 +121,41 @@ const StoreRegistr= (props) => {
             <div className="row">
                 <div className="col-lg-12 col-md-12 col-xs-12">
                     <div className="Store__Register">
-                        <GoBack/>
+                        <GoBack text="Geri dön"/>
+                        <form onSubmit={handleSubmit2(registerSubmit)}>
                        <div className="store__registr--text">
                            <h5>Mağaza qeydiyyatı</h5>
                        </div>
                        <div className="registr__input">
-                       <Input helper="Helper text" countertext="0/256" type="text" placeholder="Mağazanın adı" />
+                       <SelectBox firstopt={"Mağaza növünü seçin"} handleChange={(e)=>TextUrl(e)} options={texturl.x} />
                        </div>
                        <div className="registr__input">
-                       <Input helper="Helper text" countertext="0/256" type="password" placeholder="Password" />
+                       <Input name='name' type='text' placeholder='Mağaza adı' register={register2({
+                required:{value:true,message:'name is required'},
+                maxLength:{value:255,message:'max  255 char need'}
+            })} helper={errors2.name&&errors2.name.message}/>
                        </div>
                        <div className="registr__input">
-                       <Input helper="Helper text" countertext="0/256" type="text" placeholder="Mağaza haqqında ümumi məlumat" />
+                       <Input name='password'  placeholder={"Şifrə"} type="password" register={register2({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors2.password&&errors2.password.message}/>
                        </div>
                        <div className="registr__input">
-                       <Input helper="Helper text" countertext="0/256" min="1" max="3" type="email" placeholder="Email" />
+                       <Input   type="text" placeholder="Mağaza haqqında ümumi məlumat" />
                        </div>
                        <div className="registr__input">
-                       <Input helper="Helper text" countertext="0/256" min="1" max="3" type="text" placeholder="Əlaqə nömrəsi" />
+                       <Input name='email'  placeholder={"Email"} type="email" register={register2({
+                required:{value:true,message:'must be added'},
+                pattern:{value:/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        message:"email not valid"}
+                })}
+                helper={errors2.email&&errors2.email.message}/>
                        </div>
+                       <div className="registr__input">
+                       <Input name='phones[phone]' type='tel' placeholder='phone' register={register2({
+                required:{value:true,message:'name is required'},
+                maxLength:{value:255,message:'max 255 char need'}
+            })} helper={errors2.name&&errors2.name.message}/>
+                       </div>
+                       
                        <div className="weple">
 
                        </div>
@@ -108,12 +176,16 @@ const StoreRegistr= (props) => {
 
                        
                         <div className="select__city">
-                       <Input  min="1" max="3" type="text" placeholder="Unvan" />
+                       <Input name='adress' type='text' placeholder='Ünvan' register={register2({
+                required:{value:true,message:'name is required'},
+                maxLength:{value:255,message:'max  255 char need'}
+            })} helper={errors2.name&&errors2.name.message} />
                        </div>
                        
-                           <Button className="registr__button" name="Davam Et"/>
+                           <Button   className="registr__button" name="Davam Et"/>
                         <br/>
                         <br/>
+                        </form>
                     </div>
                 </div>
             </div>
