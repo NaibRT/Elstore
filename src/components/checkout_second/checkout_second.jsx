@@ -8,11 +8,27 @@ import {Link} from 'react-router-dom';
 import ButtonRadio from "../button-radio/ButtonRadio.component";
 
 function CheckoutSecond(props) {
-
+    
     function goNextPage(e){
         e.preventDefault();
         props.nextStep();
     };
+
+     function cardNumber(e){
+
+     }
+
+     function StartDate(e){
+
+
+    }
+
+    function EndDate(e){
+    }
+
+    function PaymentType(e){
+
+    }
     return (
         <>
            <Link className='goBasket' to='/basket' ><img src={require('../../assets/images/icons/next-icon.svg')} /> səbətə gerİ dön</Link>
@@ -33,20 +49,20 @@ function CheckoutSecond(props) {
             <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <ButtonRadio class='full_check' name='Qapıda ödəmə' nextName='Nəğd və ya kart vasitəsilə' />
+                        <ButtonRadio change={(e)=>PaymentType(e)} class='full_check' name='Qapıda ödəmə' nextName='Nəğd və ya kart vasitəsilə' />
                         <br/> 
-                        <ButtonRadio class='full_check' name='Onlayn ödəmə' nextName='Kart vasitəsilə' />
+                        <ButtonRadio change={(e)=>PaymentType(e)} class='full_check' name='Onlayn ödəmə' nextName='Kart vasitəsilə' />
                         <br/>
                         <Card.Header name='Kart məlumatlarını daxil edin' />
                         <br/>
-                        <InputGroup required='required' formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='Kartın üzərindəki nömrə' />
+                        <InputGroup onChange={(e)=>{cardNumber(e)}} required='required' formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='Kartın üzərindəki nömrə' />
                         <br/>
                         <div className='row'>
                             <div className='col-lg-6'>
-                            <InputGroup required='required' formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='Bitmə tarixi' />
+                            <InputGroup onChange={(e)=>{StartDate(e)}} required='required' formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='Bitmə tarixi' />
                             </div>
                             <div className='col-lg-6'>
-                            <InputGroup required='required' formIcon={require('../../assets/images/icons/Frame.svg')}  placeholder='CVV' />
+                            <InputGroup onChange={(e)=>{EndDate(e)}} required='required' formIcon={require('../../assets/images/icons/Frame.svg')}  placeholder='CVV' />
                             </div>
                         </div>
                     </div>

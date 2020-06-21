@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './checkout_third.scss';
 import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
 import InputGroup from "../InputGroup/InputGroup.component";
 import {Link} from 'react-router-dom';
-function CheckoutThird(props) {
+import {appContext} from '../../contexts/appContext';
+function CheckoutThird() {
+    const AppContext=useContext(appContext);
 
     return (
        
@@ -38,20 +40,19 @@ function CheckoutThird(props) {
             <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <p className='latest_section_checkout_p'>Ad Soyad</p>
-                        <p className='latest_section_checkout_p'>+994 70 727-72-72</p>
-                        <p className='latest_section_checkout_p'>test@gmail.com</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.name}</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.number}</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.email}</p>
                     </div>
                     <div className='col-lg-6 col-sm-12'>
-                        <p className='latest_section_checkout_p'>Bakı şəhəri</p>
-                        <p className='latest_section_checkout_p'>Qulu Quliyev küçəsi ev 3</p>
-                        <p className='latest_section_checkout_p'>Əmircan qəsəbəsi</p>
-                        <p className='latest_section_checkout_p'>test@gmail.com</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.city}</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.adress}</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.region}</p>
                     </div>
                 </div>
                 <p className='checkout_bottomcardtext'>
                 <Card.Header name='Elave Melumatlar' />
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis.
+                {AppContext.total.user.information}
                 </p>
             </Card>
             <br/>
