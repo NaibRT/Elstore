@@ -16,7 +16,16 @@ function AppContextProvider(props) {
     totalAmount:'',
     totalDeliveryAmount:'',
     user:{
-
+      name:'',
+      surname:'',
+      email:'',
+      phone:'',
+      address:'',
+      payment_type:0,
+      edv:'',
+      city_id:'',
+      region_id:'',
+      village_id:''
     }
  })
 
@@ -124,7 +133,7 @@ function AppContextProvider(props) {
    }
    return false
  }
-  console.log(basket)
+  console.log(total)
  return (
   <appContext.Provider value={{app,
                               events:{
