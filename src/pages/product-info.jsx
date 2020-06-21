@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState, useContext} from 'react'
 import '../assets/sass/pages/product-info.scss'
 import ProductSlider from '../components/product-slider/slider.component'
 import AboutProduct from '../components/About-product/About-product.component'
@@ -7,14 +7,18 @@ import HeadingChips from '../components/heading-chips/heading-chips.component'
 import OrderPrize from '../components/sifarish_qiymeti/sifarish.component'
 import Input from '../components/input/input.component'
 
-import Buttonprimary from '../components/button-buy-now/button-buy-now.component'
+import Button from '../components/button/button.component'
+import ButtonGroup from '../components/button-group/button-group.component'
 import Delivery from '../components/Icon-delivery-safety-payback/IconDeliverySafetyPayback.component'
 import Seller from '../components/seller/seller.component'
-import BtnAdd from '../components/button-add/button-add.component'
 import UrlGenerator from '../services/url-generator'
+import {appContext} from '../contexts/appContext'
 
 function ProductInfo(props) {
-  const [product,setProduct]=useState({});
+  const AppContext=useContext(appContext)
+  const [product,setProduct]=useState({
+    images:[],
+  });
   useEffect(()=>{
     let url=UrlGenerator('az','products');
       fetch(`${url}/${props.match.params.id}`,{
@@ -23,8 +27,8 @@ function ProductInfo(props) {
       .then(res =>{
         res.json()
         .then(r=>{
-          console.log(r)
-          setProduct(r.data[0])
+          setProduct(r.data[0]);
+          // console.log(r.data[0])
         })
         .catch(e=>console.log(e))
       })
@@ -37,23 +41,26 @@ function ProductInfo(props) {
         <div className='row'>
          <div className='col-lg-8 col-md-12 col-sm-12'>
            <ProductSlider images={product.images} />
-          <div className='slider_container_padding'>
+          <div className='slider_container_padding mobile-container'>
             <AboutProduct about={product.product_description}/>
             <DeliveryInfo/>
           </div>
          </div>
-         <div className='col-lg-4 col-md-12 col-sm-12'>
-             <HeadingChips  heading={product.product_name} subtitle="Öz home / Ev aksessuarları / Toxuma işlər" sale="212 dəfə satıldı" />
+  
+        <div className='col-lg-4 col-md-12 col-sm-12 '>
+             <HeadingChips  heading={product.product_name} stars={product.avg_rating} subtitle="Öz home / Ev aksessuarları / Toxuma işlər" sale="212 dəfə satıldı" />
              <OrderPrize price={`${product.price} AZN`} stock="movcuddur" priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
              <Input/>
-
-             <Buttonprimary className="btn-buy-now"/>
-             <BtnAdd/>
+             <Button data={product.id} onClick={(e)=>AppContext.events.addBasket(e)} className="bg-primary txt--dark" name='Sebete Elave ET'/>
+             <ButtonGroup>
+             <Button className="btn-buy-now txt--light" name='Indi Al'/>
+             </ButtonGroup>         
              <Delivery/>
              <Seller/>
          </div>
         </div>
-    </div>
+        </div>
+    
   </section>
  )
 }

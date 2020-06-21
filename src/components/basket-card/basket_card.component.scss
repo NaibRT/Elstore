@@ -177,7 +177,8 @@
 }
 .basket_bottom_buttons{
     text-align: right;
-
+     display: flex;
+     justify-content: flex-end;
 }
 .price_div{
     text-align: right; 
@@ -192,8 +193,13 @@
     margin-top:$margin--sm ;
     text-transform: uppercase;
     font-family: 'InterMedium';
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .basket_bottom_button_img{
+    width: 30px;
+    height: 30px;
     margin-right: 4px;
    position: relative;
    top: 3px;

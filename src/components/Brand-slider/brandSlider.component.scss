@@ -17,13 +17,13 @@
                         .swiper-wrapper{
                             .swiper-slide{
                                     position: relative;
-                                    border: 0.5px solid #D6D6D6;
+                                    // border: 0.5px solid #D6D6D6;
                                     border-radius: 12px;
                                     width: 308px;
-                                    padding-top: 8px;
-                                    padding-right: 8px;
-                                    padding-left: 8px;
-                                    padding-bottom: 8px;
+                                    // padding-top: 8px;
+                                    // padding-right: 8px;
+                                    // padding-left: 8px;
+                                    // padding-bottom: 8px;
                                     h4{
                                         font-family: InterMedium;
                                         font-size: 20px;
@@ -36,7 +36,7 @@
                                         a{
                                             text-decoration: none;
                                             color: black;
-                                            text-decoration-style:none;
+                                            text-decoration-style: none;
                                         }
                                     }
                                     .discount{
@@ -56,6 +56,7 @@
                                         height: 186px;
                                         img{
                                             object-fit: contain;
+                                            object-position: center;
                                             width: 100%;
                                             height: 100%;
                                         }
@@ -69,12 +70,26 @@
 
     .brand-button-next{
         position: absolute;
-        top:130px;
-        width: 15px;
+        top:175px;
+        width: 21px;
         height: 12px;
-        right: -21px;
+        right: 5px;
         outline: none;
         cursor: pointer;
+        z-index: 1;
+        img{
+            width: 100%;
+        }
+    }
+    .brand-button-preview{
+        position: absolute;
+        top:175px;
+        width: 21px;
+        height: 12px;
+        left: 5px;
+        outline: none;
+        cursor: pointer;
+        z-index: 1;
         img{
             width: 100%;
         }
@@ -82,6 +97,7 @@
 }
 
 @media only screen and  (max-device-width : 320px) {
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
@@ -89,9 +105,17 @@
         top:200px !important;
         right: -5px !important;
     }
+    .brand-button-next{
+        display: none;
+    }
+    .brand-button-preview{
+        display: none;
+    }
+ }
 }
 
 @media only screen and (min-device-width : 321px) and (max-device-width : 360px) {
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
@@ -99,9 +123,17 @@
         top:200px !important;
         right: -5px !important;
     }
+    .brand-button-next{
+        display: none;
+    }
+    .brand-button-preview{
+        display: none;
+    }
+ }
 }
 
 @media only screen and (min-device-width : 361px) and (max-device-width : 375px) {
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
@@ -109,9 +141,17 @@
         top:200px !important;
         right: 11px !important;
     }
+    .brand-button-next{
+        display: none;
+    }
+    .brand-button-preview{
+        display: none;
+    }
+ }
 }
 
 @media only screen and (min-device-width: 376px) and (max-device-width: 414px){
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
@@ -119,10 +159,18 @@
         top:230px !important;
         right: 11px !important;
     }
+    .brand-button-next{
+        display: none;
+    }
+    .brand-button-preview{
+        display: none;
+    }
+ }
 }
 
 
 @media (min-width: 415px) and (max-width: 575.98px) { 
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
@@ -130,10 +178,18 @@
         top:250px !important;
         right: 11px !important;
     }
+    .brand-button-next{
+        display: none;
+    }
+    .brand-button-preview{
+        display: none;
+    }
+ }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) and (max-width: 767.98px) {
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
@@ -141,33 +197,41 @@
         top:200px !important;
         right: 11px !important;
     }
+ }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) and (max-width: 991.98px) { 
+    .brand_slider_section{
     .swiper-slide{
         height: 100% !important;
     }
+
     .swiper-button-next{
         top:180px !important;
         right: 11px !important;
     }
 }
+}
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .swiper-button-next{
-        top:150px !important;
-        right: 10px !important;
-    }
+    .brand_slider_section{
+        .swiper-button-next{
+            top:150px !important;
+            right: 10px !important;
+        }
+  }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
+    .brand_slider_section{
     .swiper-button-next{
         top:150px !important;
         right: 10px !important;
     }
+ }
 }
 
 

@@ -3,34 +3,26 @@
 
 
 .box_1{
-
-width: 418px;
 height: 284px;
 border: 1px solid #D6D6D6;
 box-sizing: border-box;
 border-radius: 8px;
+padding: 0px 16px;
 
 .content{
-    width: 386px;
-    height: 252px;
-    
-    
+    height: 252px;  
     .content__img{
-
       .box__img{
-
         img{
          width: 104px;
         height: 104px;
         margin-right: 12px;
-        margin-left:16px;
         margin-top:16px;
         
         }
     }
             .texture{
-                margin-top:22px;
-                
+                margin-top:22px;               
                 .text_1{
                     margin-bottom: 13px;;
                     h2{
@@ -43,29 +35,21 @@ border-radius: 8px;
                     }
                 } 
                    }
-                }                 
-            
-       
+                }                       
         .line{
            
             justify-content: space-between;
             margin-top:24px;
-            
-            img{
-                margin-left: 16px;
-            }
+            align-items: center;
               
         .line__right{
-            
             margin-top: 5px;
             margin-bottom: 5px;
-            margin-right: -10px;
             img{
                 width: 14px;
                 height: 7px;  
                 margin-top:7px;
                 margin-left:4px;
-            
                 }
                 h3{ 
                     font-family: InterMedium;
@@ -78,29 +62,25 @@ border-radius: 8px;
         
                 
             }
-        }
-         
+        }        
            
         .border__hr{
             border-bottom: 0.5px solid #CCCCCC;
-            margin-left: 16px;
             margin-top: 16px;
-            margin-right: -10px;
-        
         }
         .bottom__line{
             justify-content: space-between;
             margin-top:24px;
-            img{
-                margin-left: 16px;
-                
+            .button_rating_content{
+                button{
+                    // width: 125px;
+                    // height: 44px;
+                    margin-top: -14px;
                 }
+            }
+                
                 .shop_click{
-                    margin-top: 5px;
-                    margin-bottom: 5px;
-                    margin-right: -10px;
-                    
-                   
+                    margin-top: -2px;
                     img{
                         
                         margin-top:7px;
@@ -108,14 +88,263 @@ border-radius: 8px;
                     }
                     .union{
                         img{
-                            margin-top:3px;
+                            margin-top:-5px;
+                            cursor: pointer;
                         }
                     }
+                    
                 }
                
                
             }
         }
+    }
+
+@media (max-width:576px)
+{
+    .box_1{
+
+        width: 418px !important;
+        height: 284px !important;
+        border: 1px solid #D6D6D6;
+        box-sizing: border-box;
+        border-radius: 8px;
+        margin-left: 16px;
+        
+        .content{
+            width: 386px;
+            height: 252px;  
+            .content__img{
+              .box__img{
+                img{
+                 width: 84px;
+                height: 84px;
+                margin-right: 9.36px;
+                margin-left:12px;
+                margin-top:12px;
+                
+                }
+            }
+                    .texture{
+                        margin-top:18px;               
+                        .text_1{
+                            margin-bottom: 13px;
+                            h2{
+                                font-family: InterMedium;
+                                font-weight: $font__weight--500;
+                                font-size: $subtitle--1S;
+                                line-height: $line__height;
+                                letter-spacing: 0.25px;
+                                text-transform: uppercase;
+                            }
+                        } 
+                           }
+                        }                       
+                .line{
+                   
+                    justify-content: space-between;
+                    margin-top:24px;
+                    align-items: center;
+                    margin-left: 16px;
+                    
+                    img{
+                        margin-left: 16px;
+                    }
+                      
+                .line__right{
+                    
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                    margin-right: 32.06px;
+                    img{
+                        width: 14px;
+                        height: 7px;  
+                        margin-top:7px;
+                        margin-left:4px;
+                    
+                        }
+                        h3{ 
+                            font-family: InterMedium;
+                            font-weight: $font__weight--500;
+                            font-size: $subtitle--2S;
+                            line-height: $line__height;
+                            letter-spacing: $letter__spacing;
+                            text-transform: uppercase;
+                        }    
+                
+                        
+                    }
+                }        
+                   
+                .border__hr{
+                    border-bottom: 0.5px solid #CCCCCC;
+                    margin-left: 16px;
+                    margin-top: 16px;
+                    margin-right: 23px;
+                
+                }
+                .bottom__line{
+                    justify-content: space-between;
+                    margin-top:24px;
+                    .button_rating_content{
+                        button{
+                            
+                            margin-left: 16px;
+                            width: 125px;
+                            height: 44px;
+                            margin-top: -14px;
+                        }
+                    }
+                        
+                        .shop_click{
+                            margin-top: -2px;
+                           
+                            margin-right: 25px;
+                            
+                           
+                            img{
+                                
+                                margin-top:7px;
+                                margin-left:4px;
+                            }
+                            .union{
+                                img{
+                                    margin-top:-5px;
+                                    cursor: pointer;
+                                }
+                            }
+                            
+                        }
+                       
+                       
+                    }
+                }
+            }
 }
+
+
+@media (max-width:440px){
+    
+    .box_1{
+
+        width: 386px !important;
+        height: 271px !important;
+        border: 1px solid #D6D6D6;
+        box-sizing: border-box;
+        border-radius: 8px;
+        margin-left: 16px;
+        
+        .content{
+            width: 386px;
+            height: 252px;  
+            .content__img{
+              .box__img{
+                img{
+                 width: 84px;
+                height: 84px;
+                margin-right: 9.36px;
+                margin-left:12px;
+                margin-top:12px;
+                
+                }
+            }
+                    .texture{
+                        margin-top:18px;               
+                        .text_1{
+                            margin-bottom: 13px;
+                            h2{
+                                font-family: InterMedium;
+                                font-weight: $font__weight--500;
+                                font-size: $subtitle--1S;
+                                line-height: $line__height;
+                                letter-spacing: 0.25px;
+                                text-transform: uppercase;
+                            }
+                        } 
+                           }
+                        }                       
+                .line{
+                   
+                    justify-content: space-between;
+                    margin-top:24px;
+                    align-items: center;
+                    margin-left: 16px;
+                    
+                    img{
+                        margin-left: 16px;
+                    }
+                      
+                .line__right{
+                    
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                    margin-right: 32.06px;
+                    img{
+                        width: 14px;
+                        height: 7px;  
+                        margin-top:7px;
+                        margin-left:4px;
+                    
+                        }
+                        h3{ 
+                            font-family: InterMedium;
+                            font-weight: $font__weight--500;
+                            font-size: $subtitle--2S;
+                            line-height: $line__height;
+                            letter-spacing: $letter__spacing;
+                            text-transform: uppercase;
+                        }    
+                
+                        
+                    }
+                }        
+                   
+                .border__hr{
+                    border-bottom: 0.5px solid #CCCCCC;
+                    margin-left: 16px;
+                    margin-top: 16px;
+                    margin-right: 23px;
+                
+                }
+                .bottom__line{
+                    justify-content: space-between;
+                    margin-top:24px;
+                    .button_rating_content{
+                        button{
+                            
+                            margin-left: 16px;
+                            width: 125px;
+                            height: 44px;
+                            margin-top: -14px;
+                        }
+                    }
+                        
+                        .shop_click{
+                            margin-top: -2px;
+                           
+                            margin-right: 25px;
+                            
+                           
+                            img{
+                                
+                                margin-top:7px;
+                                margin-left:4px;
+                            }
+                            .union{
+                                img{
+                                    margin-top:-5px;
+                                    cursor: pointer;
+                                }
+                            }
+                            
+                        }
+                       
+                       
+                    }
+                }
+            }
+}
+
+
 
 

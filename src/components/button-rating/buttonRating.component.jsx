@@ -2,12 +2,12 @@ import React from 'react'
 
 import './buttonRating.component.scss'
 
-function ButtonRating() {
+function ButtonRating(props) {
     return (
         <div className="button_rating_content">
-            <button className="button_rating">
-                <img src={require('../../assets/images/icons/star.svg')} alt=""/>
-                Yüksək reytinq
+            <button data-id={props.data} onClick={props.click} className={`button_rating ${props.class}`}>
+                <img src={props.icon} alt=""/>
+                {props.name}
             </button>
         </div>
     )

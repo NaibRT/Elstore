@@ -74,7 +74,7 @@ render()
         <React.Fragment>
         <div className='row'>
     { this.state.sections.map(({title, imageUrl, id},i)=>(
-      <div key = {i} className='col-lg-4'>
+      <div key = {i} className='col-lg-4 col-md-4 col-sm-6'>
         <Clay  title={title} imageUrl = {imageUrl}/>
         </div>
     ))  

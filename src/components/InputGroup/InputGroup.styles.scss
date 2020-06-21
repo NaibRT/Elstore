@@ -1,0 +1,72 @@
+@import '../../App.scss';
+.inputForm{
+
+    &:focus-within{
+        label{
+            color: #6472B8;
+        }
+
+    }
+    &_helpcontainer{
+        display: flex;
+        padding: 0 10px;
+        justify-content: space-between;
+    }
+    .inputForm_input{
+        background: #FFFFFF;
+        border: 1px solid #444444;
+        box-sizing: border-box;
+        border-radius: 8px;
+        height: 48px;
+        padding: 16px;
+        width: 100%;
+        background-size: 30px 30px;
+        padding-right: 30px;
+        &:focus{
+            outline: none !important; 
+            border: 2px solid #6472B8;
+        }
+        &:hover{
+            border: 2px solid $text-dark;
+            transition: 0.5s all ease-in;
+        }
+        
+        
+    }
+    &_label{
+        font-family: 'InterRegular';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 150%;
+        letter-spacing: 0.5px;
+        position: relative;
+        top: 12px;
+        left: 16px;
+        z-index: 2;
+        width: max-content;
+        background-color: white;
+        
+    }
+}
+
+.inputForm_icon{
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    width:20px;
+    height: 20px;
+    border: 0 !important;
+    img{
+
+        border: 0 !important; 
+        // object-fit: cover;
+        // object-position: center;
+    }
+}
+
+.inputForm_iconcontainer{
+    position: relative;
+}
+
+

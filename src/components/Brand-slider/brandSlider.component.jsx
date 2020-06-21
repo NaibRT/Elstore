@@ -1,10 +1,7 @@
 import React,{Component} from 'react'
 import './brandSlider.component.scss'
 import Swiper from 'swiper';
-import SliderConfig from './slider.condig'
-import HeartImage from '../heart-image/heartImage.component';
-import ButtonRating from '../button-rating/buttonRating.component';
-import {Link} from 'react-router-dom'
+import ProductCartItem from '../product-card-item/product-cart-item.component'
 
 class BrandSlider extends Component{
 
@@ -22,7 +19,8 @@ class BrandSlider extends Component{
             //     disableOnInteraction: false,
             // },
             navigation:{
-                nextEl: '.brand-button-next'
+                nextEl: '.brand-button-next',
+                prevEl: '.brand-button-preview'
             },
             breakpoints:{
                 320:{
@@ -58,27 +56,16 @@ class BrandSlider extends Component{
                                         {
                                             this.props.data.length>0?
                                                 this.props.data.map(x=>{
-                                                    return <div className="swiper-slide">
-                                                    <HeartImage/>
-                                                    <div className="swiper_slide_image">
-                                                        {
-                                                            x.images.map(f=>{
-                                                                if(f.is_main){
-                                                                    return <img src={f.product_thumbnail_image} alt=""/>
-                                                                }
-                                                            })
-                                                        }
-                                                    </div>
-                                                    <h4><Link to={`/product/${x.id}/${x.product_name}`}>{x.product_name}</Link></h4>
-                                                    <p>{x.product_price} AZN</p>
-                                                    <ButtonRating/>
-                                                </div>
+                                                return <div className="swiper-slide">
+                                                        <ProductCartItem data={x}/>
+                                                       </div>
                                                 }):
                                                 null
                                         }
                                 </div>
                             </div>
-                <div className="brand-button-next"> <img src={require('../../assets/images/icons/next-icon.svg')} alt=""/> </div>
+                <div className="brand-button-next"> <img src={require('../../assets/images/icons/chevron-right-solid.svg')} alt=""/> </div>
+                <div className="brand-button-preview"> <img src={require('../../assets/images/icons/chevron-left-solid.svg')} alt=""/> </div>
             </section>
         )
     }
