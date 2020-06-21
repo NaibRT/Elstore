@@ -16,7 +16,9 @@ import DatatableOrder from './components/datatable order/datatable_order'
 import Delivery from "./components/DeliveryRegistr/DeliveryRegistr.component"
 import LoginModal from './components/Modal/Modal.component';
 import Campaign from './pages/compaign'
-
+import ProfileShopHome from './pages/profile-shop-home'
+import NavbarProfile from './components/navbar profile/nav-profile'
+import CheckoutThird from './components/checkout_third/checkout_third'
 const th = ['sİfarİş kodu','məhsulun adı', 'say', 'qİymət','Status', 'Düzəlİş' ];
 var sifaris = [
   {
@@ -50,6 +52,8 @@ var sifaris = [
 
 
 function App() {
+
+  
   return (
     
     <div className="App">
@@ -58,10 +62,12 @@ function App() {
     <SearchContext>
 
     <Router>
-    <Header />
+      {
+       (window.location.href.split('/')[3]==='profile')?<NavbarProfile/>:<Header />
+      }
     <br/>
     <br/>
-          <Main />
+          <CheckoutThird />
       <Footer/>
        <LoginModal/>
       </Router>

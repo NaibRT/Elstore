@@ -6,7 +6,6 @@ import InputGroup from "../InputGroup/InputGroup.component";
 import {Link} from 'react-router-dom';
 import {appContext} from '../../contexts/appContext';
 function CheckoutThird() {
-
     const AppContext=useContext(appContext);
 
     return (
@@ -30,7 +29,14 @@ function CheckoutThird() {
             <br/>
 
             <Card>
-            <Card.Header name='Çatdırılma ünvanı' />
+           <div className='card_head_flex'>
+            <div><Card.Header name='Çatdırılma ünvanı' /></div>
+            <div>
+                <button onClick={props.stepOne}>Düzəlİş et</button>
+            </div>
+
+           </div>
+            
             <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
@@ -54,7 +60,14 @@ function CheckoutThird() {
                
                 <br/>
                 <div>
-                <Card.Header name='Ödəmə üsulu' />
+                <div className='card_head_flex'>
+                    <div><Card.Header name='Ödəmə üsulu' /></div>
+                    <div>
+                        <button onClick={props.stepTwo}>Düzəlİş et</button>
+                    </div>
+                </div>
+
+              
                 <br/>
                    <div className='creditCard'>
                     <p>Onlayn ödəmə</p>
@@ -63,7 +76,7 @@ function CheckoutThird() {
                 </div>
             </Card>
             <br/>
-            <button className='form_button_multiple' >SİFARİŞ ET</button>
+            <button   className='form_button_multiple' >SİFARİŞ ET</button>
        </>
     )
 }

@@ -10,6 +10,7 @@ import {appContext} from '../../contexts/appContext'
 import UrlGenerator from '../../services/url-generator'
 function CheckoutFrist(props) {
     const AppContext=useContext(appContext)
+    
     const {values,handleChange} = props
     const [cities,setCities] = useState({
         data:[]

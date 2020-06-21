@@ -72,3 +72,48 @@
     align-self: center;
    }
 }
+
+
+@media(max-width:992px)
+{
+    .Store__Register{
+        width: 100%;
+        .registr__button{
+            width: 85%;
+        }
+
+    }
+    
+}
+
+@media(max-width:576px)
+{
+    .Store__Register{
+        width: 100%;
+        .registr__button{
+            width: 85%;
+        }
+        .registr__input{
+            display: block;
+            margin-top: 44px;
+            width: 85%;
+            height: 48px;
+     
+        }
+        .add__number{
+            margin-left: 61px;
+            margin-top: 32px;
+            text-align: right;
+            width: 85%;
+            font-family: InterRegular;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 150%;
+            letter-spacing: 0.5px;
+            color: #334788;
+            cursor: pointer;
+        }
+    }
+    
+}
