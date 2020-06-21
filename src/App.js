@@ -67,7 +67,7 @@ function App() {
       }
     <br/>
     <br/>
-          <Main />
+          <Main/>
       <Footer/>
        <LoginModal/>
       </Router>

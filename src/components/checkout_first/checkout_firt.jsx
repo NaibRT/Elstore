@@ -39,6 +39,14 @@ function CheckoutFrist(props) {
       .then(data =>{
        setRegion({data:data})
       });
+
+      AppContext.events.setTotal({
+          ...AppContext.total,
+          user:{
+              ...AppContext.total.user,
+              city_id:e.target.value
+          }
+      })
     }
    
     function goNextPage(e){
@@ -47,36 +55,76 @@ function CheckoutFrist(props) {
     };
 
     function nameEventHandler(e){
-
+       console.log(e.target)
       AppContext.events.setTotal({
-
+        ...AppContext.total,
+        user:{
+            ...AppContext.total.user,
+            name:e.target.value
+        } 
       })
     }
     function phonenameEventHandler(e){
-        
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                phone:e.target.value
+            } 
+          })
     }
 
     function emailEventHandler(e){
-        
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                email:e.target.value
+            } 
+          })
     }
 
     function surnameEventHandler(e){
-        
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                surname:e.target.value
+            } 
+          })
     }
 
     function regionEventHandler(e){
-        
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                region_id:e.target.value
+            } 
+          })
     }
-    function cityEventHandler(e) {
-        
+    function villageEventHandler(e) {
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                village_id:e.target.value
+            } 
+          })
     }
 
     function addressEventHandler(e) {
-        
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                address:e.target.value
+            } 
+          })
     }
 
     function secoundAddres(e) {
-        
+        console.log(e.target)
     }
     
     return (
@@ -120,7 +168,7 @@ function CheckoutFrist(props) {
                         <br/>
                         <Selectbox handleChange={regionEventHandler} firstopt='Region' class='selectboxcheckout' options={region.data.data} />
                         <br/>
-                        <Selectbox handleChange={cityEventHandler} class='selectboxcheckout' options={cities.data.data} />
+                        <Selectbox handleChange={villageEventHandler} class='selectboxcheckout' options={cities.data.data} />
                         <br/>
                         <br/>
                         <InputGroup onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />

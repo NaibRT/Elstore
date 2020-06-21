@@ -1,15 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect,useState } from 'react'
 import './checkout_third.scss';
 import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
 import InputGroup from "../InputGroup/InputGroup.component";
 import {Link} from 'react-router-dom';
 import {appContext} from '../../contexts/appContext';
+import UrlGenerator from '../../services/url-generator';
 function CheckoutThird(props) {
     const AppContext=useContext(appContext);
+    const [state,setState]=useState({
+        city:'',
+        region:''
+    })
 
+    useEffect(()=>{
+        let url=UrlGenerator('az',`cities/${AppContext.total.user.city_Id}`)
+    })
     return (
-       
         
         <>
         <Link className='goBasket' to='/basket' ><img src={require('../../assets/images/icons/next-icon.svg')} /> səbətə gerİ dön</Link>
@@ -41,12 +48,12 @@ function CheckoutThird(props) {
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
                         <p className='latest_section_checkout_p'>{AppContext.total.user.name}</p>
-                        <p className='latest_section_checkout_p'>{AppContext.total.user.number}</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.phone}</p>
                         <p className='latest_section_checkout_p'>{AppContext.total.user.email}</p>
                     </div>
                     <div className='col-lg-6 col-sm-12'>
                         <p className='latest_section_checkout_p'>{AppContext.total.user.city}</p>
-                        <p className='latest_section_checkout_p'>{AppContext.total.user.adress}</p>
+                        <p className='latest_section_checkout_p'>{AppContext.total.user.address}</p>
                         <p className='latest_section_checkout_p'>{AppContext.total.user.region}</p>
                     </div>
                 </div>
