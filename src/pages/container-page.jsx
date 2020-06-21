@@ -23,7 +23,7 @@ function Main() {
     </div>
   <Switch>
     
-  <Route exact={true} path='/' component={ProfileShopHome} />
+  <Route exact={true} path='/search/:id' component={Search} />
   <Route exact={true} path='/checkout' component={CheckoutAddress} />
   <Route exact={true} path='/homeandoffice'/>
   <Route exact={true} path='/product' component={ProductInfo} />

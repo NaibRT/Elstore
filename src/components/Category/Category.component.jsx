@@ -94,7 +94,7 @@ const Category = () => {
                                 })
                             }
                         </ul>
-
+  
                         
                         <div className="box--category" onMouseLeave={CategoryLeave} >
                             <div className="display__flex">

@@ -47,13 +47,13 @@ function Filter(prop) {
             return (
             <div>
                 <li> 
-                <label class="container-check">{x.translation.name}
+                <label class="container-check">{x.name}
                     <input value={x.id}   onClick={search.events.filterCategory}   type="checkbox" />
                     <span class="checkmark"></span>
                     </label>
                 </li>
                 {(x.children != null) ? x.children.map(item => { return(<li className='category_list_under'>
-                    <label class="container-check">{item.translation.name}
+                    <label class="container-check">{item.name}
                     <input  value={item.id}   onClick={search.events.filterCategory} type="checkbox" />
                     <span class="checkmark"></span>
                     </label>
@@ -62,7 +62,7 @@ function Filter(prop) {
                         (item.children!=null)?
                             item.children.map(itemchildren=>{
                             return (<li className='category_list_under_under'>
-                                <label class="container-check">{itemchildren.translation.name}
+                                <label class="container-check">{itemchildren.name}
                             <input  value={itemchildren.id}   onClick={search.events.filterCategory} type="checkbox" />
                             <span class="checkmark"></span>
                             </label> 

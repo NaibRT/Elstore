@@ -207,7 +207,7 @@ const loginRegister=<>
                     </div>
                     <MobileModal onClose={handleClick} show={show.show}>
                         {categories.data.map(category=>{
-                            return (<><br/><Link to='/shoes'>{category.name}</Link><br/></>)
+                            return (<><br/><Link to={`/search?filter[category_id]=${category.id}`}>{category.name}</Link><br/></>)
                         })}
                         
                     </MobileModal>
