@@ -18,6 +18,8 @@ import LoginModal from './components/Modal/Modal.component';
 import Campaign from './pages/compaign'
 import ProfileShopHome from './pages/profile-shop-home'
 import NavbarProfile from './components/navbar profile/nav-profile'
+import Porduc from "./pages/create-product"
+import Store from "./components/StoreRegistr/StoreRegistr.component"
 
 const th = ['sİfarİş kodu','məhsulun adı', 'say', 'qİymət','Status', 'Düzəlİş' ];
 var sifaris = [
@@ -68,13 +70,14 @@ function App() {
     <br/>
     <br/>
           <Main />
+
+         
       <Footer/>
        <LoginModal/>
       </Router>
       </SearchContext>
       </CategoryContext>
-      </AppContextProvider>
-      
+      </AppContextProvider> 
     </div>
   );
 }

@@ -201,7 +201,7 @@ function CreateProduct(){
        }
        
  return (
-   <div className='cnotainer'>
+   <div className='container'>
   <Card>
     <GoBack text='Mehsullara geri don' link='/profile/products'/>
    <Card.Header name="Mehsul Elave Et"/>

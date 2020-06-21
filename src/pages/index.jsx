@@ -14,15 +14,15 @@ import {appContext} from '../contexts/appContext'
 function Index() {
     const [product,setProduct]=useState({});
     const AppContext=useContext(appContext)
-    useEffect(()=>{
-        let token=AppContext.events.getToken();
-        axios.get('http://139.180.144.49/api/v1/az/products?include=seller,images',{headers:{
-            'Authorization':`${token.token_type} ${token.access_token}`
-        }})
-        .then(x=>{
-            setProduct(x.data.data)
-        })
-    },[])
+    // useEffect(()=>{
+    //     let token=AppContext.events.getToken();
+    //     axios.get('http://139.180.144.49/api/v1/az/products?include=seller,images',{headers:{
+    //         'Authorization':`${token.token_type} ${token.access_token}`
+    //     }})
+    //     .then(x=>{
+    //         setProduct(x.data.data)
+    //     })
+    // },[])
 
 
 
