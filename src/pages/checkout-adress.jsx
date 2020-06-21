@@ -14,6 +14,12 @@ function CheckoutAddress() {
            
           };
             
+          function stepTwo(){
+            setStep(2)
+          }
+          function stepOne(){
+            setStep(1)
+          }
           // Go back to prev step
           const prevStep = () => {
             setStep(step-1)
@@ -47,7 +53,7 @@ function CheckoutAddress() {
                     return   <CheckoutThird value={values} nextStep = {nextStep} prevStep = {prevStep}  />
             
             case 1: 
-                 return    <CheckoutFrist value={values}  nextStep = {nextStep} prevStep = {prevStep} />
+                 return    <CheckoutFrist value={values} stepTwo={stepTwo} stepOne={stepOne}  nextStep = {nextStep} prevStep = {prevStep} />
         }
     }
 
