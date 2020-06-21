@@ -2,11 +2,12 @@ import React from "react";
 import './button.component.scss';
 
 
-const Button = (props) => {
+const Button = ({children,onClick,type,name,data,className}) => {
   return (
     <div className="btn-group">
-          <button onClick={props.onClick} type={props.type} className={`btn-add btn border__radius--big border--medium display__block  ${props.className}`}>
-          {props.name}
+          <button data={data} onClick={onClick} type={type} className={`btn-add btn border__radius--big border--medium display__block  ${className}`}>
+          {name}
+          {children}
           </button>
         </div>
   );

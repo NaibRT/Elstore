@@ -34,7 +34,7 @@ function ProductInfo(props) {
       })
       .catch(err=>console.log(err))
   },[])
-  console.log(product.images) 
+
  return (
   <section>
     <div className="slider_container container">
@@ -51,7 +51,7 @@ function ProductInfo(props) {
              <HeadingChips  heading={product.product_name} stars={product.avg_rating} subtitle="Öz home / Ev aksessuarları / Toxuma işlər" sale="212 dəfə satıldı" />
              <OrderPrize price={`${product.price} AZN`} stock="movcuddur" priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
              <Input/>
-             <Button onClick={(e)=>AppContext.events.addBasket(e)} className="bg-primary txt--dark" name='Sebete Elave ET'/>
+             <Button data={product.id} onClick={(e)=>AppContext.events.addBasket(e)} className="bg-primary txt--dark" name='Sebete Elave ET'/>
              <ButtonGroup>
              <Button className="btn-buy-now txt--light" name='Indi Al'/>
              </ButtonGroup>         

@@ -1,24 +1,68 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useState,useContext} from 'react';
 import './basket_card.component.scss';
 import '../../assets/sass/abstracts/_text.scss';
+import {appContext} from '../../contexts/appContext';
+import UrlGenerator from '../../services/url-generator';
 
-function BasketCard(props){
+function BasketCard({plus,minus,count,product}){
+    
+    const [like,setLike]=useState(false)
+    const AppContetx=useContext(appContext)
 
-   
+    useEffect(()=>{
+        setLike(product.isLiked)
+    },[])
 
+    function removeFromBasket(e){
+        let id=e.target.getAttribute('data-id');
+        let bask=AppContetx.basket.filter(x=>x.id!=id)
+        AppContetx.events.setBasket([
+            ...AppContetx.bask,
+            ...bask
+        ])
+    }
 
-
-
+    function showHide(e){
+        let id=e.currentTarget.getAttribute('data-id');
+        let url=UrlGenerator('az','users/like');
+        let token=AppContetx.events.getToken();
+        if(token!==null){
+            fetch(url,{
+                headers:{
+                 'Content-Type':'application/json',
+                 'Authorization':`${token.token_type} ${token.access_token}`
+                },
+                method:'Post',
+                body:JSON.stringify({type:'product',liketable_id:id,action_type:like?'dislike':'like'})
+            }).then( response=>{
+                if(!response.ok){
+                    document.getElementById('login__modal').style.display='block'
+                }else{
+                    setLike(!like);
+                }
+            })
+            .catch(()=>document.getElementById('login__modal').style.display='block')
+        }else{
+            document.getElementById('login__modal').style.display='block';
+        }
+       console.log(product)
+    }
     return (
         <div className='basket__card'>
             <button className='basket_header_text'>Bu məhsul yalnız Bakı şəhəri daxilində çatdırılır.</button>
             <div className='card-flex'>
-            <div className='card_left'> 
-               <img className='basket_card_img' src={require('../../assets/images/slider/hero.jpg')} />
+            <div className='card_left'>
+            {
+                product.images.map(x=>{
+                    if(x.is_main){
+                        return <img alt='' className='basket_card_img' src={x.product_thumbnail_image} />
+                    }
+                })
+            }
            </div>
            <div className='card_center'>
                <div className='basket_name_for_responsivity'>
-               <h1 className='baskert_card_header'>Əl işi müxtəlif toxunmalar </h1>
+               <h1 className='baskert_card_header'>{product.product_name} </h1>
                <div><span className='basket_card_firm '>Öz Home</span><span className='basket_card_firm_height text--secondary'></span>  <span className='basket_card_selling'>212 dəfə satıldı</span> </div>
                </div>
               <div className="infor_respon">
@@ -26,9 +70,9 @@ function BasketCard(props){
                     <form><input  type='checkbox' /><span className='basket__form__text'>Hədiyyə paketi olaraq hazırlansın (+2 AZN)</span> </form>
                 </div> 
                 <div className='basket_order_details'>
-                    <h6 className='basket_order_details_head accordion'>Sifarİş qeydləri <span><img src={require('../../assets/images/icons/arrowDown.png')} /></span></h6>
+                    <h6 className='basket_order_details_head accordion'>Sifarİş qeydləri <span><img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></span></h6>
                     <p className='basket_order_details_text panel'>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis.
+                        {product.product_description}
                     <div><a  href='#'>Düzəliş et</a></div>
                     </p>
                 </div>
@@ -43,23 +87,27 @@ function BasketCard(props){
            <div className='card_right price_div '>
                <div className='basket_price'>
                    <div>
-                        <h2 className='basket_price_head'>{props.price} AZN</h2>
+                        <h2 className='basket_price_head'>{product.price} AZN</h2>
                     </div>
                     <div className='add_minus'>
-                        <button data-id={props.id} onClick={(e)=>{props.minus(e)}}  className='add_minus_button'>-</button>
-                        <button className='add_minus_text'>{props.count}</button>
-                        <button data-id={props.id} onClick={(e)=>{props.plus(e)}} className='add_plus_button'>+</button>
+                        <button data-id={product.id} onClick={(e)=>{minus(e)}}  className='add_minus_button'>-</button>
+                        <button className='add_minus_text'>{product.count}</button>
+                        <button data-id={product.id} onClick={(e)=>{plus(e)}} className='add_plus_button'>+</button>
                     </div>
                </div>
            </div>
             </div>
             <div className='basket_bottom_buttons'>
-                <button className='basket_bottom_button'><img className='basket_bottom_button_img' src={require('../../assets/images/icons/heart.png')} />əlavə et</button>
+            {
+                like?<button data-id={product.id} onClick={(e)=>showHide(e)} className='basket_bottom_button'><img alt='' className='basket_bottom_button_img' src={require('../../assets/images/icons/Enabled.svg')} />LIke</button>
+                    :<button data-id={product.id} onClick={(e)=>showHide(e)} className='basket_bottom_button'><img alt='' className='basket_bottom_button_img' src={require('../../assets/images/icons/Active2.svg')} />UnLike</button>
+                     
+            }
                 <button className='basket_bottom_button'>sonra al</button>
-                <button className='basket_bottom_button'>SİL</button>
+                <button data-id={product.id} onClick={(e)=>removeFromBasket(e)} className='basket_bottom_button'>SİL</button>
             </div>
         </div>
     )
 }
 
-export default BasketCard;
+export default React.memo(BasketCard);
