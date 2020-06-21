@@ -5,7 +5,7 @@ import Card from '../card/card.component'
 import InputGroup from "../InputGroup/InputGroup.component";
 import {Link} from 'react-router-dom';
 import {appContext} from '../../contexts/appContext';
-function CheckoutThird() {
+function CheckoutThird(props) {
     const AppContext=useContext(appContext);
 
     return (

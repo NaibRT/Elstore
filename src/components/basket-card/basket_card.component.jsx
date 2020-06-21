@@ -16,8 +16,9 @@ function BasketCard({plus,minus,count,product}){
     function removeFromBasket(e){
         let id=e.target.getAttribute('data-id');
         let bask=AppContetx.basket.filter(x=>x.id!=id)
+        console.log(bask)
         AppContetx.events.setBasket([
-            ...AppContetx.bask,
+            ...AppContetx.basket,
             ...bask
         ])
     }
