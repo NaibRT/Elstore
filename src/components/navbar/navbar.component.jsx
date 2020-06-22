@@ -99,10 +99,6 @@ function  Navbar(props) {
         })
     },[])
 
-    
-      const [show,setShow] = useState({
-        show: false
-      })
 
 
       
