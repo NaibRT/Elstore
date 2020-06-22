@@ -99,10 +99,6 @@ function  Navbar(props) {
         })
     },[])
 
-    
-      const [show,setShow] = useState({
-        show: false
-      })
 
 
       
@@ -146,9 +142,9 @@ function  Navbar(props) {
 const loginRegister=<>
 
                     <Link className='navbar_buttons_link log login' onClick={Sign} >daxİl ol</Link>
-                    <Link className='navbar_buttons_link log signup' to='/register'>hesab yarat</Link>
+                    <Link className='navbar_buttons_link log signup' onClick={Sign} >hesab yarat</Link>
                       
-                    </>
+                    </> 
 
     return (
         <div className='navbar'>
