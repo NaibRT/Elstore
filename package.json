@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "datatables.net": "^1.10.21",
+    "datatables.net-bs4": "^1.10.21",
     "datatables.net-dt": "^1.10.21",
     "jodit-react": "^1.0.42",
     "jquery": "^3.5.1",
