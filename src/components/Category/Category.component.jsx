@@ -90,7 +90,7 @@ const Category = () => {
                         <ul>
                             {
                                 CategoryContext.state.categories.map(x=>{
-                                    return  <Link to={`/search/${x.id}/${x.name}`}><li className="category__items" key={x.id}>{x.name} <span ><img onMouseOver={(e)=>{CategoryContext.event.getSubCat(e);handleClick()}} data-id={x.id} className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li></Link>
+                                    return  <Link style={{textDecoration: "none"}} to={`/search/${x.id}/${x.name}`}><li className="category__items" key={x.id}>{x.name} <span ><img onMouseOver={(e)=>{CategoryContext.event.getSubCat(e);handleClick()}} data-id={x.id} className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li></Link>
                                 })
                             }
                         </ul>
