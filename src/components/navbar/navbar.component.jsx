@@ -78,15 +78,29 @@ function  Navbar(props) {
           
 
 
-
-
+            
+    
 
 
 
 
     })
    
+    const [navbarCat, setNavbarCat] = useState({
+        data:[]
+    })
+    useEffect(()=>{
+        axios({
+            method:'GET',
+            url:'http://139.180.144.49/api/v1/az/categories',
     
+        }).then(res=>{
+            setNavbarCat({
+                data:res.data.data
+            })
+        })
+    },[])
+
     
       const [show,setShow] = useState({
         show: false
@@ -224,14 +238,16 @@ const loginRegister=<>
                     </div>
                 </div>
 
-
+            
             <div className='navbar_bottom'>
-                <Link to='/homeandoffice' className='navbar_bottom_link'>Ev və ofis aksesuarları</Link>
-                <Link to='/clothesandbags' className='navbar_bottom_link'>Geyim və çantalar</Link>
-                <Link to='/bujiteriya' className='navbar_bottom_link'>Bijuteriya və aksesuarlar</Link>
-                <Link to='/special' className='navbar_bottom_link'>Özəlləşdirilən</Link>
-                <Link to='/art' className='navbar_bottom_link'>İncəsənət nümunələri</Link>
-                <Link to='/handcraft' className='navbar_bottom_link'>Əl işləri</Link>
+                {
+                    navbarCat.data
+                    .filter((item,idx)=>{return idx<=6 })
+                    .map((item,idx)=>{
+                        return<Link key={idx} to={`/search?filter[category_id]=${item.id}`} className='navbar_bottom_link'>{item.name}</Link>
+                    })
+                }
+               
             </div>
 
         </div>
