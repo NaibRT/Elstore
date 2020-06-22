@@ -16,6 +16,7 @@ const product={
   product_category_id:'',
   product_price:'',
   status:1,
+  product_brand_id:'',
   az:{
     product_description:'',
     product_name:''
@@ -34,6 +35,7 @@ function CreateProduct(){
 
  const AppContext=useContext(appContext)
  const [categories,setCategories]=useState([]);
+ const [brands,setBrands]=useState([]);
  const [subcat,setSubCat]=useState([])
  const [childcat,setChildCat]=useState([])
  const [images,setImages]=useState([]);
@@ -60,18 +62,34 @@ function CreateProduct(){
 //  })
 
  useEffect(()=>{
-   let url=UrlGenerator('az','categories');
-   fetch(url)
+   let categories='';
+   let brandss='';
+   let cat_url=UrlGenerator('az','categories');
+   let brand_url=UrlGenerator('az','brands');
+
+   fetch(cat_url)
    .then(response=>{
     response.json()
     .then(r=>{
-       setCategories(r.data)
+       categories=r.data
     })
     .catch(e=>console.log(e))
    })
    .catch(err=>console.log(err))
 
 
+   fetch(brand_url)
+   .then(response=>{
+    response.json()
+    .then(r=>{
+       brandss=r.data
+       console.log(brandss)
+       setCategories(categories)
+       setBrands(brandss)
+    })
+    .catch(e=>console.log(e))
+   })
+   .catch(err=>console.log(err))
  },[])
 
     function readFileAsync(x){
@@ -102,6 +120,7 @@ function CreateProduct(){
   function imageLoad(e){
     let z=[...e.target.files];
     setImages([...images,...z])
+    console.log(images)
   }
     
        const getName=(e)=>{
@@ -139,6 +158,10 @@ function CreateProduct(){
            
        }
 
+       function getBrands(e) {
+        product.product_brand_id=e.target.value
+       }
+
        const getSubCataegory=(e)=>{
         let value=e.target.value;
         product.product_category_id=value
@@ -165,14 +188,20 @@ function CreateProduct(){
        const send=()=>{
 
           let newFormData=new FormData();
-          newFormData.append('images',images)
-          newFormData.append('az',product.az)
-          newFormData.append('en',product.en)
-          newFormData.append('ru',product.ru)
+          for (let i = 0; i < images.length; i++) {
+            newFormData.append(`images[${i}]`, images[i])
+        }
+          // newFormData.append('images[]',images)
+          newFormData.append('az[product_description]',product.az['product_description'])
+          newFormData.append('az[product_name]',product.az['product_name'])
+          newFormData.append('en[product_description]',product.en['product_description'])
+          newFormData.append('en[product_name]',product.en['product_name'])
+          newFormData.append('ru[product_description]',product.ru['product_description'])
+          newFormData.append('ru[product_name]',product.ru['product_name'])
           newFormData.append('product_category_id',product.product_category_id)
+          newFormData.append('product_brand_id',product.product_brand_id)
           newFormData.append('product_price',product.product_price)
           newFormData.append('status',product.status)
-          newFormData.append('_method',"PUT")
           console.log(newFormData)
           console.log(product)
           let url=UrlGenerator("az",'products');
@@ -183,8 +212,7 @@ function CreateProduct(){
               method:'Post',
               body:newFormData,
               headers:{
-                'Authorization':`${token.token_type} ${token.access_token}`,
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Authorization':`${token.token_type} ${token.access_token}`
               }
             })
             .then(async res=>{
@@ -221,6 +249,7 @@ function CreateProduct(){
         <InputGroup onChange={getName} type='text' placeholder='rus'/>
         </Tab.Page>
       </Tab>
+       <SelectBox handleChange={getBrands} name='brands' label='Brands' options={brands}/>
        <SelectBox handleChange={getCataegory} name='categoriya' label='Categoriya' options={categories}/>
      
        {
