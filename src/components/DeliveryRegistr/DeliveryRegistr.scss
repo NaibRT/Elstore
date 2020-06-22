@@ -83,6 +83,7 @@
 
 @media (max-width:576px){
     .delivery__registr{
+        width: 100%;
         .registr__input{
             display: block;
             padding-top: 45px;
@@ -90,6 +91,9 @@
                 width: 100%;
                 margin-top: 20px;
             }
+        }
+        h5{
+            font-size: 23px;
         }
         .registr__input{
             display: block;
@@ -99,7 +103,7 @@
             }
         }
         .delivery_phone{
-            width: 95%;
+            width: 88%;
         }
     }
     
