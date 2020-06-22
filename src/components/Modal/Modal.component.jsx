@@ -128,7 +128,7 @@ function Modal(){
                      })}
                       helper={errors.email&&errors.email.message}/>
 
-                <Input  name='password'  placeholder={"Email"} type="password" register={register({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors.password&&errors.password.message}/>
+                <Input  name='password'  placeholder={"Şifrə"} type="password" register={register({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors.password&&errors.password.message}/>
                 <label htmlFor="">şifrəmi unutmuşam</label>
                 <Button className="bg-primary" type={"submit"} name={"Daxil ol"}  />
                     <br/>
@@ -136,17 +136,17 @@ function Modal(){
             </section>
             <section  id="signup_view">
         <form onSubmit={handleSubmit2(registerSubmit)}>
-            <Input name='name' type='text' placeholder='name' register={register2({
+            <Input name='name' type='text' placeholder='Ad' register={register2({
                 required:{value:true,message:'name is required'},
                 maxLength:{value:255,message:'max  255 char need'}
             })} helper={errors2.name&&errors2.name.message}/>
 
-            <Input name='surname' type='text' placeholder='surname' register={register2({
+            <Input name='surname' type='text' placeholder='Soyad' register={register2({
                 required:{value:true,message:'name is required'},
                 maxLength:{value:255,message:'max 255 char need'}
             })} helper={errors2.name&&errors2.name.message}/>
 
-            <Input name='phone' type='tel' placeholder='phone' register={register2({
+            <Input name='phone' type='tel' placeholder='Telefon' register={register2({
                 required:{value:true,message:'name is required'},
                 maxLength:{value:255,message:'max 255 char need'}
             })} helper={errors2.name&&errors2.name.message}/>
@@ -159,7 +159,7 @@ function Modal(){
                 })}
                 helper={errors2.email&&errors2.email.message}/>
 { /*                 <SelectBox options={cities.data.data} name='address' class='selectboxcheckout' register={register({required:'cannot be null'})} />*/}
-            <Input   name='password'  placeholder={"Email"} type="password" register={register2({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors2.password&&errors2.password.message}/>
+            <Input   name='password'  placeholder={"Şifrə"} type="password" register={register2({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors2.password&&errors2.password.message}/>
             <br/>
             <Button className="bg-primary" type={"submit"} name={"Hesab yarat"}  />
             <br/>

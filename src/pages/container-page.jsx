@@ -13,6 +13,7 @@ import Delivery from "../components/DeliveryRegistr/DeliveryRegistr.component"
 import {appContext} from '../contexts/appContext'
 import CreateProduct from './create-product'
 import Verify from './verify'
+import CompanyAdd from "../components/CompanyAdd/CompanyAdd.component"
 
 function Main() {
   const AppContext=useContext(appContext);
@@ -35,6 +36,7 @@ function Main() {
   <Route exact={true} path='/open-store' component={StoreRegistr} />
   <Route exact={true} path='/worked-delivery' component={Delivery} />
   <Route  path='/verify/:token' component={Verify} />
+  <Route  path='/CompanyAdd' component={CompanyAdd} />
   <Route exact path='/profile' render={()=>(
     AppContext.app.isAuthorized?(<Profile/>):
     (<Redirect to='/'/>)
