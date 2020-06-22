@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 
 import ButtonRadio from "../button-radio/ButtonRadio.component";
 import {appContext} from '../../contexts/appContext';
+import Button from '../button/button.component';
 
 function CheckoutSecond(props) {
     const AppContext=useContext(appContext)
@@ -38,7 +39,7 @@ function CheckoutSecond(props) {
             ...AppContext.total,
             user:{
                 ...AppContext.total.user,
-                payment_type:0
+                payment_type:e
             }
         })
     }
@@ -62,9 +63,9 @@ function CheckoutSecond(props) {
             <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <ButtonRadio change={(e)=>PaymentType(e)} class='full_check' name='Qapıda ödəmə' nextName='Nəğd və ya kart vasitəsilə' />
+                        <ButtonRadio change={()=>PaymentType(0)} class='full_check' name='Qapıda ödəmə' nextName='Nəğd və ya kart vasitəsilə' />
                         <br/> 
-                        <ButtonRadio change={(e)=>PaymentType(e)} class='full_check' name='Onlayn ödəmə' nextName='Kart vasitəsilə' />
+                        <ButtonRadio change={()=>PaymentType(1)} class='full_check' name='Onlayn ödəmə' nextName='Kart vasitəsilə' />
                         <br/>
 {/*                    <Card.Header name='Kart məlumatlarını daxil edin' />
                     <br/>
@@ -85,7 +86,7 @@ function CheckoutSecond(props) {
                 </div>
             </Card>
             <br/>
-            <button className='form_button_multiple' onClick={goNextPage} >MƏLUMATLARI TƏSDİQLƏ</button>
+            <Button className='form_button_multiple bg-primary' onClick={goNextPage} name='MƏLUMATLARI TƏSDİQLƏ'/>
        </>
     )
 }

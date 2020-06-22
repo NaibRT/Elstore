@@ -30,6 +30,7 @@ function Main() {
   <Route exact={true} path='/product/create' component={CreateProduct} />
   <Route  path='/product/:id/:name' component={ProductInfo} />
   <Route exact={true} path='/basket' component={Basket} />
+  <Route  path='/basket/:id' component={Basket} />
   <Route exact={true} path='/search' component={Search} />
       <Route exact={true} path='/search/:id' component={Search} />
   <Route  path='/search/:id/:name' component={Search} />

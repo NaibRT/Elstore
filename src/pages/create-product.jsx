@@ -172,18 +172,20 @@ function CreateProduct(){
           newFormData.append('product_category_id',product.product_category_id)
           newFormData.append('product_price',product.product_price)
           newFormData.append('status',product.status)
-          newFormData.append('_method',"PATCH")
-          
+          newFormData.append('_method',"PUT")
+          console.log(newFormData)
+          console.log(product)
           let url=UrlGenerator("az",'products');
           let token=AppContext.events.getToken();
+          
           if(token!=null){
             fetch(url,{
               method:'Post',
               body:newFormData,
               headers:{
                 'Authorization':`${token.token_type} ${token.access_token}`,
-                'Content-Type': 'multipart/form-data',
-                'enctype' : 'multipart/form-data',}
+                'Content-Type': 'application/x-www-form-urlencoded'
+              }
             })
             .then(async res=>{
               if(res.ok){
@@ -201,7 +203,7 @@ function CreateProduct(){
        }
        
  return (
-   <div className='container'>
+   <div className='container-fluid'>
   <Card>
     <GoBack text='Mehsullara geri don' link='/profile/products'/>
    <Card.Header name="Mehsul Elave Et"/>
