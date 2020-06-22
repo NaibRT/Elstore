@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom';
 import Selectbox from '../Select-box/SelectBox.component'
 import {appContext} from '../../contexts/appContext'
 import UrlGenerator from '../../services/url-generator'
+import Button from '../button/button.component';
 function CheckoutFrist(props) {
     const AppContext=useContext(appContext)
     
@@ -18,7 +19,13 @@ function CheckoutFrist(props) {
     const [region,setRegion] = useState({
         data:[]
     })
+    const [village,setVillage] = useState({
+        data:[]
+    })
+
+
     // const sherler = ['Baku','Ganja','Mingechevir']
+
     // const rayonlar = ['Sirvan','Ucar','Kurdamir']
     // const kend = ['Bilge','Kurdakhani','Mastaga']
 
@@ -95,13 +102,20 @@ function CheckoutFrist(props) {
     }
 
     function regionEventHandler(e){
+        let url=UrlGenerator('az',`village?region_id=${e.target.value}`);
+        fetch(url)
+        .then(response => response.json())
+        .then(data =>{
+         setVillage({data:data})
+        });
+
         AppContext.events.setTotal({
             ...AppContext.total,
             user:{
                 ...AppContext.total.user,
                 region_id:e.target.value
             } 
-          })
+          })    
     }
     function villageEventHandler(e) {
         AppContext.events.setTotal({
@@ -124,7 +138,13 @@ function CheckoutFrist(props) {
     }
 
     function secoundAddres(e) {
-        console.log(e.target)
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                note:e.target.value
+            } 
+          })
     }
     
     return (
@@ -168,7 +188,7 @@ function CheckoutFrist(props) {
                         <br/>
                         <Selectbox handleChange={regionEventHandler} firstopt='Region' class='selectboxcheckout' options={region.data.data} />
                         <br/>
-                        <Selectbox handleChange={villageEventHandler} class='selectboxcheckout' options={cities.data.data} />
+                        <Selectbox handleChange={villageEventHandler}  class='selectboxcheckout' options={village.data.data} />
                         <br/>
                         <br/>
                         <InputGroup onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />
@@ -185,7 +205,7 @@ function CheckoutFrist(props) {
                 </div>
             </Card>
             <br/>
-            <button className='form_button_multiple'  onClick={goNextPage} >ÖDƏNİŞ ÜSULU ƏLAVƏ ET</button>
+            <Button className='form_button_multiple bg-primary' onClick={goNextPage} name='ÖDƏNİŞ ÜSULU ƏLAVƏ ET'/>
             
        </>
     )

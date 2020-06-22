@@ -1,14 +1,86 @@
-import React, { useState } from 'react'
+import React, { useState,useContext, useEffect } from 'react'
 import Button from "../button/button.component"
 import "../ProfilInfo/ProfilInfo.scss"
 import Input from "../InputGroup/InputGroup.component"
-
+import {useForm} from 'react-hook-form'
+import {appContext} from '../../contexts/appContext'
+import UrlGenerator from '../../services/url-generator'
+import { useHistory } from "react-router-dom";
 
 
 function Porfilinfo(props) {
-   
-    const[gorset,setGorsset]=useState(true)
 
+    const [update,setUpdate]=useState({})
+
+
+    const AppContext=useContext(appContext)
+
+
+    
+    
+    useEffect(() => {
+        let url=UrlGenerator('az',`auth/me`)
+        let token=AppContext.events.getToken();
+       fetch(url,{
+           headers:{
+            "Authorization":`${token.token_type} ${token.access_token}`,
+           },
+           method:"POST",
+       })
+       .then(async res=>{
+        if(res.ok){
+            let data1=await res.json();
+            console.log(data1)
+            setUpdate({
+                ...update,
+                ...data1
+            })
+        }
+           
+          
+       })
+       .catch((err) =>console.log(err))
+    }, []);
+
+       
+    const [datalar,setDatalar]=useState({
+        field:{
+            namelar:"",
+            oldpassword:"",
+            newpassword:""
+        }
+        
+    })   
+
+    const DataPost=(e)=>{
+        e.preventDefault()
+        let url=UrlGenerator('az',`users/courier/update`)
+        let token=AppContext.events.getToken();
+       fetch(url,{
+           headers:{
+            "Authorization":`${token.token_type} ${token.access_token}`,
+           },
+           method:"POST",
+       })
+       .then(async res=>{
+        if(res.ok){
+            console.log('burdadiiii',res)
+            let data1=await res.json();
+            console.log(data1)
+            e.preventDefault();
+            setDatalar({
+                field:{
+                ...datalar.field,
+                [e.target.name]:e.target.value
+            }})
+        }
+           
+          
+       })
+       .catch((err) =>console.log(err))
+    }
+    
+    
     const [allData,SetallData]=useState({
         field:{
             şəhər:"",
@@ -113,18 +185,24 @@ function Porfilinfo(props) {
                                     </div>
                                    <div className="borders"></div>
                                 </div>
+                                <form   >
                                 <div className="profile--image_Username emails">
                                     <div className="userName_edit">
                                         <h5>İstİfadəçİ adı</h5>
-                                        <a href="">Düzəliş et</a>
                                     </div>
-                                    <Input type="text" placeholder="Username694841"/>
+                                    <Input type="text" value={update.name} placeholder="Username694841"/>
                                     <div className="borders"></div>
                                 </div>
                                 <div className="profile--image_Username passw">
                                     <div className="userName_edit">
-                                        <h5>Şİfrə</h5>
-                                        <a href="">Düzəliş et</a>
+                                        <h5>Köhnə Şİfrə</h5>
+                                    </div>
+                                    <Input type="password"  placeholder="**************"/>
+                                    <div className="borders"></div>
+                                </div>
+                                <div className="profile--image_Username odlpassw">
+                                    <div className="userName_edit">
+                                        <h5>Yeni Şİfrə</h5>
                                     </div>
                                     <Input type="password"  placeholder="**************"/>
                                     <div className="borders"></div>
@@ -133,10 +211,12 @@ function Porfilinfo(props) {
                                     <div className="userName_edit">
                                         <h5>Email</h5>
                                     </div>
-                                    <Input type="Email"  placeholder="example@example.com"/>
+                                    <Input value={update.email} type="Email"  placeholder="example@example.com"/>
                                     <div className="borders"></div>
                                 </div>
-                                <Button className="button_delete--acc" name="Hesabi sil"/>
+                                <Button  name="Yadda saxla"/>
+                                </form>
+                                <Button  className="button_delete--acc" name="Hesabi sil"/>
                                 </section>
                             </div>
                             <section id="adress">

@@ -46,6 +46,20 @@
                 position: relative;
                 top: 7px;
             }
+   
+              span{
+                  width: 15px;
+                  height: 15px;
+                  background-color: red;
+                  position: absolute;
+                  right: -5px;
+                  border-radius: 15px;
+                  text-align: center;
+                  align-content: center;
+                  color: white;
+                  padding-bottom: 20px;
+              }
+    
         }
     }
     .navbar_logo{

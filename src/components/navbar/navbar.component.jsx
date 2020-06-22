@@ -20,6 +20,12 @@ function  Navbar(props) {
     const products = useContext(searchContext);
     const [visiblepp,setVisiblepp] =useState(false);
     const AppContext=useContext(appContext);
+    const [categories, setCategories] = useState({
+        data:[]
+    })
+    const [show,setShow] = useState({
+        show: false
+      })
 
 
     function showbar(){
@@ -75,22 +81,29 @@ function  Navbar(props) {
              if(window.location.href.split('/')[3]==='' && window.location.href.split('/')[3] === 'index'){
                 $(".navbar_bottom_link").removeClass("activenav");
              }
-          
-
-
-
-
-
-
-
 
     })
    
+    const [navbarCat, setNavbarCat] = useState({
+        data:[]
+    })
+    useEffect(()=>{
+        axios({
+            method:'GET',
+            url:'http://139.180.144.49/api/v1/az/categories',
     
+        }).then(res=>{
+            setNavbarCat({
+                data:res.data.data
+            })
+        })
+    },[])
+
     
       const [show,setShow] = useState({
         show: false
       })
+
 
       
     function handleClick(){
@@ -100,10 +113,6 @@ function  Navbar(props) {
     }
 
 
-   
-    const [categories, setCategories] = useState({
-        data:[]
-    })
    
     const url = 'http://139.180.144.49/api/v1/az/categories';
   
@@ -118,7 +127,6 @@ function  Navbar(props) {
      },[])
   
 
-
     const userProfle=<>
     <Link   className='navbar_buttons_link bag budget' >256 ₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>  
@@ -129,7 +137,7 @@ function  Navbar(props) {
         <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən məhsullar</Link></li>
         <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən brendlər və mağazalar</Link></li>
         <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
-        <li className='profile_dropwdown_li'><Link to='/orders'>Logout</Link></li>
+        <li className='profile_dropwdown_li'><Link onClick={AppContext.events.logout}>Logout</Link></li>
     </ul>
 </div>
 
@@ -162,8 +170,8 @@ const loginRegister=<>
                     <LangToggler/>
                 </div>
                 <div className='navbar_buttons'>
-                     <Link   className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/heading/Bag.svg')} /></Link> 
-                    
+                     <Link   className='navbar_buttons_link bag' to='/basket'><img alt='' src={require('../../assets/images/heading/Bag.svg')} /><span>{AppContext.basket.length}</span></Link> 
+
                     
                     {
                         AppContext.app.isAuthorized?
@@ -224,14 +232,16 @@ const loginRegister=<>
                     </div>
                 </div>
 
-
+            
             <div className='navbar_bottom'>
-                <Link to='/homeandoffice' className='navbar_bottom_link'>Ev və ofis aksesuarları</Link>
-                <Link to='/clothesandbags' className='navbar_bottom_link'>Geyim və çantalar</Link>
-                <Link to='/bujiteriya' className='navbar_bottom_link'>Bijuteriya və aksesuarlar</Link>
-                <Link to='/special' className='navbar_bottom_link'>Özəlləşdirilən</Link>
-                <Link to='/art' className='navbar_bottom_link'>İncəsənət nümunələri</Link>
-                <Link to='/handcraft' className='navbar_bottom_link'>Əl işləri</Link>
+                {
+                    navbarCat.data
+                    .filter((item,idx)=>{return idx<=6 })
+                    .map((item,idx)=>{
+                        return<Link key={idx} to={`/search?filter[category_id]=${item.id}`} className='navbar_bottom_link'>{item.name}</Link>
+                    })
+                }
+               
             </div>
 
         </div>
