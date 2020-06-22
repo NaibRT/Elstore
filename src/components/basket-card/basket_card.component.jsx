@@ -17,9 +17,11 @@ function BasketCard({plus,minus,count,product}){
         let id=e.target.getAttribute('data-id');
         let bask=AppContetx.basket.filter(x=>x.id!=id)
         console.log(bask)
+        console.log('dddd')
         AppContetx.events.setBasket([
             ...AppContetx.basket,
             ...bask
+
         ])
     }
 
@@ -46,7 +48,6 @@ function BasketCard({plus,minus,count,product}){
         }else{
             document.getElementById('login__modal').style.display='block';
         }
-       console.log(product)
     }
     return (
         <div className='basket__card'>

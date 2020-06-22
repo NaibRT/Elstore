@@ -23,7 +23,7 @@ const kategories = [
 ]
 
 
-function DatatableCheck(params) {
+function DatatableCheck(props) {
    
     const [filter,SetFilter]  = useState({
         kategories:[],
@@ -39,7 +39,7 @@ function DatatableCheck(params) {
         } );
 
        
-        params.tbody.map((name)=>{
+        props.tbody.map((name)=>{
             names.push(name)
         });
 
@@ -47,7 +47,7 @@ function DatatableCheck(params) {
         
     })
 
-    const filteredName = params.tbody.filter(name =>
+    const filteredName = props.tbody.filter(name =>
          name.ad.includes(filter.searchName)
       
       );
@@ -77,7 +77,7 @@ function DatatableCheck(params) {
         <thead>
             <tr>
                 {
-                    params.thead.map(head=>{
+                    props.thead.map(head=>{
                         return <th>{head}</th>
                     })
                 }
@@ -85,16 +85,14 @@ function DatatableCheck(params) {
         </thead>
         <tbody>
             {
-                params.tbody.map(bodyItems=>{
+                props.tbody.map(bodyItems=>{
                     return (
                         <tr>
                             <td>
                                <Checkbox/>
                             </td>
-                            <td>{bodyItems.ad}</td>
-                            <td>{bodyItems.say}</td>
-                            <td>{bodyItems.qiymət}</td>
-                            <td>{bodyItems.status}</td>
+                            <td>{bodyItems.product_name}</td>
+                            <td>{bodyItems.price}</td>
                         </tr>
                     )
                 })

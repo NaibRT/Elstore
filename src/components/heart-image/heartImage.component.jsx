@@ -5,7 +5,6 @@ import {appContext} from '../../contexts/appContext'
 
 
 function HeartImage({id,isLiked}) {
-    console.log(isLiked)
     const AppContetx=useContext(appContext);
     const [like,setLike]=useState(false)
     useEffect(()=>{

@@ -14,7 +14,7 @@ const langs =['azeri', 'russia']
         const products=useContext(searchContext);
         return (
             <section className="search_result__section">
-                <SelectBox options={langs}/>
+                <SelectBox options={langs} class='search_re'/>
                 <SearchResultComp catFilter={props.catFilter} data={products.state.filteredData}/>
             </section>
             
