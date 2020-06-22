@@ -122,16 +122,18 @@ function  NavbarProfile(props) {
     const userProfle=<>
     <Link   className='navbar_buttons_link bag budget' >256 ₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>  
-    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
-<div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
-    <ul className='profile_dropwdown_ul'>
-        <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
-        <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən məhsullar</Link></li>
-        <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən brendlər və mağazalar</Link></li>
-        <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
-        <li className='profile_dropwdown_li'><Link to='/orders'>Logout</Link></li>
-    </ul>
-</div>
+    <span className='spanprofile'  onMouseLeave={showbar} >
+    <Link id='profileicon' onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+    <div className={`profile_dropwdown ${visiblepp ? 'active':'passive'}`} >
+        <ul className='profile_dropwdown_ul'>
+            <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
+            <li className='profile_dropwdown_li'><Link to='/profie/favorit-shop'>Bəyənilən mağazalar</Link></li>
+            <li className='profile_dropwdown_li'><Link to='/profie/orderCard'>Tamamlanmış Sifarişlər</Link></li>
+            <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
+            <li className='profile_dropwdown_li'><Link to='/orders'>Çıxış</Link></li>
+        </ul>
+    </div>
+    </span>
 
 </>;
 
@@ -154,7 +156,7 @@ const loginRegister=<>
                 </div>
                 <div className='navbar_search'>
                 <form   className="search-input" >
-                    <input onChange={products.events.searchForm}  value={localStorage.getItem('search')} className='search-input-text' type="text" placeholder="Search.." name="search" />
+                    <input onChange={products.events.searchForm}  value={localStorage.getItem('search')} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
                     <Link to={`/categories?search:${products.state.searchKey}`} className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></Link>
                 </form>
                 </div>
@@ -196,7 +198,7 @@ const loginRegister=<>
                     {
                         AppContext.app.isAuthorized?
                        <>
-                        <Link   className='responsive_nav_login_log  ' >256 ₼ </Link> 
+                        <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
                             <Link   className='responsive_nav_login_log' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>
                         </>
                         :

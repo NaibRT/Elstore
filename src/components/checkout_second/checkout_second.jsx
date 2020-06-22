@@ -64,7 +64,7 @@ function CheckoutSecond(props) {
                     <div className='col-sm-12 col-lg-6'>
                         <ButtonRadio change={(e)=>PaymentType(e)} class='full_check' name='Qapıda ödəmə' nextName='Nəğd və ya kart vasitəsilə' />
                         <br/> 
-                        <ButtonRadio change={(e)=>PaymentType(e)} class='full_check' name='Onlayn ödəmə' nextName='Kart vasitəsilə' />
+                        {/* <ButtonRadio change={(e)=>PaymentType(e)} class='full_check' name='Onlayn ödəmə' nextName='Kart vasitəsilə' /> */}
                         <br/>
 {/*                    <Card.Header name='Kart məlumatlarını daxil edin' />
                     <br/>

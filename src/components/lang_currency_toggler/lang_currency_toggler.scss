@@ -74,8 +74,13 @@
     overflow: hidden;
     transition: height 0.2s ease-out;
   }
-
+  
   .accordion_select{
      position: relative;
      top: -20px;
+  }
+
+.active_panel{
+    height:200px;
+    overflow: hidden;
   }

@@ -63,26 +63,7 @@ function CheckoutThird(props) {
                 </p>
             </Card>
             <br/>
-            <Card>
-               
-                <br/>
-                <div>
-                <div className='card_head_flex'>
-                    <div><Card.Header name='Ödəmə üsulu' /></div>
-                    <div>
-                        <button onClick={props.stepTwo}>Düzəlİş et</button>
-                    </div>
-                </div>
-
-              
-                <br/>
-                   <div className='creditCard'>
-                    <p>Onlayn ödəmə</p>
-                    <p>4169 ···· ···· ··45 nömrəli kart vasitəsi ilə</p>
-                   </div> 
-                </div>
-            </Card>
-            <br/>
+            
             <button   className='form_button_multiple' >SİFARİŞ ET</button>
        </>
     )
