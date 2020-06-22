@@ -48,7 +48,7 @@ function ProductInfo(props) {
          </div>
   
         <div className='col-lg-4 col-md-12 col-sm-12 '>
-             <HeadingChips  heading={product.product_name} stars={product.avg_rating} subtitle="Öz home / Ev aksessuarları / Toxuma işlər" sale="212 dəfə satıldı" />
+             <HeadingChips  heading={product.product_name} stars={product.avg_rating} subtitle="Öz home / Ev aksessuarları / Toxuma işlər" sale="0 dəfə satıldı" />
              <OrderPrize price={`${product.price} AZN`} stock="movcuddur" priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
              <Input/>
              <Button data={product.id} onClick={(e)=>AppContext.events.addBasket(e)} className="bg-primary txt--dark" name='Sebete Elave ET'/>

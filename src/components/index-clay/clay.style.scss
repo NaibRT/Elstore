@@ -67,17 +67,103 @@
         top:19px;
         left:18px;
         width: 140px;
-    
+        cursor: pointer;
     }
       
       img{
         color: #FFFFFF;
         width: 14.57px;
-        height: 12px;
+        height: 10px;
+        cursor: pointer;
+        top:23px;
       }
    }                   
 
 
             }
+        }
+        @media (max-width: 1200px){
+          .card{
+
+            width:100%;
+            border-radius: 12px;
+            height:180px;
+            overflow:hidden;
+            background-image:url('..//../assets/images/index/Image.svg');
+            background-size:cover;
+            background-position:center;
+            margin-bottom: $col_padding;
+                .card-overlay{
+                    clip-path: polygon(0 0%, 70% 0, 65% 100%, 0% 100%);
+                    background: #6472B8;
+                    mix-blend-mode: normal;
+                    opacity: 0.8;
+                    height:100%;
+                    width:100%;
+                }
+                    .card-info{
+                        img{
+                            width:32px;
+                            height:32px;
+                            position:relative;
+                            left:18.42px;
+                            top:24px;}
+        
+                            .card-info-text{
+                                font-family: InterRegular;
+                                position:relative;
+                                width: 88px;
+                                top:-8px;
+                                left:54px;
+                                font-weight: 500;
+                                font-size: 16px;
+                                line-height: 150%;
+                                letter-spacing: 0.25px;
+                                color: #FFFFFF;
+                              }
+                              .card-head    {
+                                font-family: InterRegular;
+                                font-style: normal;
+                                font-weight: 500;
+                                font-size: 11px;
+                                left:20px; 
+                                line-height: 170%;
+                                letter-spacing: 0.25px;
+                                color: #F2F2F2;
+                                width: 141px;   
+                                position: relative;
+                                
+                               
+                              }
+           .product{
+
+            .card-go{
+                font-family: InterRegular;
+                font-weight: 500;
+                font-size: 11px;
+                line-height: 150%;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+                color: #FFFFFF;
+                position:relative;
+                top:19px;
+                left:18px;
+                width: 140px;
+                cursor: pointer;
+            }
+              
+              img{
+                color: #FFFFFF;
+                width: 14.57px;
+                height: 9px;
+                cursor: pointer;
+                left:-10px;
+                top: 22px;
+              }
+           }                   
+        
+        
+                    }
+                }
         }
     
