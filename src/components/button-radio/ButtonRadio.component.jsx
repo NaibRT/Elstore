@@ -3,7 +3,6 @@ import './ButtonRadio.component.scss'
 
 function clickAll(e){
 
-    console.log(e.currentTarget);
 
     if(e.currentTarget.children[0].children[0].children[0].checked == false){
         e.currentTarget.children[0].children[0].children[0].checked = true;

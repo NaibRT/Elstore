@@ -56,13 +56,11 @@ const CompanyAdd = () => {
             .then(async res=>{
               if(res.ok){
                 let r=await res.json()
-                console.log(r)
               }
             })
             .catch(err=>console.log(err))
           }else{
           }
-          console.log(newFormdata)
     }
 
     const getName=(e)=>{

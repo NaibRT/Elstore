@@ -12,7 +12,7 @@ import $ from 'jquery'
 import MobileModal from '../categorymobile_modal/mobilemodal'
 const Langs =  [
     {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
-const Currency =  ['AZN','EURO','USD'];
+const Currency =  [{id:1,name:'AZN'},{id:2,name:'TRY'},{id:3,name:'EURO'}];
 
 
 function  NavbarProfile(props) {
@@ -120,12 +120,12 @@ function  NavbarProfile(props) {
 
 
     const userProfle=<>
-    <Link   className='navbar_buttons_link bag budget' >256 ₼ </Link> 
+    <Link   className='navbar_buttons_link bag budget' >0 ₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>  
     <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
 <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>
-        <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
+        <li className='profile_dropwdown_li'> <Link to='/profile'>Hesab</Link></li>
         <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən məhsullar</Link></li>
         <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən brendlər və mağazalar</Link></li>
         <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
@@ -189,14 +189,14 @@ const loginRegister=<>
 
             <div className={`${toggle.active ? 'opennav': ''} responsive_nav`}>
                     <div className='responsive_nav_top'>
-                    <Selectbox  value={Langs} class='accordion_select'  options={Langs}/>
-                    <Selectbox   value={Currency} class='accordion_select'  options={Currency}/>
+                    <Selectbox firstopt='Dil' value={Langs} class='accordion_select'  options={Langs}/>
+                    <Selectbox  firstopt='Valyuta'  value={Currency} class='accordion_select'  options={Currency}/>
                     </div>
                     <div className='responsive_nav_login'>
                     {
                         AppContext.app.isAuthorized?
                        <>
-                        <Link   className='responsive_nav_login_log  ' >256 ₼ </Link> 
+                        <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
                             <Link   className='responsive_nav_login_log' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>
                         </>
                         :

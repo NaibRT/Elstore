@@ -95,7 +95,6 @@ function CheckoutThird(props) {
         })
         .then(async res=>{
             let data=await res.json();
-            console.log(data)
         })
         .catch(err=>console.log(err))
 

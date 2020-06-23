@@ -55,15 +55,15 @@ function Datatable(params) {
     useEffect(()=>{
 
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('#example').dataTable();
         } );
 
-       
+        
         params.tbody.map((name)=>{
             names.push(name)
         });
 
-        console.log(names)
+        
         
     })
 
@@ -82,7 +82,6 @@ function Datatable(params) {
             searchField:e.target.value
         })
 
-        console.log(searchMarket.searchField)
     }
     
     const [state,setState] = useState({
@@ -90,11 +89,9 @@ function Datatable(params) {
     })
 
     function handleSelect(e) {
-        console.log(e.target.value);
         axios.get(`http://139.180.144.49/api/v1/az/search/product?filter[category_id]=${e.target.value}`)
         .then(res => {
             setState({filteredData: res.data.data});
-            console.log(res.data.data);
             
             if(state.filteredData.length===0){
                 alert('Bu kateqoriyada mehsul yoxdur')
@@ -102,12 +99,12 @@ function Datatable(params) {
         })
     }
 
-
+    
 
    
 
     return(
-        <div>
+        <div className='dtable'>
             <div className='datatable_search'>
                 <InputGroup onChange={searchName}  placeholder='Məhsul axtar' formIcon={require('../../assets/images/icons/search.svg')} />
                 <SelectBox class='datatable_selectbox' handleChange={handleSelect} value={category.category.id} firstopt="Kateqoriya" options={category.category}/>
@@ -124,15 +121,17 @@ function Datatable(params) {
         <thead>
             <tr>
                 {
+                    params!=null?
                     params.thead.map(head=>{
                         return <th>{head}</th>
-                    })
+                    }):''
                 }
             </tr>
         </thead>
         <tbody>
+                
             {
-                (state.filteredData.length===0)? (params!=null)?
+                (state.filteredData.length===0)? (params!==undefined)?
 
                 filteredProduct.map(bodyItems=>{
                     return (

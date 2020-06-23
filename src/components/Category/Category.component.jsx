@@ -11,7 +11,6 @@ const Category = () => {
         let boxCategory=document.querySelector(".box--category");
         let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
           
-        console.log(CategoryContext.state.childrens.children);
         
         setTimeout(() => {
             box__subcotegoryItem.forEach(x=>{
@@ -71,7 +70,6 @@ const Category = () => {
     if(CategoryContext.state.childrens.children!==undefined){
         SubCategories=CategoryContext.state.childrens.children.map(x=>{
 
-            console.log(x)
             return <ul key={x.id} className="box--subcotegory_flexx">
             <li  className="box__subcotegory--item">
             <Link to={`/search?filter[category_id]=${x.id}`} className="box--subcotegory">{x.name}</Link>

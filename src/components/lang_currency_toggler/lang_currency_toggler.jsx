@@ -10,22 +10,13 @@ const Currency =  ['AZN','EURO','USD'];
 
 function LangToggler() {
 
-    useEffect(()=>{
-        var acc = document.getElementsByClassName("accordion_lang");
-            var i;
-    
-            for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.height) {
-                panel.style.height = null;
-                } else {
-                panel.style.height = panel.scrollHeight + "px";
-                } 
-            });
-            }
+    const [toggler, setToggler] = useState({
+        toggle:false
     })
+
+    function toggleropen(){
+        setToggler({toggle: !toggler.toggle})
+    }
 
     function handleChange(e){
         const { value, name } = e.target;
@@ -52,16 +43,16 @@ function LangToggler() {
     return (
         <>
         <div className='select_border'>
-        <button class="accordion_lang">
+        <button onClick={toggleropen} class="accordion_lang">
         <div>{languageCurrency.language} / {languageCurrency.currency}</div> 
         <div className='accordion_next'>  <img src={require("../../assets/images/icons/next-icon.svg")} /></div>
             
         </button>
-        <div class="panel_lang">
+        <div className={`panel_lang ${toggler.toggle ? 'active_panel':''}`}  >
         <label>Dil</label>
-           <Selectbox handleChange={handleChange} name='language' value={langval} class='accordion_select'  options={Langs}/>
+           <Selectbox firstopt='Dil' handleChange={handleChange} name='language' value={langval} class='accordion_select'  options={Langs}/>
         <label>Valyuta</label>
-           <Selectbox handleChange={handleChange} name='currency' value={Currency}  class='accordion_select'  options={Currency}/>
+           <Selectbox firstopt='Valyuta' handleChange={handleChange} name='currency' value={Currency}  class='accordion_select'  options={Currency}/>
         </div>
         </div>
         </>

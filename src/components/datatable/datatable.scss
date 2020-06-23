@@ -21,9 +21,7 @@ td{text-align: center !important;
         
     }
 }
-.odd{
-    display: none;
-}
+
 th{
     font-family: 'InterRegular';
     font-style: normal;
@@ -47,6 +45,7 @@ td{
 
 .datatable_search{
     display: flex;
+    flex-wrap: wrap;
     label{
         display: flex;
         span{
@@ -112,3 +111,8 @@ td{
     
 }
 
+
+.dtable{
+    width: 100%;
+    overflow: auto;
+}

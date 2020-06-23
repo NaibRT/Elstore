@@ -44,7 +44,6 @@ function AppContextProvider(props) {
       //  totalDelivery+=x.delivery_price;
       return x          
   });
-  console.log(totalPrice)
    setTotal({
        ...total,
            amount:totalPrice
