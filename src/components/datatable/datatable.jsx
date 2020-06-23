@@ -54,9 +54,12 @@ function Datatable(params) {
 
     useEffect(()=>{
 
-        $(document).ready(function() {
-            $('#example').dataTable();
-        } );
+       
+        setTimeout(function(){ 
+            $(document).ready(function() {
+                $('#databasic').dataTable();
+            } );
+        }, 1000);
 
         
         params.tbody.map((name)=>{
@@ -117,7 +120,7 @@ function Datatable(params) {
                    </div>
                 </label>
             </div>
-            <table id="example" class="display" >
+            <table id="databasic" class="display" >
         <thead>
             <tr>
                 {
@@ -136,7 +139,7 @@ function Datatable(params) {
                 filteredProduct.map(bodyItems=>{
                     return (
                         <tr>
-                            <td>{bodyItems.product_name}</td>
+                            <td className='nametable'>{bodyItems.product_name}</td>
                             <td>{bodyItems.Kateqorİya}</td>
                             <td>{bodyItems.say}</td>
                             <td><InputGroup value={bodyItems.price} formIcon={require('../../assets/images/azn.svg')} /></td>
