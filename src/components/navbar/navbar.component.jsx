@@ -131,9 +131,9 @@ function  Navbar(props) {
     const userProfle=<>
     <Link   className='navbar_buttons_link bag budget' >0 ₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>  
-    <span className='spanprofile'  onMouseLeave={showbar} >
-    <Link id='profileicon' onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
-    <div className={`profile_dropwdown ${visiblepp ? 'active':'passive'}`} >
+    <span className='spanprofile'  >
+    <Link   id='profileicon' onClick={showbar}  className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+    <div onMouseLeave={showbar} className={`profile_dropwdown ${visiblepp ? 'active':'passive'}`} >
         <ul className='profile_dropwdown_ul'>
             <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
             <li className='profile_dropwdown_li'><Link to='/profie/favorit-shop'>Bəyənilən mağazalar</Link></li>
