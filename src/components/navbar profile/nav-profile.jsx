@@ -158,7 +158,7 @@ const loginRegister=<>
                 <div className='navbar_search'>
                 <form   className="search-input" >
                     <input onChange={products.events.searchForm}  value={localStorage.getItem('search')} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
-                    <Link to={`/categories?search:${products.state.searchKey}`} className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></Link>
+                    <Link to={`/search?search:${products.state.searchKey}`} className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></Link>
                 </form>
                 </div>
                 <div className='navbar_select'>
@@ -210,7 +210,7 @@ const loginRegister=<>
                     </div>
                     <MobileModal onClose={handleClick} show={show.show}>
                         {categories.data.map(category=>{
-                            return (<><br/><Link to={`/search?filter[category_id]=${category.id}`}>{category.name}</Link><br/></>)
+                            return (<><br/><Link to={`/search/${category.id}/${category.name}`}>{category.name}</Link><br/></>)
                         })}
                         
                     </MobileModal>
