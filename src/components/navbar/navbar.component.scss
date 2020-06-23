@@ -98,7 +98,8 @@
     } 
 }
 
-@media(max-width:1006px){
+@media(max-width:1023px){
+    
     .navbar_bottom{
        
         .navbar_bottom_link{
@@ -232,7 +233,7 @@
 //   }
 
  
-  @media(max-width:992px){
+  @media(max-width:1023px){
       .profile{
         left: -50px;
       }
@@ -392,5 +393,17 @@
 @media(max-width:481px){
     .bag{
         left: -25px;
+    }
+}
+@media(min-width:1024px){
+    .profile{
+        margin-right: -18px !important;
+    }
+}
+
+
+@media(max-width:1030px )and (min-width:800px){
+    .navbar_center{
+        padding: 0px 32px !important;
     }
 }

@@ -233,7 +233,7 @@ const loginRegister=<>
                     navbarCat.data
                     .filter((item,idx)=>{return idx<=6 })
                     .map((item,idx)=>{
-                        return<Link key={idx} to={`/search?filter[category_id]=${item.id}`} className='navbar_bottom_link'>{item.name}</Link>
+                        return<Link key={idx} to={`/search/${item.id}/${item.name}`} className='navbar_bottom_link'>{item.name}</Link>
                     })
                 }
                
