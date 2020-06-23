@@ -12,7 +12,8 @@ import $ from 'jquery'
 import MobileModal from '../categorymobile_modal/mobilemodal'
 const Langs =  [
     {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
-const Currency =  [{id:1,name:'AZN'},{id:2,name:'TRY'},{id:3,name:'EURO'}];
+const Currency =  [
+    {id:1,name:'AZN'},{id:2,name:'TRY'},{id:3,name:'USD'}];;
 
 
 function  NavbarProfile(props) {
@@ -122,16 +123,18 @@ function  NavbarProfile(props) {
     const userProfle=<>
     <Link   className='navbar_buttons_link bag budget' >0 ₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>  
-    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
-<div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
-    <ul className='profile_dropwdown_ul'>
-        <li className='profile_dropwdown_li'> <Link to='/profile'>Hesab</Link></li>
-        <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən məhsullar</Link></li>
-        <li className='profile_dropwdown_li'><Link to='/orders'>Bəyənilən brendlər və mağazalar</Link></li>
-        <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
-        <li className='profile_dropwdown_li'><Link to='/orders'>Logout</Link></li>
-    </ul>
-</div>
+    <span className='spanprofile'  onMouseLeave={showbar} >
+    <Link id='profileicon' onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+    <div className={`profile_dropwdown ${visiblepp ? 'active':'passive'}`} >
+        <ul className='profile_dropwdown_ul'>
+            <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
+            <li className='profile_dropwdown_li'><Link to='/profie/favorit-shop'>Bəyənilən mağazalar</Link></li>
+            <li className='profile_dropwdown_li'><Link to='/profie/orderCard'>Tamamlanmış Sifarişlər</Link></li>
+            <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
+            <li className='profile_dropwdown_li'><Link to='/orders'>Çıxış</Link></li>
+        </ul>
+    </div>
+    </span>
 
 </>;
 
@@ -154,7 +157,7 @@ const loginRegister=<>
                 </div>
                 <div className='navbar_search'>
                 <form   className="search-input" >
-                    <input onChange={products.events.searchForm}  value={localStorage.getItem('search')} className='search-input-text' type="text" placeholder="Search.." name="search" />
+                    <input onChange={products.events.searchForm}  value={localStorage.getItem('search')} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
                     <Link to={`/categories?search:${products.state.searchKey}`} className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></Link>
                 </form>
                 </div>
@@ -162,7 +165,7 @@ const loginRegister=<>
                     <LangToggler/>
                 </div>
                 <div className='navbar_buttons'>
-                     <Link   className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/heading/Bag.svg')} /></Link> 
+                <Link   className='navbar_buttons_link bag' to='/basket'><img alt='' src={require('../../assets/images/heading/Bag.svg')} /><span>{AppContext.basket.length}</span></Link> 
                     
                     
                     {
@@ -189,8 +192,8 @@ const loginRegister=<>
 
             <div className={`${toggle.active ? 'opennav': ''} responsive_nav`}>
                     <div className='responsive_nav_top'>
-                    <Selectbox firstopt='Dil' value={Langs} class='accordion_select'  options={Langs}/>
-                    <Selectbox  firstopt='Valyuta'  value={Currency} class='accordion_select'  options={Currency}/>
+                    <Selectbox  value={Langs} class='accordion_select'  options={Langs}/>
+                    <Selectbox   value={Currency} class='accordion_select'  options={Currency}/>
                     </div>
                     <div className='responsive_nav_login'>
                     {
