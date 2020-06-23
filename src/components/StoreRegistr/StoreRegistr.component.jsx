@@ -6,6 +6,7 @@ import Selectbox from '../Select-box/SelectBox.component'
 import Button from "../button/button.component"
 import {useForm} from 'react-hook-form'
 import {appContext} from '../../contexts/appContext'
+import swal from "sweetalert"
 import UrlGenerator from '../../services/url-generator'
 import GoBack from '../go-back/go-back.component'
 import { useHistory } from "react-router-dom";
@@ -71,9 +72,10 @@ console.log(texturl)
        if(res.ok){
         let data=await res.json();
         AppContext.events.AddToken(data)
-        
         history.push("/");
-        
+        swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
+       }else{
+        swal("Təəssüflər", "Bu adda email artıq mövcuddr", "error");
        }
       
    })

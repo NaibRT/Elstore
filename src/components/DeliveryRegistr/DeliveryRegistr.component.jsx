@@ -4,6 +4,7 @@ import "../DeliveryRegistr/DeliveryRegistr.scss"
 import Input from "../InputGroup/InputGroup.component"
 import Button from "../button/button.component"
 import {useForm} from 'react-hook-form'
+import swal from "sweetalert"
 import {appContext} from '../../contexts/appContext'
 import UrlGenerator from '../../services/url-generator'
 import { useHistory } from "react-router-dom";
@@ -27,10 +28,12 @@ const DeliveryRegistr = () => {
        if(res.ok){
         let data=await res.json();
         AppContext.events.AddToken(data)
-        
+        swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
         history.push("/");
-        
+       }else{
+        swal("Təəssüflər", "Bu adda email artıq mövcuddr", "error");
        }
+
       
    })
    .catch((err) =>console.log(err))

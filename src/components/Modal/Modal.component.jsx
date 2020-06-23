@@ -5,6 +5,7 @@ import Input from "../InputGroup/InputGroup.component"
 import SelectBox from '../Select-box/SelectBox.component'
 import Button from "../button/button.component"
 import UrlGenerator from '../../services/url-generator'
+import swal from "sweetalert"
 import {useForm} from 'react-hook-form'
 import {appContext} from '../../contexts/appContext'
 import Form from '../form/form.component'
@@ -59,10 +60,12 @@ function Modal(){
     let body=document.getElementsByTagName("body")[0];
     body.addEventListener("click", function(e){
         let login__modal= document.getElementById("login__modal");
+        let deletevalue = document.getElementById("deletevalue ")
         if(e.target==login__modal){
             login__modal.style.display="none"
         }
     })
+        
    
     const loginSubmit=(data)=>{
        let url=UrlGenerator('az','auth/login')
@@ -77,7 +80,10 @@ function Modal(){
           let data=await res.json();
           if(res.ok){
             AppContext.events.AddToken(data)
+            swal("Good job!", "You clicked the button!", "success");
             document.getElementById('login__modal').style.display='none';
+          }else{
+            swal("Good job!", "You clicked the button!", "error");
           }
      
       })
@@ -95,10 +101,15 @@ function Modal(){
        body:JSON.stringify(data)
    })
    .then(async res=>{
-       let data=await res.json();
-       console.log(data)
-      AppContext.events.AddToken(data)
-      document.getElementById('login__modal').style.display='none';
+       if(res.ok){
+        let data=await res.json();
+        AppContext.events.AddToken(data)
+        swal("Good job!", "You clicked the button!", "success");
+        document.getElementById('login__modal').style.display='none';
+       }else{
+        swal("Good job!", "You clicked the button!", "error");
+       }   
+       
    })
    .catch((err) =>console.log(err))
    console.log(errors.email)
@@ -119,7 +130,7 @@ function Modal(){
 
             <section id="signin_view">
             <form onSubmit={handleSubmit(loginSubmit)}>
-                <Input  
+                <Input id="deletevalue" 
                      name='email' placeholder={"Email"} type="email"
                      register={register({
                         required:{value:true,message:'must be added'},
@@ -128,7 +139,7 @@ function Modal(){
                      })}
                       helper={errors.email&&errors.email.message}/>
 
-                <Input  name='password'  placeholder={"Şifrə"} type="password" register={register({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors.password&&errors.password.message}/>
+                <Input id="deletevalue"  name='password'  placeholder={"Şifrə"} type="password" register={register({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors.password&&errors.password.message}/>
                 <label htmlFor="">şifrəmi unutmuşam</label>
                 <Button className="bg-primary" type={"submit"} name={"Daxil ol"}  />
                     <br/>
