@@ -18,7 +18,6 @@ function CheckoutSecond(props) {
     };
 
     //  function cardNumber(e){
-    //     console.log(e.target)
     //     AppContext.setTotal({
     //         ...AppContext.total,
             
@@ -26,12 +25,10 @@ function CheckoutSecond(props) {
     //  }
 
     //  function StartDate(e){
-    //     console.log(e.target)
 
     // }
 
     // function EndDate(e){
-    //     console.log(e.target)
     // }
 
     function PaymentType(e){

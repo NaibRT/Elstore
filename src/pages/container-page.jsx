@@ -14,7 +14,7 @@ import {appContext} from '../contexts/appContext'
 import CreateProduct from './create-product'
 import Verify from './verify'
 import CompanyAdd from "../components/CompanyAdd/CompanyAdd.component"
-
+import Products from './products'
 function Main() {
   const AppContext=useContext(appContext);
  return (
@@ -44,6 +44,7 @@ function Main() {
     (<Redirect to='/'/>)
   )}/>
   <Route exact={true} path='/profile/home' component={ProfileShopHome} />
+  <Route exact={true} path='/profile/products' component={Products} />
   </Switch>
   </main>
  )

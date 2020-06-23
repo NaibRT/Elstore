@@ -15,7 +15,6 @@ const DeliveryRegistr = () => {
     const AppContext=useContext(appContext)
    const registerSubmit2=(data)=>{
     let url=UrlGenerator('az',`auth/courier/register`)
-    console.log(data)
    fetch(url,{
        headers:{
          'Content-Type': 'application/json'

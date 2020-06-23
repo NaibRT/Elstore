@@ -37,7 +37,6 @@ function BasketCard({plus,minus,count,product}){
         }else{
             document.getElementById('login__modal').style.display='block';
         }
-       console.log(product)
     }
     return (
         <div className='basket__card'>

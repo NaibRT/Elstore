@@ -62,7 +62,6 @@ function CheckoutFrist(props) {
     };
 
     function nameEventHandler(e){
-       console.log(e.target)
       AppContext.events.setTotal({
         ...AppContext.total,
         user:{

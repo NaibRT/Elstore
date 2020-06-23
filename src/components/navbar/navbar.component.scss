@@ -98,15 +98,27 @@
     } 
 }
 
-@media(max-width:1006px){
+@media(max-width:1023px){
+    
     .navbar_bottom{
        
         .navbar_bottom_link{
             font-size: 12px;
         }
     } 
-    .budget,.notification{
+    .budget,.notification,.profile{
         display: none;
+    }
+    .ppres{
+        position: relative;
+        top: 14px;
+        .downbtn{
+            position: relative;
+            top: -10px;
+        }
+    }
+    .bag{
+        left: -50px !important;
     }
 }
 
@@ -144,7 +156,7 @@
     &_login{
         width: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content:flex-start;
         padding: 10px 20px;
         &_log{
             margin-right: 20px;
@@ -232,13 +244,13 @@
 //   }
 
  
-  @media(max-width:992px){
+  @media(max-width:1023px){
       .profile{
         left: -50px;
       }
       .responsive_nav_top{
           display: flex;
-          justify-content: space-around;
+          justify-content: space-between;
       }
       .navbar_select{
           display: none;
@@ -370,10 +382,63 @@
 
 .active{
     visibility: visible;
+    
 }
-
+.passive{
+        height: 0px !important;
+}
 .activenav{
     border-bottom: 1px solid  #6472B8;
-    height: 40px !important;
+    }
+
+    
+.profile_dropwdown_ul{
+    .profile_dropwdown_li{
+        text-align: left !important;
+    }
 }
 
+@media(max-width:570px){
+    .bag{
+        left: -28px;
+    }
+}
+
+@media(max-width:481px){
+    .bag{
+        left: -25px;
+    }
+}
+@media(min-width:1024px){
+    .profile{
+        margin-right: -18px !important;
+    }
+}
+
+
+@media(max-width:1030px )and (min-width:800px){
+    .navbar_center{
+        padding: 0px 32px !important;
+    }
+}
+
+.spanprofile{
+    width: 5px;
+}
+
+.ppdownres{
+    position: absolute;
+    background-color: whitesmoke;
+    // padding: 10px 10px;
+    border-radius: 4px;
+    top: 60px;
+    left: 0;
+    height: 0px;
+    overflow: hidden;
+}
+
+.activedown{
+    height: auto;
+    padding: 10px 10px;
+    overflow: hidden;
+}
