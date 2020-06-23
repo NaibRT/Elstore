@@ -51,8 +51,8 @@ function LangToggler() {
         <div className={`panel_lang ${toggler.toggle ? 'active_panel':''}`}  >
         <label>Dil</label>
            <Selectbox firstopt='Dil' handleChange={handleChange} name='language' value={langval} class='accordion_select'  options={Langs}/>
-        <label>Valyuta</label>
-           <Selectbox firstopt='Valyuta' handleChange={handleChange} name='currency' value={Currency}  class='accordion_select'  options={Currency}/>
+        {/* <label>Valyuta</label>
+           <Selectbox firstopt='Valyuta' handleChange={handleChange} name='currency' value={Currency}  class='accordion_select'  options={Currency}/> */}
         </div>
         </div>
         </>

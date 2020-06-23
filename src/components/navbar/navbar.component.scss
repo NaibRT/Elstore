@@ -106,8 +106,19 @@
             font-size: 12px;
         }
     } 
-    .budget,.notification{
+    .budget,.notification,.profile{
         display: none;
+    }
+    .ppres{
+        position: relative;
+        top: 14px;
+        .downbtn{
+            position: relative;
+            top: -10px;
+        }
+    }
+    .bag{
+        left: -50px !important;
     }
 }
 
@@ -239,7 +250,7 @@
       }
       .responsive_nav_top{
           display: flex;
-          justify-content: flex-end;
+          justify-content: space-between;
       }
       .navbar_select{
           display: none;
@@ -413,4 +424,21 @@
 
 .spanprofile{
     width: 5px;
+}
+
+.ppdownres{
+    position: absolute;
+    background-color: whitesmoke;
+    // padding: 10px 10px;
+    border-radius: 4px;
+    top: 60px;
+    left: 0;
+    height: 0px;
+    overflow: hidden;
+}
+
+.activedown{
+    height: auto;
+    padding: 10px 10px;
+    overflow: hidden;
 }

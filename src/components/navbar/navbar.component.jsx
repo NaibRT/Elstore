@@ -107,8 +107,9 @@ function  Navbar(props) {
           });
     }
 
+    
+    
 
-   
     const url = 'http://139.180.144.49/api/v1/az/categories';
   
      useEffect(()=>{
@@ -122,6 +123,11 @@ function  Navbar(props) {
      },[])
   
 
+     const [activeHeight, setactiveHeight] = useState(false)
+    function activeheightres(){
+        setactiveHeight(!activeHeight)
+    }
+    
     const userProfle=<>
     <Link   className='navbar_buttons_link bag budget' >0 ₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>  
@@ -194,15 +200,31 @@ const loginRegister=<>
 
             <div className={`${toggle.active ? 'opennav': ''} responsive_nav`}>
                     <div className='responsive_nav_top'>
+                    {
+                        AppContext.app.isAuthorized?
+                            <>
+                            <Link id='profileicon' onClick={activeheightres}  className={`navbar_buttons_link ppres `}> <img  src={require('../../assets/images/user.png')} /> <img   className='downbtn' width='12px' src={require('../../assets/images/down.svg')} /></Link>
+                            <div className={`ppdownres ${activeHeight?'activedown':''}`}>
+                            <ul className='profile_dropwdown_ul'>
+                                <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
+                                <li className='profile_dropwdown_li'><Link to='/profie/favorit-shop'>Bəyənilən mağazalar</Link></li>
+                                <li className='profile_dropwdown_li'><Link to='/profie/orderCard'>Tamamlanmış Sifarişlər</Link></li>
+                                <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
+                                <li className='profile_dropwdown_li'><Link to='/orders'>Çıxış</Link></li>
+                            </ul>
+                            </div>
+                            </>:
+                            <div>Salam</div>
+                    }
+
                     <Selectbox firstopt='Dil' value={Langs} class='accordion_select'  options={Langs}/>
-                    <Selectbox  firstopt='Valyuta'  value={Currency} class='accordion_select'  options={Currency}/>
                     </div>
                     <div className='responsive_nav_login'>
                     {
                         AppContext.app.isAuthorized?
                        <>
-                        <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
                         <Link   className='responsive_nav_login_log' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>
+                        <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
                         </>
                         :<>
                         </>
