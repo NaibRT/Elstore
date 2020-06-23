@@ -39,7 +39,7 @@ function App() {
       }
     <br/>
     <br/>
-          <CompanyAdd />
+          <Main />
       <Footer/>
        <LoginModal/>
       </Router>

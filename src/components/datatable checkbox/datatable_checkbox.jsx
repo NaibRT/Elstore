@@ -38,19 +38,11 @@ function DatatableCheck(props) {
             $('#example').DataTable();
         } );
 
-       
-        props.tbody.map((name)=>{
-            names.push(name)
-        });
 
         console.log(names)
         
     })
 
-    const filteredName = props.tbody.filter(name =>
-         name.ad.includes(filter.searchName)
-      
-      );
 
     function searchName(e){
         SetFilter({
@@ -58,7 +50,7 @@ function DatatableCheck(props) {
             SearchName:e.target.value
         })
     }
-  
+    console.log(filter.SearchName);
     return(
         <div>
             <div className='datatable_search'>
@@ -85,17 +77,18 @@ function DatatableCheck(props) {
         </thead>
         <tbody>
             {
+                props.tbody!=undefined?
                 props.tbody.map(bodyItems=>{
                     return (
                         <tr>
                             <td>
-                               <Checkbox/>
+                               <Checkbox value={bodyItems.id} onClick={searchName}/>
                             </td>
                             <td>{bodyItems.product_name}</td>
                             <td>{bodyItems.price}</td>
                         </tr>
                     )
-                })
+                }):''
             }
            
         </tbody>

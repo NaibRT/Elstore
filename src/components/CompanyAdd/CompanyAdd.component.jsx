@@ -8,8 +8,9 @@ import DataTable from "../datatable checkbox/datatable_checkbox"
 import Axios from 'axios'
 import UrlGenerator from '../../services/url-generator';
 import {appContext} from '../../contexts/appContext'
+import { data } from 'jquery'
 
-
+const thead =['əlave','məhsulun adı','qİymət'];
 
 
 const CompanyAdd = () => {
@@ -63,6 +64,7 @@ const CompanyAdd = () => {
         .then(response => response.json())
         .then(data => {
             setCompany({data:data.data[0]})
+            console.log(data);
         })
     },[])
 
@@ -75,12 +77,13 @@ const CompanyAdd = () => {
     // }
 
     const onSubmit =  e => {
-        let formData = new FormData();
-        formData.append("name",name)
-        formData.append("description",description)
-        formData.append("discount",discount)
-        formData.append("campaign_image",img)
         e.preventDefault();
+        let formData = new FormData();
+        formData.append("az[campaign_name]",company.name)
+        formData.append("az[campaign_description]",company.description)
+        formData.append("discount",company.discount)
+        formData.append("campaign_image",company.img)
+        formData.append('products',company.data.products.id)
         let url = UrlGenerator('az','campaigns')
         let token = AppContext.events.getToken()
         fetch(url,{
@@ -91,8 +94,9 @@ const CompanyAdd = () => {
             body:JSON.stringify(formData)
 
         })
+
+        console.log(formData);
     }
-    console.log(company.data.products)
     return (
         
         <div className="container-fluid">
@@ -138,7 +142,7 @@ const CompanyAdd = () => {
                     <h5>Toplam 0 məhsul əlavə edildi.</h5>
                 </div>
                 
-                 <DataTable tbody={company.data.products}/>
+                 <DataTable thead={thead} tbody={company.data.products}/>
 
                 <Button name="Kampaniyanı Yarat" className="company__create"/>
                 </div>
