@@ -139,7 +139,7 @@ function Datatable(params) {
                             <td>{bodyItems.product_name}</td>
                             <td>{bodyItems.Kateqorİya}</td>
                             <td>{bodyItems.say}</td>
-                            <td><InputGroup value={bodyItems.price} /></td>
+                            <td><InputGroup value={bodyItems.price} formIcon={require('../../assets/images/azn.svg')} /></td>
                             <td><SelectBox firstopt='Status' name={bodyItems.status} /></td>
                             <td><a href="#">Duzelish</a> <a href="#">Sil</a></td>
                         </tr>
