@@ -158,7 +158,7 @@ const loginRegister=<>
                 <div className='navbar_search'>
                 <form   className="search-input" >
                     <input onChange={products.events.searchForm}  value={localStorage.getItem('search')} className='search-input-text' type="text" placeholder="Search.." name="search" />
-                    <Link to={`/categories?search:${products.state.searchKey}`} className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></Link>
+                    <Link to={`/search?search:${products.state.searchKey}`} className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></Link>
                 </form>
                 </div>
                 <div className='navbar_select'>
