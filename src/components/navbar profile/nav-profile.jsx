@@ -192,8 +192,8 @@ const loginRegister=<>
 
             <div className={`${toggle.active ? 'opennav': ''} responsive_nav`}>
                     <div className='responsive_nav_top'>
-                    <Selectbox  value={Langs} class='accordion_select'  options={Langs}/>
-                    <Selectbox   value={Currency} class='accordion_select'  options={Currency}/>
+                    <Selectbox  firstopt="Dil" value={Langs} class='accordion_select'  options={Langs}/>
+                    <Selectbox  firstopt="Valyuta"  value={Currency} class='accordion_select'  options={Currency}/>
                     </div>
                     <div className='responsive_nav_login'>
                     {

@@ -202,10 +202,9 @@ const loginRegister=<>
                         AppContext.app.isAuthorized?
                        <>
                         <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
-                            <Link   className='responsive_nav_login_log' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>
+                        <Link   className='responsive_nav_login_log' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>
                         </>
-                        :
-                        <>
+                        :<>
                         </>
                     }
 

@@ -145,7 +145,7 @@
     &_login{
         width: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content:flex-start;
         padding: 10px 20px;
         &_log{
             margin-right: 20px;
@@ -239,7 +239,7 @@
       }
       .responsive_nav_top{
           display: flex;
-          justify-content: space-around;
+          justify-content: flex-end;
       }
       .navbar_select{
           display: none;
