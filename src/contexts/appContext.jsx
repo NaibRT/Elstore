@@ -5,6 +5,7 @@ const appContext=createContext();
 function AppContextProvider(props) {
  const [app,setApp]=useState({
   token:{},
+  user:{},
   isAuthorized:false,
   lang:'en',
   currency:'aze',
@@ -134,10 +135,21 @@ function AppContextProvider(props) {
   });
 }
 
+function getUserCredentials() {
+  let user=JSON.parse(window.localStorage.getItem('user'))
+  console.log(user)
+  return user
+}
+
  useEffect(()=>{
-   setApp({...app,isAuthorized:IsAuthorized()})
-   
+   setApp({
+     ...app,
+     isAuthorized:IsAuthorized(),
+     user:getUserCredentials()
+    })
  },[]);
+
+
 
  useEffect(()=>{
    let deliveryAmount=0;
@@ -176,10 +188,24 @@ function AppContextProvider(props) {
  function AddToken(token){
     setApp({
      ...app,
-     isAuthorized:true,
      token:token,
     });
     window.localStorage.setItem('token',JSON.stringify(token))
+    let url=UrlGenerator('az','auth/me');
+    fetch(url,{
+      method:'Post',
+      headers:{
+        'Authorization':`${token.token_type} ${token.access_token}`
+      }
+    }).then(async res=>{
+      let data=await res.json();
+      window.localStorage.setItem('user',JSON.stringify(data));
+      setApp({
+        ...app,
+        isAuthorized:true,
+        user:data
+      })
+    }).catch(err=>console.log(err))
  }
  function getToken(){
    let token=JSON.parse(window.localStorage.getItem('token'))
@@ -211,6 +237,7 @@ function AppContextProvider(props) {
                                getCities:getCities,
                                getRegions:getRegions,
                                getToken:getToken,
+                               getUserCredentials:getUserCredentials,
                                logout:logout,
                                addBasket:addBasket,
                                removeFromBasket:removeFromBasket,
