@@ -35,7 +35,8 @@ useEffect(()=>{
   return (
     <div className='product-slider-container'>
     <div class="swiper-container gallery-top">
-    <button className='slider_like'> <img src={require('../../assets/images/icons/Enabled.svg')} alt=""/></button>
+    {/*<button className='slider_like'> <img src={require('../../assets/images/icons/Enabled.svg')} alt=""/></button>*/}
+    <HeartImage clas='slider_like' id={props.id} isLiked={props.is_liked}/>
     <div class="swiper-wrapper">
       {
         props.images.map(x=>{

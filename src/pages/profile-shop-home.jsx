@@ -1,4 +1,4 @@
-import React,{useEffect, useContext} from 'react'
+import React,{useEffect, useContext,useState} from 'react'
 import './profile-shop-home.scss'
 import Chips from '../components/chips/chips.component';
 import CompanyMiniImage from '../components/Compony-mini-image/CompanyMiniImage';
@@ -15,17 +15,30 @@ import SearchResultComp from '../components/search-result-component/SearchResult
 function ProfileShopHome() {
     let AppContext=useContext(appContext)
     let SearchContext=useContext(searchContext);
+    const [product, setproduct] = useState({})
+
+
+
+    
     useEffect(()=>{
         let token=AppContext.events.getToken();
-      let url=UrlGenerator('az','products?')
+      let url=UrlGenerator('az','users/my-company')
 
       fetch(url,{
          headers:{
              'Authorization':`${token.token_type} ${token.access_token}`
+             
          } 
-      })
-    })
+               })
+               .then(async res => {
+                   let data =await res.json();
+                   console.log("Salameee",data)
+                   setproduct({
+                       ...data.data[0],
+                   })
+               } )
 
+            },[])
 
 
     return (
@@ -68,11 +81,11 @@ function ProfileShopHome() {
                 <div className="row">
                     <div className="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
                         <div className="profil_filter_content">
-                            {/* <Filter/> */}
+                            <Filter/>
                         </div>
                     </div>
                     <div className="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
-                     <SearchResultComp data={SearchContext.state.filteredData&&SearchContext.state.data} />
+                     <SearchResultComp data={product.products!=undefined?product.products:[]} />
                     </div>
                 </div>
             </div>

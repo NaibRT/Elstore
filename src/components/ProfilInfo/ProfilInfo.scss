@@ -67,7 +67,7 @@
                     position: absolute;
                     top: 100px;
                     cursor: pointer;
-                    width: 15%;
+                    width: 11%;
                     height: 12%;
                 }
                 img{
@@ -132,7 +132,7 @@
             // border: none;
             // display: flex;
             // margin-top: 4px;
-            width: 142px;
+            width: 50%;
             // height: 32px;
         }
         .borders{
@@ -146,7 +146,12 @@
 }
 .passw{
     a{
-        margin-left: 191px;
+        margin-left: 129px;
+    }
+}
+.odlpassw{
+    a{
+        margin-left: 151px;
     }
 }
 .emails{

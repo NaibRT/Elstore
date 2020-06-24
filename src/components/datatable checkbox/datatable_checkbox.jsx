@@ -39,7 +39,6 @@ function DatatableCheck(props) {
         } );
 
 
-        console.log(names)
         
     })
 

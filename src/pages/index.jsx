@@ -15,12 +15,19 @@ import UrlGenerator from '../services/url-generator';
 function Index() {
     const [product,setProduct]=useState({});
     const AppContext=useContext(appContext)
+
     useEffect(()=>{
         let token=AppContext.events.getToken();
         let url=UrlGenerator('az','products')
-        axios.get(url)
+        axios.get(url,{
+            headers:{
+                'Authorization': token!=null?`${token.token_type} ${token.access_token}`:''
+            },
+        })
         .then(x=>{
+            console.log(x.data.data)
             setProduct(x.data.data)
+
         })
     },[])
 

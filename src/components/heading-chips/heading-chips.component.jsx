@@ -20,7 +20,7 @@ function Heading(props){
 
                 <span className="divider"><img src={require('../../assets/images/heading/Divider.svg')} alt=""/></span>
 
-               <Chips   stars={props.stars} rating="(542 rəy)" store="340" />
+               <Chips   stars={props.stars} rating="(0 rəy)" store="0" />
                 </div>
                 
 

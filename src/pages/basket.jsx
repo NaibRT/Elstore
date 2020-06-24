@@ -5,15 +5,16 @@ import IconDeliverySafetyPayback from '../components/Icon-delivery-safety-paybac
 import Button from '../components/button/button.component';
 import {appContext} from '../contexts/appContext';
 import { Link } from 'react-router-dom';
+import GoBack from '../components/go-back/go-back.component'
+import UrlGenerator from '../services/url-generator';
 
 
 
-function Basket() {
+function Basket(props) {
      let AppContext=useContext(appContext);
+
+
     useEffect(() => {
-        let totalPrice=0;
-        let totalDelivery=0;
-        let tax=0;
         var acc = document.getElementsByClassName("accordion");
         var i;
         
@@ -29,27 +30,33 @@ function Basket() {
           });
         };
 
-        AppContext.basket.forEach(x=>{
-            totalPrice+=(x.price*x.count);
-            totalDelivery+=x.deliveryPrice;
-        })
-        AppContext.events.setTotal({
-           ...AppContext.total,
-            amount:totalPrice,
-            totalAmount:'',
-            totalDeliveryAmount:'',
-            taxamount:''
-        })
-
     },[]);
+
+    useEffect(()=>{
+        console.log()
+       let id=props.match.params.id;
+       if(id!==undefined){
+        let url=UrlGenerator('az',`products/${id}`)
+        let token=AppContext.events.getToken();
+        fetch(url,{
+            headers:{
+                'Authorization':`${token.token_type} ${token.access_toen}`
+            }
+        })
+        .then(async res=>{
+            let data=await res.json();
+            console.log(data.data)
+            AppContext.events.setBasket([
+                ...AppContext.basket,
+                {...data.data[0],
+                    count:1
+                }
+            ])
+        })
+        .catch(err=>console.log(err))
+       }
+    },[])
     
-    const [mybasket,mysetBasket]=useState({
-      total:{
-         amount:'',
-         totalAmount:'',
-         totalDeliveryAmount:'',
-      }
-    });
 
 
     
@@ -63,9 +70,16 @@ function Basket() {
                    <div className='col-lg-8 col-md-12 col-sm-12'>
                         <div>
                             {
+                                AppContext.basket.length>0?
                                 AppContext.basket.map((x)=>{
                                     return <BasketCard product={x} key={x.id} id={x.id} minus={AppContext.events.minus} plus={AppContext.events.plus}/>
-                                })
+                                }):
+                                <div>
+                                <GoBack link='/' text='Ana səhifəyə qayıt'/>
+                                <p style={{'textAlign':"center"}}>
+                                <h1 style={{'color':'red'}}>Səbət Boşdur</h1>
+                                </p>
+                                </div>
                             }
                         </div>
                    </div>
@@ -82,7 +96,12 @@ function Basket() {
                                             <IconDeliverySafetyPayback />
                                         </div>
                                         <div className='col-lg-12 col-md-12 col-sm-12'>
-                                        <Button className='bg-primary--light'><Link to='/checkout'>Sifaris ver</Link></Button>
+                                        {
+                                            AppContext.app.isAuthorized?
+                                            <Link style={{'textDecoration':'none'}} to='/checkout'><Button className='bg-primary--light'>Sifaris ver</Button></Link>
+                                             :null
+                                        }
+                                        <Link style={{'textDecoration':'none'}} to='/checkout'><Button className='bg-primary--light'>Sifaris ver</Button></Link>
                                     </div>
                                     </div>
                              <div className="col-lg-12 col-md-6 col-sm-12">

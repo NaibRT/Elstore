@@ -1,5 +1,4 @@
 import React from 'react'
-import name from '../components/card/card.component'
 import Card from '../components/card/card.component'
 import ListItem from '../components/List-Item/Listitem.component'
 import {BrowserRouter as Router,Link,Route} from 'react-router-dom'
@@ -17,7 +16,7 @@ function Profile() {
   <div className='col-lg-3'>
    <Card className='card-border'>
     <Link to='/profie' exact><ListItem name='Sifarislerim'/></Link>
-    <Link to='/profie/orderCard' exact><ListItem name='Tamamlanmis Sifarisler'/></Link>
+    <Link to='/profie/orderCard' exact><ListItem name='Tamamlanmış Sifarişlər'/></Link>
     <Link to='/profie/profile-info' exact><ListItem name='Info'/></Link>
     <Link to='/profie/favorit-shop' exact><ListItem name='Beyenilen Magazalar'/></Link>
    </Card>

@@ -6,6 +6,7 @@ import Selectbox from '../Select-box/SelectBox.component'
 import Button from "../button/button.component"
 import {useForm} from 'react-hook-form'
 import {appContext} from '../../contexts/appContext'
+import swal from "sweetalert"
 import UrlGenerator from '../../services/url-generator'
 import GoBack from '../go-back/go-back.component'
 import { useHistory } from "react-router-dom";
@@ -59,7 +60,7 @@ console.log(texturl)
    const AppContext=useContext(appContext)
    const registerSubmit=(data)=>{
     let url=UrlGenerator('az',`auth/${texturl.selected}/register`)
-    console.log(url)
+    console.log(data)
    fetch(url,{
        headers:{
          'Content-Type': 'application/json'
@@ -71,9 +72,10 @@ console.log(texturl)
        if(res.ok){
         let data=await res.json();
         AppContext.events.AddToken(data)
-        
         history.push("/");
-        
+        swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
+       }else{
+        swal("Təəssüflər", "Bu adda email artıq mövcuddr", "error");
        }
       
    })
@@ -92,7 +94,6 @@ console.log(texturl)
     })
     
     function takeSelectboxValue(e){
-        console.log(e.target.value);
       fetch(`http://139.180.144.49/api/v1/az/regions?city_id=${e.target.value}`)
       .then(response => response.json())
       .then(data => setRegion({ data: data }));
@@ -121,7 +122,7 @@ console.log(texturl)
             <div className="row">
                 <div className="col-lg-12 col-md-12 col-xs-12">
                     <div className="Store__Register">
-                        <GoBack text="Geri dön"/>
+                        <GoBack link="/" text="Geri dön"/>
                         <form onSubmit={handleSubmit2(registerSubmit)}>
                        <div className="store__registr--text">
                            <h5>Mağaza qeydiyyatı</h5>
@@ -162,7 +163,9 @@ console.log(texturl)
                         <div className="add__number" id="addedNumber" onClick={AddNumber}><p>+Başqa nömrə əlavə et</p></div>
                         <div className="add__adress"><p>Ünvan</p></div>
                         <div className="select__city">
-                         <Selectbox firstopt='Cities' handleChange={takeSelectboxValue} class='selectboxcheckout' options={cities.data.data} />
+                         <Selectbox register={register2({
+                             required:{value:true,value:'can not be null'}
+                         })} name="city_id"  firstopt='Cities' handleChange={takeSelectboxValue} class='selectboxcheckout' options={cities.data.data} />
                          </div>
                         <br/>
                         
@@ -176,7 +179,7 @@ console.log(texturl)
 
                        
                         <div className="select__city">
-                       <Input name='adress' type='text' placeholder='Ünvan' register={register2({
+                       <Input name='address' type='text' placeholder='Ünvan' register={register2({
                 required:{value:true,message:'name is required'},
                 maxLength:{value:255,message:'max  255 char need'}
             })} helper={errors2.name&&errors2.name.message} />
