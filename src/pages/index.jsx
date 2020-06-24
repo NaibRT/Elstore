@@ -10,19 +10,26 @@ import MostSellerSlide from '../components/Most-Seller-Slide/MostSellerSlide.com
 import IconSlider from '../components/Icon-slider/IconSlider.component'
 import MehsulCard from '../components/mehsulCard/mehsul_card.component'
 import {appContext} from '../contexts/appContext'
+import UrlGenerator from '../services/url-generator';
 
 function Index() {
     const [product,setProduct]=useState({});
     const AppContext=useContext(appContext)
-    // useEffect(()=>{
-    //     let token=AppContext.events.getToken();
-    //     axios.get('http://139.180.144.49/api/v1/az/products?include=seller,images',{headers:{
-    //         'Authorization':`${token.token_type} ${token.access_token}`
-    //     }})
-    //     .then(x=>{
-    //         setProduct(x.data.data)
-    //     })
-    // },[])
+
+    useEffect(()=>{
+        let token=AppContext.events.getToken();
+        let url=UrlGenerator('az','products')
+        axios.get(url,{
+            headers:{
+                'Authorization': token!=null?`${token.token_type} ${token.access_token}`:''
+            },
+        })
+        .then(x=>{
+            console.log(x.data.data)
+            setProduct(x.data.data)
+
+        })
+    },[])
 
 
 

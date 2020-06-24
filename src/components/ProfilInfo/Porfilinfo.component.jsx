@@ -32,7 +32,6 @@ function Porfilinfo(props) {
        .then(async res=>{
         if(res.ok){
             let data1=await res.json();
-            console.log(data1)
             setUpdate({
                 ...update,
                 ...data1

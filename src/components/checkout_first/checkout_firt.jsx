@@ -8,8 +8,10 @@ import {Link} from 'react-router-dom';
 import Selectbox from '../Select-box/SelectBox.component'
 import {appContext} from '../../contexts/appContext'
 import UrlGenerator from '../../services/url-generator'
+import Button from '../button/button.component';
 function CheckoutFrist(props) {
     const AppContext=useContext(appContext)
+    
     const {values,handleChange} = props
     const [cities,setCities] = useState({
         data:[]
@@ -17,7 +19,13 @@ function CheckoutFrist(props) {
     const [region,setRegion] = useState({
         data:[]
     })
+    const [village,setVillage] = useState({
+        data:[]
+    })
+
+
     // const sherler = ['Baku','Ganja','Mingechevir']
+
     // const rayonlar = ['Sirvan','Ucar','Kurdamir']
     // const kend = ['Bilge','Kurdakhani','Mastaga']
 
@@ -38,12 +46,105 @@ function CheckoutFrist(props) {
       .then(data =>{
        setRegion({data:data})
       });
+
+      AppContext.events.setTotal({
+          ...AppContext.total,
+          user:{
+              ...AppContext.total.user,
+              city_id:e.target.value
+          }
+      })
     }
    
     function goNextPage(e){
         e.preventDefault();
         props.nextStep();
     };
+
+    function nameEventHandler(e){
+      AppContext.events.setTotal({
+        ...AppContext.total,
+        user:{
+            ...AppContext.total.user,
+            name:e.target.value
+        } 
+      })
+    }
+    function phonenameEventHandler(e){
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                phone:e.target.value
+            } 
+          })
+    }
+
+    function emailEventHandler(e){
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                email:e.target.value
+            } 
+          })
+    }
+
+    function surnameEventHandler(e){
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                surname:e.target.value
+            } 
+          })
+    }
+
+    function regionEventHandler(e){
+        let url=UrlGenerator('az',`village?region_id=${e.target.value}`);
+        fetch(url)
+        .then(response => response.json())
+        .then(data =>{
+         setVillage({data:data})
+        });
+
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                region_id:e.target.value
+            } 
+          })    
+    }
+    function villageEventHandler(e) {
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                village_id:e.target.value
+            } 
+          })
+    }
+
+    function addressEventHandler(e) {
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                address:e.target.value
+            } 
+          })
+    }
+
+    function secoundAddres(e) {
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                note:e.target.value
+            } 
+          })
+    }
     
     return (
         
@@ -66,14 +167,14 @@ function CheckoutFrist(props) {
             <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <InputGroup placeholder='Adınız' />
+                        <InputGroup onChange={(e)=>{nameEventHandler(e)}} placeholder='Adınız' />
                         <br/>
-                        <InputGroup formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='Telefon nömrəsi' />
+                        <InputGroup onChange={(e)=>phonenameEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='Telefon nömrəsi' />
                         <br/>
-                        <InputGroup formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='E-poçt adresi' />
+                        <InputGroup onChange={(e)=>emailEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='E-poçt adresi' />
                     </div>
                     <div className='col-lg-6 col-sm-12'>
-                        <InputGroup placeholder='Soyadınız' />
+                        <InputGroup onChange={(e)=>surnameEventHandler(e)} placeholder='Soyadınız' />
                     </div>
                 </div>
             </Card>
@@ -84,12 +185,12 @@ function CheckoutFrist(props) {
                     <div className='col-sm-12 col-lg-6'>
                         <Selectbox firstopt='Cities' handleChange={getRegions} class='selectboxcheckout' options={cities.data.data} />
                         <br/>
-                        <Selectbox firstopt='Region' class='selectboxcheckout' options={region.data.data} />
+                        <Selectbox handleChange={regionEventHandler} firstopt='Region' class='selectboxcheckout' options={region.data.data} />
                         <br/>
-                        <Selectbox class='selectboxcheckout' options={cities.data.data} />
+                        <Selectbox handleChange={villageEventHandler}  class='selectboxcheckout' options={village.data.data} />
                         <br/>
                         <br/>
-                        <InputGroup  placeholder='Ünvan' />
+                        <InputGroup onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />
                     </div>
                     <div className='col-lg-6 col-sm-12'></div>
                 </div>
@@ -99,11 +200,11 @@ function CheckoutFrist(props) {
                 </p>
                 <br/>
                 <div>
-                    <InputGroup countertext='0/256' type="textarea"  placeholder='Ünvan' />  
+                    <InputGroup onChange={(e)=>secoundAddres(e)} countertext='0/256' type="textarea"  placeholder='Ünvan' />  
                 </div>
             </Card>
             <br/>
-            <button className='form_button_multiple'  onClick={goNextPage} >ÖDƏNİŞ ÜSULU ƏLAVƏ ET</button>
+            <Button className='form_button_multiple bg-primary' onClick={goNextPage} name='ÖDƏNİŞ ÜSULU ƏLAVƏ ET'/>
             
        </>
     )

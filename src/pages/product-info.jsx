@@ -13,6 +13,7 @@ import Delivery from '../components/Icon-delivery-safety-payback/IconDeliverySaf
 import Seller from '../components/seller/seller.component'
 import UrlGenerator from '../services/url-generator'
 import {appContext} from '../contexts/appContext'
+import { Link } from 'react-router-dom'
 
 function ProductInfo(props) {
   const AppContext=useContext(appContext)
@@ -34,13 +35,13 @@ function ProductInfo(props) {
       })
       .catch(err=>console.log(err))
   },[])
-  console.log(product.images) 
+
  return (
   <section>
     <div className="slider_container container">
         <div className='row'>
          <div className='col-lg-8 col-md-12 col-sm-12'>
-           <ProductSlider images={product.images} />
+           <ProductSlider id={product.id}  images={product.images} />
           <div className='slider_container_padding mobile-container'>
             <AboutProduct about={product.product_description}/>
             <DeliveryInfo/>
@@ -48,12 +49,12 @@ function ProductInfo(props) {
          </div>
   
         <div className='col-lg-4 col-md-12 col-sm-12 '>
-             <HeadingChips  heading={product.product_name} stars={product.avg_rating} subtitle="Öz home / Ev aksessuarları / Toxuma işlər" sale="212 dəfə satıldı" />
+             <HeadingChips  heading={product.product_name} stars={product.avg_rating} subtitle="Öz home / Ev aksessuarları / Toxuma işlər" sale="0 dəfə satıldı" />
              <OrderPrize price={`${product.price} AZN`} stock="movcuddur" priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
              <Input/>
-             <Button onClick={(e)=>AppContext.events.addBasket(e)} className="bg-primary txt--dark" name='Sebete Elave ET'/>
+             <Button data={product.id} onClick={(e)=>AppContext.events.addBasket(e)} className="bg-primary txt--dark" name='Sebete Elave ET'/>
              <ButtonGroup>
-             <Button className="btn-buy-now txt--light" name='Indi Al'/>
+             <Link style={{'textDecoration':'none'}} to={`/basket/${product.id}`}><Button className="btn-buy-now txt--light" name='Indi Al'/></Link>
              </ButtonGroup>         
              <Delivery/>
              <Seller/>

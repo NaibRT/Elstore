@@ -94,7 +94,6 @@ console.log(texturl)
     })
     
     function takeSelectboxValue(e){
-        console.log(e.target.value);
       fetch(`http://139.180.144.49/api/v1/az/regions?city_id=${e.target.value}`)
       .then(response => response.json())
       .then(data => setRegion({ data: data }));

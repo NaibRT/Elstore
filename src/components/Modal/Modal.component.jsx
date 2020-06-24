@@ -25,9 +25,7 @@ function Modal(){
         .then(response => response.json())
         .then(data =>{
           setCities({data:data})
-          console.log(data)
         });
-        console.log(cities)
     },[])
     function Signin(){
           
@@ -88,7 +86,6 @@ function Modal(){
      
       })
       .catch((err) =>console.log(err))
-      console.log(errors.email)
    }
 
    const registerSubmit=(data)=>{
@@ -101,6 +98,7 @@ function Modal(){
        body:JSON.stringify(data)
    })
    .then(async res=>{
+
        if(res.ok){
         let data=await res.json();
         AppContext.events.AddToken(data)
@@ -112,7 +110,6 @@ function Modal(){
        
    })
    .catch((err) =>console.log(err))
-   console.log(errors.email)
 }
     return ReactDom.createPortal(
     <div id="login__modal" className="modal__bacground">

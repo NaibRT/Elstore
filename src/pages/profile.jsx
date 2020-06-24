@@ -1,5 +1,4 @@
 import React from 'react'
-import name from '../components/card/card.component'
 import Card from '../components/card/card.component'
 import ListItem from '../components/List-Item/Listitem.component'
 import {BrowserRouter as Router,Link,Route} from 'react-router-dom'

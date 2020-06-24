@@ -43,7 +43,6 @@ function DatatableCheck(params) {
             names.push(name)
         });
 
-        console.log(names)
         
     })
 

@@ -8,12 +8,14 @@ import SearchResultComp from '../search-result-component/SearchResultComp.compon
 const langs =['azeri', 'russia']
 
 
-    function SearchResult() {
+    function SearchResult(props) {
+
+
         const products=useContext(searchContext);
         return (
             <section className="search_result__section">
                 <SelectBox options={langs}/>
-                <SearchResultComp data={products.state.filteredData}/>
+                <SearchResultComp catFilter={props.catFilter} data={products.state.filteredData}/>
             </section>
             
         )

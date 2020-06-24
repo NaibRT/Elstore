@@ -8,12 +8,14 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "datatables.net": "^1.10.21",
+    "datatables.net-bs4": "^1.10.21",
     "datatables.net-dt": "^1.10.21",
     "jodit-react": "^1.0.42",
     "jquery": "^3.5.1",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-alice-carousel": "^1.19.2",
+    "react-data-table-component": "^6.9.3",
     "react-dom": "^16.13.1",
     "react-hook-form": "^5.7.2",
     "react-id-swiper": "^3.0.0",
@@ -22,6 +24,7 @@
     "react-scripts": "3.4.1",
     "react-use-form-state": "^0.13.1",
     "sweetalert": "^2.1.2",
+    "styled-components": "^5.1.1",
     "swiper": "^5.4.2"
   },
   "scripts": {

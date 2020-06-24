@@ -4,7 +4,7 @@ import './heartImage.component.scss';
 import {appContext} from '../../contexts/appContext'
 
 
-function HeartImage({id,isLiked}) {
+function HeartImage({id,isLiked,clas}) {
     const AppContetx=useContext(appContext);
     const [like,setLike]=useState(false)
     useEffect(()=>{
@@ -45,7 +45,7 @@ function HeartImage({id,isLiked}) {
         // }
     }
     return (
-        <div data-id={id} onClick={(e)=>showHide(e)} className="hearts_icon">
+        <div data-id={id} onClick={(e)=>showHide(e)} className={`hearts_icon ${clas}`}>
             {
                 like?
                 (<img src={require('../../assets/images/icons/Active.svg')} alt=""/>):

@@ -8,7 +8,7 @@ const searchContext=React.createContext({});
 class SearchContext extends React.Component{
  constructor(props) {
   super(props)
- 
+  
   this.state = {
     'searchKey':"",
     "data":[] ,
@@ -32,7 +32,7 @@ class SearchContext extends React.Component{
     // alert(e.target.value)
     axios.get(`http://139.180.144.49/api/v1/az/search/product?filter[category_id]=${e.target.value}`)
     .then(res => {
-        this.setState({filteredData: res.data.data});
+        this.setState({ filteredData: res.data.data});
         console.log(res.data.data)
     })
  

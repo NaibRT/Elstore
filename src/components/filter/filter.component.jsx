@@ -32,12 +32,21 @@ function Filter(prop) {
 
     const filteredMerkets = market.magaza.filter(item=> item.name.toLowerCase().includes(searchMarket.searchField.toLowerCase()));
    
-    
+    const [passiveCat, setpassiveCat] = useState({
+        toggle:false
+    })
+
+    function setTogglepassive(){
+        setpassiveCat({
+            toggle:!passiveCat.toggle
+        })
+    }
 
 
     return (
         <div className='filter'>
-        <p className='filter_head drop accordion2'>Kateqorİya <div>-</div></p>
+             <p onClick={setTogglepassive} className='filter_head drop '>Kateqorİya <div>-</div></p>
+            <div className={`panelkategory ${passiveCat.toggle?'panel_cat_passsive':''}`} >
         <div className='category_list'>
         <div className='panel2'>
         <ul>
@@ -140,6 +149,7 @@ function Filter(prop) {
         
         </div>
 
+            </div>
         </div>
     )
 }

@@ -46,6 +46,20 @@
                 position: relative;
                 top: 7px;
             }
+   
+              span{
+                  width: 15px;
+                  height: 15px;
+                  background-color: red;
+                  position: absolute;
+                  right: -5px;
+                  border-radius: 15px;
+                  text-align: center;
+                  align-content: center;
+                  color: white;
+                  padding-bottom: 20px;
+              }
+    
         }
     }
     .navbar_logo{
@@ -332,10 +346,12 @@
 
 .profile_dropwdown{
     height: auto;
+    width: 100px;
     padding: 10px 5px;
     background-color: white !important;
     position: relative;
     top: 24px;
+    left: 200px;
     visibility: hidden;
     border-radius: 4px;
     transition: display 1s ease;
@@ -362,4 +378,3 @@
     border-bottom: 1px solid  #6472B8;
     height: 40px !important;
 }
-
