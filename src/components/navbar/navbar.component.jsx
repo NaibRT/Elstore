@@ -124,8 +124,23 @@ function  Navbar(props) {
   
 
     const userProfle=<>
-    <Link   className='navbar_buttons_link bag budget' >256 ₼ </Link> 
+    <Link   className='navbar_buttons_link bag budget' >0₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>  
+     
+        {/*<span className='spanprofile'  >
+        elcanin yazdiglari
+    <Link   id='profileicon' onClick={showbar}  className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+    <div onMouseLeave={showbar} className={`profile_dropwdown ${visiblepp ? 'active':'passive'}`} >
+        <ul className='profile_dropwdown_ul'>
+            <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
+            <li className='profile_dropwdown_li'><Link to='/profie/favorit-shop'>Bəyənilən mağazalar</Link></li>
+            <li className='profile_dropwdown_li'><Link to='/profie/orderCard'>Tamamlanmış Sifarişlər</Link></li>
+            <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
+            <li className='profile_dropwdown_li'><Link to='/orders'>Çıxış</Link></li>
+        </ul>
+    </div>
+    </span>*/}
+
     <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
 <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>

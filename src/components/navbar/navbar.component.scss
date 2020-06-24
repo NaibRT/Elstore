@@ -87,6 +87,7 @@
         line-height: 200%;
         letter-spacing: 0.5px;
         color: #1A1A1A;
+       
     }
 }
 @media(max-width:1200px){
@@ -376,5 +377,58 @@
 
 .activenav{
     border-bottom: 1px solid  #6472B8;
+//     height: 40px;
+//     }
+
+    
+// .profile_dropwdown_ul{
+//     .profile_dropwdown_li{
+//         text-align: left !important;
+//     }
+// }
+
+// @media(max-width:570px){
+//     .bag{
+//         left: -28px;
+//     }
+// }
+
+// @media(max-width:481px){
+//     .bag{
+//         left: -25px;
+//     }
+// }
+// @media(min-width:1024px){
+//     .profile{
+//         margin-right: -18px !important;
+//     }
+// }
+
+
+// @media(max-width:1030px )and (min-width:800px){
+//     .navbar_center{
+//         padding: 0px 32px !important;
+//     }
+// }
+
+// .spanprofile{
+//     width: 5px;
+// }
+
+// .ppdownres{
+//     position: absolute;
+//     background-color: whitesmoke;
+//     // padding: 10px 10px;
+//     border-radius: 4px;
+//     top: 60px;
+//     left: 0;
+//     height: 0px;
+//     overflow: hidden;
+// }
+
+// .activedown{
+//     height: auto;
+//     padding: 10px 10px;
+//     overflow: hidden;
     height: 40px !important;
 }
