@@ -9,7 +9,6 @@ const Langs =  [{id:'Azərbaycan',name:'Azərbaycan'},{id:'İnglis',name:'İngli
 
 
 function LangToggler() {
-
     useEffect(()=>{
         // var acc = document.getElementsByClassName("accordion_lang");
         //     var i;

@@ -20,6 +20,7 @@ function  Navbar(props) {
     const products = useContext(searchContext);
     const [visiblepp,setVisiblepp] =useState(false);
     const AppContext=useContext(appContext);
+
     const [categories, setCategories] = useState({
         data:[]
     })
@@ -30,12 +31,14 @@ function  Navbar(props) {
 
     function showbar(){
         setVisiblepp(!visiblepp)
+
     }
 
     const [toggle, setToggle] = useState({
         active: false,
       });
 
+      
     function toggleNav() {
         const currentState = toggle.active;
         setToggle({ active: !currentState });
@@ -167,7 +170,7 @@ const loginRegister=<>
                 </div>
                 <div className='navbar_search'>
                 <form   className="search-input" >
-                    <input onChange={products.events.searchForm}  value={localStorage.getItem('search')} className='search-input-text' type="text" placeholder="Search.." name="search" />
+                    <input onChange={products.events.searchForm}  value={localStorage.getItem('search')} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
                     <Link to={`/categories?search:${products.state.searchKey}`} className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></Link>
                 </form>
                 </div>
@@ -207,10 +210,10 @@ const loginRegister=<>
                     {
                         AppContext.app.isAuthorized?
                        <>
-                        <Link   className='responsive_nav_login_log  ' >256 ₼ </Link> 
+                        <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
                             <Link   className='responsive_nav_login_log' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>
                         </>
-                        :
+                        
                         <>
                         </>
                     }

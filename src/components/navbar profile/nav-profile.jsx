@@ -118,7 +118,6 @@ function  NavbarProfile(props) {
       })
      },[])
   
-
      const [activeHeight, setactiveHeight] = useState(false)
      function activeheightres(){
          setactiveHeight(!activeHeight)

@@ -373,8 +373,11 @@
 
 .active{
     visibility: visible;
+    
 }
-
+.passive{
+        height: 0px !important;
+}
 .activenav{
     border-bottom: 1px solid  #6472B8;
 //     height: 40px;

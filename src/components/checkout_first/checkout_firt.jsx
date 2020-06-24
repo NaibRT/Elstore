@@ -8,7 +8,9 @@ import {Link} from 'react-router-dom';
 import Selectbox from '../Select-box/SelectBox.component'
 import {appContext} from '../../contexts/appContext'
 import UrlGenerator from '../../services/url-generator'
+import TextArea from '../textarea/textarea'
 import Button from '../button/button.component';
+
 function CheckoutFrist(props) {
     const AppContext=useContext(appContext)
     
@@ -163,15 +165,15 @@ function CheckoutFrist(props) {
             </div>
             <br/>
             <Card>
-            <Card.Header name='Elaqe Melumatlari' />
+            <Card.Header name='Əlaqə Melumatları' />
             <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
                         <InputGroup onChange={(e)=>{nameEventHandler(e)}} placeholder='Adınız' />
                         <br/>
-                        <InputGroup onChange={(e)=>phonenameEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='Telefon nömrəsi' />
+                        <InputGroup onChange={(e)=>phonenameEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='tel' placeholder='Telefon nömrəsi' />
                         <br/>
-                        <InputGroup onChange={(e)=>emailEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} placeholder='E-poçt adresi' />
+                        <InputGroup onChange={(e)=>emailEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='email' placeholder='E-poçt adresi' />
                     </div>
                     <div className='col-lg-6 col-sm-12'>
                         <InputGroup onChange={(e)=>surnameEventHandler(e)} placeholder='Soyadınız' />
@@ -183,7 +185,7 @@ function CheckoutFrist(props) {
             <Card.Header name='Çatdırılma ünvanı' />
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <Selectbox firstopt='Cities' handleChange={getRegions} class='selectboxcheckout' options={cities.data.data} />
+                        <Selectbox firstopt='Şəhərlər' handleChange={getRegions} class='selectboxcheckout' options={cities.data.data} />
                         <br/>
                         <Selectbox handleChange={regionEventHandler} firstopt='Region' class='selectboxcheckout' options={region.data.data} />
                         <br/>
@@ -200,7 +202,7 @@ function CheckoutFrist(props) {
                 </p>
                 <br/>
                 <div>
-                    <InputGroup onChange={(e)=>secoundAddres(e)} countertext='0/256' type="textarea"  placeholder='Ünvan' />  
+                    <TextArea onChange={(e)=>secoundAddres(e)} countertext='0/256' type="textarea"  placeholder='Ünvan' />  
                 </div>
             </Card>
             <br/>

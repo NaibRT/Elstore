@@ -152,7 +152,7 @@ function CheckoutThird(props) {
             <br/>
             <Button className='form_button_multiple bg-primary' onClick={order} name='SİFARİŞ ET'/>
 
-            
+          
        </>
     )
 }
