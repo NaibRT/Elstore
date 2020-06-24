@@ -23,7 +23,7 @@ const kategories = [
 ]
 
 
-function DatatableCheck(params) {
+function DatatableCheck(props) {
    
     const [filter,SetFilter]  = useState({
         kategories:[],
@@ -38,18 +38,10 @@ function DatatableCheck(params) {
             $('#example').DataTable();
         } );
 
-       
-        params.tbody.map((name)=>{
-            names.push(name)
-        });
 
         
     })
 
-    const filteredName = params.tbody.filter(name =>
-         name.ad.includes(filter.searchName)
-      
-      );
 
     function searchName(e){
         SetFilter({
@@ -57,7 +49,7 @@ function DatatableCheck(params) {
             SearchName:e.target.value
         })
     }
-  
+    console.log(filter.SearchName);
     return(
         <div>
             <div className='datatable_search'>
@@ -76,7 +68,7 @@ function DatatableCheck(params) {
         <thead>
             <tr>
                 {
-                    params.thead.map(head=>{
+                    props.thead.map(head=>{
                         return <th>{head}</th>
                     })
                 }
@@ -84,19 +76,18 @@ function DatatableCheck(params) {
         </thead>
         <tbody>
             {
-                params.tbody.map(bodyItems=>{
+                props.tbody!=undefined?
+                props.tbody.map(bodyItems=>{
                     return (
                         <tr>
                             <td>
-                               <Checkbox/>
+                               <Checkbox value={bodyItems.id} onClick={searchName}/>
                             </td>
-                            <td>{bodyItems.ad}</td>
-                            <td>{bodyItems.say}</td>
-                            <td>{bodyItems.qiymət}</td>
-                            <td>{bodyItems.status}</td>
+                            <td>{bodyItems.product_name}</td>
+                            <td>{bodyItems.price}</td>
                         </tr>
                     )
-                })
+                }):''
             }
            
         </tbody>

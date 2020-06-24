@@ -3,8 +3,8 @@ import UrlGenerator from '../../services/url-generator'
 import './heartImage.component.scss';
 import {appContext} from '../../contexts/appContext'
 
-
 function HeartImage({id,isLiked,clas}) {
+
     const AppContetx=useContext(appContext);
     const [like,setLike]=useState(false)
     useEffect(()=>{

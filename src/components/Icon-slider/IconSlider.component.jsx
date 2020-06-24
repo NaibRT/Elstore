@@ -5,7 +5,7 @@ import Swiper from 'swiper';
 export class IconSlider extends Component {
     componentDidUpdate(){
         var iconSlider = new Swiper('#icon_slider__container.swiper-container',{
-            slidesPerView : 8,
+            slidesPerView : "auto",
             slidesPerGroup: 1,
             spaceBetween:10,
             loop: true,
@@ -30,7 +30,7 @@ export class IconSlider extends Component {
                     slidesPerView:6
                 },
                 1200:{
-                    slidesPerView:8,
+                    slidesPerView:"auto",
                     // spaceBetween:5
                 }
             }

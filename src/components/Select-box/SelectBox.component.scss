@@ -1,6 +1,11 @@
 .select__search{
     margin-top: 24px;
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    .search_re{
+        width: 240px;
+        height: 44px;
+    }
     select{
         width: 100%;
         height: 44px;

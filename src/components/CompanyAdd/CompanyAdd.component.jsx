@@ -1,14 +1,18 @@
-import React,{useContext} from 'react'
+
+import React,{useState,useContext,useEffect} from 'react'
 import {Link} from "react-router-dom"
 import "../CompanyAdd/CompanyAdd.scss"
 import Button from "../button/button.component"
 import Checkbox from '../checkbox/checkbox'
 import DataTable from "../datatable checkbox/datatable_checkbox"
+import Axios from 'axios'
+import UrlGenerator from '../../services/url-generator';
+import {appContext} from '../../contexts/appContext'
+import { data } from 'jquery'
 import Tab from "../tab/tab-component"
 import InputGroup from "../InputGroup/InputGroup.component"
-import { useState } from 'react'
-import { appContext } from '../../contexts/appContext'
-import UrlGenerator from '../../services/url-generator'
+
+const thead =['əlave','məhsulun adı','qİymət'];
 
 const company={
     
@@ -89,10 +93,59 @@ const CompanyAdd = () => {
           reader.readAsDataURL(file);
         }
       }
+
+    useEffect(() =>{
+        let url = UrlGenerator('az','users/my-company')
+        let token = AppContext.events.getToken()
+        fetch(url,{
+            method:"Get",
+            headers:{
+                'Authorization':
+                token!=null? 
+                `${token.token_type} ${token.access_token}`: null
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            setCompany({data:data.data[0]})
+            console.log(data);
+        })
+    },[])
+
+    // const getData = () =>{
+    //     let url = UrlGenerator('az','search/product')
+    //     fetch(url,{
+    //         method:"Get",
+    //     })
+    //     console.log(url);
+    // }
+
+    const onSubmit =  e => {
+        e.preventDefault();
+        let formData = new FormData();
+        formData.append("az[campaign_name]",company.name)
+        formData.append("az[campaign_description]",company.description)
+        formData.append("discount",company.discount)
+        formData.append("campaign_image",company.img)
+        formData.append('products',company.data.products.id)
+        let url = UrlGenerator('az','campaigns')
+        let token = AppContext.events.getToken()
+        fetch(url,{
+            method:"Post",
+            headers:{
+                'Authorization':`${token.token_type} ${token.access_token}`,
+            },
+            body:JSON.stringify(formData)
+
+        })
+
+        console.log(formData);
+    }
     return (
         
         <div className="container-fluid">
             <div className="row">
+                <form onSubmit={e => onSubmit(e)}>
                 <div className="col-lg-12">
                 <div className="redirect__page">
                     <span><img src={require(`../../assets/images/icons/Iconprev.svg`)} alt=""/></span>
@@ -141,15 +194,14 @@ const CompanyAdd = () => {
                   </div>
                
                 </form>
-               
-                
+             
                 <div className="company__coverPhoto">
                     <h5>Kampaniya “cover” rəsmini əlavə edin.</h5>
                     <p>Minimum ölçü 640x248</p>
                 </div>
                 <div className="profile__photo2">
                      <div className="profil__images">
-                      <input onChange={previewFile2} type="file"/>
+                      <input onChange={previewFile2} type="file" name="img" value={company.img} onChange={e => onInputChange(e)}/>
                      <img className="profilePhoto" src="" alt=""/>
                     </div>
                 </div>
@@ -162,13 +214,11 @@ const CompanyAdd = () => {
                     <h5>Toplam 0 məhsul əlavə edildi.</h5>
                 </div>
                 
-                <Checkbox>
-                <DataTable/>
-                </Checkbox>
+                 <DataTable thead={thead} tbody={company.data.products}/>
 
                 <Button onClick={Sender} name="Kampaniyanı Yarat" className="company__create"/>
                 </div>
-
+                </form>
             </div>
         </div>
     )

@@ -13,6 +13,15 @@ function BasketCard({plus,minus,count,product}){
         setLike(product.isLiked)
     },[])
 
+    function removeFromBasket(e){
+        let id=e.target.getAttribute('data-id');
+        let bask=AppContetx.basket.filter(x=>x.id!=id)
+        AppContetx.events.setBasket([
+            ...AppContetx.basket,
+            ...bask
+
+        ])
+    }
 
     function showHide(e){
         let id=e.currentTarget.getAttribute('data-id');

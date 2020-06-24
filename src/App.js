@@ -20,35 +20,7 @@ import ProfileShopHome from './pages/profile-shop-home'
 import NavbarProfile from './components/navbar profile/nav-profile'
 import CheckoutThird from './components/checkout_third/checkout_third'
 const th = ['sİfarİş kodu','məhsulun adı', 'say', 'qİymət','Status', 'Düzəlİş' ];
-var sifaris = [
-  {
-    'kod':'0259416',
-    'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
-    'say': '1',
-    'qiymət':'18 ₼',
-    'status': 'Hazırlanır',
-  },
-  {
-    'kod':'0259416',
-    'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
-    'say': '1',
-    'qiymət':'18 ₼',
-    'status': 'Hazırlanır',
-  }, {
-    'kod':'0259416',
-    'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
-    'say': '1',
-    'qiymət':'23 ₼',
-    'status': 'Hazırlanır',
-  }, {
-    'kod':'0259416',
-    'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
-    'say': '1',
-    'qiymət':'34 ₼',
-    'status': 'Hazırlanır',
-  }
-  
-]
+
 
 
 function App() {
