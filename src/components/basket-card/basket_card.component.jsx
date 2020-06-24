@@ -13,15 +13,6 @@ function BasketCard({plus,minus,count,product}){
         setLike(product.isLiked)
     },[])
 
-    function removeFromBasket(e){
-        let id=e.target.getAttribute('data-id');
-        let bask=AppContetx.basket.filter(x=>x.id!=id)
-        console.log(bask)
-        AppContetx.events.setBasket([
-            ...AppContetx.basket,
-            ...bask
-        ])
-    }
 
     function showHide(e){
         let id=e.currentTarget.getAttribute('data-id');
@@ -46,7 +37,6 @@ function BasketCard({plus,minus,count,product}){
         }else{
             document.getElementById('login__modal').style.display='block';
         }
-       console.log(product)
     }
     return (
         <div className='basket__card'>
@@ -104,8 +94,7 @@ function BasketCard({plus,minus,count,product}){
                     :<button data-id={product.id} onClick={(e)=>showHide(e)} className='basket_bottom_button'><img alt='' className='basket_bottom_button_img' src={require('../../assets/images/icons/Active2.svg')} />UnLike</button>
                      
             }
-                <button className='basket_bottom_button'>sonra al</button>
-                <button data-id={product.id} onClick={(e)=>removeFromBasket(e)} className='basket_bottom_button'>SİL</button>
+                <button data-id={product.id} onClick={(e)=>AppContetx.events.removeFromBasket(e)} className='basket_bottom_button'>SİL</button>
             </div>
         </div>
     )

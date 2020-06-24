@@ -16,6 +16,14 @@
       letter-spacing: 0.5px;
       text-transform: uppercase;
       padding: 10px 16px;
+      text-decoration: none;
+      text-align: center;
+      align-items: center;
+      vertical-align: middle;
+      span{
+         position: relative;
+         top: 3px;
+      }
 
    }
    .compaignbtn.active{

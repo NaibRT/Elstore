@@ -5,6 +5,7 @@ import Input from "../InputGroup/InputGroup.component"
 import SelectBox from '../Select-box/SelectBox.component'
 import Button from "../button/button.component"
 import UrlGenerator from '../../services/url-generator'
+import swal from "sweetalert"
 import {useForm} from 'react-hook-form'
 import {appContext} from '../../contexts/appContext'
 import Form from '../form/form.component'
@@ -24,9 +25,7 @@ function Modal(){
         .then(response => response.json())
         .then(data =>{
           setCities({data:data})
-          console.log(data)
         });
-        console.log(cities)
     },[])
     function Signin(){
           
@@ -59,10 +58,12 @@ function Modal(){
     let body=document.getElementsByTagName("body")[0];
     body.addEventListener("click", function(e){
         let login__modal= document.getElementById("login__modal");
+        let deletevalue = document.getElementById("deletevalue ")
         if(e.target==login__modal){
             login__modal.style.display="none"
         }
     })
+        
    
     const loginSubmit=(data)=>{
        let url=UrlGenerator('az','auth/login')
@@ -77,12 +78,14 @@ function Modal(){
           let data=await res.json();
           if(res.ok){
             AppContext.events.AddToken(data)
+            swal("Good job!", "You clicked the button!", "success");
             document.getElementById('login__modal').style.display='none';
+          }else{
+            swal("Good job!", "You clicked the button!", "error");
           }
      
       })
       .catch((err) =>console.log(err))
-      console.log(errors.email)
    }
 
    const registerSubmit=(data)=>{
@@ -95,13 +98,18 @@ function Modal(){
        body:JSON.stringify(data)
    })
    .then(async res=>{
-       let data=await res.json();
-       console.log(data)
-      AppContext.events.AddToken(data)
-      document.getElementById('login__modal').style.display='none';
+
+       if(res.ok){
+        let data=await res.json();
+        AppContext.events.AddToken(data)
+        swal("Good job!", "You clicked the button!", "success");
+        document.getElementById('login__modal').style.display='none';
+       }else{
+        swal("Good job!", "You clicked the button!", "error");
+       }   
+       
    })
    .catch((err) =>console.log(err))
-   console.log(errors.email)
 }
     return ReactDom.createPortal(
     <div id="login__modal" className="modal__bacground">
@@ -119,7 +127,7 @@ function Modal(){
 
             <section id="signin_view">
             <form onSubmit={handleSubmit(loginSubmit)}>
-                <Input  
+                <Input id="deletevalue" 
                      name='email' placeholder={"Email"} type="email"
                      register={register({
                         required:{value:true,message:'must be added'},
@@ -128,7 +136,7 @@ function Modal(){
                      })}
                       helper={errors.email&&errors.email.message}/>
 
-                <Input  name='password'  placeholder={"Email"} type="password" register={register({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors.password&&errors.password.message}/>
+                <Input id="deletevalue"  name='password'  placeholder={"Şifrə"} type="password" register={register({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors.password&&errors.password.message}/>
                 <label htmlFor="">şifrəmi unutmuşam</label>
                 <Button className="bg-primary" type={"submit"} name={"Daxil ol"}  />
                     <br/>
@@ -136,17 +144,17 @@ function Modal(){
             </section>
             <section  id="signup_view">
         <form onSubmit={handleSubmit2(registerSubmit)}>
-            <Input name='name' type='text' placeholder='name' register={register2({
+            <Input name='name' type='text' placeholder='Ad' register={register2({
                 required:{value:true,message:'name is required'},
                 maxLength:{value:255,message:'max  255 char need'}
             })} helper={errors2.name&&errors2.name.message}/>
 
-            <Input name='surname' type='text' placeholder='surname' register={register2({
+            <Input name='surname' type='text' placeholder='Soyad' register={register2({
                 required:{value:true,message:'name is required'},
                 maxLength:{value:255,message:'max 255 char need'}
             })} helper={errors2.name&&errors2.name.message}/>
 
-            <Input name='phone' type='tel' placeholder='phone' register={register2({
+            <Input name='phone' type='tel' placeholder='Telefon' register={register2({
                 required:{value:true,message:'name is required'},
                 maxLength:{value:255,message:'max 255 char need'}
             })} helper={errors2.name&&errors2.name.message}/>
@@ -159,7 +167,7 @@ function Modal(){
                 })}
                 helper={errors2.email&&errors2.email.message}/>
 { /*                 <SelectBox options={cities.data.data} name='address' class='selectboxcheckout' register={register({required:'cannot be null'})} />*/}
-            <Input   name='password'  placeholder={"Email"} type="password" register={register2({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors2.password&&errors2.password.message}/>
+            <Input   name='password'  placeholder={"Şifrə"} type="password" register={register2({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors2.password&&errors2.password.message}/>
             <br/>
             <Button className="bg-primary" type={"submit"} name={"Hesab yarat"}  />
             <br/>

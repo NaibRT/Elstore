@@ -20,15 +20,18 @@ function  Navbar(props) {
     const products = useContext(searchContext);
     const [visiblepp,setVisiblepp] =useState(false);
     const AppContext=useContext(appContext);
-    const profileicon  = document.getElementById('profileicon');
-    if(profileicon!==null){
-        console.log(profileicon.id)
-    }
-    function showbar(event){
-        setVisiblepp(!visiblepp);
-        event.stopPropagation();
-        
-        
+
+    const [categories, setCategories] = useState({
+        data:[]
+    })
+    const [show,setShow] = useState({
+        show: false
+      })
+
+
+    function showbar(){
+        setVisiblepp(!visiblepp)
+
     }
 
     const [toggle, setToggle] = useState({
@@ -81,24 +84,25 @@ function  Navbar(props) {
              if(window.location.href.split('/')[3]==='' && window.location.href.split('/')[3] === 'index'){
                 $(".navbar_bottom_link").removeClass("activenav");
              }
-          
 
-                    $( "#profileicon" ).mouseleave(function() {
-                        setVisiblepp(false)
-                      });
-            
-
-
-
-
-
-    },[])
+    })
    
+    const [navbarCat, setNavbarCat] = useState({
+        data:[]
+    })
+    useEffect(()=>{
+        axios({
+            method:'GET',
+            url:'http://139.180.144.49/api/v1/az/categories',
     
-    
-      const [show,setShow] = useState({
-        show: false
-      })
+        }).then(res=>{
+            setNavbarCat({
+                data:res.data.data
+            })
+        })
+    },[])
+
+
 
       
     function handleClick(){
@@ -108,10 +112,6 @@ function  Navbar(props) {
     }
 
 
-   
-    const [categories, setCategories] = useState({
-        data:[]
-    })
    
     const url = 'http://139.180.144.49/api/v1/az/categories';
   
@@ -126,13 +126,14 @@ function  Navbar(props) {
      },[])
   
 
-
     const userProfle=<>
-    <Link   className='navbar_buttons_link bag budget' >0 ₼ </Link> 
+    <Link   className='navbar_buttons_link bag budget' >0₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>  
-    <span className='spanprofile'  onMouseLeave={showbar} >
-    <Link id='profileicon' onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
-    <div className={`profile_dropwdown ${visiblepp ? 'active':'passive'}`} >
+     
+        {/*<span className='spanprofile'  >
+        elcanin yazdiglari
+    <Link   id='profileicon' onClick={showbar}  className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+    <div onMouseLeave={showbar} className={`profile_dropwdown ${visiblepp ? 'active':'passive'}`} >
         <ul className='profile_dropwdown_ul'>
             <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
             <li className='profile_dropwdown_li'><Link to='/profie/favorit-shop'>Bəyənilən mağazalar</Link></li>
@@ -141,17 +142,22 @@ function  Navbar(props) {
             <li className='profile_dropwdown_li'><Link to='/orders'>Çıxış</Link></li>
         </ul>
     </div>
-    </span>
+    </span>*/}
+
+    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+<div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
+    <ul className='profile_dropwdown_ul'>
+        <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
+        <li className='profile_dropwdown_li'><Link onClick={AppContext.events.logout}>Logout</Link></li>
+    </ul>
+</div>
 
 </>;
-
 const loginRegister=<>
-
                     <Link className='navbar_buttons_link log login' onClick={Sign} >daxİl ol</Link>
-                    <Link className='navbar_buttons_link log signup' to='/register'>hesab yarat</Link>
+                    <Link className='navbar_buttons_link log signup' onClick={Sign} >hesab yarat</Link>
                       
-                    </>
-
+                    </> 
     return (
         <div className='navbar'>
             <div className='navbar_top'>
@@ -172,8 +178,7 @@ const loginRegister=<>
                     <LangToggler/>
                 </div>
                 <div className='navbar_buttons'>
-                     <Link   className='navbar_buttons_link bag' to='/basket'> <img src={require('../../assets/images/heading/Bag.svg')} /></Link> 
-                    
+                     <Link   className='navbar_buttons_link bag' to='/basket'><img alt='' src={require('../../assets/images/heading/Bag.svg')} /><span>{AppContext.basket.length}</span></Link> 
                     
                     {
                         AppContext.app.isAuthorized?
@@ -196,7 +201,6 @@ const loginRegister=<>
                     <button className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></button>
                 </form>
             </div> */}
-
             <div className={`${toggle.active ? 'opennav': ''} responsive_nav`}>
                     <div className='responsive_nav_top'>
                     <Selectbox  value={Langs} class='accordion_select'  options={Langs}/>
@@ -207,13 +211,12 @@ const loginRegister=<>
                         AppContext.app.isAuthorized?
                        <>
                         <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
-                            <Link   className='responsive_nav_login_log' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>
+                            <Link   className='responsive_nav_login_log' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>
                         </>
-                        :
+                        
                         <>
                         </>
                     }
-
                     </div>
                     <MobileModal onClose={handleClick} show={show.show}>
                         {categories.data.map(category=>{
@@ -221,31 +224,29 @@ const loginRegister=<>
                         })}
                         
                     </MobileModal>
-
                     <div className='responsive_nav_login'>
                         <Link className='responsive_nav_login_log' to='/register'>Register</Link>
                         <Link className='responsive_nav_login_log' to='/login'>Login</Link>
                     </div>
-
                     
                     <div className='responsive_nav_bottom'>
                             <Link className='responsive_nav_bottom_item' to="/cabinet">Cabinet <img src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
                             <Link onClick={handleClick} className='responsive_nav_bottom_item ' >Kategories <img src={require('../../assets/images/icons/arrowDown.png')} /></Link>
                     </div>
                 </div>
-
-
+            
             <div className='navbar_bottom'>
-                <Link to='/homeandoffice' className='navbar_bottom_link'>Ev və ofis aksesuarları</Link>
-                <Link to='/clothesandbags' className='navbar_bottom_link'>Geyim və çantalar</Link>
-                <Link to='/bujiteriya' className='navbar_bottom_link'>Bijuteriya və aksesuarlar</Link>
-                <Link to='/special' className='navbar_bottom_link'>Özəlləşdirilən</Link>
-                <Link to='/art' className='navbar_bottom_link'>İncəsənət nümunələri</Link>
-                <Link to='/handcraft' className='navbar_bottom_link'>Əl işləri</Link>
+                {
+                    AppContext.app.user.type?
+                    navbarCat.data
+                    .filter((item,idx)=>{return idx<=6 })
+                    .map((item,idx)=>{
+                        return<Link key={idx} to={`/search?filter[category_id]=${item.id}`} className='navbar_bottom_link'>{item.name}</Link>
+                    }):null
+                }
+               
             </div>
-
         </div>
     )
 }
-
 export default Navbar

@@ -5,7 +5,7 @@ import axios from 'axios'
 import '../assets/sass/pages/compaign.scss'
 import Button from '../components/button/button.component';
 import UrlGenerator from '../services/url-generator';
-
+import {Link} from 'react-router-dom'
 
 
 const th = ['Adı','Kateqorİya', 'say', 'qİymət','Status','Düzəlİş' ];
@@ -23,8 +23,6 @@ var sifaris = [
 ]
 
 function Products() {
-
-
 const [product,setProduct] = useState({
   data:[],
   category:[]
@@ -47,14 +45,12 @@ useEffect(()=>{
   
 },[])
 
-
-
     return (
         <div className='container-fluid'>
             <div className="head_compaign">
-                <h1>Toplam məhsul sayı: 76</h1>
+                <h1>Toplam məhsul sayı: {product.data.length}</h1>
                 <div className='compaign_buttons'>
-                    <Button className='compaignbtn active' name='+ Kampanİya əlavə et'/>
+                    <Link className='compaignbtn active' to='/profile/product/create'><span>+ Məhsul Əlavə Et</span></Link>
                     <div>&nbsp;&nbsp;</div>
                     <Button className='compaignbtn' name='yadda saxla'/>
                 </div>

@@ -17,7 +17,6 @@ function CategoryContext(props){
         let id=e.target.getAttribute('data-id');
         console.log(id)
         categories.forEach(x=>{
-            console.log(x);
             if(x.id==id && x.children!=null ){
                 children= x.children
                 
