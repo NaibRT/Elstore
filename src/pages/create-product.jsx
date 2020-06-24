@@ -72,24 +72,27 @@ function CreateProduct(){
     response.json()
     .then(r=>{
        categories=r.data
+       console.log(categories)
+
+       fetch(brand_url)
+       .then(response=>{
+        response.json()
+        .then(r=>{
+           brandss=r.data
+           console.log(brandss)
+           console.log(categories)
+           setCategories(categories)
+           setBrands(brandss)
+        })
+        .catch(e=>console.log(e))
+       })
+       .catch(err=>console.log(err))
+
     })
     .catch(e=>console.log(e))
    })
    .catch(err=>console.log(err))
 
-
-   fetch(brand_url)
-   .then(response=>{
-    response.json()
-    .then(r=>{
-       brandss=r.data
-       console.log(brandss)
-       setCategories(categories)
-       setBrands(brandss)
-    })
-    .catch(e=>console.log(e))
-   })
-   .catch(err=>console.log(err))
  },[])
 
     function readFileAsync(x){

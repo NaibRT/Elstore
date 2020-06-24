@@ -23,6 +23,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-use-form-state": "^0.13.1",
+    "sweetalert": "^2.1.2",
     "styled-components": "^5.1.1",
     "swiper": "^5.4.2"
   },

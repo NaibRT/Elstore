@@ -3,6 +3,7 @@ import Button from "../button/button.component"
 import "../ProfilInfo/ProfilInfo.scss"
 import Input from "../InputGroup/InputGroup.component"
 import {useForm} from 'react-hook-form'
+import swal from 'sweetalert';
 import {appContext} from '../../contexts/appContext'
 import UrlGenerator from '../../services/url-generator'
 import { useHistory } from "react-router-dom";
@@ -11,7 +12,8 @@ import { useHistory } from "react-router-dom";
 function Porfilinfo(props) {
 
     const [update,setUpdate]=useState({})
-
+    
+    const {register,handleSubmit,errors}=useForm()
 
     const AppContext=useContext(appContext)
 
@@ -33,52 +35,38 @@ function Porfilinfo(props) {
             setUpdate({
                 ...update,
                 ...data1
+               
             })
+            
+            console.log(data1.name)
         }
-           
-          
        })
-       .catch((err) =>console.log(err))
+
+       .catch(
+           (err) =>console.log(err)
+       
+       )
     }, []);
 
        
     const [datalar,setDatalar]=useState({
         field:{
-            namelar:"",
-            oldpassword:"",
-            newpassword:""
+            name:"",
+            phones:"",
+            old_password:"",
+            password:"",
+            email:""
         }
         
     })   
 
     const DataPost=(e)=>{
         e.preventDefault()
-        let url=UrlGenerator('az',`users/courier/update`)
-        let token=AppContext.events.getToken();
-       fetch(url,{
-           headers:{
-            "Authorization":`${token.token_type} ${token.access_token}`,
-           },
-           method:"POST",
-       })
-       .then(async res=>{
-        if(res.ok){
-            console.log('burdadiiii',res)
-            let data1=await res.json();
-            console.log(data1)
-            e.preventDefault();
-            setDatalar({
-                field:{
-                ...datalar.field,
-                [e.target.name]:e.target.value
-            }})
-        }
-           
-          
-       })
-       .catch((err) =>console.log(err))
+
     }
-    
+    function Salam(){
+        swal("Good job!", "You clicked the button!", "success");
+    }
     
     const [allData,SetallData]=useState({
         field:{
@@ -122,7 +110,9 @@ function Porfilinfo(props) {
       
         if (file) {
           reader.readAsDataURL(file);
+          
         }
+        
       }
 
 
@@ -133,7 +123,7 @@ function Porfilinfo(props) {
         text__form.style.display="block";
     }
 
-   const handleSubmit=(e)=>{
+   const myhandleSubmit=(e)=>{
         e.preventDefault();
         let Adress__Data=document.getElementById("Adress__Data");
         let text__form= document.getElementById("text__form");
@@ -143,14 +133,81 @@ function Porfilinfo(props) {
     }
 
     const handleChange=(e)=>{
-        
         e.preventDefault();
         SetallData({field:{
             ...allData.field,
             [e.target.name]:e.target.value
         }})
     }
+    function AddedPhoto(data){
+        data.preventDefault();
+        let url=UrlGenerator('az',`users/courier/update`)
+        let token=AppContext.events.getToken();
+        console.log(data)
+        let newData=new FormData();
+       
+        newData.append("logo",data.logo)
+       fetch(url,{
+           headers:{
+            "Authorization":`${token.token_type} ${token.access_token}`,
+           },
+           method:"POST",
+           body:newData
+       })
+       .then(async res=>{
+        if(res.ok){
+            console.log('burdadiiii',res)
+            let data1=await res.json();
+            console.log(data1)
+            setDatalar({
+                field:{
+                ...datalar.field,
+                logo:data.logo
+            }})
+        }
+           
+          
+       })
+       .catch((err) =>console.log(err))
+    }
 
+     function updateSubmit(data) {
+        let url=UrlGenerator('az',`users/courier/update`)
+        let token=AppContext.events.getToken();
+        console.log(data)
+        let newData=new FormData();
+        newData.append("name",data.name)
+        newData.append("phones",data.phones)
+        newData.append("oldpassword",data.old_password)
+        newData.append("password",data.password)
+        newData.append("logo",data.logo)
+
+
+       fetch(url,{
+           headers:{
+            "Authorization":`${token.token_type} ${token.access_token}`,
+           },
+           method:"POST",
+           body:newData
+       })
+       .then(async res=>{
+        if(res.ok){
+            console.log('burdadiiii',res)
+            let data1=await res.json();
+            console.log(data1)
+            setDatalar({
+                field:{
+                ...datalar.field,
+                name:data.name
+
+                
+            }})
+        }
+           
+          
+       })
+       .catch((err) =>console.log(err))
+     }
 
     return (
        
@@ -175,45 +232,66 @@ function Porfilinfo(props) {
                                <section id="profile__info--update">
                                 <div className="profile--image">
                                     <h5>profİl şəklİ</h5>
+                                    <form  >
                                     <div className="profile__photo">
-                                        <div className="profil__images">
-                                            <input onChange={previewFile} type="file"/>
-                                            <img className="profilePhoto" src={require(`../../assets/images/icons/Increase.svg`)} alt=""/>
-                                        </div>
-                                        <Button name="Yukle"/>                      
-                                    </div>
+                                        
+                                            <div className="profil__images">
+                                                <input onChange={previewFile} type="file"/>
+                                                <img className="profilePhoto" src={require(`../../assets/images/icons/Increase.svg`)} alt=""/>
+                                            </div>
+                                            <Button onClick={Salam}  name="Yukle"/>  
+                                            </div>
+                                            </form>
+                                                            
+                                   
                                    <div className="borders"></div>
                                 </div>
-                                <form   >
+                                <form onSubmit={handleSubmit(updateSubmit)} >
                                 <div className="profile--image_Username emails">
                                     <div className="userName_edit">
                                         <h5>İstİfadəçİ adı</h5>
                                     </div>
-                                    <Input type="text" value={update.name} placeholder="Username694841"/>
+                                    <Input name='name' register={register({
+                                        required:{value:true,message:'name doldurmaq mecburidir',type:'text'},
+                                    })}  type="text"  placeholder={update.name}/>
+                                   
                                     <div className="borders"></div>
                                 </div>
                                 <div className="profile--image_Username passw">
                                     <div className="userName_edit">
                                         <h5>Köhnə Şİfrə</h5>
                                     </div>
-                                    <Input type="password"  placeholder="**************"/>
+                                    <Input name='old_password' register={register({
+                                        required:{value:true,message:'password doldurmaq mecburidir',type:'password'}
+                                    })} type="password"  placeholder="**************"/>
                                     <div className="borders"></div>
                                 </div>
                                 <div className="profile--image_Username odlpassw">
                                     <div className="userName_edit">
                                         <h5>Yeni Şİfrə</h5>
                                     </div>
-                                    <Input type="password"  placeholder="**************"/>
+                                    <Input name='password' register={register({
+                                        required:{value:true,message:'yeni password doldurmaq mecburidir', type:'password'}
+                                    })} type="password"  placeholder="**************"/>
                                     <div className="borders"></div>
                                 </div>
                                 <div className="profile--image_Username ">
                                     <div className="userName_edit">
                                         <h5>Email</h5>
                                     </div>
-                                    <Input value={update.email} type="Email"  placeholder="example@example.com"/>
+                                    <Input disabled={true} name='email'  type="Email"  placeholder={update.email}/>
                                     <div className="borders"></div>
                                 </div>
-                                <Button  name="Yadda saxla"/>
+                                <div className="profile--image_Username ">
+                                    <div className="userName_edit">
+                                        <h5>Number</h5>
+                                    </div>
+                                    <Input name='phones' register={register({
+                                        required:{value:true,message:'yeni email doldurmaq mecburidir',type:'tel'}
+                                    })}   type="tel"  placeholder={update.phones}/>
+                                    <div className="borders"></div>
+                                </div>
+                                <Button type='submit' name="Yadda saxla"/>
                                 </form>
                                 <Button  className="button_delete--acc" name="Hesabi sil"/>
                                 </section>
@@ -225,7 +303,7 @@ function Porfilinfo(props) {
                                     <Input label="Rayon" name="rayon" onChange={handleChange}/>
                                     <Input label="Qəsəbə" name="qəsəbə" onChange={handleChange}/>
                                     <Input label="Mənzil" name="mənzil" onChange={handleChange}/>
-                                    <Button onClick={handleSubmit} id="saxla" id="saxla" type="button" name="Saxla"/>
+                                    <Button onClick={myhandleSubmit} id="saxla" id="saxla" type="button" name="Saxla"/>
                                 </form>
                                 <div id="Adress__Data" style={{display:'none'}}>
                                 <div  className="delivery_mapping">

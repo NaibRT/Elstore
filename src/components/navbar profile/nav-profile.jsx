@@ -131,11 +131,8 @@ function  NavbarProfile(props) {
      <Link id='profileicon' onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
      <div className={`profile_dropwdown ${visiblepp ? 'active':'passive'}`} >
          <ul className='profile_dropwdown_ul'>
-             <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
-             <li className='profile_dropwdown_li'><Link to='/profie/favorit-shop'>Bəyənilən mağazalar</Link></li>
-             <li className='profile_dropwdown_li'><Link to='/profie/orderCard'>Tamamlanmış Sifarişlər</Link></li>
-             <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
-             <li className='profile_dropwdown_li'><Link to='/orders'>Çıxış</Link></li>
+             <li className='profile_dropwdown_li'> <Link to='/profile/'>Profile</Link></li>
+             <li className='profile_dropwdown_li'><Link>Çıxış</Link></li>
          </ul>
      </div>
      </span>
@@ -202,10 +199,7 @@ function  NavbarProfile(props) {
                              <Link id='profileicon' onClick={activeheightres}  className={`navbar_buttons_link ppres `}> <img  src={require('../../assets/images/user.png')} /> <img   className='downbtn' width='12px' src={require('../../assets/images/down.svg')} /></Link>
                              <div className={`ppdownres ${activeHeight?'activedown':''}`}>
                              <ul className='profile_dropwdown_ul'>
-                                 <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
-                                 <li className='profile_dropwdown_li'><Link to='/profie/favorit-shop'>Bəyənilən mağazalar</Link></li>
-                                 <li className='profile_dropwdown_li'><Link to='/profie/orderCard'>Tamamlanmış Sifarişlər</Link></li>
-                                 <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
+                                 <li className='profile_dropwdown_li'> <Link to='/profile/'>Profile</Link></li>
                                  <li className='profile_dropwdown_li'><Link to='/orders'>Çıxış</Link></li>
                              </ul>
                              </div>
@@ -246,15 +240,15 @@ function  NavbarProfile(props) {
                      </div>
                  </div>
  
-            <div className='navbar_bottom'>
-                <Link to='/market' className='navbar_bottom_link'>Mağaza</Link>
-                <Link to='/clothesandbags' className='navbar_bottom_link'>Məhsullar</Link>
-                <Link to='/bujiteriya' className='navbar_bottom_link'>sİfarİşlər</Link>
-                <Link to='/special' className='navbar_bottom_link'>sİfarİş keçmİşİ</Link>
-                <Link to='/art' className='navbar_bottom_link'>Kampanİyalar</Link>
-                <Link to='/handcraft' className='navbar_bottom_link'>Kampanİya keçmİşİ</Link>
-                <Link to='/handcraft' className='navbar_bottom_link'>tənzİmləmələr</Link>
-            </div>
+{/*        <div className='navbar_bottom'>
+            <Link to='/profile' className='navbar_bottom_link'>Mağaza</Link>
+            <Link to='/profile/products' className='navbar_bottom_link'>Məhsullar</Link>
+            <Link to='/profile/orders' className='navbar_bottom_link'>sİfarİşlər</Link>
+            <Link to='/profile/order-history' className='navbar_bottom_link'>sİfarİş keçmİşİ</Link>
+            <Link to='/profile/companies' className='navbar_bottom_link'>Kampanİyalar</Link>
+            <Link to='/profile/old-companies' className='navbar_bottom_link'>Kampanİya keçmİşİ</Link>
+            <Link to='/profileinfo' className='navbar_bottom_link'>tənzİmləmələr</Link>
+                        </div>*/}
 
         </div>
     )
