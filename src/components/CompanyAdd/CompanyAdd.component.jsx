@@ -199,12 +199,12 @@ const CompanyAdd = () => {
                     <h5>Kampaniya “cover” rəsmini əlavə edin.</h5>
                     <p>Minimum ölçü 640x248</p>
                 </div>
-                <div className="profile__photo2">
+{/*                <div className="profile__photo2">
                      <div className="profil__images">
                       <input onChange={previewFile2} type="file" name="img" value={company.img} onChange={e => onInputChange(e)}/>
                      <img className="profilePhoto" src="" alt=""/>
                     </div>
-                </div>
+    </div>*/}
                 <br/>
                 <div className="company__coverPhoto">
                     <h5>Kampaniyaya məhsulları əlavə edin.</h5>

@@ -212,10 +212,7 @@ const loginRegister=<>
                        <>
                         <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
                             <Link   className='responsive_nav_login_log' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>
-                        </>
-                        
-                        <>
-                        </>
+                        </>:null
                     }
                     </div>
                     <MobileModal onClose={handleClick} show={show.show}>

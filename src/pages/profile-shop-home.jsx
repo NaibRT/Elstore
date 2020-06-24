@@ -33,9 +33,12 @@ function ProfileShopHome() {
                .then(async res => {
                    let data =await res.json();
                    console.log("Salameee",data)
-                   setproduct({
-                       ...data.data[0],
-                   })
+                   if(res.ok){
+                    setproduct({
+                        ...data.data[0],
+                    })
+                   }
+
                } )
 
             },[])
