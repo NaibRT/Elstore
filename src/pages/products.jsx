@@ -22,7 +22,7 @@ var sifaris = [
   
 ]
 
-function Products() {
+function Products({headerText}) {
 const [product,setProduct] = useState({
   data:[],
   category:[]
@@ -48,7 +48,7 @@ useEffect(()=>{
     return (
         <div className='container-fluid'>
             <div className="head_compaign">
-                <h1>Toplam məhsul sayı: {product.data.length}</h1>
+                <h1>{headerText}: {product.data.length}</h1>
                 <div className='compaign_buttons'>
                     <Link className='compaignbtn active' to='/profile/product/create'><span>+ Məhsul Əlavə Et</span></Link>
                     <div>&nbsp;&nbsp;</div>
