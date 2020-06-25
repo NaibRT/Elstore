@@ -154,7 +154,7 @@ function Modal(){
                 maxLength:{value:255,message:'max 255 char need'}
             })} helper={errors2.name&&errors2.name.message}/>
 
-            <Input name='phone' type='tel' placeholder='Telefon' register={register2({
+            <Input name='phones[phone]' type='tel' placeholder='Telefon' register={register2({
                 required:{value:true,message:'name is required'},
                 maxLength:{value:255,message:'max 255 char need'}
             })} helper={errors2.name&&errors2.name.message}/>
