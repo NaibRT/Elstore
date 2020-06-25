@@ -234,7 +234,7 @@ const loginRegister=<>
             
             <div className='navbar_bottom'>
                 {
-                    AppContext.app.user.type?
+                    AppContext.app.user!=undefined?
                     navbarCat.data
                     .filter((item,idx)=>{return idx<=6 })
                     .map((item,idx)=>{

@@ -92,7 +92,7 @@ function Modal(){
     let url=UrlGenerator('az','auth/buyer/register')
    fetch(url,{
        headers:{
-         'Content-Type': 'application/json'
+         'Content-Type': 'application/json',   
        },
        method:"Post",
        body:JSON.stringify(data)
@@ -102,7 +102,7 @@ function Modal(){
        if(res.ok){
         let data=await res.json();
         AppContext.events.AddToken(data)
-        swal("Good job!", "You clicked the button!", "success");
+        swal( "success");
         document.getElementById('login__modal').style.display='none';
        }else{
         swal("Good job!", "You clicked the button!", "error");
