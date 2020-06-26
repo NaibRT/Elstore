@@ -10,6 +10,7 @@ import LangToggler from "../lang_currency_toggler/lang_currency_toggler";
 import Selectbox from "../Select-box/SelectBox.component";
 import {appContext} from '../../contexts/appContext'
 import $ from 'jquery'
+
 const Langs =  [
     {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
 const Currency =  ['AZN','EURO','USD'];
@@ -127,7 +128,7 @@ function  Navbar(props) {
   
 
     const userProfle=<>
-    <Link   className='navbar_buttons_link bag budget' >0₼ </Link> 
+    <Link   className='navbar_buttons_link bag budget'> 0₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>  
      
         {/*<span className='spanprofile'  >
@@ -153,11 +154,15 @@ function  Navbar(props) {
 </div>
 
 </>;
-const loginRegister=<>
-                    <Link className='navbar_buttons_link log login' onClick={Sign} >daxİl ol</Link>
-                    <Link className='navbar_buttons_link log signup' onClick={Sign} >hesab yarat</Link>
+
+const loginRegister = <>
+
+                    <Link className='navbar_buttons_link log login' onClick={Sign} > daxil ol </Link>
+
+                    <Link className='navbar_buttons_link log signup' onClick={Sign} >hesab yarat </Link>
                       
                     </> 
+                    
     return (
         <div className='navbar'>
             <div className='navbar_top'>
@@ -170,9 +175,9 @@ const loginRegister=<>
                 </div>
                 <div className='navbar_search'>
                 <form   className="search-input" >
-                    <input onChange={products.events.searchForm}  value={localStorage.getItem('search')} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
-                    <Link to={`/categories?search:${products.state.searchKey}`} className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></Link>
-                </form>
+                <input onChange={products.events.searchForm}  value={localStorage.getItem('search')} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
+                <Link to={`/categories?search:${products.state.searchKey}`} className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></Link>
+            </form>
                 </div>
                 <div className='navbar_select'>
                     <LangToggler/>
@@ -201,12 +206,16 @@ const loginRegister=<>
                     <button className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></button>
                 </form>
             </div> */}
+
+
             <div className={`${toggle.active ? 'opennav': ''} responsive_nav`}>
                     <div className='responsive_nav_top'>
                     <Selectbox  value={Langs} class='accordion_select'  options={Langs}/>
                     <Selectbox   value={Currency} class='accordion_select'  options={Currency}/>
                     </div>
                     <div className='responsive_nav_login'>
+
+                    
                     {
                         AppContext.app.isAuthorized?
                        <>
@@ -231,6 +240,7 @@ const loginRegister=<>
                             <Link onClick={handleClick} className='responsive_nav_bottom_item ' >Kategories <img src={require('../../assets/images/icons/arrowDown.png')} /></Link>
                     </div>
                 </div>
+                
             
             <div className='navbar_bottom'>
                 {

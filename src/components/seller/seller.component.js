@@ -27,8 +27,8 @@ function Seller(props){
                                         <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
                                                      <br />   
                                         <div className="line__right display__flex">
-                                                        <h3>əlaqə</h3>
-                                                        <img src={require(`../../assets/images/heading/Chevron.svg`)} alt=""/>
+                                                        {/*<h3>əlaqə</h3>*/}
+                                                        {/*<img src={require(`../../assets/images/heading/Chevron.svg`)} alt=""/>*/}
                                                         </div>
                                     
                                         </div>
