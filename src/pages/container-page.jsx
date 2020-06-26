@@ -16,6 +16,7 @@ import CreateProduct from './create-product'
 import Verify from './verify'
 import CompanyAdd from "../components/CompanyAdd/CompanyAdd.component"
 import Delivey from "./DeliveryProfile"
+import CompanyHome from './profile-shop-home'
 
 function Main() {
   const AppContext=useContext(appContext);
@@ -43,12 +44,11 @@ function Main() {
   <Route exact={true} path='/basket' component={Basket} />
   <Route  path='/basket/:id' component={Basket} />
   <Route exact={true} path='/search' component={Search} />
-      <Route exact={true} path='/search/:id' component={Search} />
-  <Route  path='/search/:id/:name' component={Search} />
+  <Route  path='/search/:query' component={Search} />
   <Route exact={true} path='/open-store' component={StoreRegistr} />
   <Route exact={true} path='/worked-delivery' component={Delivery} />
   <Route  path='/verify/:token' component={Verify} />
-
+  <Route  path='/company/:id/:name' component={CompanyHome} />
 
   <Route  path='/CompanyAdd' component={CompanyAdd} />
   <Route exact={true} path='/product/create' component={CreateProduct} />

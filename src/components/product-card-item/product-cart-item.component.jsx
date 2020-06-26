@@ -1,10 +1,12 @@
 import React,{useState,useEffect,useContext} from 'react'
 import HeartImage from '../heart-image/heartImage.component'
 import ButtonRating from '../button-rating/buttonRating.component'
+import Button from "../button/button.component"
 import {Link} from 'react-router-dom'
+import swal from "sweetalert"
 import './product-card-item.component.scss'
 import UrlGenerator from '../../services/url-generator'
-import appContext from '../../contexts/appContext'
+import {appContext} from '../../contexts/appContext'
 
 
 function ProductCartItem({data,isLiked}) {
@@ -18,11 +20,16 @@ function ProductCartItem({data,isLiked}) {
         //     firstImg.childNodes[0].style.display = 'block';
         // }
 
+        const [basket,setBasket]=useState([]);
 
-
+        const AppContext=useContext(appContext)
+       
+        
 
 
  return (
+
+         
   <div  className="search__result">
   <HeartImage isLiked={data.is_like} id={data.id}/>
   {
@@ -32,6 +39,7 @@ function ProductCartItem({data,isLiked}) {
                   <img src={f.product_thumbnail_image} alt=""/>
               </div> 
           }
+
 
       })
   }
@@ -46,12 +54,17 @@ function ProductCartItem({data,isLiked}) {
   <p>{data.price} AZN</p>
   </div>
   {(data.discount_price!=0)?<del>{data.discount_price} AZN</del>:null}
-  
 
- 
+  <div className="baginto">
   <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
+  <Button data={data.id} onClick={(e)=>AppContext.events.addBasket(e)}  className="button__adress" name="səbətə at"/>
+
+    
+  </div>
+                  
+  
 </div>
  )
 }
 
-export default ProductCartItem
+export default ProductCartItem;

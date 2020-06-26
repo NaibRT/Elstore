@@ -37,8 +37,14 @@ function MehsulCard() {
       )
         return (
             <div >
+              <div className="row">
+                <div className="col-lg-12">
+                      <div className="discount_title">
+                          <h5>Endirimler</h5>
+                      </div>
+                </div>
+              </div>
                 <div className='row'>
-
                 {
                     card.map(({card_head,card_back,card_store_img,card_store},i)=>{
                         return(
@@ -61,9 +67,6 @@ function MehsulCard() {
                 }
 
                   
-                </div>
-                <div className='text-center'>
-                    <Link className='centeredText' to="/all">bütün kampanİyalar</Link>
                 </div>
             </div>
         );

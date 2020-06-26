@@ -4,12 +4,17 @@ import ButtonDropDown from '../button-dropdown/ButtonDropDown.component';
 
 
 
-function CompanyMiniImage() {
+function CompanyMiniImage({changeHandler,thum_img,edit}) {
+
     return (
         <>
         <div className="left_side__image__content button_drop__down">
-            <img src={require('../../assets/images/Rectangle.jpg')} alt=""/>
-            <ButtonDropDown/>
+            <img src={thum_img} alt=""/>
+            {
+                edit
+                ?<ButtonDropDown onchange={(e)=>{changeHandler(e)}}/>
+                :null
+            }
         </div>
         </>
     )

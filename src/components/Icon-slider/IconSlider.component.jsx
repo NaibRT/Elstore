@@ -27,7 +27,7 @@ export class IconSlider extends Component {
                     slidesPerView:3
                 },
                 992:{
-                    slidesPerView:6
+                    slidesPerView:"auto"
                 },
                 1200:{
                     slidesPerView:"auto",

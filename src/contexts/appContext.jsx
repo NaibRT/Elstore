@@ -73,6 +73,7 @@ function AppContextProvider(props) {
      setBasket([...currentBasket])
     }
 
+    
    function checkBasket(id){
      let current=basket.find(x=>x.id==id);
      if(current!==undefined){
@@ -80,7 +81,10 @@ function AppContextProvider(props) {
      }
      return false
    }
+
+
   function addBasket(e){
+    console.log(e.target)
     let id=e.target.getAttribute('data');
     if(checkBasket(id)){
       let newBasket=basket;
