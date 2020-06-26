@@ -142,7 +142,10 @@ function DeliveryInfo(props) {
         let newData=new FormData();
 
             for (let [key, value] of Object.entries(newupdate)) {
-               
+                if(key=='phone'){
+                    newData.append('phones[phone]',value)
+                    continue
+                }
                 newData.append(`${key}`,value)
             }
        fetch(url,{

@@ -125,24 +125,9 @@ function  Navbar(props) {
   
 
     const userProfle=<>
-    <Link   className='navbar_buttons_link bag budget'> 0₼ </Link> 
-    <Link   className='navbar_buttons_link bag notification' to='/notification'> <img src={require('../../assets/images/Not.svg')} /></Link>  
-     
-        {/*<span className='spanprofile'  >
-        elcanin yazdiglari
-    <Link   id='profileicon' onClick={showbar}  className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
-    <div onMouseLeave={showbar} className={`profile_dropwdown ${visiblepp ? 'active':'passive'}`} >
-        <ul className='profile_dropwdown_ul'>
-            <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
-            <li className='profile_dropwdown_li'><Link to='/profie/favorit-shop'>Bəyənilən mağazalar</Link></li>
-            <li className='profile_dropwdown_li'><Link to='/profie/orderCard'>Tamamlanmış Sifarişlər</Link></li>
-            <li className='profile_dropwdown_li'><Link to='/orders'>Tənzimləmələr</Link></li>
-            <li className='profile_dropwdown_li'><Link to='/orders'>Çıxış</Link></li>
-        </ul>
-    </div>
-    </span>*/}
-
-    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+    <Link   className='navbar_buttons_link bag budget' >0₼ </Link> 
+    <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>  
+    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
 <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>
         <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
@@ -176,20 +161,19 @@ const loginRegister = <>
             </div>
             <div className='navbar_center'>
                 <div className='navbar_logo'>
-                    <Link to='/'><img src={require('../../assets/logo/logo_1.svg')} /></Link>
+                    <Link to='/'><img alt='' src={require('../../assets/logo/logo.svg')} /></Link>
                 </div>
                 <div className='navbar_search'>
                 <form   className="search-input" >
-                <input onChange={products.events.searchForm}  value={localStorage.getItem('search')} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
-                <Link to={`/categories?search:${products.state.searchKey}`} className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></Link>
-            </form>
+                    <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
+                    <Link to={`/search/filter=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/icons/search.svg')} /></Link>
+                </form>
                 </div>
                 <div className='navbar_select'>
                     <LangToggler/>
                 </div>
                 <div className='navbar_buttons'>
                      <Link   className='navbar_buttons_link bag' to='/basket'><img alt='' src={require('../../assets/images/heading/Bag.svg')} /><span>{AppContext.basket.length}</span></Link> 
-                    
                     {
                         AppContext.app.isAuthorized?
                             userProfle:
@@ -204,13 +188,6 @@ const loginRegister = <>
                     </div>
                 </div>
             </div>
-            
-            {/* <div className='searchDiv'>
-                <form className="search-input" action="/action_page.php">
-                    <input className='search-input-text' type="search" placeholder="Search.." name="search" />
-                    <button className='search-input-submit' type="submit"><img src={require('../../assets/images/icons/search.svg')} /></button>
-                </form>
-            </div> */}
 
 
             <div className={`${toggle.active ? 'opennav': ''} responsive_nav`}>
@@ -231,7 +208,7 @@ const loginRegister = <>
                     </div>
                     <MobileModal onClose={handleClick} show={show.show}>
                         {categories.data.map(category=>{
-                            return (<><br/><Link to={`/search/filter[category_id]=${category.id}&[category_name]=${category.name}`}>{category.name}</Link><br/></>)
+                            return (<><br/><Link to={`/search/filter[category_id]=${category.id}`}>{category.name}</Link><br/></>)
                         })}
                         
                     </MobileModal>
@@ -241,22 +218,10 @@ const loginRegister = <>
                     </div>
                     
                     <div className='responsive_nav_bottom'>
-                            <Link className='responsive_nav_bottom_item' to="/cabinet">Cabinet <img src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
-                            <Link onClick={handleClick} className='responsive_nav_bottom_item ' >Kategories <img src={require('../../assets/images/icons/arrowDown.png')} /></Link>
+                            <Link className='responsive_nav_bottom_item' to="/cabinet">Cabinet <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
+                            <Link onClick={handleClick} className='responsive_nav_bottom_item ' >Kategories <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></Link>
                     </div>
                 </div>
-                
-            
-            {/* <div className='navbar_bottom'>
-                {
-                    navbarCat.data
-                    .filter((item,idx)=>{return idx<=6 })
-                    .map((item,idx)=>{
-                        return<Link key={idx} to={`/search?filter[category_id]=${item.id}`} className='navbar_bottom_link'>{item.name}</Link>
-                    })
-                }
-               
-            </div> */}
         </div>
     )
 }

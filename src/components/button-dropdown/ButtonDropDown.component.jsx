@@ -9,7 +9,7 @@ function showHide(e){
     // current.classList.toggle('middle_side-height')
 }
 
-function ButtonDropDown() {
+function ButtonDropDown({onchange,onclick}) {
     const [toggle, setToggle] = useState({
         active: false,
       });
@@ -26,8 +26,8 @@ function ButtonDropDown() {
         
             <div id="middleSide" className={`middle_side middle_hide ${toggle.active ? 'middle_side-height':''}`} >
                 <div className="middle_side__content">
-                    <a href="">yenİ Şəkİl əlavə et</a>
-                    <a href="">Rəsmİ Sİl</a>
+                    <button className='cover-upload'>YENI SEKIL ELAVE ET<input onChange={onchange} type='file'/></button>
+                    <button onClick={onclick} className='cover-upload'>Rəsmİ Sİl</button>
                 </div>
             </div>
         </>

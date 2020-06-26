@@ -12,27 +12,27 @@ import { searchContext } from '../contexts/search';
 import SearchResultComp from '../components/search-result-component/SearchResultComp.component';
 
 
-function ProfileShopHome() {
+function ProfileShopHome(props) {
     let AppContext=useContext(appContext)
     let SearchContext=useContext(searchContext);
     const [product, setproduct] = useState({})
+    const [queryParams, setQueryParams] = useState([])
 
-
-
-    
     useEffect(()=>{
+        console.log('effect')
         let token=AppContext.events.getToken();
-      let url=UrlGenerator('az','users/my-company')
-
+        let id=props.match.params.id;
+      let url=''
+      id!==undefined?
+          url=UrlGenerator('az',`users/company?company_id${id}&include=products`)
+          :url=UrlGenerator('az',`users/company?include=products`)
       fetch(url,{
          headers:{
              'Authorization':`${token.token_type} ${token.access_token}`
-             
          } 
                })
                .then(async res => {
                    let data =await res.json();
-                   console.log("Salameee",data)
                    if(res.ok){
                     setproduct({
                         ...data.data[0],
@@ -44,11 +44,113 @@ function ProfileShopHome() {
             },[])
 
 
+     function coverHandler(e) {
+         let img=e.target.files[0];
+         console.log(img)
+         let reader=new FileReader();
+         reader.onload=()=>{
+             setproduct({
+                 ...product,
+                 store:{
+                     ...product.store,
+                     cover_image:reader.result
+                 }
+             })
+             let url=UrlGenerator('az','users/company/update');
+             let token=AppContext.events.getToken()
+             let formdata=new FormData();
+             formdata.append('cover_image',img)
+             fetch(url,{
+                 method:'Post',
+                 headers:{
+                     'Authorization':`${token.token_type} ${token.access_token}`
+                 },
+                 body:formdata
+             }).then(async res=>{
+                 let data=await res.json();
+                 console.log(data)
+             }).then(err=>console.log(err))
+         }
+         reader.readAsDataURL(img)
+     }
+
+     function thumbHandler(e) {
+        let img=e.target.files[0];
+        console.log(img)
+        let reader=new FileReader();
+        reader.onload=()=>{
+            setproduct({
+                ...product,
+                store:{
+                    ...product.store,
+                    cover_thumbnail_image:reader.result
+                }
+            })
+            let url=UrlGenerator('az','users/company/update');
+            let token=AppContext.events.getToken()
+            let formdata=new FormData();
+            formdata.append('logo',img)
+            fetch(url,{
+                method:'Post',
+                headers:{
+                    'Authorization':`${token.token_type} ${token.access_token}`
+                },
+                body:formdata
+            }).then(async res=>{
+                let data=await res.json();
+                console.log(data)
+            }).then(err=>console.log(err))
+        }
+        reader.readAsDataURL(img)
+    }
+
+     function clickHandler(e) {
+         console.log(e.target.checked)
+         let id=e.target.value;
+         let queries=queryParams;
+         let store_id=AppContext.app.user.id
+         let query=`filter[company_id]=${store_id}&filter[category_id]=`;
+         if(e.target.checked){
+             queries.push(`${id}`)
+        }else{
+            let newqueries=queries.filter(x=>x!==`${id}`);
+            queries=newqueries
+            console.log(newqueries)
+        }
+        
+        queries.forEach((x,k)=>{
+            console.log(k)
+            k===queries.length-1
+            ?query+=`${x}`
+            :query+=`${x},`
+        })
+        let url=UrlGenerator('az',`search/product?${query}`)
+        fetch(url)
+        .then(async res=>{
+            let data=await res.json();
+            console.log(data)
+            setQueryParams([
+               ...queries
+            ])
+            setproduct({
+                ...product,
+                products:data.data
+            })
+
+        }).catch(err=>console.log(err))
+     }
+         console.log(product)
     return (
         <section className="profile_shop__home__section">
             <div className="profile_shop__home__image">
+              <img src={product.store!==undefined?`${product.store.cover_image}`:null} alt=''/>
                 <div className="profile_shop__home__image__content button_drop__down">
-                    <ButtonDropDown/>
+                   {
+                       product.edit
+                       ?<ButtonDropDown onchange={(e)=>{coverHandler(e)}}/>
+                       :null
+                   }
+                    
                 </div>
             </div>
             <div className="container-fluid">
@@ -56,11 +158,11 @@ function ProfileShopHome() {
                     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div className="all_sides__contents">
                             <div className="left_side">
-                                <CompanyMiniImage/>
+                            <CompanyMiniImage edit={product.edit} changeHandler={thumbHandler} thum_img={product.store!==undefined?product.store.logo:null}/>
                             </div>
                             <div className="middle_side_text__content">
-                                    <h4>Saboon</h4>
-                                    <p>Description in a few words or less even more.</p>
+                                    <h4>{product.store!==undefined?product.store.name:null}</h4>
+                                    <p>{product.store!==undefined?product.store.description:null}</p>
                                     <Chips />
                                     <ButtonRating name='Yuksek rating' icon={require('../assets/images/icons/star.svg')} class='bg-gold'/>
                             </div>
@@ -68,7 +170,7 @@ function ProfileShopHome() {
                                 <div className="right_side__content">
                                     <h6>Əlaqə</h6>
                                     <p>example@example.com</p>
-                                    <p>+994 12 455 55 55</p>
+                                    <p>{product.store!==undefined?product.store.phones['phone']:null}</p>
                                 </div>
                             </div>
                         </div>
@@ -84,11 +186,11 @@ function ProfileShopHome() {
                 <div className="row">
                     <div className="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
                         <div className="profil_filter_content">
-                            <Filter/>
+                            <Filter clickHandler={clickHandler}/>
                         </div>
                     </div>
                     <div className="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
-                     <SearchResultComp data={product.products!=undefined?product.products:[]} />
+                     <SearchResultComp data={product.products} />
                     </div>
                 </div>
             </div>
