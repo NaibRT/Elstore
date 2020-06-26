@@ -92,16 +92,18 @@
         width: 100%;
         .registr__button{
             width: 85%;
+            margin-left: 17px;
         }
         .registr__input{
             display: block;
             margin-top: 44px;
             width: 85%;
             height: 48px;
+            margin-left: 17px;
      
         }
         .add__number{
-            margin-left: 61px;
+          margin-left: 0px;
             margin-top: 32px;
             text-align: right;
             width: 85%;
@@ -113,6 +115,9 @@
             letter-spacing: 0.5px;
             color: #334788;
             cursor: pointer;
+        }
+        .select__city{
+            margin-left: 17px;
         }
     }
     

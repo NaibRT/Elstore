@@ -1,6 +1,6 @@
 import React,{createContext,useState,useEffect} from 'react'
 import UrlGenerator from '../services/url-generator';
-
+import swal from "sweetalert";
 const appContext=createContext();
 
 function AppContextProvider(props) {
@@ -96,13 +96,19 @@ function AppContextProvider(props) {
     let url=UrlGenerator('az','products')
     fetch(`${url}/${id}`)
     .then(async res=>{
-       let data=await res.json()
-       setBasket([
-         ...basket,
-         {...data.data[0],
-          count:1
-         }
-       ])
+      if(res.ok){
+        let data=await res.json()
+        setBasket([
+          ...basket,
+          {...data.data[0],
+           count:1
+          }
+        ])
+        swal("Təbriklər", "Məhsul səbətə əlavə olundu", "success");
+      }
+      else{
+        swal("Təəssüflər", "Məhsul səbətə əlavə olunmadı", "error");
+      }
     })
     .catch(err=>console.log(err))
     }

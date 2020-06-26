@@ -78,10 +78,10 @@ function Modal(){
           let data=await res.json();
           if(res.ok){
             AppContext.events.AddToken(data)
-            swal("Good job!", "You clicked the button!", "success");
+            // swal("", "Xoş gəlifsizinqiz", "success");
             document.getElementById('login__modal').style.display='none';
           }else{
-            swal("Good job!", "You clicked the button!", "error");
+            // swal("Good job!", "You clicked the button!", "error");
           }
      
       })
@@ -92,7 +92,7 @@ function Modal(){
     let url=UrlGenerator('az','auth/buyer/register')
    fetch(url,{
        headers:{
-         'Content-Type': 'application/json'
+         'Content-Type': 'application/json',   
        },
        method:"Post",
        body:JSON.stringify(data)
@@ -102,10 +102,10 @@ function Modal(){
        if(res.ok){
         let data=await res.json();
         AppContext.events.AddToken(data)
-        swal("Good job!", "You clicked the button!", "success");
+        swal( "Təbriklər","Qeydiyyatınız uğurla tamamlandı", "success");
         document.getElementById('login__modal').style.display='none';
        }else{
-        swal("Good job!", "You clicked the button!", "error");
+        swal("Təəssüf!", "Qeyd olunmuş email artıq mövcuddur", "error");
        }   
        
    })
@@ -154,7 +154,7 @@ function Modal(){
                 maxLength:{value:255,message:'max 255 char need'}
             })} helper={errors2.name&&errors2.name.message}/>
 
-            <Input name='phone' type='tel' placeholder='Telefon' register={register2({
+            <Input name='phones[phone]' type='tel' placeholder='Telefon' register={register2({
                 required:{value:true,message:'name is required'},
                 maxLength:{value:255,message:'max 255 char need'}
             })} helper={errors2.name&&errors2.name.message}/>

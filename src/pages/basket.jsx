@@ -101,7 +101,6 @@ function Basket(props) {
                                             <Link style={{'textDecoration':'none'}} to='/checkout'><Button className='bg-primary--light'>Sifaris ver</Button></Link>
                                              :null
                                         }
-                                        <Link style={{'textDecoration':'none'}} to='/checkout'><Button className='bg-primary--light'>Sifaris ver</Button></Link>
                                     </div>
                                     </div>
                              <div className="col-lg-12 col-md-6 col-sm-12">

@@ -54,13 +54,6 @@ function DeliveryInfo(props) {
         
     })   
 
-    const DataPost=(e)=>{
-        e.preventDefault()
-
-    }
-    function Salam(){
-        swal("Good job!", "You clicked the button!", "success");
-    }
     
     const [allData,SetallData]=useState({
         field:{
@@ -142,37 +135,6 @@ function DeliveryInfo(props) {
             [e.target.name]:e.target.value
         }})
     }
-    function AddedPhoto(data){
-        data.preventDefault();
-        let url=UrlGenerator('az',`users/courier/update`)
-        let token=AppContext.events.getToken();
-        console.log(data)
-        let newData=new FormData();
-       
-        newData.append("logo",data.logo)
-       fetch(url,{
-           headers:{
-            "Authorization":`${token.token_type} ${token.access_token}`,
-           },
-           method:"POST",
-           body:newData
-       })
-       .then(async res=>{
-        if(res.ok){
-            console.log('burdadiiii',res)
-            let data1=await res.json();
-            console.log(data1)
-            setDatalar({
-                field:{
-                ...datalar.field,
-                logo:data.logo
-            }})
-        }
-           
-          
-       })
-       .catch((err) =>console.log(err))
-    }
 
      function updateSubmit(data) {
         let url=UrlGenerator('az',`users/courier/update`)
@@ -180,6 +142,7 @@ function DeliveryInfo(props) {
         let newData=new FormData();
 
             for (let [key, value] of Object.entries(newupdate)) {
+               
                 newData.append(`${key}`,value)
             }
        fetch(url,{
@@ -250,7 +213,7 @@ function DeliveryInfo(props) {
 
       setNewUpdate({
         ...newupdate,
-      phone:e.target.value
+            phone:e.target.value
     })
      }
        console.log(update.phones)
