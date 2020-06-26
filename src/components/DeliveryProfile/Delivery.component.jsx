@@ -6,19 +6,18 @@ import {useForm} from 'react-hook-form'
 import swal from 'sweetalert';
 import {appContext} from '../../contexts/appContext'
 import UrlGenerator from '../../services/url-generator'
-import { useHistory } from "react-router-dom";
 
 
-function Porfilinfo(props) {
+function DeliveryInfo(props) {
 
     const [update,setUpdate]=useState({})
-
     const [newupdate,setNewUpdate]=useState({})
-    
     const {register,handleSubmit,errors}=useForm()
 
     const AppContext=useContext(appContext)
 
+
+    
     
     useEffect(() => {
         let url=UrlGenerator('az',`auth/me`)
@@ -33,15 +32,10 @@ function Porfilinfo(props) {
         if(res.ok){
             let data1=await res.json();
             setUpdate({
-                ...update,
                 ...data1
-               
             })
-            
-            console.log(data1.name)
         }
        })
-
        .catch(
            (err) =>console.log(err)
        
@@ -60,11 +54,6 @@ function Porfilinfo(props) {
         
     })   
 
-    const DataPost=(e)=>{
-        e.preventDefault()
-
-    }
-    
     
     const [allData,SetallData]=useState({
         field:{
@@ -95,30 +84,32 @@ function Porfilinfo(props) {
         simple__border.style.border="2px solid #6472B8";
         active__border.style.border="2px solid #D0D0D0";
      }
+
      function previewFile(e) {
-        setUpdate({
-         ...update,
-         logo:e.target.files[0]
-        })
-        setNewUpdate({
-          ...newupdate,
-          logo:e.target.files[0]
+      console.log(e.target.files[0])
+      setUpdate({
+       ...update,
+       logo:e.target.files[0]
       })
-          const preview = document.querySelector('.profilePhoto');
-          const file = document.querySelector('input[type=file]').files[0];
-          const reader = new FileReader();
-        
-          reader.addEventListener("load", function () {
-            // convert image file to base64 string
-            preview.src = reader.result;
-          }, false);
-        
-          if (file) {
-            reader.readAsDataURL(file);
-            
-          }
+      setNewUpdate({
+        ...newupdate,
+        logo:e.target.files[0]
+    })
+        const preview = document.querySelector('.profilePhoto');
+        const file = document.querySelector('input[type=file]').files[0];
+        const reader = new FileReader();
+      
+        reader.addEventListener("load", function () {
+          // convert image file to base64 string
+          preview.src = reader.result;
+        }, false);
+      
+        if (file) {
+          reader.readAsDataURL(file);
           
         }
+        
+      }
 
 
     const Itir=()=>{
@@ -145,16 +136,13 @@ function Porfilinfo(props) {
         }})
     }
 
-    function updateSubmit(data) {
-        let url=UrlGenerator('az',`users/buyer/update`)
+     function updateSubmit(data) {
+        let url=UrlGenerator('az',`users/courier/update`)
         let token=AppContext.events.getToken();
         let newData=new FormData();
 
             for (let [key, value] of Object.entries(newupdate)) {
-                if(key=="phone"){
-                    newData.append(`phones[phone]`,value)
-                    continue
-                }
+               
                 newData.append(`${key}`,value)
             }
        fetch(url,{
@@ -182,73 +170,75 @@ function Porfilinfo(props) {
      }
 
      function nameHandler(e) {
-        setUpdate({
-         ...update,
-         name:e.target.value
-        })
-        setNewUpdate({
-            ...newupdate,
-          name:e.target.value
-        })
-       }
-  
-       function passwordHandler(e) {
-        setUpdate({
-         ...update,
-         password:e.target.value
-        })
-        setNewUpdate({
-          ...newupdate,
-        password:e.target.value
+      setUpdate({
+       ...update,
+       name:e.target.value
       })
-       }
-  
-       function oldpasswordHandler(e) {
-           console.log(e.target.value)
-        setUpdate({
-         ...update,
-         old_password:e.target.value
-        })
-        setNewUpdate({
+      setNewUpdate({
           ...newupdate,
-        old_password:e.target.value
+        name:e.target.value
       })
-       }
-  
-       function numberHandler(e) {
-        setUpdate({
-         ...update,
-         phones:{
-           phone:e.target.value
-         }
-        })
-  
-        setNewUpdate({
-          ...newupdate,
-              phone:e.target.value
-      })
-       }
-         console.log(update.phones)
-  
-          const onFo = event => {
-  
-          if(event.target.autocomplete)
-          {
-            event.target.autocomplete = "whatever";
-          }
-       
-       };
+     }
 
+     function passwordHandler(e) {
+      setUpdate({
+       ...update,
+       password:e.target.value
+      })
+      setNewUpdate({
+        ...newupdate,
+      password:e.target.value
+    })
+     }
+
+     function oldpasswordHandler(e) {
+         console.log(e.target.value)
+      setUpdate({
+       ...update,
+       old_password:e.target.value
+      })
+      setNewUpdate({
+        ...newupdate,
+      old_password:e.target.value
+    })
+     }
+
+     function numberHandler(e) {
+      setUpdate({
+       ...update,
+       phones:{
+         phone:e.target.value
+       }
+      })
+
+      setNewUpdate({
+        ...newupdate,
+            phone:e.target.value
+    })
+     }
+       console.log(update.phones)
+
+        const onFo = event => {
+
+        if(event.target.autocomplete)
+        {
+          event.target.autocomplete = "whatever";
+        }
+     
+     };
     return (
        
                <>
                     <div className="row">
                     <div className="col-lg-9 col-md-12 col-xs-12">
                             <div className="profil__info-owner">
-                                
                                 <div className="profil__info--offer">
+                                    <div onClick={Adress} id="adress__info-orders">
+                                    <h5>Sifarişlər</h5>
+                                    <div className="simple--border"></div>
+                                    </div>
                                     <div onClick={Personal} id="profile__info-clikced">
-                                        <h5>məlumatlar</h5>
+                                        <h5>Info</h5>
                                         <div className="active--border"></div>
                                     </div>
                                     <div onClick={Adress} id="adress__info-clicked">
@@ -260,21 +250,28 @@ function Porfilinfo(props) {
                                         <div className="simple--border"></div>
                                     </div> */}
                                 </div>
+                                <section id="adress">
+                                  
+                                </section>
                                <section id="profile__info--update">
-                               <form onSubmit={handleSubmit(updateSubmit)} >
+                                <form onSubmit={handleSubmit(updateSubmit)} >
                                 <div className="profile--image">
-                                    <h5>profİl şəklİ</h5>
-                                    
-                                    <div className="profile__photo">
-                                        
-                                            <div className="profil__images">
-                                                <input onChange={previewFile} type="file"/>
-                                                <img className="profilePhoto" src={update.logo} alt=""/>
-                                            </div>
-                                            
-                                            </div>
-                                   <div className="borders"></div>
-                                </div>
+                                <h5>profİl şəklİ</h5>
+                                <div className="profile__photo">
+                                        <div className="profil__images">
+                                            <input name='logo' ref={register}  onChange={(e)=>previewFile(e)} type='file'/>
+                                            <img className="profilePhoto" src={update.logo} alt=""/>
+                                        </div>
+                                        </div>
+                               <div className="borders"></div>
+                            </div>
+                            <div className="profile--image_Username ">
+                            <div className="userName_edit">
+                                <h5>Email</h5>
+                            </div>
+                            <Input disabled={true} onfocus={(e)=>onFo(e)} name='email'  type="Email"  value={update.email}/>
+                            <div className="borders"></div>
+                        </div>
                                 <div className="profile--image_Username emails">
                                     <div className="userName_edit">
                                         <h5>İstİfadəçİ adı</h5>
@@ -289,21 +286,14 @@ function Porfilinfo(props) {
                                     <div className="userName_edit">
                                         <h5>Köhnə Şİfrə</h5>
                                     </div>
-                                    <Input name='old_password' onfocus={(e)=>onFo(e)} onChange={(e)=>oldpasswordHandler(e)} value={newupdate.old_password} name='old_password' register={register()} type="password" placeholder="**************"/>
+                                    <Input onfocus={(e)=>onFo(e)} onChange={(e)=>oldpasswordHandler(e)} value={newupdate.old_password} name='old_password' register={register()} type="password"/>
                                     <div className="borders"></div>
                                 </div>
                                 <div className="profile--image_Username odlpassw">
                                     <div className="userName_edit">
                                         <h5>Yeni Şİfrə</h5>
                                     </div>
-                                    <Input name='password' onChange={(e)=>passwordHandler(e)} name='password' register={register()} type="password"  placeholder="**************"/>
-                                    <div className="borders"></div>
-                                </div>
-                                <div className="profile--image_Username ">
-                                    <div className="userName_edit">
-                                        <h5>Email</h5>
-                                    </div>
-                                    <Input disabled={true} onfocus={(e)=>onFo(e)} name='email'  type="Email"  value={update.email}/>
+                                    <Input onChange={(e)=>passwordHandler(e)} name='password' register={register()} type="password"  placeholder="**************"/>
                                     <div className="borders"></div>
                                 </div>
                                 <div className="profile--image_Username ">
@@ -316,10 +306,9 @@ function Porfilinfo(props) {
                                     <div className="borders"></div>
                                 </div>
                                 <Button type='submit' name="Yadda saxla"/>
-                                <Button  className="button_delete--acc" name="Hesabi sil"/>
                                 </form>
+                                <Button  className="button_delete--acc" name="Hesabi sil"/>
                                 </section>
-                                
                             </div>
                             <section id="adress">
                                 <Button onClick={Itir}  className="button__adress" name="ünvan əlavə et"/>
@@ -336,8 +325,8 @@ function Porfilinfo(props) {
                                         <h5>çatdırılma ünvanı</h5>
                                     </div>
                                     <div className="delivery__edit">
-                                    <a href="">Düzəliş et</a>
-                                    <a href="">Sil</a>
+                                    <a href="//">Düzəliş et</a>
+                                    <a href="//">Sil</a>
                                     </div>
                                 </div>
                                 <div  className="adress--data"    >
@@ -357,7 +346,7 @@ function Porfilinfo(props) {
   
 }
 
-export default Porfilinfo
+export default DeliveryInfo
 
 
 

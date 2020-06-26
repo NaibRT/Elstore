@@ -15,6 +15,7 @@ import {appContext} from '../contexts/appContext'
 import CreateProduct from './create-product'
 import Verify from './verify'
 import CompanyAdd from "../components/CompanyAdd/CompanyAdd.component"
+import Delivey from "./DeliveryProfile"
 
 function Main() {
   const AppContext=useContext(appContext);
@@ -54,7 +55,9 @@ function Main() {
 
   <Route path='/profile' render={()=>(
     (AppContext.app.isAuthorized&&AppContext.app.user.type===1)?(<UserProfile/>):
+    (AppContext.app.isAuthorized&&AppContext.app.user.type===2)?(<CompanyProfile/>):
     (AppContext.app.isAuthorized&&AppContext.app.user.type===3)?(<CompanyProfile/>):
+    (AppContext.app.isAuthorized&&AppContext.app.user.type===4)?(<Delivey/>):
     (<Redirect to='/'/>)
 )}/>
 
