@@ -1,5 +1,6 @@
 import React,{createContext,useState,useEffect} from 'react'
 import UrlGenerator from '../services/url-generator';
+
 const appContext=createContext();
 
 function AppContextProvider(props) {
@@ -80,6 +81,7 @@ function AppContextProvider(props) {
      return false
    }
   function addBasket(e){
+    console.log(e.target)
     let id=e.target.getAttribute('data');
     if(checkBasket(id)){
       let newBasket=basket;
