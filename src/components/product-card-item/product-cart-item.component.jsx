@@ -38,7 +38,17 @@ function ProductCartItem({data,isLiked}) {
   <h5>
   <Link to={`/product/${data.id}/${data.product_name}`}>{data.product_name}</Link>
   </h5>
+  {
+     (data.discount!=0)?<p className="product_-discount">{data.discount} % endirim</p>:null
+    
+  }
+  <div className="product__price ">
   <p>{data.price} AZN</p>
+  </div>
+  {(data.discount_price!=0)?<del>{data.discount_price} AZN</del>:null}
+  
+
+ 
   <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
 </div>
  )
