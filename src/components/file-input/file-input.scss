@@ -1,4 +1,4 @@
-.file-upload-input,input[type='file']{
+.file-upload-input{
  width: 197px;
 height: 197px;
 background: url('../../assets/images/icons/addfile.svg') no-repeat center;
@@ -7,6 +7,11 @@ border-style: none;
 outline: transparent;
  input[type=file]{
   opacity: 0;
+  width: 197px;
+  height: 197px;
+  border-radius: 12px;
+  border-style: none;
+  outline: transparent;
  }
 }
 .product-img,.product-img>img{

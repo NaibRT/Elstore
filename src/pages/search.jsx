@@ -4,21 +4,60 @@ import {searchContext} from '../contexts/search';
 import Filter from '../components/filter/filter.component'
 import SearchResultPage from '../components/Search-reasult-page/SearchResult.component.jsx'
 import UrlGenerator from '../services/url-generator';
+import {appContext} from '../contexts/appContext';
 
 
 function Search(props) {
+    let SearchContext=useContext(searchContext)
+    let AppContext=useContext(appContext)
     const [priceFrom,setPriceFrom]= useState(0);
+    const [queryParams, setQueryParams] = useState([])
     const [priceTo,setPriceTo]= useState(1000000);
     const [catFilter, setCatFilter] = useState({
         data:[]
     })
+
+
+    function clickHandler(e) {
+        console.log(e.target.checked)
+        let id=e.target.value;
+        let queries=queryParams;
+        let store_id=AppContext.app.user.id
+        let query=`filter[company_id]=${store_id}&filter[category_id]=`;
+        if(e.target.checked){
+            queries.push(`${id}`)
+       }else{
+           let newqueries=queries.filter(x=>x!==`${id}`);
+           queries=newqueries
+           console.log(newqueries)
+       }
+       
+       queries.forEach((x,k)=>{
+           console.log(k)
+           k===queries.length-1
+           ?query+=`${x}`
+           :query+=`${x},`
+       })
+       let url=UrlGenerator('az',`search/product?${query}`)
+       fetch(url)
+       .then(async res=>{
+           let data=await res.json();
+           console.log(data)
+           setQueryParams([
+              ...queries
+           ])
+           setCatFilter({
+               ...catFilter,
+               data:data.data
+           })
+
+       }).catch(err=>console.log(err))
+    }
     
      useEffect(()=>{
          let url=UrlGenerator('az','search/product')
-         let id=props.match.params.id;
-         console.log(id)
-        //  console.log(props.match.params.id)
-         fetch(`http://139.180.144.49/api/v1/az/search/product?${id}`)
+         let query=props.match.params.query;
+         fetch(`${url}?${query}`)
         .then(response => response.json())
         .then(data => {
             setCatFilter({data:data});
@@ -26,7 +65,6 @@ function Search(props) {
         });
       },[])
 
-    const products = useContext(searchContext);
    
     function Pricefrom(e){
         setPriceFrom(e.target.value)
@@ -51,12 +89,14 @@ function Search(props) {
                 //         )
                 //     })
                 // }
+                console.log("SearchContext",SearchContext)
     return (
         
         <div className='container-fluid'>
              <div className="row">
              <div className='col-lg-3'>
              <Filter
+             clickHandler={clickHandler}
              Pricefrom={Pricefrom}
              Priceto={Priceto}
               />
@@ -70,7 +110,7 @@ function Search(props) {
                 })
                 :''
              } */}
-            <SearchResultPage  catFilter={ catFilter.data.data} />
+            <SearchResultPage  catFilter={ catFilter.data} />
          </div>
              </div>
         </div>

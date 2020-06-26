@@ -70,9 +70,9 @@ const Category = () => {
         SubCategories=CategoryContext.state.childrens.children.map(x=>{
             return <ul key={x.id} className="box--subcotegory_flexx">
             <li  className="box__subcotegory--item">
-            <Link to={`/search?filter[category_id]=${x.id}`} className="box--subcotegory">{x.name}</Link>
+            <Link to={`/search/filter[category_id]=${x.id}`} className="box--subcotegory">{x.name}</Link>
                 <ul>
-                {(x.children != null) ? x.children.map(y=>{return <li data-id=""><Link to={`/search/${y.id}/${y.name}`}>{y.name}</Link></li>}):''}
+                {(x.children != null) ? x.children.map(y=>{return <li data-id=""><Link to={`/search/filter[category_id]=${y.id}`}>{y.name}</Link></li>}):''}
                 </ul>
             </li>
            </ul>
@@ -86,7 +86,7 @@ const Category = () => {
                         <ul>
                             {
                                 CategoryContext.state.categories.map(x=>{
-                                    return  <Link style={{textDecoration: "none"}} to={`/search/${x.id}/${x.name}`}><li className="category__items" key={x.id}>{x.name} <span ><img onMouseOver={(e)=>{CategoryContext.event.getSubCat(e);handleClick()}} data-id={x.id} className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li></Link>
+                                    return  <Link style={{textDecoration: "none"}} to={`/search/filter[category_id]=${x.id}`}><li className="category__items" key={x.id}>{x.name} <span ><img onMouseOver={(e)=>{CategoryContext.event.getSubCat(e);handleClick()}} data-id={x.id} className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span></li></Link>
                                 })
                             }
                         </ul>
