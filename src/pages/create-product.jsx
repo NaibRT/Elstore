@@ -236,39 +236,40 @@ function CreateProduct(){
  return (
    <div className='container-fluid'>
   <Card>
+  <form>
     <GoBack text='Mehsullara geri don' link='/profile/products'/>
    <Card.Header name="Mehsul Elave Et"/>
     <div className='row'>
       <div className='col-lg-4'>
-      <form>
+
       <Tab clas='pro-name' id='name'>
         <Tab.Page id='az-name' clas='pro-name' lang='az'>
-        <InputGroup onChange={getName} type='text' placeholder='azer' />
+        <InputGroup label='Product Name' onChange={getName} type='text' placeholder='azer' />
         </Tab.Page>
         <Tab.Page id='en-name' style={{'display':'none'}} clas='pro-name' lang='en'>
-        <InputGroup onChange={getName} type='text' placeholder='eng'  />
+        <InputGroup label='Product Name'  onChange={getName} type='text' placeholder='eng'  />
         </Tab.Page>
         <Tab.Page id='ru-name' style={{'display':'none'}} clas='pro-name' lang='ru'>
-        <InputGroup onChange={getName} type='text' placeholder='rus'/>
+        <InputGroup label='Product Name' onChange={getName} type='text' placeholder='rus'/>
         </Tab.Page>
       </Tab>
-       <SelectBox handleChange={getBrands} name='brands' label='Brands' options={brands}/>
-       <SelectBox handleChange={getCataegory} name='categoriya' label='Categoriya' options={categories}/>
+       <SelectBox label='Brendler' handleChange={getBrands} name='brands' options={brands}/>
+       <SelectBox label='Kateqoriyalar' handleChange={getCataegory} name='categoriya'  options={categories}/>
      
        {
-         subcat.length>1?<SelectBox handleChange={getSubCataegory} name='subcategory' label='Sub Categoriya' options={subcat}/>:null
+         subcat.length>1?<SelectBox label='Alt Kateqoriya' handleChange={getSubCataegory} name='subcategory' label='Sub Categoriya' options={subcat}/>:null
        }
        {
-        childcat.length>1?<SelectBox handleChange={getChildCataegory} name='subcategory' label='Sub Categoriya' options={childcat}/>:null
+        childcat.length>1?<SelectBox label='Alt Kateqoriya' handleChange={getChildCataegory} name='subcategory' label='Sub Categoriya' options={childcat}/>:null
        }
        <br/>
        <br/>
-       <InputGroup min='0' onChange={getPrice}  type='number' name='price'/>
-       </form>
+       <InputGroup label='Məhsulun Qiyməti' min='0' onChange={getPrice}  type='number' name='price'/>
+       <InputGroup label='Endirim Qiyməti' min='0' onChange={getPrice}  type='number' name='discount'/>
+       
       </div>
       <div className='col-lg-6'>
       <Tab  clas='pro-desc' id='desc'>
-
       <Tab.Page id='az-desc' clas='pro-desc' lang='az'>
       <JoditEditor onChange={getDescription_az} />
       </Tab.Page>
@@ -280,9 +281,7 @@ function CreateProduct(){
       </Tab.Page>
 
     </Tab>
-       
       </div>
-      
     </div>
     <div className='row'>
     <div className='col-lg-6'>
@@ -302,6 +301,7 @@ function CreateProduct(){
      <Button onClick={send}  name='Əlavə Et' type="input" className='bg-primary'/>
     </div>
     </div>
+    </form>
   </Card>
   </div>
  )

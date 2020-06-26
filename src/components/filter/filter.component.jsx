@@ -8,19 +8,9 @@ import {searchContext} from '../../contexts/search';
 
 
 
-function Filter(prop) {
+function Filter({clickHandler,Pricefrom,Priceto}) {
 
     const categories = useContext(categoryContext);
-    const search = useContext(searchContext);
-    const [filterCat, setCatFilter] = useState(0)
-
-    const [filteredData, setfilteredData] = useState({
-        filteredData:"",
-    })
-
-
-
-
     const [market,setMarket] = useState({
         magaza:Markets,
         products:Products,
@@ -42,7 +32,6 @@ function Filter(prop) {
         })
     }
 
-
     return (
         <div className='filter'>
              <p onClick={setTogglepassive} className='filter_head drop '>Kateqorİya <div>-</div></p>
@@ -56,13 +45,13 @@ function Filter(prop) {
             <div>
                 <li> 
                 <label class="container-check">{x.name}
-                    <input value={x.id}   onClick={search.events.filterCategory}   type="checkbox" />
+                    <input value={x.id}   onClick={(e)=>clickHandler(e)}   type="checkbox" />
                     <span class="checkmark"></span>
                     </label>
                 </li>
                 {(x.children != null) ? x.children.map(item => { return(<li className='category_list_under'>
                     <label class="container-check">{item.name}
-                    <input  value={item.id}   onClick={search.events.filterCategory} type="checkbox" />
+                    <input  value={item.id}   onClick={(e)=>clickHandler(e)} type="checkbox" />
                     <span class="checkmark"></span>
                     </label>
                     
@@ -71,7 +60,7 @@ function Filter(prop) {
                             item.children.map(itemchildren=>{
                             return (<li className='category_list_under_under'>
                                 <label class="container-check">{itemchildren.name}
-                            <input  value={itemchildren.id}   onClick={search.events.filterCategory} type="checkbox" />
+                            <input  value={itemchildren.id}   onClick={(e)=>clickHandler(e)} type="checkbox" />
                             <span class="checkmark"></span>
                             </label> 
                             </li>
@@ -125,7 +114,7 @@ function Filter(prop) {
                 <input 
                 className='search-input-text' 
                 type="text" 
-                onChange={prop.Pricefrom}
+                onChange={Pricefrom}
                 placeholder="0" 
                 name="search" />
                 <button className='search-input-submit azn' type="submit"><img alt='' src={require('../../assets/images/azn.svg')} /></button>
@@ -141,7 +130,7 @@ function Filter(prop) {
                 type="text" 
                 placeholder="0"
                 name="search"
-                onChange={prop.Priceto}  
+                onChange={Priceto}  
                     />
                 <button className='search-input-submit azn' type="submit"><img alt='' src={require('../../assets/images/azn.svg')} /></button>
             </form>

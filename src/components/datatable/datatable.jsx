@@ -26,7 +26,7 @@ const kategories = [
 ]
 
 
-function Datatable(params) {
+function Datatable({thead,tbody}) {
 
 
     const [category,setCategory] = useState({
@@ -45,24 +45,15 @@ function Datatable(params) {
               })
       },[])
       
-      
-    
-
-
-  
    const  names = [];
-
     useEffect(()=>{
-
-       
         setTimeout(function(){ 
             $(document).ready(function() {
                 $('#databasic').dataTable();
             } );
         }, 1000);
 
-        
-        params.tbody.map((name)=>{
+        tbody.map((name)=>{
             names.push(name)
         });
 
@@ -75,10 +66,9 @@ function Datatable(params) {
         searchField:""
     })
      
-   
-
-    const filteredProduct = params.tbody.filter(item=> item.product_name.toLowerCase().includes(searchMarket.searchField.toLowerCase()));
-
+    console.log(tbody)
+    const filteredProduct =tbody.length!==0?tbody.filter(item=> item.product_name.toLowerCase().includes(searchMarket.searchField.toLowerCase())):[];
+    console.log(filteredProduct)
     function searchName(e){
         setSearch({
             ...searchMarket,
@@ -105,7 +95,7 @@ function Datatable(params) {
     
 
    
-
+    
     return(
         <div className='dtable'>
             <div className='datatable_search'>
@@ -124,8 +114,8 @@ function Datatable(params) {
         <thead>
             <tr>
                 {
-                    params!=null?
-                    params.thead.map(head=>{
+                    thead!=null?
+                    thead.map(head=>{
                         return <th>{head}</th>
                     }):''
                 }
@@ -134,8 +124,7 @@ function Datatable(params) {
         <tbody>
                 
             {
-                (state.filteredData.length===0)? (params!==undefined)?
-
+                 (tbody!==undefined)?
                 filteredProduct.map(bodyItems=>{
                     return (
                         <tr>
@@ -144,23 +133,23 @@ function Datatable(params) {
                             <td>{bodyItems.say}</td>
                             <td><InputGroup value={bodyItems.price} formIcon={require('../../assets/images/azn.svg')} /></td>
                             <td><SelectBox firstopt='Status' name={bodyItems.status} /></td>
-                            <td><a href="#">Duzelish</a> <a href="#">Sil</a></td>
+                            <td><a href="javascript:void(f1())">Duzelish</a>   <a href="javascript:void(f1())">Sil</a></td>
                         </tr>
                     )
                 })
                 :null 
-                : state.filteredData.map((bodyItems,i)=>{
-                    return (
-                        <tr>
-                            <td>{bodyItems.product_name}</td>
-                            <td>{bodyItems.Kateqorİya}</td>
-                            <td>{bodyItems.say}</td>
-                            <td><InputGroup value={bodyItems.price} /></td>
-                            <td><SelectBox firstopt='Status' name={bodyItems.status} /></td>
-                            <td><a href="#">Duzelish</a> <a href="#">Sil</a></td>
-                        </tr>
-                    )
-                })
+                // : state.filteredData.map((bodyItems,i)=>{
+                //     return (
+                //         <tr>
+                //             <td>{bodyItems.product_name}</td>
+                //             <td>{bodyItems.Kateqorİya}</td>
+                //             <td>{bodyItems.say}</td>
+                //             <td><InputGroup value={bodyItems.price} /></td>
+                //             <td><SelectBox firstopt='Status' name={bodyItems.status} /></td>
+                //             <td><a href="#">Duzelish</a> <a href="#">Sil</a></td>
+                //         </tr>
+                //     )
+                // })
             }
 
             {

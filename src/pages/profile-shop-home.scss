@@ -2,10 +2,14 @@
 
 .profile_shop__home__section{
     .profile_shop__home__image{
-        background-image: url('../assets/images/Cover.jpg');
         height: 264px;
         position: relative;
         margin-bottom: 24px;
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
         .profile_shop__home__image__content{
             width: 191px;
             height: 44px;
@@ -94,7 +98,7 @@
     }
 
     .profil_filter_content{
-        margin-top: 32px;
+        margin-top: 16px;
     }
 }
 

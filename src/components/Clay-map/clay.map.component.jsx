@@ -1,81 +1,27 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import  '../Clay-map/clay.map.component'
 import Clay from '../index-clay/clay.component';
 import './clay-map.style.scss'
+import UrlGenerator from '../../services/url-generator';
 
-class ClayMap extends React.Component{
-    constructor(){
-        super();
+function ClayMap(){
+      const [state, setstate] = useState([])
+      useEffect(()=>{
+        let url=UrlGenerator('az','stores');
+        fetch(url)
+        .then(async res=>{
+          let data=await res.json();
+          setstate(data.data)
+          console.log(data)
+        }).catch(err=>console.log(err))
 
-        this.state ={
-            sections: [
-                {
-                  title: 'Clay',
-                  imageUrl: '..//../assets/images/index/Image.svg',
-                  id: 1,
-                  linkUrl: ''
-                },
-                {
-                    title: 'Clay',
-                    imageUrl: '..//../assets/images/index/Image.svg',
-                    id: 1,
-                    linkUrl: ''
-                  },
-                  {
-                    title: 'Clay',
-                    imageUrl: '..//../assets/images/index/Image.svg',
-                    id: 1,
-                    linkUrl: ''
-                  },
-                  {
-                    title: 'Clay',
-                    imageUrl: '..//../assets/images/index/Image.svg',
-                    id: 1,
-                    linkUrl: ''
-                  },
-                  {
-                    title: 'Clay',
-                    imageUrl: '..//../assets/images/index/Image.svg',
-                    id: 1,
-                    linkUrl: ''
-                  },
-                  {
-                    title: 'Clay',
-                    imageUrl: '..//../assets/images/index/Image.svg',
-                    id: 1,
-                    linkUrl: ''
-                  },
-                  {
-                    title: 'Clay',
-                    imageUrl: '..//../assets/images/index/Image.svg',
-                    id: 1,
-                    linkUrl: ''
-                  },
-                  {
-                    title: 'Clay',
-                    imageUrl: '..//../assets/images/index/Image.svg',
-                    id: 1,
-                    linkUrl: ''
-                  },
-                  {
-                    title: 'Clay',
-                    imageUrl: '..//../assets/images/index/Image.svg',
-                    id: 1,
-                    linkUrl: ''
-                  },
-               
-              ]
-                      
-    }
-}
-render()
-{ 
+      },[])
     return(
         <React.Fragment>
         <div className='row'>
-    { this.state.sections.map(({title, imageUrl, id},i)=>(
+    { state.map((x,i)=>(
       <div key = {i} className='col-lg-4 col-md-4 col-sm-6'>
-        <Clay  title={title} imageUrl = {imageUrl}/>
+        <Clay linkText='Məhsullara bax' item={x}/>
         </div>
     ))  
     }
@@ -83,5 +29,4 @@ render()
         </React.Fragment>
     );
      }
-}
 export default ClayMap;

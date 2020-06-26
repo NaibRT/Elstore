@@ -8,13 +8,12 @@ import UrlGenerator from '../services/url-generator';
 import {Link} from 'react-router-dom'
 
 
-const th = ['Adı','Kateqorİya', 'say', 'qİymət','Status','Düzəlİş' ];
+const th = ['Adı','Kateqorİya', 'Qiymət','Endirim','Status','Düzəlİş' ];
 
 var sifaris = [
   {
     'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
     'Kateqorİya':'ketegor',
-    'say': '1',
     'qiymet': '12azn',
     'status': 'Aktiv',
     'duzelish': 'Aktiv',
@@ -48,15 +47,14 @@ useEffect(()=>{
     return (
         <div className='container-fluid'>
             <div className="head_compaign">
-                <h1>{headerText}: {product.data.length}</h1>
+                <h1>Toplam Mehsul Sayi: {product.data.length}</h1>
                 <div className='compaign_buttons'>
                     <Link className='compaignbtn active' to='/profile/product/create'><span>+ Məhsul Əlavə Et</span></Link>
                     <div>&nbsp;&nbsp;</div>
-                    <Button className='compaignbtn' name='yadda saxla'/>
                 </div>
             </div>
             <br/>
-            <Datatable   thead ={th} tbody={product.data}/>
+            <Datatable    thead ={th} tbody={product.data}/>
         </div>
     )
 }
