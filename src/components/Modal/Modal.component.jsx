@@ -63,8 +63,7 @@ function Modal(){
             login__modal.style.display="none"
         }
     })
-        
-   
+
     const loginSubmit=(data)=>{
        let url=UrlGenerator('az','auth/login')
       fetch(url,{

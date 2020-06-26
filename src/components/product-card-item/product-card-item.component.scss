@@ -53,13 +53,13 @@
          color: black;
      }
  }
- .discount{
-     margin-top: 3px;
-     font-family: InterRegular;
-     font-size: 12px;
-     font-weight: normal;
-     color: #228751;
- }
+//  .discount{
+//      margin-top: 3px;
+//      font-family: InterRegular;
+//      font-size: 12px;
+//      font-weight: normal;
+//      color: #228751;
+//  }
  p{
      margin-top: 1px;
      font-family: InterRegular;
@@ -77,6 +77,31 @@
     }
    
  }
+
+ .product__price{
+     display: inline-block;
+     
+ }
+ del{
+    font-family: InterRegular;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 0.25px;
+    color: #444444;
+    margin-left: 4px;
+ }
+}
+.product_-discount{
+    font-family: InterRegular !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 12px !important;
+    line-height: 150% !important;
+    letter-spacing: 0.5px;
+    color: #228751 !important;
+}
 
  @media (max-width:992px){
     .baginto{
