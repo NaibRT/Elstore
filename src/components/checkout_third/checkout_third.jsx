@@ -4,6 +4,7 @@ import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
 import InputGroup from "../InputGroup/InputGroup.component";
 import {Link} from 'react-router-dom';
+import swal from "sweetalert"
 import {appContext} from '../../contexts/appContext';
 import UrlGenerator from '../../services/url-generator';
 import Button from '../button/button.component';
@@ -94,9 +95,19 @@ function CheckoutThird(props) {
             }
         })
         .then(async res=>{
-            let data=await res.json();
+            if(res.ok){
+                let data=await res.json();
+                swal( "","Sifarişiniz qeydə alındı", "success");
+            }else{
+                swal( "Təəssüf!","Sifarişiniz qeydə alınmadı", "error");
+            }
         })
         .catch(err=>console.log(err))
+
+    }
+
+    function backtoEdit(){
+        window.onload();
 
     }
 
@@ -123,7 +134,7 @@ function CheckoutThird(props) {
            <div className='card_head_flex'>
             <div><Card.Header name='Çatdırılma ünvanı' /></div>
             <div>
-                <button onClick={props.stepOne}>Düzəlİş et</button>
+                <button  onClick={backtoEdit}>Düzəlİş et</button>
             </div>
 
            </div>

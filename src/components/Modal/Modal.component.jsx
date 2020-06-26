@@ -78,10 +78,10 @@ function Modal(){
           let data=await res.json();
           if(res.ok){
             AppContext.events.AddToken(data)
-            swal("Good job!", "You clicked the button!", "success");
+            // swal("", "Xoş gəlifsizinqiz", "success");
             document.getElementById('login__modal').style.display='none';
           }else{
-            swal("Good job!", "You clicked the button!", "error");
+            // swal("Good job!", "You clicked the button!", "error");
           }
      
       })
@@ -102,10 +102,10 @@ function Modal(){
        if(res.ok){
         let data=await res.json();
         AppContext.events.AddToken(data)
-        swal( "success");
+        swal( "Təbriklər","Qeydiyyatınız uğurla tamamlandı", "success");
         document.getElementById('login__modal').style.display='none';
        }else{
-        swal("Good job!", "You clicked the button!", "error");
+        swal("Təəssüf!", "Qeyd olunmuş email artıq mövcuddur", "error");
        }   
        
    })
