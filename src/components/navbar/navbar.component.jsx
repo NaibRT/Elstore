@@ -1,9 +1,7 @@
 import React,{useState, useEffect,useContext} from 'react';
 import './navbar.component.scss';
-import { Link , Switch ,  Route, Redirect  } from "react-router-dom";
-import ResponsiveCat from '../responsiv_categories/responsiv_categories.component'
+import { Link } from "react-router-dom";
 import {searchContext} from '../../contexts/search';
-import Modal from "../Modal/Modal.component"
 import MobileModal from '../categorymobile_modal/mobilemodal'
 import axios from 'axios'
 import LangToggler from "../lang_currency_toggler/lang_currency_toggler";
@@ -47,7 +45,6 @@ function  Navbar(props) {
    function Sign(){
        let modal= document.getElementById("login__modal");
        modal.style.display="block";
-       console.log(modal)
        
    }
     useEffect(()=>{
@@ -61,7 +58,7 @@ function  Navbar(props) {
                 if (panel.style.height) {
                 panel.style.height = null;
                 } else {
-                panel.style.height = panel.scrollHeight + "px";
+                panel.style.height = '70px';
                 } 
             });
             }
@@ -161,12 +158,20 @@ const loginRegister=<>
     return (
         <div className='navbar'>
             <div className='navbar_top'>
-                <Link className="navbar_top_link" to='/worked-delivery'>Kuryer olmaq istəyirsiniz?</Link>
-                <Link className="navbar_top_link navbar_top_link--end " to='/open-store'>Mağaza aç</Link>
+                <div className='left_navbar__top'>
+                    <Link className="navbar_top_link">Kampaniyalar</Link>
+                    <Link className="navbar_top_link">Mağazalar</Link>
+                    <Link className="navbar_top_link">Tez-tez verilən suallar</Link>
+                    <Link className="navbar_top_link">Əlaqə</Link>
+                </div>
+                <div className="right_navbar__top">
+                    <Link className="navbar_top_link" to='/worked-delivery'>Kuryer olmaq istəyirsiniz?</Link>
+                    <Link className="navbar_top_link navbar_top_link--end " to='/open-store'>Mağaza aç</Link>
+                </div>
             </div>
             <div className='navbar_center'>
                 <div className='navbar_logo'>
-                    <Link to='/'><img src={require('../../assets/logo/logo.svg')} /></Link>
+                    <Link to='/'><img src={require('../../assets/logo/logo_1.svg')} /></Link>
                 </div>
                 <div className='navbar_search'>
                 <form   className="search-input" >
@@ -204,7 +209,7 @@ const loginRegister=<>
             <div className={`${toggle.active ? 'opennav': ''} responsive_nav`}>
                     <div className='responsive_nav_top'>
                     <Selectbox  value={Langs} class='accordion_select'  options={Langs}/>
-                    <Selectbox   value={Currency} class='accordion_select'  options={Currency}/>
+                    {/* <Selectbox   value={Currency} class='accordion_select'  options={Currency}/> */}
                     </div>
                     <div className='responsive_nav_login'>
                     {
@@ -232,17 +237,17 @@ const loginRegister=<>
                     </div>
                 </div>
             
-            <div className='navbar_bottom'>
+            {/* <div className='navbar_bottom'>
                 {
-                    AppContext.app.user.type?
+                    
                     navbarCat.data
                     .filter((item,idx)=>{return idx<=6 })
                     .map((item,idx)=>{
                         return<Link key={idx} to={`/search?filter[category_id]=${item.id}`} className='navbar_bottom_link'>{item.name}</Link>
-                    }):null
+                    })
                 }
                
-            </div>
+            </div> */}
         </div>
     )
 }
