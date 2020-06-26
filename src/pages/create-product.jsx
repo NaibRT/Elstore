@@ -194,6 +194,7 @@ function CreateProduct(){
           for (let i = 0; i < images.length; i++) {
             newFormData.append(`images[${i}]`, images[i])
         }
+        
           // newFormData.append('images[]',images)
           newFormData.append('az[product_description]',product.az['product_description'])
           newFormData.append('az[product_name]',product.az['product_name'])
