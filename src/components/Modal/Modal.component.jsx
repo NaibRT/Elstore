@@ -77,10 +77,10 @@ function Modal(){
           let data=await res.json();
           if(res.ok){
             AppContext.events.AddToken(data)
-            // swal("", "Xoş gəlifsizinqiz", "success");
+             swal("", "Xoş gəlifsizinqiz", "success");
             document.getElementById('login__modal').style.display='none';
           }else{
-            // swal("Good job!", "You clicked the button!", "error");
+             swal("Good job!", "You clicked the button!", "error");
           }
      
       })
