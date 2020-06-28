@@ -4,20 +4,17 @@ import ButtonDropDown from '../button-dropdown/ButtonDropDown.component';
 
 
 
-function CompanyMiniImage({changeHandler,thum_img,edit}) {
-
+function CompanyMiniImage({children,thum_img,edit}) {
     return (
-        <>
+
         <div className="left_side__image__content button_drop__down">
             <img src={thum_img} alt=""/>
             {
-                edit
-                ?<ButtonDropDown onchange={(e)=>{changeHandler(e)}}/>
-                :null
+              children
             }
         </div>
-        </>
     )
 }
 
+CompanyMiniImage.ButtonDropDown=ButtonDropDown
 export default CompanyMiniImage

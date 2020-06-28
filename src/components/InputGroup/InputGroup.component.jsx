@@ -9,7 +9,20 @@ function InputGroup({onfocus,id,disabled,required,type,label,helper,countertext,
         <div  className='inputForm'>
             <label id='scripted'  className='inputForm_label'>{label}</label> 
             <div className='inputForm_iconcontainer'>
-            <input autoComplete='new-password' id={id} onFocus={onfocus} disabled={disabled} onChange={onChange} required={required} name={name} min={min}  max={max} type={type} placeholder={placeholder} value={value} {...otherProps} ref={register} className={`inputForm_input ${classinout}`} />
+            <input autoComplete='new-password' 
+            id={id} 
+            onFocus={onfocus} 
+            disabled={disabled} 
+            onChange={onChange} 
+            required={required} 
+            name={name} 
+            min={min}  
+            max={max} 
+            type={type} 
+            placeholder={placeholder} 
+            value={value} {...otherProps} 
+            ref={register} 
+            className={`inputForm_input ${classinout}`} />
             <span className='inputForm_icon'><img src={formIcon} /></span>
             </div>
             <div className='inputForm_helpcontainer'>

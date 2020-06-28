@@ -6,9 +6,11 @@ import '../assets/sass/pages/compaign.scss'
 import Button from '../components/button/button.component';
 import UrlGenerator from '../services/url-generator';
 import {Link} from 'react-router-dom'
+import { useContext } from 'react';
+import {appContext} from '../contexts/appContext';
 
 
-const th = ['Adı','Kateqorİya', 'Qiymət','Endirim','Status','Düzəlİş' ];
+const th = ['Adı', 'Qiymət','Endirim','Status','Düzəlİş' ];
 
 var sifaris = [
   {
@@ -26,6 +28,7 @@ const [product,setProduct] = useState({
   data:[],
   category:[]
 })
+const AppContext=useContext(appContext);
 
 let producturl = UrlGenerator('az','products?include=seller');
 let categoryUrl = UrlGenerator('az','categories');
@@ -38,11 +41,30 @@ useEffect(()=>{
       // setProduct(res.data.data)
       setProduct({data:res.data.data});
   })
-
-
-
-  
 },[])
+
+const deleteProduct=(e)=>{
+  let id =e.target.getAttribute('data-id');
+  const newProducts=product.data.filter(x=>x.id!=id);
+  console.log(newProducts)
+  let url=UrlGenerator('az',`products/${id}`);
+  let token=AppContext.app.token;
+  console.log(token)
+  fetch(url,{
+      method:'Delete',
+      headers:{
+          'Authorization':token!=null?`${token.token_type} ${token.access_token}`:''
+      }
+  }).then(async res=>{
+      let data=await res.json();
+      if(res.ok){
+        setProduct({
+          ...product,
+          data:[...newProducts]
+        })
+      }
+  }).catch(err=>console.log(err))
+}
 
     return (
         <div className='container-fluid'>
@@ -54,7 +76,7 @@ useEffect(()=>{
                 </div>
             </div>
             <br/>
-            <Datatable    thead ={th} tbody={product.data}/>
+            <Datatable deleteProduct={deleteProduct}    thead ={th} tbody={product.data}/>
         </div>
     )
 }

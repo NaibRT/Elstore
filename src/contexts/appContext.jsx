@@ -155,6 +155,7 @@ function getUserCredentials() {
  useEffect(()=>{
    setApp({
      ...app,
+     token:getToken(),
      isAuthorized:IsAuthorized(),
      user:getUserCredentials()
     })
@@ -197,10 +198,6 @@ function getUserCredentials() {
 //  })
 
  function AddToken(token){
-    setApp({
-     ...app,
-     token:token,
-    });
     window.localStorage.setItem('token',JSON.stringify(token))
     let url=UrlGenerator('az','auth/me');
     fetch(url,{
@@ -213,11 +210,13 @@ function getUserCredentials() {
       window.localStorage.setItem('user',JSON.stringify(data));
       setApp({
         ...app,
+        token:token,
         isAuthorized:true,
         user:data
       })
     }).catch(err=>console.log(err))
  }
+
  function getToken(){
    let token=JSON.parse(window.localStorage.getItem('token'))
    return token;
@@ -225,10 +224,12 @@ function getUserCredentials() {
    function logout() {
      console.log('click')
      localStorage.removeItem('token');
+     localStorage.removeItem('user')
      setApp({
        ...app,
        token:{},
-       isAuthorized:false
+       isAuthorized:false,
+       user:''
      })
    }
  function IsAuthorized(){

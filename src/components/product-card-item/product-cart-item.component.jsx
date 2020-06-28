@@ -57,7 +57,7 @@ function ProductCartItem({data,isLiked}) {
 
   <div className="baginto">
   <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
-  <Button data={data.id} onClick={(e)=>AppContext.events.addBasket(e)}  className="button__adress" name="səbətə at"/>
+  <Button data={data.id} onClick={(e)=>AppContext.events.addBasket(e)}  class="button__adress" name="səbətə at"/>
 
     
   </div>

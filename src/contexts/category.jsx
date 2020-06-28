@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from "axios"
+import UrlGenerator from '../services/url-generator';
 const categoryContext=React.createContext({});
 const categoryContextConsumer=categoryContext.Consumer
 
@@ -26,9 +27,7 @@ function CategoryContext(props){
     }
 
     console.log(childrens)
-
-  const url = 'http://139.180.144.49/api/v1/az/categories';
-
+  let url=UrlGenerator('az','categories')
    useEffect(()=>{
     axios({
         method:'GET',

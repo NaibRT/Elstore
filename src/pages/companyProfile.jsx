@@ -22,6 +22,7 @@ function CompanyProfile() {
    <Route exact path='/profile' component={Home}/>
    <Route exact  path='/profile/products' component={Products}/>
    <Route exact  path='/profile/product/create' component={ProductCreate}/>
+   <Route path='/profile/product/edit/:id' component={ProductCreate}/>
    <Route exact  path='/product/:id/:name' component={ProductInfo}/>
    <Route path='/profile/orders' component={CompanyOrders}/>
    <Route path='/profile/companies' component={Home}/>

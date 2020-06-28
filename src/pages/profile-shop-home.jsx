@@ -17,30 +17,33 @@ function ProfileShopHome(props) {
     let SearchContext=useContext(searchContext);
     const [product, setproduct] = useState({})
     const [queryParams, setQueryParams] = useState([])
+    const [priceFrom, setPriceFrom] = useState('')
+    const [priceTo, setPriceTo] = useState('')
 
     useEffect(()=>{
         console.log('effect')
         let token=AppContext.events.getToken();
+        console.log(token)
         let id=props.match.params.id;
       let url=''
       id!==undefined?
-          url=UrlGenerator('az',`users/company?company_id${id}&include=products`)
+          url=UrlGenerator('az',`users/company?company_id=${id}&include=products`)
           :url=UrlGenerator('az',`users/company?include=products`)
-      fetch(url,{
-         headers:{
-             'Authorization':`${token.token_type} ${token.access_token}`
-         } 
-               })
-               .then(async res => {
-                   let data =await res.json();
-                   if(res.ok){
-                    setproduct({
-                        ...data.data[0],
-                    })
-                   }
-
-               } )
-
+            fetch(url,{
+                headers:{
+                    'Authorization':token!==null?`${token.token_type} ${token.access_token}`:''
+                } 
+                      })
+                      .then(async res => {
+                          let data =await res.json();
+                          console.log(data)
+                          if(res.ok){
+                           setproduct({
+                               ...data.data[0],
+                           })
+                          }
+       
+                      }).catch(err=>console.log(err))
             },[])
 
 
@@ -117,7 +120,12 @@ function ProfileShopHome(props) {
             queries=newqueries
             console.log(newqueries)
         }
-        
+        if(priceFrom!==''){
+            query+=`&filter[min_prize]=${priceFrom}`
+          }
+          if(priceTo!==null){
+              query+=`&filter[max_price]=${priceTo}`
+          }
         queries.forEach((x,k)=>{
             console.log(k)
             k===queries.length-1
@@ -139,6 +147,63 @@ function ProfileShopHome(props) {
 
         }).catch(err=>console.log(err))
      }
+      
+     function Pricefrom(e){
+        setPriceFrom(e.target.value)
+        let filteQuery=`filter[category_id]=`
+        queryParams.forEach((x,k)=>{
+            console.log(k)
+            k===queryParams.length-1
+            ?filteQuery+=`${x}`
+            :filteQuery+=`${x},`
+        })
+        filteQuery+=`&filter[min_price]=${e.target.value}`
+
+        if(priceTo!=='')
+        filteQuery+=`&filter[max_price]=${priceTo}`
+        
+        let url=UrlGenerator('az',`search/product?${filteQuery}`)
+        fetch(url)
+        .then(async res=>{
+            let data=await res.json();
+            console.log(data)
+            setproduct({
+                ...product,
+                products:data.data
+            })
+ 
+        }).catch(err=>console.log(err))
+
+    }
+
+    function Priceto(e){
+        setPriceTo(e.target.value)
+        let filteQuery=`filter[category_id]=`
+        queryParams.forEach((x,k)=>{
+            console.log(k)
+            k===queryParams.length-1
+            ?filteQuery+=`${x}`
+            :filteQuery+=`${x},`
+        })
+
+        filteQuery+=`&filter[max_price]=${e.target.value}`
+
+        if(priceFrom!=='')
+        filteQuery+=`&filter[min_price]=${priceFrom}`
+        let url=UrlGenerator('az',`search/product?${filteQuery}`)
+        fetch(url)
+        .then(async res=>{
+            let data=await res.json();
+            console.log(data)
+            setproduct({
+                ...product,
+                products:data.data
+            })
+ 
+        }).catch(err=>console.log(err))
+    }
+      
+
          console.log(product)
     return (
         <section className="profile_shop__home__section">
@@ -158,13 +223,20 @@ function ProfileShopHome(props) {
                     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div className="all_sides__contents">
                             <div className="left_side">
-                            <CompanyMiniImage edit={product.edit} changeHandler={thumbHandler} thum_img={product.store!==undefined?product.store.logo:null}/>
+                            <CompanyMiniImage   thum_img={product.store!==undefined?product.store.logo:null}>
+                              {
+                                  product.edit
+                                  ?<CompanyMiniImage.ButtonDropDown onchange={thumbHandler}/>
+                                  :null
+                              }
+                              
+                            </CompanyMiniImage>
                             </div>
                             <div className="middle_side_text__content">
-                                    <h4>{product.store!==undefined?product.store.name:null}</h4>
+                                    <h4>{product.store!==undefined?product.name:null}</h4>
                                     <p>{product.store!==undefined?product.store.description:null}</p>
-                                    <Chips />
-                                    <ButtonRating name='Yuksek rating' icon={require('../assets/images/icons/star.svg')} class='bg-gold'/>
+                                    {/*<Chips />
+                                    <ButtonRating name='Yuksek rating' icon={require('../assets/images/icons/star.svg')} class='bg-gold'/>*/}
                             </div>
                             <div className="right_side">
                                 <div className="right_side__content">
@@ -186,7 +258,7 @@ function ProfileShopHome(props) {
                 <div className="row">
                     <div className="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
                         <div className="profil_filter_content">
-                            <Filter clickHandler={clickHandler}/>
+                            <Filter clickHandler={clickHandler} Pricefrom={Pricefrom} Priceto={Priceto}/>
                         </div>
                     </div>
                     <div className="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">

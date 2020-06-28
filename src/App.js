@@ -34,9 +34,7 @@ function App() {
     <SearchContext>
 
     <Router>
-      {
-       (window.location.href.split('/')[3]==='profile')?<NavbarProfile/>:<Header />
-      }
+<Header />
     <br/>
     <br/>
           <Main/>

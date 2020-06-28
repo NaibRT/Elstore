@@ -37,7 +37,7 @@ useEffect(()=>{
                       <h1 className='card-info-text'>{x.name}</h1>
                         <p className='card-head'>kjbkjbjhbjhbjhbjhbj</p>
                         <div className='card-link'>
-                            <Link to='/' className='card-go'>Məhsullara bax <img alt='' src={require('../../assets/images/icons/right.svg')} /></Link>
+                            <Link to={`/company/${x.id}/${x.name}`} className='card-go'>Məhsullara bax <img alt='' src={require('../../assets/images/icons/right.svg')} /></Link>
                         </div>
                     </div>
                 </div>

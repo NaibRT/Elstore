@@ -10,9 +10,9 @@ import {appContext} from '../contexts/appContext';
 function Search(props) {
     let SearchContext=useContext(searchContext)
     let AppContext=useContext(appContext)
-    const [priceFrom,setPriceFrom]= useState(0);
+    const [priceFrom,setPriceFrom]= useState('');
     const [queryParams, setQueryParams] = useState([])
-    const [priceTo,setPriceTo]= useState(1000000);
+    const [priceTo,setPriceTo]= useState('');
     const [catFilter, setCatFilter] = useState({
         data:[]
     })
@@ -20,10 +20,15 @@ function Search(props) {
 
     function clickHandler(e) {
         console.log(e.target.checked)
+        let query='';
         let id=e.target.value;
         let queries=queryParams;
-        let store_id=AppContext.app.user.id
-        let query=`filter[company_id]=${store_id}&filter[category_id]=`;
+        if(AppContext.app.isAuthorized){
+            let store_id=AppContext.app.user.id
+            query=`filter[company_id]=${store_id}&filter[category_id]=`;
+        }else{
+            query=`filter[category_id]=`;
+        }
         if(e.target.checked){
             queries.push(`${id}`)
        }else{
@@ -38,6 +43,12 @@ function Search(props) {
            ?query+=`${x}`
            :query+=`${x},`
        })
+       if(priceFrom!==''){
+         query+=`&filter[min_prize]=${priceFrom}`
+       }
+       if(priceTo!==null){
+           query+=`&filter[max_price]=${priceTo}`
+       }
        let url=UrlGenerator('az',`search/product?${query}`)
        fetch(url)
        .then(async res=>{
@@ -53,14 +64,16 @@ function Search(props) {
 
        }).catch(err=>console.log(err))
     }
+
     
      useEffect(()=>{
          let url=UrlGenerator('az','search/product')
          let query=props.match.params.query;
+         console.log(query)
          fetch(`${url}?${query}`)
         .then(response => response.json())
         .then(data => {
-            setCatFilter({data:data});
+            setCatFilter({data:data.data});
             console.log(data)
         });
       },[])
@@ -68,10 +81,57 @@ function Search(props) {
    
     function Pricefrom(e){
         setPriceFrom(e.target.value)
+        let filteQuery=`filter[category_id]=`
+        queryParams.forEach((x,k)=>{
+            console.log(k)
+            k===queryParams.length-1
+            ?filteQuery+=`${x}`
+            :filteQuery+=`${x},`
+        })
+        filteQuery+=`&filter[min_price]=${e.target.value}`
+
+        if(priceTo!=='')
+        filteQuery+=`&filter[max_price]=${priceTo}`
+        
+        let url=UrlGenerator('az',`search/product?${filteQuery}`)
+        fetch(url)
+        .then(async res=>{
+            let data=await res.json();
+            console.log(data)
+            setCatFilter({
+                ...catFilter,
+                data:data.data
+            })
+ 
+        }).catch(err=>console.log(err))
+
     }
 
     function Priceto(e){
         setPriceTo(e.target.value)
+        let filteQuery=`filter[category_id]=`
+        queryParams.forEach((x,k)=>{
+            console.log(k)
+            k===queryParams.length-1
+            ?filteQuery+=`${x}`
+            :filteQuery+=`${x},`
+        })
+
+        filteQuery+=`&filter[max_price]=${e.target.value}`
+
+        if(priceFrom!=='')
+        filteQuery+=`&filter[min_price]=${priceFrom}`
+        let url=UrlGenerator('az',`search/product?${filteQuery}`)
+        fetch(url)
+        .then(async res=>{
+            let data=await res.json();
+            console.log(data)
+            setCatFilter({
+                ...catFilter,
+                data:data.data
+            })
+ 
+        }).catch(err=>console.log(err))
     }
                     // {
                 //     products.state.data.filter(item=> products.state.searchKey.toLowerCase().includes(item.product_name.toLowerCase()))
@@ -89,7 +149,7 @@ function Search(props) {
                 //         )
                 //     })
                 // }
-                console.log("SearchContext",SearchContext)
+                console.log('catfilter',catFilter)
     return (
         
         <div className='container-fluid'>

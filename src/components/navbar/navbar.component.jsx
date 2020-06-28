@@ -190,7 +190,7 @@ const loginRegister = <>
             </div>
 
 
-            <div className={`responsive_nav`}>
+            <div className={`responsive_nav ${toggle.active?'opennav':''} `}>
                     <div className='responsive_nav_top'>
                     <Selectbox  value={Langs} class='accordion_select'  options={Langs}/>
                     {/* <Selectbox   value={Currency} class='accordion_select'  options={Currency}/> */}

@@ -1,42 +1,32 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useState, useContext} from 'react';
 import './datatable.jquery.scss';
 import './datatable.scss';
 import InputGroup from '../InputGroup/InputGroup.component'
 import SelectBox from '../Select-box/SelectBox.component'
 import UrlGenerator from '../../services/url-generator';
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 var $  = require( 'jquery' );
 var dt = require( 'datatables.net' );
 
 
-
-const kategories = [
-    {
-        name:'Search'
-    },
-    {
-        name:'Search'
-    },
-    {
-        name:'Search'
-    },
-    {
-        name:'Search'
-    }
-]
-
-
-function Datatable({thead,tbody}) {
+function Datatable({thead,tbody,deleteProduct}) {
 
 
     const [category,setCategory] = useState({
         category:[]
       })
-      
-      let categoryUrl = UrlGenerator('az','categories');
-      
-      
+         
+    const [searchMarket, setSearch]=useState({
+        searchField:""
+    })
+    const [state,setState] = useState({
+        filteredData:[]
+    })
+
+
       useEffect(()=>{
+        let categoryUrl = UrlGenerator('az','categories');
               axios.get(categoryUrl,{headers:{
               }})
               .then(cat=>{
@@ -47,39 +37,25 @@ function Datatable({thead,tbody}) {
       
    const  names = [];
     useEffect(()=>{
-        setTimeout(function(){ 
             $(document).ready(function() {
                 $('#databasic').dataTable();
             } );
-        }, 1000);
-
-        tbody.map((name)=>{
+        tbody.forEach((name)=>{
             names.push(name)
         });
-
-        
-        
     })
-
-   
-    const [searchMarket, setSearch]=useState({
-        searchField:""
-    })
-     
-    console.log(tbody)
-    const filteredProduct =tbody.length!==0?tbody.filter(item=> item.product_name.toLowerCase().includes(searchMarket.searchField.toLowerCase())):[];
-    console.log(filteredProduct)
+     console.log(tbody.length)
+    // const filteredProduct =tbody.length>0
+    //                       ?tbody.filter(item=> item.product_name.toLowerCase().includes(searchMarket.searchField.toLowerCase()))
+    //                       :[];
     function searchName(e){
         setSearch({
             ...searchMarket,
             searchField:e.target.value
         })
-
     }
     
-    const [state,setState] = useState({
-        filteredData:[]
-    })
+
 
     function handleSelect(e) {
         axios.get(`http://139.180.144.49/api/v1/az/search/product?filter[category_id]=${e.target.value}`)
@@ -92,7 +68,6 @@ function Datatable({thead,tbody}) {
         })
     }
 
-    
 
    
     
@@ -124,16 +99,16 @@ function Datatable({thead,tbody}) {
         <tbody>
                 
             {
-                 (tbody!==undefined)?
-                filteredProduct.map(bodyItems=>{
+                 (tbody.length>0)?
+                tbody.map(bodyItems=>{
                     return (
                         <tr>
                             <td className='nametable'>{bodyItems.product_name}</td>
-                            <td>{bodyItems.Kateqorİya}</td>
-                            <td>{bodyItems.say}</td>
-                            <td><InputGroup value={bodyItems.price} formIcon={require('../../assets/images/azn.svg')} /></td>
-                            <td><SelectBox firstopt='Status' name={bodyItems.status} /></td>
-                            <td><a href="javascript:void(f1())">Duzelish</a>   <a href="javascript:void(f1())">Sil</a></td>
+{/*                            <td>{bodyItems.Kateqorİya}</td>*/}
+                            <td>{bodyItems.price}</td>
+                            <td>{bodyItems.discount}</td>
+                            <td><SelectBox firstopt={bodyItems.status}/></td>
+                            <td><Link to={`/profile/product/edit/${bodyItems.id}`}>Duzelish</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-id={bodyItems.id} onClick={deleteProduct} href="javascript:void(f1())">Sil</a></td>
                         </tr>
                     )
                 })

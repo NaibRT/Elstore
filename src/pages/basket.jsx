@@ -38,22 +38,26 @@ function Basket(props) {
        if(id!==undefined){
         let url=UrlGenerator('az',`products/${id}`)
         let token=AppContext.events.getToken();
-        fetch(url,{
-            headers:{
-                'Authorization':`${token.token_type} ${token.access_toen}`
-            }
-        })
-        .then(async res=>{
-            let data=await res.json();
-            console.log(data.data)
-            AppContext.events.setBasket([
-                ...AppContext.basket,
-                {...data.data[0],
-                    count:1
+        if(token!==null){
+            fetch(url,{
+                headers:{
+                    'Authorization':`${token.token_type} ${token.access_toen}`
                 }
-            ])
-        })
-        .catch(err=>console.log(err))
+            })
+            .then(async res=>{
+                let data=await res.json();
+                console.log(data.data)
+                AppContext.events.setBasket([
+                    ...AppContext.basket,
+                    {...data.data[0],
+                        count:1
+                    }
+                ])
+            })
+            .catch(err=>console.log(err))
+        }else{
+            document.getElementById('login__modal').style.display='block';
+        }
        }
     },[])
     
@@ -99,7 +103,10 @@ function Basket(props) {
                                         {
                                             AppContext.app.isAuthorized?
                                             <Link style={{'textDecoration':'none'}} to='/checkout'><Button className='bg-primary--light'>Sifaris ver</Button></Link>
-                                             :null
+                                             :<Link onClick={()=>{
+                                                document.getElementById('login__modal').style.display='block';
+                                             }} style={{'textDecoration':'none'}}><Button className='bg-primary--light'>Sifaris ver</Button></Link>
+
                                         }
                                     </div>
                                     </div>

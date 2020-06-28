@@ -113,7 +113,9 @@ function Filter({clickHandler,Pricefrom,Priceto}) {
             <form className="search-input">
                 <input 
                 className='search-input-text' 
-                type="text" 
+                type="number"
+                min={1}
+                max={9999}
                 onChange={Pricefrom}
                 placeholder="0" 
                 name="search" />
@@ -127,7 +129,9 @@ function Filter({clickHandler,Pricefrom,Priceto}) {
             <form className="search-input" >
                 <input 
                 className='search-input-text'
-                type="text" 
+                type="number"
+                min={1}
+                max={9999}
                 placeholder="0"
                 name="search"
                 onChange={Priceto}  

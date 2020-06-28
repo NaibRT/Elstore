@@ -85,6 +85,17 @@ function DeliveryInfo(props) {
         active__border.style.border="2px solid #D0D0D0";
      }
 
+     function orders() {
+        let profile__info_update=document.getElementById('profile__info--update');
+        let adress__info_clicked=document.getElementById("adress")
+        let active__border= document.querySelector(".active--border");
+        let simple__border= document.querySelector(".simple--border");
+        profile__info_update.style.display="none"
+        adress__info_clicked.style.display="block"
+        simple__border.style.border="2px solid #6472B8";
+        active__border.style.border="2px solid #D0D0D0";
+     }
+
      function previewFile(e) {
       console.log(e.target.files[0])
       setUpdate({
@@ -236,7 +247,7 @@ function DeliveryInfo(props) {
                     <div className="col-lg-9 col-md-12 col-xs-12">
                             <div className="profil__info-owner">
                                 <div className="profil__info--offer">
-                                    <div onClick={Adress} id="adress__info-orders">
+                                    <div onClick={orders} id="adress__info-orders">
                                     <h5>Sifarişlər</h5>
                                     <div className="simple--border"></div>
                                     </div>

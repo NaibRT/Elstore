@@ -20,17 +20,7 @@ function ButtonDropDown({onchange,onclick}) {
     }
 
     return (
-        <>
-     
-            <Button onClick={toggleNav}  className='left_side__overflow' name='düzəlİş et'/>
-        
-            <div id="middleSide" className={`middle_side middle_hide ${toggle.active ? 'middle_side-height':''}`} >
-                <div className="middle_side__content">
-                    <button className='cover-upload'>YENI SEKIL ELAVE ET<input onChange={onchange} type='file'/></button>
-                    <button onClick={onclick} className='cover-upload'>Rəsmİ Sİl</button>
-                </div>
-            </div>
-        </>
+        <button className='cover-upload'>Dəyiş<input onChange={onchange} onClick={onclick} type='file'/></button>
     )
 }
 

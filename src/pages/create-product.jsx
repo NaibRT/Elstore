@@ -11,12 +11,47 @@ import Image from '../components/file-input/image'
 import CompanyMiniImage from '../components/Compony-mini-image/CompanyMiniImage'
 import Button from '../components/button/button.component'
 import Tab from '../components/tab/tab-component'
+import ButtonDropDown from '../components/button-dropdown/ButtonDropDown.component'
+import {useForm} from 'react-hook-form'
 
-const product={
+// const product={
+//   product_category_id:'',
+//   product_price:'',
+//   status:1,
+//   product_brand_id:'',
+//   discount:0,
+//   product_delivery_price:'',
+//   az:{
+//     product_description:'',
+//     product_name:''
+//   },
+//   en:{
+//     product_description:'',
+//     product_name:''
+//   },
+//   ru:{
+//     product_description:'',
+//     product_name:''
+//   },
+//   }
+function CreateProduct(props){
+  const {register,handleSubmit,errors}=useForm();
+
+ const AppContext=useContext(appContext)
+ const [categories,setCategories]=useState([]);
+ const [brands,setBrands]=useState([]);
+ const [subcat,setSubCat]=useState([])
+ const [childcat,setChildCat]=useState([])
+ const [images,setImages]=useState([]);
+ const [imageURLs,setImageURLs]=useState([]);
+
+ const [product,setProduct]=useState({
   product_category_id:'',
   product_price:'',
   status:1,
   product_brand_id:'',
+  discount:0,
+  product_delivery_price:'',
   az:{
     product_description:'',
     product_name:''
@@ -29,37 +64,7 @@ const product={
     product_description:'',
     product_name:''
   },
-
- }
-function CreateProduct(){
-
- const AppContext=useContext(appContext)
- const [categories,setCategories]=useState([]);
- const [brands,setBrands]=useState([]);
- const [subcat,setSubCat]=useState([])
- const [childcat,setChildCat]=useState([])
- const [images,setImages]=useState([]);
- const [imageURLs,setImageURLs]=useState([]);
-
-//  const [product,setProduct]=useState({
-//   product_category_id:'',
-//   product_price:'',
-//   product_seller_id:'',
-//   status:1,
-//   az:{
-//     product_name:''
-//   },
-//   en:{
-//     product_name:''
-//   },
-//   ru:{
-//     product_name:''
-//   },
-//   az_des:'',
-//   en_desc:'',
-//   ru_desc:''
-
-//  })
+  })
 
  useEffect(()=>{
    let categories='';
@@ -92,6 +97,55 @@ function CreateProduct(){
     .catch(e=>console.log(e))
    })
    .catch(err=>console.log(err))
+   let params=props.match.params;
+   if(params.id!==undefined){
+     console.log(params.id)
+     let url=UrlGenerator('az',`products/edit/${params.id}/showForEdit`);
+     let token=AppContext.app.token;
+     console.log(token)
+     fetch(url,{
+       headers:{
+         'Authorization':`${token.token_type} ${token.access_token}`
+       }
+     }).then(async res=>{
+       let data=await res.json();
+       console.log(data.data)
+      //  product.product_brand_id=data.data.product_brand_id;
+      //  product.product_category_id=data.data.product_category_id;
+      //  product.product_price=data.data.product_price;
+      //  product.az.product_description=data.translates.az.product_description;
+      //  product.az.product_name=data.translates.az.product_name;
+      //  product.en.product_description=data.translates.en.product_description;
+      //  product.en.product_name=data.translates.en.product_name;
+      //  product.ru.product_description=data.translates.ru.product_description;
+      //  product.ru.product_name=data.translates.ru.product_name;
+      //  product.product_delivery_price=data.data.product_delivery_price;
+      //  product.discount=data.data.discount;
+      setProduct({
+      product_brand_id:data.data.product_brand_id,
+      product_category_id:data.data.product_category_id,
+      product_price:data.data.product_price,
+      az:{
+        product_description:data.translates.az.product_description,
+        product_name:data.translates.az.product_name
+      },
+      en:{
+        product_description:data.translates.en.product_description,
+        product_name:data.translates.en.product_name
+      },
+      ru:{
+        product_description:data.translates.ru.product_description,
+        product_name:data.translates.ru.product_name
+      },
+      product_delivery_price:data.data.product_delivery_price,
+      discount:data.data.discount,
+      })
+       let newImages=data.images.map(x=>{
+         return x.product_image
+       })
+       setImageURLs([...newImages]);
+     })
+   }
 
  },[])
 
@@ -114,7 +168,10 @@ function CreateProduct(){
     images.forEach(x=>{
           readFileAsync(x)
           .then(res=>{
-            setImageURLs([...imageURLs,res]);
+            setImageURLs([...imageURLs,{
+             name:x.name,
+             url:res
+            }]);
           })
           .catch(err=>console.log(err))
         })
@@ -122,36 +179,99 @@ function CreateProduct(){
 
   function imageLoad(e){
     let z=[...e.target.files];
+    console.log(z)
     setImages([...images,...z])
     console.log(images)
   }
+
+  const removeImage=(e)=>{
+    let src=e.target.parentElement.previousSibling.getAttribute('src')
+    let removedFile=imageURLs.find(x=>x.url===src);
+    let newUrls=imageURLs.filter(x=>x.url!==src);
+    let newImages=images.filter(x=>x.name!==removedFile.name);
+    setImageURLs([...newUrls]);
+    setImages([...newImages]);
+    imageLoad(e);
+  }
     
-       const getName=(e)=>{
+       const getName_az=(e)=>{
          let value=e.target.value
          let lang=e.target.closest('.pro-name').getAttribute('data-lang');
         //  setProduct({
-        //    ...product,
-        //    [`${lang}`]:{
-        //      ...product[lang],
-        //      product_name:value}
-        //  })
+        //   ...product,
+        //   az:{
+        //     ...product.az,
+        //     product_name:e.target.value
+        //   }
+        // })
         product[lang.toString()].product_name=value;
        }
 
+       const getName_en=(e)=>{
+        let value=e.target.value
+        let lang=e.target.closest('.pro-name').getAttribute('data-lang');
+      //   setProduct({
+      //    ...product,
+      //    en:{
+      //      ...product.en,
+      //      product_name:e.target.value
+      //    }
+      //  })
+       product[lang.toString()].product_name=value;
+      }
+
+      const getName_ru=(e)=>{
+        let value=e.target.value
+        let lang=e.target.closest('.pro-name').getAttribute('data-lang');
+      //   setProduct({
+      //    ...product,
+      //    ru:{
+      //      ...product.ru,
+      //      product_name:e.target.value
+      //    }
+      //  })
+      product[lang.toString()].product_name=value;
+      }
+
        const getDescription_az=(e)=>{
           product.az.product_description=e
+          // setProduct({
+          //   ...product,
+          //   az:{
+          //     ...product.az,
+          //     product_description:e
+          //   }
+          // })
        }
 
        const getDescription_en=(e)=>{
         product['en'].product_description=e
+        // setProduct({
+        //   ...product,
+        //   en:{
+        //     ...product.en,
+        //     product_description:e
+        //   }
+        // })
        }
        const getDescription_ru=(e)=>{
         product['ru'].product_description=e
+        // setProduct({
+        //   ...product,
+        //   ru:{
+        //     ...product.ru,
+        //     product_description:e
+        //   }
+        // })
        }
 
        const getCataegory=(e)=>{
         let value=e.target.value;
            product.product_category_id=value;
+          //  setProduct({
+          //    ...product,
+          //    product_category_id:e.target.value
+          //  })
            let subCategories=categories.find(x=>x.id==value).children;
            if(subCategories!=null){
             setSubCat([...subCategories])
@@ -163,11 +283,19 @@ function CreateProduct(){
 
        function getBrands(e) {
         product.product_brand_id=e.target.value
+        // setProduct({
+        //   ...product,
+        //   product_brand_id:e.target.value
+        // })
        }
 
        const getSubCataegory=(e)=>{
         let value=e.target.value;
         product.product_category_id=value
+        // setProduct({
+        //   ...product,
+        //   product_category_id:e.target.value     
+        // })
          let childCategories=subcat.find(x=>x.id==value).children;
          if(childCategories!=null){
           setChildCat([...childCategories])
@@ -181,14 +309,30 @@ function CreateProduct(){
        const getChildCataegory=(e)=>{
         let value=e.target.value;
         product.product_category_id=value
+        // setProduct({
+        //   ...product,
+        //   product_category_id:e.target.value
+        // })
        }
 
        const getPrice=(e)=>{
         let value=e.target.value
         product.product_price=value
+        // setProduct({
+        //   ...product,
+        //   product_price:e.target.value
+        // })
+       }
+       const getDiscount=(e)=>{
+        let value=e.target.value
+        product.discount=value
+        // setProduct({
+        //   ...product,
+        //   discount:e.target.value
+        // })
        }
 
-       const send=()=>{
+       const send=(data)=>{
 
           let newFormData=new FormData();
           for (let i = 0; i < images.length; i++) {
@@ -233,11 +377,11 @@ function CreateProduct(){
           }
           console.log(newFormData)
        }
-       
+       console.log(images)
  return (
    <div className='container-fluid'>
   <Card>
-  <form>
+  <form onSubmit={handleSubmit(send)}>
     <GoBack text='Mehsullara geri don' link='/profile/products'/>
    <Card.Header name="Mehsul Elave Et"/>
     <div className='row'>
@@ -245,47 +389,59 @@ function CreateProduct(){
 
       <Tab clas='pro-name' id='name'>
         <Tab.Page id='az-name' clas='pro-name' lang='az'>
-        <InputGroup label='Product Name' onChange={getName} type='text' placeholder='azer' />
+        <InputGroup name='produc_name' register={register({
+          required:{value:true,message:'ad məcburidir',type:'text'},
+        })} label='Product Name'  onChange={getName_az} type='text' placeholder='azer' />
         </Tab.Page>
         <Tab.Page id='en-name' style={{'display':'none'}} clas='pro-name' lang='en'>
-        <InputGroup label='Product Name'  onChange={getName} type='text' placeholder='eng'  />
+        <InputGroup label='Product Name'   onChange={getName_en} type='text' placeholder='eng'  />
         </Tab.Page>
         <Tab.Page id='ru-name' style={{'display':'none'}} clas='pro-name' lang='ru'>
-        <InputGroup label='Product Name' onChange={getName} type='text' placeholder='rus'/>
+        <InputGroup  label='Product Name'  onChange={getName_ru} type='text' placeholder='rus'/>
         </Tab.Page>
       </Tab>
-       <SelectBox label='Brendler' handleChange={getBrands} name='brands' options={brands}/>
-       <SelectBox label='Kateqoriyalar' handleChange={getCataegory} name='categoriya'  options={categories}/>
+       <SelectBox register={register({
+        required:{value:true,message:'kateqorya məcburidir'},
+      })} label='Brendler' handleChange={getBrands} name='brands' options={brands}/>
+       <SelectBox register={register({
+        required:{value:true,message:'kateqorya məcburidir'},
+      })} label='Kateqoriyalar' handleChange={getCataegory} name='categoriya'  options={categories}/>
      
        {
-         subcat.length>1?<SelectBox label='Alt Kateqoriya' handleChange={getSubCataegory} name='subcategory' label='Sub Categoriya' options={subcat}/>:null
+         subcat.length>1?<SelectBox label='Alt Kateqoriya' handleChange={getSubCataegory} name='subcategory' options={subcat}/>:null
        }
        {
-        childcat.length>1?<SelectBox label='Alt Kateqoriya' handleChange={getChildCataegory} name='subcategory' label='Sub Categoriya' options={childcat}/>:null
+        childcat.length>1?<SelectBox label='Alt Kateqoriya' handleChange={getChildCataegory} name='subcategory' options={childcat}/>:null
        }
        <br/>
        <br/>
-       <InputGroup label='Məhsulun Qiyməti' min='0' onChange={getPrice}  type='number' name='price'/>
-       <InputGroup label='Endirim Qiyməti' min='0' onChange={getPrice}  type='number' name='discount'/>
+       <InputGroup register={register({
+        required:{value:true,message:'qiymət məcburidir',type:Number},
+        min:0,
+        max:{value:9999,message:'max deyer 9999'}
+      })}  label='Məhsulun Qiyməti' min='0' onChange={getPrice}  type='number' name='price'/>
+       <InputGroup  label='Endirim Qiyməti' min='0' onChange={getDiscount}  type='number' name='discount'/>
        
       </div>
       <div className='col-lg-6'>
       <Tab  clas='pro-desc' id='desc'>
       <Tab.Page id='az-desc' clas='pro-desc' lang='az'>
-      <JoditEditor onChange={getDescription_az} />
+      <JoditEditor name='product_description' ref={register({
+        required:{value:true,message:'teyinat məcburidir'},
+      })}  onChange={getDescription_az} />
       </Tab.Page>
       <Tab.Page id='en-desc' style={{'display':'none'}} clas='pro-desc' lang='az'>
-      <JoditEditor onChange={getDescription_en} />
+      <JoditEditor  onChange={getDescription_en} />
       </Tab.Page>
       <Tab.Page id='ru-desc' style={{'display':'none'}} clas='pro-desc' lang='az'>
-      <JoditEditor onChange={getDescription_ru} />
+      <JoditEditor   onChange={getDescription_ru} />
       </Tab.Page>
 
     </Tab>
       </div>
     </div>
     <div className='row'>
-    <div className='col-lg-6'>
+    <div className='col-lg-12'>
     <Card>
     <Card.Header name="Mehsul Resimlerini Elave Edin"/>
     <div><small>Rəsimləri toplu halda seçərək əlavə edə biilərsiniz.</small> </div>
@@ -293,13 +449,17 @@ function CreateProduct(){
     <div className='d-f'>
     {
      imageURLs.map(x=>{
-         return <Image s={x}/>
+         return <CompanyMiniImage thum_img={x.url}>
+            <ButtonDropDown onchange={removeImage} />
+         </CompanyMiniImage>
        })
      }
-     <FileInput onchange={imageLoad}/>
+     <FileInput name='image' register={register({
+      required:{value:true,message:'qiymət məcburidir',type:'file'}
+    })} onchange={imageLoad}/>
     </div>
   </Card>
-     <Button onClick={send}  name='Əlavə Et' type="input" className='bg-primary'/>
+     <Button name='Əlavə Et' type="input" className='bg-primary'/>
     </div>
     </div>
     </form>
