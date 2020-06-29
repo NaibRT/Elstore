@@ -21,7 +21,7 @@ const Category = () => {
         setTimeout(() => {
            
             boxCategory.style.transition="0.2s ease";
-            boxCategory.style.width="1000px";
+            boxCategory.style.width="200%";
         }, 200);
                
        }
