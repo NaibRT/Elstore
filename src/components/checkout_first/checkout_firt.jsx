@@ -176,7 +176,7 @@ function CheckoutFrist(props) {
                         <InputGroup onChange={(e)=>emailEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='email' placeholder='E-poçt adresi' />
                     </div>
                     <div className='col-lg-6 col-sm-12'>
-                        <InputGroup onChange={(e)=>surnameEventHandler(e)} placeholder='Soyadınız' />
+                        <InputGroup onChange={(e)=>surnameEventHandler(e)} cls='surname' placeholder='Soyadınız' />
                     </div>
                 </div>
             </Card>

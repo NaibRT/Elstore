@@ -3,10 +3,10 @@ import './InputGroup.styles.scss';
 
 
 
-function InputGroup({onfocus,id,disabled,required,type,label,helper,countertext,min, max,name,formIcon,placeholder,otherProps,onChange,register,classinout,value}) {
+function InputGroup({cls,onfocus,id,disabled,required,type,label,helper,countertext,min, max,name,formIcon,placeholder,otherProps,onChange,register,classinout,value}) {
 
     return (
-        <div  className='inputForm'>
+        <div  className={`inputForm ${cls}`}>
             <label id='scripted'  className='inputForm_label'>{label}</label> 
             <div className='inputForm_iconcontainer'>
             <input autoComplete='new-password' 

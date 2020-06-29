@@ -12,7 +12,7 @@ function SelectBox(props) {
                         <option>{props.firstopt} </option>
                     {
                         (props.options!==undefined)?props.options.map(item =>{
-                            return <option value={item.id}>{item.name}</option>
+                            return <option value={item.value}>{item.name}</option>
                             }):''
                     }
                     </select>

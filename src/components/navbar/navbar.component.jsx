@@ -161,7 +161,7 @@ const loginRegister = <>
             </div>
             <div className='navbar_center'>
                 <div className='navbar_logo'>
-                    <Link to='/'><img alt='' src={require('../../assets/logo/logo.svg')} /></Link>
+                    <Link to='/'><img alt='' src={require('../../assets/logo/logo_1.svg')} /></Link>
                 </div>
                 <div className='navbar_search'>
                 <form   className="search-input" >
@@ -190,7 +190,7 @@ const loginRegister = <>
             </div>
 
 
-            <div className={`responsive_nav ${toggle.active?'opennav':''} `}>
+            <div className={`${toggle.active ? 'opennav': ""} responsive_nav`}>
                     <div className='responsive_nav_top'>
                     <Selectbox  value={Langs} class='accordion_select'  options={Langs}/>
                     {/* <Selectbox   value={Currency} class='accordion_select'  options={Currency}/> */}
