@@ -66,6 +66,22 @@ const deleteProduct=(e)=>{
   }).catch(err=>console.log(err))
 }
 
+
+function handleSelect(e) {
+  let url=UrlGenerator('az',`search/product?filter[category_id]=${e.target.value}`)
+  axios.get(url)
+  .then(res => {
+      setProduct({data:res.data.data});
+  })
+}
+function searchName(e){
+  let url=UrlGenerator('az',`search/product?filter[product_name]=${e.target.value}`)
+  axios.get(url)
+  .then(res => {
+      setProduct({data:res.data.data});
+  })
+}
+
     return (
         <div className='container-fluid'>
             <div className="head_compaign">
@@ -76,7 +92,7 @@ const deleteProduct=(e)=>{
                 </div>
             </div>
             <br/>
-            <Datatable deleteProduct={deleteProduct}    thead ={th} tbody={product.data}/>
+            <Datatable deleteProduct={deleteProduct} searchName={searchName} handleSelect={handleSelect}   thead ={th} tbody={product.data}/>
         </div>
     )
 }

@@ -106,10 +106,10 @@ function CheckoutThird(props) {
 
     }
 
-    function backtoEdit(){
-        window.onload();
+    // function backtoEdit(){
+    //     window.onload();
 
-    }
+    // }
 
     return (
         
@@ -134,7 +134,7 @@ function CheckoutThird(props) {
            <div className='card_head_flex'>
             <div><Card.Header name='Çatdırılma ünvanı' /></div>
             <div>
-                <button  onClick={backtoEdit}>Düzəlİş et</button>
+                <button   >Düzəlİş et</button>
             </div>
 
            </div>
