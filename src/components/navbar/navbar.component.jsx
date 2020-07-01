@@ -8,6 +8,7 @@ import LangToggler from "../lang_currency_toggler/lang_currency_toggler";
 import Selectbox from "../Select-box/SelectBox.component";
 import {appContext} from '../../contexts/appContext'
 import $ from 'jquery'
+import UrlGenerator from '../../services/url-generator';
 
 const Langs =  [
     {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
@@ -88,10 +89,11 @@ function  Navbar(props) {
     const [navbarCat, setNavbarCat] = useState({
         data:[]
     })
+    let url=UrlGenerator('az','categories')
     useEffect(()=>{
         axios({
             method:'GET',
-            url:'http://139.180.144.49/api/v1/az/categories',
+            url:url,
     
         }).then(res=>{
             setNavbarCat({
@@ -109,9 +111,6 @@ function  Navbar(props) {
           });
     }
 
-
-   
-    const url = 'http://139.180.144.49/api/v1/az/categories';
   
      useEffect(()=>{
       axios({

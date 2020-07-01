@@ -1,12 +1,13 @@
 import React,{useState,useEffect} from 'react';
 import axios from "axios";
+import UrlGenerator from '../services/url-generator';
 const chipsContext=React.createContext({});
 
 function ChipsContext(props){
     
     const [chips,setChips]=useState([]);
     
-    const url = 'http://139.180.144.49/api/v1/az/products';
+    const url =UrlGenerator('az','products');
 
     useEffect(()=>{
      axios({
