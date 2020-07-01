@@ -42,7 +42,9 @@ function AppContextProvider(props) {
       if(x.id==id&& x.count>1){
           x.count--;
       }
-      totalPrice+=(x.price*x.count);
+      x.discount_price!==0
+      ?totalPrice+=(x.discount_price*x.count)
+      :totalPrice+=(x.price*x.count);
       //  totalDelivery+=x.delivery_price;
       return x          
   });
@@ -60,7 +62,9 @@ function AppContextProvider(props) {
         if(x.id==id){
             x.count++;
         }
-        totalPrice+=(x.price*x.count);
+        x.discount_price!==0
+        ?totalPrice+=(x.discount_price*x.count)
+        :totalPrice+=(x.price*x.count);
         //totalDelivery+=x.deliveryPrice;
         return x
         
@@ -138,8 +142,9 @@ function AppContextProvider(props) {
   }
 
   function getRegions(e){
+    let url=UrlGenerator('az',`regions?city_id=${e.target.value}`)
     console.log(e.target.value);
-  fetch(`http://139.180.144.49/api/v1/az/regions?city_id=${e.target.value}`)
+  fetch(url)
   .then(response => response.json())
   .then(data =>{
     return data;
@@ -171,7 +176,9 @@ function getUserCredentials() {
 
    basket.forEach(x=>{
     deliveryAmount+=x.delivery_price;
-    tp+=(x.price*x.count)
+    x.discount_price!==0
+    ?tp+=(x.discount_price*x.count)
+    :tp+=(x.price*x.count)
    })
      countEdv=((deliveryAmount+tp)*18/100);
     totalAmountAll=(deliveryAmount+tp)+countEdv;
@@ -184,18 +191,6 @@ function getUserCredentials() {
   
 },[basket]);
 
-
-//  let url=UrlGenerator('az','auth/me');
-//  fetch(url,{
-//      method:'Post',
-//      headers:{
-//          'Authorization':`${data.token_type} ${data.access_token}`
-//      }
-//  }).
-//  then(async res=>{
-//    let data=await res.json()
-//    console.log(data)
-//  })
 
  function AddToken(token){
     window.localStorage.setItem('token',JSON.stringify(token))

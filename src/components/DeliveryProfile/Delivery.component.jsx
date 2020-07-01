@@ -147,6 +147,47 @@ function DeliveryInfo(props) {
         }})
     }
 
+    const deleteProduct=(e)=>{
+         
+        let url=UrlGenerator('az',`users/request/delete`);
+        let token=AppContext.app.token;
+        console.log(token)
+
+
+        swal({
+            title: "Hesabınızı silməyə əminsinizmi?",
+            text: " ",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                fetch(url,{
+                    method:'Delete',
+                    headers:{
+                        'Authorization':token!=null?`${token.token_type} ${token.access_token}`:''
+                    }
+                    
+                    
+                }).then(async res=>{
+                    // let data=await res.json();
+                    if(res.ok){
+                      setUpdate({
+                        ...update,
+                      })
+                      
+                      AppContext.events.logout();
+                    }
+                    
+                }).catch(err=>console.log(err))
+            } 
+          });
+
+
+      
+      }
+    
      function updateSubmit(data) {
         let url=UrlGenerator('az',`users/courier/update`)
         let token=AppContext.events.getToken();
@@ -321,7 +362,7 @@ function DeliveryInfo(props) {
                                 </div>
                                 <Button type='submit' name="Yadda saxla"/>
                                 </form>
-                                <Button  className="button_delete--acc" name="Hesabi sil"/>
+                                <Button onClick={deleteProduct}  className="button_delete--acc" name="Hesabi sil"/>
                                 </section>
                             </div>
                             <section id="adress">

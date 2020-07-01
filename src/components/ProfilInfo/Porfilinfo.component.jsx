@@ -48,6 +48,47 @@ function Porfilinfo(props) {
        )
     }, []);
 
+    const deleteProduct=(e)=>{
+         
+        let url=UrlGenerator('az',`users/request/delete`);
+        let token=AppContext.app.token;
+        console.log(token)
+
+
+        swal({
+            title: "Hesabınızı silməyə əminsinizmi?",
+            text: " ",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                fetch(url,{
+                    method:'Delete',
+                    headers:{
+                        'Authorization':token!=null?`${token.token_type} ${token.access_token}`:''
+                    }
+                    
+                    
+                }).then(async res=>{
+                    // let data=await res.json();
+                    if(res.ok){
+                      setUpdate({
+                        ...update,
+                      })
+                      
+                      AppContext.events.logout();
+                    }
+                    
+                }).catch(err=>console.log(err))
+            } 
+          });
+
+
+      
+      }
+
        
     const [datalar,setDatalar]=useState({
         field:{
@@ -316,7 +357,7 @@ function Porfilinfo(props) {
                                     <div className="borders"></div>
                                 </div>
                                 <Button type='submit' name="Yadda saxla"/>
-                                <Button  className="button_delete--acc" name="Hesabi sil"/>
+                                <Button onClick={deleteProduct} className="button_delete--acc" name="Hesabi sil"/>
                                 </form>
                                 </section>
                                 

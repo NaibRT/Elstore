@@ -94,15 +94,16 @@ console.log(texturl)
     })
     
     function takeSelectboxValue(e){
-      fetch(`http://139.180.144.49/api/v1/az/regions?city_id=${e.target.value}`)
+        let url=UrlGenerator('az',`regions?city_id=${e.target.value}`)
+      fetch(url)
       .then(response => response.json())
       .then(data => setRegion({ data: data }));
     
     }
 
     function takeSelectboxValue1(e){
-        console.log(e.target.value);
-      fetch(`http://139.180.144.49/api/v1/az/villages?region_id=${e.target.value}`)
+       let url=UrlGenerator('az',`villages?region_id=${e.target.value}`)
+      fetch(url)
       .then(response => response.json())
       .then(data => setVillages({ data: data }));
     
@@ -111,8 +112,8 @@ console.log(texturl)
     
     
     useEffect(() => {
-       
-      fetch('http://139.180.144.49/api/v1/az/cities')
+       let url=UrlGenerator('az','cities');
+      fetch(url)
       .then(response => response.json())
       .then(data => setCities({ data: data }));
     }, [])

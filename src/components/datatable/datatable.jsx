@@ -10,7 +10,7 @@ var $  = require( 'jquery' );
 var dt = require( 'datatables.net' );
 
 
-function Datatable({thead,tbody,deleteProduct}) {
+function Datatable({thead,tbody,deleteProduct,handleSelect,searchName}) {
 
 
     const [category,setCategory] = useState({
@@ -48,29 +48,8 @@ function Datatable({thead,tbody,deleteProduct}) {
     // const filteredProduct =tbody.length>0
     //                       ?tbody.filter(item=> item.product_name.toLowerCase().includes(searchMarket.searchField.toLowerCase()))
     //                       :[];
-    function searchName(e){
-        setSearch({
-            ...searchMarket,
-            searchField:e.target.value
-        })
-    }
-    
 
 
-    function handleSelect(e) {
-        axios.get(`http://139.180.144.49/api/v1/az/search/product?filter[category_id]=${e.target.value}`)
-        .then(res => {
-            setState({filteredData: res.data.data});
-            
-            if(state.filteredData.length===0){
-                alert('Bu kateqoriyada mehsul yoxdur')
-            }
-        })
-    }
-
-
-   
-    
     return(
         <div className='dtable'>
             <div className='datatable_search'>

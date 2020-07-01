@@ -5,14 +5,15 @@ import Filter from '../components/filter/filter.component'
 import SearchResultPage from '../components/Search-reasult-page/SearchResult.component.jsx'
 import UrlGenerator from '../services/url-generator';
 import {appContext} from '../contexts/appContext';
+import { queries } from '@testing-library/react';
 
 
 function Search(props) {
-    let SearchContext=useContext(searchContext)
     let AppContext=useContext(appContext)
     const [priceFrom,setPriceFrom]= useState('');
     const [queryParams, setQueryParams] = useState([])
     const [priceTo,setPriceTo]= useState('');
+    const [order,setOrder]=useState('');
     const [catFilter, setCatFilter] = useState({
         data:[]
     })
@@ -20,15 +21,40 @@ function Search(props) {
 
     function clickHandler(e) {
         console.log(e.target.checked)
+        let pageUrl=window.location.pathname;
         let query='';
         let id=e.target.value;
+        let sellerId='';
         let queries=queryParams;
-        if(AppContext.app.isAuthorized){
-            let store_id=AppContext.app.user.id
-            query=`filter[company_id]=${store_id}&filter[category_id]=`;
-        }else{
-            query=`filter[category_id]=`;
+
+        if(pageUrl.includes('company')){
+            sellerId=Object.keys(props.match.params).length!==0
+            ?props.match.params.id:null;
+            query+=query!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
         }
+        if(pageUrl.includes('profile')){
+            sellerId=AppContext.app.user.id;
+            query+=query!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
+        }
+        if(queryParams.length>0){
+            query+=query!==''?`&filter[category_id]=`:`&filter[category_id]=`
+           queryParams.forEach((x,k)=>{
+               console.log(k)
+               k===queries.length-1
+               ?query+=`${x}`
+               :query+=`${x},`
+           })
+        }
+        if(order!==''){
+            query+=query!==''?`&filter[order]=${order}`:`filter[order]=${order}`
+        }
+
+        // if(AppContext.app.isAuthorized){
+        //     let store_id=AppContext.app.user.id
+        //     query=`filter[company_id]=${store_id}&filter[category_id]=`;
+        // }else{
+        //     query=`filter[category_id]=`;
+        // }
         if(e.target.checked){
             queries.push(`${id}`)
        }else{
@@ -37,18 +63,22 @@ function Search(props) {
            console.log(newqueries)
        }
        
-       queries.forEach((x,k)=>{
+       if(queryParams.length>0){
+        query+=query!==''?`&filter[category_id]=`:`filter[category_id]=`
+       queryParams.forEach((x,k)=>{
            console.log(k)
            k===queries.length-1
            ?query+=`${x}`
            :query+=`${x},`
        })
-       if(priceFrom!==''){
-         query+=`&filter[min_prize]=${priceFrom}`
+    }
+       if(priceFrom!=''){
+         query+=query!=''?`&filter[min_prize]=${priceFrom}`:`filter[min_prize]=${priceFrom}`
        }
-       if(priceTo!==null){
-           query+=`&filter[max_price]=${priceTo}`
+       if(priceTo!=''){
+           query+=query!=''?`&filter[max_price]=${priceTo}`:`filter[max_price]=${priceTo}`
        }
+       console.log(query)
        let url=UrlGenerator('az',`search/product?${query}`)
        fetch(url)
        .then(async res=>{
@@ -65,6 +95,53 @@ function Search(props) {
        }).catch(err=>console.log(err))
     }
 
+
+     const selectHandle=(e)=>{
+         let pageUrl=window.location.pathname;
+         let filterQuery='';
+         let sellerId='';
+         if(pageUrl.includes('company')){
+             sellerId=Object.keys(props.match.params).length!==0
+             ?props.match.params.id:null;
+             filterQuery+=filterQuery!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`;
+         }
+         if(pageUrl.includes('profile')){
+             sellerId=AppContext.app.user.id;
+             filterQuery+=filterQuery!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`;
+         }
+         if(queryParams.length>0){
+            filterQuery+=filterQuery!==''?`&filter[category_id]=`:`filter[category_id]=`
+            queryParams.forEach((x,k)=>{
+                console.log(k)
+                k===queryParams.length-1
+                ?filterQuery+=`${x}`
+                :filterQuery+=`${x},`
+            })
+         }
+         if(priceFrom!=''){
+            filterQuery+=filterQuery!==''?`&filter[min_prize]=${priceFrom}`:`filter[min_prize]=${priceFrom}`
+          }
+          if(priceTo!=''){
+              filterQuery+=filterQuery!==''?`&filter[max_price]=${priceTo}`:`filter[max_price]=${priceTo}`
+          }
+           setOrder(e.target.value);
+          filterQuery+=filterQuery!==''?`&filter[order]=${e.target.value}`:`filter[order]=${e.target.value}`;
+           console.log(filterQuery)
+          let url=UrlGenerator('az',`search/product?${filterQuery}`);
+          fetch(url)
+          .then(async res=>{
+              let data=await res.json();
+              console.log(data)
+              setQueryParams([
+                 ...queries
+              ])
+              setCatFilter({
+                  ...catFilter,
+                  data:data.data
+              })
+   
+          }).catch(err=>console.log(err))
+     }
     
      useEffect(()=>{
          let url=UrlGenerator('az','search/product')
@@ -81,19 +158,38 @@ function Search(props) {
    
     function Pricefrom(e){
         setPriceFrom(e.target.value)
-        let filteQuery=`filter[category_id]=`
-        queryParams.forEach((x,k)=>{
-            console.log(k)
-            k===queryParams.length-1
-            ?filteQuery+=`${x}`
-            :filteQuery+=`${x},`
-        })
-        filteQuery+=`&filter[min_price]=${e.target.value}`
+        let sellerId='';
+        let pageUrl=window.location.pathname;
+        let filterQuery='';
+        if(pageUrl.includes('company')){
+            sellerId=Object.keys(props.match.params).length!==0
+            ?props.match.params.id:null;
+            filterQuery+=filterQuery!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
+        }
+        if(pageUrl.includes('profile')){
+            sellerId=AppContext.app.user.id;
+            filterQuery+=filterQuery!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
+        }
+        if(queryParams.length>0){
+            filterQuery+=filterQuery!==''?`&filter[category_id]=`:`filter[category_id]=`
+           queryParams.forEach((x,k)=>{
+               console.log(k)
+               k===queryParams.length-1
+               ?filterQuery+=`${x}`
+               :filterQuery+=`${x},`
+           })
+        }
+        if(order!==''){
+            filterQuery+=filterQuery!==''?`&filter[order]=${order}`:`filter[order]=${order}`
+        }
 
-        if(priceTo!=='')
-        filteQuery+=`&filter[max_price]=${priceTo}`
-        
-        let url=UrlGenerator('az',`search/product?${filteQuery}`)
+
+        filterQuery+=`&filter[min_price]=${e.target.value}`
+
+        if(priceTo!='')
+        filterQuery+=filterQuery!==''?`&filter[max_price]=${priceTo}`:`filter[max_price]=${priceTo}`
+        console.log(filterQuery)
+        let url=UrlGenerator('az',`search/product?${filterQuery}`)
         fetch(url)
         .then(async res=>{
             let data=await res.json();
@@ -109,19 +205,39 @@ function Search(props) {
 
     function Priceto(e){
         setPriceTo(e.target.value)
-        let filteQuery=`filter[category_id]=`
-        queryParams.forEach((x,k)=>{
-            console.log(k)
-            k===queryParams.length-1
-            ?filteQuery+=`${x}`
-            :filteQuery+=`${x},`
-        })
+         
+        let sellerId='';
+        let pageUrl=window.location.pathname;
+        let filterQuery='';
+        if(pageUrl.includes('company')){
+            sellerId=Object.keys(props.match.params).length!==0
+            ?props.match.params.id:null;
+            filterQuery+=filterQuery!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
+        }
+        if(pageUrl.includes('profile')){
+            sellerId=AppContext.app.user.id;
+            filterQuery+=filterQuery!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
+        }
+        if(queryParams.length>0){
+            filterQuery+=filterQuery!==''?`&filter[category_id]=`:`filter[category_id]=`
+           queryParams.forEach((x,k)=>{
+               console.log(k)
+               k===queryParams.length-1
+               ?filterQuery+=`${x}`
+               :filterQuery+=`${x},`
+           })
+        }
+        if(order!==''){
+            filterQuery+=filterQuery!==''?`&filter[order]=${order}`:`filter[order]=${order}`
+        }
 
-        filteQuery+=`&filter[max_price]=${e.target.value}`
+        filterQuery+=`&filter[max_price]=${e.target.value}`
 
-        if(priceFrom!=='')
-        filteQuery+=`&filter[min_price]=${priceFrom}`
-        let url=UrlGenerator('az',`search/product?${filteQuery}`)
+        if(priceFrom!='')
+        filterQuery+=filterQuery!==''?`&filter[min_price]=${priceFrom}`:`filter[min_price]=${priceFrom}`;
+
+        console.log(filterQuery)
+        let url=UrlGenerator('az',`search/product?${filterQuery}`)
         fetch(url)
         .then(async res=>{
             let data=await res.json();
@@ -149,7 +265,6 @@ function Search(props) {
                 //         )
                 //     })
                 // }
-                console.log('catfilter',catFilter)
     return (
         
         <div className='container-fluid'>
@@ -170,7 +285,7 @@ function Search(props) {
                 })
                 :''
              } */}
-            <SearchResultPage  catFilter={ catFilter.data} />
+            <SearchResultPage handleSelect={selectHandle} catFilter={ catFilter.data} />
          </div>
              </div>
         </div>

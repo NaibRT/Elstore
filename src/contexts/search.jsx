@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from "axios"
+import UrlGenerator from '../services/url-generator';
 
 const searchContext=React.createContext({});
 
@@ -17,7 +18,8 @@ class SearchContext extends React.Component{
  }
 
  componentWillMount(){
-  axios.get(`http://139.180.144.49/api/v1/az/products?include=seller,images`)
+   let url=UrlGenerator('az','products?include=seller,images')
+  axios.get(url)
   .then(res => {
       this.setState({data: res.data.data});
   })
@@ -26,17 +28,16 @@ class SearchContext extends React.Component{
 
 
     filterCategory =(e)=>{
-      console.log(e.target.value)
-    // this.setState({
-    //   filterCat : Number(e.target.value)
-    // });
-    // // alert(e.target.value)
-    // axios.get(`http://139.180.144.49/api/v1/az/search/product?filter[category_id]=${e.target.value}`)
-    // .then(res => {
-    //     this.setState({ filteredData: res.data.data});
-    //     console.log(res.data.data)
-    // })
- 
+      let url=UrlGenerator('az',`search/product?filter[category_id]=${e.target.value}`)
+      console.log("fitercategory",e.target.value)
+    this.setState({
+      filterCat : Number(e.target.value)
+    });
+    axios.get(url)
+    .then(res => {
+        this.setState({ filteredData: res.data.data});
+        console.log(res.data.data)
+    })
   }
 
 

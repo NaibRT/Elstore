@@ -2,6 +2,7 @@ import React,{useState,useContext, useEffect} from 'react'
 import "../StoreProfil/StoreProfil.scss"
 import Button from "../button/button.component"
 import {useForm} from 'react-hook-form'
+import swal from "sweetalert"
 import Input from "../InputGroup/InputGroup.component"
 import {appContext} from '../../contexts/appContext'
 import UrlGenerator from '../../services/url-generator'
@@ -111,6 +112,47 @@ const StoreProfil = () => {
           reader.readAsDataURL(file);
           
         }
+      }
+
+      const deleteProduct=(e)=>{
+         
+        let url=UrlGenerator('az',`users/request/delete`);
+        let token=AppContext.app.token;
+        console.log(token)
+
+
+        swal({
+            title: "Hesabınızı silməyə əminsinizmi?",
+            text: " ",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                fetch(url,{
+                    method:'Delete',
+                    headers:{
+                        'Authorization':token!=null?`${token.token_type} ${token.access_token}`:''
+                    }
+                    
+                    
+                }).then(async res=>{
+                    // let data=await res.json();
+                    if(res.ok){
+                      setUpdate({
+                        ...update,
+                      })
+                      
+                      AppContext.events.logout();
+                    }
+                    
+                }).catch(err=>console.log(err))
+            } 
+          });
+
+
+      
       }
       
       
@@ -264,7 +306,7 @@ const StoreProfil = () => {
                      </div>
                      <Button type='submit' name="Yadda saxla"/>
                      </form>
-                     <Button className="button_delete--acc" name="Hesabi sil"/>
+                     <Button className="button_delete--acc" onClick={deleteProduct} name="Hesabi sil"/>
                 </div>
                 <div className="col-lg-6 col-md-12 col-xs-12">
                 <div id="Adress__Data" >
