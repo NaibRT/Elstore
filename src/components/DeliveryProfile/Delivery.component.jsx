@@ -189,7 +189,7 @@ function DeliveryInfo(props) {
       }
     
      function updateSubmit(data) {
-        let url=UrlGenerator('az',`users/courier/update`)
+        let url=UrlGenerator('az',`users/update`)
         let token=AppContext.events.getToken();
         let newData=new FormData();
 
