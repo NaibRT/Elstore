@@ -40,6 +40,8 @@ function  Navbar(props) {
 
       
     function toggleNav() {
+        document.getElementsByTagName('body')[0].classList.toggle('of-hiddel');
+        document.getElementById('res-nav-id').classList.toggle('of-scroll');
         const currentState = toggle.active;
         setToggle({ active: !currentState });
     }
@@ -189,7 +191,7 @@ const loginRegister = <>
             </div>
 
 
-            <div className={`${toggle.active ? 'opennav': ""} responsive_nav`}>
+            <div className={`${toggle.active ? 'opennav': ""} responsive_nav`} id='res-nav-id'>
                     <div className='responsive_nav_top'>
                     <Selectbox  value={Langs} class='accordion_select'  options={Langs}/>
                     {/* <Selectbox   value={Currency} class='accordion_select'  options={Currency}/> */}
@@ -212,8 +214,8 @@ const loginRegister = <>
                         
                     </MobileModal>
                     <div className='responsive_nav_login'>
-                        <Link className='responsive_nav_login_log' to='/register'>Register</Link>
-                        <Link className='responsive_nav_login_log' to='/login'>Login</Link>
+                        <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Register</Link>
+                        <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Login</Link>
                     </div>
                     
                     <div className='responsive_nav_bottom'>
