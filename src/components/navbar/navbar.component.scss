@@ -52,8 +52,9 @@
         text-transform: uppercase;
         text-decoration: none;
         position: relative;
-        top: 17px;
+        top: 21px;
         color: $text-dark;
+        margin-right: 10px;
         img {
           height: 25px;
           position: relative;
@@ -359,9 +360,14 @@
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
-  .navbar_buttons_link {
-    display: none !important;
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
   }
+  // .navbar_buttons_link {
+  //   display: none !important;
+  // }
   .navbar_buttons {
     flex: 0.2 !important;
   }
@@ -427,9 +433,11 @@
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .navbar_buttons_link {
-        display: none !important;
-      }
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
+  }
       .navbar_buttons {
         flex: 0.3 !important;
       }
@@ -504,9 +512,11 @@
 }
 
 @media (min-width: 415px) and (max-width: 575.98px) {
-    .navbar_buttons_link {
-        display: none !important;
-      }
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
+  }
       .navbar_buttons {
         flex: 0.5 !important;
       }
@@ -582,9 +592,11 @@
 
 
 @media only screen and (min-device-width: 376px) and (max-device-width: 414px){
-    .navbar_buttons_link {
-        display: none !important;
-      }
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
+  }
       .navbar_buttons {
         flex: 0.5 !important;
       }
@@ -671,9 +683,11 @@
 }
 
 @media only screen and  (max-device-width : 320px) {
-    .navbar_buttons_link {
-        display: none !important;
-      }
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
+  }
       .navbar_buttons {
         flex: 0.5 !important;
       }
@@ -760,9 +774,11 @@
 }
 
 @media only screen and (min-device-width : 321px) and (max-device-width : 360px) {
-    .navbar_buttons_link {
-        display: none !important;
-      }
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
+  }
       .navbar_buttons {
         flex: 0.5 !important;
       }
@@ -849,9 +865,11 @@
 }
 
 @media only screen and (min-device-width : 361px) and (max-device-width : 375px) {
-    .navbar_buttons_link {
-        display: none !important;
-      }
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
+  }
       .navbar_buttons {
         flex: 0.5 !important;
       }

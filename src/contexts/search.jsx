@@ -42,8 +42,8 @@ class SearchContext extends React.Component{
 
 
    searchForm=(e)=>{
-     e.preventDefault();
-     e.stopPropagation()
+    //  e.preventDefault();
+    //  e.stopPropagation()
     var search =  e.target.value;
      this.setState((prevState)=>({
         ...prevState,

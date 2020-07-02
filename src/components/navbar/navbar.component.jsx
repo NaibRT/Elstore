@@ -1,6 +1,6 @@
 import React,{useState, useEffect,useContext} from 'react';
 import './navbar.component.scss';
-import { Link } from "react-router-dom";
+import {useHistory,Link } from "react-router-dom";
 import {searchContext} from '../../contexts/search';
 import MobileModal from '../categorymobile_modal/mobilemodal'
 import axios from 'axios'
@@ -20,13 +20,23 @@ function  Navbar(props) {
     const products = useContext(searchContext);
     const [visiblepp,setVisiblepp] =useState(false);
     const AppContext=useContext(appContext);
+    const Hostory=useHistory();
 
     const [categories, setCategories] = useState({
         data:[]
     })
+
     const [show,setShow] = useState({
         show: false
       })
+
+      const [navbarCat, setNavbarCat] = useState({
+        data:[]
+    })
+
+    const [toggle, setToggle] = useState({
+        active: false,
+      });
 
 
     function showbar(){
@@ -34,14 +44,12 @@ function  Navbar(props) {
 
     }
 
-    const [toggle, setToggle] = useState({
-        active: false,
-      });
 
       
     function toggleNav() {
         document.getElementsByTagName('body')[0].classList.toggle('of-hiddel');
         document.getElementById('res-nav-id').classList.toggle('of-scroll');
+        document.getElementById('res-nav-id').classList.toggle('opennav');
         const currentState = toggle.active;
         setToggle({ active: !currentState });
     }
@@ -88,9 +96,6 @@ function  Navbar(props) {
 
     })
    
-    const [navbarCat, setNavbarCat] = useState({
-        data:[]
-    })
     let url=UrlGenerator('az','categories')
     useEffect(()=>{
         axios({
@@ -105,15 +110,12 @@ function  Navbar(props) {
     },[])
 
 
-
-      
     function handleClick(){
         setShow({
             show: !show.show
           });
     }
 
-  
      useEffect(()=>{
       axios({
           method:'GET',
@@ -165,9 +167,9 @@ const loginRegister = <>
                     <Link to='/'><img alt='' src={require('../../assets/logo/logo_1.svg')} /></Link>
                 </div>
                 <div className='navbar_search'>
-                <form   className="search-input" >
+                <form onSubmit={(e)=>{e.preventDefault();History.push(`/search/filter[title]=${products.state.searchKey}`)}}  className="search-input" >
                     <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
-                    <Link to={`/search/filter=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/icons/search.svg')} /></Link>
+                    <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/icons/search.svg')} /></Link>
                 </form>
                 </div>
                 <div className='navbar_select'>
@@ -190,8 +192,8 @@ const loginRegister = <>
                 </div>
             </div>
 
-
-            <div className={`${toggle.active ? 'opennav': ""} responsive_nav`} id='res-nav-id'>
+            {/*------------------responsive nav*/}
+            <div className='responsive_nav' id='res-nav-id'>
                     <div className='responsive_nav_top'>
                     <Selectbox  value={Langs} class='accordion_select'  options={Langs}/>
                     {/* <Selectbox   value={Currency} class='accordion_select'  options={Currency}/> */}
