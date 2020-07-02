@@ -34,8 +34,9 @@ function CategoryContext(props){
         url:url,
 
     }).then(res=>{
+        console.log(res.data.data)
         setCategories(res.data.data);
-    })
+    }).catch(err=>{console.log(err)})
    },[])
 
       

@@ -9,13 +9,14 @@ import CategoryContext from "./contexts/category";
 import AppContextProvider from './contexts/appContext'
 import Main from './pages/container-page';
 import LoginModal from './components/Modal/Modal.component';
-
+import Pagination from "./components/Pagination/pagination.component"
 
 
 function App() {
 
   
   return (
+    
     
     <div className="App">
    <AppContextProvider>
