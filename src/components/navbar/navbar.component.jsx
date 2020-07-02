@@ -20,7 +20,7 @@ function  Navbar(props) {
     const products = useContext(searchContext);
     const [visiblepp,setVisiblepp] =useState(false);
     const AppContext=useContext(appContext);
-    const Hostory=useHistory();
+    const History=useHistory();
 
     const [categories, setCategories] = useState({
         data:[]
