@@ -50,6 +50,7 @@ function ProductCartItem({data,isLiked}) {
      (data.discount!=0)?<p className="product_-discount">{data.discount} % endirim</p>:null
     
   }
+  
   <div className="product__price ">
   {
     data.discount_price!==0
