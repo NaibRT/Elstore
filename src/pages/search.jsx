@@ -6,17 +6,17 @@ import SearchResultPage from '../components/Search-reasult-page/SearchResult.com
 import UrlGenerator from '../services/url-generator';
 import {appContext} from '../contexts/appContext';
 import { queries } from '@testing-library/react';
+import Pagenation from "../components/Pagination/pagination.component"
 
 
 function Search(props) {
     let AppContext=useContext(appContext)
+    let SearchContext=useContext(searchContext)
     const [priceFrom,setPriceFrom]= useState('');
     const [queryParams, setQueryParams] = useState([])
     const [priceTo,setPriceTo]= useState('');
     const [order,setOrder]=useState('');
-    const [catFilter, setCatFilter] = useState({
-        data:[]
-    })
+    
 
 
     function clickHandler(e) {
@@ -87,8 +87,9 @@ function Search(props) {
            setQueryParams([
               ...queries
            ])
-           setCatFilter({
-               ...catFilter,
+          SearchContext.events.setCatFilter({
+               ...SearchContext.catFilter,
+               meta:data.meta,
                data:data.data
            })
 
@@ -135,8 +136,9 @@ function Search(props) {
               setQueryParams([
                  ...queries
               ])
-              setCatFilter({
-                  ...catFilter,
+              SearchContext.events.setCatFilter({
+                  ...SearchContext.catFilter,
+                  meta:data.meta,
                   data:data.data
               })
    
@@ -150,7 +152,7 @@ function Search(props) {
          fetch(`${url}?${query}`)
         .then(response => response.json())
         .then(data => {
-            setCatFilter({data:data.data});
+            SearchContext.events.setCatFilter({data:data.data,meta:data.meta});
             console.log(data)
         });
       },[])
@@ -194,8 +196,9 @@ function Search(props) {
         .then(async res=>{
             let data=await res.json();
             console.log(data)
-            setCatFilter({
-                ...catFilter,
+            SearchContext.events.setCatFilter({
+                ...SearchContext.catFilter,
+                meta:data.meta,
                 data:data.data
             })
  
@@ -242,8 +245,9 @@ function Search(props) {
         .then(async res=>{
             let data=await res.json();
             console.log(data)
-            setCatFilter({
-                ...catFilter,
+            SearchContext.events.setCatFilter({
+                ...SearchContext.catFilter,
+                meta:data.meta,
                 data:data.data
             })
  
@@ -273,7 +277,7 @@ function Search(props) {
              <Filter
              clickHandler={clickHandler}
              Pricefrom={Pricefrom}
-             Priceto={Priceto}
+             Priceto={Priceto} 
               />
          </div>
          <div className='col-lg-9'>
@@ -285,7 +289,8 @@ function Search(props) {
                 })
                 :''
              } */}
-            <SearchResultPage handleSelect={selectHandle} catFilter={ catFilter.data} />
+            <SearchResultPage handleSelect={selectHandle} catFilter={ SearchContext.catFilter.data} />
+             <Pagenation paginationHandling={SearchContext.events.PagenationHandling} meta={SearchContext.catFilter.meta}/>
          </div>
              </div>
         </div>

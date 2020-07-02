@@ -41,7 +41,6 @@ function  Navbar(props) {
 
     function showbar(){
         setVisiblepp(!visiblepp)
-
     }
 
 
@@ -147,7 +146,7 @@ const loginRegister = <>
                     <Link className='navbar_buttons_link log signup' onClick={Sign} >hesab yarat </Link>
                       
                     </> 
-                    
+             console.log(categories.data)       
     return (
         <div className='navbar'>
             <div className='navbar_top'>
