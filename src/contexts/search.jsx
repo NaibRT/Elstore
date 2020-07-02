@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import axios from "axios"
 import UrlGenerator from '../services/url-generator';
 
@@ -6,67 +6,92 @@ const searchContext=React.createContext({});
 
 
 
-class SearchContext extends React.Component{
- constructor(props) {
-  super(props)
+function SearchContext({children}){
+ 
+  const [catFilter, setCatFilter] = useState({
+    data:[],
+    meta:{}
+})
   
-  this.state = {
+   const [state,setState] = useState({
     'searchKey':"",
     "data":[] ,
     "filteredData":[]
-  }
- }
+  })
 
- componentWillMount(){
-   let url=UrlGenerator('az','products?include=seller,images')
+useEffect(() => {
+  let url=UrlGenerator('az','products?include=seller,images')
   axios.get(url)
   .then(res => {
-      this.setState({data: res.data.data});
+       setState({data: res.data.data});
   })
-  
-}
+}, []);
 
 
-    filterCategory =(e)=>{
+    const filterCategory =(e)=>{
       let url=UrlGenerator('az',`search/product?filter[category_id]=${e.target.value}`)
       console.log("fitercategory",e.target.value)
-    this.setState({
+    setState({
       filterCat : Number(e.target.value)
     });
     axios.get(url)
     .then(res => {
-        this.setState({ filteredData: res.data.data});
+        setState({ filteredData: res.data.data});
         console.log(res.data.data)
     })
   }
 
+    const PagenationHandling=(e)=>{
+        // console.log(e.target.innerHTML)
+         let url=UrlGenerator('az',`products?page=${e.target.innerHTML}&filter[category_id]=1,10,16,15`)
+    fetch(url,{
+        method:"GET",
+    })
+    .then(async res=>{
+      let data=await res.json();
+     if(res.ok){
+         setCatFilter({
+           data:data.data,
+           meta:data.meta
+         })
+        
+     }
+    })
+    .catch(
+        (err) =>console.log(err)
+    )
+    } 
 
-   searchForm=(e)=>{
+
+   const searchForm=(e)=>{
     //  e.preventDefault();
     //  e.stopPropagation()
     var search =  e.target.value;
-     this.setState((prevState)=>({
+     setState((prevState)=>({
         ...prevState,
         searchKey:search,
         value:search
      }))
  }
 
- render(){
+  
     return (
      <searchContext.Provider value={{
-         state:this.state,
+         state:state,
+         catFilter:catFilter,
          events:{
-            searchForm:this.searchForm,
-            filterCategory:this.filterCategory,
-            setState:this.setState
+           setCatFilter:setCatFilter,
+            searchForm:searchForm,
+            filterCategory:filterCategory,
+            setState:setState,
+            PagenationHandling:PagenationHandling
          }
          }}>
-       {this.props.children}
+       {children}
      </searchContext.Provider>
   )
    }
-  }
+ 
   
   export default SearchContext
   export {searchContext}

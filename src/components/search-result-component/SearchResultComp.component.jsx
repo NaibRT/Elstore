@@ -1,7 +1,6 @@
 import React from 'react'
 import ProductCardItem from '../product-card-item/product-cart-item.component'
 
-
 import './SearchResultComp.component.scss'
 function SearchResultComp(props) {
     
