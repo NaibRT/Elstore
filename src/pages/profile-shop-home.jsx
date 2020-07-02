@@ -59,7 +59,7 @@ function ProfileShopHome(props) {
                      cover_image:reader.result
                  }
              })
-             let url=UrlGenerator('az','users/company/update');
+             let url=UrlGenerator('az','users/update');
              let token=AppContext.events.getToken()
              let formdata=new FormData();
              formdata.append('cover_image',img)
@@ -86,10 +86,10 @@ function ProfileShopHome(props) {
                 ...product,
                 store:{
                     ...product.store,
-                    cover_thumbnail_image:reader.result
+                    logo:reader.result
                 }
             })
-            let url=UrlGenerator('az','users/company/update');
+            let url=UrlGenerator('az','users/update');
             let token=AppContext.events.getToken()
             let formdata=new FormData();
             formdata.append('logo',img)
