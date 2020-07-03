@@ -42,7 +42,7 @@ useEffect(() => {
   }
 
     const PagenationHandling=(e)=>{
-        // console.log(e.target.innerHTML)
+      
          let url=UrlGenerator('az',`products?page=${e.target.innerHTML}&filter[category_id]=1,10,16,15`)
     fetch(url,{
         method:"GET",
@@ -60,6 +60,12 @@ useEffect(() => {
     .catch(
         (err) =>console.log(err)
     )
+    let focus =document.querySelectorAll(".focustext");
+      for (let i = 0; i < focus.length; i++) {
+        if(catFilter.meta.current_page==(i+1) ){
+          focus[i].classList.add("activ")
+        }
+      }
     } 
 
 

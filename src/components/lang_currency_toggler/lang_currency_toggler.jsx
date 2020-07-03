@@ -9,6 +9,7 @@ const Langs =  [{id:'Azərbaycan',name:'Azərbaycan'},{id:'İnglis',name:'İngli
 
 
 function LangToggler() {
+    
     useEffect(()=>{
         // var acc = document.getElementsByClassName("accordion_lang");
         //     var i;
@@ -52,14 +53,17 @@ function LangToggler() {
         })
     }
 
-    const accordionLangHandler=(e)=>{
-        console.log(e.target)
-    }
+    // const accordionLangHandler=(e)=>{
+    //     console.log(e.target)    
+    // }
+
+
+
 
     return (
-        <>
+    <>
         <div className='select_border'>
-        <button class="accordion_lang" onClick={accordionLangHandler}>
+        <button class="accordion_lang" >
         <div>{languageCurrency.language}</div> 
         <div className='accordion_next'>  <img src={require("../../assets/images/icons/next-icon.svg")} /></div>
             
@@ -71,7 +75,7 @@ function LangToggler() {
 <Selectbox handleChange={handleChange} name='currency' value={Currency}  class='accordion_select'  options={Currency}/>*/}
         </div>
         </div>
-        </>
+    </>
     )
 }
 

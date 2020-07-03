@@ -25,9 +25,10 @@ const DeliveryRegistr = () => {
    })
    .then(async res=>{
        if(res.ok){
-        let data=await res.json();
-        AppContext.events.AddToken(data)
-        swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
+        // let data=await res.json();
+        // AppContext.events.AddToken(data)
+        // swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
+        document.getElementById("login__modal").style.display="none"
         history.push("/");
        }else{
         swal("Təəssüflər", "Bu adda email artıq mövcuddr", "error");

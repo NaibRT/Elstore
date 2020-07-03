@@ -101,7 +101,7 @@ function Basket(props) {
                                         </div>
                                         <div className='col-lg-12 col-md-12 col-sm-12'>
                                         {
-                                            AppContext.app.isAuthorized?
+                                            AppContext.app.isAuthorized && AppContext.basket ?
                                             <Link style={{'textDecoration':'none'}} to='/checkout'><Button className='bg-primary--light'>Sifaris ver</Button></Link>
                                              :<Link onClick={()=>{
                                                 document.getElementById('login__modal').style.display='block';

@@ -141,7 +141,9 @@ console.log(texturl)
                        <Input name='password'  placeholder={"Şifrə"} type="password" register={register2({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors2.password&&errors2.password.message}/>
                        </div>
                        <div className="registr__input">
-                       <Input   type="text" placeholder="Mağaza haqqında ümumi məlumat" />
+                       <Input  name="description" type="text" placeholder="Mağaza haqqında ümumi məlumat" register={register2({
+                maxLength:{value:255,message:'max  255 char need'}
+            })} helper={errors2.name&&errors2.name.message} />
                        </div>
                        <div className="registr__input">
                        <Input name='email'  placeholder={"Email"} type="email" register={register2({
