@@ -24,7 +24,16 @@ function Filter({clickHandler,Pricefrom,Priceto}) {
         toggle:false
     })
 
+
+
     useEffect(()=>{
+        window.onresize=()=>{
+            if(window.innerWidth<=992){
+                setpassiveCat({toggle:true})
+            }else{
+                setpassiveCat({toggle:false})
+            }
+        }
         console.log('brands')
         let url=UrlGenerator('az','brands');
            fetch(url)
@@ -47,7 +56,7 @@ function Filter({clickHandler,Pricefrom,Priceto}) {
 
     return (
         <div className='filter'>
-             <p onClick={setTogglepassive} className='filter_head drop '>Kateqorİya <div>-</div></p>
+             <p onClick={setTogglepassive} className='filter_head drop '>Filter <div>-</div></p>
             <div className={`panelkategory ${passiveCat.toggle?'panel_cat_passsive':''}`} >
         <div className='category_list'>
         <div className='panel2'>

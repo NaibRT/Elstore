@@ -194,18 +194,18 @@ const loginRegister = <>
             {/*------------------responsive nav*/}
             <div className='responsive_nav' id='res-nav-id'>
                     <div className='responsive_nav_top'>
-                    <Selectbox  value={Langs} class='accordion_select'  options={Langs}/>
+                    {/*<Selectbox  value={Langs} class='accordion_select'  options={Langs}/>*/}
                     {/* <Selectbox   value={Currency} class='accordion_select'  options={Currency}/> */}
                     </div>
                     <div className='responsive_nav_login'>
 
                     
                     {
-                        AppContext.app.isAuthorized?
-                       <>
-                        <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
-                            <Link   className='responsive_nav_login_log' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>
-                        </>:null
+                    //     AppContext.app.isAuthorized?
+                    //    <>
+                    //     <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
+                    //         <Link   className='responsive_nav_login_log' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>
+                    //     </>:null
                     }
                     </div>
                     <MobileModal onClose={handleClick} show={show.show}>
@@ -215,13 +215,13 @@ const loginRegister = <>
                         
                     </MobileModal>
                     <div className='responsive_nav_login'>
-                        <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Register</Link>
-                        <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Login</Link>
+                        <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Qeydiyyat</Link>
+                        <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Daxil Ol</Link>
                     </div>
                     
                     <div className='responsive_nav_bottom'>
-                            <Link className='responsive_nav_bottom_item' to="/cabinet">Cabinet <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
-                            <Link onClick={handleClick} className='responsive_nav_bottom_item ' >Kategories <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></Link>
+                            <Link className='responsive_nav_bottom_item' to="/profile">Profil <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
+                            <Link onClick={handleClick} className='responsive_nav_bottom_item ' >Kateqoriyalar <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></Link>
                     </div>
                 </div>
         </div>
