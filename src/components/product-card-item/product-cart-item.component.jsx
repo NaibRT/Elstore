@@ -51,9 +51,9 @@ function ProductCartItem({data,isLiked}) {
     
   }
   <div className="product__price ">
-  <p>{data.price} AZN</p>
+    {(data.discount_price!=0)? <p>{data.discount_price} AZN</p>: <p>{data.price} AZN</p>}
   </div>
-  {(data.discount_price!=0)?<del>{data.discount_price} AZN</del>:null}
+  {(data.discount_price!=0)?<del>{data.price} AZN</del>:null}
 
   <div className="baginto">
   <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>

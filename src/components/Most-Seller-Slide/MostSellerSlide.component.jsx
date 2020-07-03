@@ -23,6 +23,9 @@ export class MostSellerSlide extends Component {
                 prevEl: '.most-button-preview'
             },
             breakpoints:{
+                0:{
+                    slidesPerView:1
+                },
                 320:{
                     slidesPerView:1
                 },

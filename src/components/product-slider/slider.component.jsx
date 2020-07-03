@@ -5,7 +5,7 @@ import HeartImage from '../heart-image/heartImage.component'
 
 function ProductSlider(props){
 useEffect(()=>{
-    var galleryThumbs = new Swiper('.gallery-thumbs', {
+    var galleryThumbs = new Swiper('.swiper-container.gallery-thumbs', {
       spaceBetween: 10,
       slidesPerView: "auto",
       loop: true,
@@ -15,7 +15,7 @@ useEffect(()=>{
       watchSlidesProgress: true,
       direction: 'vertical',
       navigation: {
-        nextEl: '.myprev',
+        prevEl: '.myprev',
       },
     });
     var galleryTop = new Swiper('.gallery-top', {

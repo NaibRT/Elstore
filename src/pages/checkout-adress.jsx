@@ -65,7 +65,7 @@ function CheckoutAddress() {
             {renderCheckout()}
             </div>
             <div className='col-lg-4'>
-            <TotalSum amount="Məbləğ" delivery="Catdirilma" deliveryAmount={AppContext.total.totalDeliveryAmount} tax={AppContext.total.taxamount} total="Ümumi" totalPrice={AppContext.total.amount} totalCount={AppContext.total.totalAmount} />
+            <TotalSum class='card-border' amount="Məbləğ" delivery="Catdirilma" deliveryAmount={AppContext.total.totalDeliveryAmount} tax={AppContext.total.taxamount} total="Ümumi" totalPrice={AppContext.total.amount} totalCount={AppContext.total.totalAmount} />
                 <br/>
                 <IconDeliverySafetyPayback/>
             </div>

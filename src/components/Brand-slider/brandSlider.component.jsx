@@ -23,6 +23,9 @@ class BrandSlider extends Component{
                 prevEl: '.brand-button-preview'
             },
             breakpoints:{
+                0:{
+                    slidesPerView:1
+                },
                 320:{
                     slidesPerView:1
                 },
