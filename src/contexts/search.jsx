@@ -19,6 +19,13 @@ function SearchContext({children}){
     "filteredData":[]
   })
 
+  const [filter, setFilter] = useState({
+    priceFrom:'',
+    queryParams:[],
+    priceTo:'',
+    order:''
+  })
+
 useEffect(() => {
   let url=UrlGenerator('az','products?include=seller,images')
   axios.get(url)
@@ -79,12 +86,14 @@ useEffect(() => {
      <searchContext.Provider value={{
          state:state,
          catFilter:catFilter,
+         filter:filter,
          events:{
            setCatFilter:setCatFilter,
-            searchForm:searchForm,
-            filterCategory:filterCategory,
-            setState:setState,
-            PagenationHandling:PagenationHandling
+           setFilter:setFilter,
+           searchForm:searchForm,
+           filterCategory:filterCategory,
+           setState:setState,
+           PagenationHandling:PagenationHandling
          }
          }}>
        {children}

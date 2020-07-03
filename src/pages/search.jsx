@@ -12,12 +12,6 @@ import Pagenation from "../components/Pagination/pagination.component"
 function Search(props) {
     let AppContext=useContext(appContext)
     let SearchContext=useContext(searchContext)
-    const [priceFrom,setPriceFrom]= useState('');
-    const [queryParams, setQueryParams] = useState([])
-    const [priceTo,setPriceTo]= useState('');
-    const [order,setOrder]=useState('');
-    
-
 
     function clickHandler(e) {
         console.log(e.target.checked)
@@ -25,28 +19,30 @@ function Search(props) {
         let query='';
         let id=e.target.value;
         let sellerId='';
-        let queries=queryParams;
+        let queries=SearchContext.filter.queryParams;
 
         if(pageUrl.includes('company')){
+            console.log(props.match.params)
             sellerId=Object.keys(props.match.params).length!==0
             ?props.match.params.id:null;
+            console.log("sellerId",sellerId)
             query+=query!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
         }
         if(pageUrl.includes('profile')){
             sellerId=AppContext.app.user.id;
             query+=query!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
         }
-        if(queryParams.length>0){
-            query+=query!==''?`&filter[category_id]=`:`&filter[category_id]=`
-           queryParams.forEach((x,k)=>{
+        if(SearchContext.filter.queryParams.length>0){
+            query+=(query!==''?`&filter[category_id]=`:`filter[category_id]=`)
+            SearchContext.filter.queryParams.forEach((x,k)=>{
                console.log(k)
                k===queries.length-1
                ?query+=`${x}`
                :query+=`${x},`
            })
         }
-        if(order!==''){
-            query+=query!==''?`&filter[order]=${order}`:`filter[order]=${order}`
+        if(SearchContext.filter.order!==''){
+            query+=query!==''?`&filter[order]=${SearchContext.filter.order}`:`filter[order]=${SearchContext.filter.order}`
         }
 
         // if(AppContext.app.isAuthorized){
@@ -63,20 +59,20 @@ function Search(props) {
            console.log(newqueries)
        }
        
-       if(queryParams.length>0){
+       if(SearchContext.filter.queryParams.length>0){
         query+=query!==''?`&filter[category_id]=`:`filter[category_id]=`
-       queryParams.forEach((x,k)=>{
+        SearchContext.filter.queryParams.forEach((x,k)=>{
            console.log(k)
            k===queries.length-1
            ?query+=`${x}`
            :query+=`${x},`
        })
     }
-       if(priceFrom!=''){
-         query+=query!=''?`&filter[min_prize]=${priceFrom}`:`filter[min_prize]=${priceFrom}`
+       if(SearchContext.filter.priceFrom!=''){
+         query+=query!=''?`&filter[min_prize]=${SearchContext.filter.priceFrom}`:`filter[min_prize]=${SearchContext.filter.priceFrom}`
        }
-       if(priceTo!=''){
-           query+=query!=''?`&filter[max_price]=${priceTo}`:`filter[max_price]=${priceTo}`
+       if(SearchContext.filter.priceTo!=''){
+           query+=query!=''?`&filter[max_price]=${SearchContext.filter.priceTo}`:`filter[max_price]=${SearchContext.filter.priceTo}`
        }
        console.log(query)
        let url=UrlGenerator('az',`search/product?${query}`)
@@ -84,9 +80,10 @@ function Search(props) {
        .then(async res=>{
            let data=await res.json();
            console.log(data)
-           setQueryParams([
-              ...queries
-           ])
+           SearchContext.events.setFilter({
+              ...SearchContext.filter,
+               queryParams:[...queries]
+           })
           SearchContext.events.setCatFilter({
                ...SearchContext.catFilter,
                meta:data.meta,
@@ -110,22 +107,26 @@ function Search(props) {
              sellerId=AppContext.app.user.id;
              filterQuery+=filterQuery!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`;
          }
-         if(queryParams.length>0){
+         if(SearchContext.filter.queryParams.length>0){
             filterQuery+=filterQuery!==''?`&filter[category_id]=`:`filter[category_id]=`
-            queryParams.forEach((x,k)=>{
+            SearchContext.filter.queryParams.forEach((x,k)=>{
                 console.log(k)
-                k===queryParams.length-1
+                k===SearchContext.filter.queryParams.length-1
                 ?filterQuery+=`${x}`
                 :filterQuery+=`${x},`
             })
          }
-         if(priceFrom!=''){
-            filterQuery+=filterQuery!==''?`&filter[min_prize]=${priceFrom}`:`filter[min_prize]=${priceFrom}`
+         if(SearchContext.filter.priceFrom!=''){
+            filterQuery+=filterQuery!==''?`&filter[min_prize]=${SearchContext.filter.priceFrom}`:`filter[min_prize]=${SearchContext.filter.priceFrom}`
           }
-          if(priceTo!=''){
-              filterQuery+=filterQuery!==''?`&filter[max_price]=${priceTo}`:`filter[max_price]=${priceTo}`
+          if(SearchContext.filter.priceTo!=''){
+              filterQuery+=filterQuery!==''?`&filter[max_price]=${SearchContext.filter.priceTo}`:`filter[max_price]=${SearchContext.filter.priceTo}`
           }
-           setOrder(e.target.value);
+          SearchContext.events.setFilter({
+            ...SearchContext.Filter,
+            order:e.target.value
+          })
+
           filterQuery+=filterQuery!==''?`&filter[order]=${e.target.value}`:`filter[order]=${e.target.value}`;
            console.log(filterQuery)
           let url=UrlGenerator('az',`search/product?${filterQuery}`);
@@ -133,9 +134,11 @@ function Search(props) {
           .then(async res=>{
               let data=await res.json();
               console.log(data)
-              setQueryParams([
-                 ...queries
-              ])
+              SearchContext.events.setFilter({
+                ...SearchContext.filter,
+                queryParams:[...queries]
+              })
+
               SearchContext.events.setCatFilter({
                   ...SearchContext.catFilter,
                   meta:data.meta,
@@ -159,7 +162,11 @@ function Search(props) {
 
    
     function Pricefrom(e){
-        setPriceFrom(e.target.value)
+        SearchContext.events.setFilter({
+            ...SearchContext.filter,
+            PriceFrom:e.target.value
+        })
+
         let sellerId='';
         let pageUrl=window.location.pathname;
         let filterQuery='';
@@ -172,24 +179,24 @@ function Search(props) {
             sellerId=AppContext.app.user.id;
             filterQuery+=filterQuery!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
         }
-        if(queryParams.length>0){
+        if(SearchContext.filter.queryParams.length>0){
             filterQuery+=filterQuery!==''?`&filter[category_id]=`:`filter[category_id]=`
-           queryParams.forEach((x,k)=>{
+            SearchContext.filter.queryParams.forEach((x,k)=>{
                console.log(k)
-               k===queryParams.length-1
+               k===SearchContext.filter.queryParams.length-1
                ?filterQuery+=`${x}`
                :filterQuery+=`${x},`
            })
         }
-        if(order!==''){
-            filterQuery+=filterQuery!==''?`&filter[order]=${order}`:`filter[order]=${order}`
+        if(SearchContext.filter.order!==''){
+            filterQuery+=filterQuery!==''?`&filter[order]=${SearchContext.filter.order}`:`filter[order]=${SearchContext.filter.order}`
         }
 
 
         filterQuery+=`&filter[min_price]=${e.target.value}`
 
-        if(priceTo!='')
-        filterQuery+=filterQuery!==''?`&filter[max_price]=${priceTo}`:`filter[max_price]=${priceTo}`
+        if(SearchContext.filter.priceTo!='')
+        filterQuery+=filterQuery!==''?`&filter[max_price]=${SearchContext.filter.priceTo}`:`filter[max_price]=${SearchContext.filter.priceTo}`
         console.log(filterQuery)
         let url=UrlGenerator('az',`search/product?${filterQuery}`)
         fetch(url)
@@ -207,7 +214,10 @@ function Search(props) {
     }
 
     function Priceto(e){
-        setPriceTo(e.target.value)
+        SearchContext.events.setFilter({
+            ...SearchContext.filter,
+            Priceto:e.target.value
+        })
          
         let sellerId='';
         let pageUrl=window.location.pathname;
@@ -221,23 +231,23 @@ function Search(props) {
             sellerId=AppContext.app.user.id;
             filterQuery+=filterQuery!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
         }
-        if(queryParams.length>0){
+        if(SearchContext.filter.queryParams.length>0){
             filterQuery+=filterQuery!==''?`&filter[category_id]=`:`filter[category_id]=`
-           queryParams.forEach((x,k)=>{
+            SearchContext.filter.queryParams.forEach((x,k)=>{
                console.log(k)
-               k===queryParams.length-1
+               k===SearchContext.filter.queryParams.length-1
                ?filterQuery+=`${x}`
                :filterQuery+=`${x},`
            })
         }
-        if(order!==''){
-            filterQuery+=filterQuery!==''?`&filter[order]=${order}`:`filter[order]=${order}`
+        if(SearchContext.filter.order!==''){
+            filterQuery+=filterQuery!==''?`&filter[order]=${SearchContext.filter.order}`:`filter[order]=${SearchContext.filter.order}`
         }
 
         filterQuery+=`&filter[max_price]=${e.target.value}`
 
-        if(priceFrom!='')
-        filterQuery+=filterQuery!==''?`&filter[min_price]=${priceFrom}`:`filter[min_price]=${priceFrom}`;
+        if(SearchContext.filter.priceFrom!='')
+        filterQuery+=filterQuery!==''?`&filter[min_price]=${SearchContext.filter.priceFrom}`:`filter[min_price]=${SearchContext.filter.priceFrom}`;
 
         console.log(filterQuery)
         let url=UrlGenerator('az',`search/product?${filterQuery}`)
