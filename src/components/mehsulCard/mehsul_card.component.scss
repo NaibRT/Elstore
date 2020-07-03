@@ -1,19 +1,37 @@
 @import '../../App.scss';
+
 .discount_title{
   font-family: InterMedium;
   font-weight: 500;
   font-style: normal;
   font-size: 25px;
   margin-bottom: 16px;
+  justify-content: space-between;
+  a{
+    font-size: 20px;
+   
+  }
+}
+.cardolo{
+  display: flex;
+  justify-content: space-between;
 }
 .e-card{
     width:100%;
-    border-radius: 12px;
+    border-radius:12px;
     height:248px;
     overflow:hidden;
     background-size:cover;
     background-position:center;
     margin-bottom: 24px;
+    position: relative;
+    
+    .bg-card-img{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+     }
     a{
         text-decoration: none;
         font-family: 'InterRegular';
@@ -27,14 +45,14 @@
     }
   }
   .e-card-overlay{
-    clip-path: polygon(0 1%, 61% 0, 43% 100%, 0% 100%);
+    clip-path: polygon(0 0, 61% 0, 43% 100%, 0% 100%);
     background: #A05341;
     mix-blend-mode: normal;
     opacity: 0.8;
-    height:102%;
+    height:100%;
     width:100%;
     position: relative;
-    top: -2px;
+    
   }
   
   .e-card-head{
@@ -55,6 +73,7 @@
     position:relative;
     left:24px;
     top:24px;
+    border-radius: 50%;
   }
   .e-card-info-text{
     position:relative;

@@ -36,7 +36,8 @@ function ProductCartItem({data,isLiked}) {
       data.images.map(f=>{
           if(f.is_main){
               return <div key={f.id} className="swiper_slide_image">
-                  <img src={f.product_thumbnail_image} alt=""/>
+              <Link to={`/product/${data.id}/${data.product_name}`}>  <img src={f.product_thumbnail_image} alt=""/></Link>
+                 
               </div> 
           }
 

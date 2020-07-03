@@ -7,25 +7,25 @@ const Total_Sum = (props) => {
              <div className="text--amount">
              <div className="text__amount--count  display__flex">
                  <h5>{props.amount}</h5>
-                 <p>{props.totalPrice}</p>
+                 <p>{props.totalPrice} AZN</p>
              </div>
              <div className="text__tax-count display__flex">
                  <p>ƏDV</p>
-                 <p>{props.tax} AZN</p>
+                 <p>{props.tax} %</p>
              </div>
              <div className="bord"></div>
          </div>
          <div className="text--delivery " >
              <div className="text__delivery--count display__flex">
              <h5>{props.delivery}</h5>
-               <p>{props.deliveryAmount}</p>   
+               <p>{props.deliveryAmount} AZN</p>   
              </div>
              <p>Çatdırılma ünvanına əsasən hesablanacaq.</p>
              <div className="bord"></div>
          </div>
          <div className="text__total-sum display__flex">
              <h5>{props.total}</h5>
-             <p>{props.totalCount}</p>
+             <p>{props.totalCount} AZN</p>
          </div>
              </Card>
     )

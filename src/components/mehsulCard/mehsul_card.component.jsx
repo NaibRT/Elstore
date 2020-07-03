@@ -1,66 +1,57 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import  '../../App.scss';
 import './mehsul_card.component.scss';
 import {Link} from 'react-router-dom';
-function MehsulCard() {
-    const [card,setCard] = useState([
-          {
-            "id": 1,
-            "card_head": 'Bütün məhsullarda 25% endirim',
-            "card_back": 'https://i.imgyukle.com/2020/06/09/yfAIyA.jpg',
-            "card_store_img": 'https://i.imgyukle.com/2020/06/09/yfAGjP.png',
-            "card_store": "Clay Home",
-          },
-          {
-            "id": 1,
-            "card_head": 'Bütün məhsullarda 25% endirim',
-            "card_back": 'https://i.imgyukle.com/2020/06/09/yfAIyA.jpg',
-            "card_store_img": 'https://i.imgyukle.com/2020/06/09/yfAGjP.png',
-            "card_store": "Clay Home",
-          },
-          {
-            "id": 1,
-            "card_head": 'Bütün məhsullarda 25% endirim',
-            "card_back": 'https://i.imgyukle.com/2020/06/09/yfAIyA.jpg',
-            "card_store_img": 'https://i.imgyukle.com/2020/06/09/yfAGjP.png',
-            "card_store": "Clay Home",
-          },
-          {
-            "id": 1,
-            "card_head": 'Bütün məhsullarda 25% endirim',
-            "card_back": 'https://i.imgyukle.com/2020/06/09/yfAIyA.jpg',
-            "card_store_img": 'https://i.imgyukle.com/2020/06/09/yfAGjP.png',
-            "card_store": "Clay Home",
-          },
-          
-        ]
-      )
+import UrlGenerator from '../../services/url-generator';
+
+
+function MehsulCard(){
+  const data=[1,2,3]
+  const [state, setstate] = useState([])
+  useEffect(()=>{
+    let url=UrlGenerator('az','stores');
+    fetch(url)
+    .then(async res=>{
+      let data=await res.json();
+      console.log(data)
+      setstate(data.data)
+      console.log(data)
+    }).catch(err=>console.log(err))
+  
+  },[])
         return (
             <div >
               <div className="row">
                 <div className="col-lg-12">
-                      <div className="discount_title">
+                      <div className="discount_title display__flex">
                           <h5>Endirimler</h5>
+                          <Link to=''>Daha çox</Link>
                       </div>
                 </div>
               </div>
                 <div className='row'>
                 {
-                    card.map(({card_head,card_back,card_store_img,card_store},i)=>{
+                    state.map((x,i)=>{
                         return(
-                            <div key={i} className='col-lg-6 col-md-12'>
-                        <div style={{backgroundImage: "url("+card_back +")"}} className="e-card">
+                            <div key={i} className='col-lg-6 col-md-12 '>
+                            
+                        <div className="e-card">
+                        <img className="bg-card-img" alt='' src={x.cover_image}/>
                             <div className="e-card-overlay">
-                                <p className="e-card-head">{card_head}</p>
+                                <p className="e-card-head">{x.name}</p>
                                 <div className="e-card-info">
-                                    <img className="e-card-info-name" src={card_store_img} />
-                                    <p className='e-card-info-text'>{card_store}</p>
+                                    <img className="e-card-info-name" src={x.logo} />
+                                    <p className='e-card-info-text'>{x.name}</p>
                                     <div>
                                         <Link to='/product' className='e-card-go'>Məhsullara bax <img src={require('../../assets/images/icons/right.svg')} /></Link>
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
+
+
+
                     </div>
                         )                       
                     })
