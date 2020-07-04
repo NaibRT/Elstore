@@ -49,7 +49,7 @@ function BasketCard({ plus, minus, count, product }) {
     }
     return (
         <div className='basket__card'>
-            <button className='basket_header_text'>Bu m?hsul yalnız Bakı ş?h?ri daxilind? çatdırılır.</button>
+            {/*<button className='basket_header_text'>Bu məhsul yalnız Bakı şəhəri daxilində çatdırılır.</button>*/}
             <div className='card-flex'>
                 <div className='card_left'>
                     {
