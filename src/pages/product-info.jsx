@@ -22,14 +22,14 @@ function ProductInfo(props) {
   });
   useEffect(()=>{
     let url=UrlGenerator('az','products');
-      fetch(`${url}/${props.match.params.id}`,{
+      fetch(`${url}/${props.match.params.id}?include=seller`,{
         method:'Get',
       })
       .then(res =>{
         res.json()
         .then(r=>{
           setProduct(r.data[0]);
-          // console.log(r.data[0])
+          console.log('m',r.data[0])
         })
         .catch(e=>console.log(e))
       })
@@ -57,7 +57,8 @@ function ProductInfo(props) {
              <Link style={{'textDecoration':'none'}} to={`/basket/${product.id}`}><Button className="btn-buy-now txt--light" name='Indi Al'/></Link>
              </ButtonGroup>         
              <Delivery/>
-             <Seller/>
+             <Seller seller={product.seller}/>
+
          </div>
         </div>
         </div>

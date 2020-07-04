@@ -202,13 +202,15 @@ function getUserCredentials() {
       }
     }).then(async res=>{
       let data=await res.json();
-      window.localStorage.setItem('user',JSON.stringify(data));
-      setApp({
-        ...app,
-        token:token,
-        isAuthorized:true,
-        user:data
-      })
+      if(res.ok){
+        window.localStorage.setItem('user',JSON.stringify(data));
+        setApp({
+          ...app,
+          token:token,
+          isAuthorized:true,
+          user:data
+        })
+      }
     }).catch(err=>console.log(err))
  }
 

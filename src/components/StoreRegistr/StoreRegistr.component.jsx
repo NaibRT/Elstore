@@ -58,6 +58,7 @@ console.log(texturl)
    }
 
    const AppContext=useContext(appContext)
+   
    const registerSubmit=(data)=>{
     let url=UrlGenerator('az',`auth/${texturl.selected}/register`)
     console.log(data)
@@ -70,10 +71,11 @@ console.log(texturl)
    })
    .then(async res=>{
        if(res.ok){
-        let data=await res.json();
-        AppContext.events.AddToken(data)
+        // let data=await res.json();
+        // AppContext.events.AddToken(data)
         history.push("/");
-        swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
+        //swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
+        document.getElementById('login__modal').style.display='block';
        }else{
         swal("Təəssüflər", "Bu adda email artıq mövcuddr", "error");
        }
