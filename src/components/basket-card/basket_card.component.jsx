@@ -48,7 +48,6 @@ function BasketCard({ plus, minus, count, product }) {
         }
     }
     return (
-        <>
         <div className='basket__card'>
             <button className='basket_header_text'>Bu məhsul yalnız Bakı şəhəri daxilində çatdırılır.</button>
             <div className='card-flex'>
@@ -97,8 +96,8 @@ function BasketCard({ plus, minus, count, product }) {
                     <h5 className='basket_card_shipping_section_head'>çatdırılma</h5>
                     <p className='basket_card_shipping_section_text' >Pulsuz (Bakı daxili)</p>
                 </div>
-              </div>
-           </div>
+            </div>
+        </div>
            <div className='card_right price_div '>
                <div className='basket_price'>
                    <div>
@@ -116,6 +115,7 @@ function BasketCard({ plus, minus, count, product }) {
                     </div>
                </div>
            </div>
+            </div>
             <div className='basket_bottom_buttons'>
                 {
                     like ? <button data-id={product.id} onClick={(e) => showHide(e)} className='basket_bottom_button'><img alt='' className='basket_bottom_button_img' src={require('../../assets/images/icons/Enabled.svg')} />LIke</button>
@@ -124,7 +124,7 @@ function BasketCard({ plus, minus, count, product }) {
                 }
                 <button data-id={product.id} onClick={(e) => AppContetx.events.removeFromBasket(e)} className='basket_bottom_button'>SİL</button>
             </div>
-            </>
+        </div>
     )
 }
 
