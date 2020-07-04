@@ -11,6 +11,9 @@
         display: flex;
         padding: 0 10px;
         justify-content: space-between;
+        .inputForm_helper_text{
+            color: red;
+        }
     }
     .inputForm_input{
         background: #FFFFFF;
@@ -21,7 +24,7 @@
         padding: 16px;
         width: 100%;
         background-size: 30px 30px;
-        padding-right: 30px;
+        padding-right: 45px;
         &:focus{
             outline: none !important; 
             border: 2px solid #6472B8;

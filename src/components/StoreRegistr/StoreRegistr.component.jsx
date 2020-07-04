@@ -58,6 +58,7 @@ console.log(texturl)
    }
 
    const AppContext=useContext(appContext)
+   
    const registerSubmit=(data)=>{
     let url=UrlGenerator('az',`auth/${texturl.selected}/register`)
     console.log(data)
@@ -70,10 +71,11 @@ console.log(texturl)
    })
    .then(async res=>{
        if(res.ok){
-        let data=await res.json();
-        AppContext.events.AddToken(data)
+        // let data=await res.json();
+        // AppContext.events.AddToken(data)
         history.push("/");
-        swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
+        //swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
+        document.getElementById('login__modal').style.display='block';
        }else{
         swal("Təəssüflər", "Bu adda email artıq mövcuddr", "error");
        }
@@ -94,15 +96,16 @@ console.log(texturl)
     })
     
     function takeSelectboxValue(e){
-      fetch(`http://139.180.144.49/api/v1/az/regions?city_id=${e.target.value}`)
+        let url=UrlGenerator('az',`regions?city_id=${e.target.value}`)
+      fetch(url)
       .then(response => response.json())
       .then(data => setRegion({ data: data }));
     
     }
 
     function takeSelectboxValue1(e){
-        console.log(e.target.value);
-      fetch(`http://139.180.144.49/api/v1/az/villages?region_id=${e.target.value}`)
+       let url=UrlGenerator('az',`villages?region_id=${e.target.value}`)
+      fetch(url)
       .then(response => response.json())
       .then(data => setVillages({ data: data }));
     
@@ -111,8 +114,8 @@ console.log(texturl)
     
     
     useEffect(() => {
-       
-      fetch('http://139.180.144.49/api/v1/az/cities')
+       let url=UrlGenerator('az','cities');
+      fetch(url)
       .then(response => response.json())
       .then(data => setCities({ data: data }));
     }, [])

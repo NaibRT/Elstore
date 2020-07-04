@@ -52,7 +52,7 @@ const StoreProfil = () => {
     },[]);
 
     function updateSubmit(data) {
-        let url=UrlGenerator('az',`users/company/update`)
+        let url=UrlGenerator('az',`users/update`)
         let token=AppContext.events.getToken();
         let newData=new FormData();
 

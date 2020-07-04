@@ -22,14 +22,14 @@ function ProductInfo(props) {
   });
   useEffect(()=>{
     let url=UrlGenerator('az','products');
-      fetch(`${url}/${props.match.params.id}`,{
+      fetch(`${url}/${props.match.params.id}?include=seller`,{
         method:'Get',
       })
       .then(res =>{
         res.json()
         .then(r=>{
           setProduct(r.data[0]);
-          // console.log(r.data[0])
+          console.log('m',r.data[0])
         })
         .catch(e=>console.log(e))
       })
@@ -51,13 +51,14 @@ function ProductInfo(props) {
         <div className='col-lg-4 col-md-12 col-sm-12 '>
              <HeadingChips  heading={product.product_name} stars={product.avg_rating} subtitle="Öz home / Ev aksessuarları / Toxuma işlər" sale="0 dəfə satıldı" />
              <OrderPrize price={`${product.price} AZN`} stock="movcuddur" priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
-             <Input/>
+           
              <Button data={product.id} onClick={(e)=>AppContext.events.addBasket(e)} className="bg-primary txt--dark" name='Sebete Elave ET'/>
              <ButtonGroup>
              <Link style={{'textDecoration':'none'}} to={`/basket/${product.id}`}><Button className="btn-buy-now txt--light" name='Indi Al'/></Link>
              </ButtonGroup>         
              <Delivery/>
-             <Seller/>
+             <Seller seller={product.seller}/>
+
          </div>
         </div>
         </div>

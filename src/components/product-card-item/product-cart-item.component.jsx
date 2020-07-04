@@ -36,7 +36,8 @@ function ProductCartItem({data,isLiked}) {
       data.images.map(f=>{
           if(f.is_main){
               return <div key={f.id} className="swiper_slide_image">
-                  <img src={f.product_thumbnail_image} alt=""/>
+              <Link to={`/product/${data.id}/${data.product_name}`}>  <img src={f.product_thumbnail_image} alt=""/></Link>
+                 
               </div> 
           }
 
@@ -50,19 +51,18 @@ function ProductCartItem({data,isLiked}) {
      (data.discount!=0)?<p className="product_-discount">{data.discount} % endirim</p>:null
     
   }
+  
   <div className="product__price ">
-    {(data.discount_price!=0)? <p>{data.discount_price} AZN</p>: <p>{data.price} AZN</p>}
+  {
+    data.discount_price!==0
+    ?<p>{data.discount_price} AZN<del>{data.price} AZN</del></p>
+    :<p>{data.price} AZN</p>
+  }
   </div>
-  {(data.discount_price!=0)?<del>{data.price} AZN</del>:null}
-
   <div className="baginto">
   <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
-  <Button data={data.id} onClick={(e)=>AppContext.events.addBasket(e)}  class="button__adress" name="səbətə at"/>
-
-    
   </div>
-                  
-  
+  <Button data={data.id} onClick={(e)=>AppContext.events.addBasket(e)}  class="button__adress" btng='btn-position' name="səbətə at"/>
 </div>
  )
 }

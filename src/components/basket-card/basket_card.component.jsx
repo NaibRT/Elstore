@@ -96,6 +96,25 @@ function BasketCard({ plus, minus, count, product }) {
                     <h5 className='basket_card_shipping_section_head'>çatdırılma</h5>
                     <p className='basket_card_shipping_section_text' >Pulsuz (Bakı daxili)</p>
                 </div>
+              </div>
+           </div>
+           <div className='card_right price_div '>
+               <div className='basket_price'>
+                   <div>
+                        {
+                            product.discount_price!==0
+                            ?<><p style={{'color':'green'}}>{product.discount}% endirim</p><del style={{'color':'grey'}}>{product.price} AZN</del><h2 className='basket_price_head'>{product.discount_price} AZN</h2></>
+                            :<h2 className='basket_price_head'>{product.price} AZN</h2>
+                        }
+                        
+                    </div>
+                    <div className='add_minus'>
+                        <button data-id={product.id} onClick={(e)=>{minus(e)}}  className='add_minus_button'>-</button>
+                        <button className='add_minus_text'>{product.count}</button>
+                        <button data-id={product.id} onClick={(e)=>{plus(e)}} className='add_plus_button'>+</button>
+                    </div>
+               </div>
+           </div>
             </div>
             <div className='basket_bottom_buttons'>
                 {

@@ -41,6 +41,11 @@
       flex: 1.2;
       text-align: right;
       position: relative;
+      .budget{
+        font-size: 23px !important;
+        top: 22px !important ;
+        margin-right: -6px ;
+      }
       .navbar_buttons_link {
         margin-left: 24px;
         font-family: "InterRegular";
@@ -52,8 +57,9 @@
         text-transform: uppercase;
         text-decoration: none;
         position: relative;
-        top: 17px;
+        top: 21px;
         color: $text-dark;
+        margin-right: 10px;
         img {
           height: 25px;
           position: relative;
@@ -72,6 +78,7 @@
           color: white;
           padding-bottom: 20px;
         }
+       
       }
     }
     .navbar_logo {
@@ -83,6 +90,7 @@
     }
   }
 }
+
 
 .navbar_bottom {
   padding: 0 94px;
@@ -296,14 +304,14 @@
   background-color: white !important;
   position: relative;
   top: 24px;
-  left: calc(100% - 115px);
+  left: calc(100% - 100px);
   visibility: hidden;
   border-radius: 4px;
   border: 1px solid $text-secondary;
   z-index: 2;
 
   &_li {
-    padding-bottom: 5px;
+    padding: 4px;
     list-style: none;
     border-bottom: 1px solid black;
     text-align: center;
@@ -319,6 +327,26 @@
       text-decoration: none;
     }
   }
+  
+  &_li_a {
+    padding: 4px;
+    list-style: none;
+    height:29px;
+    
+    text-align: center;
+    &:hover {
+      background: #32478a;
+      color: white;
+      a {
+        color: white;
+      }
+    }
+    a {
+      color: $text-dark;
+      text-decoration: none;
+    }
+  }
+
 }
 
 .active {
@@ -361,9 +389,14 @@
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
-  .navbar_buttons_link {
-    display: none !important;
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
   }
+  // .navbar_buttons_link {
+  //   display: none !important;
+  // }
   .navbar_buttons {
     flex: 0.1 !important;
   }
@@ -414,6 +447,7 @@
     position: relative;
     left: -47px;
   }
+ 
   .navbar_center {
     padding: 0 5px !important;
   }
@@ -429,9 +463,11 @@
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .navbar_buttons_link {
-        display: none !important;
-      }
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
+  }
       .navbar_buttons {
         flex: 0.2 !important;
       }
@@ -506,9 +542,11 @@
 }
 
 @media (min-width: 415px) and (max-width: 575.98px) {
-    .navbar_buttons_link {
-        display: none !important;
-      }
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
+  }
       .navbar_buttons {
         flex: 0.3 !important;
       }
@@ -584,9 +622,11 @@
 
 
 @media only screen and (min-device-width: 376px) and (max-device-width: 414px){
-    .navbar_buttons_link {
-        display: none !important;
-      }
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
+  }
       .navbar_buttons {
         flex: 0.5 !important;
       }
@@ -673,9 +713,11 @@
 }
 
 @media only screen and  (max-device-width : 320px) {
-    .navbar_buttons_link {
-        display: none !important;
-      }
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
+  }
       .navbar_buttons {
         flex: 0.5 !important;
       }
@@ -762,9 +804,11 @@
 }
 
 @media only screen and (min-device-width : 321px) and (max-device-width : 360px) {
-    .navbar_buttons_link {
-        display: none !important;
-      }
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
+  }
       .navbar_buttons {
         flex: 0.5 !important;
       }
@@ -851,9 +895,11 @@
 }
 
 @media only screen and (min-device-width : 361px) and (max-device-width : 375px) {
-    .navbar_buttons_link {
-        display: none !important;
-      }
+  .navbar_buttons{
+    .navbar_buttons_link:not(:first-child){
+      display: none !important;
+    }
+  }
       .navbar_buttons {
         flex: 0.5 !important;
       }
@@ -937,6 +983,12 @@
       }
     }
   }
+
+.of-hiddel{
+  overflow-y: hidden;
+}
+.of-scroll{
+  overflow: scroll;
 }
 
 
