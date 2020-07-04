@@ -185,7 +185,7 @@ const loginRegister = <>
                 </form>
                 </div>
                 <div className='navbar_select'>
-                    <LangToggler/>
+                    <LangToggler firstopt="Azərbaycan"/>
                 </div>
                 <div className='navbar_buttons'>
                      <Link   className='navbar_buttons_link bag' to='/basket'><img alt='' src={require('../../assets/images/heading/Bag.svg')} /><span>{AppContext.basket.length}</span></Link> 
