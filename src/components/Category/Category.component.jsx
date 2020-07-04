@@ -9,7 +9,7 @@ const Category = () => {
     
     function handleClick() {
         let boxCategory=document.querySelector(".box--category");
-        let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
+        let box__subcotegoryItem=document.querySelectorAll(".box_subcotegory--item");
         
         setTimeout(() => {
             box__subcotegoryItem.forEach(x=>{
@@ -33,7 +33,7 @@ const Category = () => {
 
             setTimeout(() => {
                 let boxCategory=document.querySelector(".box--category");
-                let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
+                let box__subcotegoryItem=document.querySelectorAll(".box_subcotegory--item");
         
                        box__subcotegoryItem.forEach(x=>{
                             x.style.display="none";
@@ -51,7 +51,7 @@ const Category = () => {
         setTimeout(() => {
             body.addEventListener("mouseleave",function(e){
                 let boxCategory=document.querySelector(".box--category");
-                let box__subcotegoryItem=document.querySelectorAll(".box__subcotegory--item");
+                let box__subcotegoryItem=document.querySelectorAll(".box_subcotegory--item");
                 if(e.path[5]!=boxCategory ){
                     box__subcotegoryItem.forEach(x=>{
                         x.style.display="none";

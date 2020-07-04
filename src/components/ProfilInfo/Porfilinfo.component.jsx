@@ -187,7 +187,7 @@ function Porfilinfo(props) {
     }
 
     function updateSubmit(data) {
-        let url=UrlGenerator('az',`users/buyer/update`)
+        let url=UrlGenerator('az',`users/update`)
         let token=AppContext.events.getToken();
         let newData=new FormData();
 

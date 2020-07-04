@@ -1,10 +1,9 @@
 import React,{useState,useContext,useEffect} from 'react';
 import './filter.style.scss';
-import Markets from './markets';
-import Products from './products';
 import axios from 'axios'
 import {categoryContext} from '../../contexts/category'
 import {searchContext} from '../../contexts/search';
+import UrlGenerator from '../../services/url-generator';
 
 
 
@@ -12,19 +11,42 @@ function Filter({clickHandler,Pricefrom,Priceto}) {
 
     const categories = useContext(categoryContext);
     const [market,setMarket] = useState({
-        magaza:Markets,
-        products:Products,
+        brends:[],
+        products:[],
         
     })
     const [searchMarket, setSearch]=useState({
         searchField:""
     })
-
-    const filteredMerkets = market.magaza.filter(item=> item.name.toLowerCase().includes(searchMarket.searchField.toLowerCase()));
-   
+     
+    const filteredMerkets = market.brends.filter(item=> item.name.toLowerCase().includes(searchMarket.searchField.toLowerCase()));
     const [passiveCat, setpassiveCat] = useState({
         toggle:false
     })
+
+
+
+    useEffect(()=>{
+        window.onresize=()=>{
+            if(window.innerWidth<=992){
+                setpassiveCat({toggle:true})
+            }else{
+                setpassiveCat({toggle:false})
+            }
+        }
+        console.log('brands')
+        let url=UrlGenerator('az','brands');
+           fetch(url)
+           .then(async res=>{
+               let data=await res.json();
+               console.log(data)
+               setMarket({
+                   ...market,
+                   brends:data.data
+               })
+           }).then(err=>console.log(err))
+       },[])
+
 
     function setTogglepassive(){
         setpassiveCat({
@@ -34,7 +56,7 @@ function Filter({clickHandler,Pricefrom,Priceto}) {
 
     return (
         <div className='filter'>
-             <p onClick={setTogglepassive} className='filter_head drop '>Kateqorİya <div>-</div></p>
+             <p onClick={setTogglepassive} className='filter_head drop '>Filter <div>-</div></p>
             <div className={`panelkategory ${passiveCat.toggle?'panel_cat_passsive':''}`} >
         <div className='category_list'>
         <div className='panel2'>
@@ -79,7 +101,7 @@ function Filter({clickHandler,Pricefrom,Priceto}) {
             </ul>
         </div>
         </div>
-        <p className='filter_head'>Mağaza</p>
+        <p className='filter_head'>Brendlər</p>
         <div className='form_filter'>
             <form className="search-input">
                 <input 

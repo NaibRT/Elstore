@@ -2,12 +2,14 @@ import React from 'react'
 import Card from '../card/card.component'
 import './order-card.component.scss';
 import ButtonRating from '../button-rating/buttonRating.component'
+
+
 function OrderCard(props) {
  return (
   <>
         <div className='card_profile-flex'>
             <div className='card_profile_left'> 
-               <img className='basket_card_profile_img' src={require('../../assets/images/slider/hero.jpg')} />
+               <img alt='' className='basket_card_profile_img' src={require('../../assets/images/slider/hero.jpg')} />
            </div>
 
            <div className='card_profile_center'>

@@ -1,6 +1,6 @@
 import React,{useState, useEffect,useContext} from 'react';
 import './navbar.component.scss';
-import { Link } from "react-router-dom";
+import {useHistory,Link } from "react-router-dom";
 import {searchContext} from '../../contexts/search';
 import MobileModal from '../categorymobile_modal/mobilemodal'
 import axios from 'axios'
@@ -8,6 +8,7 @@ import LangToggler from "../lang_currency_toggler/lang_currency_toggler";
 import Selectbox from "../Select-box/SelectBox.component";
 import {appContext} from '../../contexts/appContext'
 import $ from 'jquery'
+import UrlGenerator from '../../services/url-generator';
 
 const Langs =  [
     {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
@@ -19,23 +20,29 @@ function  Navbar(props) {
     const products = useContext(searchContext);
     const [visiblepp,setVisiblepp] =useState(false);
     const AppContext=useContext(appContext);
+    const History=useHistory();
 
     const [categories, setCategories] = useState({
         data:[]
     })
+
     const [show,setShow] = useState({
         show: false
       })
 
-
-    function showbar(){
-        setVisiblepp(!visiblepp)
-
-    }
+      const [navbarCat, setNavbarCat] = useState({
+        data:[]
+    })
 
     const [toggle, setToggle] = useState({
         active: false,
       });
+
+
+    function showbar(){
+        setVisiblepp(!visiblepp)
+    }
+
 
       window.onclick = function(event) {
         if (!event.target.matches('.navbar_buttons_link profile')) {
@@ -52,6 +59,9 @@ function  Navbar(props) {
       }
       
     function toggleNav() {
+        document.getElementsByTagName('body')[0].classList.toggle('of-hiddel');
+        document.getElementById('res-nav-id').classList.toggle('of-scroll');
+        document.getElementById('res-nav-id').classList.toggle('opennav');
         const currentState = toggle.active;
         setToggle({ active: !currentState });
     }
@@ -96,16 +106,13 @@ function  Navbar(props) {
                 $(".navbar_bottom_link").removeClass("activenav");
              }
 
-    })
+    },[])
    
-    const [navbarCat, setNavbarCat] = useState({
-        data:[]
-    })
-    
+    let url=UrlGenerator('az','categories')
     useEffect(()=>{
         axios({
             method:'GET',
-            url:'http://139.180.144.49/api/v1/az/categories',
+            url:url,
     
         }).then(res=>{
             setNavbarCat({
@@ -115,18 +122,12 @@ function  Navbar(props) {
     },[])
 
 
-
-      
     function handleClick(){
         setShow({
             show: !show.show
           });
     }
 
- 
-   
-    const url = 'http://139.180.144.49/api/v1/az/categories';
-  
      useEffect(()=>{
       axios({
           method:'GET',
@@ -158,7 +159,7 @@ const loginRegister = <>
                     <Link className='navbar_buttons_link log signup' onClick={Sign} >hesab yarat </Link>
                       
                     </> 
-                    
+             console.log(categories.data)       
     return (
         <div className='navbar'>
             <div className='navbar_top'>
@@ -178,9 +179,9 @@ const loginRegister = <>
                     <Link to='/'><img alt='' src={require('../../assets/logo/logo_1.svg')} /></Link>
                 </div>
                 <div className='navbar_search'>
-                <form   className="search-input" >
+                <form onSubmit={(e)=>{e.preventDefault();History.push(`/search/filter[title]=${products.state.searchKey}`)}}  className="search-input" >
                     <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
-                    <Link to={`/search/filter=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/icons/search.svg')} /></Link>
+                    <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/icons/search.svg')} /></Link>
                 </form>
                 </div>
                 <div className='navbar_select'>
@@ -203,21 +204,21 @@ const loginRegister = <>
                 </div>
             </div>
 
-
-            <div className={`${toggle.active ? 'opennav': ""} responsive_nav`}>
+            {/*------------------responsive nav*/}
+            <div className='responsive_nav' id='res-nav-id'>
                     <div className='responsive_nav_top'>
-                    <Selectbox  value={Langs} class='accordion_select'  options={Langs}/>
+                    {/*<Selectbox  value={Langs} class='accordion_select'  options={Langs}/>*/}
                     {/* <Selectbox   value={Currency} class='accordion_select'  options={Currency}/> */}
                     </div>
                     <div className='responsive_nav_login'>
 
                     
                     {
-                        AppContext.app.isAuthorized?
-                       <>
-                        <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
-                            <Link   className='responsive_nav_login_log' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>
-                        </>:null
+                    //     AppContext.app.isAuthorized?
+                    //    <>
+                    //     <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
+                    //         <Link   className='responsive_nav_login_log' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>
+                    //     </>:null
                     }
                     </div>
                     <MobileModal onClose={handleClick} show={show.show}>
@@ -228,13 +229,13 @@ const loginRegister = <>
                     </MobileModal>
 
                     <div className='responsive_nav_login'>
-                        <Link className='responsive_nav_login_log' to='/register'>Register</Link>
-                        <Link className='responsive_nav_login_log' to='/login'>Login</Link>
+                        <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Qeydiyyat</Link>
+                        <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Daxil Ol</Link>
                     </div>
                     
                     <div className='responsive_nav_bottom'>
-                            <Link className='responsive_nav_bottom_item' to="/cabinet">Cabinet <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
-                            <Link onClick={handleClick} className='responsive_nav_bottom_item ' >Kategories <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></Link>
+                            <Link className='responsive_nav_bottom_item' to="/profile">Profil <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
+                            <Link onClick={handleClick} className='responsive_nav_bottom_item ' >Kateqoriyalar <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></Link>
                     </div>
                 </div>
         </div>

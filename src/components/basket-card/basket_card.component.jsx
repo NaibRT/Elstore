@@ -87,7 +87,12 @@ function BasketCard({plus,minus,count,product}){
            <div className='card_right price_div '>
                <div className='basket_price'>
                    <div>
-                        <h2 className='basket_price_head'>{product.price} AZN</h2>
+                        {
+                            product.discount_price!==0
+                            ?<><p style={{'color':'green'}}>{product.discount}% endirim</p><del style={{'color':'grey'}}>{product.price} AZN</del><h2 className='basket_price_head'>{product.discount_price} AZN</h2></>
+                            :<h2 className='basket_price_head'>{product.price} AZN</h2>
+                        }
+                        
                     </div>
                     <div className='add_minus'>
                         <button data-id={product.id} onClick={(e)=>{minus(e)}}  className='add_minus_button'>-</button>
