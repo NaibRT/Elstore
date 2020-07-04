@@ -73,12 +73,25 @@
      color: #334788;
  }
  .swiper_slide_image{
-     height: 200px;
+    height: 200px;
+    width: 100%;
+    margin: 0 auto;
+    /* padding-top: 70%; */
+    position: relative;
+    
      img{
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-         object-position: center;
+        //  width: 100%;
+        //  height: 100%;
+        //  object-fit: cover;
+        //  object-position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: auto;
+    height: 80%;
+    object-fit: cover;
+    object-position: center center;
      }
     }
    
