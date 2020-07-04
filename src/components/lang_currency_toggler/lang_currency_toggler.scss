@@ -28,11 +28,19 @@
     border-radius: 8px;
     select {
         width: 100% !important;
-        height:40px ;
+        height:44px;
         font-size: 15px;
-
+        border: 1px solid #767676;
     }
   }
+
+  // .accordion_select::after{
+  //   content: url('../../assets/images/Icon.svg');
+  //   position: absolute;
+  //   right: 15px;
+  //   top: 7px;
+  //   pointer-events: none;
+  // }
  
 
   .select_border{

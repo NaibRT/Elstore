@@ -41,6 +41,11 @@
       flex: 1.2;
       text-align: right;
       position: relative;
+      .budget{
+        font-size: 23px !important;
+        top: 22px !important ;
+        margin-right: -6px ;
+      }
       .navbar_buttons_link {
         margin-left: 24px;
         font-family: "InterRegular";
@@ -73,10 +78,11 @@
           color: white;
           padding-bottom: 20px;
         }
+       
       }
     }
     .navbar_logo {
-      flex: 0.9;
+      flex: 0.8;
       img {
         // height: 6px;
         width: 175px;
@@ -84,6 +90,7 @@
     }
   }
 }
+
 
 .navbar_bottom {
   padding: 0 94px;
@@ -233,14 +240,15 @@
   top: -8px;
 }
 .navbar_search {
-  padding: 20px 0;
-  flex: 1;
+  padding: 17px 0;
+  flex: 0.7;
   margin-right: 25px;
   margin-left: 7px;
 }
 
 .navbar_select{
-    padding: 5px 0;
+    padding: 18px 0;
+    flex: 0.4;
 }
 
 .searchDiv {
@@ -255,6 +263,7 @@
 }
 
 .search-input .search-input-text {
+  height: 44px;
   padding: 10px;
   font-size: 17px;
   border: 0;
@@ -271,7 +280,7 @@
   border: 0;
   margin-left: -35px;
   background-color: transparent;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .navbaroutside {
@@ -295,14 +304,14 @@
   background-color: white !important;
   position: relative;
   top: 24px;
-  left: calc(100% - 115px);
+  left: calc(100% - 100px);
   visibility: hidden;
   border-radius: 4px;
   border: 1px solid $text-secondary;
   z-index: 2;
 
   &_li {
-    padding-bottom: 5px;
+    padding: 4px;
     list-style: none;
     border-bottom: 1px solid black;
     text-align: center;
@@ -318,6 +327,26 @@
       text-decoration: none;
     }
   }
+  
+  &_li_a {
+    padding: 4px;
+    list-style: none;
+    height:29px;
+    
+    text-align: center;
+    &:hover {
+      background: #32478a;
+      color: white;
+      a {
+        color: white;
+      }
+    }
+    a {
+      color: $text-dark;
+      text-decoration: none;
+    }
+  }
+
 }
 
 .active {
@@ -369,7 +398,7 @@
   //   display: none !important;
   // }
   .navbar_buttons {
-    flex: 0.2 !important;
+    flex: 0.1 !important;
   }
   .navbar_search {
     flex: 1.7 !important;
@@ -418,13 +447,14 @@
     position: relative;
     left: -47px;
   }
+ 
   .navbar_center {
     padding: 0 5px !important;
   }
   .menu-container {
     top: 25px;
     position: absolute;
-    right: 20px;
+    right: 0;
     margin-left: 3px;
   }
   .navbar_search {
@@ -439,7 +469,7 @@
     }
   }
       .navbar_buttons {
-        flex: 0.3 !important;
+        flex: 0.2 !important;
       }
       .navbar_search {
         flex: 1.7 !important;
@@ -494,7 +524,7 @@
       .menu-container {
         top: 25px;
         position: absolute;
-        right: 20px;
+        right: 0;
         margin-left: 3px;
       }
       .navbar_search {
@@ -518,7 +548,7 @@
     }
   }
       .navbar_buttons {
-        flex: 0.5 !important;
+        flex: 0.3 !important;
       }
       .navbar_search {
         flex: 1.7 !important;
@@ -572,7 +602,7 @@
       .menu-container {
         top: 25px;
         position: absolute;
-        right: 20px;
+        right: 0;
         margin-left: 3px;
       }
       .navbar_search {
@@ -664,7 +694,7 @@
       .menu-container {
         top: 25px;
         position: absolute;
-        right: 20px;
+        right: 14px;
         margin-left: 3px;
       }
       .navbar_search {
@@ -755,7 +785,7 @@
       .menu-container {
         top: 25px;
         position: absolute;
-        right: 20px;
+        right: 14px;
         margin-left: 3px;
       }
       .navbar_search {
@@ -846,7 +876,7 @@
       .menu-container {
         top: 25px;
         position: absolute;
-        right: 20px;
+        right: 14px;
         margin-left: 3px;
       }
       .navbar_search {
@@ -937,7 +967,7 @@
       .menu-container {
         top: 25px;
         position: absolute;
-        right: 20px;
+        right: 14px;
         margin-left: 3px;
       }
       .navbar_search {
@@ -953,7 +983,6 @@
       }
     }
   }
-}
 
 .of-hiddel{
   overflow-y: hidden;

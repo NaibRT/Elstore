@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import './brandSlider.component.scss'
 import Swiper from 'swiper';
 import ProductCartItem from '../product-card-item/product-cart-item.component'
+import { Link } from 'react-router-dom'
 
 class BrandSlider extends Component{
 
@@ -23,6 +24,9 @@ class BrandSlider extends Component{
                 prevEl: '.brand-button-preview'
             },
             breakpoints:{
+                0:{
+                    slidesPerView:1
+                },
                 320:{
                     slidesPerView:1
                 },
@@ -48,8 +52,10 @@ class BrandSlider extends Component{
         // <p className="discount">20% endirim</p>
         return (
             <section className="brand_slider_section">
-                            <div className="brand_slider_title">
+                            <div className="brand_slider_title display__flex">
                              <h4>{this.props.name}</h4>
+                            
+            
                             </div>
                             <div id="brandSlider" className="swiper-container">
                                 <div className="swiper-wrapper">

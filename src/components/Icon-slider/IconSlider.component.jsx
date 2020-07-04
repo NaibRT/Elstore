@@ -17,6 +17,9 @@ export class IconSlider extends Component {
                 prevEl: '.icon-button-preview'
             },
             breakpoints:{
+                0:{
+                    slidesPerView:1
+                },
                 320:{
                     slidesPerView:2
                 },

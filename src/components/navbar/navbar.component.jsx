@@ -44,6 +44,19 @@ function  Navbar(props) {
     }
 
 
+      window.onclick = function(event) {
+        if (!event.target.matches('.navbar_buttons_link profile')) {
+      
+          var dropdowns = document.getElementsByClassName(".profile_dropwdown");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {  
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
       
     function toggleNav() {
         document.getElementsByTagName('body')[0].classList.toggle('of-hiddel');
@@ -72,9 +85,9 @@ function  Navbar(props) {
                 panel.style.height = '70px';
                 } 
             });
+
             }
-
-
+           
 
             $(function() {
                 $(".navbar_bottom_link").click(function() {
@@ -127,13 +140,13 @@ function  Navbar(props) {
   
 
     const userProfle=<>
-    <Link   className='navbar_buttons_link bag budget' >0₼ </Link> 
+    <Link   className='navbar_buttons_link bag budget'>0₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>  
     <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
 <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>
         <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
-        <li className='profile_dropwdown_li'><Link onClick={AppContext.events.logout}>Logout</Link></li>
+        <li className='profile_dropwdown_li_a'><Link onClick={AppContext.events.logout}>Logout</Link></li>
     </ul>
 </div>
 
@@ -214,6 +227,7 @@ const loginRegister = <>
                         })}
                         
                     </MobileModal>
+
                     <div className='responsive_nav_login'>
                         <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Qeydiyyat</Link>
                         <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Daxil Ol</Link>

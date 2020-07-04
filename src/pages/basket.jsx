@@ -94,7 +94,7 @@ function Basket(props) {
                            
                                     <div className="row">
                                         <div className="col-lg-12 col-md-6 col-sm-12">
-                                            <TotalSum amount="Məbləğ" delivery="Catdirilma" deliveryAmount={AppContext.total.totalDeliveryAmount} tax={AppContext.total.taxamount} total="Ümumi" totalPrice={AppContext.total.amount} totalCount={AppContext.total.totalAmount} />
+                                            <TotalSum class='card-border' amount="Məbləğ" delivery="Catdirilma" deliveryAmount={AppContext.total.totalDeliveryAmount} tax={AppContext.total.taxamount} total="Ümumi" totalPrice={AppContext.total.amount} totalCount={AppContext.total.totalAmount} />
                                         </div>
                                         <div className="col-lg-12 col-md-6 col-sm-12">
                                             <IconDeliverySafetyPayback />

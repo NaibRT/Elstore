@@ -12,6 +12,11 @@
                     font-style: normal;
                     font-size: 25px;
                     margin-bottom: 16px;
+                    justify-content: space-between;
+                    a{
+                        font-size: 20px;
+                    }
+
                 }
                 #brandSlider{
                         .swiper-wrapper{
@@ -38,6 +43,9 @@
                                             color: black;
                                             text-decoration-style: none;
                                         }
+
+
+                                     
                                     }
                                     .discount{
                                         margin-top: 3px;
@@ -59,6 +67,7 @@
                             }
                         }
                 }
+              
 
     .brand-button-next{
         position: absolute;

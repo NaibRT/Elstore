@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './MostSellerSlide.component.scss'
-
+import {Link} from 'react-router-dom';
 import Swiper from 'swiper';
 import ProductCartItem from '../product-card-item/product-cart-item.component'
 
@@ -23,6 +23,9 @@ export class MostSellerSlide extends Component {
                 prevEl: '.most-button-preview'
             },
             breakpoints:{
+                0:{
+                    slidesPerView:1
+                },
                 320:{
                     slidesPerView:1
                 },
@@ -48,8 +51,9 @@ export class MostSellerSlide extends Component {
         // <p className="discount">20% endirim</p>
         return (
             <section className="most_seller_slider_section">
-                            <div className="most_slider_title">
+                            <div className="most_slider_title display__flex">
                              <h4>{this.props.name}</h4>
+                             
                             </div>
                             <div id="mostSlider" className="swiper-container">
                                 <div className="swiper-wrapper">

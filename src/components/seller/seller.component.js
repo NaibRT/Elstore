@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import Chips from '../chips/chips.component'
 import ButtonRating from '../button-rating/buttonRating.component'
 import './seller.scss';
+import { Link } from 'react-router-dom';
 
-function Seller(props){
+function Seller({seller}){
       
     return (
 
@@ -13,10 +14,10 @@ function Seller(props){
                 <div className="content">
                  <div className="content__img display__flex">
                                 <span className="box__img">
-                                <img src={require(`../../assets/images/heading/Image.png`)} alt=""/>
+                                <img src={seller!==undefined?seller.store.logo:null} alt=""/>
                                 </span>
                         
-                                <div className="texture"><div className="text_1"><h2>Öz Home</h2></div>
+                                <div className="texture"><div className="text_1"><h2>{seller!==undefined?seller.name:null}</h2></div>
 
                                 <Chips rating="(0 rəy)" store="0" />
                                 </div>
@@ -38,29 +39,17 @@ function Seller(props){
 
 
                                     <div className="bottom__line display__flex">
-                                    
-                                    
-                                            <div onClick=""  className="shop_click display__flex" id="seller" >
-                                            <img src={require(`../../assets/images/heading/seeshop.svg`)} alt="" width="116px" height="21px" /> 
-
-
-                                            <div  className="union display__flex">
-                                            <img src={require(`../../assets/images/heading/munion.svg`)} alt=""  />
-                                            </div>
-                                            </div>
-                                    
+                                      <Link to={`/company/${seller!==undefined?seller.id:''}/${seller!==undefined?seller.name:''}`}>
+                                      <div onClick=""  className="shop_click display__flex" id="seller" >
+                                      <img src={require(`../../assets/images/heading/seeshop.svg`)} alt="" width="116px" height="21px" /> 
+                                      <div  className="union display__flex">
+                                      <img src={require(`../../assets/images/heading/munion.svg`)} alt=""  />
+                                      </div>
+                                      </div>
+                                      </Link>
                                     </div>
-
-                                    
-                                    
                                     </div>
-                
-                
                 </div>
-            
-            
-
-       
         </React.Fragment>
 
     )
