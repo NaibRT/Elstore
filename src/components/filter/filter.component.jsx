@@ -120,7 +120,7 @@ function Filter({clickHandler,Pricefrom,Priceto}) {
             filteredMerkets.filter((item,idx)=>idx < 4 )
             .map(({name}) => {
                 return (
-                <div className='col-lg-6 center'>
+                <div className='col-lg-6 col-md-3 col-sm-3 col-6 center'>
                     <img alt='' src={require('../../assets/images/market.svg')} />
                     <p className='filter_market_title'>{name}</p>
                 </div>

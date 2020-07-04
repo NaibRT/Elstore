@@ -33,3 +33,34 @@ font-size: 16px;
  background-color: $primary--dark;
  color: $white;
 }
+
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .badge{
+        font-size: 12px !important;
+    }
+}
+
+@media (min-width: 415px) and (max-width: 575.98px) { 
+    .badge{
+        font-size: 11px !important;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}
+
+@media only screen and (min-device-width: 376px) and (max-device-width: 414px){
+    .badge{
+        font-size: 10px !important;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}
+
+@media only screen and  (max-device-width : 375px) {
+    .badge{
+        font-size: 8px !important;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}

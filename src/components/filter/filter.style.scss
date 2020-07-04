@@ -79,6 +79,7 @@
 .filter_price_div{
     margin-top: 10px;
     display: flex;
+
 }
 .line_price{
     width: 20px;
@@ -199,3 +200,38 @@
       height: 0;
       overflow: hidden;
   }
+
+  @media (max-width: 991.98px) { 
+    .filter_price_div{
+        .search-input{
+            .search-input-submit{
+                position: relative !important;
+            }
+        }
+    }
+    .center{
+        margin-top: 15px;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .filter_price_div{
+        .search-input{
+            .search-input-submit{
+                position: relative !important;
+            }
+        }
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .filter_price_div{
+        .search-input{
+            .search-input-submit{
+                position: relative !important;
+            }
+        }
+    }
+}

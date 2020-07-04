@@ -7,7 +7,7 @@ const SifarishQiymeti = (props) => {
                     <div className="text__qiymet display__flex ">
                         <h5>{props.price}</h5>
                         <div className="text--stock display__flex">
-                            <img src={require(`../../assets/images/slider/suggest.png`)} alt=""/>
+                            {/* <img src={require(`../../assets/images/slider/suggest.png`)} alt=""/> */}
                             <p>{props.stock}</p>
                         </div>
                     </div>

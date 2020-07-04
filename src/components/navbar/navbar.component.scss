@@ -82,7 +82,7 @@
       }
     }
     .navbar_logo {
-      flex: 0.9;
+      flex: 0.8;
       img {
         // height: 6px;
         width: 175px;
@@ -240,14 +240,15 @@
   top: -8px;
 }
 .navbar_search {
-  padding: 20px 0;
-  flex: 1;
+  padding: 17px 0;
+  flex: 0.7;
   margin-right: 25px;
   margin-left: 7px;
 }
 
 .navbar_select{
-    padding: 5px 0;
+    padding: 18px 0;
+    flex: 0.4;
 }
 
 .searchDiv {
@@ -262,6 +263,7 @@
 }
 
 .search-input .search-input-text {
+  height: 44px;
   padding: 10px;
   font-size: 17px;
   border: 0;
@@ -278,7 +280,7 @@
   border: 0;
   margin-left: -35px;
   background-color: transparent;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .navbaroutside {
@@ -396,7 +398,7 @@
   //   display: none !important;
   // }
   .navbar_buttons {
-    flex: 0.2 !important;
+    flex: 0.1 !important;
   }
   .navbar_search {
     flex: 1.7 !important;
@@ -452,7 +454,7 @@
   .menu-container {
     top: 25px;
     position: absolute;
-    right: 20px;
+    right: 0;
     margin-left: 3px;
   }
   .navbar_search {
@@ -467,7 +469,7 @@
     }
   }
       .navbar_buttons {
-        flex: 0.3 !important;
+        flex: 0.2 !important;
       }
       .navbar_search {
         flex: 1.7 !important;
@@ -522,7 +524,7 @@
       .menu-container {
         top: 25px;
         position: absolute;
-        right: 20px;
+        right: 0;
         margin-left: 3px;
       }
       .navbar_search {
@@ -546,7 +548,7 @@
     }
   }
       .navbar_buttons {
-        flex: 0.5 !important;
+        flex: 0.3 !important;
       }
       .navbar_search {
         flex: 1.7 !important;
@@ -600,7 +602,7 @@
       .menu-container {
         top: 25px;
         position: absolute;
-        right: 20px;
+        right: 0;
         margin-left: 3px;
       }
       .navbar_search {
@@ -692,7 +694,7 @@
       .menu-container {
         top: 25px;
         position: absolute;
-        right: 20px;
+        right: 14px;
         margin-left: 3px;
       }
       .navbar_search {
@@ -783,7 +785,7 @@
       .menu-container {
         top: 25px;
         position: absolute;
-        right: 20px;
+        right: 14px;
         margin-left: 3px;
       }
       .navbar_search {
@@ -874,7 +876,7 @@
       .menu-container {
         top: 25px;
         position: absolute;
-        right: 20px;
+        right: 14px;
         margin-left: 3px;
       }
       .navbar_search {
@@ -965,7 +967,7 @@
       .menu-container {
         top: 25px;
         position: absolute;
-        right: 20px;
+        right: 14px;
         margin-left: 3px;
       }
       .navbar_search {

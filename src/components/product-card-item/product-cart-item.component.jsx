@@ -59,7 +59,6 @@ function ProductCartItem({data,isLiked}) {
     :<p>{data.price} AZN</p>
   }
   </div>
-
   <div className="baginto">
   <ButtonRating name='Yuksek rating' class='bg-gold' icon={require('../../assets/images/icons/star.svg')}/>
   </div>
