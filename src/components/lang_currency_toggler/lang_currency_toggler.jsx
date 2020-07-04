@@ -13,6 +13,7 @@ const Langs =  [
 
 
 function LangToggler() {
+    
     useEffect(()=>{
         // var acc = document.getElementsByClassName("accordion_lang");
         //     var i;
@@ -56,9 +57,12 @@ function LangToggler() {
         })
     }
 
-    const accordionLangHandler=(e)=>{
-        console.log(e.target)
-    }
+    // const accordionLangHandler=(e)=>{
+    //     console.log(e.target)    
+    // }
+
+
+
 
     return (
         <>

@@ -209,7 +209,7 @@ function Porfilinfo(props) {
         if(res.ok){
             console.log('burdadiiii',res)
             let data1=await res.json();
-            console.log(data1)
+            swal("Sorğunuz qəbul olundu", "", "success");
             setDatalar({
                 field:{
                 ...datalar.field,
@@ -283,6 +283,7 @@ function Porfilinfo(props) {
     return (
        
                <>
+               <br/>
                     <div className="row">
                     <div className="col-lg-9 col-md-12 col-xs-12">
                             <div className="profil__info-owner">
