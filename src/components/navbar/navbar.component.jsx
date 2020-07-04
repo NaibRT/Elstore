@@ -93,7 +93,7 @@ function  Navbar(props) {
                 $(".navbar_bottom_link").removeClass("activenav");
              }
 
-    })
+    },[])
    
     let url=UrlGenerator('az','categories')
     useEffect(()=>{
