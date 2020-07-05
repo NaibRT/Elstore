@@ -43,6 +43,20 @@ function  Navbar(props) {
         setVisiblepp(!visiblepp)
     }
 
+    
+    function activeSearch(){
+        let navbarSearch = document.querySelector('.navbar_search');
+        let navbarCenter = document.querySelector('.navbar_center');
+        navbarSearch.classList.toggle('showEl');
+        navbarCenter.classList.toggle('showHeight');
+        // let hasItem = false;
+        // if(!hasItem){
+        // navbarSearch.style.display = "block";
+        // }else if(hasItem){
+        // navbarSearch.style.display = "none";
+        // }
+    }
+
 
       window.onclick = function(event) {
         if (!event.target.matches('.navbar_buttons_link profile')) {
@@ -180,17 +194,20 @@ const loginRegister = <>
                 <div className='navbar_logo'>
                     <Link to='/'><img alt='' src={require('../../assets/logo/logo_1.svg')} /></Link>
                 </div>
-                <div className='navbar_search'>
-                <form onSubmit={(e)=>{e.preventDefault();History.push(`/search/filter[title]=${products.state.searchKey}`)}}  className="search-input" >
-                    <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
-                    <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/icons/search.svg')} /></Link>
-                </form>
-                </div>
+                    <div className='navbar_search'>
+                    <form onSubmit={(e)=>{e.preventDefault();History.push(`/search/filter[title]=${products.state.searchKey}`)}}  className="search-input" >
+                        <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
+                        <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/icons/search.svg')} /></Link>
+                    </form>
+                    </div>
                 <div className='navbar_select'>
                     <LangToggler firstopt="Azərbaycan"/>
                 </div>
                 <div className='navbar_buttons'>
                      <Link   className='navbar_buttons_link bag' to='/basket'><img alt='' src={require('../../assets/images/heading/Bag.svg')} /><span>{AppContext.basket.length}</span></Link> 
+                     <div className="active_search">
+                         <img onClick={(e) =>activeSearch(e)} src={require("../../assets/images/search_icon.svg")} alt=""/>
+                     </div>
                     {
                         AppContext.app.isAuthorized?
                             userProfle:
