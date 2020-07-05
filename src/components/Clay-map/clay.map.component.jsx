@@ -22,13 +22,12 @@ useEffect(()=>{
 
 },[])
   return(
-    <div className="container">
     <div className='row'>
 
     {
         state.map((x,i)=>{
             return(
-                <div key={i} className='col-lg-4 col-md-6 col-xs-6'>
+                <div key={i} className='col-lg-4 col-md-6 col-sm-6 col-12'>
                    <div className="card">
                 <img className='bg-card-img' alt='' src={x.cover_image}/>
                     <div className="card-overlay">
@@ -42,7 +41,6 @@ useEffect(()=>{
                     </div>
                 </div>
             </div>
-
         </div>
             )                       
         })
@@ -50,8 +48,6 @@ useEffect(()=>{
 
       
     </div>
-   
-</div>
 );
 }
   

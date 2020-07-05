@@ -101,11 +101,9 @@ function Basket(props) {
                                         </div>
                                         <div className='col-lg-12 col-md-12 col-sm-12'>
                                         {
-                                            AppContext.app.isAuthorized && AppContext.basket ?
+                                            AppContext.app.isAuthorized && AppContext.basket.length>0?
                                             <Link style={{'textDecoration':'none'}} to='/checkout'><Button className='bg-primary--light'>Sifaris ver</Button></Link>
-                                             :<Link onClick={()=>{
-                                                document.getElementById('login__modal').style.display='block';
-                                             }} style={{'textDecoration':'none'}}><Button className='bg-primary--light'>Sifaris ver</Button></Link>
+                                             :null
 
                                         }
                                     </div>
@@ -121,5 +119,7 @@ function Basket(props) {
         </section>
     )
 }
-
+// <Link onClick={()=>{
+//     document.getElementById('login__modal').style.display='block';
+//  }} style={{'textDecoration':'none'}}><Button className='bg-primary--light'>Sifaris ver</Button></Link>
 export default Basket

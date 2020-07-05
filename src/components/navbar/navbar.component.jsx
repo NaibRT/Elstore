@@ -59,9 +59,11 @@ function  Navbar(props) {
       }
       
     function toggleNav() {
-        document.getElementsByTagName('body')[0].classList.toggle('of-hiddel');
-        document.getElementById('res-nav-id').classList.toggle('of-scroll');
+        document.getElementsByClassName('menu-container')[0].classList.toggle('change');
         document.getElementById('res-nav-id').classList.toggle('opennav');
+        document.getElementsByTagName('body')[0].classList.toggle('of-hidden');
+        document.getElementById('res-nav-id').classList.toggle('of-scroll');
+        
         const currentState = toggle.active;
         setToggle({ active: !currentState });
     }
@@ -142,7 +144,7 @@ function  Navbar(props) {
     const userProfle=<>
     <Link   className='navbar_buttons_link bag budget'>0₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>  
-    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/user.png')} /> <img alt='' width='12px' src={require('../../assets/images/down.svg')} /></Link>
 <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>
         <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
@@ -195,7 +197,7 @@ const loginRegister = <>
                             loginRegister
                     }
                     <div>
-                    <div className={`${toggle.active ? 'change': ''} menu-container navbaroutside`}    onClick={toggleNav}>
+                    <div className={`menu-container navbaroutside`} onClick={toggleNav}>
                         <div className="bar1"></div>
                         <div className="bar2"></div>
                         <div className="bar3"></div>
@@ -229,13 +231,22 @@ const loginRegister = <>
                     </MobileModal>
 
                     <div className='responsive_nav_login'>
-                        <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Qeydiyyat</Link>
-                        <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Daxil Ol</Link>
+                    <div className='container'>
+                    <div className='row' style={{'justifyContent':'space-between'}}>
+                    <Link className='responsive_nav_login_log' to='/open-store'>Magaza Qeydiyyat</Link>
+                    <Link className='responsive_nav_login_log' to='/worked-delivery'>Kuryer Qeydiyyat</Link>                    
+                    </div>
+                     <br/>
+                    <div className='row' style={{'justifyContent':'space-between'}}>
+                    <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Qeydiyyat</Link>
+                    <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Daxil Ol</Link>
+                    </div>
+                    </div>
                     </div>
                     
                     <div className='responsive_nav_bottom'>
                             <Link className='responsive_nav_bottom_item' to="/profile">Profil <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
-                            <Link onClick={handleClick} className='responsive_nav_bottom_item ' >Kateqoriyalar <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></Link>
+                            <div onClick={handleClick} className='responsive_nav_bottom_item ' >Kateqoriyalar <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></div>
                     </div>
                 </div>
         </div>

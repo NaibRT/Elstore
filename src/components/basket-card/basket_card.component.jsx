@@ -63,7 +63,7 @@ function BasketCard({ plus, minus, count, product }) {
                 <div className='card_center'>
                     <div className='basket_name_for_responsivity'>
                         <h1 className='baskert_card_header'>{product.product_name} </h1>
-                        <div><span className='basket_card_firm '>Öz Home</span><span className='basket_card_firm_height text--secondary'></span>  <span className='basket_card_selling'>212 d?f? satıldı</span> </div>
+                        <div><span className='basket_card_firm '>{product.seller.name}</span><span className='basket_card_firm_height text--secondary'></span>  <span className='basket_card_selling'>dəfə satıldı</span> </div>
                     </div>
                     {/* <div className="infor_respon">
                         <div className='basket_card_checkboxdiv'>
@@ -86,10 +86,10 @@ function BasketCard({ plus, minus, count, product }) {
             </div>
             <div className="basket_info">
                 <div className='basket_order_details'>
-                    <h6 className='basket_order_details_head accordion'>Sifarİş qeydl?ri <span><img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></span></h6>
+                    <h6 className='basket_order_details_head accordion'>Sifarİş qeydləri <span><img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></span></h6>
                     <p className='basket_order_details_text panel'>
                         {product.product_description}
-                        <div><a href='#'>Düz?liş et</a></div>
+                        <div><a href='#'>Düzəliş et</a></div>
                     </p>
                 </div>
                 <div className='basket_card_shipping_section'>

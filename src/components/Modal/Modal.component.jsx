@@ -18,7 +18,10 @@ function Modal(){
         data:[]
     })
     const AppContext=useContext(appContext)
-
+    
+    useEffect(()=>{
+      AppContext.events.mobileSideBarOFF()
+    })
     useEffect(()=>{
         let url=UrlGenerator('az','cities');
         fetch(url)
