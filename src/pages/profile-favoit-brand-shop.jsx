@@ -23,21 +23,20 @@ function FavoritBrandShops() {
 
   },[])
  return (
-  <div>
+   <>
 {/*   <div className='row'>
     <Card>
      <Card.Header name='Brendler'/>
      <IconSlider/>
     </Card>
  </div>*/}
-   <div className='row'>
     <Card>
     <Card.Header name='Magaza ve Saticilar'/>
      <div className='row'>
      {
        likedShops.map((x,i)=>{
          return(
-          <div className='col-lg-6'>
+          <div key={i} className='col-lg-6'>
           <Seller seller={x}/>
           </div>
          )
@@ -45,8 +44,7 @@ function FavoritBrandShops() {
      }
      </div>
     </Card>
-   </div>
-  </div>
+  </>
  )
 }
 
