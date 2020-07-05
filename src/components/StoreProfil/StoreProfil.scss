@@ -249,3 +249,11 @@
         word-break: break-word;
     }
 }
+@media(max-width:576px){
+    
+        .profile--image_Username{
+            input{
+                width: 100%;
+            }
+        }
+}

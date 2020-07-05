@@ -14,6 +14,9 @@ function CheckoutAddress() {
               setStep(step+1)
            
           };
+        //   const prevStep=()=>{
+        //     setStep(step-2)
+        //   }
             
           function stepTwo(){
             setStep(2)
