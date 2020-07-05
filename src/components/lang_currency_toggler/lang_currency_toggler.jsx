@@ -4,7 +4,7 @@ import Selectbox from '../Select-box/SelectBox.component'
 
 
 const Langs =  [
-    {id:0,name:'Azərbaycan'},
+    
     {id:1,name:'İnglis'},
     {id:2,name:'Russia'}
 ];
@@ -12,7 +12,7 @@ const Langs =  [
 // const Currency =  ['AZN','EURO','USD'];
 
 
-function LangToggler() {
+function LangToggler(props) {
     
     useEffect(()=>{
         // var acc = document.getElementsByClassName("accordion_lang");
@@ -66,7 +66,7 @@ function LangToggler() {
 
     return (
         <>
-           <Selectbox  class='accordion_select'  options={Langs}/>
+           <Selectbox  class='accordion_select' firstopt={props.firstopt}   options={Langs}/>
         </>
     )
 }

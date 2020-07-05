@@ -447,9 +447,6 @@
   .navbaroutside {
     display: inline-block !important;
   }
-  .navbar_bottom {
-    display: none;
-  }
   .navbar_top {
     display: none !important;
   }
@@ -530,9 +527,6 @@
       }
       .navbaroutside {
         display: inline-block !important;
-      }
-      .navbar_bottom {
-        display: none;
       }
       .navbar_top {
         display: none !important;
@@ -622,11 +616,11 @@
           object-fit: cover;
         }
       }
+      .navbar_bottom{
+        padding: 0px 15px;
+      }
       .navbaroutside {
         display: inline-block !important;
-      }
-      .navbar_bottom {
-        display: none;
       }
       .navbar_top {
         display: none !important;
@@ -719,11 +713,12 @@
       .navbaroutside {
         display: inline-block !important;
       }
-      .navbar_bottom {
-        display: none;
-      }
+
       .navbar_top {
         display: none !important;
+      }
+      .navbar_bottom{
+        padding: 0px 15px;
       }
     //   .navbar_search {
     //     padding-top: 18px;
@@ -821,11 +816,11 @@
       .navbaroutside {
         display: inline-block !important;
       }
-      .navbar_bottom {
-        display: none;
-      }
       .navbar_top {
         display: none !important;
+      }
+      .navbar_bottom{
+        padding: 0px 15px;
       }
     //   .navbar_search {
     //     padding-top: 18px;
@@ -930,11 +925,11 @@
       .navbaroutside {
         display: inline-block !important;
       }
-      .navbar_bottom {
-        display: none;
-      }
       .navbar_top {
         display: none !important;
+      }
+      .navbar_bottom{
+        padding: 0px 10px;
       }
     //   .navbar_search {
     //     padding-top: 18px;
@@ -1032,11 +1027,12 @@
       .navbaroutside {
         display: inline-block !important;
       }
-      .navbar_bottom {
-        display: none;
-      }
+
       .navbar_top {
         display: none !important;
+      }
+      .navbar_bottom{
+        padding: 0px 10px;
       }
     //   .navbar_search {
     //     padding-top: 18px;
@@ -1088,4 +1084,10 @@
   }
 }
 
+.of-hidden{
+  overflow-y: hidden;
+}
+.of-scroll{
+  overflow: scroll;
+}
 

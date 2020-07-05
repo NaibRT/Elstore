@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
 import Home from './profile-shop-home'
 import Products from './products'
@@ -6,8 +6,13 @@ import ProductCreate from './create-product'
 import ProductInfo from './product-info'
 import StoreProfile from '../components/StoreProfil/StoreProfil.component'
 import CompanyOrders from './company-orders'
+import {appContext} from '../contexts/appContext'
 
 function CompanyProfile() {
+  let AppContext=useContext(appContext);
+  useEffect(()=>{
+    AppContext.events.mobileSideBarOFF()
+  })
  return (
   <div>
   <Router>
