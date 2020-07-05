@@ -2,6 +2,7 @@ import React,{useState, useEffect,useContext} from 'react';
 import './navbar.component.scss';
 import {useHistory,Link } from "react-router-dom";
 import {searchContext} from '../../contexts/search';
+import {categoryContext} from "../../contexts/category"
 import MobileModal from '../categorymobile_modal/mobilemodal'
 import axios from 'axios'
 import LangToggler from "../lang_currency_toggler/lang_currency_toggler";
@@ -9,6 +10,8 @@ import Selectbox from "../Select-box/SelectBox.component";
 import {appContext} from '../../contexts/appContext'
 import $ from 'jquery'
 import UrlGenerator from '../../services/url-generator';
+ 
+
 
 const Langs =  [
     {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
@@ -21,6 +24,8 @@ function  Navbar(props) {
     const [visiblepp,setVisiblepp] =useState(false);
     const AppContext=useContext(appContext);
     const History=useHistory();
+    const CategoryContext = useContext(categoryContext)
+
 
     const [categories, setCategories] = useState({
         data:[]
@@ -87,7 +92,8 @@ function  Navbar(props) {
             });
 
             }
-           
+            
+            
 
             $(function() {
                 $(".navbar_bottom_link").click(function() {
@@ -119,15 +125,34 @@ function  Navbar(props) {
                 data:res.data.data
             })
         })
+        
     },[])
+
+    var acc1 = document.getElementsByClassName("category__item");
+            var y;
+    console.log(acc1);
+            for (y = 0; y < acc1.length; y++) {
+            acc1[y].addEventListener("click", function(events) {
+                // this.classList.toggle("active");
+                // var panel = this.nextElementSibling;
+                // if (panel.style.height) {
+                // panel.style.height = null;
+                // } else {
+                // panel.style.height = '70px';
+                // } 
+                console.log("Salam eee")
+            });
+
+            }
+            
 
 
     function handleClick(){
         setShow({
             show: !show.show
           });
-    }
-
+    }   
+     
      useEffect(()=>{
       axios({
           method:'GET',
@@ -138,7 +163,7 @@ function  Navbar(props) {
       })
      },[])
   
-
+    console.log(Object.keys(CategoryContext.state.categories))
     const userProfle=<>
     <Link   className='navbar_buttons_link bag budget'>0₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>  
@@ -151,6 +176,8 @@ function  Navbar(props) {
 </div>
 
 </>;
+ 
+    
 
 const loginRegister = <>
 
@@ -159,7 +186,7 @@ const loginRegister = <>
                     <Link className='navbar_buttons_link log signup' onClick={Sign} >hesab yarat </Link>
                       
                     </> 
-             console.log(categories.data)       
+             console.log( categories.data.children)       
     return (
         <div className='navbar'>
             <div className='navbar_top'>
@@ -222,9 +249,35 @@ const loginRegister = <>
                     }
                     </div>
                     <MobileModal onClose={handleClick} show={show.show}>
-                        {categories.data.map(category=>{
+
+                        <div className="main__category--tel">
+                            <ul>  
+                            {
+                               
+                               Object.keys(CategoryContext.state.categories).map(x=>{
+                                   console.log(x)
+                                    return(  <li onclick={(e)=>{CategoryContext.event.getSubCat(e) }}  data-id={CategoryContext.state.categories[x].id}  className="category__items"    key={CategoryContext.state.categories[x].id}>{CategoryContext.state.categories[x].name} <span ><img  className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span>
+                                    <div className="submenu">
+                                                <ul key={x.id}>
+                                                 { 
+                                                     CategoryContext.state.categories[x].children!==null?
+                                                    CategoryContext.state.categories[x].children.map(y=>{
+                                                      return  <Link to={`/search/filter[category_id]=${y.id}`}><li>{y.name}</li></Link>
+                                                     })
+                                                    :null
+                                                 }
+                                                </ul>
+                                        </div>
+                                    </li>
+                                    )
+                                })
+                                
+                            }
+                            </ul>
+                        </div>
+                        {/* {categories.data.map(category=>{
                             return (<><br/><Link to={`/search/filter[category_id]=${category.id}`}>{category.name}</Link><br/></>)
-                        })}
+                        })} */}
                         
                     </MobileModal>
 
