@@ -147,8 +147,12 @@ function Search(props) {
    
           }).catch(err=>console.log(err))
      }
-    
+     
      useEffect(()=>{
+       AppContext.events.mobileSideBarOFF()
+     })
+     useEffect(()=>{
+        
          let url=UrlGenerator('az','search/product')
          let query=props.match.params.query;
          console.log(query)

@@ -18,7 +18,10 @@ function Modal(){
         data:[]
     })
     const AppContext=useContext(appContext)
-
+    
+    useEffect(()=>{
+      AppContext.events.mobileSideBarOFF()
+    })
     useEffect(()=>{
         let url=UrlGenerator('az','cities');
         fetch(url)
@@ -99,8 +102,8 @@ function Modal(){
 
        if(res.ok){
         let data=await res.json();
-        AppContext.events.AddToken(data)
-        swal( "Təbriklər","Qeydiyyatınız uğurla tamamlandı", "success");
+        //AppContext.events.AddToken(data)
+        swal( "Təbriklər","Zəhmət olmasa emailinizi yoxlayin", "success");
         document.getElementById('login__modal').style.display='none';
        }else{
         swal("Təəssüf!", "Qeyd olunmuş email artıq mövcuddur", "error");

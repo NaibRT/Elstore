@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
 import Card from '../components/card/card.component'
 import ListItem from '../components/List-Item/Listitem.component'
 import {BrowserRouter as Router,Link,Route} from 'react-router-dom'
@@ -6,9 +6,14 @@ import SearchResult from '../components/search-result-component/SearchResultComp
 import OrderCard from '../components/order-card/order-card.component'
 import FavoritBrandShops from '../pages/profile-favoit-brand-shop'
 import ProfileInfo from '../components/ProfilInfo/Porfilinfo.component'
+import {appContext} from '../contexts/appContext'
 
 
 function Profile() {
+  let AppContext=useContext(appContext);
+  useEffect(()=>{
+    AppContext.events.mobileSideBarOFF()
+  })
  return (
   <div className='container-fluid'>
   <Router>

@@ -206,7 +206,6 @@ function CreateProduct(props){
 
        const getDescription_az=(e)=>{
           //product['az'].product_description=e
-
           let newProduct=product;
           newProduct.az.product_description=e
           setProduct({
@@ -234,11 +233,11 @@ function CreateProduct(props){
 
        const getCataegory=(e)=>{
         let value=e.target.value;
-           product.product_category_id=value;
-          //  setProduct({
-          //    ...product,
-          //    product_category_id:e.target.value
-          //  })
+        let newProduct=product;
+        newProduct.product_category_id=value;
+           setProduct({
+             ...newProduct,
+           })
            let subCategories=categories.find(x=>x.id==value).children;
            if(subCategories!=null){
             setSubCat([...subCategories])
@@ -249,20 +248,20 @@ function CreateProduct(props){
        }
 
        function getBrands(e) {
-        product.product_brand_id=e.target.value
-        // setProduct({
-        //   ...product,
-        //   product_brand_id:e.target.value
-        // })
+        let newProduct=product;
+        newProduct.product_brand_id=e.target.value
+        setProduct({
+          ...newProduct,
+        })
        }
 
        const getSubCataegory=(e)=>{
         let value=e.target.value;
-        product.product_category_id=value
-        // setProduct({
-        //   ...product,
-        //   product_category_id:e.target.value     
-        // })
+        let newProduct=product;
+        newProduct.product_category_id=value
+        setProduct({
+          ...newProduct,
+        })
          let childCategories=subcat.find(x=>x.id==value).children;
          if(childCategories!=null){
           setChildCat([...childCategories])
@@ -270,32 +269,32 @@ function CreateProduct(props){
          else{
           setChildCat([])
          }
-         
-        
        }
+
        const getChildCataegory=(e)=>{
         let value=e.target.value;
-        product.product_category_id=value
-        // setProduct({
-        //   ...product,
-        //   product_category_id:e.target.value
-        // })
+        let newProduct=product;
+        newProduct.product_category_id=value
+        setProduct({
+          ...newProduct
+        })
        }
 
        const getPrice=(e)=>{
         let value=e.target.value
-        product.product_price=value
+        let newProduct=product;
+        newProduct.product_price=value
         setProduct({
-          ...product,
-          product_price:e.target.value
+          ...newProduct
         })
        }
+
        const getDiscount=(e)=>{
         let value=e.target.value
-        product.discount=value
+        let newProduct=product;
+        newProduct.discount=value
         setProduct({
-          ...product,
-          discount:e.target.value
+          ...newProduct
         })
        }
 
@@ -315,6 +314,7 @@ function CreateProduct(props){
           newFormData.append('ru[product_name]',product.ru['product_name'])
           newFormData.append('product_category_id',product.product_category_id)
           newFormData.append('product_brand_id',product.product_brand_id)
+          newFormData.append('discount',product.discount)
           newFormData.append('product_price',product.product_price)
           newFormData.append('status',product.status)
           console.log(newFormData)
@@ -335,6 +335,7 @@ function CreateProduct(props){
                 let r=await res.json()
                 console.log(r)
               }else{
+
                 document.getElementById('login__modal').style.display='block';
               }
             })

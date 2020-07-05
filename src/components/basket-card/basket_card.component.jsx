@@ -48,9 +48,8 @@ function BasketCard({ plus, minus, count, product }) {
         }
     }
     return (
-        <>
         <div className='basket__card'>
-            <button className='basket_header_text'>Bu məhsul yalnız Bakı şəhəri daxilində çatdırılır.</button>
+            {/*<button className='basket_header_text'>Bu məhsul yalnız Bakı şəhəri daxilində çatdırılır.</button>*/}
             <div className='card-flex'>
                 <div className='card_left'>
                     {
@@ -64,11 +63,11 @@ function BasketCard({ plus, minus, count, product }) {
                 <div className='card_center'>
                     <div className='basket_name_for_responsivity'>
                         <h1 className='baskert_card_header'>{product.product_name} </h1>
-                        <div><span className='basket_card_firm '>Öz Home</span><span className='basket_card_firm_height text--secondary'></span>  <span className='basket_card_selling'>212 dəfə satıldı</span> </div>
+                        <div><span className='basket_card_firm '>{product.seller.name}</span><span className='basket_card_firm_height text--secondary'></span>  <span className='basket_card_selling'>dəfə satıldı</span> </div>
                     </div>
                     {/* <div className="infor_respon">
                         <div className='basket_card_checkboxdiv'>
-                            <form><input type='checkbox' /><span className='basket__form__text'>Hədiyyə paketi olaraq hazırlansın (+2 AZN)</span> </form>
+                            <form><input type='checkbox' /><span className='basket__form__text'>H?diyy? paketi olaraq hazırlansın (+2 AZN)</span> </form>
                         </div>
                     </div> */}
                 </div>
@@ -97,25 +96,7 @@ function BasketCard({ plus, minus, count, product }) {
                     <h5 className='basket_card_shipping_section_head'>çatdırılma</h5>
                     <p className='basket_card_shipping_section_text' >Pulsuz (Bakı daxili)</p>
                 </div>
-              </div>
-           </div>
-           <div className='card_right price_div '>
-               <div className='basket_price'>
-                   <div>
-                        {
-                            product.discount_price!==0
-                            ?<><p style={{'color':'green'}}>{product.discount}% endirim</p><del style={{'color':'grey'}}>{product.price} AZN</del><h2 className='basket_price_head'>{product.discount_price} AZN</h2></>
-                            :<h2 className='basket_price_head'>{product.price} AZN</h2>
-                        }
-                        
-                    </div>
-                    <div className='add_minus'>
-                        <button data-id={product.id} onClick={(e)=>{minus(e)}}  className='add_minus_button'>-</button>
-                        <button className='add_minus_text'>{product.count}</button>
-                        <button data-id={product.id} onClick={(e)=>{plus(e)}} className='add_plus_button'>+</button>
-                    </div>
-               </div>
-           </div>
+            </div>
             <div className='basket_bottom_buttons'>
                 {
                     like ? <button data-id={product.id} onClick={(e) => showHide(e)} className='basket_bottom_button'><img alt='' className='basket_bottom_button_img' src={require('../../assets/images/icons/Enabled.svg')} />LIke</button>
@@ -124,7 +105,7 @@ function BasketCard({ plus, minus, count, product }) {
                 }
                 <button data-id={product.id} onClick={(e) => AppContetx.events.removeFromBasket(e)} className='basket_bottom_button'>SİL</button>
             </div>
-            </>
+        </div>
     )
 }
 

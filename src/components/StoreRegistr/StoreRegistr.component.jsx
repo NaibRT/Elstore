@@ -47,9 +47,6 @@ const StoreRegistr= (props) => {
      ]
     })
 
-
-console.log(texturl)
-
    function TextUrl(e){
     setTexturl({
         ...texturl,
@@ -58,7 +55,6 @@ console.log(texturl)
    }
 
    const AppContext=useContext(appContext)
-   
    const registerSubmit=(data)=>{
     let url=UrlGenerator('az',`auth/${texturl.selected}/register`)
     console.log(data)
@@ -111,8 +107,9 @@ console.log(texturl)
     
     }
     
-    
-    
+    useEffect(()=>{
+      AppContext.events.mobileSideBarOFF()
+    })
     useEffect(() => {
        let url=UrlGenerator('az','cities');
       fetch(url)

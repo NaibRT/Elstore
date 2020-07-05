@@ -1,11 +1,13 @@
 import React, { useState,useContext, useEffect } from 'react'
 import Button from "../button/button.component"
-import "../ProfilInfo/ProfilInfo.scss"
+// import "../ProfilInfo/ProfilInfo.scss"
+import './DelveryProfile.scss'
 import Input from "../InputGroup/InputGroup.component"
 import {useForm} from 'react-hook-form'
 import swal from 'sweetalert';
 import {appContext} from '../../contexts/appContext'
 import UrlGenerator from '../../services/url-generator'
+import DeliveryOrders from '../../pages/delivery-orders'
 
 
 function DeliveryInfo(props) {
@@ -16,9 +18,9 @@ function DeliveryInfo(props) {
 
     const AppContext=useContext(appContext)
 
-
-    
-    
+    useEffect(()=>{
+      AppContext.events.mobileSideBarOFF()
+    })
     useEffect(() => {
         let url=UrlGenerator('az',`auth/me`)
         let token=AppContext.events.getToken();
@@ -67,19 +69,23 @@ function DeliveryInfo(props) {
     function Personal() {
        let profile__info_update=document.getElementById('profile__info--update');
        let adress__info_clicked=document.getElementById("adress")
+       let orders__info_clicked=document.getElementById("orders")
        let active__border= document.querySelector(".active--border");
        let simple__border= document.querySelector(".simple--border");
        profile__info_update.style.display="block"
        adress__info_clicked.style.display="none"
+       orders__info_clicked.style.display='none'
        simple__border.style.border="2px solid #D0D0D0";
        active__border.style.border="2px solid #6472B8";
     }
     function Adress() {
         let profile__info_update=document.getElementById('profile__info--update');
-        let adress__info_clicked=document.getElementById("adress")
+        let adress__info_clicked=document.getElementById("adress");
+        let orders__info_clicked=document.getElementById("orders")
         let active__border= document.querySelector(".active--border");
         let simple__border= document.querySelector(".simple--border");
         profile__info_update.style.display="none"
+        orders__info_clicked.style.display='none'
         adress__info_clicked.style.display="block"
         simple__border.style.border="2px solid #6472B8";
         active__border.style.border="2px solid #D0D0D0";
@@ -88,10 +94,12 @@ function DeliveryInfo(props) {
      function orders() {
         let profile__info_update=document.getElementById('profile__info--update');
         let adress__info_clicked=document.getElementById("adress")
+        let orders__info_clicked=document.getElementById("orders")
         let active__border= document.querySelector(".active--border");
         let simple__border= document.querySelector(".simple--border");
         profile__info_update.style.display="none"
-        adress__info_clicked.style.display="block"
+        adress__info_clicked.style.display="none"
+        orders__info_clicked.style.display='block'
         simple__border.style.border="2px solid #6472B8";
         active__border.style.border="2px solid #D0D0D0";
      }
@@ -305,9 +313,6 @@ function DeliveryInfo(props) {
                                         <div className="simple--border"></div>
                                     </div> */}
                                 </div>
-                                <section id="adress">
-                                  
-                                </section>
                                <section id="profile__info--update">
                                 <form onSubmit={handleSubmit(updateSubmit)} >
                                 <div className="profile--image">
@@ -364,8 +369,7 @@ function DeliveryInfo(props) {
                                 </form>
                                 <Button onClick={deleteProduct}  className="button_delete--acc" name="Hesabi sil"/>
                                 </section>
-                            </div>
-                            <section id="adress">
+                                <section id="adress">
                                 <Button onClick={Itir}  className="button__adress" name="ünvan əlavə et"/>
                                 <form id="text__form" style={{display:'none'}} action="">
                                     <Input label="Şəhər" name="şəhər" onChange={handleChange}/>
@@ -392,6 +396,10 @@ function DeliveryInfo(props) {
                                 </div>
                                 </div>
                             </section>
+                            <section id="orders">
+                            <DeliveryOrders />
+                            </section>
+                               </div>
                             
                     </div>
                   

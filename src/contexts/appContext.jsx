@@ -101,7 +101,7 @@ function AppContextProvider(props) {
       setBasket([...newBasket])
     }else{
     let url=UrlGenerator('az','products')
-    fetch(`${url}/${id}`)
+    fetch(`${url}/${id}?include=seller`)
     .then(async res=>{
       if(res.ok){
         let data=await res.json()
@@ -236,6 +236,14 @@ function getUserCredentials() {
    }
    return false
  }
+ function mobileSideBarOFF(){
+  let x=document.getElementsByTagName('body')[0].classList.contains('of-hidden');
+  if(x){
+      document.getElementsByClassName('menu-container')[0].classList.toggle('change');
+      document.getElementById('res-nav-id').classList.toggle('opennav');
+      document.getElementsByTagName('body')[0].classList.toggle('of-hidden');
+  }
+ }
  return (
   <appContext.Provider value={{app,
                               events:{
@@ -251,7 +259,8 @@ function getUserCredentials() {
                                addBasket:addBasket,
                                removeFromBasket:removeFromBasket,
                                minus:minus,
-                               plus:plus
+                               plus:plus,
+                               mobileSideBarOFF:mobileSideBarOFF
                               },
                               basket,
                               total
