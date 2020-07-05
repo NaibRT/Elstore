@@ -104,16 +104,12 @@ padding: 0px 16px;
 @media (max-width:576px)
 {
     .box_1{
-
-        width: 418px !important;
         height: 284px !important;
         border: 1px solid #D6D6D6;
         box-sizing: border-box;
         border-radius: 8px;
-        margin-left: 16px;
         
         .content{
-            width: 386px;
             height: 252px;  
             .content__img{
               .box__img{
@@ -227,16 +223,12 @@ padding: 0px 16px;
 @media (max-width:440px){
     
     .box_1{
-
-        width: 386px !important;
         height: 271px !important;
         border: 1px solid #D6D6D6;
         box-sizing: border-box;
         border-radius: 8px;
-        margin-left: 16px;
         
         .content{
-            width: 386px;
             height: 252px;  
             .content__img{
               .box__img{
@@ -312,7 +304,6 @@ padding: 0px 16px;
                     margin-top:24px;
                     .button_rating_content{
                         button{
-                            
                             margin-left: 16px;
                             width: 125px;
                             height: 44px;
