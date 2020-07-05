@@ -17,6 +17,7 @@ import Verify from './verify'
 import CompanyAdd from "../components/CompanyAdd/CompanyAdd.component"
 import Delivey from "./DeliveryProfile"
 import CompanyHome from './profile-shop-home'
+import Faq from './faq.component';
 
 function Main() {
   const AppContext=useContext(appContext);
