@@ -315,8 +315,8 @@ const StoreProfil = () => {
                                         <h5>ünvan</h5>
                                     </div>
                                     <div className="delivery__edit">
-                                    <a href="">Düzəliş et</a>
-                                    <a href="">Sil</a>
+                                    {/* <a href="">Düzəliş et</a>
+                                    <a href="">Sil</a> */}
                                     </div>
                                 </div>
                                 <div  className="adress--data"    >
