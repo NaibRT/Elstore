@@ -74,7 +74,20 @@ function BasketCard({ plus, minus, count, product }) {
                 <div className='card_right price_div '>
                     <div className='basket_price'>
                         <div>
-                            <h2 className='basket_price_head'>{product.price} AZN</h2>
+                        {
+                            product.discount>0?
+                            (
+                                <>
+                                <p className='product-discount'>{product.discount} % endirim</p>
+                                <p>
+                                <h2 className='basket_price_head'>{product.discount_price} AZN</h2>
+                                <del>{product.price} AZN</del>
+                                </p>
+                                </>
+                            ):<h2 className='basket_price_head'>{product.discount_price} AZN</h2>
+                        }
+                            
+                            
                         </div>
                         <div className='add_minus'>
                             <button data-id={product.id} onClick={(e) => { minus(e) }} className='add_minus_button'>-</button>
@@ -92,10 +105,10 @@ function BasketCard({ plus, minus, count, product }) {
                         <div><a href='#'>Düzəliş et</a></div>
                     </p>
                 </div>
-                <div className='basket_card_shipping_section'>
+{/*                <div className='basket_card_shipping_section'>
                     <h5 className='basket_card_shipping_section_head'>çatdırılma</h5>
                     <p className='basket_card_shipping_section_text' >Pulsuz (Bakı daxili)</p>
-                </div>
+                </div>*/}
             </div>
             <div className='basket_bottom_buttons'>
                 {
