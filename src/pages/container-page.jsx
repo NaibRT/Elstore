@@ -36,7 +36,7 @@ function Main() {
     </div>
   <Switch>
     
-  <Route exact={true} path='/' component={Index} />
+  <Route exact={true} path='/' component={Faq} />
   <Route exact={true} path='/checkout' component={CheckoutAddress} />
   <Route exact={true} path='/homeandoffice'/>
   <Route exact={true} path='/product' component={ProductInfo} />
