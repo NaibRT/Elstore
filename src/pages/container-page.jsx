@@ -17,6 +17,8 @@ import Verify from './verify'
 import CompanyAdd from "../components/CompanyAdd/CompanyAdd.component"
 import Delivey from "./DeliveryProfile"
 import CompanyHome from './profile-shop-home'
+import Contact from './contact'
+import Shops from './shops'
 import Faq from './faq.component';
 
 function Main() {
@@ -40,6 +42,8 @@ function Main() {
   <Route exact={true} path='/checkout' component={CheckoutAddress} />
   <Route exact={true} path='/homeandoffice'/>
   <Route exact={true} path='/product' component={ProductInfo} />
+  <Route exact={true} path='/contact' component={Contact} />
+  <Route exact={true} path='/shops' component={Shops} />
 
   <Route  path='/product/:id/:name' component={ProductInfo} />
   <Route exact={true} path='/basket' component={Basket} />

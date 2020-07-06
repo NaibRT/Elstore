@@ -23,7 +23,7 @@ function CompanyProfile() {
   <Link to='/profile/companies' className='navbar_bottom_link'>Kampanİyalar</Link>
   <Link to='/profile/info' className='navbar_bottom_link'>Tənzİmləmələr</Link>
 </div>
- 
+  
    <Route exact path='/profile' component={Home}/>
    <Route exact  path='/profile/products' component={Products}/>
    <Route exact  path='/profile/product/create' component={ProductCreate}/>

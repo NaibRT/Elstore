@@ -10,9 +10,6 @@ import Selectbox from "../Select-box/SelectBox.component";
 import {appContext} from '../../contexts/appContext'
 import $ from 'jquery'
 import UrlGenerator from '../../services/url-generator';
- 
-
-
 const Langs =  [
     {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
 const Currency =  ['AZN','EURO','USD'];
@@ -24,8 +21,8 @@ function  Navbar(props) {
     const [visiblepp,setVisiblepp] =useState(false);
     const AppContext=useContext(appContext);
     const History=useHistory();
-    const CategoryContext = useContext(categoryContext)
 
+    const CategoryContext = useContext(categoryContext)
 
     const [categories, setCategories] = useState({
         data:[]
@@ -161,8 +158,6 @@ function  Navbar(props) {
 
             }
             
-
-
     function handleClick(){
         setShow({
             show: !show.show
@@ -192,25 +187,21 @@ function  Navbar(props) {
 </div>
 
 </>;
- 
-    
 
 const loginRegister = <>
-
                     <Link className='navbar_buttons_link log login' onClick={Sign} > daxil ol </Link>
 
                     <Link className='navbar_buttons_link log signup' onClick={Sign} >hesab yarat </Link>
                       
                     </> 
-             console.log( categories.data.children)       
     return (
         <div className='navbar'>
             <div className='navbar_top'>
                 <div className='left_navbar__top'>
                     <Link className="navbar_top_link">Kampaniyalar</Link>
-                    <Link className="navbar_top_link">Mağazalar</Link>
+                    <Link  to = '/shops' className="navbar_top_link">Mağazalar</Link>
                     <Link className="navbar_top_link">Tez-tez verilən suallar</Link>
-                    <Link className="navbar_top_link">Əlaqə</Link>
+                    <Link to = '/contact' className="navbar_top_link">Əlaqə</Link>
                 </div>
                 <div className="right_navbar__top">
                     <Link className="navbar_top_link" to='/worked-delivery'>Kuryer olmaq istəyirsiniz?</Link>
@@ -249,7 +240,6 @@ const loginRegister = <>
                     </div>
                 </div>
             </div>
-
             {/*------------------responsive nav*/}
             <div className='responsive_nav' id='res-nav-id'>
                     <div className='responsive_nav_top'>
@@ -257,7 +247,6 @@ const loginRegister = <>
                     {/* <Selectbox   value={Currency} class='accordion_select'  options={Currency}/> */}
                     </div>
                     <div className='responsive_nav_login'>
-
                     
                     {
                     //     AppContext.app.isAuthorized?
@@ -299,7 +288,6 @@ const loginRegister = <>
                         })} */}
                         
                     </MobileModal>
-
                     <div className='responsive_nav_login'>
                     <div className='container'>
                     <div className='row' style={{'justifyContent':'space-between'}}>
