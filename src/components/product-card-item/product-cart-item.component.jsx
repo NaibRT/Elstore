@@ -37,11 +37,8 @@ function ProductCartItem({data,isLiked}) {
           if(f.is_main){
               return <div key={f.id} className="swiper_slide_image">
               <Link to={`/product/${data.id}/${data.product_name}`}>  <img src={f.product_thumbnail_image} alt=""/></Link>
-                 
               </div> 
           }
-
-
       })
   }
   <h5>
