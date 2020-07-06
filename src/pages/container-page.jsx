@@ -19,6 +19,7 @@ import Delivey from "./DeliveryProfile"
 import CompanyHome from './profile-shop-home'
 import Contact from './contact'
 import Shops from './shops'
+import Faq from './faq.component';
 
 function Main() {
   const AppContext=useContext(appContext);

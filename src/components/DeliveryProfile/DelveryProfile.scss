@@ -3,6 +3,9 @@
 
 .profil__info-owner{
     width: 100%;
+    #orders{
+        display: none;
+    }
  
     .profil__info--offer{
         display: flex;
@@ -258,4 +261,13 @@
     color: #444444;
     margin-bottom: 24px;
     margin-top: 0px;
+}
+
+@media(max-width:576px){
+    
+    .profile--image_Username{
+        input{
+            width: 100%;
+        }
+    }
 }

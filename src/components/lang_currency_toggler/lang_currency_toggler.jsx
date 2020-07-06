@@ -3,12 +3,17 @@ import './lang_currency_toggler.scss';
 import Selectbox from '../Select-box/SelectBox.component'
 
 
-const Langs =  [{id:'Azərbaycan',name:'Azərbaycan'},{id:'İnglis',name:'İnglis'},{id:'Russia',name:'Russia'}];
+const Langs =  [
+    
+    {id:1,name:'İnglis'},
+    {id:2,name:'Russia'}
+];
 // const  langval =  ['AAZE','TR','UKR'];
 // const Currency =  ['AZN','EURO','USD'];
 
 
-function LangToggler() {
+function LangToggler(props) {
+    
     useEffect(()=>{
         // var acc = document.getElementsByClassName("accordion_lang");
         //     var i;
@@ -52,25 +57,16 @@ function LangToggler() {
         })
     }
 
-    const accordionLangHandler=(e)=>{
-        console.log(e.target)
-    }
+    // const accordionLangHandler=(e)=>{
+    //     console.log(e.target)    
+    // }
+
+
+
 
     return (
         <>
-        <div className='select_border'>
-        <button class="accordion_lang" onClick={accordionLangHandler}>
-        <div>{languageCurrency.language}</div> 
-        <div className='accordion_next'>  <img src={require("../../assets/images/icons/next-icon.svg")} /></div>
-            
-        </button>
-        <div className={`panel_lang`}  >
-        <label>Dil</label>
-           <Selectbox handleChange={handleChange} name='language' value={Langs} class='accordion_select'  options={Langs}/>
-{/*        <label>Valyuta</label>
-<Selectbox handleChange={handleChange} name='currency' value={Currency}  class='accordion_select'  options={Currency}/>*/}
-        </div>
-        </div>
+           <Selectbox  class='accordion_select' firstopt={props.firstopt}   options={Langs}/>
         </>
     )
 }

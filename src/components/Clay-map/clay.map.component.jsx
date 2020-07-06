@@ -22,27 +22,25 @@ useEffect(()=>{
 
 },[])
   return(
-    <div className="container">
     <div className='row'>
 
     {
         state.map((x,i)=>{
             return(
-                <div key={i} className='col-lg-4 col-md-6 col-xs-6'>
+                <div key={i} className='col-lg-4 col-md-6 col-sm-6 col-12'>
                    <div className="card">
                 <img className='bg-card-img' alt='' src={x.cover_image}/>
                     <div className="card-overlay">
                     <div className="card-info">
                     <img alt='' src={x.logo} className="card-info-name"  />
                       <h1 className='card-info-text'>{x.name}</h1>
-                        <p className='card-head'>kjbkjbjhbjhbjhbjhbj</p>
+                        <p className='card-head'>{x.description}</p>
                         <div className='card-link'>
                             <Link to={`/company/${x.id}/${x.name}`} className='card-go'>Məhsullara bax <img alt='' src={require('../../assets/images/icons/right.svg')} /></Link>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
             )                       
         })
@@ -50,8 +48,6 @@ useEffect(()=>{
 
       
     </div>
-   
-</div>
 );
 }
   
