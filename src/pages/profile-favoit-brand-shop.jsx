@@ -16,8 +16,10 @@ function FavoritBrandShops() {
       }
     }).then(async res=>{
       let data=await res.json();
-      setLikedShops([...data.data])
-      console.log(data.data);
+      if(res.ok){
+        setLikedShops([...data.data])
+        console.log(data.data);
+      }
     })
 
   },[])

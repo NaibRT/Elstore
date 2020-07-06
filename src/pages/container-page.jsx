@@ -44,6 +44,7 @@ function Main() {
   <Route exact={true} path='/product' component={ProductInfo} />
   <Route exact={true} path='/contact' component={Contact} />
   <Route exact={true} path='/shops' component={Shops} />
+  <Route exact={true} path='/faq' component={Faq} />
 
   <Route  path='/product/:id/:name' component={ProductInfo} />
   <Route exact={true} path='/basket' component={Basket} />
