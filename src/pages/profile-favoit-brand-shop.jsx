@@ -1,5 +1,4 @@
 import React, { useEffect, useContext,useState } from 'react'
-import IconSlider from '../components/Icon-slider/IconSlider.component'
 import Card from '../components/card/card.component'
 import Seller from '../components/seller/seller.component'
 import UrlGenerator from '../services/url-generator'
@@ -30,7 +29,7 @@ function FavoritBrandShops() {
      <IconSlider/>
     </Card>
  </div>*/}
-    <Card>
+    <Card className='padding-zero'>
     <Card.Header name='Magaza ve Saticilar'/>
      <div className='row'>
      {
