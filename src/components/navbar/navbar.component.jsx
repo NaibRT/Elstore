@@ -45,7 +45,7 @@ function  Navbar(props) {
         setVisiblepp(!visiblepp)
     }
 
-    
+   
     function activeSearch(){
         let navbarSearch = document.querySelector('.navbar_search');
         let navbarCenter = document.querySelector('.navbar_center');
@@ -141,22 +141,19 @@ function  Navbar(props) {
         
     },[])
 
-    var acc1 = document.getElementsByClassName("category__item");
-            var y;
-    console.log(acc1);
-            for (y = 0; y < acc1.length; y++) {
-            acc1[y].addEventListener("click", function(events) {
-                // this.classList.toggle("active");
-                // var panel = this.nextElementSibling;
-                // if (panel.style.height) {
-                // panel.style.height = null;
-                // } else {
-                // panel.style.height = '70px';
-                // } 
-                console.log("Salam eee")
-            });
 
-            }
+     
+    useEffect(() => {
+        let body=document.getElementsByTagName('body')[0];
+
+     
+            body.addEventListener("click",function(e){
+                setVisiblepp(visiblepp)
+           })
+       
+           
+        
+    }, []);
             
     function handleClick(){
         setShow({
@@ -174,12 +171,11 @@ function  Navbar(props) {
       })
      },[])
   
-    console.log(Object.keys(CategoryContext.state.categories))
     const userProfle=<>
     <Link   className='navbar_buttons_link bag budget'>0₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>  
     <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/user.png')} /> <img alt='' width='12px' src={require('../../assets/images/down.svg')} /></Link>
-<div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
+<div id="profile_dropwdown"  className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>
         <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
         <li className='profile_dropwdown_li_a'><Link onClick={AppContext.events.logout}>Logout</Link></li>
@@ -263,7 +259,7 @@ const loginRegister = <>
                             {
                                
                                Object.keys(CategoryContext.state.categories).map(x=>{
-                                   console.log(x)
+                                   
                                     return(  <li onclick={(e)=>{CategoryContext.event.getSubCat(e) }}  data-id={CategoryContext.state.categories[x].id}  className="category__items"    key={CategoryContext.state.categories[x].id}>{CategoryContext.state.categories[x].name} <span ><img  className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span>
                                     <div className="submenu">
                                                 <ul key={x.id}>
