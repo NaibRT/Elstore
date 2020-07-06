@@ -38,7 +38,6 @@ return(
     <br />
     
     </div>
-
     <div className='container-fluid'>
                 <div className='row'> 
                     <div className=' col-12 col-lg-3 col-md-4 col-xs-12'>
