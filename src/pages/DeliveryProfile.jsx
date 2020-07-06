@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
 import {BrowserRouter as Router,Link,Route} from 'react-router-dom'
 import Delivey from "../components/DeliveryProfile/Delivery.component"
+import {appContext} from '../contexts/appContext';
 
 function Profile() {
+  let AppContext=useContext(appContext);
+  useEffect(()=>{
+    AppContext.events.mobileSideBarOFF()
+  })
  return (
   <div className='container-fluid'>
   <Router>

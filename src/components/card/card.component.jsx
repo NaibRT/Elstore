@@ -5,13 +5,14 @@ function Card({children,className}) {
  return (
   <div className={ `my-card ${className}`}>
    {children}
-  </div>
+  </div>  
  )
 }
 
 function Header(props) {
  return (
    <div className='card-header'><h5>{props.name}</h5></div>
+  
  )
 }
 

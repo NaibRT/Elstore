@@ -57,6 +57,12 @@ function CheckoutThird(props) {
         })
         .catch(err=>console.log(err))
 
+        let edited_checkout=document.querySelector("#edited_checkout");
+        edited_checkout.addEventListener("click", function(){
+            window.location.reload()
+        })
+      
+
     },[])
 
     function order(){
@@ -106,11 +112,8 @@ function CheckoutThird(props) {
 
     }
 
-    // function backtoEdit(){
-    //     window.onload();
-
-    // }
-
+    
+  
     return (
         
         <>
@@ -134,7 +137,8 @@ function CheckoutThird(props) {
            <div className='card_head_flex'>
             <div><Card.Header name='Çatdırılma ünvanı' /></div>
             <div>
-                <button   >Düzəlİş et</button>
+                <button  id="edited_checkout">Düzəlİş at</button>
+                
             </div>
 
            </div>

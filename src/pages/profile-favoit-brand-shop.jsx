@@ -1,5 +1,4 @@
 import React, { useEffect, useContext,useState } from 'react'
-import IconSlider from '../components/Icon-slider/IconSlider.component'
 import Card from '../components/card/card.component'
 import Seller from '../components/seller/seller.component'
 import UrlGenerator from '../services/url-generator'
@@ -17,27 +16,28 @@ function FavoritBrandShops() {
       }
     }).then(async res=>{
       let data=await res.json();
-      setLikedShops([...data.data])
-      console.log(data.data);
+      if(res.ok){
+        setLikedShops([...data.data])
+        console.log(data.data);
+      }
     })
 
   },[])
  return (
-  <div>
+   <>
 {/*   <div className='row'>
     <Card>
      <Card.Header name='Brendler'/>
      <IconSlider/>
     </Card>
  </div>*/}
-   <div className='row'>
-    <Card>
+    <Card className='padding-zero'>
     <Card.Header name='Magaza ve Saticilar'/>
      <div className='row'>
      {
        likedShops.map((x,i)=>{
          return(
-          <div className='col-lg-6'>
+          <div key={i} className='col-lg-6'>
           <Seller seller={x}/>
           </div>
          )
@@ -45,8 +45,7 @@ function FavoritBrandShops() {
      }
      </div>
     </Card>
-   </div>
-  </div>
+  </>
  )
 }
 
