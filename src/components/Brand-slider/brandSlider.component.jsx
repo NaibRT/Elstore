@@ -8,7 +8,7 @@ class BrandSlider extends Component{
 
     componentDidUpdate(props){
         this.swiper = new Swiper('#brandSlider.swiper-container',{
-            slidesPerView : 4,
+            slidesPerView : "auto",
             slidesPerGroup: 'auto',
             loop: true,
             centeredSlides: true,

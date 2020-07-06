@@ -23,7 +23,7 @@ var sifaris = [
   
 ]
 
-function Products({headerText}) {
+function Products({headerText,match}) {
 const [product,setProduct] = useState({
   data:[],
   category:[]
@@ -35,13 +35,29 @@ let categoryUrl = UrlGenerator('az','categories');
 
 
 useEffect(()=>{
-  axios.get(producturl,{headers:{
-  }})
-  .then(res=>{
-      // setProduct(res.data.data)
-      setProduct({data:res.data.data});
-  })
-},[])
+  let token=AppContext.events.getToken();
+  let id=match.params.id;
+let url=''
+id!==undefined?
+    url=UrlGenerator('az',`users/company?company_id=${id}&include=products`)
+    :url=UrlGenerator('az',`users/company?include=products`)
+      fetch(url,{
+          headers:{
+              'Authorization':token!==null?`${token.token_type} ${token.access_token}`:''
+          } 
+                })
+                .then(async res => {
+                    let data =await res.json();
+                    console.log(data)
+                    if(res.ok){
+                     setProduct({
+                       ...product,
+                       data:[...data.data[0].products]
+                     })
+                    }
+ 
+                }).catch(err=>console.log(err))
+      },[])
 
 const deleteProduct=(e)=>{
   let id =e.target.getAttribute('data-id');
