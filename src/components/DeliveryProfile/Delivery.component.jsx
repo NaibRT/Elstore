@@ -72,9 +72,11 @@ function DeliveryInfo(props) {
        let orders__info_clicked=document.getElementById("orders")
        let active__border= document.querySelector(".active--border");
        let simple__border= document.querySelector(".simple--border");
+       let act=document.querySelector(".act");
        profile__info_update.style.display="block"
        adress__info_clicked.style.display="none"
        orders__info_clicked.style.display='none'
+       act.style.border="2px solid #D0D0D0";
        simple__border.style.border="2px solid #D0D0D0";
        active__border.style.border="2px solid #6472B8";
     }
@@ -84,10 +86,11 @@ function DeliveryInfo(props) {
         let orders__info_clicked=document.getElementById("orders")
         let active__border= document.querySelector(".active--border");
         let simple__border= document.querySelector(".simple--border");
+        let act=document.querySelector(".act");
         profile__info_update.style.display="none"
         orders__info_clicked.style.display='none'
         adress__info_clicked.style.display="block"
-        simple__border.style.border="2px solid #6472B8";
+        act.style.border="2px solid #6472B8";
         active__border.style.border="2px solid #D0D0D0";
      }
 
@@ -97,9 +100,11 @@ function DeliveryInfo(props) {
         let orders__info_clicked=document.getElementById("orders")
         let active__border= document.querySelector(".active--border");
         let simple__border= document.querySelector(".simple--border");
+        let act=document.querySelector(".act");
         profile__info_update.style.display="none"
         adress__info_clicked.style.display="none"
         orders__info_clicked.style.display='block'
+        act.style.border="2px solid #D0D0D0";
         simple__border.style.border="2px solid #6472B8";
         active__border.style.border="2px solid #D0D0D0";
      }
@@ -306,7 +311,7 @@ function DeliveryInfo(props) {
                                     </div>
                                     <div onClick={Adress} id="adress__info-clicked">
                                         <h5>ünvan</h5>
-                                        <div className="simple--border"></div>
+                                        <div className="simple--border act"></div>
                                     </div>
                                     {/* <div>
                                         <h5>ödəmə üsulu</h5>
