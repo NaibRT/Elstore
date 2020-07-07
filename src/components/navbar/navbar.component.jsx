@@ -85,10 +85,30 @@ function  Navbar(props) {
     }
 
    function Sign(){
-       let modal= document.getElementById("login__modal");
-       modal.style.display="block";
-       
+    let modal= document.getElementById("login__modal");
+    let signin_view=document.getElementById('signin_view');
+    let signup_view=document.getElementById('signup_view');
+    let border__size__active= document.querySelector(".border__size--active");
+    let border__size=document.querySelector(".border__size")
+    border__size__active.style.border="2px solid #6472B8"
+    border__size.style.border="2px solid #D0D0D0"
+    modal.style.display="block";
+    signup_view.style.display="none"
+    signin_view.style.display="block"
    }
+
+   function SignUp(){
+    let modal= document.getElementById("login__modal");
+    let signin_view=document.getElementById('signin_view');
+    let signup_view=document.getElementById('signup_view');
+    let border__size__active= document.querySelector(".border__size--active");
+    let border__size=document.querySelector(".border__size")
+    border__size__active.style.border="2px solid #D0D0D0"
+    border__size.style.border="2px solid #6472B8"
+    modal.style.display="block";
+    signup_view.style.display="block"
+    signin_view.style.display="none"
+}
     useEffect(()=>{
         var acc = document.getElementsByClassName("accordion_lang");
             var i;
@@ -187,7 +207,7 @@ function  Navbar(props) {
 const loginRegister = <>
                     <Link className='navbar_buttons_link log login' onClick={Sign} > daxil ol </Link>
 
-                    <Link className='navbar_buttons_link log signup' onClick={Sign} >hesab yarat </Link>
+                    <Link className='navbar_buttons_link log signup' onClick={SignUp} >hesab yarat </Link>
                       
                     </> 
     return (

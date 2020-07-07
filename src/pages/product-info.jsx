@@ -49,10 +49,10 @@ function ProductInfo(props) {
          </div>
   
         <div className='col-lg-4 col-md-12 col-sm-12 '>
-             <HeadingChips  heading={product.product_name} stars={product.avg_rating} subtitle="Öz home / Ev aksessuarları / Toxuma işlər" sale="0 dəfə satıldı" />
-             <OrderPrize price={`${product.price} AZN`} stock="movcuddur" priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
+             <HeadingChips  heading={product.product_name} stars={product.avg_rating}   sale="0 dəfə satıldı" />
+             <OrderPrize price={`${product.price} AZN`}  stock="mövcuddur" priceabuot='Başlanğıc qiymət ölçü, rəng, material və s. seçimləri əsasında dəyişə bilər.' sifarisqeydleri='SİFARİŞ QEYDLƏRİ'/>
            
-             <Button data={product.id} onClick={(e)=>AppContext.events.addBasket(e)} className="bg-primary txt--dark" name='Sebete Elave ET'/>
+             <Button data={product.id} onClick={(e)=>AppContext.events.addBasket(e)} className="bg-primary txt--dark" name='Səbətə əlavə et'/>
              <ButtonGroup>
              <Link style={{'textDecoration':'none'}} to={`/basket/${product.id}`}><Button className="btn-buy-now txt--light" name='Indi Al'/></Link>
              </ButtonGroup>         
