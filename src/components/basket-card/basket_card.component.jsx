@@ -70,7 +70,7 @@ function BasketCard({plus,minus,count,product}){
                     <form><input  type='checkbox' /><span className='basket__form__text'>Hədiyyə paketi olaraq hazırlansın (+2 AZN)</span> </form>
                 </div> 
                 <div className='basket_order_details'>
-                    <h6 className='basket_order_details_head accordion'>Sifarİş qeydləri <span><img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></span></h6>
+                    <h6 className='basket_order_details_head accordion'>Sİfarİş qeydlərİ <span><img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></span></h6>
                     <p className='basket_order_details_text panel'>
                         {product.product_description}
                     <div><a  href='#'>Düzəliş et</a></div>
@@ -99,8 +99,8 @@ function BasketCard({plus,minus,count,product}){
             </div>
             <div className='basket_bottom_buttons'>
             {
-                like?<button data-id={product.id} onClick={(e)=>showHide(e)} className='basket_bottom_button'><img alt='' className='basket_bottom_button_img' src={require('../../assets/images/icons/Enabled.svg')} />LIke</button>
-                    :<button data-id={product.id} onClick={(e)=>showHide(e)} className='basket_bottom_button'><img alt='' className='basket_bottom_button_img' src={require('../../assets/images/icons/Active2.svg')} />UnLike</button>
+                like?<button data-id={product.id} onClick={(e)=>showHide(e)} className='basket_bottom_button'><img alt='' className='basket_bottom_button_img' src={require('../../assets/images/icons/Enabled.svg')} /> Bəyəndim  </button>
+                    :<button data-id={product.id} onClick={(e)=>showHide(e)} className='basket_bottom_button'><img alt='' className='basket_bottom_button_img' src={require('../../assets/images/icons/Active2.svg')} />Bəyənmədİm</button>
                      
             }
                 <button data-id={product.id} onClick={(e)=>AppContetx.events.removeFromBasket(e)} className='basket_bottom_button'>SİL</button>

@@ -25,7 +25,7 @@ function MehsulCard(){
                 <div className="col-lg-12">
                       <div className="discount_title display__flex">
                           <h5>Endirimler</h5>
-                          <Link to=''>Daha çox</Link>
+                          <Link to='/campaigns'>Daha çox</Link>
                       </div>
                 </div>
               </div>

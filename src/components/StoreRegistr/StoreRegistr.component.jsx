@@ -151,7 +151,7 @@ console.log(texturl)
                 helper={errors2.email&&errors2.email.message}/>
                        </div>
                        <div className="registr__input">
-                       <Input name='phones[phone]' type='tel' placeholder='phone' register={register2({
+                       <Input name='phones[phone]' type='tel' placeholder='telefon' register={register2({
                 required:{value:true,message:'name is required'},
                 maxLength:{value:255,message:'max 255 char need'}
             })} helper={errors2.name&&errors2.name.message}/>
@@ -165,7 +165,7 @@ console.log(texturl)
                         <div className="select__city">
                          <Selectbox register={register2({
                              required:{value:true,value:'can not be null'}
-                         })} name="city_id"  firstopt='Cities' handleChange={takeSelectboxValue} class='selectboxcheckout' options={cities.data.data} />
+                         })} name="city_id"  firstopt='Şəhər' handleChange={takeSelectboxValue} class='selectboxcheckout' options={cities.data.data} />
                          </div>
                         <br/>
                         

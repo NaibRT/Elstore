@@ -145,8 +145,8 @@ function  Navbar(props) {
     <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
 <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>
-        <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
-        <li className='profile_dropwdown_li_a'><Link onClick={AppContext.events.logout}>Logout</Link></li>
+        <li className='profile_dropwdown_li'> <Link to='/profile'>Profil</Link></li>
+        <li className='profile_dropwdown_li_a'><Link onClick={AppContext.events.logout}>Çıxış</Link></li>
     </ul>
 </div>
 
@@ -162,7 +162,7 @@ const loginRegister = <>
         <div className='navbar'>
             <div className='navbar_top'>
                 <div className='left_navbar__top'>
-                    <Link className="navbar_top_link">Kampaniyalar</Link>
+                    <Link to = '/campaigns' className="navbar_top_link">Kampaniyalar</Link>
                     <Link  to = '/shops' className="navbar_top_link">Mağazalar</Link>
                     <Link className="navbar_top_link">Tez-tez verilən suallar</Link>
                     <Link to = '/contact' className="navbar_top_link">Əlaqə</Link>
