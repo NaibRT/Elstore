@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react'
 import Card from '../components/card/card.component'
 import ListItem from '../components/List-Item/Listitem.component'
 import {BrowserRouter as Router,Link,Route} from 'react-router-dom'
-import OrderCard from '../components/order-card/order-card.component'
+import Orders from './buyer-orders'
 import FavoritBrandShops from '../pages/profile-favoit-brand-shop'
 import ProfileInfo from '../components/ProfilInfo/Porfilinfo.component'
 import {appContext} from '../contexts/appContext'
@@ -32,7 +32,7 @@ function Profile(){
   </div>
   <div className='col-lg-9'>
   <br/>
-    <Route exact path='/profile' component={OrderCard}/>
+    <Route exact path='/profile' component={Orders}/>
     <Route exact  path='/profie/liked-product' component={LikedProducts}/>
     <Route exact  path='/profie/favorit-shop' component={FavoritBrandShops}/>
     <Route path='/profie/profile-info' component={ProfileInfo}/>

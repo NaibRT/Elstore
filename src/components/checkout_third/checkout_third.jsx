@@ -3,7 +3,7 @@ import './checkout_third.scss';
 import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
 import InputGroup from "../InputGroup/InputGroup.component";
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import swal from "sweetalert"
 import {appContext} from '../../contexts/appContext';
 import UrlGenerator from '../../services/url-generator';
@@ -13,6 +13,7 @@ import Button from '../button/button.component';
 function CheckoutThird(props) {
 
     const AppContext=useContext(appContext);
+    const History=useHistory();
      const [state,setState]=useState({
          city:'',
          region:'',
@@ -103,6 +104,7 @@ function CheckoutThird(props) {
         .then(async res=>{
             if(res.ok){
                 let data=await res.json();
+                History.push('/')
                 swal( "","Sifarişiniz qeydə alındı", "success");
             }else{
                 swal( "Təəssüf!","Sifarişiniz qeydə alınmadı", "error");

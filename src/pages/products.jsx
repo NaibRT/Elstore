@@ -10,19 +10,8 @@ import { useContext } from 'react';
 import {appContext} from '../contexts/appContext';
 
 
-const th = ['Adı', 'Qiymət','Endirim','Status','Düzəlİş' ];
-
-var sifaris = [
-  {
-    'ad':'Nümunə məhsul adı məhsul adı məhsul adı',
-    'Kateqorİya':'ketegor',
-    'qiymet': '12azn',
-    'status': 'Aktiv',
-    'duzelish': 'Aktiv',
-  }
-  
-]
-
+const th = ['Adı','Xarakteristikası','Qiymət','Endirim','Endirim Qiyməti','Çatdırılma Qiyməti','Status' ];
+const td = ['product_name','product_description','price','discount', 'discount_price','delivery_price','Status' ];
 function Products({headerText,match}) {
 const [product,setProduct] = useState({
   data:[],
@@ -82,7 +71,7 @@ const deleteProduct=(e)=>{
   }).catch(err=>console.log(err))
 }
 
-
+ console.log(product.data)
 function handleSelect(e) {
   let url=UrlGenerator('az',`search/product?filter[category_id]=${e.target.value}`)
   axios.get(url)
@@ -108,7 +97,7 @@ function searchName(e){
                 </div>
             </div>
             <br/>
-            <Datatable deleteProduct={deleteProduct} searchName={searchName} handleSelect={handleSelect}   thead ={th} tbody={product.data}/>
+            <Datatable deleteProduct={deleteProduct} searchName={searchName} handleSelect={handleSelect}   thead ={th} td={td} tbody={product.data}/>
         </div>
     )
 }
