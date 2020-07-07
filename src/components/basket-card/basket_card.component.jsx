@@ -99,7 +99,7 @@ function BasketCard({ plus, minus, count, product }) {
             </div>
             <div className="basket_info">
                 <div className='basket_order_details'>
-                    <h6 className='basket_order_details_head accordion'>Sifarİş qeydləri <span><img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></span></h6>
+                    <h6 className='basket_order_details_head accordion'>Sİfarİş qeydlərİ <span><img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></span></h6>
                     <p className='basket_order_details_text panel'>
                         {product.product_description}
                         <div><a href='#'>Düzəliş et</a></div>

@@ -19,6 +19,7 @@ import Delivey from "./DeliveryProfile"
 import CompanyHome from './profile-shop-home'
 import Contact from './contact'
 import Shops from './shops'
+import  Campaigns from './campaigns'
 import Faq from './faq.component'
 import PasswordReset from './passwordReset'
 
@@ -45,8 +46,8 @@ function Main() {
   <Route exact={true} path='/product' component={ProductInfo} />
   <Route exact={true} path='/contact' component={Contact} />
   <Route exact={true} path='/shops' component={Shops} />
+  <Route exact={true} path='/campaigns' component={Campaigns} />
   <Route exact={true} path='/faq' component={Faq} />
-
   <Route  path='/product/:id/:name' component={ProductInfo} />
   <Route exact={true} path='/basket' component={Basket} />
   <Route  path='/basket/:id' component={Basket} />
