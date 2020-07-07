@@ -23,9 +23,8 @@ function App() {
    <AppContextProvider>
     <CategoryContext>
     <SearchContext>
-
     <Router>
-<Header />
+    <Header />
     <br/>
     <br/>
           <Main/>

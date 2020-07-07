@@ -43,6 +43,7 @@ function DeliverOrder() {
    method:'Get'
   }).then(async res=>{
     let data=await res.json()
+    console.log(data)
     setOrders([...data.data])
   }).catch(err=>console.log(err))
    
@@ -50,7 +51,8 @@ function DeliverOrder() {
 
  return (
   <div>
-  <DataTable tbody={[orders]} thead={th} td={td}/>
+  <br/>
+  <DataTable tbody={orders} thead={th} td={td}/>
   </div>
  )
 }

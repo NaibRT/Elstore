@@ -25,7 +25,7 @@ function MehsulCard(){
                 <div className="col-lg-12">
                       <div className="discount_title display__flex">
                           <h5>Endirimler</h5>
-                          <Link to='/'>Daha çox</Link>
+                          <Link to='/campaigns'>Daha çox</Link>
                       </div>
                 </div>
               </div>
@@ -43,7 +43,7 @@ function MehsulCard(){
                                     <img className="e-card-info-name" src={x.logo} />
                                     <p className='e-card-info-text'>{x.name}</p>
                                     <div>
-                                        <Link to='/product' className='e-card-go'>Məhsullara bax <img src={require('../../assets/images/icons/right.svg')} /></Link>
+                                        <Link to={`/company/${x.id}/${x.name}/discount`} className='e-card-go'>Məhsullara bax <img src={require('../../assets/images/icons/right.svg')} /></Link>
                                     </div>
                                 </div>
                             </div>

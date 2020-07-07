@@ -14,20 +14,29 @@ import UrlGenerator from '../services/url-generator';
 
 function Index() {
     const [product,setProduct]=useState({});
+    const [brands, setBrands] = useState([])
     const AppContext=useContext(appContext)
 
     useEffect(()=>{
         let token=AppContext.events.getToken();
         let url=UrlGenerator('az','products')
+        let brandUrl=UrlGenerator('az','brands');
+
         axios.get(url,{
             headers:{
                 'Authorization': token!=null?`${token.token_type} ${token.access_token}`:''
             },
         })
         .then(x=>{
-            console.log(x.data.data)
             setProduct(x.data.data)
-
+        })
+        axios.get(brandUrl,{
+            headers:{
+                'Authorization': token!=null?`${token.token_type} ${token.access_token}`:''
+            },
+        })
+        .then(x=>{
+            setBrands([...x.data.data])
         })
     },[])
 
@@ -51,7 +60,7 @@ function Index() {
                 </div>
                 <div className="row">
                     <div className="col-lg-12">
-                        <IconSlider/>
+                        <IconSlider brands={brands} />
                         <br/>
                         <br/> 
                         <MehsulCard/> 

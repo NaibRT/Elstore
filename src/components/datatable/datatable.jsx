@@ -88,7 +88,13 @@ function Datatable({thead,tbody,deleteProduct,handleSelect,searchName,td}) {
                             })
                         }
 
-                            <td><Link to={`/profile/product/edit/${bodyItems.id}`}>Duzelish</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-id={bodyItems.id} onClick={deleteProduct} href="javascript:void(f1())">Sil</a></td>
+                            <td>
+                            {
+                                    window.location.pathname==='profile/products'&&
+                                    <><Link to={`/profile/product/edit/${bodyItems.id}`}>Duzelish</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a data-id={bodyItems.id} onClick={deleteProduct} href="javascript:void(f1())">Sil</a></>
+                            }
+                            </td>
                         </tr>
                     )
                 })

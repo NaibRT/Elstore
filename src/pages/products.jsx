@@ -89,6 +89,7 @@ function searchName(e){
 
     return (
         <div className='container-fluid'>
+        <br/>
             <div className="head_compaign">
                 <h1>Toplam Mehsul Sayi: {product.data.length}</h1>
                 <div className='compaign_buttons'>
