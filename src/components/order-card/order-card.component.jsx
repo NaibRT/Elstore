@@ -4,11 +4,12 @@ import './order-card.component.scss';
 import ButtonRating from '../button-rating/buttonRating.component'
 import UrlGenerator from '../../services/url-generator'
 import { Link } from 'react-router-dom';
-import {appContext} from '../../contexts/appContext'
+import {appContext} from '../../contexts/appContext';
 
 
 function OrderCard({orders}) {
- 
+
+   
 
  return (
   <>
@@ -42,9 +43,12 @@ function OrderCard({orders}) {
                
             </div>
              </div>
+
+
              )
           })
-      }     
+       
+      }    
   </>
  )
 }
