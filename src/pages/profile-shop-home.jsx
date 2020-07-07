@@ -21,9 +21,12 @@ function ProfileShopHome(props) {
         let token=AppContext.events.getToken();
         let id=props.match.params.id;
       let url=''
-      id!==undefined?
+      window.location.pathname.includes('discount')
+      ? url=UrlGenerator('az',`users/company?include=products&with=discounts`)
+      :id!==undefined?
           url=UrlGenerator('az',`users/company?company_id=${id}&include=products`)
           :url=UrlGenerator('az',`users/company?include=products`)
+
             fetch(url,{
                 headers:{
                     'Authorization':token!==null?`${token.token_type} ${token.access_token}`:''

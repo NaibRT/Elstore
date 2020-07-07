@@ -105,7 +105,7 @@ function CheckoutFrist(props) {
     }
 
     function regionEventHandler(e){
-        let url=UrlGenerator('az',`village?region_id=${e.target.value}`);
+        let url=UrlGenerator('az',`villages?region_id=${e.target.value}`);
         fetch(url)
         .then(response => response.json())
         .then(data =>{
