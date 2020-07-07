@@ -6,10 +6,10 @@ import UrlGenerator from '../../services/url-generator';
 
 
 function MehsulCard(){
-  const data=[1,2,3]
+
   const [state, setstate] = useState([])
   useEffect(()=>{
-    let url=UrlGenerator('az','stores');
+    let url=UrlGenerator('az','discounts');
     fetch(url)
     .then(async res=>{
       let data=await res.json();
@@ -38,12 +38,12 @@ function MehsulCard(){
                         <div className="e-card">
                         <img className="bg-card-img" alt='' src={x.cover_image}/>
                             <div className="e-card-overlay">
-                                <p className="e-card-head">{x.name}</p>
+                                <p className="e-card-head">{x.discount} % qədər olan endirimlər</p>
                                 <div className="e-card-info">
                                     <img className="e-card-info-name" src={x.logo} />
                                     <p className='e-card-info-text'>{x.name}</p>
                                     <div>
-                                        <Link to='/product' className='e-card-go'>Məhsullara bax <img src={require('../../assets/images/icons/right.svg')} /></Link>
+                                        <Link to={`/company/${x.id}/${x.name}/discount`} className='e-card-go'>Məhsullara bax <img src={require('../../assets/images/icons/right.svg')} /></Link>
                                     </div>
                                 </div>
                             </div>

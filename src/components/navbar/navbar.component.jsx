@@ -2,6 +2,7 @@ import React,{useState, useEffect,useContext} from 'react';
 import './navbar.component.scss';
 import {useHistory,Link } from "react-router-dom";
 import {searchContext} from '../../contexts/search';
+import {categoryContext} from "../../contexts/category"
 import MobileModal from '../categorymobile_modal/mobilemodal'
 import axios from 'axios'
 import LangToggler from "../lang_currency_toggler/lang_currency_toggler";
@@ -9,7 +10,6 @@ import Selectbox from "../Select-box/SelectBox.component";
 import {appContext} from '../../contexts/appContext'
 import $ from 'jquery'
 import UrlGenerator from '../../services/url-generator';
-
 const Langs =  [
     {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
 const Currency =  ['AZN','EURO','USD'];
@@ -21,6 +21,8 @@ function  Navbar(props) {
     const [visiblepp,setVisiblepp] =useState(false);
     const AppContext=useContext(appContext);
     const History=useHistory();
+
+    const CategoryContext = useContext(categoryContext)
 
     const [categories, setCategories] = useState({
         data:[]
@@ -43,6 +45,20 @@ function  Navbar(props) {
         setVisiblepp(!visiblepp)
     }
 
+   
+    function activeSearch(){
+        let navbarSearch = document.querySelector('.navbar_search');
+        let navbarCenter = document.querySelector('.navbar_center');
+        navbarSearch.classList.toggle('showEl');
+        navbarCenter.classList.toggle('showHeight');
+        // let hasItem = false;
+        // if(!hasItem){
+        // navbarSearch.style.display = "block";
+        // }else if(hasItem){
+        // navbarSearch.style.display = "none";
+        // }
+    }
+
 
       window.onclick = function(event) {
         if (!event.target.matches('.navbar_buttons_link profile')) {
@@ -59,9 +75,11 @@ function  Navbar(props) {
       }
       
     function toggleNav() {
-        document.getElementsByTagName('body')[0].classList.toggle('of-hiddel');
-        document.getElementById('res-nav-id').classList.toggle('of-scroll');
+        document.getElementsByClassName('menu-container')[0].classList.toggle('change');
         document.getElementById('res-nav-id').classList.toggle('opennav');
+        document.getElementsByTagName('body')[0].classList.toggle('of-hidden');
+        document.getElementById('res-nav-id').classList.toggle('of-scroll');
+        
         const currentState = toggle.active;
         setToggle({ active: !currentState });
     }
@@ -87,7 +105,8 @@ function  Navbar(props) {
             });
 
             }
-           
+            
+            
 
             $(function() {
                 $(".navbar_bottom_link").click(function() {
@@ -119,15 +138,29 @@ function  Navbar(props) {
                 data:res.data.data
             })
         })
+        
     },[])
 
 
+     
+    useEffect(() => {
+        let body=document.getElementsByTagName('body')[0];
+
+     
+            body.addEventListener("click",function(e){
+                setVisiblepp(visiblepp)
+           })
+       
+           
+        
+    }, []);
+            
     function handleClick(){
         setShow({
             show: !show.show
           });
-    }
-
+    }   
+     
      useEffect(()=>{
       axios({
           method:'GET',
@@ -138,12 +171,11 @@ function  Navbar(props) {
       })
      },[])
   
-
     const userProfle=<>
     <Link   className='navbar_buttons_link bag budget'>0₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>  
-    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
-<div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
+    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/user.png')} /> <img alt='' width='12px' src={require('../../assets/images/down.svg')} /></Link>
+<div id="profile_dropwdown"  className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>
         <li className='profile_dropwdown_li'> <Link to='/profile'>Profil</Link></li>
         <li className='profile_dropwdown_li_a'><Link onClick={AppContext.events.logout}>Çıxış</Link></li>
@@ -151,20 +183,20 @@ function  Navbar(props) {
 </div>
 
 </>;
+
 const loginRegister = <>
                     <Link className='navbar_buttons_link log login' onClick={Sign} > daxil ol </Link>
 
                     <Link className='navbar_buttons_link log signup' onClick={Sign} >hesab yarat </Link>
                       
                     </> 
-             console.log(categories.data)       
     return (
         <div className='navbar'>
             <div className='navbar_top'>
                 <div className='left_navbar__top'>
                     <Link to = '/campaigns' className="navbar_top_link">Kampaniyalar</Link>
                     <Link  to = '/shops' className="navbar_top_link">Mağazalar</Link>
-                    <Link className="navbar_top_link">Tez-tez verilən suallar</Link>
+                    <Link to='faq' className="navbar_top_link">Tez-tez verilən suallar</Link>
                     <Link to = '/contact' className="navbar_top_link">Əlaqə</Link>
                 </div>
                 <div className="right_navbar__top">
@@ -176,24 +208,27 @@ const loginRegister = <>
                 <div className='navbar_logo'>
                     <Link to='/'><img alt='' src={require('../../assets/logo/logo_1.svg')} /></Link>
                 </div>
-                <div className='navbar_search'>
-                <form onSubmit={(e)=>{e.preventDefault();History.push(`/search/filter[title]=${products.state.searchKey}`)}}  className="search-input" >
-                    <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
-                    <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/icons/search.svg')} /></Link>
-                </form>
-                </div>
+                    <div className='navbar_search'>
+                    <form onSubmit={(e)=>{e.preventDefault();History.push(`/search/filter[title]=${products.state.searchKey}`)}}  className="search-input" >
+                        <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
+                        <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/icons/search.svg')} /></Link>
+                    </form>
+                    </div>
                 <div className='navbar_select'>
-                    <LangToggler/>
+                    <LangToggler firstopt="Azərbaycan"/>
                 </div>
                 <div className='navbar_buttons'>
                      <Link   className='navbar_buttons_link bag' to='/basket'><img alt='' src={require('../../assets/images/heading/Bag.svg')} /><span>{AppContext.basket.length}</span></Link> 
+                     <div className="active_search">
+                         <img onClick={(e) =>activeSearch(e)} src={require("../../assets/images/search_icon.svg")} alt=""/>
+                     </div>
                     {
                         AppContext.app.isAuthorized?
                             userProfle:
                             loginRegister
                     }
                     <div>
-                    <div className={`${toggle.active ? 'change': ''} menu-container navbaroutside`}    onClick={toggleNav}>
+                    <div className={`menu-container navbaroutside`} onClick={toggleNav}>
                         <div className="bar1"></div>
                         <div className="bar2"></div>
                         <div className="bar3"></div>
@@ -218,19 +253,54 @@ const loginRegister = <>
                     }
                     </div>
                     <MobileModal onClose={handleClick} show={show.show}>
-                        {categories.data.map(category=>{
+
+                        <div className="main__category--tel">
+                            <ul>  
+                            {
+                               
+                               Object.keys(CategoryContext.state.categories).map(x=>{
+                                   
+                                    return(  <li onclick={(e)=>{CategoryContext.event.getSubCat(e) }}  data-id={CategoryContext.state.categories[x].id}  className="category__items"    key={CategoryContext.state.categories[x].id}>{CategoryContext.state.categories[x].name} <span ><img  className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span>
+                                    <div className="submenu">
+                                                <ul key={x.id}>
+                                                 { 
+                                                     CategoryContext.state.categories[x].children!==null?
+                                                    CategoryContext.state.categories[x].children.map(y=>{
+                                                      return  <Link to={`/search/filter[category_id]=${y.id}`}><li>{y.name}</li></Link>
+                                                     })
+                                                    :null
+                                                 }
+                                                </ul>
+                                        </div>
+                                    </li>
+                                    )
+                                })
+                                
+                            }
+                            </ul>
+                        </div>
+                        {/* {categories.data.map(category=>{
                             return (<><br/><Link to={`/search/filter[category_id]=${category.id}`}>{category.name}</Link><br/></>)
-                        })}
+                        })} */}
                         
                     </MobileModal>
                     <div className='responsive_nav_login'>
-                        <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Qeydiyyat</Link>
-                        <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Daxil Ol</Link>
+                    <div className='container'>
+                    <div className='row' style={{'justifyContent':'space-between'}}>
+                    <Link className='responsive_nav_login_log' to='/open-store'>Magaza Qeydiyyat</Link>
+                    <Link className='responsive_nav_login_log' to='/worked-delivery'>Kuryer Qeydiyyat</Link>                    
+                    </div>
+                     <br/>
+                    <div className='row' style={{'justifyContent':'space-between'}}>
+                    <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Qeydiyyat</Link>
+                    <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Daxil Ol</Link>
+                    </div>
+                    </div>
                     </div>
                     
                     <div className='responsive_nav_bottom'>
                             <Link className='responsive_nav_bottom_item' to="/profile">Profil <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
-                            <Link onClick={handleClick} className='responsive_nav_bottom_item ' >Kateqoriyalar <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></Link>
+                            <div onClick={handleClick} className='responsive_nav_bottom_item ' >Kateqoriyalar <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></div>
                     </div>
                 </div>
         </div>

@@ -1,4 +1,4 @@
-import React,{useEffect,useState,useContext} from 'react'
+import React,{useEffect,useContext} from 'react'
 import {Link} from "react-router-dom"
 import "../DeliveryRegistr/DeliveryRegistr.scss"
 import Input from "../InputGroup/InputGroup.component"
@@ -25,9 +25,10 @@ const DeliveryRegistr = () => {
    })
    .then(async res=>{
        if(res.ok){
-        let data=await res.json();
-        AppContext.events.AddToken(data)
-        swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
+        // let data=await res.json();
+        // AppContext.events.AddToken(data)
+        document.getElementById("login__modal").style.display="none"
+        swal( "Təbriklər","Zəhmət olmasa emailinizi yoxlayin", "success");
         history.push("/");
        }else{
         swal("Təəssüflər", "Bu adda email artıq mövcuddr", "error");
@@ -39,6 +40,14 @@ const DeliveryRegistr = () => {
    console.log(errors3.email)
 }
 
+    useEffect(()=>{
+        let x=document.getElementsByTagName('body')[0].classList.contains('of-hidden');
+        if(x){
+            document.getElementsByClassName('menu-container')[0].classList.toggle('change');
+            document.getElementById('res-nav-id').classList.toggle('opennav');
+            document.getElementsByTagName('body')[0].classList.toggle('of-hidden');
+        }
+    })
     return (
         <div className="container-fluid">
             <div className="row">

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './IconSlider.component.scss'
 import Swiper from 'swiper';
+import { Link } from 'react-router-dom';
 
 export class IconSlider extends Component {
     componentDidUpdate(){
@@ -17,6 +18,9 @@ export class IconSlider extends Component {
                 prevEl: '.icon-button-preview'
             },
             breakpoints:{
+                0:{
+                    slidesPerView:1
+                },
                 320:{
                     slidesPerView:2
                 },
@@ -42,13 +46,16 @@ export class IconSlider extends Component {
                             <div id="icon_slider__container" className="swiper-container">
                                 
                                 <div className="swiper-wrapper">
-                                        <div className="swiper-slide">
-                                            <div className="swiper_slide_image">
-                                                <img src={require('../../assets/images/Icon-Image.svg')} alt=""/>
-                                            </div>  
-                                            <p>Store name texts</p>
-                                        </div>
-
+                                {
+                                    this.props.brands.map(x=>{
+                                        return <div key={x.id} className="swiper-slide isic">
+                                        <div className="swiper_slide_image">
+                                            <img src={x.logo} alt=""/>
+                                        </div>  
+                                        <Link style={{'textDecoration':'none','color':'black'}} to='/search'><p>{x.name}</p></Link>
+                                    </div>
+                                    })
+                                }
                                 </div>
                             </div>
                 <div className="icon-button-next"> <img src={require('../../assets/images/icons/chevron-right-solid.svg')} alt=""/> </div>

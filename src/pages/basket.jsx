@@ -94,18 +94,20 @@ function Basket(props) {
                            
                                     <div className="row">
                                         <div className="col-lg-12 col-md-6 col-sm-12">
-                                            <TotalSum amount="Məbləğ" delivery="Catdirilma" deliveryAmount={AppContext.total.totalDeliveryAmount} tax={AppContext.total.taxamount} total="Ümumi" totalPrice={AppContext.total.amount} totalCount={AppContext.total.totalAmount} />
+                                            <TotalSum class='card-border' amount="Məbləğ" delivery="Catdirilma" deliveryAmount={AppContext.total.totalDeliveryAmount} tax={AppContext.total.taxamount} total="Ümumi" totalPrice={AppContext.total.amount} totalCount={AppContext.total.totalAmount} />
                                         </div>
                                         <div className="col-lg-12 col-md-6 col-sm-12">
                                             <IconDeliverySafetyPayback />
                                         </div>
                                         <div className='col-lg-12 col-md-12 col-sm-12'>
                                         {
-                                            AppContext.app.isAuthorized?
+                                            AppContext.app.isAuthorized && AppContext.basket.length>0?
                                             <Link style={{'textDecoration':'none'}} to='/checkout'><Button className='bg-primary--light'>Sifaris ver</Button></Link>
-                                             :<Link onClick={()=>{
-                                                document.getElementById('login__modal').style.display='block';
-                                             }} style={{'textDecoration':'none'}}><Button className='bg-primary--light'>Sifaris ver</Button></Link>
+                                             :AppContext.app.isAuthorized && AppContext.basket.length===0
+                                               ?null
+                                                :!AppContext.app.isAuthorized && AppContext.basket.length>0
+                                                  ?<Button onClick={()=>{document.getElementById('login__modal').style.display='block';}} className='bg-primary--light'>Sifaris ver</Button>
+                                                  :null
 
                                         }
                                     </div>
@@ -121,5 +123,7 @@ function Basket(props) {
         </section>
     )
 }
-
+// <Link onClick={()=>{
+//     document.getElementById('login__modal').style.display='block';
+//  }} style={{'textDecoration':'none'}}><Button className='bg-primary--light'>Sifaris ver</Button></Link>
 export default Basket

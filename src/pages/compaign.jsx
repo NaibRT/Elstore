@@ -5,6 +5,7 @@ import axios from 'axios'
 import '../assets/sass/pages/compaign.scss'
 import Button from '../components/button/button.component';
 import {Link} from 'react-router-dom'
+import UrlGenerator from '../services/url-generator';
 
 
 const th = ['kampanİya ADI','məhsulların sayı', 'Status', 'Düzəlİş' ];
@@ -70,15 +71,14 @@ var sifaris = [
   
 ]
 
-function Compaign() {
-
-
+function Compaign(){
+let url=UrlGenerator('az','products?include=seller,images')
 const [product,setProduct] = useState({
   data:[]
 })
 
 useEffect(()=>{
-  axios.get('http://139.180.144.49/api/v1/az/products?include=seller,images',{headers:{
+  axios.get(url,{headers:{
   }})
   .then(res=>{
       // setProduct(res.data.data)
