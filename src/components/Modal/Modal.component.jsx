@@ -140,7 +140,7 @@ function Modal(){
                      register={register({
                         required:{value:true,message:'Email daxil etməlisiniz'},
                        pattern:{value:/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                                message:"email not valid"}
+                                message:"email düzgün deyil"}
                      })}
                       helper={errors.email&&errors.email.message}/>
 
@@ -173,11 +173,11 @@ function Modal(){
             register={register2({
                 required:{value:true,message:'Email daxil etməlisiniz'},
                 pattern:{value:/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message:"Email yanlışdır"}
+                        message:"email düzgün deyil"}
                 })}
                 helper={errors2.email&&errors2.email.message}/>
 { /*                 <SelectBox options={cities.data.data} name='address' class='selectboxcheckout' register={register({required:'cannot be null'})} />*/}
-            <Input   name='password'  placeholder={"Şifrə"} type="password" register={register2({required:'Şifrə daxil etməlisiniz',minLength:{value:5,message:'cannot be less 8'}})} helper={errors2.password&&errors2.password.message}/>
+            <Input   name='password'  placeholder={"Şifrə"} type="password" register={register2({required:'Şifrə daxil etməlisiniz',minLength:{value:5,message:'8 simvoldan az ola bilməz'}})} helper={errors2.password&&errors2.password.message}/>
             <br/>
             <Button className="bg-primary" type={"submit"} name={"Hesab yarat"}  />
             <br/>
