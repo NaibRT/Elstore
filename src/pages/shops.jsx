@@ -5,6 +5,7 @@ import {appContext} from '../contexts/appContext'
 import Category from '../components/Category/Category.component'
 import './shops.scss'
 import UrlGenerator from '../services/url-generator'
+import Pagination from '../components/Pagination/pagination.component'
 
 
 
@@ -14,7 +15,7 @@ function Shops(){
     const [shops, setShops] = useState([]);
 
     useEffect(()=>{
-     let url=UrlGenerator('az','stores');
+     let url=UrlGenerator('az','getAllStores');
      fetch(url)
      .then(async res=>{
          let data=await res.json();
@@ -45,11 +46,17 @@ return(
                     <Category/>
                     </div>
                     <div className=' col-12 col-lg-9 col-md-8 col-xs-12'>
+                    <div className='row'>
                     {
-                        // shops.map((x,i)=>{
-                        //     return <Seller key={i} seller={x}/>
-                        // })
+                        shops.map((x,i)=>{
+                            return  <div key={i} className='col-lg-6'>
+                                    <Seller seller={x}/>
+                                    <br/>
+                                    </div>
+                        })
                     }
+                    
+                    </div>
                     </div>
                 </div>
         </div>
