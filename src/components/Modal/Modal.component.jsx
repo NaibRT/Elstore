@@ -112,6 +112,13 @@ function Modal(){
    })
    .catch((err) =>console.log(err))
 }
+
+    const openResetModal=()=>{
+        document.getElementById('login__modal').style.display='none';
+        //document.getElementById('reset-password-modal').style.display='flex';
+        document.getElementById('reset-password-modal').classList.toggle('d-flex');
+    }
+
     return ReactDom.createPortal(
     <div id="login__modal" className="modal__bacground">
         <div className="modal__view">
@@ -138,7 +145,7 @@ function Modal(){
                       helper={errors.email&&errors.email.message}/>
 
                 <Input id="deletevalue"  name='password'  placeholder={"Şifrə"} type="password" register={register({required:'Şifrə daxil etməlisiniz',minLength:{value:5,message:'cannot be less 8'}})} helper={errors.password&&errors.password.message}/>
-                <label htmlFor="">şifrəmi unutmuşam</label>
+                <label htmlFor="" onClick={openResetModal}>şifrəmi unutmuşam</label>
                 <Button className="bg-primary" type={"submit"} name={"Daxil ol"}  />
                     <br/>
             </form>

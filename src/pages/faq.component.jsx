@@ -4,6 +4,7 @@ import './faq.component.scss'
 
 function Faq() {
 
+    
     var acc = document.getElementsByClassName("accordion");
     var i;
 

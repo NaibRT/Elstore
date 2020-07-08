@@ -10,6 +10,7 @@ import AppContextProvider from './contexts/appContext'
 import Main from './pages/container-page';
 import LoginModal from './components/Modal/Modal.component';
 import Pagination from "./components/Pagination/pagination.component"
+import ResetPasswordModal from './components/reset-password/reset-password-modal'
 
 
 function App() {
@@ -22,14 +23,14 @@ function App() {
    <AppContextProvider>
     <CategoryContext>
     <SearchContext>
-
     <Router>
-<Header />
+    <Header />
     <br/>
     <br/>
           <Main/>
       <Footer/>
        <LoginModal/>
+      <ResetPasswordModal/>
       </Router>
       </SearchContext>
       </CategoryContext>

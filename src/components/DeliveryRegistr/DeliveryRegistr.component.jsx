@@ -64,47 +64,46 @@ const DeliveryRegistr = () => {
                     <div className="registr__input">
                         <div>
                             <Input name="name"  type="text" placeholder="Adınız"register={register3({
-                required:{value:true,message:'name is required'},
+                required:{value:true,message:'Adınızı daxil etməlisiniz'},
                 maxLength:{value:255,message:'max  255 char need'}
             })} helper={errors3.name&&errors3.name.message} />
                         </div>
                         <div>
                             <Input name="surname" type="text" placeholder="Soyadınız" register={register3({
-                required:{value:true,message:'name is required'},
+                required:{value:true,message:'Soyadınızı daxil etməlisiniz'},
                 maxLength:{value:255,message:'max  255 char need'}
-            })} helper={errors3.name&&errors3.name.message} />
+            })} helper={errors3.name&&errors3.surname.message} />
                         </div>
                     </div>  
                     <div className="delivery_phone">
                         <Input name="phones[phone]" placeholder="Telefon nömrəsi" type="number" formIcon={require(`../../assets/images/icons/Frame.svg`)} 
                         register={register3({
-                            required:{value:true,message:'must be added'},
-                            pattern:{value:/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/,
-                                    message:"Phone not valid"}
-                            })}
-                            helper={errors3.email&&errors3.email.message}/>
+                            required:{value:true,message:'Telefonunuzu daxil edin'},
+                            maxLength:{value:255,message:'max 255 char need'}
+                        })} helper={errors3.name&&errors3.phones['phone'].message}/>
+                          
                     </div>   
                     <div className="delivery_phone">
                         <Input name="email" placeholder="Email" type="email" formIcon={require(`../../assets/images/icons/Frame.svg`)}
                         register={register3({
-                            required:{value:true,message:'must be added'},
+                            required:{value:true,message:'Email daxil etməlisiniz'},
                             pattern:{value:/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                                    message:"email not valid"}
+                                    message:"Email daxil etməlisiniz"}
                             })}
                             helper={errors3.email&&errors3.email.message}
                         />
                     </div>   
                     <div className="delivery_phone">
                         <Input name="password" placeholder="Şıfrə" type="password" formIcon={require(`../../assets/images/icons/Frame.svg`)}
-                        register={register3({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors3.password&&errors3.password.message}
+                        register={register3({required:'Şifrə daxil etməlisiniz',minLength:{value:5,message:'cannot be less 8'}})} helper={errors3.password&&errors3.password.message}
                         />
                     </div> 
                     <div className="delivery_info">
                         <Input name="description" placeholder="Haqqınızda əlavə məlumat" type="text" 
                         register={register3({
-                            required:{value:true,message:'name is required'},
+                            required:{value:true,message:'Haqqınızda məlumatı daxil edin'},
                             maxLength:{value:255,message:'max  255 char need'}
-                        })} helper={errors3.name&&errors3.name.message}
+                        })} helper={errors3.name&&errors3.description.message}
                         />
                     </div>  
                           <div className="Delivery__button">

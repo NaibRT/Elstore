@@ -307,7 +307,7 @@ function Search(props) {
              <Pagenation paginationHandling={SearchContext.events.PagenationHandling} meta={SearchContext.catFilter.meta}/>
          </div>
              </div>
-        </div>
+        </div> 
     )
 }
 

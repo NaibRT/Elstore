@@ -41,7 +41,7 @@
     }
     .all_sides__contents{
         display: grid;
-        grid-template-columns: 200px 783px auto;
+        grid-template-columns: 20% 57% 20%;
         grid-gap: 10px;
         .middle_side_text__content{
             margin-top: 15px;
@@ -103,11 +103,21 @@
 }
 
 @media only screen and  (max-device-width : 320px) {
-
+    .all_sides__contents{
+        grid-template-columns: auto !important;
+    }
+    .right_side{
+        justify-content: flex-start !important;
+    }
 }
 
 @media only screen and (min-device-width : 321px) and (max-device-width : 360px) {
- 
+    .all_sides__contents{
+        grid-template-columns: auto !important;
+    }
+    .right_side{
+        justify-content: flex-start !important;
+    }
 }
 
 @media only screen and (min-device-width : 361px) and (max-device-width : 375px) {
@@ -141,7 +151,7 @@
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) and (max-width: 767.98px) {
     .all_sides__contents{
-        grid-template-columns: auto !important;
+        grid-template-columns: 100%  !important;
     }
     .right_side{
         justify-content: flex-start !important;
@@ -151,24 +161,24 @@
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) and (max-width: 991.98px) { 
     .all_sides__contents{
-        grid-template-columns: 255px auto !important;
+        grid-template-columns: 31% 65% !important;
     }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) and (max-width: 1199.98px) {
     .all_sides__contents{
-        grid-template-columns: 200px auto auto !important;
+        grid-template-columns: 21% 50% 26% !important;
     }
 }
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-    .all_sides__contents{
-        display: grid;
-        grid-template-columns: 200px 615px auto !important;
-    }
-}
+// @media (min-width: 1200px) {
+//     .all_sides__contents{
+//         display: grid;
+//         grid-template-columns: 200px 615px auto !important;
+//     }
+// }
 
 
 

@@ -250,9 +250,33 @@
     }
 }
 @media(max-width:576px){
-    
-        .profile--image_Username{
-            input{
+    .profile--image_Username{
+        .input-_area{
+            
+                width: 100%;
+            
+        }
+        .borders{
+            width: 100%;
+        }
+    }
+    .borders1{
+        width: 100%;
+    }
+    .profile--image_Store{
+        .Store__info{
+            textarea{
+                width: 100%;
+            }
+            
+        }
+        .borders{
+            width: 100%;
+        }
+    }
+    .Store__Photo--text{
+        
+            .borders{
                 width: 100%;
             }
         }

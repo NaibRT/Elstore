@@ -8,7 +8,7 @@ export class MostSellerSlide extends Component {
     componentDidUpdate(props){
         var mostSeller = new Swiper('#mostSlider.swiper-container',{
             slidesPerView : 'auto',
-            slidesPerGroup: 'auto',
+            slidesPerGroup: 1,
             loop: true,
             freeMode: true,
             loopedSlides: "auto",

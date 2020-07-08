@@ -103,7 +103,11 @@ function Basket(props) {
                                         {
                                             AppContext.app.isAuthorized && AppContext.basket.length>0?
                                             <Link style={{'textDecoration':'none'}} to='/checkout'><Button className='bg-primary--light'>Sifaris ver</Button></Link>
-                                             :null
+                                             :AppContext.app.isAuthorized && AppContext.basket.length===0
+                                               ?null
+                                                :!AppContext.app.isAuthorized && AppContext.basket.length>0
+                                                  ?<Button onClick={()=>{document.getElementById('login__modal').style.display='block';}} className='bg-primary--light'>Sifaris ver</Button>
+                                                  :null
 
                                         }
                                     </div>

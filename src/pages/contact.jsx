@@ -53,10 +53,10 @@ return(
                 <h3>Mesaj göndər</h3>
                 <br />
                 <InputGroup onChange={(e)=>{nameEventHandler(e)}} placeholder='Adınız' />
-                        <br/>
+                        <br/> 
                 <InputGroup onChange={(e)=>emailEventHandler(e)}  type='email' placeholder='E-poçt adresi' />
                         <br/>
-                <InputGroup onChange={(e)=>{nameEventHandler(e)}} placeholder='Mesajınız' />
+                <InputGroup onChange={(e)=>{nameEventHandler(e)}} type='textarea' placeholder='Mesajınız' />
                 <Button className='bg-primary--light'>GÖNDƏR</Button>
             </div>
             </Card>

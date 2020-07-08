@@ -45,7 +45,7 @@ function  Navbar(props) {
         setVisiblepp(!visiblepp)
     }
 
-    
+   
     function activeSearch(){
         let navbarSearch = document.querySelector('.navbar_search');
         let navbarCenter = document.querySelector('.navbar_center');
@@ -85,10 +85,30 @@ function  Navbar(props) {
     }
 
    function Sign(){
-       let modal= document.getElementById("login__modal");
-       modal.style.display="block";
-       
+    let modal= document.getElementById("login__modal");
+    let signin_view=document.getElementById('signin_view');
+    let signup_view=document.getElementById('signup_view');
+    let border__size__active= document.querySelector(".border__size--active");
+    let border__size=document.querySelector(".border__size")
+    border__size__active.style.border="2px solid #6472B8"
+    border__size.style.border="2px solid #D0D0D0"
+    modal.style.display="block";
+    signup_view.style.display="none"
+    signin_view.style.display="block"
    }
+
+   function SignUp(){
+    let modal= document.getElementById("login__modal");
+    let signin_view=document.getElementById('signin_view');
+    let signup_view=document.getElementById('signup_view');
+    let border__size__active= document.querySelector(".border__size--active");
+    let border__size=document.querySelector(".border__size")
+    border__size__active.style.border="2px solid #D0D0D0"
+    border__size.style.border="2px solid #6472B8"
+    modal.style.display="block";
+    signup_view.style.display="block"
+    signin_view.style.display="none"
+}
     useEffect(()=>{
         var acc = document.getElementsByClassName("accordion_lang");
             var i;
@@ -141,22 +161,19 @@ function  Navbar(props) {
         
     },[])
 
-    var acc1 = document.getElementsByClassName("category__item");
-            var y;
-    console.log(acc1);
-            for (y = 0; y < acc1.length; y++) {
-            acc1[y].addEventListener("click", function(events) {
-                // this.classList.toggle("active");
-                // var panel = this.nextElementSibling;
-                // if (panel.style.height) {
-                // panel.style.height = null;
-                // } else {
-                // panel.style.height = '70px';
-                // } 
-                console.log("Salam eee")
-            });
 
-            }
+     
+    useEffect(() => {
+        let body=document.getElementsByTagName('body')[0];
+
+     
+            body.addEventListener("click",function(e){
+                setVisiblepp(visiblepp)
+           })
+       
+           
+        
+    }, []);
             
     function handleClick(){
         setShow({
@@ -174,15 +191,14 @@ function  Navbar(props) {
       })
      },[])
   
-    console.log(Object.keys(CategoryContext.state.categories))
     const userProfle=<>
     <Link   className='navbar_buttons_link bag budget'>0₼ </Link> 
     <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>  
     <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/user.png')} /> <img alt='' width='12px' src={require('../../assets/images/down.svg')} /></Link>
-<div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
+<div id="profile_dropwdown"  className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>
-        <li className='profile_dropwdown_li'> <Link to='/profile'>Profile</Link></li>
-        <li className='profile_dropwdown_li_a'><Link onClick={AppContext.events.logout}>Logout</Link></li>
+        <li className='profile_dropwdown_li'> <Link to='/profile'>Profil</Link></li>
+        <li className='profile_dropwdown_li_a'><Link onClick={AppContext.events.logout}>Çıxış</Link></li>
     </ul>
 </div>
 
@@ -191,16 +207,16 @@ function  Navbar(props) {
 const loginRegister = <>
                     <Link className='navbar_buttons_link log login' onClick={Sign} > daxil ol </Link>
 
-                    <Link className='navbar_buttons_link log signup' onClick={Sign} >hesab yarat </Link>
+                    <Link className='navbar_buttons_link log signup' onClick={SignUp} >hesab yarat </Link>
                       
                     </> 
     return (
         <div className='navbar'>
             <div className='navbar_top'>
                 <div className='left_navbar__top'>
-                    <Link className="navbar_top_link">Kampaniyalar</Link>
+                    <Link to = '/campaigns' className="navbar_top_link">Kampaniyalar</Link>
                     <Link  to = '/shops' className="navbar_top_link">Mağazalar</Link>
-                    <Link to='faq' className="navbar_top_link">Tez-tez verilən suallar</Link>
+                   {/* <Link to='faq' className="navbar_top_link">Tez-tez verilən suallar</Link>*/}
                     <Link to = '/contact' className="navbar_top_link">Əlaqə</Link>
                 </div>
                 <div className="right_navbar__top">
@@ -263,7 +279,7 @@ const loginRegister = <>
                             {
                                
                                Object.keys(CategoryContext.state.categories).map(x=>{
-                                   console.log(x)
+                                   
                                     return(  <li onclick={(e)=>{CategoryContext.event.getSubCat(e) }}  data-id={CategoryContext.state.categories[x].id}  className="category__items"    key={CategoryContext.state.categories[x].id}>{CategoryContext.state.categories[x].name} <span ><img  className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span>
                                     <div className="submenu">
                                                 <ul key={x.id}>

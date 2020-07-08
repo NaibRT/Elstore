@@ -12,6 +12,11 @@ function SearchContext({children}){
     data:[],
     meta:{}
 })
+
+const [currenOrder, setcurrenOrder] = useState({
+  data:[],
+  meta:{}
+})
   
    const [state,setState] = useState({
     'searchKey':"",
@@ -67,14 +72,31 @@ useEffect(() => {
     .catch(
         (err) =>console.log(err)
     )
-    let focus =document.querySelectorAll(".focustext");
-      for (let i = 0; i < focus.length; i++) {
-        if(catFilter.meta.current_page==(i+1) ){
-          focus[i].classList.add("activ")
-        }
-      }
+     
     } 
 
+
+    const PagenationHandling1=(e)=>{
+      
+      let url=UrlGenerator('az',`users/buyer/orders/0`)
+ fetch(url,{
+     method:"GET",
+ })
+ .then(async res=>{
+   let data=await res.json();
+  if(res.ok){
+    setcurrenOrder({
+        data:data.data,
+        meta:data.meta
+      })
+     
+  }
+ })
+ .catch(
+     (err) =>console.log(err)
+ )
+  
+ } 
 
    const searchForm=(e)=>{
     //  e.preventDefault();
@@ -93,13 +115,15 @@ useEffect(() => {
          state:state,
          catFilter:catFilter,
          filter:filter,
+         currenOrder:currenOrder,
          events:{
            setCatFilter:setCatFilter,
            setFilter:setFilter,
            searchForm:searchForm,
            filterCategory:filterCategory,
            setState:setState,
-           PagenationHandling:PagenationHandling
+           PagenationHandling:PagenationHandling,
+           PagenationHandling1:PagenationHandling1
          }
          }}>
        {children}

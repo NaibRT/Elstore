@@ -27,22 +27,20 @@ const useRowStyles = makeStyles({
   },
 });
 
-const data=
-
-function createData(name, calories, fat, carbs, protein, price) {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
-    history: [
-      { date: '2020-01-05', customerId: '11091700', amount: 3 },
-      { date: '2020-01-02', customerId: 'Anonymous', amount: 1 },
-    ],
-  };
-}
+// function createData(name, calories, fat, carbs, protein, price) {
+//   return {
+//     name,
+//     calories,
+//     fat,
+//     carbs,
+//     protein,
+//     price,
+//     history: [
+//       { date: '2020-01-05', customerId: '11091700', amount: 3 },
+//       { date: '2020-01-02', customerId: 'Anonymous', amount: 1 },
+//     ],
+//   };
+// }
 
 
 
@@ -136,72 +134,39 @@ export default function CollapsibleTable() {
 
  const [state, setState] = useState({
   data:[
-  {
-   checkout_code: 44545,
-   buyer_address: {
-     city_name: 'baki',
-     region_name: "sefse",
-     village_name: "sfesf"
-   },
-   payment_type: 0,
-   price: 24,
-   status:'awdaw',
-   order_adresses: [
-     {
-       shop_name: "efsefse",
-       shop_address:{
-         city_name: 'baki',
-         region_name: "sefse",
-         village_name: "sfesf"
-       },
-       product_name: "sefsefesf",
-       product_count: 2
-     },
-     {
-       shop_name: "efsefse",
-       shop_address:{
-         city_name: 'baki',
-         region_name: "sefse",
-         village_name: "sfesf"
-       },
-       product_name: "sefsefesf",
-       product_count: 2
-     }
-   ]
- },
- {
-  checkout_code: 54545,
-  buyer_address: {
-    city_name: 'baki',
-    region_name: "sefse",
-    village_name: "sfesf"
-  },
-  payment_type: 0,
-  price: 24,
-  status:'awdaw',
-  order_adresses: [
-    {
-      shop_name: "efsefse",
-      shop_address:{
-        city_name: 'baki',
-        region_name: "sefse",
-        village_name: "sfesf"
-      },
-      product_name: "sefsefesf",
-      product_count: 2
-    },
-    {
-      shop_name: "efsefse",
-      shop_address:{
-        city_name: 'baki',
-        region_name: "sefse",
-        village_name: "sfesf"
-      },
-      product_name: "sefsefesf",
-      product_count: 2
-    }
-  ]
-}
+//   {
+//    checkout_code: 44545,
+//    buyer_address: {
+//      city_name: 'baki',
+//      region_name: "sefse",
+//      village_name: "sfesf"
+//    },
+//    payment_type: 0,
+//    price: 24,
+//    status:'awdaw',
+//    order_adresses: [
+//      {
+//        shop_name: "efsefse",
+//        shop_address:{
+//          city_name: 'baki',
+//          region_name: "sefse",
+//          village_name: "sfesf"
+//        },
+//        product_name: "sefsefesf",
+//        product_count: 2
+//      },
+//      {
+//        shop_name: "efsefse",
+//        shop_address:{
+//          city_name: 'baki',
+//          region_name: "sefse",
+//          village_name: "sfesf"
+//        },
+//        product_name: "sefsefesf",
+//        product_count: 2
+//      }
+//    ]
+//  }
  ],
  editIDX:-1,
  columToSort:'',
