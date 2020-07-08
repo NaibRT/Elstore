@@ -216,7 +216,7 @@ const loginRegister = <>
                 <div className='left_navbar__top'>
                     <Link to = '/campaigns' className="navbar_top_link">Kampaniyalar</Link>
                     <Link  to = '/shops' className="navbar_top_link">Mağazalar</Link>
-                    <Link to='faq' className="navbar_top_link">Tez-tez verilən suallar</Link>
+                   {/* <Link to='faq' className="navbar_top_link">Tez-tez verilən suallar</Link>*/}
                     <Link to = '/contact' className="navbar_top_link">Əlaqə</Link>
                 </div>
                 <div className="right_navbar__top">
