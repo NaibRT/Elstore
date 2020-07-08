@@ -206,9 +206,7 @@ function  Navbar(props) {
 
 const loginRegister = <>
                     <Link className='navbar_buttons_link log login' onClick={Sign} > daxil ol </Link>
-
                     <Link className='navbar_buttons_link log signup' onClick={SignUp} >hesab yarat </Link>
-                      
                     </> 
     return (
         <div className='navbar'>
