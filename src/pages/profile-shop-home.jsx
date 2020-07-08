@@ -22,7 +22,7 @@ function ProfileShopHome(props) {
         let id=props.match.params.id;
       let url=''
       window.location.pathname.includes('discount')
-      ? url=UrlGenerator('az',`users/company?include=products&with=discounts`)
+      ? url=UrlGenerator('az',`users/company?company_id=${id}&include=products&with=discounts`)
       :id!==undefined?
           url=UrlGenerator('az',`users/company?company_id=${id}&include=products`)
           :url=UrlGenerator('az',`users/company?include=products`)
