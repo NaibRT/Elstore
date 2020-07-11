@@ -86,10 +86,9 @@ function AppContextProvider(props) {
      return false
    }
 
-
   function addBasket(e){
-    console.log(e.target)
     let id=e.target.getAttribute('data');
+    let baskets=[];
     if(checkBasket(id)){
       let newBasket=basket;
       newBasket.forEach(x=>{
@@ -97,8 +96,9 @@ function AppContextProvider(props) {
           x.console++
         }
       });
-
       setBasket([...newBasket])
+      baskets=[...newBasket];
+      window.localStorage.setItem('basket',JSON.stringify(baskets))
     }else{
     let url=UrlGenerator('az','products')
     fetch(`${url}/${id}?include=seller`)
@@ -111,6 +111,13 @@ function AppContextProvider(props) {
            count:1
           }
         ])
+        baskets=[
+          ...basket,
+          {...data.data[0],
+            count:1
+           }
+         ];
+        window.localStorage.setItem('basket',JSON.stringify(baskets))
         swal("Təbriklər", "Məhsul səbətə əlavə olundu", "success");
       }
       else{
@@ -121,14 +128,18 @@ function AppContextProvider(props) {
     }
   }
 
-
+   function getBaskets() {
+     let baskets=JSON.parse(window.localStorage.getItem('basket'))
+     return baskets;
+   }
   function removeFromBasket(e){
     let id=e.target.getAttribute('data-id');
     let bask=basket.filter(x=>x.id!=id)
-    console.log(bask)
     setBasket([
         ...bask
     ])
+
+    window.localStorage.setItem('basket',JSON.stringify(bask))
 }
 
   function getCities(){
@@ -158,15 +169,17 @@ function getUserCredentials() {
 }
 
  useEffect(()=>{
+   let curBasket=getBaskets();
+   console.log(curBasket)
    setApp({
      ...app,
      token:getToken(),
      isAuthorized:IsAuthorized(),
      user:getUserCredentials()
     })
+    if(curBasket!==null)
+       setBasket([...curBasket])
  },[]);
-
-
 
  useEffect(()=>{
    let deliveryAmount=0;

@@ -5,7 +5,6 @@ import Filter from '../components/filter/filter.component'
 import SearchResultPage from '../components/Search-reasult-page/SearchResult.component.jsx'
 import UrlGenerator from '../services/url-generator';
 import {appContext} from '../contexts/appContext';
-import { queries } from '@testing-library/react';
 import Pagenation from "../components/Pagination/pagination.component"
 
 
@@ -99,6 +98,7 @@ function Search(props) {
          let filterQuery='';
          let sellerId='';
          if(pageUrl.includes('company')){
+             console.log('selectHandler')
              sellerId=Object.keys(props.match.params).length!==0
              ?props.match.params.id:null;
              filterQuery+=filterQuery!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`;
@@ -123,7 +123,7 @@ function Search(props) {
               filterQuery+=filterQuery!==''?`&filter[max_price]=${SearchContext.filter.priceTo}`:`filter[max_price]=${SearchContext.filter.priceTo}`
           }
           SearchContext.events.setFilter({
-            ...SearchContext.Filter,
+            ...SearchContext.filter,
             order:e.target.value
           })
 
@@ -134,11 +134,10 @@ function Search(props) {
           .then(async res=>{
               let data=await res.json();
               console.log(data)
-              SearchContext.events.setFilter({
-                ...SearchContext.filter,
-                queryParams:[...queries]
-              })
-
+            //   SearchContext.events.setFilter({
+            //     ...SearchContext.filter,
+            //     queryParams:[...queries]
+            //   })
               SearchContext.events.setCatFilter({
                   ...SearchContext.catFilter,
                   meta:data.meta,
@@ -159,7 +158,11 @@ function Search(props) {
          fetch(`${url}?${query}`)
         .then(response => response.json())
         .then(data => {
-            SearchContext.events.setCatFilter({data:data.data,meta:data.meta});
+            SearchContext.events.setCatFilter({
+                ...SearchContext.catFilter,
+                data:data.data,
+                meta:data.meta
+            });
             console.log(data)
         });
       },[])
@@ -196,11 +199,12 @@ function Search(props) {
             filterQuery+=filterQuery!==''?`&filter[order]=${SearchContext.filter.order}`:`filter[order]=${SearchContext.filter.order}`
         }
 
+        if(SearchContext.filter.priceTo!==''){
+            console.log("priceto")
+          filterQuery+=filterQuery!==''?`&filter[max_price]=${SearchContext.filter.priceTo}`:`filter[max_price]=${SearchContext.filter.priceTo}`
+        }
 
         filterQuery+=`&filter[min_price]=${e.target.value}`
-
-        if(SearchContext.filter.priceTo!='')
-        filterQuery+=filterQuery!==''?`&filter[max_price]=${SearchContext.filter.priceTo}`:`filter[max_price]=${SearchContext.filter.priceTo}`
         console.log(filterQuery)
         let url=UrlGenerator('az',`search/product?${filterQuery}`)
         fetch(url)
@@ -248,12 +252,15 @@ function Search(props) {
             filterQuery+=filterQuery!==''?`&filter[order]=${SearchContext.filter.order}`:`filter[order]=${SearchContext.filter.order}`
         }
 
+        if(SearchContext.filter.priceFrom!==''){
+            console.log("priceFrom")
+            filterQuery+=filterQuery!==''?`&filter[min_price]=${SearchContext.filter.priceFrom}`:`filter[min_price]=${SearchContext.filter.priceFrom}`;
+        }
+
         filterQuery+=`&filter[max_price]=${e.target.value}`
 
-        if(SearchContext.filter.priceFrom!='')
-        filterQuery+=filterQuery!==''?`&filter[min_price]=${SearchContext.filter.priceFrom}`:`filter[min_price]=${SearchContext.filter.priceFrom}`;
-
         console.log(filterQuery)
+
         let url=UrlGenerator('az',`search/product?${filterQuery}`)
         fetch(url)
         .then(async res=>{
@@ -304,7 +311,7 @@ function Search(props) {
                 :''
              } */}
             <SearchResultPage handleSelect={selectHandle} catFilter={ SearchContext.catFilter.data} />
-             <Pagenation paginationHandling={SearchContext.events.PagenationHandling} meta={SearchContext.catFilter.meta}/>
+             <Pagenation prop={props} paginationHandling={SearchContext.events.PagenationHandling} meta={SearchContext.catFilter.meta}/>
          </div>
              </div>
         </div> 

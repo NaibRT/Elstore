@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import "./pagination.scss"
 
 
-function Pagination({meta,paginationHandling}){
+function Pagination({meta,paginationHandling,prop}){
    
 const pageItems=[]
 
@@ -19,8 +19,8 @@ for(let i=0;i<meta.last_page;i++){
                    pageItems.map((x,i)=>{
                     return (
                         meta.current_page==(x+1)? 
-                        <li className="focustext activ " tabindex="1"    key={i} onClick={paginationHandling}>{x+1}</li>
-                        : <li className="focustext  " tabindex="1"    key={i} onClick={paginationHandling}>{x+1}</li>
+                        <li className="focustext activ " tabindex="1"    key={i} onClick={(e)=>paginationHandling(e,prop)}>{x+1}</li>
+                        : <li className="focustext  " tabindex="1"    key={i} onClick={(e)=>paginationHandling(e,prop)}>{x+1}</li>
                     )
                 })
                 }
