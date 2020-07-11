@@ -144,7 +144,7 @@ function Modal(){
                      })}
                       helper={errors.email&&errors.email.message}/>
 
-                <Input id="deletevalue"  name='password'  placeholder={"Şifrə"} type="password" register={register({required:'Şifrə daxil etməlisiniz',minLength:{value:5,message:'cannot be less 8'}})} helper={errors.password&&errors.password.message}/>
+                <Input id="deletevalue"  name='password'  placeholder={"Şifrə"} type="password" register={register({required:'Şifrə daxil etməlisiniz',minLength:{value:5,message:'8 simvoldan az ola bilmez'}})} helper={errors.password&&errors.password.message}/>
                 <label htmlFor="" onClick={openResetModal}>şifrəmi unutmuşam</label>
                 <Button className="bg-primary" type={"submit"} name={"Daxil ol"}  />
                     <br/>
@@ -177,7 +177,11 @@ function Modal(){
                 })}
                 helper={errors2.email&&errors2.email.message}/>
 { /*                 <SelectBox options={cities.data.data} name='address' class='selectboxcheckout' register={register({required:'cannot be null'})} />*/}
+<<<<<<< HEAD
             <Input   name='password'  placeholder={"Şifrə"} type="password" register={register2({required:'Şifrə daxil etməlisiniz',minLength:{value:5,message:'8 simvoldan az ola bilməz'}})} helper={errors2.password&&errors2.password.message}/>
+=======
+            <Input   name='password'  placeholder={"Şifrə"} type="password" register={register2({required:'Şifrə daxil etməlisiniz',minLength:{value:5,message:'8 simvoldan az ola bilmez'}})} helper={errors2.password&&errors2.password.message}/>
+>>>>>>> cd121f3069219067c97778937005686c16858857
             <br/>
             <Button className="bg-primary" type={"submit"} name={"Hesab yarat"}  />
             <br/>

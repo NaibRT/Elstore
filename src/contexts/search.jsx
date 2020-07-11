@@ -1,22 +1,23 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, useContext} from 'react'
 import axios from "axios"
 import UrlGenerator from '../services/url-generator';
+import {appContext} from './appContext';
 
 const searchContext=React.createContext({});
 
 
 
 function SearchContext({children}){
- 
+  const AppContext=useContext(appContext)
   const [catFilter, setCatFilter] = useState({
     data:[],
     meta:{}
 })
 
-const [currenOrder, setcurrenOrder] = useState({
-  data:[],
-  meta:{}
-})
+// const [currenOrder, setcurrenOrder] = useState({
+//   data:[],
+//   meta:{}
+// })
   
    const [state,setState] = useState({
     'searchKey':"",
@@ -53,9 +54,42 @@ useEffect(() => {
     })
   }
 
-    const PagenationHandling=(e)=>{
-      
-         let url=UrlGenerator('az',`products?page=${e.target.innerHTML}&filter[category_id]=1,10,16,15`)
+    const PagenationHandling=(e,prop)=>{
+      console.log(prop)
+      console.log(e.target)
+      let filterQuery='';
+      let sellerId='';
+      let pageUrl=document.location.pathname;
+    if(pageUrl.includes('company')){
+        sellerId=Object.keys(prop.match.params).length!==0
+        ?prop.match.params.id:null;
+        filterQuery+=filterQuery!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
+    }
+    if(pageUrl.includes('profile')){
+        sellerId=AppContext.app.user.id;
+        filterQuery+=filterQuery!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
+    }
+    if(filter.queryParams.length>0){
+        filterQuery+=filterQuery!==''?`&filter[category_id]=`:`filter[category_id]=`
+        filter.queryParams.forEach((x,k)=>{
+           console.log(k)
+           k===filter.queryParams.length-1
+           ?filterQuery+=`${x}`
+           :filterQuery+=`${x},`
+       })
+    }
+    if(filter.order!==''){
+        filterQuery+=filterQuery!==''?`&filter[order]=${filter.order}`:`filter[order]=${filter.order}`
+    }
+    if(filter.priceFrom!=''){
+      filterQuery+=filterQuery!==''?`&filter[min_prize]=${filter.priceFrom}`:`filter[min_prize]=${filter.priceFrom}`
+    }
+    if(filter.priceTo!=''){
+        filterQuery+=filterQuery!==''?`&filter[max_price]=${filter.priceTo}`:`filter[max_price]=${filter.priceTo}`
+    }
+
+
+    let url=`${catFilter.meta.path}?${filterQuery}&page=${e.target.innerHTML}`
     fetch(url,{
         method:"GET",
     })
@@ -85,7 +119,7 @@ useEffect(() => {
  .then(async res=>{
    let data=await res.json();
   if(res.ok){
-    setcurrenOrder({
+    setCatFilter({
         data:data.data,
         meta:data.meta
       })
@@ -115,7 +149,6 @@ useEffect(() => {
          state:state,
          catFilter:catFilter,
          filter:filter,
-         currenOrder:currenOrder,
          events:{
            setCatFilter:setCatFilter,
            setFilter:setFilter,
