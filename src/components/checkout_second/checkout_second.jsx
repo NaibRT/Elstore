@@ -31,6 +31,7 @@ function CheckoutSecond(props) {
     // function EndDate(e){
     // }
 
+    
     function PaymentType(e){
         AppContext.events.setTotal({
             ...AppContext.total,
@@ -62,7 +63,9 @@ function CheckoutSecond(props) {
                     <div className='col-sm-12 col-lg-6'>
                         <ButtonRadio change={()=>PaymentType(0)} class='full_check' name='Qapıda ödəmə' nextName='Nəğd və ya kart vasitəsilə' />
                         <br/> 
-                        <ButtonRadio change={()=>PaymentType(1)} class='full_check' name='Onlayn ödəmə' nextName='Kart vasitəsilə' />
+                        <div className="pointer">
+                        <ButtonRadio change={()=>PaymentType(1)}  class='full_check' name='Onlayn ödəmə' nextName='Kart vasitəsilə' />
+                        </div>
                         <br/>
 {/*                    <Card.Header name='Kart məlumatlarını daxil edin' />
                     <br/>
