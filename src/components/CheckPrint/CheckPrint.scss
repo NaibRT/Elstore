@@ -116,6 +116,9 @@
                     border-radius: 8px;
                 }
             }
+            .productss{
+                width: 250px;
+            }
             h3{
                 display: flex;
                 align-items: center;
@@ -228,6 +231,10 @@
         }
         .main__orders{
             .order{
+                .productss{
+                    width: 100px;
+                    word-break: break-word;
+                }
                 .product_-image{
                     width: 56px;
                     height: 56px;

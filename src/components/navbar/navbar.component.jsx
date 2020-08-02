@@ -234,9 +234,9 @@ const loginRegister = <>
                         <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/icons/search.svg')} /></Link>
                     </form>
                     </div>
-                <div className='navbar_select'>
+{/*                <div className='navbar_select'>
                     <LangToggler firstopt="Azərbaycan"/>
-                </div>
+    </div>*/}
                 <div className='navbar_buttons'>
                      <Link   className='navbar_buttons_link bag' to='/basket'><img alt='' src={require('../../assets/images/heading/Bag.svg')} /><span>{AppContext.basket.length}</span></Link> 
                      <div className="active_search">

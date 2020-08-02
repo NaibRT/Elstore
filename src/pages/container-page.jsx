@@ -1,7 +1,7 @@
 import React,{useContext, useEffect, useState} from 'react'
 import {Switch,Route,Redirect} from "react-router-dom";
 import Index from '../pages/index';
-import ProfileShopHome from '../pages/profile-shop-home';
+import OrderCheck from './order-check'
 import CompanyProfile from './companyProfile'
 import ProductInfo from '../pages/product-info';
 import Basket from '../pages/basket';
@@ -22,6 +22,7 @@ import Shops from './shops'
 import  Campaigns from './campaigns'
 import Faq from './faq.component'
 import PasswordReset from './passwordReset'
+import '../assets/sass/pages/container.scss'
 
 function Main() {
   const AppContext=useContext(appContext);
@@ -58,7 +59,7 @@ function Main() {
   <Route  path='/verify/:token' component={Verify} />
   <Route  path='/passwordReset/:token' component={PasswordReset} />
   <Route  path='/company/:id/:name' component={CompanyHome} />
-
+  <Route exact={true} path='/order-check' component={OrderCheck} />
   <Route  path='/CompanyAdd' component={CompanyAdd} />
   <Route exact={true} path='/product/create' component={CreateProduct} />
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
+import ReactToPrint from 'react-to-print';
 import {Link} from "react-router-dom"
 import "../CheckPrint/CheckPrint.scss"
 import Button from "../button/button.component"
@@ -8,6 +8,7 @@ import Button from "../button/button.component"
  
 class ComponentToPrint extends React.Component {
   render() {
+      console.log(this.props.total)
     return (
         <div className="container">
         <div className="row">
@@ -37,23 +38,36 @@ class ComponentToPrint extends React.Component {
                                  <h3>Sayı</h3>
                                  <h3>Qiymət</h3>
                              </div>
-                             <div className="order">
-                                 <div className="product_-image">
-                                     <img src={require(`../../assets/images/Rectangle.jpg`)} alt=""/>
-                                 </div>
-                                 <h3>Əl işi müxtəlif toxumalar</h3>
-                                 <h3>1</h3>
-                                 <h3>50 ₼</h3>
-                             </div>
+                             {
+                                 this.props.orders.map((x,i)=>{
+                                     return(
+                                        <div key={i} className="order">
+                                        <div className="product_-image">
+                                            {
+                                                x.images.map((y,i)=>{
+                                                    if(y.is_main===1){
+                                                       return <img key={i} src={y.product_thumbnail_image} alt=""/>
+                                                    }
+                                                })
+                                            }
+                                            
+                                        </div>
+                                        <h3 className="productss">{x.product_name}</h3>
+                                        <h3>{x.count}</h3>
+                                        <h3>{x.price} ₼</h3>
+                                       </div>
+                                     )
+                                 })
+                             }
                          </div>
                          <div className="client_info">
 
                              <div className="personal__info">
                                  <h4>Müştəri məlumatları</h4>
                                  <ul>
-                                     <li>Əliyev Əhməd Azər</li>
-                                     <li>050 258 88 77</li>
-                                     <li>Bakı ş., Səbail ray.Üzeyir Hacıbəyov küç. 30</li>
+                                     <li>{`${this.props.total.user.name} ${this.props.total.user.surname}`}</li>
+                                     <li>{this.props.total.user.phone}</li>
+                                     <li>{this.props.total.user.address}</li>
                                  </ul>
                              </div>
                              <div className="personal__info">
@@ -65,7 +79,7 @@ class ComponentToPrint extends React.Component {
                              <div className="personal__info">
                                  <h4>Cəm</h4>
                                  <ul>
-                                     <li>50 ₼</li>
+                                     <li>${this.props.total.totalAmount} ₼</li>
                                  </ul>
                              </div>
                              <div className="personal__info">
@@ -88,7 +102,7 @@ class CheckPrint extends React.Component {
   render() {
     return (
       <div>
-            <ComponentToPrint ref={el => (this.componentRef = el)} />
+            <ComponentToPrint orders={this.props.orders} total={this.props.total} ref={el => (this.componentRef = el)} />
         <ReactToPrint
           trigger={() => {
             return   <div className="pdf_top">
