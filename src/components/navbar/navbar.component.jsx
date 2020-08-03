@@ -140,9 +140,9 @@ function  Navbar(props) {
   
 
     const userProfle=<>
-    <Link   className='navbar_buttons_link bag budget'>0₼ </Link> 
-    <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>  
-    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/user.png')} /> <img width='12px' src={require('../../assets/images/down.svg')} /></Link>
+    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/manly.svg')} /> </Link>
+    
+    
 <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>
         <li className='profile_dropwdown_li'> <Link to='/profile'>Profil</Link></li>
@@ -152,10 +152,15 @@ function  Navbar(props) {
 
 </>;
 const loginRegister = <>
-                    <Link className='navbar_buttons_link log login' onClick={Sign} > daxil ol </Link>
-
-                    <Link className='navbar_buttons_link log signup' onClick={Sign} >hesab yarat </Link>
-                      
+<Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/manly.svg')} /> </Link>
+    
+    
+<div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
+    <ul className='profile_dropwdown_ul'>
+        <li className='profile_dropwdown_li'> <Link onClick={Sign}>Daxil ol</Link></li>
+        <li className='profile_dropwdown_li_a'><Link onClick={Sign}>Hesab Yarat</Link></li>
+    </ul>
+</div>
                     </> 
              console.log(categories.data)       
     return (
@@ -170,23 +175,36 @@ const loginRegister = <>
                 <div className="right_navbar__top">
                     <Link className="navbar_top_link" to='/worked-delivery'>Kuryer olmaq istəyirsiniz?</Link>
                     <Link className="navbar_top_link navbar_top_link--end " to='/open-store'>Mağaza aç</Link>
+                    
+                    
+                    
+                   
+
+                    <div className='navbar_select'>
+                    <LangToggler firstopt="Azərbaycan"/>
+                    </div>
+
                 </div>
             </div>
-            <div className='navbar_center'>
+            <div className='navbar_center'> 
                 <div className='navbar_logo'>
                     <Link to='/'><img alt='' src={require('../../assets/logo/logo_1.svg')} /></Link>
                 </div>
                 <div className='navbar_search'>
                 <form onSubmit={(e)=>{e.preventDefault();History.push(`/search/filter[title]=${products.state.searchKey}`)}}  className="search-input" >
+                <div className="withicon">
                     <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
-                    <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/icons/search.svg')} /></Link>
-                </form>
+                    <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/Iconka.svg')} /></Link>
+              </div>
+                    </form>
                 </div>
-                <div className='navbar_select'>
-                    <LangToggler/>
-                </div>
+                
+                
+
                 <div className='navbar_buttons'>
-                     <Link   className='navbar_buttons_link bag' to='/basket'><img alt='' src={require('../../assets/images/heading/Bag.svg')} /><span>{AppContext.basket.length}</span></Link> 
+                <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/ringbells.svg')} /></Link>
+                <Link   className='navbar_buttons_link bag' to='/basket'><img alt='' src={require('../../assets/images/bagins.svg')} /><span>{AppContext.basket.length}</span></Link> 
+                     
                     {
                         AppContext.app.isAuthorized?
                             userProfle:
@@ -201,6 +219,7 @@ const loginRegister = <>
                     </div>
                 </div>
             </div>
+            
             {/*------------------responsive nav*/}
             <div className='responsive_nav' id='res-nav-id'>
                     <div className='responsive_nav_top'>
