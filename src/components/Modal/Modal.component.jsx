@@ -75,6 +75,21 @@ function Modal(){
             }
         }
     })
+
+    let close = document.getElementById("close");
+    close.addEventListener("click", function(){
+        let login__modal= document.getElementById("login__modal");
+        let deletevalue = document.getElementById("deletevalue")
+        let deletevalue1 = document.getElementById("deletevalue1")
+        let reg_name=document.querySelectorAll("#reg_name");
+            deletevalue.value=""
+            deletevalue1.value=""
+            for (const item of reg_name) {
+                item.value=""
+            }
+        
+        login__modal.style.display="none"
+    })
     }, []);
     
 
@@ -150,6 +165,7 @@ function Modal(){
                        <h5>Hesab yarat</h5>
                        <div className="border__size"></div>
                    </div>
+                   <p id="close">x</p>
             </div>
 
             <section id="signin_view">
