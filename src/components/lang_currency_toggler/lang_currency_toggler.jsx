@@ -54,19 +54,17 @@ function LangToggler(props) {
         })
     }
 
-    // const accordionLangHandler=(e)=>{
-    //     console.log(e.target)    
-    // }
-
-
+    const accordionLangHandler=(e)=>{
+        console.log(e.target)    
+    }
 
 
     return (
         <>
         <div className='select_border'>
-        <a class="accordion_lang" onClick={accordionLangHandler}>
+        <a class="accordion_lang" href='javascript:void()' onClick={accordionLangHandler}>
         <div>{languageCurrency.language}</div> 
-        <div className='accordion_next'>  <img src={require("../../assets/images/whitedown.svg")} /></div>
+        <div className='accordion_next'>  <img alt='' src={require("../../assets/images/whitedown.svg")} /></div>
             
         </a>
         <div className={`panel_lang`}  >
