@@ -62,12 +62,13 @@ function LangToggler(props) {
     return (
         <>
         <div className='select_border'>
-        <a class="accordion_lang" href='javascript:void()' onClick={accordionLangHandler}>
+        <div class="accordion_lang" href='javascript:void()' onClick={accordionLangHandler}>
         <div>{languageCurrency.language}</div> 
-        <div className='accordion_next'>  <img alt='' src={require("../../assets/images/whitedown.svg")} /></div>
+        <div className='accordion_next'> <img alt='' src={require("../../assets/images/whitedown.svg")} /></div>
             
-        </a>
+        </div>
         <div className={`panel_lang`}  >
+      
         
            <Selectbox handleChange={handleChange} name='language' value={Langs} class='accordion_select'  options={Langs}/>
 {/*        <label>Valyuta</label>
