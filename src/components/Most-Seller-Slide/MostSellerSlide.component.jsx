@@ -6,10 +6,13 @@ import ProductCartItem from '../product-card-item/product-cart-item.component'
 
 export class MostSellerSlide extends Component {
     componentDidUpdate(props){
+        
         var mostSeller = new Swiper('#mostSlider.swiper-container',{
-            slidesPerView : 4,
+            slidesPerView : 'auto',
             slidesPerGroup: 1,
             loop: true,
+            freeMode: true,
+            loopedSlides: "auto",
             speed:1000,
             spaceBetween : 18,
             loopFillGroupWithBlank: true,
@@ -23,6 +26,9 @@ export class MostSellerSlide extends Component {
                 prevEl: '.most-button-preview'
             },
             breakpoints:{
+                0:{
+                    slidesPerView:1
+                },
                 320:{
                     slidesPerView:1
                 },

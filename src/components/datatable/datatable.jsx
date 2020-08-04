@@ -10,7 +10,7 @@ var $  = require( 'jquery' );
 var dt = require( 'datatables.net' );
 
 
-function Datatable({thead,tbody,deleteProduct,handleSelect,searchName}) {
+function Datatable({thead,tbody,deleteProduct,handleSelect,searchName,td}) {
 
 
     const [category,setCategory] = useState({
@@ -44,10 +44,6 @@ function Datatable({thead,tbody,deleteProduct,handleSelect,searchName}) {
             names.push(name)
         });
     })
-     console.log(tbody.length)
-    // const filteredProduct =tbody.length>0
-    //                       ?tbody.filter(item=> item.product_name.toLowerCase().includes(searchMarket.searchField.toLowerCase()))
-    //                       :[];
 
 
     return(
@@ -70,9 +66,10 @@ function Datatable({thead,tbody,deleteProduct,handleSelect,searchName}) {
                 {
                     thead!=null?
                     thead.map(head=>{
-                        return <th>{head}</th>
+                        return <th>{head.toLocaleLowerCase()}</th>
                     }):''
                 }
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -82,12 +79,22 @@ function Datatable({thead,tbody,deleteProduct,handleSelect,searchName}) {
                 tbody.map(bodyItems=>{
                     return (
                         <tr>
-                            <td className='nametable'>{bodyItems.product_name}</td>
-{/*                            <td>{bodyItems.Kateqorİya}</td>*/}
-                            <td>{bodyItems.price}</td>
-                            <td>{bodyItems.discount}</td>
-                            <td><SelectBox firstopt={bodyItems.status}/></td>
-                            <td><Link to={`/profile/product/edit/${bodyItems.id}`}>Duzelish</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-id={bodyItems.id} onClick={deleteProduct} href="javascript:void(f1())">Sil</a></td>
+                        {
+                            Object.keys(td).map((x,i)=>{
+                                console.log(td[x])
+                                return td[x]=='Status'
+                                ?<td><SelectBox firstopt={bodyItems.status}/></td>
+                                :<td>{bodyItems[`${td[x]}`]}</td>
+                            })
+                        }
+
+                            <td>
+                            {
+                                    window.location.pathname==='profile/products'&&
+                                    <><Link to={`/profile/product/edit/${bodyItems.id}`}>Duzelish</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a data-id={bodyItems.id} onClick={deleteProduct} href="javascript:void(f1())">Sil</a></>
+                            }
+                            </td>
                         </tr>
                     )
                 })

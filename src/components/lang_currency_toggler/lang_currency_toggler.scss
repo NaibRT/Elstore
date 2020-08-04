@@ -30,9 +30,17 @@
         width: 50px!important;
         height:40px ;
         font-size: 15px;
-
+        border: 1px solid #767676;
     }
   }
+
+  // .accordion_select::after{
+  //   content: url('../../assets/images/Icon.svg');
+  //   position: absolute;
+  //   right: 15px;
+  //   top: 7px;
+  //   pointer-events: none;
+  // }
  
 
   .select_border{

@@ -14,6 +14,9 @@ function CheckoutAddress() {
               setStep(step+1)
            
           };
+          const backFirst=()=>{
+            setStep(step-2)
+          }
             
           function stepTwo(){
             setStep(2)
@@ -51,7 +54,7 @@ function CheckoutAddress() {
                 return  <CheckoutSecond value={values} nextStep = {nextStep} prevStep = {prevStep} />
 
             case 3:
-                    return   <CheckoutThird value={values} nextStep = {nextStep} prevStep = {prevStep}  />
+                    return   <CheckoutThird value={values} nextStep = {nextStep} prevStep = {backFirst}  />
             
             case 1: 
                  return    <CheckoutFrist value={values} stepTwo={stepTwo} stepOne={stepOne}  nextStep = {nextStep} prevStep = {prevStep} />
@@ -65,7 +68,7 @@ function CheckoutAddress() {
             {renderCheckout()}
             </div>
             <div className='col-lg-4'>
-            <TotalSum amount="Məbləğ" delivery="Catdirilma" deliveryAmount={AppContext.total.totalDeliveryAmount} tax={AppContext.total.taxamount} total="Ümumi" totalPrice={AppContext.total.amount} totalCount={AppContext.total.totalAmount} />
+            <TotalSum class='card-border' amount="Məbləğ" delivery="Catdirilma" deliveryAmount={AppContext.total.totalDeliveryAmount} tax={AppContext.total.taxamount} total="Ümumi" totalPrice={AppContext.total.amount} totalCount={AppContext.total.totalAmount} />
                 <br/>
                 <IconDeliverySafetyPayback/>
             </div>

@@ -47,9 +47,6 @@ const StoreRegistr= (props) => {
      ]
     })
 
-
-console.log(texturl)
-
    function TextUrl(e){
     setTexturl({
         ...texturl,
@@ -70,10 +67,11 @@ console.log(texturl)
    })
    .then(async res=>{
        if(res.ok){
-        let data=await res.json();
-        AppContext.events.AddToken(data)
+        // let data=await res.json();
+        // AppContext.events.AddToken(data)
         history.push("/");
-        swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
+        //swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
+        document.getElementById('login__modal').style.display='block';
        }else{
         swal("Təəssüflər", "Bu adda email artıq mövcuddr", "error");
        }
@@ -94,25 +92,27 @@ console.log(texturl)
     })
     
     function takeSelectboxValue(e){
-      fetch(`http://139.180.144.49/api/v1/az/regions?city_id=${e.target.value}`)
+        let url=UrlGenerator('az',`regions?city_id=${e.target.value}`)
+      fetch(url)
       .then(response => response.json())
       .then(data => setRegion({ data: data }));
     
     }
 
     function takeSelectboxValue1(e){
-        console.log(e.target.value);
-      fetch(`http://139.180.144.49/api/v1/az/villages?region_id=${e.target.value}`)
+       let url=UrlGenerator('az',`villages?region_id=${e.target.value}`)
+      fetch(url)
       .then(response => response.json())
       .then(data => setVillages({ data: data }));
     
     }
     
-    
-    
+    useEffect(()=>{
+      AppContext.events.mobileSideBarOFF()
+    })
     useEffect(() => {
-       
-      fetch('http://139.180.144.49/api/v1/az/cities')
+       let url=UrlGenerator('az','cities');
+      fetch(url)
       .then(response => response.json())
       .then(data => setCities({ data: data }));
     }, [])
@@ -132,29 +132,32 @@ console.log(texturl)
                        </div>
                        <div className="registr__input">
                        <Input name='name' type='text' placeholder='Mağaza adı' register={register2({
-                required:{value:true,message:'name is required'},
+                required:{value:true,message:'Adınızı daxil etməlisiniz'},
                 maxLength:{value:255,message:'max  255 char need'}
             })} helper={errors2.name&&errors2.name.message}/>
                        </div>
                        <div className="registr__input">
-                       <Input name='password'  placeholder={"Şifrə"} type="password" register={register2({required:'cannot be null',minLength:{value:5,message:'cannot be less 8'}})} helper={errors2.password&&errors2.password.message}/>
+                       <Input name='password'  placeholder={"Şifrə"} type="password" register={register2({required:'Şifrə daxil etməlisiniz',minLength:{value:5,message:'cannot be less 8'}})} helper={errors2.password&&errors2.password.message}/>
                        </div>
                        <div className="registr__input">
-                       <Input   type="text" placeholder="Mağaza haqqında ümumi məlumat" />
+                       <Input  name="description" type="text" placeholder="Mağaza haqqında ümumi məlumat" register={register2({
+                required:{value:true,message:'Mağazanız haqqında məlumatı daxil edin'},
+                maxLength:{value:255,message:'max  255 char need'}
+            })} helper={errors2.name&&errors2.description.message} />
                        </div>
                        <div className="registr__input">
                        <Input name='email'  placeholder={"Email"} type="email" register={register2({
-                required:{value:true,message:'must be added'},
+                required:{value:true,message:'Email daxil etməlisiniz'},
                 pattern:{value:/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         message:"email not valid"}
                 })}
                 helper={errors2.email&&errors2.email.message}/>
                        </div>
                        <div className="registr__input">
-                       <Input name='phones[phone]' type='tel' placeholder='telefon' register={register2({
-                required:{value:true,message:'name is required'},
+                       <Input name='phones[phone]' type='tel' placeholder='phone' register={register2({
+                required:{value:true,message:'Telefonunuzu daxil etməlisiniz'},
                 maxLength:{value:255,message:'max 255 char need'}
-            })} helper={errors2.name&&errors2.name.message}/>
+            })} helper={errors2.name&&errors2.phones['phone'].message}/>
                        </div>
                        
                        <div className="weple">
@@ -169,18 +172,18 @@ console.log(texturl)
                          </div>
                         <br/>
                         
-                            {(region.data.data!=undefined && region.data.data.length>0)? <div className="select__city" id="region"><Selectbox firstopt='Region'  handleChange={takeSelectboxValue1} class='selectboxcheckout' options={region.data.data} /></div>:null}
+                            {(region.data.data!=undefined && region.data.data.length>0)? <div className="select__city" id="region"><Selectbox firstopt='Rayon'  handleChange={takeSelectboxValue1} class='selectboxcheckout' options={region.data.data} /></div>:null}
                         
                         <br/>
                        
-                        {(villages.data.data!=undefined && villages.data.data.length>0 && region.data.data.length>0)?  <div className="select__city" id="village"><Selectbox id="village" firstopt='Village'  class='selectboxcheckout' options={villages.data.data} /></div>:null}
+                        {(villages.data.data!=undefined && villages.data.data.length>0 && region.data.data.length>0)?  <div className="select__city" id="Qəsəbə"><Selectbox id="village" firstopt='Village'  class='selectboxcheckout' options={villages.data.data} /></div>:null}
                         
                         <br/>
 
                        
                         <div className="select__city">
                        <Input name='address' type='text' placeholder='Ünvan' register={register2({
-                required:{value:true,message:'name is required'},
+                required:{value:true,message:'Adresinizi daxil edin'},
                 maxLength:{value:255,message:'max  255 char need'}
             })} helper={errors2.name&&errors2.name.message} />
                        </div>

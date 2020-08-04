@@ -114,3 +114,12 @@ td{
     max-width: 200px;
     word-wrap: break-word;
 }
+
+@media only screen and (max-width:767px){
+    .datatable_search{
+        flex-flow: column;
+        .datatable_selectbox{
+            margin: 15px 0px;
+        }
+    }
+}

@@ -2,8 +2,7 @@ import React, { useContext, useEffect,useState } from 'react'
 import './checkout_third.scss';
 import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
-import InputGroup from "../InputGroup/InputGroup.component";
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import swal from "sweetalert"
 import {appContext} from '../../contexts/appContext';
 import UrlGenerator from '../../services/url-generator';
@@ -13,6 +12,7 @@ import Button from '../button/button.component';
 function CheckoutThird(props) {
 
     const AppContext=useContext(appContext);
+    const History=useHistory();
      const [state,setState]=useState({
          city:'',
          region:'',
@@ -56,7 +56,6 @@ function CheckoutThird(props) {
             })
         })
         .catch(err=>console.log(err))
-
     },[])
 
     function order(){
@@ -97,6 +96,7 @@ function CheckoutThird(props) {
         .then(async res=>{
             if(res.ok){
                 let data=await res.json();
+                History.push('/order-check')
                 swal( "","Sifarişiniz qeydə alındı", "success");
             }else{
                 swal( "Təəssüf!","Sifarişiniz qeydə alınmadı", "error");
@@ -106,17 +106,14 @@ function CheckoutThird(props) {
 
     }
 
-    // function backtoEdit(){
-    //     window.onload();
-
-    // }
-
+    
+  
     return (
         
         <>
-        <Link className='goBasket' to='/basket' ><img src={require('../../assets/images/icons/next-icon.svg')} /> səbətə gerİ dön</Link>
+        <Link className='goBasket' to='/basket' ><img alt='' src={require('../../assets/images/icons/next-icon.svg')} /> səbətə gerİ dön</Link>
             <br/>
-            <h2 className='complateordertxt'>Sifarişi tamamla</h2>
+            <h2  className='complateordertxt'>Sifarişi tamamla</h2>
             <br/>
             <br/>
 
@@ -134,7 +131,8 @@ function CheckoutThird(props) {
            <div className='card_head_flex'>
             <div><Card.Header name='Çatdırılma ünvanı' /></div>
             <div>
-                <button   >Düzəlİş et</button>
+                <button onClick={props.prevStep} id="edited_checkout">Düzəlİş at</button>
+                
             </div>
 
            </div>
@@ -162,8 +160,6 @@ function CheckoutThird(props) {
             <br/>
             <br/>
             <Button className='form_button_multiple bg-primary' onClick={order} name='SİFARİŞ ET'/>
-
-          
        </>
     )
 }

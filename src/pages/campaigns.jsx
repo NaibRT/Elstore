@@ -58,10 +58,10 @@ return (
                     <div className="e-card-overlay">
                         <p className="e-card-head">{x.name}</p>
                         <div className="e-card-info">
-                            <img className="e-card-info-name" src={x.logo} />
+                            <img alt='' className="e-card-info-name" src={x.logo} />
                             <p className='e-card-info-text'>{x.name}</p>
                             <div>
-                                <Link to='/product' className='e-card-go'>Məhsullara bax <img src={require('../assets/images/icons/right.svg')} /></Link>
+                                <Link to={`/company/${x.id}/${x.name}/discount`} className='e-card-go'>Məhsullara bax <img alt='' src={require('../assets/images/icons/right.svg')} /></Link>
                             </div>
                         </div>
                     </div>

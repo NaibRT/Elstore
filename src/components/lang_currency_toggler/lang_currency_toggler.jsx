@@ -4,11 +4,13 @@ import Selectbox from '../Select-box/SelectBox.component'
 
 
 const Langs =  [{id:'AZ',name:'AZ'},{id:'EN',name:'EN'},{id:'RU',name:'RU'}];
+
 // const  langval =  ['AAZE','TR','UKR'];
 // const Currency =  ['AZN','EURO','USD'];
 
 
-function LangToggler() {
+function LangToggler(props) {
+    
     useEffect(()=>{
         // var acc = document.getElementsByClassName("accordion_lang");
         //     var i;
@@ -52,9 +54,12 @@ function LangToggler() {
         })
     }
 
-    const accordionLangHandler=(e)=>{
-        console.log(e.target)
-    }
+    // const accordionLangHandler=(e)=>{
+    //     console.log(e.target)    
+    // }
+
+
+
 
     return (
         <>

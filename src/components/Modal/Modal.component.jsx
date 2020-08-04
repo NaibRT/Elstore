@@ -18,7 +18,10 @@ function Modal(){
         data:[]
     })
     const AppContext=useContext(appContext)
-
+    
+    useEffect(()=>{
+      AppContext.events.mobileSideBarOFF()
+    })
     useEffect(()=>{
         let url=UrlGenerator('az','cities');
         fetch(url)
@@ -55,14 +58,25 @@ function Modal(){
     //     return re.test(email);
     //  }
 
-    let body=document.getElementsByTagName("body")[0];
+
+    useEffect(() => {
+        let body=document.getElementsByTagName("body")[0];
     body.addEventListener("click", function(e){
         let login__modal= document.getElementById("login__modal");
-        let deletevalue = document.getElementById("deletevalue ")
+        let deletevalue = document.getElementById("deletevalue")
+        let deletevalue1 = document.getElementById("deletevalue1")
+        let reg_name=document.querySelectorAll("#reg_name");
         if(e.target==login__modal){
             login__modal.style.display="none"
+            deletevalue.value=""
+            deletevalue1.value=""
+            for (const item of reg_name) {
+                item.value=""
+            }
         }
     })
+    }, []);
+    
 
     const loginSubmit=(data)=>{
        let url=UrlGenerator('az','auth/login')
@@ -79,7 +93,7 @@ function Modal(){
             AppContext.events.AddToken(data)
             document.getElementById('login__modal').style.display='none';
           }else{
-             swal("Təəssüflər", "Email və ya şifrə səhvdir ", "error");
+             swal("Təəssüflər", `${data.error}`, "error");
           }
      
       })
@@ -99,16 +113,31 @@ function Modal(){
 
        if(res.ok){
         let data=await res.json();
-        AppContext.events.AddToken(data)
-        swal( "Təbriklər","Qeydiyyatınız uğurla tamamlandı", "success");
+        //AppContext.events.AddToken(data)
+        swal( "Təbriklər","Zəhmət olmasa emailinizi yoxlayin", "success");
         document.getElementById('login__modal').style.display='none';
+        let reg_name=document.querySelectorAll("#reg_name")
+        for (const item of reg_name) {
+            item.value=""
+        }
        }else{
-        swal("Təəssüf!", "Qeyd olunmuş email artıq mövcuddur", "error");
+        swal("Təəssüf!", `${data.error}`, "error");
+        let reg_name=document.querySelectorAll("#reg_name")
+        for (const item of reg_name) {
+            item.value=""
+        }
        }   
        
    })
    .catch((err) =>console.log(err))
 }
+
+    const openResetModal=()=>{
+        document.getElementById('login__modal').style.display='none';
+        //document.getElementById('reset-password-modal').style.display='flex';
+        document.getElementById('reset-password-modal').classList.toggle('d-flex');
+    }
+
     return ReactDom.createPortal(
     <div id="login__modal" className="modal__bacground">
         <div className="modal__view">
@@ -130,44 +159,44 @@ function Modal(){
                      register={register({
                         required:{value:true,message:'Email daxil etməlisiniz'},
                        pattern:{value:/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                                message:"email not valid"}
+                                message:"email düzgün deyil"}
                      })}
                       helper={errors.email&&errors.email.message}/>
 
-                <Input id="deletevalue"  name='password'  placeholder={"Şifrə"} type="password" register={register({required:'Şifrə daxil etməlisiniz',minLength:{value:5,message:'cannot be less 8'}})} helper={errors.password&&errors.password.message}/>
-                <label htmlFor="">şifrəmi unutmuşam</label>
+                <Input id="deletevalue1"  name='password'  placeholder={"Şifrə"} type="password" register={register({required:'Şifrə daxil etməlisiniz',minLength:{value:5,message:'8 simvoldan az ola bilmez'}})} helper={errors.password&&errors.password.message}/>
+                <label htmlFor="" onClick={openResetModal}>şifrəmi unutmuşam</label>
                 <Button className="bg-primary" type={"submit"} name={"Daxil ol"}  />
                     <br/>
             </form>
             </section>
             <section  id="signup_view">
         <form onSubmit={handleSubmit2(registerSubmit)}>
-            <Input name='name' type='text' placeholder='Ad' register={register2({
+            <Input id="reg_name" name='name' type='text' placeholder='Ad' register={register2({
                 required:{value:true,message:'Adınızı daxil etməlisiniz'},
                 maxLength:{value:255,message:'maksimum  255 simvol qeyd oluna bilər'}
             })} helper={errors2.name&&errors2.name.message}/>
             
 
-            <Input name='surname' type='text' placeholder='Soyad' register={register2({
+            <Input id="reg_name" name='surname' type='text' placeholder='Soyad' register={register2({
                 required:{value:true,message:'Soyadınızı daxil etməlisiniz'},
                 maxLength:{value:255,message:'maksimum  255 simvol qeyd oluna bilər'}
             })} helper={errors2.surname&&errors2.surname.message}/>
 
-            <Input name='phones[phone]' type='tel' placeholder='Telefon' register={register2({
+            <Input id="reg_name" name='phones[phone]' type='number'  placeholder='Telefon' register={register2({
                 required:{value:true,message:'Telefon daxil etməlisiniz'},
-                maxLength:{value:255,message:'maksimum  255 simvol qeyd oluna bilər'}
+                maxLength:{value:255,message:'maksimum  255 simvol qeyd oluna bilər'},
             })} helper={errors2.name&&errors2.phones["phone"].message}/>
            
 
-            <Input name='email'  placeholder={"Email"} type="email" 
+            <Input id="reg_name" name='email'  placeholder={"Email"} type="email" 
             register={register2({
                 required:{value:true,message:'Email daxil etməlisiniz'},
                 pattern:{value:/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message:"Email yanlışdır"}
+                        message:"email düzgün deyil"}
                 })}
                 helper={errors2.email&&errors2.email.message}/>
 { /*                 <SelectBox options={cities.data.data} name='address' class='selectboxcheckout' register={register({required:'cannot be null'})} />*/}
-            <Input   name='password'  placeholder={"Şifrə"} type="password" register={register2({required:'Şifrə daxil etməlisiniz',minLength:{value:5,message:'cannot be less 8'}})} helper={errors2.password&&errors2.password.message}/>
+            <Input id="reg_name"   name='password'  placeholder={"Şifrə"} type="password" register={register2({required:'Şifrə daxil etməlisiniz',minLength:{value:5,message:'8 simvoldan az ola bilmez'}})} helper={errors2.password&&errors2.password.message}/>
             <br/>
             <Button className="bg-primary" type={"submit"} name={"Hesab yarat"}  />
             <br/>

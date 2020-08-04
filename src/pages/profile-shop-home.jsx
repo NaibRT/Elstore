@@ -1,34 +1,32 @@
 import React,{useEffect, useContext,useState} from 'react'
 import './profile-shop-home.scss'
-import Chips from '../components/chips/chips.component';
 import CompanyMiniImage from '../components/Compony-mini-image/CompanyMiniImage';
 import ButtonRating from '../components/button-rating/buttonRating.component';
-import Button from '../components/button/button.component';
 import ButtonDropDown from '../components/button-dropdown/ButtonDropDown.component';
 import Filter from '../components/filter/filter.component';
 import UrlGenerator from '../services/url-generator';
 import { appContext } from '../contexts/appContext';
-import { searchContext } from '../contexts/search';
 import SearchResultComp from '../components/search-result-component/SearchResultComp.component';
 
 
 function ProfileShopHome(props) {
     let AppContext=useContext(appContext)
-    let SearchContext=useContext(searchContext);
     const [product, setproduct] = useState({})
     const [queryParams, setQueryParams] = useState([])
     const [priceFrom, setPriceFrom] = useState('')
     const [priceTo, setPriceTo] = useState('')
+    const [like,setLike]=useState(false)                                                        
 
     useEffect(()=>{
-        console.log('effect')
         let token=AppContext.events.getToken();
-        console.log(token)
         let id=props.match.params.id;
       let url=''
-      id!==undefined?
+      window.location.pathname.includes('discount')
+      ? url=UrlGenerator('az',`users/company?company_id=${id}&include=products&with=discounts`)
+      :id!==undefined?
           url=UrlGenerator('az',`users/company?company_id=${id}&include=products`)
           :url=UrlGenerator('az',`users/company?include=products`)
+
             fetch(url,{
                 headers:{
                     'Authorization':token!==null?`${token.token_type} ${token.access_token}`:''
@@ -59,7 +57,7 @@ function ProfileShopHome(props) {
                      cover_image:reader.result
                  }
              })
-             let url=UrlGenerator('az','users/company/update');
+             let url=UrlGenerator('az','users/update');
              let token=AppContext.events.getToken()
              let formdata=new FormData();
              formdata.append('cover_image',img)
@@ -86,10 +84,10 @@ function ProfileShopHome(props) {
                 ...product,
                 store:{
                     ...product.store,
-                    cover_thumbnail_image:reader.result
+                    logo:reader.result
                 }
             })
-            let url=UrlGenerator('az','users/company/update');
+            let url=UrlGenerator('az','users/update');
             let token=AppContext.events.getToken()
             let formdata=new FormData();
             formdata.append('logo',img)
@@ -202,6 +200,27 @@ function ProfileShopHome(props) {
  
         }).catch(err=>console.log(err))
     }
+
+    const likeShop=()=>{
+        let url=UrlGenerator('az','users/like');
+        let token=AppContext.events.getToken();
+        let id=props.match.params.id;
+        fetch(url,{
+            headers:{
+             'Content-Type':'application/json',
+             'Authorization':`${token.token_type} ${token.access_token}`
+            },
+            method:'Post',
+            body:JSON.stringify({type:'company',liketable_id:id,action_type:like?'dislike':'like'})
+        }).then( response=>{
+            if(!response.ok){
+                document.getElementById('login__modal').style.display='block'
+            }else{
+                setLike(!like);
+            }
+        })
+        .catch(()=>document.getElementById('login__modal').style.display='block')
+    }
       
 
          console.log(product)
@@ -241,8 +260,8 @@ function ProfileShopHome(props) {
                             <div className="right_side">
                                 <div className="right_side__content">
                                     <h6>Əlaqə</h6>
-                                    <p>example@example.com</p>
-                                    <p>{product.store!==undefined?product.store.phones['phone']:null}</p>
+                                    <p>{product.store!==undefined?product.email:null}</p>
+                                    <p>{product.store!==undefined?product.store.phones.phone:null}</p>
                                 </div>
                             </div>
                         </div>
@@ -251,7 +270,7 @@ function ProfileShopHome(props) {
                 <div className="row">
                     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="add_button__section">
-                            <ButtonRating  name='əlavə et' icon={require('../assets/images/index/Union.svg')} class=''/>
+                            <ButtonRating click={likeShop}  name='əlavə et' icon={require('../assets/images/index/Union.svg')} class=''/>
                         </div>
                     </div>
                 </div>

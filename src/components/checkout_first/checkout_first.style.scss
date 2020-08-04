@@ -54,10 +54,19 @@
 .selectboxcheckout{
     select {
         width: 100% !important;
-        height: 50px;
+        height: 44px;
         border: 1px solid #444444 !important;
+        padding-right: 34px;
     }
 }
+
+// .selectboxcheckout::after{
+//     content: url('../../assets/images/Icon.svg');
+//     position: absolute;
+//     right: 30px;
+//     top: 12px;
+//     pointer-events: none;
+// }
 .alertext{
     font-size: 14px;
     color: red;

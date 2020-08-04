@@ -35,23 +35,18 @@ function Contact(){
 
 return(
     <React.Fragment>
-    
+        <div className='container-fluid'>
         <div className="row">
         <div class= "col-lg-6 col-md-6 col-xs-12 ">
-
         <div className="redirect">
         <GoBack link='/' text='ƏSAS SƏHİFƏYƏ GERİ DÖN' />
         </div>
-
         <div className="text">
         <h1>Əlaqə</h1>
         <br />
         <p>Bu hissədə datalar olacaq</p>
         </div>
         </div>
-       
-
-       
         <div class = "col-lg-6 col-md-6 col-xs-12">
         <Card>
             <div className = "basket__cart">
@@ -62,16 +57,12 @@ return(
                 <InputGroup onChange={(e)=>emailEventHandler(e)}  type='email' placeholder='E-poçt adresi' />
                         <br/>
                 <InputGroup onChange={(e)=>{nameEventHandler(e)}} type='textarea' placeholder='Mesajınız' />
-                       
-                
                 <Button className='bg-primary--light'>GÖNDƏR</Button>
             </div>
             </Card>
-
         </div>
         </div>
-        
-
+        </div>
     </React.Fragment>
 )}
 
