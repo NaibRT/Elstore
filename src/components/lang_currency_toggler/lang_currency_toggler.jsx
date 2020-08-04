@@ -3,11 +3,8 @@ import './lang_currency_toggler.scss';
 import Selectbox from '../Select-box/SelectBox.component'
 
 
-const Langs =  [
-    
-    {id:1,name:'İnglis'},
-    {id:2,name:'Russia'}
-];
+const Langs =  [{id:'AZ',name:'AZ'},{id:'EN',name:'EN'},{id:'RU',name:'RU'}];
+
 // const  langval =  ['AAZE','TR','UKR'];
 // const Currency =  ['AZN','EURO','USD'];
 
@@ -52,7 +49,7 @@ function LangToggler(props) {
 
     if(languageCurrency.language == '' || languageCurrency.currency ==''){
         setLanguageCurrency({
-            language:'Azərbaycan',
+            language:'AZ',
             // currency:'AZN',
         })
     }
@@ -66,7 +63,19 @@ function LangToggler(props) {
 
     return (
         <>
-           <Selectbox  class='accordion_select' firstopt={props.firstopt}   options={Langs}/>
+        <div className='select_border'>
+        <a class="accordion_lang" onClick={accordionLangHandler}>
+        <div>{languageCurrency.language}</div> 
+        <div className='accordion_next'>  <img src={require("../../assets/images/whitedown.svg")} /></div>
+            
+        </a>
+        <div className={`panel_lang`}  >
+        
+           <Selectbox handleChange={handleChange} name='language' value={Langs} class='accordion_select'  options={Langs}/>
+{/*        <label>Valyuta</label>
+<Selectbox handleChange={handleChange} name='currency' value={Currency}  class='accordion_select'  options={Currency}/>*/}
+        </div>
+        </div>
         </>
     )
 }
