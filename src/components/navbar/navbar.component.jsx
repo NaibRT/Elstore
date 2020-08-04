@@ -209,7 +209,7 @@ const loginRegister = <>
 <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>
         <li className='profile_dropwdown_li'> <Link onClick={Sign}>Daxil ol</Link></li>
-        <li className='profile_dropwdown_li_a'><Link onClick={Sign}>Hesab Yarat</Link></li>
+        <li className='profile_dropwdown_li_a'><Link onClick={SignUp}>Hesab Yarat</Link></li>
     </ul>
 </div>
                     </> 
