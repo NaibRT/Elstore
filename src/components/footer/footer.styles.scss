@@ -1,110 +1,101 @@
-@import "../../assets/sass/abstracts/background";
-@import "../../assets/sass/abstracts/display";
-@import "../../assets/sass/abstracts/text";
-@import "../../assets/sass/abstracts/grid.scss";
-@import "../../assets/sass/base/variables";
+@import "../../App.scss";
 
-footer {
-  margin-top: 68px;
-  background-color: #f1f1f1;
-  position: relative;
-  .description {
-    display: flex;
-    justify-content: center;
-  }
 
-  h1,
-  p {
-    text-align: center;
-  }
+footer{
+  .all__footer{
+    height: 400px;
+    background: #334788;
+      .footer_category{
+        display: flex;
+        justify-content: space-around;
+        padding-top: 76px;
 
-  h1 {
-    font-size: 39px;
-    font-style: normal;
-    margin-top: 48px;
-    color: #1a1a1a;
-    font-weight: 500px;
-    letter-spacing: 0.15px;
-    font-family: NotoRegular;
-  }
-
-  p {
-    margin-top: 16px;
-    color: #444444;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 200%;
+        .footer_items{
+          h4{
+            font-family: InterRegular;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 150%;
+            letter-spacing: 0.25px;
+            color: #FFFFFF;
+            padding-bottom: 20px;
+          }
+          ul{
+            display: flex;
+            flex-direction: column;
+              a{
+                text-decoration: none;
+                font-family: InterRegular;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 180%;
+                letter-spacing: 0.25px;
+                color: #FFFFFF;
+                word-break: break-word;
+              }
+          }
+          
+        }
+      }
+.copy_write{
+  display: flex;
+  justify-content: center;
+  padding-top: 60px;
+  p{
     font-family: InterRegular;
-    width: 860px;
-    letter-spacing: 0.5px;
-  }
-
-  a {
-    font-size: 18px;
-    color: #334788;
     font-style: normal;
     font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-family: InterRegular;
-    margin: 32px 0px 48px 0px;
+    font-size: 16px;
+    line-height: 180%;
+    text-align: center;
+    letter-spacing: 0.25px;
+    color: #FFFFFF;
   }
-
-  .links {
-    display: flex;
-    justify-content: center;
-    margin: 32px 0px 48px 0px;
-
-    .link-curior {
-      a {
-        padding-right: 16px;
-      }
-    }
-
-    .link-store {
-      a {
-        padding-left: 16px;
-      }
-    }
+}
   }
 }
 
-.footer-rectangle {
-  background-color: #c4c4c4;
-  height: 160px;
-}
-
-@media screen and (max-width: 767px) {
-  footer {
-    .links {
-      flex-direction: column;
-      text-align: center;
-
-      .link-curior{
-          a{
-              padding-right: 0px;
-          }
-      }
-
-      .link-store{
-          a{
-              padding-left: 5px;
-              padding-top: 10px;
-          }
-      }
+@media (max-width:630px){
+      footer{
+          .all__footer{
+            height: auto;
+              .footer_category{
+                  display: flex;
+                  flex-direction: column;
+                  .footer_items{
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px;
+                    h4{
+                      font-family: InterRegular;
+                      font-style: normal;
+                      font-weight: 500;
+                      font-size: 15px;
+                      line-height: 150%;
+                      letter-spacing: 0.25px;
+                      color: #FFFFFF;
+                      padding-bottom: 20px;
+                    }
+                    ul{
+                      display: flex;
+                      flex-direction: column;
+                        a{
+                          text-decoration: none;
+                          font-family: InterRegular;
+                          font-style: normal;
+                          font-weight: 500;
+                          font-size: 14px;
+                          line-height: 180%;
+                          letter-spacing: 0.25px;
+                          color: #FFFFFF;
+                          word-break: break-word;
+                          text-align: end;
+                        }
+                    }
+                  }
+              }
+        }
     }
-    h1 {
-      font-size: 37px;
-    }
-
-    p {
-      font-size: 14px;
-    }
-
-    a {
-      font-family: 16px;
-    }
-  }
 }
