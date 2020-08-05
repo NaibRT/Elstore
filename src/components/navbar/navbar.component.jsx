@@ -113,18 +113,18 @@ function  Navbar(props) {
         var acc = document.getElementsByClassName("accordion_lang");
             var i;
     
-            for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.height) {
-                panel.style.height = null;
-                } else {
-                panel.style.height = '70px';
-                } 
-            });
+            // for (i = 0; i < acc.length; i++) {
+            // acc[i].addEventListener("click", function() {
+            //     this.classList.toggle("active");
+            //     var panel = this.nextElementSibling;
+            //     if (panel.style.height) {
+            //     panel.style.height = null;
+            //     } else {
+            //     panel.style.height = '70px';
+            //     } 
+            // });
 
-            }
+            // }
             
             
 
@@ -192,7 +192,18 @@ function  Navbar(props) {
      },[])
   
     const userProfle=<>
-    <Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/manly.svg')} /> </Link>  
+    <Link onClick={showbar} className={`navbar_buttons_link profile`}>
+    <div className='nav-prfile-img'>
+    TN
+    </div>
+    {/*
+        AppContext.app.user.image?
+        <img alt='' src={AppContext.app.user.image} /> :
+        <div className='nav-prfile-img'>
+        TN
+        </div>
+    */}
+     </Link>  
 <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>
         <li className='profile_dropwdown_li'> <Link to='/profile'>Profil</Link></li>
@@ -203,16 +214,15 @@ function  Navbar(props) {
 </>;
 
 const loginRegister = <>
-<Link onClick={showbar} className={`navbar_buttons_link profile`}> <img alt='' src={require('../../assets/images/manly.svg')} /> </Link>
-    
-    
+<Link onClick={showbar} className={`navbar_buttons_link profile`}>
+<img alt='' src={require('../../assets/images/manly.svg')} /> </Link>
 <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>
         <li className='profile_dropwdown_li'> <Link onClick={Sign}>Daxil ol</Link></li>
         <li className='profile_dropwdown_li_a'><Link onClick={Sign}>Hesab Yarat</Link></li>
     </ul>
 </div>
-                    </> 
+    </> 
     return (
         <div className='navbar'>
             <div className='navbar_top'>
@@ -225,11 +235,6 @@ const loginRegister = <>
                 <div className="right_navbar__top">
                     <Link className="navbar_top_link" to='/worked-delivery'>Kuryer olmaq istəyirsiniz?</Link>
                     <Link className="navbar_top_link navbar_top_link--end " to='/open-store'>Mağaza aç</Link>
-                    
-                    
-                    
-                   
-
                     <div className='navbar_select'>
                     <LangToggler firstopt="Azərbaycan"/>
                     </div>
@@ -252,7 +257,7 @@ const loginRegister = <>
                 
 
                 <div className='navbar_buttons'>
-                <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/ringbells.svg')} /></Link>
+                <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/ringbells.svg')} /> <span>0</span></Link>
                 <Link   className='navbar_buttons_link bag' to='/basket'><img alt='' src={require('../../assets/images/bagins.svg')} /><span>{AppContext.basket.length}</span></Link> 
                      
                     {

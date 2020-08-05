@@ -24,13 +24,24 @@
     width: 100%;
   }
   .accordion_select{
-    box-sizing: border-box;
-    border-radius: 8px;
+    // box-sizing: border-box;
+    // border-radius: 8px;
+    .select_box_content::after{
+        display: none !important;
+      }
     select {
-        width: 50px!important;
+        // width: 50px!important;
+        background-color: #32478A;
         height:40px ;
         font-size: 15px;
-        border: 1px solid #767676;
+        border: 0px solid transparent !important;
+        color: white !important;
+        -webkit-appearance: auto;
+        padding-left: 0px;
+        padding-right: 0px;
+        option{
+          color: black;
+        }
     }
   }
 
@@ -44,7 +55,6 @@
  
 
   .select_border{
-    
     padding: 16px 12px;
     padding: 10px;
     font-size: 17px;
@@ -84,9 +94,9 @@
   }
   
   .accordion_select{
-     position: relative;
-     top: 2px;
-     width: 25%;
+    //  position: relative;
+    //  top: 2px;
+    //  width: 25%;
   }
 
 .active_panel{
