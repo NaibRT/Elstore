@@ -21,6 +21,9 @@ import Contact from './contact'
 import Shops from './shops'
 import  Campaigns from './campaigns'
 import Faq from './faq.component'
+import About from './about'
+import Confidentiality from './confidentiality'
+import TermOfUse from './terms-of-use'
 import PasswordReset from './passwordReset'
 import '../assets/sass/pages/container.scss'
 
@@ -49,6 +52,9 @@ function Main() {
   <Route exact={true} path='/shops' component={Shops} />
   <Route exact={true} path='/campaigns' component={Campaigns} />
   <Route exact={true} path='/faq' component={Faq} />
+  <Route exact={true} path='/about' component={About} />
+  <Route exact={true} path='/confidentiality' component={Confidentiality} />
+  <Route exact={true} path='/term-of-use' component={TermOfUse} />
   <Route  path='/product/:id/:name' component={ProductInfo} />
   <Route exact={true} path='/basket' component={Basket} />
   <Route  path='/basket/:id' component={Basket} />

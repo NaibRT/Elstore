@@ -14,7 +14,7 @@ const Footer = () => {
                         <div className="footer_items">
                               <h4>El Store</h4>
                               <ul>
-                                <Link>El Store haqqında</Link>
+                                <Link to='/about'>El Store haqqında</Link>
                               </ul>
                         </div>
                         <div className="footer_items">
@@ -37,8 +37,8 @@ const Footer = () => {
                         <div className="footer_items">
                               <h4>Saytdan istifadə</h4>
                               <ul>
-                                <Link>İstifadə şərtləri</Link>
-                                <Link>Konfidensiallıq siyasəti</Link>
+                                <Link to='/term-of-use'>İstifadə şərtləri</Link>
+                                <Link to='/confidentiality'>Konfidensiallıq siyasəti</Link>
                               </ul>
                         </div>
                         <div className="footer_items">

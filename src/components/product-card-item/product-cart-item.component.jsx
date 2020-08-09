@@ -1,11 +1,9 @@
-import React,{useState,useEffect,useContext} from 'react'
+import React,{useContext} from 'react'
 import HeartImage from '../heart-image/heartImage.component'
 import ButtonRating from '../button-rating/buttonRating.component'
 import Button from "../button/button.component"
 import {Link} from 'react-router-dom'
-import swal from "sweetalert"
 import './product-card-item.component.scss'
-import UrlGenerator from '../../services/url-generator'
 import {appContext} from '../../contexts/appContext'
 
 
@@ -20,12 +18,7 @@ function ProductCartItem({data,isLiked}) {
         //     firstImg.childNodes[0].style.display = 'block';
         // }
 
-        const [basket,setBasket]=useState([]);
-
         const AppContext=useContext(appContext)
-       
-        
-
 
  return (
 
@@ -36,7 +29,9 @@ function ProductCartItem({data,isLiked}) {
       data.images.map(f=>{
           if(f.is_main){
               return <div key={f.id} className="swiper_slide_image">
-              <Link to={`/product/${data.id}/${data.product_name}`}>  <img src={f.product_thumbnail_image} alt=""/></Link>
+              <Link to={`/product/${data.id}/${data.product_name}`}>
+                <img src={f.product_thumbnail_image} alt=""/>
+                </Link>
               </div> 
           }
       })
