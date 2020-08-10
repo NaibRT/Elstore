@@ -193,16 +193,16 @@ function  Navbar(props) {
   
     const userProfle=<>
     <Link onClick={showbar} className={`navbar_buttons_link profile`}>
-    <div className='nav-prfile-img'>
+{/*    <div className='nav-prfile-img'>
     TN
-    </div>
-    {/*
-        AppContext.app.user.image?
-        <img alt='' src={AppContext.app.user.image} /> :
+    </div>*/}
+    {
+        AppContext.app.user.logo?
+        <img alt='' src={'http://128.199.188.53/uploads/default/logo.png'} /> :
         <div className='nav-prfile-img'>
-        TN
+        
         </div>
-    */}
+    }
      </Link>  
 <div className={`profile_dropwdown ${visiblepp ? 'active':''}`} >
     <ul className='profile_dropwdown_ul'>
@@ -223,9 +223,12 @@ const loginRegister = <>
     </ul>
 </div>
     </> 
+
+    console.log(AppContext.app.user)
     return (
         <div className='navbar'>
             <div className='navbar_top'>
+            <div className='navbar_top_container'>
                 <div className='left_navbar__top'>
                     <Link to = '/campaigns' className="navbar_top_link">Kampaniyalar</Link>
                     <Link  to = '/shops' className="navbar_top_link">Mağazalar</Link>
@@ -240,8 +243,10 @@ const loginRegister = <>
                     </div>
 
                 </div>
+                </div>
             </div>
             <div className='navbar_center'> 
+               <div className='navbar_center_container'>
                 <div className='navbar_logo'>
                     <Link to='/'><img alt='' src={require('../../assets/logo/logo_1.svg')} /></Link>
                 </div>
@@ -274,7 +279,7 @@ const loginRegister = <>
                     </div>
                 </div>
             </div>
-            
+            </div>
             {/*------------------responsive nav*/}
             <div className='responsive_nav' id='res-nav-id'>
                     <div className='responsive_nav_top'>
