@@ -28,6 +28,8 @@ function App() {
     <br/>
     <br/>
           <Main/>
+          <br/>
+          <br/>
       <Footer/>
        <LoginModal/>
       <ResetPasswordModal/>

@@ -36,7 +36,7 @@ function Basket(props) {
         console.log()
        let id=props.match.params.id;
        if(id!==undefined){
-        let url=UrlGenerator('az',`products/${id}`)
+        let url=UrlGenerator('az',`products/${id}?include=seller`)
         let token=AppContext.events.getToken();
         if(token!==null){
             fetch(url,{

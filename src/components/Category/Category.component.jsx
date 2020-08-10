@@ -29,20 +29,20 @@ const Category = () => {
       
 
 
-        function CategoryLeave(){
+        // function CategoryLeave(){
 
-            setTimeout(() => {
-                let boxCategory=document.querySelector(".box--category");
-                let box__subcotegoryItem=document.querySelectorAll(".box_subcotegory--item");
+        //     setTimeout(() => {
+        //         let boxCategory=document.querySelector(".box--category");
+        //         let box__subcotegoryItem=document.querySelectorAll(".box_subcotegory--item");
         
-                       box__subcotegoryItem.forEach(x=>{
-                            x.style.display="none";
-                            x.style.transition="0.3s ease";
-                        })
-                        boxCategory.style.width="0px";
-            }, 1000);
+        //                box__subcotegoryItem.forEach(x=>{
+        //                     x.style.display="none";
+        //                     x.style.transition="0.3s ease";
+        //                 })
+        //                 boxCategory.style.width="0px";
+        //     }, 1000);
            
-        }
+        // }
         
        
        
@@ -60,7 +60,7 @@ const Category = () => {
                     boxCategory.style.width="0px";
                 } 
             })
-        }, 500);
+        }, 2000);
     }, []);
        
 
@@ -92,7 +92,7 @@ const Category = () => {
                         </ul>
   
                         
-                        <div className="box--category" onMouseLeave={CategoryLeave} >
+                        <div className="box--category"   >
                             <div className="display__flex">
                                 <div className="box__subcotegory">
                                 {SubCategories}

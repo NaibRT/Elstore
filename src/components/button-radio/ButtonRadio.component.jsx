@@ -10,15 +10,16 @@ function clickAll(e){
         e.currentTarget.children[0].children[0].children[0].checked = false;
         
     }
-
+   
     
 }
 
 
 
 function ButtonRadio(props) {
+
     return (
-        <div className={`radio_button__body ${props.class}`} onChange={props.change}  onClick={(e) => clickAll(e)} tabIndex="-1" id="radioButtonBody">
+        <div className={`radio_button__body ${props.class}`} onChange={props.change}   onClick={(e) => clickAll(e)} tabIndex="-1" id="radioButtonBody">
             <div  className="radio_button__content">
                 <div id="radioButtonContent" className="radio-box">
                     <input id="radioButton" type="radio" name="choosed"/>

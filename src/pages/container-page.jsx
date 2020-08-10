@@ -1,7 +1,7 @@
 import React,{useContext, useEffect, useState} from 'react'
 import {Switch,Route,Redirect} from "react-router-dom";
 import Index from '../pages/index';
-import ProfileShopHome from '../pages/profile-shop-home';
+import OrderCheck from './order-check'
 import CompanyProfile from './companyProfile'
 import ProductInfo from '../pages/product-info';
 import Basket from '../pages/basket';
@@ -21,7 +21,11 @@ import Contact from './contact'
 import Shops from './shops'
 import  Campaigns from './campaigns'
 import Faq from './faq.component'
+import About from './about'
+import Confidentiality from './confidentiality'
+import TermOfUse from './terms-of-use'
 import PasswordReset from './passwordReset'
+import '../assets/sass/pages/container.scss'
 
 function Main() {
   const AppContext=useContext(appContext);
@@ -48,6 +52,9 @@ function Main() {
   <Route exact={true} path='/shops' component={Shops} />
   <Route exact={true} path='/campaigns' component={Campaigns} />
   <Route exact={true} path='/faq' component={Faq} />
+  <Route exact={true} path='/about' component={About} />
+  <Route exact={true} path='/confidentiality' component={Confidentiality} />
+  <Route exact={true} path='/term-of-use' component={TermOfUse} />
   <Route  path='/product/:id/:name' component={ProductInfo} />
   <Route exact={true} path='/basket' component={Basket} />
   <Route  path='/basket/:id' component={Basket} />
@@ -58,7 +65,7 @@ function Main() {
   <Route  path='/verify/:token' component={Verify} />
   <Route  path='/passwordReset/:token' component={PasswordReset} />
   <Route  path='/company/:id/:name' component={CompanyHome} />
-
+  <Route exact={true} path='/order-check' component={OrderCheck} />
   <Route  path='/CompanyAdd' component={CompanyAdd} />
   <Route exact={true} path='/product/create' component={CreateProduct} />
 

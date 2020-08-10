@@ -2,7 +2,6 @@ import React, { useContext, useEffect,useState } from 'react'
 import './checkout_third.scss';
 import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
-import InputGroup from "../InputGroup/InputGroup.component";
 import {Link, useHistory} from 'react-router-dom';
 import swal from "sweetalert"
 import {appContext} from '../../contexts/appContext';
@@ -97,7 +96,7 @@ function CheckoutThird(props) {
         .then(async res=>{
             if(res.ok){
                 let data=await res.json();
-                History.push('/')
+                History.push('/order-check')
                 swal( "","Sifarişiniz qeydə alındı", "success");
             }else{
                 swal( "Təəssüf!","Sifarişiniz qeydə alınmadı", "error");
@@ -161,8 +160,6 @@ function CheckoutThird(props) {
             <br/>
             <br/>
             <Button className='form_button_multiple bg-primary' onClick={order} name='SİFARİŞ ET'/>
-
-          
        </>
     )
 }
