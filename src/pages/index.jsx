@@ -1,5 +1,4 @@
 import React,{useState,useEffect,useContext} from 'react'
-import {BrowserRouter} from "react-router-dom";
 import axios from 'axios'
 import '../App.scss';
 

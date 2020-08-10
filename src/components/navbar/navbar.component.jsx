@@ -197,8 +197,8 @@ function  Navbar(props) {
     TN
     </div>*/}
     {
-        AppContext.app.user.logo?
-        <img alt='' src={'http://128.199.188.53/uploads/default/logo.png'} /> :
+        AppContext.app.user!==null?
+        <img alt='' src={`http://128.199.188.53/uploads/default/logo.png`} /> :
         <div className='nav-prfile-img'>
         
         </div>
