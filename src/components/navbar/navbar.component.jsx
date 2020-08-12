@@ -192,13 +192,13 @@ function  Navbar(props) {
      },[])
   
     const userProfle=<>
-    <Link onClick={showbar} className={`navbar_buttons_link profile`}>
+    <Link onClick={showbar} className={`navbar_buttons_link profile login-profile`}>
 {/*    <div className='nav-prfile-img'>
     TN
     </div>*/}
     {
-        AppContext.app.user.logo?
-        <img alt='' src={'http://128.199.188.53/uploads/default/logo.png'} /> :
+        AppContext.app.user!==null?
+        <img alt='' src={`${AppContext.app.user.logo}`} /> :
         <div className='nav-prfile-img'>
         
         </div>
