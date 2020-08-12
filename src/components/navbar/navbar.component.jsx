@@ -198,7 +198,7 @@ function  Navbar(props) {
     </div>*/}
     {
         AppContext.app.user!==null?
-        <img alt='' src={`http://128.199.188.53/uploads/default/logo.png`} /> :
+        <img alt='' src={`${AppContext.app.user.logo}`} /> :
         <div className='nav-prfile-img'>
         
         </div>
