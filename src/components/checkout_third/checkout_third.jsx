@@ -94,12 +94,13 @@ function CheckoutThird(props) {
             }
         })
         .then(async res=>{
+            let data=await res.json();
             if(res.ok){
                 let data=await res.json();
                 History.push('/order-check')
                 swal( "","Sifarişiniz qeydə alındı", "success");
             }else{
-                swal( "Təəssüf!","Sifarişiniz qeydə alınmadı", "error");
+                swal( "Təəssüf!",`${data.error}`, "error");
             }
         })
         .catch(err=>console.log(err))

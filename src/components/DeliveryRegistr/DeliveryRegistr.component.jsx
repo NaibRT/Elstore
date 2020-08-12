@@ -24,14 +24,14 @@ const DeliveryRegistr = () => {
        body:JSON.stringify(data)
    })
    .then(async res=>{
+    let data=await res.json();
        if(res.ok){
-        // let data=await res.json();
         // AppContext.events.AddToken(data)
         document.getElementById("login__modal").style.display="none"
         swal( "Təbriklər","Zəhmət olmasa emailinizi yoxlayin", "success");
         history.push("/");
        }else{
-        swal("Təəssüflər", "Bu adda email artıq mövcuddr", "error");
+        swal("Təəssüflər", `${data.error}`, "error");
        }
 
       

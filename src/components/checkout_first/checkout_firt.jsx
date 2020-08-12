@@ -5,6 +5,7 @@ import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
 import InputGroup from "../InputGroup/InputGroup.component";
 import {Link} from 'react-router-dom';
+import {useForm} from 'react-hook-form'
 import Selectbox from '../Select-box/SelectBox.component'
 import {appContext} from '../../contexts/appContext'
 import UrlGenerator from '../../services/url-generator'
@@ -14,6 +15,8 @@ import Button from '../button/button.component';
 function CheckoutFrist(props) {
     const AppContext=useContext(appContext)
     
+    const {register,handleSubmit,errors}=useForm();
+
     const {values,handleChange} = props
     const [cities,setCities] = useState({
         data:[]
@@ -39,6 +42,8 @@ function CheckoutFrist(props) {
             .then(data =>{
               setCities({data:data})
             });
+
+            
     }, [])
 
     function getRegions(e){
@@ -58,13 +63,22 @@ function CheckoutFrist(props) {
       })
     }
    
-    function goNextPage(e){
-        e.preventDefault();
-        props.nextStep();
-    };
 
+   
     
 
+    function goNextPage(e){
+        let input__checks = document.getElementById("input__checks");
+        let input__checks2 = document.getElementById("input__checks2");
+        let input__checks3 = document.getElementById("input__checks3");
+        let input__checks4 = document.getElementById("input__checks4");
+        let input__checks5 = document.getElementById("input__checks5");
+
+        if(input__checks.value.length>0 && input__checks2.value.length>0 && input__checks3.value.length>0 && input__checks4.value.length && input__checks5.value.length  ){
+            e.preventDefault();
+            props.nextStep();
+        }
+    };
     function nameEventHandler(e){
       AppContext.events.setTotal({
         ...AppContext.total,
@@ -171,14 +185,31 @@ function CheckoutFrist(props) {
             <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <InputGroup value={AppContext.total.user.name} onChange={(e)=>{nameEventHandler(e)}} placeholder='Adınız' />
+                      
+                        <InputGroup id="input__checks" value={AppContext.total.user.name} onChange={(e)=>{nameEventHandler(e)}} placeholder='Adınız'
+                        register={register({
+                            required:{value:true,message:'Adinizi daxil etməlisiniz'},
+                            maxLength:{value:255,message:'maksimum  255 simvol qeyd oluna bilər'}
+                        })} helper={errors.name&&errors.name.message} 
+                        />
                         <br/>
-                        <InputGroup value={AppContext.total.user.phone} onChange={(e)=>phonenameEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='tel' placeholder='Telefon nömrəsi' />
+                         <InputGroup id="input__checks2" value={AppContext.total.user.phone} onChange={(e)=>phonenameEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='tel' placeholder='Telefon nömrəsi'
+                         register={register({
+                            required:{value:true,message:'Soyadınızı daxil etməlisiniz'},
+                            maxLength:{value:255,message:'maksimum  255 simvol qeyd oluna bilər'}
+                        })} helper={errors.surname&&errors.surname.message} />
                         <br/>
-                        <InputGroup value={AppContext.total.user.email} onChange={(e)=>emailEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='email' placeholder='E-poçt adresi' />
+                         <InputGroup id="input__checks3" value={AppContext.total.user.email} onChange={(e)=>emailEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='email' placeholder='E-poçt adresi'
+                         register={register({
+                            required:{value:true,message:'Email daxil etməlisiniz'},
+                           pattern:{value:/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                                    message:"email düzgün deyil"}
+                         })}
+                          helper={errors.email&&errors.email.message} />
+                       
                     </div>
                     <div className='col-lg-6 col-sm-12'>
-                        <InputGroup value={AppContext.total.user.surname} onChange={(e)=>surnameEventHandler(e)} cls='surname' placeholder='Soyadınız' />
+                        <InputGroup id="input__checks4" value={AppContext.total.user.surname} onChange={(e)=>surnameEventHandler(e)} cls='surname' placeholder='Soyadınız' />
                     </div>
                 </div>
             </Card>
@@ -194,7 +225,7 @@ function CheckoutFrist(props) {
                         <Selectbox handleChange={villageEventHandler}  class='selectboxcheckout' options={village.data.data} />
                         <br/>
                         <br/>
-                        <InputGroup value={AppContext.total.user.address} onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />
+                        <InputGroup id="input__checks5" value={AppContext.total.user.address} onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />
                     </div>
                     <div className='col-lg-6 col-sm-12'></div>
                 </div>
