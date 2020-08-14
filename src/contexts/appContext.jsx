@@ -103,8 +103,9 @@ function AppContextProvider(props) {
     let url=UrlGenerator('az','products')
     fetch(`${url}/${id}?include=seller`)
     .then(async res=>{
+      let data=await res.json()
       if(res.ok){
-        let data=await res.json()
+        
         setBasket([
           ...basket,
           {...data.data[0],
@@ -121,7 +122,7 @@ function AppContextProvider(props) {
         swal("Təbriklər", "Məhsul səbətə əlavə olundu", "success");
       }
       else{
-        swal("Təəssüflər", "Məhsul səbətə əlavə olunmadı", "error");
+        swal("Təəssüflər", `${data.error}`, "error");
       }
     })
     .catch(err=>console.log(err))

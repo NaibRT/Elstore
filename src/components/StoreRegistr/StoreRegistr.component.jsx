@@ -33,30 +33,26 @@ const StoreRegistr= (props) => {
 
 
    const {register:register2,handleSubmit:handleSubmit2,errors:errors2}=useForm();
-   const [texturl,setTexturl]=useState({
-       selected:'',
-       x:[
-        {
-            id:'seller',
-            name:"Fərdi"
-        },
-        {
-            id:'company',
-            name:"Korparativ"
-        }       
-     ]
-    })
+//    const [texturl,setTexturl]=useState({
+//        selected:'',
+//        x:[
+//         {
+//             id:'company',
+//             name:"Korparativ"
+//         }       
+//      ]
+//     })
 
-   function TextUrl(e){
-    setTexturl({
-        ...texturl,
-        selected:e.target.value
-    })
-   }
+//    function TextUrl(e){
+//     setTexturl({
+//         ...texturl,
+//         selected:e.target.value
+//     })
+//    }
 
    const AppContext=useContext(appContext)
    const registerSubmit=(data)=>{
-    let url=UrlGenerator('az',`auth/${texturl.selected}/register`)
+    let url=UrlGenerator('az',`auth/company/register`)
     console.log(data)
    fetch(url,{
        headers:{
@@ -66,14 +62,14 @@ const StoreRegistr= (props) => {
        body:JSON.stringify(data)
    })
    .then(async res=>{
+        let data=await res.json();
        if(res.ok){
-        // let data=await res.json();
         // AppContext.events.AddToken(data)
         history.push("/");
         //swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
         document.getElementById('login__modal').style.display='block';
        }else{
-        swal("Təəssüflər", "Bu adda email artıq mövcuddr", "error");
+        swal("Təəssüflər", `${data.error}`, "error");
        }
       
    })
@@ -127,9 +123,10 @@ const StoreRegistr= (props) => {
                        <div className="store__registr--text">
                            <h5>Mağaza qeydiyyatı</h5>
                        </div>
-                       <div className="registr__input">
-                       <SelectBox firstopt={"Mağaza növünü seçin"} handleChange={(e)=>TextUrl(e)} options={texturl.x} />
-                       </div>
+                       
+                       {/* <SelectBox firstopt={"Mağaza növünü seçin"}   options={texturl.x} /> */}
+                       <input  type="hidden" value="company"/>
+                       
                        <div className="registr__input">
                        <Input name='name' type='text' placeholder='Mağaza adı' register={register2({
                 required:{value:true,message:'Adınızı daxil etməlisiniz'},

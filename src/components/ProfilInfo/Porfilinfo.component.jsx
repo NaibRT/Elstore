@@ -322,7 +322,7 @@ function Porfilinfo(props) {
                                         <h5>İstİfadəçİ adı</h5>
                                     </div>
                                     <Input onChange={(e)=>nameHandler(e)} name='name' register={register({
-                                        required:{value:true,message:'name doldurmaq mecburidir',type:'text'},
+                                        required:{value:true,message:'Adınızı doldurmaq məcburidir',type:'text'},
                                     })}  type="text"  value={update.name}/>
                                    
                                     <div className="borders"></div>
