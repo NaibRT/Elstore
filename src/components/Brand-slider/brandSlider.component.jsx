@@ -56,8 +56,7 @@ class BrandSlider extends Component{
             <section className="brand_slider_section">
                             <div className="brand_slider_title display__flex">
                              <h4>{this.props.name}</h4>
-                            
-            
+                             <Link to="/trends">Daha çox</Link>
                             </div>
                             <div id="brandSlider" className="swiper-container">
                                 <div className="swiper-wrapper">

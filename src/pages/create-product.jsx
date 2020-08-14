@@ -13,6 +13,7 @@ import Button from '../components/button/button.component'
 import Tab from '../components/tab/tab-component'
 import ButtonDropDown from '../components/button-dropdown/ButtonDropDown.component'
 import {useForm} from 'react-hook-form'
+import swal from "sweetalert"
 
 // const product={
 //   product_category_id:'',
@@ -333,10 +334,10 @@ function CreateProduct(props){
             .then(async res=>{
               if(res.ok){
                 let r=await res.json()
-                console.log(r)
+                swal( "Məhsulunuz əlavə olundu","", "success");
               }else{
-
-                document.getElementById('login__modal').style.display='block';
+                swal("Təəssüf!", `${data.errors}`, "error");
+                // document.getElementById('login__modal').style.display='block';
               }
             })
             .catch(err=>console.log(err))
@@ -412,7 +413,7 @@ function CreateProduct(props){
     <div className='col-lg-12'>
     <Card>
     <Card.Header name="Mehsul Resimlerini Elave Edin"/>
-    <div><small>Rəsimləri toplu halda seçərək əlavə edə biilərsiniz.</small> </div>
+    {/* <div><small>Rəsimləri toplu halda seçərək əlavə edə biilərsiniz.</small> </div> */}
     <br/>
     <div className='d-f'>
     {
