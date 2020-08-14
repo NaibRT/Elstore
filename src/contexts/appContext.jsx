@@ -204,9 +204,13 @@ function getUserCredentials() {
   
 },[basket]);
 
-
+  function setlogoutInterval(){
+    setTimeout(() => {
+      logout()
+    }, 360000);
+  }
  function AddToken(token){
-    window.localStorage.setItem('token',JSON.stringify(token))
+    window.localStorage.setItem('token',JSON.stringify({token_type:token.token_type,access_token:token.access_token}))
     let url=UrlGenerator('az','auth/me');
     fetch(url,{
       method:'Post',
@@ -225,13 +229,15 @@ function getUserCredentials() {
         })
       }
     }).catch(err=>console.log(err))
+    setlogoutInterval();
  }
 
  function getToken(){
    let token=JSON.parse(window.localStorage.getItem('token'))
    return token;
  }
-   function logout() {
+   
+ function logout() {
      console.log('click')
      localStorage.removeItem('token');
      localStorage.removeItem('user')
