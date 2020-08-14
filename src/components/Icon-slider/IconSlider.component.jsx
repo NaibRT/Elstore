@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export class IconSlider extends Component {
     componentDidUpdate(){
         var iconSlider = new Swiper('#icon_slider__container.swiper-container',{
-            slidesPerView : "auto",
+            slidesPerView : 8,
             slidesPerGroup: 1,
             spaceBetween:10,
             loop: true,
@@ -25,16 +25,16 @@ export class IconSlider extends Component {
                     slidesPerView:2
                 },
                 576:{
-                    slidesPerView:3
+                    slidesPerView:4
                 },
                 768:{
-                    slidesPerView:3
+                    slidesPerView:6
                 },
                 992:{
-                    slidesPerView:"auto"
+                    slidesPerView:8
                 },
                 1200:{
-                    slidesPerView:"auto",
+                    slidesPerView:8,
                     // spaceBetween:5
                 }
             }
