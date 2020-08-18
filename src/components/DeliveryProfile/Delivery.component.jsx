@@ -10,6 +10,7 @@ import UrlGenerator from '../../services/url-generator'
 import DeliveryOrders from '../../pages/delivery-orders'
 
 
+
 function DeliveryInfo(props) {
 
     const [update,setUpdate]=useState({})
@@ -189,7 +190,6 @@ function DeliveryInfo(props) {
                       setUpdate({
                         ...update,
                       })
-                      
                       AppContext.events.logout();
                     }
                     
@@ -222,14 +222,15 @@ function DeliveryInfo(props) {
        })
        .then(async res=>{
         if(res.ok){
-            console.log('burdadiiii',res)
             let data1=await res.json();
-            console.log(data1)
+            swal( "Dəyişikliklər uğurla tamamlandı","", "success");
             setDatalar({
                 field:{
                 ...datalar.field,
                 name:data.name
             }})
+        }else{
+            swal("Təəssüf!", `${data.errors}`, "error");
         }
            
           
