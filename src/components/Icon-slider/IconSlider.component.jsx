@@ -6,13 +6,15 @@ import { Link } from 'react-router-dom';
 export class IconSlider extends Component {
     componentDidUpdate(){
         var iconSlider = new Swiper('#icon_slider__container.swiper-container',{
-            slidesPerView : 8,
+            slidesPerView :"auto",
             slidesPerGroup: 1,
+            loopedSlides:'auto',
             spaceBetween:10,
             loop: true,
             speed:1000,
             loopFillGroupWithBlank: true,
             grabCursor: true,
+            freeMode:true,
             navigation:{
                 nextEl: '.icon-button-next',
                 prevEl: '.icon-button-preview'
@@ -31,10 +33,10 @@ export class IconSlider extends Component {
                     slidesPerView:6
                 },
                 992:{
-                    slidesPerView:8
+                    slidesPerView:'auto'
                 },
                 1200:{
-                    slidesPerView:8,
+                    slidesPerView:"auto",
                     // spaceBetween:5
                 }
             }

@@ -118,18 +118,18 @@ function ProfileShopHome(props) {
             queries=newqueries
             console.log(newqueries)
         }
-        if(priceFrom!==''){
-            query+=`&filter[min_prize]=${priceFrom}`
-          }
-          if(priceTo!==null){
-              query+=`&filter[max_price]=${priceTo}`
-          }
         queries.forEach((x,k)=>{
             console.log(k)
             k===queries.length-1
             ?query+=`${x}`
             :query+=`${x},`
         })
+        if(priceFrom!==''){
+            query+=`&filter[min_prize]=${priceFrom}`
+          }
+        if(priceTo!==''){
+              query+=`&filter[max_price]=${priceTo}`
+          }
         let url=UrlGenerator('az',`search/product?${query}`)
         fetch(url)
         .then(async res=>{
@@ -148,7 +148,8 @@ function ProfileShopHome(props) {
       
      function Pricefrom(e){
         setPriceFrom(e.target.value)
-        let filteQuery=`filter[category_id]=`
+        let store_id=AppContext.app.user.id;
+        let filteQuery=`filter[company_id]=${store_id}&filter[category_id]=`;
         queryParams.forEach((x,k)=>{
             console.log(k)
             k===queryParams.length-1
@@ -175,8 +176,9 @@ function ProfileShopHome(props) {
     }
 
     function Priceto(e){
-        setPriceTo(e.target.value)
-        let filteQuery=`filter[category_id]=`
+        setPriceTo(e.target.value);
+        let store_id=AppContext.app.user.id;
+        let filteQuery=`filter[company_id]=${store_id}&filter[category_id]=`;
         queryParams.forEach((x,k)=>{
             console.log(k)
             k===queryParams.length-1

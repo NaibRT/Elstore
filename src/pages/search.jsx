@@ -31,9 +31,16 @@ function Search(props) {
             sellerId=AppContext.app.user.id;
             query+=query!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
         }
-        if(SearchContext.filter.queryParams.length>0){
+        if(e.target.checked){
+            queries.push(`${id}`)
+       }else{
+           let newqueries=queries.filter(x=>x!==`${id}`);
+           queries=newqueries
+           console.log(newqueries)
+       }
+        if(queries.length>0){
             query+=(query!==''?`&filter[category_id]=`:`filter[category_id]=`)
-            SearchContext.filter.queryParams.forEach((x,k)=>{
+            queries.forEach((x,k)=>{
                console.log(k)
                k===queries.length-1
                ?query+=`${x}`
@@ -50,23 +57,6 @@ function Search(props) {
         // }else{
         //     query=`filter[category_id]=`;
         // }
-        if(e.target.checked){
-            queries.push(`${id}`)
-       }else{
-           let newqueries=queries.filter(x=>x!==`${id}`);
-           queries=newqueries
-           console.log(newqueries)
-       }
-       
-       if(SearchContext.filter.queryParams.length>0){
-        query+=query!==''?`&filter[category_id]=`:`filter[category_id]=`
-        SearchContext.filter.queryParams.forEach((x,k)=>{
-           console.log(k)
-           k===queries.length-1
-           ?query+=`${x}`
-           :query+=`${x},`
-       })
-    }
        if(SearchContext.filter.priceFrom!=''){
          query+=query!=''?`&filter[min_prize]=${SearchContext.filter.priceFrom}`:`filter[min_prize]=${SearchContext.filter.priceFrom}`
        }
