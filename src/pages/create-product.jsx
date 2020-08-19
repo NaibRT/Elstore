@@ -50,7 +50,7 @@ function CreateProduct(props){
   product_price:'',
   status:1,
   product_brand_id:'',
-  discount:0,
+  discount:'',
   product_delivery_price:'',
   az:{
     product_name:'',
@@ -282,8 +282,12 @@ function CreateProduct(props){
 
        const getPrice=(e)=>{
         let value=e.target.value
+        let min   = Number(e.target.getAttribute('min'))
         let newProduct=product;
         newProduct.product_price=value
+        if((value>min)||value===''){
+          newProduct.product_price=value
+        }
         setProduct({
           ...newProduct
         })
@@ -293,10 +297,17 @@ function CreateProduct(props){
         let value=e.target.value
         let newProduct=product;
         newProduct.discount=value
+        let max   = Number(e.target.getAttribute('max'))
+        let min   = Number(e.target.getAttribute('min'))
+
+        console.log(value)
+        if((value<max&&value>min)||value===''){
+          newProduct.discount=value
+        }
         setProduct({
           ...newProduct
         })
-       }
+      }
 
        const send=(data)=>{
 
@@ -414,7 +425,7 @@ function CreateProduct(props){
         min:0,
         max:{value:9999,message:'max deyer 9999'}
       })}  label='Məhsulun Qiyməti' min='0' onChange={getPrice}  type='number' name='price'/>
-       <InputGroup value={product.discount}  label='Endirim Qiyməti' min='0' onChange={getDiscount}  type='number' name='discount'/>
+       <InputGroup value={product.discount}  label='Endirim Faizi(%)' min='0' max='95' onChange={getDiscount}  type='number' name='discount'/>
        
       </div>
       <div className='col-lg-6'>
