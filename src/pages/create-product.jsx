@@ -1,19 +1,20 @@
-import React,{useEffect,useState, useContext} from 'react'
-import Card from '../components/card/card.component'
-import GoBack from '../components/go-back/go-back.component'
-import InputGroup from '../components/InputGroup/InputGroup.component'
-import SelectBox from '../components/Select-box/SelectBox.component'
-import JoditEditor from 'jodit-react'
-import FileInput from '../components/file-input/file-input.component'
-import UrlGenerator from '../services/url-generator'
-import { appContext } from '../contexts/appContext'
-import Image from '../components/file-input/image'
-import CompanyMiniImage from '../components/Compony-mini-image/CompanyMiniImage'
-import Button from '../components/button/button.component'
-import Tab from '../components/tab/tab-component'
-import ButtonDropDown from '../components/button-dropdown/ButtonDropDown.component'
-import {useForm} from 'react-hook-form'
-import swal from "sweetalert"
+
+import React, { useEffect, useState, useContext } from 'react';
+import Card from '../components/card/card.component';
+import GoBack from '../components/go-back/go-back.component';
+import InputGroup from '../components/InputGroup/InputGroup.component';
+import SelectBox from '../components/Select-box/SelectBox.component';
+import JoditEditor from 'jodit-react';
+import FileInput from '../components/file-input/file-input.component';
+import UrlGenerator from '../services/url-generator';
+import { appContext } from '../contexts/appContext';
+import Image from '../components/file-input/image';
+import CompanyMiniImage from '../components/Compony-mini-image/CompanyMiniImage';
+import Button from '../components/button/button.component';
+import Tab from '../components/tab/tab-component';
+import ButtonDropDown from '../components/button-dropdown/ButtonDropDown.component';
+import { useForm } from 'react-hook-form';
+import swal from 'sweetalert';
 
 // const product={
 //   product_category_id:'',
@@ -143,83 +144,249 @@ function CreateProduct(props){
         }
         reader.readAsDataURL(x);
       })
+      .catch((err) => console.log(err));
+    let params = props.match.params;
+    if (params.id !== undefined) {
+      console.log(params.id);
+      let url = UrlGenerator('az', `products/edit/${params.id}/showForEdit`);
+      let token = AppContext.app.token;
+      console.log(token);
+      fetch(url, {
+        headers: {
+          Authorization: `${token.token_type} ${token.access_token}`,
+        },
+      }).then(async (res) => {
+        let data = await res.json();
+        console.log(data.data);
+
+        setImageURLs([...data.images]);
+
+        product.product_brand_id = data.data.product_brand_id;
+        product.product_category_id = data.data.product_category_id;
+        product.product_price = data.data.product_price;
+        product.product_delivery_price = data.data.product_delivery_price;
+        product.discount = data.data.discount;
+        product['az'].product_name = data.translates.az.product_name;
+        product['az'].product_description =
+          data.translates.az.product_description;
+        product['en'].product_description =
+          data.translates.en.product_description;
+        product['en'].product_name = data.translates.en.product_name;
+        product['ru'].product_name = data.translates.ru.product_name;
+        product['ru'].product_description =
+          data.translates.ru.product_description;
+      });
     }
+  }, []);
 
-   useEffect(()=>{
-    images.forEach(x=>{
-          readFileAsync(x)
-          .then(res=>{
-            setImageURLs([...imageURLs,{
-             name:x.name,
-             product_image:res
-            }]);
-          })
-          .catch(err=>console.log(err))
-        })
-   },[images])
+  function readFileAsync(x) {
+    var reader = new FileReader();
+    return new Promise((resolve, reject) => {
+      reader.onerror = () => {
+        reader.abort();
+        reject(new DOMException('Problem parsing input file.'));
+      };
 
-  function imageLoad(e){
-    let z=[...e.target.files];
-    console.log(z)
-    setImages([...images,...z])
-    console.log(images)
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+      reader.readAsDataURL(x);
+    });
   }
 
-  const removeImage=(e)=>{
-    let src=e.target.parentElement.previousSibling.getAttribute('src')
-    let removedFile=imageURLs.find(x=>x.product_image===src);
-    let newUrls=imageURLs.filter(x=>x.product_image!==src);
-    let newImages=images.filter(x=>x.name!==removedFile.name);
+  useEffect(() => {
+    images.forEach((x) => {
+      readFileAsync(x)
+        .then((res) => {
+          setImageURLs([
+            ...imageURLs,
+            {
+              name: x.name,
+              product_image: res,
+            },
+          ]);
+        })
+        .catch((err) => console.log(err));
+    });
+  }, [images]);
+
+  function imageLoad(e) {
+    let z = [...e.target.files];
+    console.log(z);
+    setImages([...images, ...z]);
+    console.log(images);
+  }
+
+  const removeImage = (e) => {
+    let src = e.target.parentElement.previousSibling.getAttribute('src');
+    let removedFile = imageURLs.find((x) => x.product_image === src);
+    let newUrls = imageURLs.filter((x) => x.product_image !== src);
+    let newImages = images.filter((x) => x.name !== removedFile.name);
     setImageURLs([...newUrls]);
     setImages([...newImages]);
     imageLoad(e);
+  };
+
+  const getName_az = (e) => {
+    //let lang=e.target.closest('.pro-name').getAttribute('data-lang');
+    let newProduct = product;
+    newProduct.az.product_name = e.target.value;
+    setProduct({
+      ...newProduct,
+    });
+    //product['az'].product_name=e.target.value;
+  };
+
+  const getName_en = (e) => {
+    //let lang=e.target.closest('.pro-name').getAttribute('data-lang');
+    let newProduct = product;
+    newProduct.en.product_name = e.target.value;
+    setProduct({
+      ...newProduct,
+    });
+  };
+
+  const getName_ru = (e) => {
+    //let lang=e.target.closest('.pro-name').getAttribute('data-lang');
+    let newProduct = product;
+    newProduct.ru.product_name = e.target.value;
+    setProduct({
+      ...newProduct,
+    });
+    //product['ru'].product_name=e.target.value;
+  };
+
+  const getDescription_az = (e) => {
+    //product['az'].product_description=e
+    let newProduct = product;
+    newProduct.az.product_description = e;
+    setProduct({
+      ...newProduct,
+    });
+  };
+
+  const getDescription_en = (e) => {
+    //product['en'].product_description=e
+    let newProduct = product;
+    newProduct.en.product_description = e;
+    setProduct({
+      ...newProduct,
+    });
+  };
+
+  const getDescription_ru = (e) => {
+    //product['ru'].product_description=e
+    let newProduct = product;
+    newProduct.ru.product_description = e;
+    setProduct({
+      ...newProduct,
+    });
+  };
+
+  const getCataegory = (e) => {
+    let value = e.target.value;
+    let newProduct = product;
+    newProduct.product_category_id = value;
+    setProduct({
+      ...newProduct,
+    });
+    let subCategories = categories.find((x) => x.id == value).children;
+    if (subCategories != null) {
+      setSubCat([...subCategories]);
+    } else {
+      setSubCat([]);
+    }
+  };
+
+  function getBrands(e) {
+    let newProduct = product;
+    newProduct.product_brand_id = e.target.value;
+    setProduct({
+      ...newProduct,
+    });
   }
-    
-       const getName_az=(e)=>{
-         //let lang=e.target.closest('.pro-name').getAttribute('data-lang');
-         let newProduct=product;
-         newProduct.az.product_name=e.target.value
-         setProduct({
-          ...newProduct,
-        })
-        //product['az'].product_name=e.target.value;
-       }
 
-       const getName_en=(e)=>{
-        //let lang=e.target.closest('.pro-name').getAttribute('data-lang');
-        let newProduct=product;
-        newProduct.en.product_name=e.target.value
-        setProduct({
-         ...newProduct,
-       })
-       
-      }
+  const getSubCataegory = (e) => {
+    let value = e.target.value;
+    let newProduct = product;
+    newProduct.product_category_id = value;
+    setProduct({
+      ...newProduct,
+    });
+    let childCategories = subcat.find((x) => x.id == value).children;
+    if (childCategories != null) {
+      setChildCat([...childCategories]);
+    } else {
+      setChildCat([]);
+    }
+  };
 
-      const getName_ru=(e)=>{
-        //let lang=e.target.closest('.pro-name').getAttribute('data-lang');
-        let newProduct=product;
-        newProduct.ru.product_name=e.target.value
-        setProduct({
-         ...newProduct,
-       })
-      //product['ru'].product_name=e.target.value;
-      }
+  const getChildCataegory = (e) => {
+    let value = e.target.value;
+    let newProduct = product;
+    newProduct.product_category_id = value;
+    setProduct({
+      ...newProduct,
+    });
+  };
 
-       const getDescription_az=(e)=>{
-          //product['az'].product_description=e
-          let newProduct=product;
-          newProduct.az.product_description=e
-          setProduct({
-           ...newProduct,
-         })
-       }
+  const getPrice = (e) => {
+    let value = e.target.value;
+    let newProduct = product;
+    newProduct.product_price = value;
+    setProduct({
+      ...newProduct,
+    });
+  };
 
-       const getDescription_en=(e)=>{
-       //product['en'].product_description=e
-       let newProduct=product;
-       newProduct.en.product_description=e
-       setProduct({
-        ...newProduct,
+  const getDiscount = (e) => {
+    let value = e.target.value;
+    let newProduct = product;
+    newProduct.discount = value;
+    setProduct({
+      ...newProduct,
+    });
+  };
+
+  const send = (data) => {
+    let newFormData = new FormData();
+    for (let i = 0; i < images.length; i++) {
+      newFormData.append(`images[${i}]`, images[i]);
+    }
+
+    // newFormData.append('images[]',images)
+    newFormData.append(
+      'az[product_description]',
+      product.az['product_description']
+    );
+    newFormData.append('az[product_name]', product.az['product_name']);
+    newFormData.append(
+      'en[product_description]',
+      product.en['product_description']
+    );
+    newFormData.append('en[product_name]', product.en['product_name']);
+    newFormData.append(
+      'ru[product_description]',
+      product.ru['product_description']
+    );
+    newFormData.append('ru[product_name]', product.ru['product_name']);
+    newFormData.append('product_category_id', product.product_category_id);
+    newFormData.append('product_brand_id', product.product_brand_id);
+    newFormData.append('discount', product.discount);
+    newFormData.append('product_price', product.product_price);
+    newFormData.append('status', product.status);
+    console.log(newFormData);
+    console.log(product);
+    let url = UrlGenerator('az', 'products');
+    let token = AppContext.events.getToken();
+
+    if (token != null) {
+      fetch(url, {
+        method: 'Post',
+        body: newFormData,
+        headers: {
+          Authorization: `${token.token_type} ${token.access_token}`,
+        },
       })
        }
 
@@ -441,10 +608,7 @@ function CreateProduct(props){
      <Button name='Əlavə Et' type="input" className='bg-primary'/>
     </div>
     </div>
-    </form>
-  </Card>
-  </div>
- )
+  );
 }
 
-export default React.memo(CreateProduct)
+export default React.memo(CreateProduct);

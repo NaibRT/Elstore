@@ -1,11 +1,9 @@
-import React,{Component} from 'react'
-import './brandSlider.component.scss'
+import React, { Component } from 'react';
+import './brandSlider.component.scss';
 import Swiper from 'swiper';
-import ProductCartItem from '../product-card-item/product-cart-item.component'
-import { Link } from 'react-router-dom'
+import ProductCartItem from '../product-card-item/product-cart-item.component';
 
-class BrandSlider extends Component{
-
+class BrandSlider extends Component {
     componentDidUpdate(props){
         this.swiper = new Swiper('#brandSlider.swiper-container',{
             slidesPerView : 'auto',
@@ -78,4 +76,4 @@ class BrandSlider extends Component{
     }
 }
 
-export default BrandSlider
+export default BrandSlider;

@@ -1,7 +1,7 @@
 import React from 'react'
 import "./pagination.scss"
-
-
+function Pagination({ meta, paginationHandling, prop }) {
+  const pageItems = [];
 
 function Pagination({meta,paginationHandling,prop}){
    
