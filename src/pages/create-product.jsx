@@ -12,6 +12,7 @@ import Button from '../components/button/button.component'
 import Tab from '../components/tab/tab-component'
 import ButtonDropDown from '../components/button-dropdown/ButtonDropDown.component'
 import {useForm} from 'react-hook-form'
+import swal from 'sweetalert';
 
 // const product={
 //   product_category_id:'',
@@ -332,6 +333,12 @@ function CreateProduct(props){
             .then(async res=>{
               if(res.ok){
                 let r=await res.json()
+            swal({
+              text: `${r.message}`,
+              icon: 'success',
+            });
+
+
                 console.log(r)
               }else{
 
@@ -343,6 +350,26 @@ function CreateProduct(props){
             document.getElementById('login__modal').style.display='block';
           }
           console.log(newFormData)
+           setProduct({
+      product_category_id: '',
+      product_price: '',
+      status: 1,
+      product_brand_id: '',
+      discount: 0,
+      product_delivery_price: '',
+      az: {
+        product_name: '',
+        product_description: '',
+      },
+      en: {
+        product_name: '',
+        product_description: '',
+      },
+      ru: {
+        product_name: '',
+        product_description: '',
+      },
+    });
        }
        console.log(product)
  return (
