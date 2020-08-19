@@ -1,5 +1,6 @@
-import React,{useState,useEffect} from 'react'
+import React from 'react'
 import "./pagination.scss"
+
 
 
 function Pagination({meta,paginationHandling,prop}){
@@ -12,6 +13,7 @@ for(let i=0;i<meta.last_page;i++){
     pageItems.push(i)
 }
 }
+    console.log('pagination prop',prop)
     return (
         <div className="pagenation">
             <ul>
