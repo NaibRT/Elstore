@@ -18,64 +18,53 @@ function Search(props) {
     let id = e.target.value;
     let sellerId = '';
     let queries = SearchContext.filter.queryParams;
-        if(pageUrl.includes('company')){
-            console.log(props.match.params)
-            sellerId=Object.keys(props.match.params).length!==0
-            ?props.match.params.id:null;
-            console.log("sellerId",sellerId)
-            query+=query!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
-        }
-        if(pageUrl.includes('profile')){
-            sellerId=AppContext.app.user.id;
-            query+=query!==''?`&filter[company_id]=${sellerId}`:`filter[company_id]=${sellerId}`
-        }
-        if(e.target.checked){
-            queries.push(`${id}`)
-       }else{
-           let newqueries=queries.filter(x=>x!==`${id}`);
-           queries=newqueries
-           console.log(newqueries)
-       }
-        if(queries.length>0){
-            query+=(query!==''?`&filter[category_id]=`:`filter[category_id]=`)
-            queries.forEach((x,k)=>{
-               console.log(k)
-               k===queries.length-1
-               ?query+=`${x}`
-               :query+=`${x},`
-           })
-        }
-        if(SearchContext.filter.order!==''){
-            query+=query!==''?`&filter[order]=${SearchContext.filter.order}`:`filter[order]=${SearchContext.filter.order}`
-        }
 
-        // if(AppContext.app.isAuthorized){
-        //     let store_id=AppContext.app.user.id
-        //     query=`filter[company_id]=${store_id}&filter[category_id]=`;
-        // }else{
-        //     query=`filter[category_id]=`;
-        // }
-       if(SearchContext.filter.priceFrom!=''){
-         query+=query!=''?`&filter[min_prize]=${SearchContext.filter.priceFrom}`:`filter[min_prize]=${SearchContext.filter.priceFrom}`
-       }
-       if(SearchContext.filter.priceTo!=''){
-           query+=query!=''?`&filter[max_price]=${SearchContext.filter.priceTo}`:`filter[max_price]=${SearchContext.filter.priceTo}`
-       }
-       console.log(query)
-       let url=UrlGenerator('az',`search/product?${query}`)
-       fetch(url)
-       .then(async res=>{
-           let data=await res.json();
-           console.log(data)
-           SearchContext.events.setFilter({
-              ...SearchContext.filter,
-               queryParams:[...queries]
-           })
-          SearchContext.events.setCatFilter({
-               ...SearchContext.catFilter,
-               meta:data.meta,
-               data:data.data
-           })
+    if (pageUrl.includes('company')) {
+      console.log(props.match.params);
+      sellerId =
+        Object.keys(props.match.params).length !== 0
+          ? props.match.params.id
+          : null;
+      console.log('sellerId', sellerId);
+      query +=
+        query !== ''
+          ? `&filter[company_id]=${sellerId}`
+          : `filter[company_id]=${sellerId}`;
+    }
+    if (pageUrl.includes('profile')) {
+      sellerId = AppContext.app.user.id;
+      query +=
+        query !== ''
+          ? `&filter[company_id]=${sellerId}`
+          : `filter[company_id]=${sellerId}`;
+    }
+    if (SearchContext.filter.queryParams.length > 0) {
+      query += query !== '' ? `&filter[category_id]=` : `filter[category_id]=`;
+      SearchContext.filter.queryParams.forEach((x, k) => {
+        console.log(k);
+        k === queries.length - 1 ? (query += `${x}`) : (query += `${x},`);
+      });
+    }
+    if (SearchContext.filter.order !== '') {
+      query +=
+        query !== ''
+          ? `&filter[order]=${SearchContext.filter.order}`
+          : `filter[order]=${SearchContext.filter.order}`;
+    }
+
+    // if(AppContext.app.isAuthorized){
+    //     let store_id=AppContext.app.user.id
+    //     query=`filter[company_id]=${store_id}&filter[category_id]=`;
+    // }else{
+    //     query=`filter[category_id]=`;
+    // }
+    if (e.target.checked) {
+      queries.push(`${id}`);
+    } else {
+      let newqueries = queries.filter((x) => x !== `${id}`);
+      queries = newqueries;
+      console.log(newqueries);
+    }
 
     if (SearchContext.filter.queryParams.length > 0) {
       query += query !== '' ? `&filter[category_id]=` : `filter[category_id]=`;

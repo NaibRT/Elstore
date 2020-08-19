@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './brandSlider.component.scss';
 import Swiper from 'swiper';
 import ProductCartItem from '../product-card-item/product-cart-item.component';
-
+import { Link } from 'react-router-dom'
 class BrandSlider extends Component {
     componentDidUpdate(props){
         this.swiper = new Swiper('#brandSlider.swiper-container',{
