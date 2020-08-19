@@ -1,17 +1,13 @@
 import React from 'react'
 import "./pagination.scss"
-function Pagination({ meta, paginationHandling, prop }) {
-  const pageItems = [];
 
 function Pagination({meta,paginationHandling,prop}){
    
-const pageItems=[]
-
-
+ const pageItems=[]
 for(let i=0;i<meta.last_page;i++){
     if(meta.to!=null){
     pageItems.push(i)
-}
+    }
 }
     console.log('pagination prop',prop)
     return (
