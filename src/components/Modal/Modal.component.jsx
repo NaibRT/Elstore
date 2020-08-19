@@ -125,9 +125,8 @@ function Modal(){
        body:JSON.stringify(data)
    })
    .then(async res=>{
-
+    let data=await res.json();
        if(res.ok){
-        let data=await res.json();
         //AppContext.events.AddToken(data)
         swal( "Təbriklər","Zəhmət olmasa emailinizi yoxlayin", "success");
         document.getElementById('login__modal').style.display='none';
@@ -136,7 +135,8 @@ function Modal(){
             item.value=""
         }
        }else{
-        swal("Təəssüf!", `${data.error}`, "error");
+        swal("Təəssüf!", `${data.errors.email}`, "error");
+        console.log(data.errors)
         let reg_name=document.querySelectorAll("#reg_name")
         for (const item of reg_name) {
             item.value=""

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useContext } from 'react';
 import Card from '../components/card/card.component';
 import GoBack from '../components/go-back/go-back.component';
@@ -349,7 +350,6 @@ function CreateProduct(props) {
               text: `${r.message}`,
               icon: 'success',
             });
-            console.log(r);
           } else {
             document.getElementById('login__modal').style.display = 'block';
           }
