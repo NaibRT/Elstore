@@ -90,6 +90,7 @@
       position: relative;
       margin-left: 30px;
       margin-right: -8px;
+     
       .budget{
         font-size: 23px !important;
         top: 22px !important ;
@@ -513,6 +514,7 @@
   .navbar_buttons {
     flex: 0.2 !important;
     height: 90px;
+    right: 10px;
   }
   .active_search{
     display: block;
@@ -641,6 +643,7 @@
       .navbar_buttons {
         height: 90px !important;
         flex: 0.2 !important;
+        right: 10px;
       }
       .navbar_search {
         order: 1;
@@ -773,6 +776,7 @@
       .navbar_buttons {
         flex: 0.3 !important;
         height: 90px !important;
+        right: 10px;
       }
       .active_search{
         display: block;
@@ -908,6 +912,7 @@
       .navbar_buttons {
         flex: 0.5 !important;
         height: 90px !important;
+        right: 10px;
       }
       .active_search{
         display: block;
@@ -1044,6 +1049,7 @@
   .navbar_buttons {
     flex: 0.5 !important;
     height: 90px !important;
+    right: 10px;
   }
   .active_search{
     display: block;
@@ -1180,6 +1186,7 @@
       .navbar_buttons {
         flex: 0.5 !important;
         height: 90px !important;
+        right: 10px;
       }
       .active_search{
         display: block;
@@ -1314,6 +1321,7 @@
   .navbar_buttons {
     flex: 0.5 !important;
     height: 90px !important;
+    right: 10px;
   }
   .active_search{
     display: block;
