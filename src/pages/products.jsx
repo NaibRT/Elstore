@@ -3,7 +3,6 @@ import Datatable from '../components/datatable/datatable';
 import '../App.scss'
 import axios from 'axios'
 import '../assets/sass/pages/compaign.scss'
-import Button from '../components/button/button.component';
 import UrlGenerator from '../services/url-generator';
 import {Link} from 'react-router-dom'
 import { useContext } from 'react';

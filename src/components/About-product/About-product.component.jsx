@@ -1,8 +1,7 @@
 import React from 'react';
-
 import './About-product.component.scss';
-
 import Db from '../../contexts/db.json';
+import ReactHtmlParser from 'react-html-parser'; 
 
 const data = Db.aboutProduct;
 
@@ -28,7 +27,7 @@ function AboutProduct(props){
                         </div>
                         <div id="aboutContent" className="about__product__content">
                             <p>
-                             {props.about}
+                             {ReactHtmlParser(props.about)}
                             </p>
                         </div>
                         <button id="showMore" onClick={showButton}>Davamını oxu</button>

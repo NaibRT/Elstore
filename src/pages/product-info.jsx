@@ -5,8 +5,6 @@ import AboutProduct from '../components/About-product/About-product.component'
 import DeliveryInfo from '../components/Deliver-info/Deliver-info.component'
 import HeadingChips from '../components/heading-chips/heading-chips.component'
 import OrderPrize from '../components/sifarish_qiymeti/sifarish.component'
-import Input from '../components/input/input.component'
-
 import Button from '../components/button/button.component'
 import ButtonGroup from '../components/button-group/button-group.component'
 import Delivery from '../components/Icon-delivery-safety-payback/IconDeliverySafetyPayback.component'
