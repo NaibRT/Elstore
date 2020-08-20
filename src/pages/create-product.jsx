@@ -281,16 +281,18 @@ function CreateProduct(props){
        }
 
        const getPrice=(e)=>{
-        let value=e.target.value
+        let value = e.target.value
         let min   = Number(e.target.getAttribute('min'))
         let newProduct=product;
+        console.log(value>min)
         newProduct.product_price=value
         if((value>min)||value===''){
-          newProduct.product_price=value
+          console.log('kecdi')
+          newProduct.product_price=value;
+          setProduct({
+            ...newProduct
+          })
         }
-        setProduct({
-          ...newProduct
-        })
        }
 
        const getDiscount=(e)=>{
@@ -302,11 +304,11 @@ function CreateProduct(props){
 
         console.log(value)
         if((value<max&&value>min)||value===''){
-          newProduct.discount=value
+          newProduct.discount=value;
+          setProduct({
+            ...newProduct
+          })
         }
-        setProduct({
-          ...newProduct
-        })
       }
 
        const send=(data)=>{
@@ -366,7 +368,7 @@ function CreateProduct(props){
       product_price: '',
       status: 1,
       product_brand_id: '',
-      discount: 0,
+      discount: '',
       product_delivery_price: '',
       az: {
         product_name: '',
