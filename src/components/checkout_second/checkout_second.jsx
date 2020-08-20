@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './checkout_second.scss';
 import Badge from '../step-badge/badge.component'
 import Card from '../card/card.component'
@@ -13,10 +13,20 @@ function CheckoutSecond(props) {
     const AppContext=useContext(appContext)
     
     function goNextPage(e){
+        // e.preventDefault();
+        // props.nextStep();
+        let yoxla=document.getElementById("radioButton");
+       if(yoxla.checked==true){
         e.preventDefault();
         props.nextStep();
+       }
     };
 
+
+    
+    
+  
+    
     //  function cardNumber(e){
     //     AppContext.setTotal({
     //         ...AppContext.total,
@@ -61,7 +71,7 @@ function CheckoutSecond(props) {
             <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <ButtonRadio change={()=>PaymentType(0)} class='full_check' name='Qapıda ödəmə' nextName='Nəğd və ya kart vasitəsilə' />
+                        <ButtonRadio id="yoxla" change={()=>PaymentType(0)} class='full_check' name='Qapıda ödəmə' nextName='Nəğd və ya kart vasitəsilə' />
                         <br/> 
                         <div className="pointer">
                         <ButtonRadio change={()=>PaymentType(1)}  class='full_check' name='Onlayn ödəmə' nextName='Kart vasitəsilə' />

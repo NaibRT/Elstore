@@ -240,7 +240,7 @@ function CheckoutFrist(props) {
                         />
                         
                         <br/>
-                         <InputGroup id="input__checks2" value={write.phones&&write.phones.phone} onChange={(e)=>phonenameEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='tel' name='phones[phone]' placeholder='Telefon nömrəsi'
+                         <InputGroup id="input__checks2" value={write.phones&&write.phones.phone} onChange={(e)=>phonenameEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='number' name='phones[phone]' placeholder='Telefon nömrəsi'
                          register={register({
                             required:{value:true,message:'Soyadınızı daxil etməlisiniz'},
                             maxLength:{value:255,message:'maksimum  255 simvol qeyd oluna bilər'}
