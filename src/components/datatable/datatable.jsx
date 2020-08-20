@@ -10,7 +10,7 @@ var $  = require( 'jquery' );
 var dt = require( 'datatables.net' );
 
 
-function Datatable({thead,tbody,deleteProduct,handleSelect,searchName,td}) {
+function Datatable({minPrizeSorting,maxPrizeSorting,thead,tbody,deleteProduct,handleSelect,searchName,td}) {
 
 
     const [category,setCategory] = useState({
@@ -54,9 +54,9 @@ function Datatable({thead,tbody,deleteProduct,handleSelect,searchName,td}) {
                 <label >
                 <span> Sıra aralığı:</span>
                    <div className="moneydiv">
-                   <InputGroup classinout='money_search' />
+                   <InputGroup onChange={minPrizeSorting} classinout='money_search' />
                    <span>-</span>
-                   <InputGroup classinout='money_search'/>
+                   <InputGroup onChange={maxPrizeSorting} classinout='money_search'/>
                    </div>
                 </label>
             </div>

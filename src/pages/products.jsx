@@ -17,6 +17,12 @@ const [product,setProduct] = useState({
   data:[],
   category:[]
 })
+const [sort,setSort]=useState({
+  name:'',
+  category:'',
+  minPrize:'',
+  maxPrize:'' 
+});
 const AppContext=useContext(appContext);
 
 let producturl = UrlGenerator('az','products?include=seller');
@@ -26,7 +32,7 @@ let categoryUrl = UrlGenerator('az','categories');
 useEffect(()=>{
   let token=AppContext.events.getToken();
   let id=match.params.id;
-let url=''
+  let url=''
 id!==undefined?
     url=UrlGenerator('az',`users/company?company_id=${id}&include=products`)
     :url=UrlGenerator('az',`users/company?include=products`)
@@ -71,16 +77,58 @@ const deleteProduct=(e)=>{
   }).catch(err=>console.log(err))
 }
 
- console.log(product.data)
 function handleSelect(e) {
-  let url=UrlGenerator('az',`search/product?filter[category_id]=${e.target.value}`)
-  axios.get(url)
-  .then(res => {
-      setProduct({data:res.data.data});
-  })
+  // let url=UrlGenerator('az',`search/product?filter[category_id]=${e.target.value}`)
+  // axios.get(url)
+  // .then(res => {
+  //     setProduct({data:res.data.data});
+  // })
+  let currentSort = {...sort};
+      currentSort.category = e.target.value
+  setSort({...currentSort})
+  fetchSortig(currentSort)
 }
+
 function searchName(e){
-  let url=UrlGenerator('az',`search/product?filter[product_name]=${e.target.value}`)
+  // let url=UrlGenerator('az',`search/product?filter[product_name]=${e.target.value}`)
+  // axios.get(url)
+  // .then(res => {
+  //     setProduct({data:res.data.data});
+  // })
+  let currentSort = {...sort};
+  currentSort.name = e.target.value
+  setSort({...currentSort})
+  fetchSortig(currentSort)
+}
+
+const minPrize=(e)=>{
+  let currentSort = {...sort};
+  currentSort.minPrize = e.target.value
+  setSort({...currentSort})
+  fetchSortig(currentSort)
+}
+const maxPrize=(e)=>{
+  let currentSort = {...sort};
+  currentSort.maxPrize = e.target.value
+  setSort({...currentSort})
+  fetchSortig(currentSort)
+}
+
+function fetchSortig(sortdata) {
+  let url=UrlGenerator('az',`search/product?`)
+  console.log("sortdata.name",sortdata.name)
+  if(sortdata.name!==''){
+     url+=`filter[product_name]=${sortdata.name}&`
+  }
+  if(sortdata.category!==''){
+    url+=`filter[category_id]=${sortdata.category}&`
+  }
+  if(sortdata.minPrize!==''){
+    url+=`filter[minPrize]=${sortdata.minPrize}&`
+  }
+  if(sortdata.maxPrize!==''){
+    url+=`filter[maxPrize]=${sortdata.maxPrize}`
+  }
   axios.get(url)
   .then(res => {
       setProduct({data:res.data.data});
@@ -98,7 +146,7 @@ function searchName(e){
                 </div>
             </div>
             <br/>
-            <Datatable deleteProduct={deleteProduct} searchName={searchName} handleSelect={handleSelect}   thead ={th} td={td} tbody={product.data}/>
+            <Datatable minPrizeSorting={minPrize} maxPrizeSorting={maxPrize} deleteProduct={deleteProduct} searchName={searchName} handleSelect={handleSelect}   thead ={th} td={td} tbody={product.data}/>
         </div>
     )
 }

@@ -393,7 +393,6 @@ function CreateProduct(props){
    <Card.Header name="Mehsul Elave Et"/>
     <div className='row'>
       <div className='col-lg-4'>
-
       <Tab clas='pro-name' id='name'>
         <Tab.Page id='az-name' clas='pro-name' lang='az'>
         <InputGroup value={product.az.product_name} name='produc_name' register={register({
@@ -420,8 +419,7 @@ function CreateProduct(props){
        {
         childcat.length>1?<SelectBox label='Alt Kateqoriya' handleChange={getChildCataegory} name='subcategory' options={childcat}/>:null
        }
-       <br/>
-       <br/>
+
        <InputGroup value={product.product_price}  register={register({
         required:{value:true,message:'qiymət məcburidir',type:Number},
         min:0,

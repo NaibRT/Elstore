@@ -43,7 +43,7 @@ function CheckoutSecond(props) {
     }
     return (
         <>
-           <Link className='goBasket' to='/basket' ><img src={require('../../assets/images/icons/next-icon.svg')} /> səbətə gerİ dön</Link>
+           <Link className='goBasket' to='/basket' ><img alt='' src={require('../../assets/images/icons/next-icon.svg')} /> səbətə gerİ dön</Link>
             <br/>
             <h2 className='complateordertxt'>Sifarişi tamamla</h2>
             <br/>
