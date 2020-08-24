@@ -310,9 +310,9 @@
 .bar2,
 .bar3 {
   width: 25px;
-  height: 5px;
-  background-color: #333;
-  margin: 3px 0;
+  height: 3px;
+  background-color: #334788;
+  margin: 8px 0;
   border-radius: 5px;
   transition: 0.4s;
 }
@@ -332,7 +332,7 @@
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
   position: relative;
-  top: -8px;
+  top: -13px;
 }
 .navbar_search {
   flex: 0.96 1;
@@ -504,9 +504,10 @@
 
 @media (min-width: 768px) and (max-width: 992px) {
   .navbar_buttons{
-    .navbar_buttons_link:not(:first-child){
-      display: none !important;
-    }
+     .profile{
+       display: none;
+     }
+     
   }
   // .navbar_buttons_link {
   //   display: none !important;
@@ -546,6 +547,7 @@
   .navbar_logo {
       flex: 0.5 !important;
       height: 90px;
+      margin-left: -130px;
     img {
       margin-top: 4px;
       margin-left: 17px;
@@ -577,8 +579,8 @@
     flex-wrap: wrap !important;
   }
   .menu-container {
-    top: 25px;
-    position: absolute;
+    top: 30px;
+    position: relative;
     right: 0;
     margin-left: 3px;
   }
@@ -632,8 +634,9 @@
 
 @media (min-width: 576px) and (max-width: 767.98px) {
   .navbar_buttons{
-    .navbar_buttons_link:not(:first-child){
-      display: none !important;
+     
+    .profile{
+      display: none;
     }
   }
   .active_search{
@@ -642,7 +645,6 @@
   }
       .navbar_buttons {
         height: 90px !important;
-        flex: 0.2 !important;
         right: 10px;
       }
       .navbar_search {
@@ -671,6 +673,7 @@
       .navbar_logo {
          height: 90px !important;
           flex: 0.5 !important;
+          margin-left: -130px !important;
         img {
           margin-top: 4px;
           margin-left: 17px;
@@ -704,8 +707,8 @@
         flex-wrap: wrap !important;
       }
       .menu-container {
-        top: 25px;
-        position: absolute;
+        top: 30px;
+        position: relative;
         right: 0;
         margin-left: 3px;
       }
@@ -713,6 +716,7 @@
         margin: 0 !important;
       }
       .navbar_logo {
+        margin-left: -50px;
         a {
           img {
             // height: 6px;
@@ -769,8 +773,9 @@
 
 @media (min-width: 415px) and (max-width: 575.98px) {
   .navbar_buttons{
-    .navbar_buttons_link:not(:first-child){
-      display: none !important;
+     
+    .profile{
+      display: none;
     }
   }
       .navbar_buttons {
@@ -807,6 +812,7 @@
     
       .navbar_logo {
         height: 90px !important;
+        margin-left: -50px;
         img {
           margin-top: 4px;
           margin-left: 17px;
@@ -843,8 +849,8 @@
         flex-wrap: wrap !important;
       }
       .menu-container {
-        top: 25px;
-        position: absolute;
+        top: 30px;
+        position: relative;
         right: 0;
         margin-left: 3px;
       }
@@ -905,8 +911,9 @@
 
 @media only screen and (min-device-width: 376px) and (max-device-width: 414px){
   .navbar_buttons{
-    .navbar_buttons_link:not(:first-child){
-      display: none !important;
+    
+    .profile{
+      display: none;
     }
   }
       .navbar_buttons {
@@ -937,6 +944,7 @@
     
       .navbar_logo {
         height: 90px !important;
+        margin-left: 0px;
         img {
           margin-top: 4px;
          
@@ -981,9 +989,9 @@
           top: 124px ;
       }
       .menu-container {
-        top: 25px;
-        position: absolute;
-        right: 14px;
+        top: 30px;
+        position: relative;
+        right: 0px;
         margin-left: 3px;
       }
       .navbar_search {
@@ -1042,8 +1050,9 @@
 
 @media only screen and (min-device-width : 361px) and (max-device-width : 375px) {
   .navbar_buttons{
-    .navbar_buttons_link:not(:first-child){
-      display: none !important;
+     
+    .profile{
+      display: none;
     }
   }
   .navbar_buttons {
@@ -1117,9 +1126,9 @@
           top: 124px ;
       }
       .menu-container {
-        top: 25px;
-        position: absolute;
-        right: 14px;
+        top: 30px;
+        position: relative;
+        right: 0px;
         margin-left: 3px;
       }
       .navbar_search {
@@ -1179,8 +1188,9 @@
 
 @media only screen and  (max-device-width : 320px) {
   .navbar_buttons{
-    .navbar_buttons_link:not(:first-child){
-      display: none !important;
+    
+    .profile{
+      display: none ;
     }
   }
       .navbar_buttons {
@@ -1254,9 +1264,9 @@
           top: 124px ;
       }
       .menu-container {
-        top: 25px;
-        position: absolute;
-        right: 14px;
+        top: 30px;
+        position: relative;
+        right: 0px;
         margin-left: 3px;
       }
       .navbar_search {
@@ -1314,8 +1324,9 @@
 
 @media only screen and (min-device-width : 321px) and (max-device-width : 360px) {
   .navbar_buttons{
-    .navbar_buttons_link:not(:first-child){
-      display: none !important;
+     
+    .profile{
+      display: none ;
     }
   }
   .navbar_buttons {
@@ -1390,14 +1401,15 @@
           top: 124px ;
       }
       .menu-container {
-        top: 25px;
-        position: absolute;
-        right: 14px;
+        top: 30px;
+        position: relative;
+        right: 0;
         margin-left: 3px;
       }
       .navbar_search {
         margin: 0 !important;
       }
+      
 
   .navbar_logo {
     a {
