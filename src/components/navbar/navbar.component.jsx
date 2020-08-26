@@ -244,7 +244,7 @@ const loginRegister = <>
                 </div>
                 </div>
             </div>
-{            <div className='navbar_center'> 
+            <div className='navbar_center'> 
                <div className='navbar_center_container'>
                <div className={`menu-container navbaroutside`} onClick={toggleNav}>
                         <div className="bar1"></div>
@@ -279,7 +279,7 @@ const loginRegister = <>
                     </div>
                 </div>
             </div>
-            </div>}
+            </div>
             {/*------------------responsive nav*/}
             <div className='responsive_nav' id='res-nav-id'>
                     <div className='responsive_nav_top'>
