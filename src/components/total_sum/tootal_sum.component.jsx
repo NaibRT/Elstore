@@ -6,7 +6,7 @@ const Total_Sum = (props) => {
         <Card className={props.class}>
             <div className="text--amount">
                 <div className="text__amount--count  display__flex">
-                    <h5>{props.amount} AZN</h5>
+                    <h5>{props.amount}</h5>
                     <p>{props.totalPrice} AZN</p>
                 </div>
                 <div className="text__tax-count display__flex">

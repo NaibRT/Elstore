@@ -50,7 +50,7 @@ function AppContextProvider(props) {
   });
    setTotal({
        ...total,
-           amount:totalPrice
+           amount:totalPrice.toFixed(2)
    });
    setBasket([...currentBasket])
   }
@@ -71,7 +71,7 @@ function AppContextProvider(props) {
     });
      setTotal({
          ...total,
-             amount:totalPrice,
+             amount:totalPrice.toFixed(2)
      });
      
      setBasket([...currentBasket])
@@ -198,7 +198,7 @@ function getUserCredentials() {
     totalAmountAll=(deliveryAmount+tp)+countEdv;
    setTotal({
      ...total,
-     amount:tp,
+     amount:tp.toFixed(2),
      totalDeliveryAmount:deliveryAmount,
      totalAmount:totalAmountAll.toFixed(2)
    })

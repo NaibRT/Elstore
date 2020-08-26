@@ -1,0 +1,44 @@
+.navbar-mobile{
+  .navbar-mobile-bootom{
+     display: flex;
+     justify-content: center;
+
+     .navbar-mobile-bootom-container{
+      display: flex;
+      justify-content: space-evenly;
+
+       .navbar-mobile-bootom-container-left
+       .navbar-mobile-bootom-container-right{
+        display: flex;
+        justify-content: space-evenly;
+       }
+       
+       .navbar-mobile-bootom-container-right{
+         .navbar-mobile-notification,
+         .bag{
+           position: relative;
+           
+           img {
+            height: 35px;
+            position: relative;
+            top: 7px;
+          }
+           span {
+            width: 20px;
+            height: 15px;
+            background-color: red;
+            position: absolute;
+            right: -7px;
+            top: -22px;
+            border-radius: 15px;
+            text-align: center;
+            align-content: center;
+            color: white;
+            padding-bottom: 20px;
+          }
+         }
+       }
+
+     }
+  }
+}
