@@ -1,4 +1,5 @@
 import React from 'react'
+import './label.component.scss'
 
 function Label({name,className}) {
  return (

@@ -70,13 +70,11 @@ function DeliveryInfo(props) {
     function Personal() {
        let profile__info_update=document.getElementById('profile__info--update');
        let adress__info_clicked=document.getElementById("adress")
-       let orders__info_clicked=document.getElementById("orders")
        let active__border= document.querySelector(".active--border");
        let simple__border= document.querySelector(".simple--border");
        let act=document.querySelector(".act");
        profile__info_update.style.display="block"
        adress__info_clicked.style.display="none"
-       orders__info_clicked.style.display='none'
        act.style.border="2px solid #D0D0D0";
        simple__border.style.border="2px solid #D0D0D0";
        active__border.style.border="2px solid #6472B8";
@@ -84,31 +82,14 @@ function DeliveryInfo(props) {
     function Adress() {
         let profile__info_update=document.getElementById('profile__info--update');
         let adress__info_clicked=document.getElementById("adress");
-        let orders__info_clicked=document.getElementById("orders")
         let active__border= document.querySelector(".active--border");
-        let simple__border= document.querySelector(".simple--border");
         let act=document.querySelector(".act");
         profile__info_update.style.display="none"
-        orders__info_clicked.style.display='none'
         adress__info_clicked.style.display="block"
         act.style.border="2px solid #6472B8";
         active__border.style.border="2px solid #D0D0D0";
      }
 
-     function orders() {
-        let profile__info_update=document.getElementById('profile__info--update');
-        let adress__info_clicked=document.getElementById("adress")
-        let orders__info_clicked=document.getElementById("orders")
-        let active__border= document.querySelector(".active--border");
-        let simple__border= document.querySelector(".simple--border");
-        let act=document.querySelector(".act");
-        profile__info_update.style.display="none"
-        adress__info_clicked.style.display="none"
-        orders__info_clicked.style.display='block'
-        act.style.border="2px solid #D0D0D0";
-        simple__border.style.border="2px solid #6472B8";
-        active__border.style.border="2px solid #D0D0D0";
-     }
 
      function previewFile(e) {
       console.log(e.target.files[0])
@@ -299,13 +280,9 @@ function DeliveryInfo(props) {
        
                <>
                     <div className="row">
-                    <div className="col-lg-9 col-md-12 col-xs-12">
+                    <div className="col-lg-12 col-md-12 col-xs-12">
                             <div className="profil__info-owner">
                                 <div className="profil__info--offer">
-                                    <div onClick={orders} id="adress__info-orders">
-                                    <h5>Sifarişlər</h5>
-                                    <div className="simple--border"></div>
-                                    </div>
                                     <div onClick={Personal} id="profile__info-clikced">
                                         <h5>Info</h5>
                                         <div className="active--border"></div>
@@ -401,9 +378,6 @@ function DeliveryInfo(props) {
                                     <p>{allData.field.mənzil}</p>
                                 </div>
                                 </div>
-                            </section>
-                            <section id="orders">
-                            <DeliveryOrders />
                             </section>
                                </div>
                             

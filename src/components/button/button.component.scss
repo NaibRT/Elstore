@@ -21,6 +21,7 @@
     font-weight: 600;
     line-height: 150%;
     letter-spacing: 0.5px;
+    box-sizing: border-box;
   }
 
   .btn-add {
@@ -28,10 +29,9 @@
   }
 
   .btn-add:hover {
-    outline: 0px solid transparent;
-    border: 1.5px solid #d0d6f2;
-    -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+    border: 1px solid #d0d6f2;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
   }
 
  

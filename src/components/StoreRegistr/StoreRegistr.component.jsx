@@ -92,7 +92,6 @@ const StoreRegistr= (props) => {
       fetch(url)
       .then(response => response.json())
       .then(data => setRegion({ data: data }));
-    
     }
 
     function takeSelectboxValue1(e){
@@ -100,7 +99,6 @@ const StoreRegistr= (props) => {
       fetch(url)
       .then(response => response.json())
       .then(data => setVillages({ data: data }));
-    
     }
     
     useEffect(()=>{
