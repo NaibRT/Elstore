@@ -189,9 +189,9 @@ const StoreRegistr = (props) => {
                   helper={errors2.email && errors2.email.message}
                 />
               </div>
-              <div className='registr__input'>
+              {/* <div className='registr__input'>
                 <GoogleMapAutoComplete />
-              </div>
+              </div> */}
               <div className='registr__input'>
                 <Input
                   name='phones[phone]'
