@@ -119,7 +119,14 @@ function AppContextProvider(props) {
            }
          ];
         window.localStorage.setItem('basket',JSON.stringify(baskets))
-        swal("Təbriklər", "Məhsul səbətə əlavə olundu", "success");
+      
+         swal({
+              title: 'Əməliyyat yerinə yetirildi!',
+              text: 'Məhsul səbətə əlavə olundu',
+              icon: 'success',
+              button: 'Ok',
+              confirmButtonColor: '#8CD4F5',
+            });
       }
       else{
         swal("Təəssüflər", `${data.error}`, "error");

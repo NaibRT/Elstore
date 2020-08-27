@@ -115,8 +115,10 @@ function BasketCard({ plus, minus, count, product }) {
             </div>
             <div className='basket_bottom_buttons'>
                 {
-                    like ? <button data-id={product.id} onClick={(e) => showHide(e)} className='basket_bottom_button'><img alt='' className='basket_bottom_button_img' src={require('../../assets/images/icons/Enabled.svg')} />LIke</button>
-                        : <button data-id={product.id} onClick={(e) => showHide(e)} className='basket_bottom_button'><img alt='' className='basket_bottom_button_img' src={require('../../assets/images/icons/Active2.svg')} />UnLike</button>
+                    like ? <button data-id={product.id} onClick={(e) => showHide(e)} className='basket_bottom_button'><img alt='' className='basket_bottom_button_img' src={require('../../assets/images/icons/Active2.svg')} />UnLike</button>
+                    
+                   
+                        :  <button data-id={product.id} onClick={(e) => showHide(e)} className='basket_bottom_button'><img alt='' className='basket_bottom_button_img' src={require('../../assets/images/icons/Enabled.svg')} />LIke</button>
 
                 }
                 <button data-id={product.id} onClick={(e) => AppContetx.events.removeFromBasket(e)} className='basket_bottom_button'>SİL</button>
