@@ -10,6 +10,8 @@
   border-radius: 12px;
 }
 
+
+
 .basket_card_img {
   width: 156px;
   height: 156px;
@@ -188,11 +190,13 @@
 
 .basket_bottom_button {
   padding: 11.5px 16px;
+  width: 104px;
   background: #f1f1f1;
   border-radius: 6px;
   border: 0;
-  margin-left: $margin--md;
-  margin-top: $margin--sm;
+  outline: none;
+  margin-left: 12px;
+  margin-top: 9px;
   text-transform: uppercase;
   font-family: "InterMedium";
   display: flex;

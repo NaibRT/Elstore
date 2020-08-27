@@ -375,7 +375,6 @@ function CreateProduct(props) {
     } else {
       document.getElementById('login__modal').style.display = 'block';
     }
-    setImageURLs([])
     console.log(newFormData);
     setProduct({
       product_category_id: '',
@@ -397,6 +396,7 @@ function CreateProduct(props) {
         product_description: '',
       },
     });
+    setImageURLs([]);
   };
   console.log(product);
   return (
@@ -406,7 +406,7 @@ function CreateProduct(props) {
           <GoBack text='Mehsullara geri don' link='/profile/products' />
           <Card.Header name='Mehsul Elave Et' />
           <div className='row'>
-            <div className='col-lg-4'>
+            <div className='col-lg-4' style={{ bottom: ' 22px' }}>
               <Tab clas='pro-name' id='name'>
                 <Tab.Page id='az-name' clas='pro-name' lang='az'>
                   <InputGroup
