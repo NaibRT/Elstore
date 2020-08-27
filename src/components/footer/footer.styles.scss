@@ -24,17 +24,23 @@ footer{
           ul{
             display: flex;
             flex-direction: column;
-              a{
-                text-decoration: none;
-                font-family: InterRegular;
-                font-style: normal;
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 180%;
-                letter-spacing: 0.25px;
-                color: #FFFFFF;
-                word-break: break-word;
+            div{
+              img{
+                  padding-right: 10px;
               }
+            }
+            a{
+              text-decoration: none;
+              font-family: InterRegular;
+              font-style: normal;
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 180%;
+              letter-spacing: 0.25px;
+              color: #FFFFFF;
+              word-break: break-word;
+            }
+              
           }
           
         }
@@ -62,36 +68,39 @@ footer{
           .all__footer{
             height: auto;
               .footer_category{
-                  display: flex;
-                  flex-direction: column;
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
                   .footer_items{
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px;
+                    padding: 30px;
                     h4{
                       font-family: InterRegular;
                       font-style: normal;
                       font-weight: 500;
-                      font-size: 15px;
+                      font-size: 20px;
                       line-height: 150%;
                       letter-spacing: 0.25px;
                       color: #FFFFFF;
-                      padding-bottom: 20px;
                     }
                     ul{
                       display: flex;
                       flex-direction: column;
+                     div{
+                       img{
+                         padding-right: 10px;
+                       }
+                     }
                         a{
+                          font-style: normal;
+                          font-weight: normal;
+                          font-size: 14px;
+                          line-height: 200%;
+                          letter-spacing: 0.5px;
+                          color: #FFFFFF;
                           text-decoration: none;
                           font-family: InterRegular;
                           font-style: normal;
-                          font-weight: 500;
-                          font-size: 14px;
-                          line-height: 180%;
-                          letter-spacing: 0.25px;
-                          color: #FFFFFF;
                           word-break: break-word;
-                          text-align: end;
                         }
                     }
                   }

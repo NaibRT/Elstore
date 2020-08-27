@@ -44,8 +44,15 @@ const Footer = () => {
                         <div className="footer_items">
                               <h4>Bizi izləyin</h4>
                               <ul>
-                                <a href="">Facebook</a>
-                                <a href="https://instagram.com/elstore.az?igshid=47ih700ovucw" target="_blank">İnstagram</a>
+                                <div>
+                                  <img src={require('../../assets/images/icons/fb.svg')} alt=""/>
+                                  <a href="">Facebook</a>
+                                </div>
+                                <div>
+                                  <img src={require('../../assets/images/icons/insta.svg')} alt=""/>
+                                  <a href="https://instagram.com/elstore.az?igshid=47ih700ovucw" target="_blank">İnstagram</a>
+                                </div>
+                                
                               </ul>
                         </div>
                     </div>

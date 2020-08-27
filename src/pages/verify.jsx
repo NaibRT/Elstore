@@ -1,20 +1,24 @@
 import React,{useEffect} from 'react'
 import UrlGenerator from '../services/url-generator.js'
+import { useHistory } from 'react-router-dom';
 
 function Verify(props) {
+  let History=useHistory() 
  useEffect(()=>{
    let url=UrlGenerator('az',`auth/verify/${props.match.params.token}`);
    fetch(url)
-   .then(respons=>{
-    respons.json()
-    .then(r=>{console.log(r)})
-    .catch(err=>{console.log(err)})
+   .then(async respons=>{
+    let data=await respons.json()
+    console.log(data)
+    if(respons.ok){
+       History.push('/');
+    }
    })
    .catch(error=>{console.log(error)})
  },[])
  return (
   <div>
-      <h1>Verifyed</h1>
+      <h1></h1>
   </div>
  )
 }

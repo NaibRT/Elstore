@@ -1,0 +1,36 @@
+.navbar-mobile .navbar-mobile-bootom {
+  display: flex;
+  justify-content: center;
+}
+.navbar-mobile .navbar-mobile-bootom .navbar-mobile-bootom-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.navbar-mobile .navbar-mobile-bootom .navbar-mobile-bootom-container .navbar-mobile-bootom-container-left .navbar-mobile-bootom-container-right {
+  display: flex;
+  justify-content: space-evenly;
+}
+.navbar-mobile .navbar-mobile-bootom .navbar-mobile-bootom-container .navbar-mobile-bootom-container-right .navbar-mobile-notification,
+.navbar-mobile .navbar-mobile-bootom .navbar-mobile-bootom-container .navbar-mobile-bootom-container-right .bag {
+  position: relative;
+}
+.navbar-mobile .navbar-mobile-bootom .navbar-mobile-bootom-container .navbar-mobile-bootom-container-right .navbar-mobile-notification img,
+.navbar-mobile .navbar-mobile-bootom .navbar-mobile-bootom-container .navbar-mobile-bootom-container-right .bag img {
+  height: 35px;
+  position: relative;
+  top: 7px;
+}
+.navbar-mobile .navbar-mobile-bootom .navbar-mobile-bootom-container .navbar-mobile-bootom-container-right .navbar-mobile-notification span,
+.navbar-mobile .navbar-mobile-bootom .navbar-mobile-bootom-container .navbar-mobile-bootom-container-right .bag span {
+  width: 20px;
+  height: 15px;
+  background-color: red;
+  position: absolute;
+  right: -7px;
+  top: -22px;
+  border-radius: 15px;
+  text-align: center;
+  align-content: center;
+  color: white;
+  padding-bottom: 20px;
+}

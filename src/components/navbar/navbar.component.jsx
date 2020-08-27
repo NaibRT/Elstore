@@ -246,15 +246,20 @@ const loginRegister = <>
             </div>
             <div className='navbar_center'> 
                <div className='navbar_center_container'>
+               <div className={`menu-container navbaroutside`} onClick={toggleNav}>
+                        <div className="bar1"></div>
+                        <div className="bar2"></div>
+                        <div className="bar3"></div>
+                </div>
                 <div className='navbar_logo'>
                     <Link to='/'><img alt='' src={require('../../assets/logo/logo_1.svg')} /></Link>
                 </div>
                 <div className='navbar_search'>
                 <form onSubmit={(e)=>{e.preventDefault();History.push(`/search/filter[title]=${products.state.searchKey}`)}}  className="search-input" >
                 <div className="withicon">
-                    <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
-                    <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/Iconka.svg')} /></Link>
-              </div>
+                        <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
+                        <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/Iconka.svg')} /></Link>
+                </div>
                     </form>
                 </div>
                 
@@ -262,7 +267,7 @@ const loginRegister = <>
 
                 <div className='navbar_buttons'>
                 <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/ringbells.svg')} /> <span>0</span></Link>
-                <Link   className='navbar_buttons_link bag' to='/basket'><img alt='' src={require('../../assets/images/bagins.svg')} /><span>{AppContext.basket.length}</span></Link> 
+                <Link   className='navbar_buttons_link bag basket' to='/basket'><img alt='' src={require('../../assets/images/bagins.svg')} /><span>{AppContext.basket.length}</span></Link> 
                      
                     {
                         AppContext.app.isAuthorized?
@@ -270,11 +275,7 @@ const loginRegister = <>
                             loginRegister
                     }
                     <div>
-                    <div className={`menu-container navbaroutside`} onClick={toggleNav}>
-                        <div className="bar1"></div>
-                        <div className="bar2"></div>
-                        <div className="bar3"></div>
-                    </div>
+                   
                     </div>
                 </div>
             </div>

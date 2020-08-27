@@ -67,6 +67,7 @@ const Category = () => {
     
     let SubCategories=[];
     if(CategoryContext.state.childrens.children!==undefined){
+       
         SubCategories=CategoryContext.state.childrens.children.map(x=>{
             return <ul key={x.id} className="box--subcotegory_flexx">
             <li  className="box__subcotegory--item">

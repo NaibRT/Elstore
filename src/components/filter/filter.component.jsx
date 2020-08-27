@@ -56,7 +56,7 @@ function Filter({clickHandler,Pricefrom,Priceto,currentCategorieId}) {
             toggle:!passiveCat.toggle
         })
     }
-
+    
     return (
         <div className='filter'>
              <p onClick={setTogglepassive} className='filter_head drop '>Filter <div>-</div></p>

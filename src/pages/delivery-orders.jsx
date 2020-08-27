@@ -10,7 +10,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
@@ -18,6 +17,7 @@ import ButtonRating from '../components/button-rating/buttonRating.component'
 import _ from 'lodash'
 import Button from '../components/button/button.component';
 import SelectBox from '../components/Select-box/SelectBox.component';
+import Label from '../components/label/label.component'
 
 const useRowStyles = makeStyles({
   root: {
@@ -66,7 +66,12 @@ function Row(props) {
         </TableCell>
         <TableCell align="right">{row.payment_type}</TableCell>
         <TableCell align="right">{row.price}</TableCell>
-        <TableCell align="right"><SelectBox  firstopt={row.status}/></TableCell>
+        <TableCell align="right">
+        <Label className='lbl-waiting' name={row.status} />
+        </TableCell>
+        <TableCell align="right">
+         <a className='navbar_bottom_link' href="javascript:void(0)" onClick={()=>props.linkFucn(row.checkout_code)}>{props.linkName}</a>
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -75,8 +80,8 @@ function Row(props) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Magaza Adi</TableCell>
-                    <TableCell>Magaza Adresi</TableCell>
+                    <TableCell align="center">Magaza Adi</TableCell>
+                    <TableCell align="center">Magaza Adresi</TableCell>
                     <TableCell align="center">Mehsul Adi</TableCell>
                     <TableCell align="center">Mehsul Sayi</TableCell>
                   </TableRow>
@@ -84,14 +89,16 @@ function Row(props) {
                 <TableBody>
                   {row.order_adresses.map((hr,i) => (
                     <TableRow key={i}>
-                      <TableCell component="th" scope="row">
+                      <TableCell>
                         {hr.shop_name}
                       </TableCell>
-                      <TableCell>{hr.shop_address.city_name}</TableCell>
-                      <TableCell>{hr.shop_address.region_name}</TableCell>
-                      <TableCell>{hr.shop_address.village_name}</TableCell>
-                      <TableCell>{hr.shop_address.product_name}</TableCell>
-                      <TableCell>{hr.shop_address.village_name}</TableCell>
+                      <TableCell>
+                      {hr.shop_address.city_name}<br/>
+                        {hr.shop_address.region_name}<br/>
+                       { hr.shop_address.village_name}<br/>
+                      </TableCell>
+                      <TableCell>{hr.product_name}</TableCell>
+                      <TableCell>{hr.product_count}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -130,43 +137,109 @@ function Row(props) {
 //   createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
 // ];
 
-export default function CollapsibleTable() {
+export default function CollapsibleTable({linkName,linkFucn}) {
 
  const [state, setState] = useState({
   data:[
-//   {
-//    checkout_code: 44545,
-//    buyer_address: {
-//      city_name: 'baki',
-//      region_name: "sefse",
-//      village_name: "sfesf"
-//    },
-//    payment_type: 0,
-//    price: 24,
-//    status:'awdaw',
-//    order_adresses: [
-//      {
-//        shop_name: "efsefse",
-//        shop_address:{
-//          city_name: 'baki',
-//          region_name: "sefse",
-//          village_name: "sfesf"
-//        },
-//        product_name: "sefsefesf",
-//        product_count: 2
-//      },
-//      {
-//        shop_name: "efsefse",
-//        shop_address:{
-//          city_name: 'baki',
-//          region_name: "sefse",
-//          village_name: "sfesf"
-//        },
-//        product_name: "sefsefesf",
-//        product_count: 2
-//      }
-//    ]
-//  }
+  {
+   checkout_code: 44545,
+   buyer_address: {
+     city_name: 'baki',
+     region_name: "Sebail",
+     village_name: "20-sahe"
+   },
+   payment_type: 0,
+   price: 24,
+   status:'waiting',
+   order_adresses: [
+     {
+       shop_name: "Contact az",
+       shop_address:{
+         city_name: 'baki',
+         region_name: "Sebail",
+         village_name: "20-sahe"
+       },
+       product_name: "sefsefesf",
+       product_count: 2
+     },
+     {
+       shop_name: "efsefse",
+       shop_address:{
+         city_name: 'baki',
+         region_name: "Sebail",
+         village_name: "20-sahe"
+       },
+       product_name: "Ayaqqabi",
+       product_count: 2
+     }
+   ]
+ },
+ {
+  checkout_code: 44545,
+  buyer_address: {
+    city_name: 'baki',
+    region_name: "Sebail",
+    village_name: "20-sahe"
+  },
+  payment_type: 0,
+  price: 24,
+  status:'waiting',
+  order_adresses: [
+    {
+      shop_name: "Contact az",
+      shop_address:{
+        city_name: 'baki',
+        region_name: "Sebail",
+        village_name: "20-sahe"
+      },
+      product_name: "sefsefesf",
+      product_count: 2
+    },
+    {
+      shop_name: "efsefse",
+      shop_address:{
+        city_name: 'baki',
+        region_name: "Sebail",
+        village_name: "20-sahe"
+      },
+      product_name: "Ayaqqabi",
+      product_count: 2
+    }
+  ]
+},
+{
+  checkout_code: 44545,
+  buyer_address: {
+    city_name: 'baki',
+    region_name: "Sebail",
+    village_name: "20-sahe"
+  },
+  payment_type: 0,
+  price: 24,
+  status:'waiting',
+  order_adresses: [
+    {
+      shop_name: "Contact az",
+      shop_address:{
+        city_name: 'baki',
+        region_name: "Sebail",
+        village_name: "20-sahe"
+      },
+      product_name: "sefsefesf",
+      product_count: 2
+    },
+    {
+      shop_name: "efsefse",
+      shop_address:{
+        city_name: 'baki',
+        region_name: "Sebail",
+        village_name: "20-sahe"
+      },
+      product_name: "Ayaqqabi",
+      product_count: 2
+    }
+  ]
+}
  ],
  editIDX:-1,
  columToSort:'',
@@ -205,11 +278,12 @@ const sorts={
             <TableCell align="center">Odeme Novu</TableCell>
             <TableCell align="center">Qiymet</TableCell>
             <TableCell align="center">Status</TableCell>
+            <TableCell align="center"></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {state.data.map((row) => (
-            <Row key={row.name} row={row} />
+            <Row linkName={linkName} linkFucn={linkFucn} key={row.name} row={row} />
           ))}
         </TableBody>
       </Table>

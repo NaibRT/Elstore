@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext,useEffect } from 'react';
 import '../App.scss';
 import { searchContext } from '../contexts/search';
 import Filter from '../components/filter/filter.component';
@@ -10,7 +10,7 @@ import Pagenation from '../components/Pagination/pagination.component';
 function Search(props) {
   let AppContext = useContext(appContext);
   let SearchContext = useContext(searchContext);
-
+   console.log(props.match.params.query)
   function clickHandler(e) {
     console.log(e.target.checked);
     let pageUrl = window.location.pathname;
@@ -181,9 +181,9 @@ function Search(props) {
   });
 
   useEffect(() => {
+    console.log('rendered')
     let url = UrlGenerator('az', 'search/product');
     let query = props.match.params.query;
-    console.log(query);
     fetch(`${url}?${query}`)
       .then((response) => response.json())
       .then((data) => {
