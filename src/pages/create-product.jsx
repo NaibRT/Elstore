@@ -419,7 +419,7 @@ function CreateProduct(props) {
                         type: 'text',
                       },
                     })}
-                    label='Product Name'
+                    label='Məhsulun adı'
                     onChange={getName_az}
                     type='text'
                     placeholder='azer'
@@ -518,7 +518,7 @@ function CreateProduct(props) {
               />
             </div>
             <div className='col-lg-6'>
-              <Tab clas='pro-desc' id='desc'>
+              <Tab clas='pro-desc'  style={{position: 'relative', bottom: '18px'}} id='desc'>
                 <Tab.Page id='az-desc' clas='pro-desc' lang='az'>
                   <JoditEditor
                     value={product.az.product_description}
@@ -585,7 +585,10 @@ function CreateProduct(props) {
                   />
                 </div>
               </Card>
-              <Button name='Əlavə Et' type='input' className='bg-primary' />
+              <div className='col-lg-6'>
+              
+              <Button name='Əlavə Et' type='input' className='bg-primary txt--light' />
+              </div>
             </div>
           </div>
         </form>

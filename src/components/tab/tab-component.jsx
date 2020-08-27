@@ -13,13 +13,13 @@ function Tab({children,clas,id}) {
   }
   document.getElementById(id).style.display = "block";  
 }
-
+    
 
  return (
   <div>
   <div className="w3-bar w3-black">
   <div className='tab-btns cntr'> 
-  <div className="w3-bar-item w3-button" id='az' data-id={`az-${id}`} onClick={(e)=>getId(e)} >Azərbaycan</div>
+  <div className="w3-bar-item w3-button"  id='az' data-id={`az-${id}`} onClick={(e)=>getId(e)} >Azərbaycan</div>
   <div className="w3-bar-item w3-button" id='en' data-id={`en-${id}`} onClick={(e)=>getId(e)} >English</div>
   <div className="w3-bar-item w3-button" id='ru' data-id={`ru-${id}`} onClick={(e)=>getId(e)} >Russian</div>
   </div>
