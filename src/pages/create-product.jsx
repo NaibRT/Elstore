@@ -404,7 +404,7 @@ function CreateProduct(props) {
     <div className='container-fluid'>
       <Card>
         <form onSubmit={handleSubmit(send)}>
-          <GoBack text='Mehsullara geri don' link='/profile/products' />
+          <GoBack text='Mehsullara geri dön' link='/profile/products' />
           <Card.Header name='Mehsul Elave Et' />
           <div className='row'>
             <div className='col-lg-4' style={{ bottom: ' 22px' }}>

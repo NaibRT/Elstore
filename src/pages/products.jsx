@@ -140,7 +140,7 @@ function fetchSortig(sortdata) {
             <div className="head_compaign">
                 <h1>Toplam Məhsul Sayı: {product.data.length}</h1>
                 <div className='compaign_buttons'>
-                    <Link className='compaignbtn active' to='/profile/product/create'><span>+ Məhsul Əlavə Et</span></Link>
+                    <Link className='compaignbtn active' style={{width:'186px'}} to='/profile/product/create'><span>+ Məhsul Əlavə Et</span></Link>
                     <div>&nbsp;&nbsp;</div>
                 </div>
             </div>
