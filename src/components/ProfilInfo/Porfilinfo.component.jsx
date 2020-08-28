@@ -198,6 +198,7 @@ function Porfilinfo(props) {
             title: 'Əməliyyat yerinə yetirildi!',
             icon: 'success',
             button: 'Ok',
+            timer: 6000,
             confirmButtonColor: '#8CD4F5',
           });
           setDatalar({

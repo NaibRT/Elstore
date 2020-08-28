@@ -131,6 +131,7 @@ function Modal() {
             title: 'Əməliyyat yerinə yetirildi!',
             text: 'Zəhmət olmasa mail ünvanınızı yoxlayın',
             icon: 'success',
+            timer: 6000,
             button: 'Ok',
             confirmButtonColor: '#8CD4F5',
           });

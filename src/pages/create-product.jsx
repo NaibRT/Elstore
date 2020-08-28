@@ -362,6 +362,7 @@ function CreateProduct(props) {
               title: 'Əməliyyat yerinə yetirildi!',
               text: `${r.message}`,
               icon: 'success',
+              timer: 6000,
               button: 'Ok',
               confirmButtonColor: '#8CD4F5',
             });
@@ -461,6 +462,7 @@ function CreateProduct(props) {
                 label='Brendler'
                 handleChange={getBrands}
                 name='brands'
+                firstopt="Seçin"
                 options={brands}
               />
               <SelectBox
@@ -468,8 +470,10 @@ function CreateProduct(props) {
                   required: { value: true, message: 'kateqorya məcburidir' },
                 })}
                 label='Kateqoriyalar'
+                
                 handleChange={getCataegory}
                 name='categoriya'
+                firstopt="Seçin"
                 options={categories}
               />
 
@@ -518,7 +522,7 @@ function CreateProduct(props) {
               />
             </div>
             <div className='col-lg-6'>
-              <Tab clas='pro-desc'  style={{position: 'relative', bottom: '18px'}} id='desc'>
+              <Tab clas='pro-desc'  style={{position: 'relative', bottom: '18px'}}  id='desc'>
                 <Tab.Page id='az-desc' clas='pro-desc' lang='az'>
                   <JoditEditor
                     value={product.az.product_description}

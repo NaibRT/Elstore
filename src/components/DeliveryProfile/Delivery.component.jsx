@@ -210,11 +210,12 @@ function DeliveryInfo(props) {
       .then(async (res) => {
         if (res.ok) {
           let data1 = await res.json();
-          // swal( "Dəyişikliklər uğurla tamamlandı","", "success");
+        
           swal({
             title: 'Əməliyyat yerinə yetirildi!',
             icon: 'success',
             button: 'Ok',
+            timer: 6000,
             confirmButtonColor: '#8CD4F5',
           });
           setDatalar({

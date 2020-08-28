@@ -286,6 +286,13 @@ console.log('citypcitypcitypcityp',inputp)
                   type='text'
                   value={update.description}
                 ></textarea>
+                {/* <Input
+                  onChange={(e) => textHandler(e)}
+                  name='Təyinat'
+                  type='text'
+                  value={update.description}
+                /> */}
+
               </div>
               <div className='borders'></div>
             </div>
