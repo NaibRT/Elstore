@@ -119,7 +119,9 @@ const StoreRegistr = (props) => {
       <div className='row'>
         <div className='col-lg-12 col-md-12 col-xs-12'>
           <div className='Store__Register'>
+          <div className="nav__page">
             <GoBack link='/' text='Geri dön' />
+          </div>
             <form onSubmit={handleSubmit2(registerSubmit)}>
               <div className='store__registr--text'>
                 <h5>Mağaza qeydiyyatı</h5>

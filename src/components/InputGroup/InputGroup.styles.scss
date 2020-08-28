@@ -1,7 +1,6 @@
 @import '../../App.scss';
 
 .inputForm{
-    overflow: auto;
     &:focus-within{
         label{
             color: #6472B8;
