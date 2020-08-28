@@ -198,7 +198,7 @@ const StoreRegistr = (props) => {
                 <Input
                   name='phones[phone]'
                   type='tel'
-                  placeholder='phone'
+                  placeholder='0707000007'
                   register={register2({
                     required: {
                       value: true,
@@ -271,8 +271,10 @@ const StoreRegistr = (props) => {
                   helper={errors2.name && errors2.name.message}
                 />
               </div>
-
-              <Button className='registr__button' name='Davam Et' />
+                 
+                   <Button className='registr__button ' name='Davam Et' />
+                 
+                 
               <br />
               <br />
             </form>

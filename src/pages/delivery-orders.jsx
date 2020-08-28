@@ -150,7 +150,7 @@ export default function CollapsibleTable({linkName,linkFucn}) {
    },
    payment_type: 0,
    price: 24,
-   status:'waiting',
+   status:'Gözlənilir',
    order_adresses: [
      {
        shop_name: "Contact az",
@@ -183,7 +183,7 @@ export default function CollapsibleTable({linkName,linkFucn}) {
   },
   payment_type: 0,
   price: 24,
-  status:'waiting',
+  status:'Gözlənilir',
   order_adresses: [
     {
       shop_name: "Contact az",
@@ -216,7 +216,7 @@ export default function CollapsibleTable({linkName,linkFucn}) {
   },
   payment_type: 0,
   price: 24,
-  status:'waiting',
+  status:'Gözlənilir',
   order_adresses: [
     {
       shop_name: "Contact az",
@@ -278,7 +278,7 @@ const sorts={
             <TableCell align="center">Odeme Novu</TableCell>
             <TableCell align="center">Qiymet</TableCell>
             <TableCell align="center">Status</TableCell>
-            <TableCell align="center"></TableCell>
+            <TableCell align="center">Sifariş</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
