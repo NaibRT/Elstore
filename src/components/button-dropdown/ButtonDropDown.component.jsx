@@ -20,7 +20,7 @@ function ButtonDropDown({onchange,onclick}) {
     }
 
     return (
-        <button className='cover-upload'>Dəyiş<input onChange={onchange} onClick={onclick} type='file'/></button>
+        <button className='cover-upload'>Düzəliş et<input onChange={onchange} onClick={onclick} type='file'/></button>
     )
 }
 
