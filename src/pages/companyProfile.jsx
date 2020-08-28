@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
+import {BrowserRouter as Router,Route,Link,NavLink} from 'react-router-dom'
 import Home from './profile-shop-home'
 import Products from './products'
 import ProductCreate from './create-product'
@@ -7,6 +7,7 @@ import ProductInfo from './product-info'
 import StoreProfile from '../components/StoreProfil/StoreProfil.component'
 import CompanyOrders from './company-orders'
 import {appContext} from '../contexts/appContext'
+import '../assets/sass/pages/companyProfile.scss'
 
 function CompanyProfile() {
   let AppContext=useContext(appContext);
@@ -17,11 +18,11 @@ function CompanyProfile() {
   <div>
   <Router>
   <div className='navbar_bottom'>
-  <Link to='/profile' className='navbar_bottom_link'>Mağaza</Link>
-  <Link to='/profile/products' className='navbar_bottom_link'>Məhsullar</Link>
-  <Link to='/profile/orders' className='navbar_bottom_link'>sİfarİşlər</Link>
-  <Link to='/profile/companies' className='navbar_bottom_link'>Kampanİyalar</Link>
-  <Link to='/profile/info' className='navbar_bottom_link'>Tənzİmləmələr</Link>
+  <NavLink to='/profile' className='navbar_bottom_link' activeClassName="activeLink">Mağaza</NavLink>
+  <NavLink to='/profile/products' className='navbar_bottom_link' activeClassName="activeLink">Məhsullar</NavLink>
+  <NavLink to='/profile/orders' className='navbar_bottom_link' activeClassName="activeLink">sİfarİşlər</NavLink>
+  <NavLink to='/profile/companies' className='navbar_bottom_link' activeClassName="activeLink">Kampanİyalar</NavLink>
+  <NavLink to='/profile/info' className='navbar_bottom_link' activeClassName="activeLink">Tənzİmləmələr</NavLink>
   </div>
   
    <Route exact path='/profile' component={Home}/>

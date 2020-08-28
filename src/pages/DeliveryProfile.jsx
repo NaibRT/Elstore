@@ -1,11 +1,13 @@
 import React, { useEffect, useContext } from 'react'
-import {BrowserRouter as Router,Link,Route} from 'react-router-dom'
+import {BrowserRouter as Router,Link,Route, NavLink} from 'react-router-dom'
 import Deliveyİnfo from "../components/DeliveryProfile/Delivery.component"
 import {appContext} from '../contexts/appContext';
 import Card from '../components/card/card.component';
 import ListItem from '../components/List-Item/Listitem.component'
 import DeliverOrder from './delivery-orders';
 import UrlGenerator from '../services/url-generator';
+
+import '../assets/sass/pages/deliveryProfile.scss';
 
 
 function Profile() {
@@ -55,10 +57,10 @@ function Profile() {
   <div className='container-fluid'>
   <Router>
   <div className='navbar_bottom'>
-  <Link to='/profile' className='navbar_bottom_link' exact>Bütün Sifarisler</Link>
-  <Link to='/profie/courier-current-orders' className='navbar_bottom_link' exact>Cari Sifarişlər</Link>
-  <Link to='/profie/courier-completed-orders' className='navbar_bottom_link' exact>Tamamlanmiş Sifarişlər</Link>
-  <Link to='/profie/courier-info' className='navbar_bottom_link' exact>Info</Link>
+  <NavLink to='/profile' className='navbar_bottom_link' activeClassName="activeLink" exact>Bütün Sifarisler</NavLink>
+  <NavLink to='/profie/courier-current-orders' className='navbar_bottom_link' activeClassName="activeLink" exact>Cari Sifarişlər</NavLink>
+  <NavLink to='/profie/courier-completed-orders' className='navbar_bottom_link' activeClassName="activeLink" exact>Tamamlanmiş Sifarişlər</NavLink>
+  <NavLink to='/profie/courier-info' className='navbar_bottom_link' activeClassName="activeLink" exact>Info</NavLink>
   </div>
   <div className='row'>
   <div className='col-lg-12 col-xs-12'>

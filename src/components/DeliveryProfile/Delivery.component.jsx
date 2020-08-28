@@ -59,7 +59,7 @@ function DeliveryInfo(props) {
   });
 
   function Personal() {
-    let profile__info_update = document.getElementById('profile__info--update');
+    let profile__info_update = document.getElementById('profile_info--update');
     let adress__info_clicked = document.getElementById('adress');
     let orders__info_clicked = document.getElementById('orders');
     let active__border = document.querySelector('.active--border');
@@ -73,7 +73,7 @@ function DeliveryInfo(props) {
     active__border.style.border = '2px solid #6472B8';
   }
   function Adress() {
-    let profile__info_update = document.getElementById('profile__info--update');
+    let profile__info_update = document.getElementById('profile_info--update');
     let adress__info_clicked = document.getElementById('adress');
     let orders__info_clicked = document.getElementById('orders');
     let active__border = document.querySelector('.active--border');
@@ -87,7 +87,7 @@ function DeliveryInfo(props) {
   }
 
   function orders() {
-    let profile__info_update = document.getElementById('profile__info--update');
+    let profile__info_update = document.getElementById('profile_info--update');
     let adress__info_clicked = document.getElementById('adress');
     let orders__info_clicked = document.getElementById('orders');
     let active__border = document.querySelector('.active--border');
@@ -107,55 +107,83 @@ function DeliveryInfo(props) {
       ...update,
       logo: e.target.files[0],
     });
-    
-    function Personal() {
-       let profile__info_update=document.getElementById('profile__info--update');
-       let adress__info_clicked=document.getElementById("adress")
-       let active__border= document.querySelector(".active--border");
-       let simple__border= document.querySelector(".simple--border");
-       let act=document.querySelector(".act");
-       profile__info_update.style.display="block"
-       adress__info_clicked.style.display="none"
-       act.style.border="2px solid #D0D0D0";
-       simple__border.style.border="2px solid #D0D0D0";
-       active__border.style.border="2px solid #6472B8";
+    setNewUpdate({
+      ...newupdate,
+      logo: e.target.files[0],
+    });
+    const preview = document.querySelector('.profilePhoto');
+    const file = document.querySelector('input[type=file]').files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener(
+      'load',
+      function () {
+        // convert image file to base64 string
+        preview.src = reader.result;
+      },
+      false
+    );
+
+    if (file) {
+      reader.readAsDataURL(file);
     }
-    function Adress() {
-        let profile__info_update=document.getElementById('profile__info--update');
-        let adress__info_clicked=document.getElementById("adress");
-        let active__border= document.querySelector(".active--border");
-        let act=document.querySelector(".act");
-        profile__info_update.style.display="none"
-        adress__info_clicked.style.display="block"
-        act.style.border="2px solid #6472B8";
-        active__border.style.border="2px solid #D0D0D0";
-     }
+  }
 
+  const Itir = () => {
+    let button__adress = document.querySelector('.button_adress');
+    let text__form = document.getElementById('text_form');
+    button__adress.style.display = 'none';
+    text__form.style.display = 'block';
+  };
 
-     function previewFile(e) {
-      console.log(e.target.files[0])
-      setUpdate({
-       ...update,
-       logo:e.target.files[0]
-      })
-      setNewUpdate({
-        ...newupdate,
-        logo:e.target.files[0]
-    })
-        const preview = document.querySelector('.profilePhoto');
-        const file = document.querySelector('input[type=file]').files[0];
-        const reader = new FileReader();
-      
-        reader.addEventListener("load", function () {
-          // convert image file to base64 string
-          preview.src = reader.result;
-        }, false);
-      
-        if (file) {
-          reader.readAsDataURL(file);
-          
-        }
-        
+  const myhandleSubmit = (e) => {
+    e.preventDefault();
+    let Adress__Data = document.getElementById('Adress_Data');
+    let text__form = document.getElementById('text_form');
+    text__form.style.display = 'none';
+    Adress__Data.style.display = 'block';
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    SetallData({
+      field: {
+        ...allData.field,
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+
+  const deleteProduct = (e) => {
+    let url = UrlGenerator('az', `users/request/delete`);
+    let token = AppContext.app.token;
+    console.log(token);
+
+    swal({
+      title: 'Hesabınızı silməyə əminsinizmi?',
+      text: ' ',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(url, {
+          method: 'Delete',
+          headers: {
+            Authorization:
+              token != null ? `${token.token_type} ${token.access_token}` : '',
+          },
+        })
+          .then(async (res) => {
+            // let data=await res.json();
+            if (res.ok) {
+              setUpdate({
+                ...update,
+              });
+              AppContext.events.logout();
+            }
+          })
+          .catch((err) => console.log(err));
       }
     });
   };
@@ -182,11 +210,12 @@ function DeliveryInfo(props) {
       .then(async (res) => {
         if (res.ok) {
           let data1 = await res.json();
-          // swal( "Dəyişikliklər uğurla tamamlandı","", "success");
+        
           swal({
             title: 'Əməliyyat yerinə yetirildi!',
             icon: 'success',
             button: 'Ok',
+            timer: 6000,
             confirmButtonColor: '#8CD4F5',
           });
           setDatalar({
@@ -250,117 +279,48 @@ function DeliveryInfo(props) {
     });
   }
   console.log(update.phones);
-        if(event.target.autocomplete)
-        {
-          event.target.autocomplete = "whatever";
-        }
-     
-     };
-    return (
-       
-               <>
-                    <div className="row">
-                    <div className="col-lg-12 col-md-12 col-xs-12">
-                            <div className="profil__info-owner">
-                                <div className="profil__info--offer">
-                                    <div onClick={Personal} id="profile__info-clikced">
-                                        <h5>Info</h5>
-                                        <div className="active--border"></div>
-                                    </div>
-                                    <div onClick={Adress} id="adress__info-clicked">
-                                        <h5>ünvan</h5>
-                                        <div className="simple--border act"></div>
-                                    </div>
-                                    {/* <div>
+
+  const onFo = (event) => {
+    if (event.target.autocomplete) {
+      event.target.autocomplete = 'whatever';
+    }
+  };
+  return (
+    <>
+      <div className='row'>
+        <div className='col-lg-9 col-md-12 col-xs-12'>
+          <div className='profil__info-owner'>
+            <div className='profil__info--offer'>
+              <div onClick={orders} id='adress__info-orders'>
+                <h5>Sifarişlər</h5>
+                <div className='simple--border'></div>
+              </div>
+              <div onClick={Personal} id='profile__info-clikced'>
+                <h5>Info</h5>
+                <div className='active--border'></div>
+              </div>
+              <div onClick={Adress} id='adress__info-clicked'>
+                <h5>ünvan</h5>
+                <div className='simple--border act'></div>
+              </div>
+              {/* <div>
                                         <h5>ödəmə üsulu</h5>
                                         <div className="simple--border"></div>
                                     </div> */}
-                                </div>
-                               <section id="profile__info--update">
-                                <form onSubmit={handleSubmit(updateSubmit)} >
-                                <div className="profile--image">
-                                <h5>profİl şəklİ</h5>
-                                <div className="profile__photo">
-                                        <div className="profil__images">
-                                            <input name='logo' ref={register}  onChange={(e)=>previewFile(e)} type='file'/>
-                                            <img className="profilePhoto" src={update.logo} alt=""/>
-                                        </div>
-                                        </div>
-                               <div className="borders"></div>
-                            </div>
-                            <div className="profile--image_Username ">
-                            <div className="userName_edit">
-                                <h5>Email</h5>
-                            </div>
-                            <Input disabled={true} onfocus={(e)=>onFo(e)} name='email'  type="Email"  value={update.email}/>
-                            <div className="borders"></div>
-                        </div>
-                                <div className="profile--image_Username emails">
-                                    <div className="userName_edit">
-                                        <h5>İstİfadəçİ adı</h5>
-                                    </div>
-                                    <Input onChange={(e)=>nameHandler(e)} name='name' register={register({
-                                        required:{value:true,message:'name doldurmaq mecburidir',type:'text'},
-                                    })}  type="text"  value={update.name}/>
-                                   
-                                    <div className="borders"></div>
-                                </div>
-                                <div className="profile--image_Username passw">
-                                    <div className="userName_edit">
-                                        <h5>Köhnə Şİfrə</h5>
-                                    </div>
-                                    <Input onfocus={(e)=>onFo(e)} onChange={(e)=>oldpasswordHandler(e)} value={newupdate.old_password} name='old_password' register={register()} type="password"/>
-                                    <div className="borders"></div>
-                                </div>
-                                <div className="profile--image_Username odlpassw">
-                                    <div className="userName_edit">
-                                        <h5>Yeni Şİfrə</h5>
-                                    </div>
-                                    <Input onChange={(e)=>passwordHandler(e)} name='password' register={register()} type="password"  placeholder="**************"/>
-                                    <div className="borders"></div>
-                                </div>
-                                <div className="profile--image_Username ">
-                                    <div className="userName_edit">
-                                        <h5>Number</h5>
-                                    </div>
-                                    <Input name='phones[phone]' register={register({
-                                        required:{value:true,message:'yeni email doldurmaq mecburidir',type:'tel'}
-                                    })}   type="tel" onChange={(e)=>numberHandler(e)}  value={update.phones!=undefined?update.phones['phone']:null}/>
-                                    <div className="borders"></div>
-                                </div>
-                                <Button type='submit' name="Yadda saxla"/>
-                                </form>
-                                <Button onClick={deleteProduct}  className="button_delete--acc" name="Hesabi sil"/>
-                                </section>
-                                <section id="adress">
-                                <Button onClick={Itir}  className="button__adress" name="ünvan əlavə et"/>
-                                <form id="text__form" style={{display:'none'}} action="">
-                                    <Input label="Şəhər" name="şəhər" onChange={handleChange}/>
-                                    <Input label="Rayon" name="rayon" onChange={handleChange}/>
-                                    <Input label="Qəsəbə" name="qəsəbə" onChange={handleChange}/>
-                                    <Input label="Mənzil" name="mənzil" onChange={handleChange}/>
-                                    <Button onClick={myhandleSubmit} id="saxla" id="saxla" type="button" name="Saxla"/>
-                                </form>
-                                <div id="Adress__Data" style={{display:'none'}}>
-                                <div  className="delivery_mapping">
-                                    <div className="delivery__heading">
-                                        <h5>çatdırılma ünvanı</h5>
-                                    </div>
-                                    <div className="delivery__edit">
-                                    <a href="//">Düzəliş et</a>
-                                    <a href="//">Sil</a>
-                                    </div>
-                                </div>
-                                <div  className="adress--data"    >
-                                    <p>{allData.field.şəhər}</p>
-                                    <p>{allData.field.rayon}</p>
-                                    <p>{allData.field.qəsəbə}</p>
-                                    <p>{allData.field.mənzil}</p>
-                                </div>
-                                </div>
-                            </section>
-                               </div>
-                          
+            </div>
+            <section id='profile__info--update'>
+              <form onSubmit={handleSubmit(updateSubmit)}>
+                <div className='profile--image'>
+                  <h5>profİl şəklİ</h5>
+                  <div className='profile__photo'>
+                    <div className='profil__images'>
+                      <input
+                        name='logo'
+                        ref={register}
+                        onChange={(e) => previewFile(e)}
+                        type='file'
+                      />
+                      <img className='profilePhoto' src={update.logo} alt='' />
                     </div>
                   </div>
                   <div className='borders'></div>
@@ -421,7 +381,7 @@ function DeliveryInfo(props) {
                     name='password'
                     register={register()}
                     type='password'
-                    placeholder='**************'
+                    placeholder='******'
                   />
                   <div className='borders'></div>
                 </div>
