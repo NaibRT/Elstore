@@ -20,7 +20,7 @@ function Search(props) {
     let queries = SearchContext.filter.queryParams;
 
     if (pageUrl.includes('company')) {
-      console.log(props.match.params);
+      console.log('props.match.params', props.match.params);
       sellerId =
         Object.keys(props.match.params).length !== 0
           ? props.match.params.id
@@ -179,7 +179,7 @@ function Search(props) {
   useEffect(() => {
     AppContext.events.mobileSideBarOFF();
   });
-  
+
   useEffect(() => {
     console.log('rendered')
     let url = UrlGenerator('az', 'search/product');
@@ -370,7 +370,6 @@ function Search(props) {
             handleSelect={selectHandle}
             catFilter={SearchContext.catFilter.data}
           />
-          
         </div>
       </div>
     </div>

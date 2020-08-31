@@ -119,7 +119,9 @@ const StoreRegistr = (props) => {
       <div className='row'>
         <div className='col-lg-12 col-md-12 col-xs-12'>
           <div className='Store__Register'>
+          <div className="nav__page">
             <GoBack link='/' text='Geri dön' />
+          </div>
             <form onSubmit={handleSubmit2(registerSubmit)}>
               <div className='store__registr--text'>
                 <h5>Mağaza qeydiyyatı</h5>
@@ -196,7 +198,7 @@ const StoreRegistr = (props) => {
                 <Input
                   name='phones[phone]'
                   type='tel'
-                  placeholder='phone'
+                  placeholder='0707000007'
                   register={register2({
                     required: {
                       value: true,
@@ -269,8 +271,10 @@ const StoreRegistr = (props) => {
                   helper={errors2.name && errors2.name.message}
                 />
               </div>
-
-              <Button className='registr__button' name='Davam Et' />
+                 
+                   <Button className='registr__button ' name='Davam Et' />
+                 
+                 
               <br />
               <br />
             </form>

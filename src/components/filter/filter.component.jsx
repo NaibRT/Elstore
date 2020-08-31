@@ -7,9 +7,9 @@ import UrlGenerator from '../../services/url-generator';
 
 
 
-function Filter({clickHandler,Pricefrom,Priceto}) {
+function Filter({clickHandler,Pricefrom,Priceto,currentCategorieId}) {
 
-    const categories = useContext(categoryContext);
+    const categoriesContex = useContext(categoryContext);
     const [market,setMarket] = useState({
         brends:[],
         products:[],
@@ -45,6 +45,9 @@ function Filter({clickHandler,Pricefrom,Priceto}) {
                    brends:data.data
                })
            }).then(err=>console.log(err))
+
+
+          
        },[])
 
 
@@ -66,7 +69,8 @@ function Filter({clickHandler,Pricefrom,Priceto}) {
             <br/>
         <ul>
         {
-         categories.state.categories.map(x => {
+         categoriesContex.state.categories.map(x => {
+             console.log('categories.state.categories',categoriesContex.state.categories.children)
             return (
                 
             <div>
@@ -147,10 +151,10 @@ function Filter({clickHandler,Pricefrom,Priceto}) {
                 }} 
                 className='search-input-text' 
                 type="search" 
-                placeholder="Search markets" 
+                placeholder="Axtarış" 
                 name="search" />
             </form>
-        </div>
+        </div> 
         <div className="filter_markets">
         <div className='row'>
         {

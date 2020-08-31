@@ -12,9 +12,8 @@ import UrlGenerator from '../services/url-generator';
 
 function Basket(props) {
      let AppContext=useContext(appContext);
-
-
     useEffect(() => {
+        AppContext.events.mobileSideBarOFF();
         var acc = document.getElementsByClassName("accordion");
         var i;
         
