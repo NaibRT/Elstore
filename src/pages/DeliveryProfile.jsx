@@ -57,10 +57,10 @@ function Profile() {
   <div className='container-fluid'>
   <Router>
   <div className='navbar_bottom'>
-  <NavLink to='/profile' className='navbar_bottom_link' activeClassName="activeLink" exact>Bütün Sifarisler</NavLink>
+  <NavLink to='/profile' className='navbar_bottom_link' activeClassName="activeLink" exact>Bütün Sifarişlər</NavLink>
   <NavLink to='/profie/courier-current-orders' className='navbar_bottom_link' activeClassName="activeLink" exact>Cari Sifarişlər</NavLink>
-  <NavLink to='/profie/courier-completed-orders' className='navbar_bottom_link' activeClassName="activeLink" exact>Tamamlanmiş Sifarişlər</NavLink>
-  <NavLink to='/profie/courier-info' className='navbar_bottom_link' activeClassName="activeLink" exact>Info</NavLink>
+  <NavLink to='/profie/courier-completed-orders' className='navbar_bottom_link' activeClassName="activeLink" exact>Tamamlanmış Sifarişlər</NavLink>
+  <NavLink to='/profie/courier-info' className='navbar_bottom_link' activeClassName="activeLink" exact>Tənzimləmələr</NavLink>
   </div>
   <div className='row'>
   <div className='col-lg-12 col-xs-12'>

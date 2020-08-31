@@ -114,10 +114,10 @@ function Filter({clickHandler,Pricefrom,Priceto,currentCategorieId}) {
                 }} 
                 className='search-input-text' 
                 type="search" 
-                placeholder="Search markets" 
+                placeholder="Axtarış" 
                 name="search" />
             </form>
-        </div>
+        </div> 
         <div className="filter_markets">
         <div className='row'>
         {

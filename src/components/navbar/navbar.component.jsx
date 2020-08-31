@@ -200,6 +200,7 @@ function  Navbar(props) {
         AppContext.app.user!==null?
         <img alt='' src={`${AppContext.app.user.logo}`} /> :
         <div className='nav-prfile-img'>
+          <img alt='' src={require('../../assets/images/manly.svg')} />   
         </div>
     }
      </Link>  

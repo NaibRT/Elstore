@@ -272,11 +272,11 @@ const sorts={
        >
         <TableHead>
           <TableRow>
-            <TableCell onClick={() => handleSort('checkout_code')} align="center">Sifaris Kodu</TableCell>
-            <TableCell align="center">Magaza Addresleri</TableCell>
-            <TableCell align="center">Alici Addresi</TableCell>
-            <TableCell align="center">Odeme Novu</TableCell>
-            <TableCell align="center">Qiymet</TableCell>
+            <TableCell onClick={() => handleSort('checkout_code')} align="center">Sifariş Kodu</TableCell>
+            <TableCell align="center">Mağaza Ünvanları</TableCell>
+            <TableCell align="center">Alıcı Ünvanı</TableCell>
+            <TableCell align="center">Ödəmə Ünvanı</TableCell>
+            <TableCell align="center">Qiymət</TableCell>
             <TableCell align="center">Status</TableCell>
             <TableCell align="center"></TableCell>
           </TableRow>
