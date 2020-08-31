@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useRef } from 'react'
 import './navbar-mobile.scss'
 import {appContext} from '../../../contexts/appContext';
 import {searchContext} from '../../../contexts/search'
@@ -8,8 +8,18 @@ import LangToggler from "../../lang_currency_toggler/lang_currency_toggler";
 function NavbarMobile() {
  const [toggle, setToggle] = useState({
   active: false,
+  scrActive:false
   });
 
+   
+  const mobileNavbarSrcRef = useRef();
+  let   mobileNavbarSrcRefEvent = (active) =>{
+     setToggle({
+        ...toggle,
+        scrActive:active
+     })
+   mobileNavbarSrcRef.current.classList.toggle('mns-active');
+  }
   const AppContext=useContext(appContext);
   const products = useContext(searchContext);
 
@@ -51,8 +61,11 @@ function NavbarMobile() {
              </div>
           </div>
           <div className='navbar-mobile-bootom-container-right'>
-               <div className='nmbcr-src'>
-                  <img src={require('../../../assets/images/icons/m-search.svg')} alt=''/>
+               <div className='nmbcr-src' onClick={()=>mobileNavbarSrcRefEvent(!toggle.scrActive)}>
+                  <img src={!toggle.scrActive?
+                            require('../../../assets/images/icons/m-search.svg'):
+                            require('../../../assets/images/icons/m-close.svg')
+                            } alt=''/>
                </div>
                <div className='navbar-mobile-notification'>
                   <img alt='' src={require('../../../assets/images/ringbells.svg')} />
@@ -64,14 +77,14 @@ function NavbarMobile() {
               </Link> 
           </div>
        </div>
-       <div className='m-navbar-src'>
-       <form onSubmit={(e)=>{e.preventDefault();History.push(`/search/filter[title]=${products.state.searchKey}`)}}  className="search-input" >
-       <div className="withicon">
-               <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
-               <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../../assets/images/Iconka.svg')} /></Link>
-       </div>
-       </form>
-       </div>
+     </div>
+     <div className='m-navbar-src' >
+     <form onSubmit={(e)=>{e.preventDefault();History.push(`/search/filter[title]=${products.state.searchKey}`)}}  className="search-input" >
+     <div className="withicon" ref={mobileNavbarSrcRef}>
+             <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
+             <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../../assets/images/Iconka.svg')} /></Link>
+     </div>
+     </form>
      </div>
   </div>
  )
