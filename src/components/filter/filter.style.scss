@@ -6,15 +6,20 @@
     border-radius: 12px;
 
     .tabs {
-        border-radius: 8px;
+        // border-radius: 8px;
         overflow: hidden;
-        margin-bottom: 9px;
+        // margin-bottom: 9px;
         box-shadow: 0 4px 4px -2px rgba(0,0,0,0.5);
+        
       }
       .tab {
         width: 100%;
-        color: #1A1A1A;
+        color:  #ffffff;
         overflow: hidden;
+        background: #32478a;
+        .borders_categ{
+            border-bottom: 0.5px solid #D6D6D6;
+        }
         input{
             display: none;
         }

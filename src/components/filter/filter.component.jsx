@@ -63,6 +63,7 @@ function Filter({clickHandler,Pricefrom,Priceto}) {
             <div className={`panelkategory ${passiveCat.toggle?'panel_cat_passsive':''}`} >
         <div className='category_list'>
         <div className='panel2'>
+            <br/>
         <ul>
         {
          categories.state.categories.map(x => {
@@ -71,10 +72,12 @@ function Filter({clickHandler,Pricefrom,Priceto}) {
             <div>
                 
                 <li> 
+                
                 <div className="tabs">
                     <div className="tab">
                             <input type="checkbox"  onClick={(e)=>clickHandler(e)} value={x.id} id={`chck${x.id}`}/>
                          <label className="tab-label" for={`chck${x.id}`}>{x.name}</label>
+                         <div className="borders_categ"></div>
                      <div className="tab-content">
                      {(x.children != null) ? x.children.map(item => { return(<li className='category_list_under'>
                     <label class="container-check">{item.name}
