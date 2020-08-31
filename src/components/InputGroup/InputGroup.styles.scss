@@ -1,6 +1,7 @@
 @import '../../App.scss';
 
 .inputForm{
+    flex: 0.7;
     &:focus-within{
         label{
             color: #6472B8;

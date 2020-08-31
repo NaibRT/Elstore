@@ -59,7 +59,7 @@ function DeliveryInfo(props) {
   });
 
   function Personal() {
-    let profile__info_update = document.getElementById('profile__info--update');
+    let profile__info_update = document.getElementById('profile_info--update');
     let adress__info_clicked = document.getElementById('adress');
     let orders__info_clicked = document.getElementById('orders');
     let active__border = document.querySelector('.active--border');
@@ -73,7 +73,7 @@ function DeliveryInfo(props) {
     active__border.style.border = '2px solid #6472B8';
   }
   function Adress() {
-    let profile__info_update = document.getElementById('profile__info--update');
+    let profile__info_update = document.getElementById('profile_info--update');
     let adress__info_clicked = document.getElementById('adress');
     let orders__info_clicked = document.getElementById('orders');
     let active__border = document.querySelector('.active--border');
@@ -87,7 +87,7 @@ function DeliveryInfo(props) {
   }
 
   function orders() {
-    let profile__info_update = document.getElementById('profile__info--update');
+    let profile__info_update = document.getElementById('profile_info--update');
     let adress__info_clicked = document.getElementById('adress');
     let orders__info_clicked = document.getElementById('orders');
     let active__border = document.querySelector('.active--border');
@@ -143,7 +143,7 @@ function DeliveryInfo(props) {
     text__form.style.display = 'none';
     Adress__Data.style.display = 'block';
   };
-
+  
   const handleChange = (e) => {
     e.preventDefault();
     SetallData({
@@ -382,7 +382,7 @@ function DeliveryInfo(props) {
                     name='password'
                     register={register()}
                     type='password'
-                    placeholder='**************'
+                    placeholder='******'
                   />
                   <div className='borders'></div>
                 </div>
