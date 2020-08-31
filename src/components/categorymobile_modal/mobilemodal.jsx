@@ -1,6 +1,7 @@
 import React from "react";
 import "./modal.css";
 import PropTypes from "prop-types";
+
 export default class MobileModal extends React.Component {
   onClose = e => {
     this.props.onClose && this.props.onClose(e);
