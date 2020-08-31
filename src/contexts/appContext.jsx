@@ -169,15 +169,29 @@ function getUserCredentials() {
   return user
 }
 
+useEffect(()=>{
+  let currentUser=getUserCredentials();
+  let currentTotal=total;
+  currentTotal.user.name = currentUser.name;
+  currentTotal.user.surname = currentUser.surname;
+   
+  setTotal({
+    ...currentTotal
+  })
+
+},[]);
+
  useEffect(()=>{
    let curBasket=getBaskets();
    console.log(curBasket)
+   
    setApp({
      ...app,
      token:getToken(),
      isAuthorized:IsAuthorized(),
      user:getUserCredentials()
     })
+
     if(curBasket!==null)
        setBasket([...curBasket])
  },[]);

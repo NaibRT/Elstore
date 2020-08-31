@@ -370,11 +370,7 @@ function Search(props) {
             handleSelect={selectHandle}
             catFilter={SearchContext.catFilter.data}
           />
-          <Pagenation
-            prop={props}
-            paginationHandling={SearchContext.events.PagenationHandling}
-            meta={SearchContext.catFilter.meta}
-          />
+          
         </div>
       </div>
     </div>

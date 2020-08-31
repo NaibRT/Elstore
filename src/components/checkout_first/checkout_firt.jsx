@@ -86,7 +86,6 @@ function CheckoutFrist(props) {
        })
        .catch(
            (err) =>console.log(err)
-       
        )
     }, []);
    
@@ -231,8 +230,8 @@ function CheckoutFrist(props) {
             <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                      
-                        <InputGroup id="input__checks" value={write.name} onChange={(e)=>{nameEventHandler(e)}} placeholder='Adınız'
+                   
+                        <InputGroup id="input__checks" value={AppContext.total.user.name} onChange={(e)=>{nameEventHandler(e)}} placeholder='Adınız'
                         register={register({
                             required:{value:true,message:'Adinizi daxil etməlisiniz'},
                             maxLength:{value:255,message:'maksimum  255 simvol qeyd oluna bilər'}
@@ -240,16 +239,13 @@ function CheckoutFrist(props) {
                         />
                         
                         <br/>
-                         <InputGroup id="input__checks2" value={write.phones&&write.phones.phone} onChange={(e)=>phonenameEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='number' name='phones[phone]' placeholder='Telefon nömrəsi'
+                         <InputGroup id="input__checks2" value={AppContext.app.user.phones&&AppContext.app.user.phones.phone} onChange={(e)=>phonenameEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='number' name='phones[phone]' placeholder='Telefon nömrəsi'
                          register={register({
                             required:{value:true,message:'Soyadınızı daxil etməlisiniz'},
                             maxLength:{value:255,message:'maksimum  255 simvol qeyd oluna bilər'}
                         })} helper={errors.surname&&errors.surname.message} />
-                        {
-                            console.log(write,"Salam")
-                        }
                         <br/>
-                         <InputGroup id="input__checks3" value={write.email} onChange={(e)=>emailEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='email' placeholder='E-poçt adresi'
+                         <InputGroup id="input__checks3" value={AppContext.app.user.email} onChange={(e)=>emailEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='email' placeholder='E-poçt adresi'
                          register={register({
                             required:{value:true,message:'Email daxil etməlisiniz'},
                            pattern:{value:/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -259,7 +255,7 @@ function CheckoutFrist(props) {
                        
                     </div>
                     <div className='col-lg-6 col-sm-12'>
-                        <InputGroup id="input__checks4" value={write.surname} onChange={(e)=>surnameEventHandler(e)} cls='surname' placeholder='Soyadınız' />
+                        <InputGroup id="input__checks4" value={AppContext.app.user.surname} onChange={(e)=>surnameEventHandler(e)} cls='surname' placeholder='Soyadınız' />
                     </div>
                 </div>
             </Card>
@@ -275,7 +271,7 @@ function CheckoutFrist(props) {
                         <Selectbox handleChange={villageEventHandler}  class='selectboxcheckout' options={village.data.data} />
                         <br/>
                         <br/>
-                        <InputGroup id="input__checks5" value={AppContext.total.user.address} onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />
+                        <InputGroup id="input__checks5" value={AppContext.app.user.address} onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />
                     </div>
                     <div className='col-lg-6 col-sm-12'></div>
                 </div>
