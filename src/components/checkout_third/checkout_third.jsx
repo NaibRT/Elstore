@@ -141,9 +141,9 @@ function CheckoutThird(props) {
             <br/>
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <p className='latest_section_checkout_p'>{AppContext.total.user.name}</p>
-                        <p className='latest_section_checkout_p'>{AppContext.total.user.phone}</p>
-                        <p className='latest_section_checkout_p'>{AppContext.total.user.email}</p>
+                        <p className='latest_section_checkout_p'>{AppContext.app.user.name}</p>
+                        <p className='latest_section_checkout_p'>{AppContext.app.user.phone}</p>
+                        <p className='latest_section_checkout_p'>{AppContext.app.user.email}</p>
                     </div>
                     <div className='col-lg-6 col-sm-12'>
                         <p className='latest_section_checkout_p'>{state.city}</p>

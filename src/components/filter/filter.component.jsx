@@ -58,24 +58,32 @@ function Filter({clickHandler,Pricefrom,Priceto,currentCategorieId}) {
     }
     
     return (
+        
         <div className='filter'>
+            
              <p onClick={setTogglepassive} className='filter_head drop '>Filter <div>-</div></p>
+      
             <div className={`panelkategory ${passiveCat.toggle?'panel_cat_passsive':''}`} >
         <div className='category_list'>
         <div className='panel2'>
+            <br/>
         <ul>
         {
          categoriesContex.state.categories.map(x => {
              console.log('categories.state.categories',categoriesContex.state.categories.children)
             return (
+                
             <div>
+                
                 <li> 
-                <label class="container-check">{x.name}
-                    <input value={x.id}   onClick={(e)=>clickHandler(e)}   type="checkbox" />
-                    <span class="checkmark"></span>
-                    </label>
-                </li>
-                {(x.children != null) ? x.children.map(item => { return(<li className='category_list_under'>
+                
+                <div className="tabs">
+                    <div className="tab">
+                            <input type="checkbox"  onClick={(e)=>clickHandler(e)} value={x.id} id={`chck${x.id}`}/>
+                         <label className="tab-label" for={`chck${x.id}`}>{x.name}</label>
+                         <div className="borders_categ"></div>
+                     <div className="tab-content">
+                     {(x.children != null) ? x.children.map(item => { return(<li className='category_list_under'>
                     <label class="container-check">{item.name}
                     <input  value={item.id}   onClick={(e)=>clickHandler(e)} type="checkbox" />
                     <span class="checkmark"></span>
@@ -96,6 +104,35 @@ function Filter({clickHandler,Pricefrom,Priceto,currentCategorieId}) {
                     }
 
                 </li>)}) : ''}
+                    </div>
+                </div>
+             </div>
+                {/* <label class="container-check">{x.name}
+                    <input value={x.id}  onClick={(e)=>clickHandler(e)}    type="checkbox" />
+                    <span class="checkmark"></span>
+                    </label> */}
+                </li>
+                {/* {(x.children != null) ? x.children.map(item => { return(<li className='category_list_under'>
+                    <label class="container-check">{item.name}
+                    <input  value={item.id}   onClick={(e)=>clickHandler(e)} type="checkbox" />
+                    <span class="checkmark"></span>
+                    </label>
+                    
+                    {
+                        (item.children!=null)?
+                            item.children.map(itemchildren=>{
+                            return (<li className='category_list_under_under'>
+                                <label class="container-check">{itemchildren.name}
+                            <input  value={itemchildren.id}   onClick={(e)=>clickHandler(e)} type="checkbox" />
+                            <span class="checkmark"></span>
+                            </label> 
+                            </li>
+                            )
+                        }):
+                        ''
+                    }
+
+                </li>)}) : ''} */}
 
             </div>
             )
