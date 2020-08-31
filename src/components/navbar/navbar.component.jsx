@@ -3,13 +3,15 @@ import './navbar.component.scss';
 import {useHistory,Link } from "react-router-dom";
 import {searchContext} from '../../contexts/search';
 import {categoryContext} from "../../contexts/category"
-import MobileModal from '../categorymobile_modal/mobilemodal'
+import NavbarMobile from './navbar-mobile/navbar-mobile'
 import axios from 'axios'
 import LangToggler from "../lang_currency_toggler/lang_currency_toggler";
 import Selectbox from "../Select-box/SelectBox.component";
 import {appContext} from '../../contexts/appContext'
 import $ from 'jquery'
 import UrlGenerator from '../../services/url-generator';
+
+
 const Langs =  [
     {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
 const Currency =  ['AZN','EURO','USD'];
@@ -27,10 +29,6 @@ function  Navbar(props) {
     const [categories, setCategories] = useState({
         data:[]
     })
-
-    const [show,setShow] = useState({
-        show: false
-      })
 
       const [navbarCat, setNavbarCat] = useState({
         data:[]
@@ -175,11 +173,7 @@ function  Navbar(props) {
         
     }, []);
             
-    function handleClick(){
-        setShow({
-            show: !show.show
-          });
-    }   
+  
      
      useEffect(()=>{
       axios({
@@ -226,6 +220,7 @@ const loginRegister = <>
 
     console.log(AppContext.app.user)
     return (
+        <>
         <div className='navbar'>
             <div className='navbar_top'>
             <div className='navbar_top_container'>
@@ -247,11 +242,6 @@ const loginRegister = <>
             </div>
             <div className='navbar_center'> 
                <div className='navbar_center_container'>
-               <div className={`menu-container navbaroutside`} onClick={toggleNav}>
-                        <div className="bar1"></div>
-                        <div className="bar2"></div>
-                        <div className="bar3"></div>
-                </div>
                 <div className='navbar_logo'>
                     <Link to='/'><img alt='' src={require('../../assets/logo/logo_1.svg')} /></Link>
                 </div>
@@ -261,11 +251,8 @@ const loginRegister = <>
                         <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
                         <Link to={`/search/filter[title]=${products.state.searchKey}`} className='search-input-submit' type="submit"><img alt='' src={require('../../assets/images/Iconka.svg')} /></Link>
                 </div>
-                    </form>
+                </form>
                 </div>
-                
-                
-
                 <div className='navbar_buttons'>
                 <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/ringbells.svg')} /> <span>0</span></Link>
                 <Link   className='navbar_buttons_link bag basket' to='/basket'><img alt='' src={require('../../assets/images/bagins.svg')} /><span>{AppContext.basket.length}</span></Link> 
@@ -276,79 +263,82 @@ const loginRegister = <>
                             loginRegister
                     }
                     <div>
-                   
                     </div>
                 </div>
             </div>
             </div>
             {/*------------------responsive nav*/}
-            <div className='responsive_nav' id='res-nav-id'>
-                    <div className='responsive_nav_top'>
-                    {/*<Selectbox  value={Langs} class='accordion_select'  options={Langs}/>*/}
-                    {/* <Selectbox   value={Currency} class='accordion_select'  options={Currency}/> */}
-                    </div>
-                    <div className='responsive_nav_login'>
-                    
-                    {
-                    //     AppContext.app.isAuthorized?
-                    //    <>
-                    //     <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
-                    //         <Link   className='responsive_nav_login_log' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>
-                    //     </>:null
-                    }
-                    </div>
-                    <MobileModal onClose={handleClick} show={show.show}>
-
-                        <div className="main__category--tel">
-                            <ul>  
-                            {
-                               
-                               Object.keys(CategoryContext.state.categories).map(x=>{
-                                   
-                                    return(  <li onclick={(e)=>{CategoryContext.event.getSubCat(e) }}  data-id={CategoryContext.state.categories[x].id}  className="category__items"    key={CategoryContext.state.categories[x].id}>{CategoryContext.state.categories[x].name} <span ><img  className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span>
-                                    <div className="submenu">
-                                                <ul key={x.id}>
-                                                 { 
-                                                     CategoryContext.state.categories[x].children!==null?
-                                                    CategoryContext.state.categories[x].children.map(y=>{
-                                                      return  <Link to={`/search/filter[category_id]=${y.id}`}><li>{y.name}</li></Link>
-                                                     })
-                                                    :null
-                                                 }
-                                                </ul>
-                                        </div>
-                                    </li>
-                                    )
-                                })
-                                
-                            }
-                            </ul>
-                        </div>
-                        {/* {categories.data.map(category=>{
-                            return (<><br/><Link to={`/search/filter[category_id]=${category.id}`}>{category.name}</Link><br/></>)
-                        })} */}
-                        
-                    </MobileModal>
-                    <div className='responsive_nav_login'>
-                    <div className='container'>
-                    <div className='row' style={{'justifyContent':'space-between'}}>
-                    <Link className='responsive_nav_login_log' to='/open-store'>Magaza Qeydiyyat</Link>
-                    <Link className='responsive_nav_login_log' to='/worked-delivery'>Kuryer Qeydiyyat</Link>                    
-                    </div>
-                     <br/>
-                    <div className='row' style={{'justifyContent':'space-between'}}>
-                    <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Qeydiyyat</Link>
-                    <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Daxil Ol</Link>
-                    </div>
-                    </div>
-                    </div>
-                    
-                    <div className='responsive_nav_bottom'>
-                            <Link className='responsive_nav_bottom_item' to="/profile">Profil <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
-                            <div onClick={handleClick} className='responsive_nav_bottom_item ' >Kateqoriyalar <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></div>
-                    </div>
-                </div>
         </div>
+        <NavbarMobile/>
+        </>
     )
 }
 export default Navbar
+
+
+
+// <div className='responsive_nav' id='res-nav-id'>
+// <div className='responsive_nav_top'>
+// {/*<Selectbox  value={Langs} class='accordion_select'  options={Langs}/>*/}
+// {/* <Selectbox   value={Currency} class='accordion_select'  options={Currency}/> */}
+// </div>
+// <div className='responsive_nav_login'>
+// {
+// //     AppContext.app.isAuthorized?
+// //    <>
+// //     <Link   className='responsive_nav_login_log  ' >0 ₼ </Link> 
+// //         <Link   className='responsive_nav_login_log' to='/notification'> <img alt='' src={require('../../assets/images/Not.svg')} /></Link>
+// //     </>:null
+// }
+// </div>
+// <MobileModal onClose={handleClick} show={show.show}>
+//     <div className="main__category--tel">
+//         <ul>  
+//         {
+           
+//            Object.keys(CategoryContext.state.categories).map(x=>{
+               
+//                 return(  <li onclick={(e)=>{CategoryContext.event.getSubCat(e) }}  data-id={CategoryContext.state.categories[x].id}  className="category__items"    key={CategoryContext.state.categories[x].id}>{CategoryContext.state.categories[x].name} <span ><img  className="icon"   src={require(`../../assets/images/slider/Icon.svg`)} alt=""/></span>
+//                 <div className="submenu">
+//                             <ul key={x.id}>
+//                              { 
+//                                  CategoryContext.state.categories[x].children!==null?
+//                                 CategoryContext.state.categories[x].children.map(y=>{
+//                                   return  <Link to={`/search/filter[category_id]=${y.id}`}><li>{y.name}</li></Link>
+//                                  })
+//                                 :null
+//                              }
+//                             </ul>
+//                     </div>
+//                 </li>
+//                 )
+//             })
+            
+//         }
+//         </ul>
+//     </div>
+//     {/* {categories.data.map(category=>{
+//         return (<><br/><Link to={`/search/filter[category_id]=${category.id}`}>{category.name}</Link><br/></>)
+//     })} */}
+    
+// </MobileModal>
+
+// <div className='responsive_nav_login'>
+// <div className='container'>
+// <div className='row' style={{'justifyContent':'space-between'}}>
+// <Link className='responsive_nav_login_log' to='/open-store'>Magaza Qeydiyyat</Link>
+// <Link className='responsive_nav_login_log' to='/worked-delivery'>Kuryer Qeydiyyat</Link>                    
+// </div>
+//  <br/>
+// <div className='row' style={{'justifyContent':'space-between'}}>
+// <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Qeydiyyat</Link>
+// <Link className='responsive_nav_login_log' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>Daxil Ol</Link>
+// </div>
+// </div>
+// </div>
+
+// <div className='responsive_nav_bottom'>
+//         <Link className='responsive_nav_bottom_item' to="/profile">Profil <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /> </Link>
+//         <div onClick={handleClick} className='responsive_nav_bottom_item ' >Kateqoriyalar <img alt='' src={require('../../assets/images/icons/arrowDown.png')} /></div>
+// </div>
+// </div>

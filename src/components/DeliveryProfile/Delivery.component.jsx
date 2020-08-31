@@ -130,20 +130,20 @@ function DeliveryInfo(props) {
   }
 
   const Itir = () => {
-    let button__adress = document.querySelector('.button_adress');
-    let text__form = document.getElementById('text_form');
+    let button__adress = document.querySelector('.button__adress');
+    let text__form = document.getElementById('text__form');
     button__adress.style.display = 'none';
     text__form.style.display = 'block';
   };
 
   const myhandleSubmit = (e) => {
     e.preventDefault();
-    let Adress__Data = document.getElementById('Adress_Data');
-    let text__form = document.getElementById('text_form');
+    let Adress__Data = document.getElementById('Adress__Data');
+    let text__form = document.getElementById('text__form');
     text__form.style.display = 'none';
     Adress__Data.style.display = 'block';
   };
-
+  
   const handleChange = (e) => {
     e.preventDefault();
     SetallData({
@@ -291,18 +291,18 @@ function DeliveryInfo(props) {
         <div className='col-lg-9 col-md-12 col-xs-12'>
           <div className='profil__info-owner'>
             <div className='profil__info--offer'>
-              <div onClick={orders} id='adress__info-orders'>
+              {/* <div onClick={orders} id='adress__info-orders'>
                 <h5>Sifarişlər</h5>
                 <div className='simple--border'></div>
-              </div>
-              <div onClick={Personal} id='profile__info-clikced'>
+              </div> */}
+              {/* <div onClick={Personal} id='profile__info-clikced'>
                 <h5>Info</h5>
                 <div className='active--border'></div>
-              </div>
-              <div onClick={Adress} id='adress__info-clicked'>
+              </div> */}
+              {/* <div onClick={Adress} id='adress__info-clicked'>
                 <h5>ünvan</h5>
                 <div className='simple--border act'></div>
-              </div>
+              </div> */}
               {/* <div>
                                         <h5>ödəmə üsulu</h5>
                                         <div className="simple--border"></div>
@@ -369,6 +369,7 @@ function DeliveryInfo(props) {
                     name='old_password'
                     register={register()}
                     type='password'
+                    placeholder='**************'
                   />
                   <div className='borders'></div>
                 </div>
@@ -387,7 +388,7 @@ function DeliveryInfo(props) {
                 </div>
                 <div className='profile--image_Username '>
                   <div className='userName_edit'>
-                    <h5>Number</h5>
+                    <h5>Nömrə</h5>
                   </div>
                   <Input
                     name='phones[phone]'
@@ -414,46 +415,10 @@ function DeliveryInfo(props) {
                 name='Hesabi sil'
               />
             </section>
-            <section id='adress'>
-              <Button
-                onClick={Itir}
-                className='button__adress'
-                name='ünvan əlavə et'
-              />
-              <form id='text__form' style={{ display: 'none' }} action=''>
-                <Input label='Şəhər' name='şəhər' onChange={handleChange} />
-                <Input label='Rayon' name='rayon' onChange={handleChange} />
-                <Input label='Qəsəbə' name='qəsəbə' onChange={handleChange} />
-                <Input label='Mənzil' name='mənzil' onChange={handleChange} />
-                <Button
-                  onClick={myhandleSubmit}
-                  id='saxla'
-                  id='saxla'
-                  type='button'
-                  name='Saxla'
-                />
-              </form>
-              <div id='Adress__Data' style={{ display: 'none' }}>
-                <div className='delivery_mapping'>
-                  <div className='delivery__heading'>
-                    <h5>çatdırılma ünvanı</h5>
-                  </div>
-                  <div className='delivery__edit'>
-                    <a href='//'>Düzəliş et</a>
-                    <a href='//'>Sil</a>
-                  </div>
-                </div>
-                <div className='adress--data'>
-                  <p>{allData.field.şəhər}</p>
-                  <p>{allData.field.rayon}</p>
-                  <p>{allData.field.qəsəbə}</p>
-                  <p>{allData.field.mənzil}</p>
-                </div>
-              </div>
-            </section>
-            <section id='orders'>
+           
+            {/* <section id='orders'>
               <DeliveryOrders />
-            </section>
+            </section> */}
           </div>
         </div>
       </div>

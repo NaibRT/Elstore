@@ -286,6 +286,13 @@ console.log('citypcitypcitypcityp',inputp)
                   type='text'
                   value={update.description}
                 ></textarea>
+                {/* <Input
+                  onChange={(e) => textHandler(e)}
+                  name='Təyinat'
+                  type='text'
+                  value={update.description}
+                /> */}
+
               </div>
               <div className='borders'></div>
             </div>
@@ -315,7 +322,7 @@ console.log('citypcitypcitypcityp',inputp)
                   value={newupdate.old_password}
                   name='old_password'
                   register={register()}
-                  placeholde='*******************'
+                  placeholder='*******************'
                   type='password'
                 />
               </div>
@@ -323,7 +330,7 @@ console.log('citypcitypcitypcityp',inputp)
             </div>
             <div className='profile--image_Username pass '>
               <div className='userName_edit'>
-                <h5>Şİfrə</h5>
+                <h5>Yenİ Şİfrə</h5>
               </div>
               <div className='input-_area'>
                 <Input

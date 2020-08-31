@@ -27,6 +27,7 @@ function SearchResult(props) {
         <SelectBox
           handleChange={props.handleSelect}
           options={sortings}
+          firstopt="Seçin"
           class='search_re'
         />
       </div>
