@@ -25,6 +25,7 @@ import About from './about'
 import Confidentiality from './confidentiality'
 import TermOfUse from './terms-of-use'
 import PasswordReset from './passwordReset'
+import MobileMenu from '../components/mobile-menu/mobile-menu'
 import '../assets/sass/pages/container.scss'
 
 function Main() {
@@ -80,6 +81,7 @@ function Main() {
 )}/>
 
   </Switch>
+  <MobileMenu/>
   </main>
  )
 }
