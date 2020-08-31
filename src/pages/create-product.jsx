@@ -362,6 +362,7 @@ function CreateProduct(props) {
               title: 'Əməliyyat yerinə yetirildi!',
               text: `${r.message}`,
               icon: 'success',
+              timer: 6000,
               button: 'Ok',
               confirmButtonColor: '#8CD4F5',
             });
@@ -403,7 +404,7 @@ function CreateProduct(props) {
     <div className='container-fluid'>
       <Card>
         <form onSubmit={handleSubmit(send)}>
-          <GoBack text='Mehsullara geri don' link='/profile/products' />
+          <GoBack text='Mehsullara geri dön' link='/profile/products' />
           <Card.Header name='Mehsul Elave Et' />
           <div className='row'>
             <div className='col-lg-4' style={{ bottom: ' 22px' }}>
@@ -419,7 +420,7 @@ function CreateProduct(props) {
                         type: 'text',
                       },
                     })}
-                    label='Product Name'
+                    label='Məhsulun adı'
                     onChange={getName_az}
                     type='text'
                     placeholder='azer'
@@ -461,6 +462,7 @@ function CreateProduct(props) {
                 label='Brendler'
                 handleChange={getBrands}
                 name='brands'
+                firstopt="Seçin"
                 options={brands}
               />
               <SelectBox
@@ -468,8 +470,10 @@ function CreateProduct(props) {
                   required: { value: true, message: 'kateqorya məcburidir' },
                 })}
                 label='Kateqoriyalar'
+                
                 handleChange={getCataegory}
                 name='categoriya'
+                firstopt="Seçin"
                 options={categories}
               />
 
@@ -518,7 +522,7 @@ function CreateProduct(props) {
               />
             </div>
             <div className='col-lg-6'>
-              <Tab clas='pro-desc' id='desc'>
+              <Tab clas='pro-desc'  style={{position: 'relative', bottom: '18px'}}  id='desc'>
                 <Tab.Page id='az-desc' clas='pro-desc' lang='az'>
                   <JoditEditor
                     value={product.az.product_description}
@@ -585,7 +589,10 @@ function CreateProduct(props) {
                   />
                 </div>
               </Card>
-              <Button name='Əlavə Et' type='input' className='bg-primary' />
+              <div className='col-lg-6'>
+              
+              <Button name='Əlavə Et' type='input' className='bg-primary txt--light' />
+              </div>
             </div>
           </div>
         </form>

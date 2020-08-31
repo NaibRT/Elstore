@@ -130,6 +130,12 @@
   .Store__info {
     width: 463px;
     margin-top: 4px;
+    textarea{
+      width: 301px;
+      border-radius: 4px;
+      resize: none;
+      height: 50px;
+    }
     p {
       word-break: break-word;
     }

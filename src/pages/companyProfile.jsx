@@ -20,7 +20,7 @@ function CompanyProfile() {
   <Link to='/profile' className='navbar_bottom_link'>Mağaza</Link>
   <Link to='/profile/products' className='navbar_bottom_link'>Məhsullar</Link>
   <Link to='/profile/orders' className='navbar_bottom_link'>sİfarİşlər</Link>
-  <Link to='/profile/companies' className='navbar_bottom_link'>Kampanİyalar</Link>
+  <Link to='/profile/companies' className='navbar_bottom_link'>Sifariş Keçmişi</Link>
   <Link to='/profile/info' className='navbar_bottom_link'>Tənzİmləmələr</Link>
   </div>
   

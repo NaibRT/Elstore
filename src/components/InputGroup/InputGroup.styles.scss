@@ -25,9 +25,12 @@
         width: 100%;
         background-size: 30px 30px;
         padding-right: 45px;
+         
         &:focus{
             outline: none !important; 
             border: 2px solid #6472B8;
+        
+
         }
         &:hover{
             border: 2px solid $text-dark;
