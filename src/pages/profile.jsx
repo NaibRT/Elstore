@@ -24,10 +24,10 @@ function Profile(){
   <div className='row'>
   <div className='col-lg-3'>
    <Card className='card-border'>
+    <Link to='/profie/profile-info' exact><ListItem name='Info'/></Link>
     <Link to='/profile' exact><ListItem name='Sifarislerim'/></Link>
     <Link to='/profie/liked-product' exact><ListItem name='Bəyənilən məhsullar'/></Link>
     <Link to='/profie/favorit-shop' exact><ListItem name='Beyenilen Magazalar'/></Link>
-    <Link to='/profie/profile-info' exact><ListItem name='Info'/></Link>
    </Card>
   </div>
   <div className='col-lg-9'>

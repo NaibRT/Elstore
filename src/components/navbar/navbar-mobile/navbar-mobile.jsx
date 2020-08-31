@@ -64,7 +64,8 @@ function NavbarMobile() {
               </Link> 
           </div>
        </div>
-       <div className='m-navbar-src'>
+     </div>
+     <div className='m-navbar-src'>
        <form onSubmit={(e)=>{e.preventDefault();History.push(`/search/filter[title]=${products.state.searchKey}`)}}  className="search-input" >
        <div className="withicon">
                <input onChange={products.events.searchForm}  value={products.state.searchKey} className='search-input-text' type="text" placeholder="Axtarış.." name="search" />
@@ -72,7 +73,25 @@ function NavbarMobile() {
        </div>
        </form>
        </div>
-     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
   </div>
  )
 }
