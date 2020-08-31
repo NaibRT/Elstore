@@ -237,15 +237,14 @@ function CheckoutFrist(props) {
                             maxLength:{value:255,message:'maksimum  255 simvol qeyd oluna bilər'}
                         })} helper={errors.name&&errors.name.message} 
                         />
-                        
                         <br/>
-                         <InputGroup id="input__checks2" value={AppContext.app.user.phones&&AppContext.app.user.phones.phone} onChange={(e)=>phonenameEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='number' name='phones[phone]' placeholder='Telefon nömrəsi'
+                         <InputGroup id="input__checks2" value={AppContext.total.user.phone&&AppContext.total.user.phone} onChange={(e)=>phonenameEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='number' name='phones[phone]' placeholder='Telefon nömrəsi'
                          register={register({
                             required:{value:true,message:'Soyadınızı daxil etməlisiniz'},
                             maxLength:{value:255,message:'maksimum  255 simvol qeyd oluna bilər'}
                         })} helper={errors.surname&&errors.surname.message} />
                         <br/>
-                         <InputGroup id="input__checks3" value={AppContext.app.user.email} onChange={(e)=>emailEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='email' placeholder='E-poçt adresi'
+                         <InputGroup id="input__checks3" value={AppContext.total.user.email} onChange={(e)=>emailEventHandler(e)} formIcon={require('../../assets/images/icons/Frame.svg')} type='email' placeholder='E-poçt adresi'
                          register={register({
                             required:{value:true,message:'Email daxil etməlisiniz'},
                            pattern:{value:/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -255,7 +254,7 @@ function CheckoutFrist(props) {
                        
                     </div>
                     <div className='col-lg-6 col-sm-12'>
-                        <InputGroup id="input__checks4" value={AppContext.app.user.surname} onChange={(e)=>surnameEventHandler(e)} cls='surname' placeholder='Soyadınız' />
+                        <InputGroup id="input__checks4" value={AppContext.total.user.surname} onChange={(e)=>surnameEventHandler(e)} cls='surname' placeholder='Soyadınız' />
                     </div>
                 </div>
             </Card>
