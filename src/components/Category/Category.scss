@@ -56,6 +56,10 @@
     
     .box__subcotegory{
         display: flex;
+        flex-wrap: wrap;
+        .box--subcotegory_flexx{
+            flex: 1 0 30%;
+        }
         .box__subcotegory--item{
             //display: none;
             list-style: none;

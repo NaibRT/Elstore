@@ -269,19 +269,19 @@ function Porfilinfo(props) {
 
   return (
     <>
-      <br />
+     
       <div className='row'>
         <div className='col-lg-9 col-md-12 col-xs-12'>
           <div className='profil__info-owner'>
             <div className='profil__info--offer'>
-              <div onClick={Personal} id='profile__info-clikced'>
+              {/* <div onClick={Personal} id='profile__info-clikced'>
                 <h5>məlumatlar</h5>
                 <div className='active--border'></div>
-              </div>
-              <div onClick={Adress} id='adress__info-clicked'>
+              </div> */}
+              {/* <div onClick={Adress} id='adress__info-clicked'>
                 <h5>ünvan</h5>
                 <div className='simple--border'></div>
-              </div>
+              </div> */}
               {/* <div>
                                         <h5>ödəmə üsulu</h5>
                                         <div className="simple--border"></div>
@@ -294,9 +294,10 @@ function Porfilinfo(props) {
 
                   <div className='profile__photo'>
                     <div className='profil__images'>
-                      <input onChange={previewFile} type='file' />
+                      <input className="prof__choose" onChange={previewFile} type='file' />
                       <img className='profilePhoto' src={update.logo} alt='' />
                     </div>
+                    <div className="logouplaods">Yüklə</div>
                   </div>
                   <div className='borders'></div>
                 </div>
@@ -419,7 +420,7 @@ function Porfilinfo(props) {
                 </div>
                 <div className='delivery__edit'>
                   <a href=''>Düzəliş et</a>
-                  <a href=''>Sil</a>
+                 
                 </div>
               </div>
               <div className='adress--data'>

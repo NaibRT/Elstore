@@ -14,6 +14,26 @@
   .profile__photo1 {
     display: flex;
     margin-top: 20px;
+    .logouplaods{
+      background: #F1F1F1;
+      border-radius: 6px;
+      width: 82px;
+      height: 44px;
+      margin-left: 22px;
+      margin-top: 22px;
+      cursor: pointer;
+      font-family: InterRegular;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 150%;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #444444;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     .profil__images1 {
       width: 80px;
@@ -24,10 +44,11 @@
       input {
         opacity: 0;
         position: absolute;
-        top: 50px;
+        top: 100px;
+        left: 115px;
         cursor: pointer;
-        width: 12%;
-        height: 10%;
+        width: 82px;
+        height: 44px;
       }
       img {
         cursor: pointer;
@@ -128,7 +149,7 @@
     }
   }
   .Store__info {
-    width: 463px;
+    width: 100%;
     margin-top: 4px;
     textarea{
       width: 301px;

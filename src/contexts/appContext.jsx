@@ -178,14 +178,18 @@ function getUserCredentials() {
 
 useEffect(()=>{
   let currentUser=getUserCredentials();
-  let currentTotal=total;
-  currentTotal.user.name = currentUser.name;
-  currentTotal.user.surname = currentUser.surname;
-   
-  setTotal({
-    ...currentTotal
-  })
+  console.log("appUser",currentUser)
+  if(currentUser){
+    let currentTotal=total;
+    currentTotal.user.name = currentUser.name;
+    currentTotal.user.surname = currentUser.surname;
+    currentTotal.user.email = currentUser.email;
+    currentTotal.user.phone = currentUser.phones['phone'];
 
+    setTotal({
+      ...currentTotal
+    })
+  }
 },[]);
 
  useEffect(()=>{
