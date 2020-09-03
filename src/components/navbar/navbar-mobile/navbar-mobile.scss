@@ -165,8 +165,12 @@
             }
 
             }
-
      }
+  }
+
+  .m-navbar-src{
+    width: 92%;
+    margin: auto;
   }
 }
 
@@ -175,4 +179,14 @@
   .navbar-mobile{
     display: block;
   }
+}
+.withicon{
+  height: 0px;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.mns-active{
+  height: 40px;
+  transition: 0.5s all ease;
 }
