@@ -3,6 +3,15 @@
   height: max-content;
 }
 
+.swal-footer {
+  text-align: center;
+}
+
+.swal-button {
+  background-color: #32478a;
+  width: 125px;
+}
+
 @font-face {
   font-family: "NotoBold";
   src: url("../../fonts/Noto_Serif/NotoSerif-Bold.ttf") format("truetype");
@@ -395,6 +404,10 @@
   text-decoration-color: #348E39;
 }
 
+.txt--decoration--primary {
+  text-decoration-color: #6472B8;
+}
+
 .txt--light {
   color: #fff;
 }
@@ -417,6 +430,10 @@
 
 .txt--success {
   color: #348E39;
+}
+
+.txt--primary {
+  color: #6472B8;
 }
 
 .txt--lovercase {
@@ -1094,11 +1111,6 @@
     font-size: 12px;
   }
 }
-.opennav {
-  position: absolute;
-  left: 0 !important;
-}
-
 .menu-container {
   cursor: pointer;
 }
@@ -1779,9 +1791,16 @@
   }
 }
 .of-hidden {
-  overflow-y: hidden;
+  overflow: hidden !important;
+  overflow-y: hidden !important;
+  position: relative;
 }
 
 .of-scroll {
-  overflow: scroll;
+  overflow-y: scroll;
+}
+
+.opennav {
+  position: fixed !important;
+  left: 0 !important;
 }

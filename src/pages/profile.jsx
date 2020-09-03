@@ -16,6 +16,7 @@ import '../assets/sass/pages/profile.scss'
 function Profile(){
   const [likedProduct,setLikedProduct]=useState([])
   let AppContext=useContext(appContext);
+  
   useEffect(()=>{
     AppContext.events.mobileSideBarOFF()
   })

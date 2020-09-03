@@ -8,7 +8,7 @@
     border-radius: 20px;
     margin: auto;
     .nav__page{
-        margin-left: 50px;
+        margin-left: 56px;
         padding-top:30px ;
     }
     .store__registr--text{
@@ -94,6 +94,9 @@
 {
     .Store__Register{
         width: 100%;
+        .nav__page{
+            margin-left: 15px;
+        }
         .registr__button{
             width: 85%;
             margin-left: 17px;
@@ -122,6 +125,10 @@
         }
         .select__city{
             margin-left: 17px;
+        }
+
+        .store__registr--text{
+            padding: 19px;
         }
     }
     

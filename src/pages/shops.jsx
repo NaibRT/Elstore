@@ -15,6 +15,10 @@ function Shops(){
     const [shops, setShops] = useState([]);
 
     useEffect(()=>{
+        AppContext.events.mobileSideBarOFF()
+      })
+      
+    useEffect(()=>{
      let url=UrlGenerator('az','getAllStores');
      fetch(url)
      .then(async res=>{
@@ -32,12 +36,10 @@ return(
    
     <div className="redirect">
     <GoBack link='/' text='ƏSAS SƏHİFƏYƏ GERİ DÖN' />
-    </div>
-            
     <div className="text">
     <h1>Mağazalar</h1>
     <br />
-    
+    </div>
     </div>
     <div className='container-fluid'>
                 <div className='row'> 

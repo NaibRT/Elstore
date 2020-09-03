@@ -12,6 +12,8 @@ import $ from 'jquery'
 import UrlGenerator from '../../services/url-generator';
 
 
+
+
 const Langs =  [
     {id:1,name:'Azerbaijan'},{id:2,name:'Turkish'},{id:3,name:'Ukranian'}];
 const Currency =  ['AZN','EURO','USD'];
@@ -76,15 +78,15 @@ function  Navbar(props) {
         }
       }
       
-    function toggleNav() {
-        document.getElementsByClassName('menu-container')[0].classList.toggle('change');
-        document.getElementById('res-nav-id').classList.toggle('opennav');
-        document.getElementsByTagName('body')[0].classList.toggle('of-hidden');
-        document.getElementById('res-nav-id').classList.toggle('of-scroll');
+    // function toggleNav() {
+    //     document.getElementsByClassName('menu-container')[0].classList.toggle('change');
+    //     document.getElementById('res-nav-id').classList.toggle('opennav');
+    //     document.getElementsByTagName('body')[0].classList.toggle('of-hidden');
+    //     document.getElementById('res-nav-id').classList.toggle('of-scroll');
         
-        const currentState = toggle.active;
-        setToggle({ active: !currentState });
-    }
+    //     const currentState = toggle.active;
+    //     setToggle({ active: !currentState });
+    // }
 
    function Sign(){
     let modal= document.getElementById("login__modal");
@@ -254,7 +256,7 @@ const loginRegister = <>
                     <Link to = '/campaigns' className="navbar_top_link">Kampaniyalar</Link>
                     <Link  to = '/shops' className="navbar_top_link">Mağazalar</Link>
                    {/* <Link to='faq' className="navbar_top_link">Tez-tez verilən suallar</Link>*/}
-                    {/* <Link to = '/contact' className="navbar_top_link">Əlaqə</Link> */}
+                     <Link to = '/contact' className="navbar_top_link">Əlaqə</Link>
                 </div>
                 <div className="right_navbar__top">
                     <Link className="navbar_top_link" to='/worked-delivery'>Kuryer olmaq istəyirsiniz?</Link>

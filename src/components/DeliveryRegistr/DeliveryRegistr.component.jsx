@@ -8,6 +8,7 @@ import swal from "sweetalert"
 import {appContext} from '../../contexts/appContext'
 import UrlGenerator from '../../services/url-generator'
 import { useHistory } from "react-router-dom";
+import GoBack from '../go-back/go-back.component'
 
 const DeliveryRegistr = () => {
     let history = useHistory();
@@ -53,10 +54,11 @@ const DeliveryRegistr = () => {
             <div className="row">
                 <div className="col-lg-12 col-xs-12">
                 <div className="delivery__registr">
-                    <div className="redirect__page">
+{/*                    <div className="redirect__page">
                         <span><img src={require(`../../assets/images/icons/Iconprev.svg`)} alt=""/></span>
                         <Link className="rediretc__text" to="/">gerİ dön</Link>
-                    </div>
+    </div>*/}
+                    <GoBack text='Gerİ dön' link="/"  />
                     <div className="store__registr--text">
                     <h5>Kuryer olaraq çalış</h5>
                     </div>   

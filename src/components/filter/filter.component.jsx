@@ -27,13 +27,7 @@ function Filter({clickHandler,Pricefrom,Priceto,currentCategorieId}) {
 
 
     useEffect(()=>{
-        window.onresize=()=>{
-            if(window.innerWidth<=992){
-                setpassiveCat({toggle:true})
-            }else{
-                setpassiveCat({toggle:false})
-            }
-        }
+
         console.log('brands')
         let url=UrlGenerator('az','brands');
            fetch(url)

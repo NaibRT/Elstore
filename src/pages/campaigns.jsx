@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import React, {useEffect, useState, useContext } from 'react';
 import GoBack from '../components/go-back/go-back.component'
 import  MehsulCard from '../components/mehsulCard/mehsul_card.component'
 import {appContext} from '../contexts/appContext'
@@ -16,6 +16,11 @@ function Campaign(){
     
 const data=[1,2,3]
 const [state, setstate] = useState([])
+const AppContext=useContext(appContext);
+
+useEffect(()=>{
+    AppContext.events.mobileSideBarOFF()
+  })
 useEffect(()=>{
   let url=UrlGenerator('az','stores');
   fetch(url)
@@ -31,22 +36,18 @@ return (
     <div >
 
     <div className = "container-fluid">
-
+    <div className='row'>
     <div className="row-left">
     <div className="redirect">
     <GoBack link='/' text='ƏSAS SƏHİFƏYƏ GERİ DÖN' />
-    </div>
-            
     <div className="text">
     <h1>Kampaniyalar</h1>
     <br />
     </div>
     </div>
-   
-     
+    </div>
+    </div>
         <div className='row'>
-         
-   
     
         {
             state.map((x,i)=>{

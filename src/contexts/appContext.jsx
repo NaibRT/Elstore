@@ -12,6 +12,11 @@ function AppContextProvider(props) {
   currency:'aze',
  })
 
+ const [toggle, setToggle] = useState({
+  active: false,
+  scrActive:false
+  });
+
 
  const [basket,setBasket]=useState([]);
  const [total,setTotal]=useState({
@@ -289,11 +294,13 @@ useEffect(()=>{
       document.getElementsByTagName('body')[0].classList.toggle('of-hidden');
   }
  }
+
  return (
   <appContext.Provider value={{app,
                               events:{
                                 setTotal:setTotal,
                                 setBasket:setBasket,
+                                setToggle:setToggle,
                                AddToken:AddToken,
                                IsAuthorized:IsAuthorized,
                                getCities:getCities,
@@ -308,7 +315,8 @@ useEffect(()=>{
                                mobileSideBarOFF:mobileSideBarOFF
                               },
                               basket,
-                              total
+                              total,
+                              toggle:toggle
                              }}>
    {props.children}
   </appContext.Provider>
