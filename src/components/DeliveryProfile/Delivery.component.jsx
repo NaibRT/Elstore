@@ -316,12 +316,14 @@ function DeliveryInfo(props) {
                     <div className='profil__images'>
                       <input
                         name='logo'
+                        // value="Yüklə"
                         ref={register}
                         onChange={(e) => previewFile(e)}
                         type='file'
                       />
                       <img className='profilePhoto' src={update.logo} alt='' />
                     </div>
+                    <div className="logouplaods">Yüklə</div>
                   </div>
                   <div className='borders'></div>
                 </div>

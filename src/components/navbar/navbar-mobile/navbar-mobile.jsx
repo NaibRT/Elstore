@@ -35,6 +35,16 @@ function NavbarMobile() {
     });
 }
 
+
+// const myFunction=(event)=>{
+//    event.stopPropagation();
+//    document.querySelector(".mobile_notification_wrapper").classList.toggle('show_dropDown');
+// }
+
+// window.onclick = function(event){
+//    document.querySelector(".mobile_notification_wrapper").classList.remove('show_dropDown');
+// }
+
  return (
   <div className='navbar-mobile'>
      <div className='navbar-mobile-top'>
@@ -73,6 +83,30 @@ function NavbarMobile() {
                   <img alt='' src={require('../../../assets/images/ringbells.svg')} />
                   <span>0</span>
                </div>
+               {/* <div id="notificationDrop" className="mobile_notification_wrapper">
+                        <ul>
+                            <li>
+                                <h4>Yeni sifariş</h4>
+                                <p>body of not. body of not. body of not. body of not. body of not. body of not.</p>
+                            </li>
+                            <li>
+                                <h4>Yeni sifariş</h4>
+                                <p>body of not. body of not. body of not. body of not. body of not. body of not.</p>
+                            </li>
+                            <li>
+                                 <h4>Yeni sifariş</h4>
+                                <p>body of not. body of not. body of not. body of not. body of not. body of not.</p>
+                            </li>
+                            <li>
+                                <h4>Yeni sifariş</h4>   
+                                <p>body of not. body of not. body of not. body of not. body of not. body of not.</p>
+                            </li>
+                            <li>
+                                <h4>Yeni sifariş</h4>
+                                <p>body of not. body of not. body of not. body of not. body of not. body of not.</p>
+                            </li>
+                        </ul>
+                    </div> */}
               <Link className='navbar_buttons_link bag basket' to='/basket'>
                  <img alt='' src={require('../../../assets/images/bagins.svg')} />
                    <span>{AppContext.basket.length}</span>

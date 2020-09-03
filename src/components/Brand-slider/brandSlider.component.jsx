@@ -11,12 +11,12 @@ class BrandSlider extends Component {
             loop: true,
             freeMode: true,
             loopedSlides: "auto",
-            speed:1000,
+            speed:2000,
             spaceBetween : 18,
             loopFillGroupWithBlank: true,
             grabCursor: true,
             // autoplay: {
-            //     delay: 0,
+            //     delay: 3000,
             //     disableOnInteraction: false,
             // },
             navigation:{

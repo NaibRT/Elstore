@@ -54,7 +54,7 @@ function Datatable({minPrizeSorting,maxPrizeSorting,thead,tbody,deleteProduct,ha
         <div className='dtable'>
             <div className='datatable_search'>
                 <InputGroup onChange={searchName}  placeholder='Məhsul axtar' formIcon={require('../../assets/images/icons/search.svg')} />
-                <SelectBox class='datatable_selectbox' handleChange={handleSelect} value={category.category.id} firstopt="Seçin" options={category.category}/>
+                <SelectBox class='datatable_selectbox' handleChange={handleSelect} value={category.category.id} options={category.category}/>
                 <label >
                 <span> Sıra aralığı:</span>
                    <div className="moneydiv">

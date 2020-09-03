@@ -6,11 +6,14 @@ import ButtonDropDown from '../components/button-dropdown/ButtonDropDown.compone
 import Filter from '../components/filter/filter.component';
 import UrlGenerator from '../services/url-generator';
 import { appContext } from '../contexts/appContext';
+import { searchContext } from '../contexts/search';
 import SearchResultComp from '../components/search-result-component/SearchResultComp.component';
+import SearchResultFilt from '../components/Search-reasult-page/SearchResult.component'
 
 
 function ProfileShopHome(props) {
     let AppContext=useContext(appContext)
+    let SearchContext = useContext(searchContext);
     const [product, setproduct] = useState({})
     const [queryParams, setQueryParams] = useState([])
     const [priceFrom, setPriceFrom] = useState('')
@@ -43,7 +46,77 @@ function ProfileShopHome(props) {
        
                       }).catch(err=>console.log(err))
             },[])
-
+            const selectHandle = (e) => {
+                let pageUrl = window.location.pathname;
+                let filterQuery = '';
+                let sellerId = '';
+                if (pageUrl.includes('company')) {
+                  console.log('selectHandler');
+                  sellerId =
+                    Object.keys(props.match.params).length !== 0
+                      ? props.match.params.id
+                      : null;
+                  filterQuery +=
+                    filterQuery !== ''
+                      ? `&filter[company_id]=${sellerId}`
+                      : `filter[company_id]=${sellerId}`;
+                }
+                if (pageUrl.includes('profile')) {
+                  sellerId = AppContext.app.user.id;
+                  filterQuery +=
+                    filterQuery !== ''
+                      ? `&filter[company_id]=${sellerId}`
+                      : `filter[company_id]=${sellerId}`;
+                }
+                if (SearchContext.filter.queryParams.length > 0) {
+                  filterQuery +=
+                    filterQuery !== '' ? `&filter[category_id]=` : `filter[category_id]=`;
+                  SearchContext.filter.queryParams.forEach((x, k) => {
+                    console.log(k);
+                    k === SearchContext.filter.queryParams.length - 1
+                      ? (filterQuery += `${x}`)
+                      : (filterQuery += `${x},`);
+                  });
+                }
+                if (SearchContext.filter.priceFrom != '') {
+                  filterQuery +=
+                    filterQuery !== ''
+                      ? `&filter[min_prize]=${SearchContext.filter.priceFrom}`
+                      : `filter[min_prize]=${SearchContext.filter.priceFrom}`;
+                }
+                if (SearchContext.filter.priceTo != '') {
+                  filterQuery +=
+                    filterQuery !== ''
+                      ? `&filter[max_price]=${SearchContext.filter.priceTo}`
+                      : `filter[max_price]=${SearchContext.filter.priceTo}`;
+                }
+                SearchContext.events.setFilter({
+                  ...SearchContext.filter,
+                  order: e.target.value,
+                });
+            
+                filterQuery +=
+                  filterQuery !== ''
+                    ? `&filter[order]=${e.target.value}`
+                    : `filter[order]=${e.target.value}`;
+                console.log(filterQuery);
+                let url = UrlGenerator('az', `search/product?${filterQuery}`);
+                fetch(url)
+                  .then(async (res) => {
+                    let data = await res.json();
+                    console.log(data);
+                    //   SearchContext.events.setFilter({
+                    //     ...SearchContext.filter,
+                    //     queryParams:[...queries]
+                    //   })
+                    SearchContext.events.setCatFilter({
+                      ...SearchContext.catFilter,
+                      meta: data.meta,
+                      data: data.data,
+                    });
+                  })
+                  .catch((err) => console.log(err));
+              };
 
      function coverHandler(e) {
          let img=e.target.files[0];
@@ -283,6 +356,11 @@ function ProfileShopHome(props) {
                         </div>
                     </div>
                     <div className="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
+                    <div className="changed__filter">
+                    <SearchResultFilt  
+                        handleSelect={selectHandle}
+                        catFilter={SearchContext.catFilter.data} />
+                    </div>
                      <SearchResultComp data={product.products} />
                     </div>
                 </div>

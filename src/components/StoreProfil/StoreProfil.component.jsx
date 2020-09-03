@@ -244,6 +244,7 @@ console.log('citypcitypcitypcityp',inputp)
                   />
                   <img className='profilePhoto' src={update.logo} alt='' />
                 </div>
+                <div className="logouplaods">Yüklə</div>
               </div>
               <div className='borders'></div>
             </div>
