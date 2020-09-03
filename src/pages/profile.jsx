@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react'
 import Card from '../components/card/card.component'
 import ListItem from '../components/List-Item/Listitem.component'
-import {BrowserRouter as Router,Link,Route} from 'react-router-dom'
+import {BrowserRouter as Router,Link,Route, NavLink} from 'react-router-dom'
 import Orders from './buyer-orders'
 import FavoritBrandShops from '../pages/profile-favoit-brand-shop'
 import ProfileInfo from '../components/ProfilInfo/Porfilinfo.component'
@@ -9,6 +9,8 @@ import {appContext} from '../contexts/appContext'
 import LikedProducts from './user-liked-product'
 import ProductInfo from './product-info'
 import ProfileShopeHome from './profile-shop-home'
+
+import '../assets/sass/pages/profile.scss'
 
 
 function Profile(){
@@ -24,10 +26,10 @@ function Profile(){
   <div className='row'>
   <div className='col-lg-3'>
    <Card className='card-border'>
-    <Link to='/profile' exact><ListItem name='Sifarislerim'/></Link>
-    <Link to='/profie/liked-product' exact><ListItem name='Bəyənilən məhsullar'/></Link>
-    <Link to='/profie/favorit-shop' exact><ListItem name='Beyenilen Magazalar'/></Link>
-    <Link to='/profie/profile-info' exact><ListItem name='Info'/></Link>
+    <NavLink to='/profie/profile-info' exact><ListItem name='Info'/></NavLink>
+    <NavLink to='/profile' exact><ListItem name='Sifarislerim'/></NavLink>
+    <NavLink to='/profie/liked-product' exact><ListItem name='Bəyənilən məhsullar'/></NavLink>
+    <NavLink to='/profie/favorit-shop' exact><ListItem name='Beyenilen Magazalar'/></NavLink>
    </Card>
   </div>
   <div className='col-lg-9'>

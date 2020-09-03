@@ -1,6 +1,10 @@
 // @import '../../assets/sass/base/variables';
 @import "../../App.scss";
 
+.show_dropDown {
+  display: block !important;
+}
+
 .navbar {
   min-width: 100%;
 
@@ -161,6 +165,61 @@
         span{
           right: 0px;
         }
+      }
+      .notification_wrapper{
+        display: none;
+        position: absolute;
+        top: 90px;
+        right: 0;
+        background-color: white;
+        width: 145%;
+        padding-top: 15px;
+        padding-left: 17px;
+        padding-bottom: 10px;
+        padding-right: 17px;
+        height: 360px;
+        overflow-y: scroll;
+        z-index: 10;
+        box-shadow: 0px 0px 25px rgba(119, 126, 148, 0.15), 0px 8px 25px rgba(119, 126, 148, 0.15);
+        border-radius: 13px;
+        text-align: left;
+        ul{
+          li{
+            cursor: pointer;
+            border-bottom: 1px solid #D0D0D0;
+            padding-bottom: 15px;
+            padding-top: 15px;
+            list-style-type: none;
+            font-family: Inter;
+            h4{
+              padding-bottom: 3px;
+              font-size: 16px;
+            }
+            p{
+              font-size: 12px;
+            }
+          }
+        }
+      }
+
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+      }
+       
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #32478a; 
+        border-radius:15px;
+      }
+      
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #32478a; 
       }
     }
     .navbar_logo {

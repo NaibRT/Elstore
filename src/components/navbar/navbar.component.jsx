@@ -43,6 +43,9 @@ function  Navbar(props) {
         setVisiblepp(!visiblepp)
     }
 
+    
+    
+
    
     function activeSearch(){
         let navbarSearch = document.querySelector('.navbar_search');
@@ -56,6 +59,7 @@ function  Navbar(props) {
         // navbarSearch.style.display = "none";
         // }
     }
+
 
 
       window.onclick = function(event) {
@@ -107,7 +111,31 @@ function  Navbar(props) {
     signup_view.style.display="block"
     signin_view.style.display="none"
 }
+
+
     useEffect(()=>{
+        // let notification = document.getElementById('notification');
+        // notification.addEventListener('click',function(){
+        //     let notification_wrapper = document.querySelector('.notification_wrapper');
+        //     notification_wrapper.style.display = "block";
+        // })
+        
+    },[])
+
+    
+
+    // const myFunction=(event)=>{
+    //     event.stopPropagation();
+    //     document.querySelector(".notification_wrapper").classList.toggle('show_dropDown');
+    // }
+
+    // window.onclick = function(event){
+    //     document.querySelector(".notification_wrapper").classList.remove('show_dropDown');
+    // }
+
+    useEffect(()=>{
+        
+
         var acc = document.getElementsByClassName("accordion_lang");
             var i;
     
@@ -142,6 +170,7 @@ function  Navbar(props) {
              if(window.location.href.split('/')[3]==='' && window.location.href.split('/')[3] === 'index'){
                 $(".navbar_bottom_link").removeClass("activenav");
              }
+             
 
     },[])
    
@@ -168,12 +197,9 @@ function  Navbar(props) {
             body.addEventListener("click",function(e){
                 setVisiblepp(visiblepp)
            })
-       
-           
         
     }, []);
-            
-  
+        
      
      useEffect(()=>{
       axios({
@@ -254,7 +280,31 @@ const loginRegister = <>
                 </form>
                 </div>
                 <div className='navbar_buttons'>
-                <Link   className='navbar_buttons_link bag notification' to='/notification'> <img alt='' src={require('../../assets/images/ringbells.svg')} /> <span>0</span></Link>
+                    {/* <div id="notificationDrop" className="notification_wrapper">
+                        <ul>
+                            <li>
+                                <h4>Yeni sifariş</h4>
+                                <p>body of not. body of not. body of not. body of not. body of not. body of not.</p>
+                            </li>
+                            <li>
+                                <h4>Yeni sifariş</h4>
+                                <p>body of not. body of not. body of not. body of not. body of not. body of not.</p>
+                            </li>
+                            <li>
+                                 <h4>Yeni sifariş</h4>
+                                <p>body of not. body of not. body of not. body of not. body of not. body of not.</p>
+                            </li>
+                            <li>
+                                <h4>Yeni sifariş</h4>   
+                                <p>body of not. body of not. body of not. body of not. body of not. body of not.</p>
+                            </li>
+                            <li>
+                                <h4>Yeni sifariş</h4>
+                                <p>body of not. body of not. body of not. body of not. body of not. body of not.</p>
+                            </li>
+                        </ul>
+                    </div> */}
+                <Link id="notification"  className='navbar_buttons_link bag notification'> <img alt='' src={require('../../assets/images/ringbells.svg')} /> <span>0</span></Link>
                 <Link   className='navbar_buttons_link bag basket' to='/basket'><img alt='' src={require('../../assets/images/bagins.svg')} /><span>{AppContext.basket.length}</span></Link> 
                      
                     {
