@@ -72,7 +72,7 @@ function CheckoutFrist(props) {
         let token=AppContext.events.getToken();
        fetch(url,{
            headers:{
-            "Authorization":`${token.token_type} ${token.access_token}`,
+            "Authorization":token!==null?`${token.token_type} ${token.access_token}`:null,
            },
            method:"POST",
        })
@@ -270,7 +270,7 @@ function CheckoutFrist(props) {
                         <Selectbox handleChange={villageEventHandler}  class='selectboxcheckout' options={village.data.data} />
                         <br/>
                         <br/>
-                        <InputGroup id="input__checks5" value={AppContext.app.user.address} onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />
+                        <InputGroup id="input__checks5" value={AppContext.app.user&&AppContext.app.user.address} onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />
                     </div>
                     <div className='col-lg-6 col-sm-12'></div>
                 </div>

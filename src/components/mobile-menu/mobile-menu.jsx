@@ -20,6 +20,12 @@ function MobileMenu() {
       show: !show.show
     });
 } 
+    function menuToggle(params) {
+      document.getElementsByClassName('menu-container')[0].classList.toggle('change');
+      document.getElementById('res-nav-id').classList.toggle('opennav');
+      document.getElementsByTagName('body')[0].classList.toggle('of-hidden');
+      document.getElementById('res-nav-id').classList.toggle('of-scroll');
+    }
 
  return (
   <div className='responsive_nav' id='res-nav-id'>
@@ -57,8 +63,11 @@ function MobileMenu() {
   <div className='responsive_nav_login'>
   <div className='container'>
   <div className='row'>
+     <div className='rnl-container'>
      <div className='rnl-pro'>
-        <img src={AppContext.app.isAuthorized?`${AppContext.app.user.logo}`:require('../../assets/images/manly.svg')} className='rnl-pro-img' alt=''/>
+      <img src={AppContext.app.isAuthorized?`${AppContext.app.user.logo}`:require('../../assets/images/manly.svg')} className='rnl-pro-img' alt=''/>
+     </div>
+    <img className='rnlc-close' onClick={menuToggle} src={require('../../assets/images/icons/exit-menu.svg')} alt=""/>
      </div>
   </div>
   <div className='row'>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import GoBack from '../components/go-back/go-back.component'
 import Button from '../components/button/button.component'
 import InputGroup from '../components/InputGroup/InputGroup.component'
@@ -11,6 +11,10 @@ import './contact.scss'
 
 function Contact() {
     const AppContext = useContext(appContext)
+
+    useEffect(()=>{
+        AppContext.events.mobileSideBarOFF()
+      })
 
     function nameEventHandler(e) {
         AppContext.events.setTotal({

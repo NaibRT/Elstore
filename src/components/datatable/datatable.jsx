@@ -6,6 +6,7 @@ import SelectBox from '../Select-box/SelectBox.component'
 import UrlGenerator from '../../services/url-generator';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import ReactHtmlParser from 'react-html-parser'; 
 var $  = require( 'jquery' );
 var dt = require( 'datatables.net' );
 
@@ -38,7 +39,10 @@ function Datatable({minPrizeSorting,maxPrizeSorting,thead,tbody,deleteProduct,ha
    const  names = [];
     useEffect(()=>{
             $(document).ready(function() {
-                $('#databasic').dataTable();
+                $('#databasic').dataTable().api({
+                    "scrollX": true,
+                    "scrollY": true
+                });
             } );
         tbody.forEach((name)=>{
             names.push(name)
@@ -60,7 +64,7 @@ function Datatable({minPrizeSorting,maxPrizeSorting,thead,tbody,deleteProduct,ha
                    </div>
                 </label>
             </div>
-            <table id="databasic" class="display" >
+            <table id="databasic" class="display nowrap" style={{'width':'100%','height':'800px'}} >
         <thead>
             <tr>
                 {
@@ -84,7 +88,9 @@ function Datatable({minPrizeSorting,maxPrizeSorting,thead,tbody,deleteProduct,ha
                                 console.log(td[x])
                                 return td[x]=='Status'
                                 ?<td><SelectBox firstopt={bodyItems.status}/></td>
-                                :<td>{bodyItems[`${td[x]}`]}</td>
+                                :td[x]=='product_description'?
+                                 <td style={{'overflowX':'scroll'}}>{ReactHtmlParser(bodyItems[`${td[x]}`])}</td>
+                                 :<td>{bodyItems[`${td[x]}`]}</td>
                             })
                         }
 

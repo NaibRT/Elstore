@@ -14,6 +14,10 @@ import SelectBox from '../Select-box/SelectBox.component';
 import GoogleMapAutoComplete from '../GoogleMapAutoComplete/GoogleMapAutoComplete';
 
 const StoreRegistr = (props) => {
+
+  useEffect(()=>{
+    AppContext.events.mobileSideBarOFF()
+  })
   let history = useHistory();
   function AddNumber() {
     const weple = document.querySelector('.weple');
@@ -103,10 +107,6 @@ const StoreRegistr = (props) => {
       .then((response) => response.json())
       .then((data) => setVillages({ data: data }));
   }
-
-  useEffect(() => {
-    AppContext.events.mobileSideBarOFF();
-  });
   useEffect(() => {
     let url = UrlGenerator('az', 'cities');
     fetch(url)

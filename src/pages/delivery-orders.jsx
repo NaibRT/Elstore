@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect, useContext} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
@@ -18,6 +18,8 @@ import _ from 'lodash'
 import Button from '../components/button/button.component';
 import SelectBox from '../components/Select-box/SelectBox.component';
 import Label from '../components/label/label.component'
+import UrlGenerator from '../services/url-generator';
+import {appContext} from '../contexts/appContext';
 
 const useRowStyles = makeStyles({
   root: {
@@ -245,6 +247,23 @@ export default function CollapsibleTable({linkName,linkFucn}) {
  columToSort:'',
  sortDirection:'asc'
 })
+   const AppContext=useContext(appContext);
+
+  // useEffect(()=>{
+  //     let url=UrlGenerator('az','users/lastDayOrders?status=0');
+  //     fetch(url,{
+  //       headers:{
+  //         'Authorization':`${AppContext.app.token.token_type} ${AppContext.app.token.access_token}`
+  //       }
+  //     })
+  //     .then(async res=>{
+  //       let data=await res.json();
+  //       console.log("bla",data)
+  //       setState({
+  //           data:data.data
+  //       })
+  //     }).catch(err=>console.log(err))
+  // },[])
 
 const InverDirection={
  asc:'asc',

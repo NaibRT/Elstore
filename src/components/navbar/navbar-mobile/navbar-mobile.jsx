@@ -14,7 +14,7 @@ function NavbarMobile() {
    
   const mobileNavbarSrcRef = useRef();
   let   mobileNavbarSrcRefEvent = (active) =>{
-     setToggle({
+   setToggle({
         ...toggle,
         scrActive:active
      })
@@ -23,14 +23,16 @@ function NavbarMobile() {
   const AppContext=useContext(appContext);
   const products = useContext(searchContext);
 
- function toggleNav() {
+ function toggleNav(){
   document.getElementsByClassName('menu-container')[0].classList.toggle('change');
   document.getElementById('res-nav-id').classList.toggle('opennav');
   document.getElementsByTagName('body')[0].classList.toggle('of-hidden');
   document.getElementById('res-nav-id').classList.toggle('of-scroll');
   
-  const currentState = toggle.active;
-  setToggle({ active: !currentState });
+  setToggle({ 
+     ...toggle,
+     active: !toggle.active,
+    });
 }
 
  return (

@@ -13,7 +13,7 @@ function BuyerOrders() {
 
  useEffect(()=>{
   let currentOrderUrl=UrlGenerator('az','users/buyer/orders/0');
-  let oldOrderUrl=UrlGenerator('az','users/buyer/orders/1');
+  let oldOrderUrl=UrlGenerator('az','users/buyer/orders/2');
   let token=AppContext.app.token;
   
   //-------------------------current Orders Fetch

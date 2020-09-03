@@ -3,6 +3,7 @@ import './About-product.component.scss';
 import Db from '../../contexts/db.json';
 import ReactHtmlParser from 'react-html-parser'; 
 
+
 const data = Db.aboutProduct;
 
 function AboutProduct(props){

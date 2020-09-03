@@ -249,7 +249,8 @@ function Modal() {
               type='number'
               placeholder='Telefon'
               register={register2({
-                required: { value: true, message: 'Telefon daxil etməlisiniz' },
+                required: { 
+                  value: true, message: 'Telefon daxil etməlisiniz'},
                 maxLength: {
                   value: 255,
                   message: 'maksimum  255 simvol qeyd oluna bilər',

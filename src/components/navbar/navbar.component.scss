@@ -224,14 +224,6 @@
   }
 }
 
-.opennav {
-  position: absolute;
-  left: 0 !important;
-}
-
-
-
-
 .menu-container {
   cursor: pointer;
 }
@@ -931,10 +923,17 @@
 }
 
 .of-hidden{
-  overflow-y: hidden;
+  overflow: hidden !important;
+  overflow-y: hidden !important;
+  position: relative;
 }
 .of-scroll{
-  overflow: scroll;
+  overflow-y: scroll;
+}
+.opennav {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0px !important;
 }
 
 

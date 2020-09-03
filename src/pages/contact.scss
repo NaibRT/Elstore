@@ -2,8 +2,7 @@
   display: grid;
   grid-template-columns: 48% 48%;
   .text {
-    margin-left: 29px;
-    margin-top: 10px;
+    padding: 24px 30px;
   }
   .basket__cart {
     width: 100%;
@@ -18,10 +17,10 @@
   }
 }
 
-.redirect {
-  margin-top: -60px;
-  margin-left: -30px;
-}
+// .redirect {
+//   margin-top: -60px;
+//   margin-left: -30px;
+// }
 h1 {
   word-wrap: break-word;
 }

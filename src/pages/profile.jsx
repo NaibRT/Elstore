@@ -14,6 +14,7 @@ import ProfileShopeHome from './profile-shop-home'
 function Profile(){
   const [likedProduct,setLikedProduct]=useState([])
   let AppContext=useContext(appContext);
+  
   useEffect(()=>{
     AppContext.events.mobileSideBarOFF()
   })

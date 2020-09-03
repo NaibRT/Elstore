@@ -4,6 +4,15 @@
   height: max-content;
 }
 
+.swal-footer {
+  text-align: center;
+}
+
+.swal-button {
+  background-color: #32478a;
+  width: 125px;
+}
+
 @font-face {
   font-family: "NotoBold";
   src: url("../../fonts/Noto_Serif/NotoSerif-Bold.ttf") format("truetype");
@@ -988,20 +997,6 @@
   position: relative;
   top: 14px;
 }
-.responsive_nav body {
-  color: #6472B8;
-  background: #ecf0f1;
-  padding: 0 1em 1em;
-}
-.responsive_nav h1 {
-  margin: 0;
-  line-height: 2;
-  text-align: center;
-}
-.responsive_nav h2 {
-  margin: 0 0 0.5em;
-  font-weight: normal;
-}
 .responsive_nav input {
   position: absolute;
   opacity: 0;
@@ -1046,7 +1041,7 @@
   transition: all 0.35s;
 }
 .responsive_nav .tab-content {
-  max-height: 0;
+  height: 0px;
   padding: 0 1em;
   color: #6472B8;
   background: white;
@@ -1062,6 +1057,9 @@
 }
 .responsive_nav .tab-close:hover {
   background: #4958a0;
+}
+.responsive_nav .tab .tab-content {
+  transition: all 0.35s;
 }
 .responsive_nav .tab .tab-content ul {
   width: 100%;
@@ -1093,8 +1091,9 @@
   transform: rotate(90deg);
 }
 .responsive_nav input:checked ~ .tab-content {
-  max-height: 100vh;
+  height: max-content;
   padding: 1em;
+  transition: all 0.35s;
 }
 .responsive_nav .responsive_nav_login .rnl-pro,
 .responsive_nav .responsive_nav_login .rnl-pro .rnl-pro-img {
@@ -1102,9 +1101,14 @@
   height: 60px;
   border-radius: 60px;
 }
+.responsive_nav .responsive_nav_login .rnl-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 .responsive_nav .responsive_nav_login .login-regis-btns {
   display: flex;
-  height: 350px;
+  height: 230px;
   align-items: flex-end;
 }
 
