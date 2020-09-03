@@ -62,7 +62,7 @@ function DatatableOrder(params) {
         <div>
             <div className='datatable_search'>
                 <InputGroup onChange={searchName}  placeholder='Məhsul axtar' formIcon={require('../../assets/images/icons/search.svg')} />
-                <SelectBox class='datatable_selectbox'firstopt="Seçin" options={kategories}/>
+                <SelectBox class='datatable_selectbox' options={kategories}/>
                 <label >
                 <span> Sıra aralığı:</span>
                    <div className="moneydiv">

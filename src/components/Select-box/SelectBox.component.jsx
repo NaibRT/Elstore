@@ -10,7 +10,7 @@ function SelectBox(props) {
                     <label htmlFor="" id="labelId">{props.label}</label>
                     <div className="select_box_content">
                     <select name={props.name}  value={props.value}  onChange={props.handleChange} ref={props.register}  id="searchSelect">
-                            <option>{props.firstopt} </option>
+                            {/* <option>{props.firstopt} </option> */}
                         {
                             (props.options!==undefined)?props.options.map(item =>{
                                 return (
