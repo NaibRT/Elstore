@@ -91,10 +91,10 @@ function MobileMenu() {
     !AppContext.app.isAuthorized&&
     <div className='login-regis-btns'>
     <Link className='responsive_nav_login_log rnll-color' to='/' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>
-    <Button className='bg-primary--dark txt--light' name='Daxil Ol'/>
+    <Button className='bg-primary--dark txt--light mbs ' name='Daxil Ol'/>
     </Link>
     <Link className='responsive_nav_login_log rnll-color' to='/' onClick={()=>{document.getElementById('login__modal').style.display='block';}}>
-    <Button className='txt--primary' name=' Hesab Yarat'/>
+    <Button className='txt--primary mbs' name=' Hesab Yarat'/>
    </Link>
     </div>
   }

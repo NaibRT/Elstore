@@ -60,8 +60,8 @@ function Main() {
   <Route exact={true} path='/basket' component={Basket} />
   <Route  path='/basket/:id' component={Basket} />
   <Route exact={true} path='/search' component={Search} />
-  <Route exact={true} path='/trends/:query' component={Search} />
-  <Route exact={true} path='/mostsellers/:query' component={Search} />
+  <Route  path='/trends/:query' component={Search} />
+  <Route  path='/mostsellers/:query' component={Search} />
   <Route  path='/search/:query' component={Search} />
   <Route exact={true} path='/open-store' component={StoreRegistr} />
   <Route exact={true} path='/worked-delivery' component={Delivery} />

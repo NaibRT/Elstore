@@ -19,7 +19,6 @@ const Category = () => {
         }, 1200);
         
         setTimeout(() => {
-           
             boxCategory.style.transition="0.2s ease";
             boxCategory.style.width="300%";
         }, 200);

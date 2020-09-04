@@ -20,6 +20,8 @@ import SelectBox from '../components/Select-box/SelectBox.component';
 import Label from '../components/label/label.component'
 import UrlGenerator from '../services/url-generator';
 import {appContext} from '../contexts/appContext';
+import InputGroup from '../components/InputGroup/InputGroup.component';
+import Pagination from '../components/Pagination/pagination.component'
 
 const useRowStyles = makeStyles({
   root: {
@@ -243,6 +245,7 @@ export default function CollapsibleTable({linkName,linkFucn}) {
   ]
 }
  ],
+ meta:{},
  editIDX:-1,
  columToSort:'',
  sortDirection:'asc'
@@ -283,13 +286,38 @@ const InverDirection={
 const sorts={
    def:list=>_.orderBy(list,'')
 }
+  let srchandling=(e)=>{
+     
+  }
+  let paginationHandling=(e)=>{
+    let url=`${state.meta.path}?page=${e.target.innerHTML}`
+    fetch(url,{
+        method:"GET",
+    })
+    .then(async res=>{
+      let data=await res.json();
+     if(res.ok){
+         setState({
+           data:data.data,
+           meta:data.meta
+         })
+        
+     }
+    })
+    .catch(
+        (err) =>console.log(err)
+    )
+  }
+
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} style={{'marginTop':'50px'}}>
       <Table
        handleSort={handleSort} aria-label="collapsible table"
        // data={orderBy(state.data,state.columToSort,state.sortDirection)}
        >
         <TableHead>
+        <InputGroup type='text' onChange={srchandling}/>
+        <br/>
           <TableRow>
             <TableCell onClick={() => handleSort('checkout_code')} align="center">Sifariş Kodu</TableCell>
             <TableCell align="center">Mağaza Ünvanları</TableCell>
@@ -306,6 +334,7 @@ const sorts={
           ))}
         </TableBody>
       </Table>
+      <Pagination meta={state.meta} paginationHandling={paginationHandling}/>
     </TableContainer>
   );
 }

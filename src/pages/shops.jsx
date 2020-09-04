@@ -12,7 +12,32 @@ import Pagination from '../components/Pagination/pagination.component'
 
 function Shops(){
     const AppContext=useContext(appContext)
-    const [shops, setShops] = useState([]);
+
+    const [shops, setShops] = useState({
+        data:[],
+        meta:{}
+    });
+
+    let paginationHandling = (e)=>{
+       
+        let url=`${shops.meta.path}?page=${e.target.innerHTML}`
+        fetch(url,{
+            method:"GET",
+        })
+        .then(async res=>{
+          let data=await res.json();
+         if(res.ok){
+             setShops({
+               data:data.data,
+               meta:data.meta
+             })
+            
+         }
+        })
+        .catch(
+            (err) =>console.log(err)
+        )
+    }
 
     useEffect(()=>{
         AppContext.events.mobileSideBarOFF()
@@ -24,7 +49,10 @@ function Shops(){
      .then(async res=>{
          let data=await res.json();
          if(res.ok){
-             setShops([...data.data])
+             setShops({
+                 data:[...data.data],
+                 meta:data.meta
+             })
          }
      })
     },[])
@@ -49,14 +77,14 @@ return(
                     <div className=' col-12 col-lg-9 col-md-8 col-xs-12'>
                     <div className='row'>
                     {
-                        shops.map((x,i)=>{
+                        shops.data.map((x,i)=>{
                             return  <div key={i} className='col-lg-6'>
                                     <Seller seller={x}/>
                                     <br/>
                                     </div>
                         })
                     }
-                    
+                    <Pagination meta={shops.meta} paginationHandling={paginationHandling}  />
                     </div>
                     </div>
                 </div>

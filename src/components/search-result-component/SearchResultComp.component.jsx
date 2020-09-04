@@ -13,7 +13,7 @@ function SearchResultComp(props) {
       <div className='search_result__content'>
         {props.catFilter !== undefined && props.catFilter.length > 0
           ? props.catFilter.map((y) => <ProductCardItem data={y} />)
-          : props.data !== undefined
+            : props.data !== undefined
           ? props.data.map((x) => <ProductCardItem data={x} />)
           : null}
       </div>

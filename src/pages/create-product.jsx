@@ -165,9 +165,7 @@ function CreateProduct(props) {
 
   function imageLoad(e) {
     let z = [...e.target.files];
-    console.log(z);
     setImages([...images, ...z]);
-    console.log(images);
   }
 
   const removeImage = (e) => {
@@ -287,10 +285,8 @@ function CreateProduct(props) {
     let value = e.target.value;
     let min = Number(e.target.getAttribute('min'));
     let newProduct = product;
-    console.log(value > min);
     newProduct.product_price = value;
     if (value > min || value === '') {
-      console.log('kecdi');
       newProduct.product_price = value;
       setProduct({
         ...newProduct,
@@ -305,7 +301,6 @@ function CreateProduct(props) {
     let max = Number(e.target.getAttribute('max'));
     let min = Number(e.target.getAttribute('min'));
 
-    console.log(value);
     if ((value < max && value > min) || value === '') {
       newProduct.discount = value;
       setProduct({
@@ -376,7 +371,7 @@ function CreateProduct(props) {
     } else {
       document.getElementById('login__modal').style.display = 'block';
     }
-    console.log(newFormData);
+
     setProduct({
       product_category_id: '',
       product_price: '',
@@ -457,20 +452,21 @@ function CreateProduct(props) {
               </Tab>
               <SelectBox
                 register={register({
-                  required: { value: true, message: 'kateqorya məcburidir' },
+                  required: { value: true, message: 'brendlər məcburidir' },
                 })}
                 label='Brendler'
                 handleChange={getBrands}
                 name='brands'
                 firstopt="Seçin"
                 options={brands}
+                value={product.product_brand_id}
               />
               <SelectBox
                 register={register({
                   required: { value: true, message: 'kateqorya məcburidir' },
                 })}
                 label='Kateqoriyalar'
-                
+                value={product.product_category_id}
                 handleChange={getCataegory}
                 name='categoriya'
                 firstopt="Seçin"
@@ -483,6 +479,7 @@ function CreateProduct(props) {
                   handleChange={getSubCataegory}
                   name='subcategory'
                   options={subcat}
+                  value={product.product_category_id}
                 />
               ) : null}
               {childcat.length > 1 ? (
@@ -491,6 +488,7 @@ function CreateProduct(props) {
                   handleChange={getChildCataegory}
                   name='subcategory'
                   options={childcat}
+                  value={product.product_category_id}
                 />
               ) : null}
 
@@ -590,8 +588,7 @@ function CreateProduct(props) {
                 </div>
               </Card>
               <div className='col-lg-6'>
-              
-              <Button name='Əlavə Et' type='input' className='bg-primary txt--light' />
+              <Button name='Əlavə Et' type='submit' className='bg-primary txt--light' />
               </div>
             </div>
           </div>

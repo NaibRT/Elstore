@@ -64,9 +64,9 @@ function Profile() {
   </div>
   <div className='row'>
   <div className='col-lg-12 col-xs-12'>
-  <Route exact path='/profile' render={()=><DeliverOrder linkFucn={acceptOrder} linkName='Sifarişi qəbul et'/>}/>
-  <Route exact path='/profie/courier-current-orders' render={()=><DeliverOrder linkFucn={declineOrder} linkName='Sifarişidən imtina et'/>}/>
-  <Route exact path='/profie/courier-completed-orders' component={DeliverOrder}/>
+  <Route exact path='/profile' render={()=><DeliverOrder status='0' linkFucn={acceptOrder} linkName='Sifarişi qəbul et'/>}/>
+  <Route exact path='/profie/courier-current-orders' render={()=><DeliverOrder status='1' linkFucn={declineOrder} linkName='Sifarişidən imtina et'/>}/>
+  <Route exact path='/profie/courier-completed-orders' render={()=><DeliverOrder status='2'/>}/>
   <Route exact path='/profie/courier-info' component={Deliveyİnfo}/>
 </div>
 </div>

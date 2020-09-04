@@ -102,13 +102,23 @@ function searchName(e){
 
 const minPrize=(e)=>{
   let currentSort = {...sort};
-  currentSort.minPrize = e.target.value
+  console.log('minP',parseInt(e.target.value)>0)
+  if(parseInt(e.target.value)>0){
+    currentSort.minPrize = e.target.value
+  }else{
+    currentSort.minPrize=''
+  }
   setSort({...currentSort})
   fetchSortig(currentSort)
 }
 const maxPrize=(e)=>{
   let currentSort = {...sort};
-  currentSort.maxPrize = e.target.value
+  console.log('maxP',!Number(e.target.value)<0)
+  if(!Number(e.target.value)<0){
+    currentSort.maxPrize = e.target.value
+  }else{
+    currentSort.maxPrize=''
+  }
   setSort({...currentSort})
   fetchSortig(currentSort)
 }
@@ -145,7 +155,7 @@ function fetchSortig(sortdata) {
                 </div>
             </div>
             <br/>
-            <Datatable minPrizeSorting={minPrize} maxPrizeSorting={maxPrize} deleteProduct={deleteProduct} searchName={searchName} handleSelect={handleSelect}   thead ={th} td={td} tbody={product.data}/>
+            <Datatable minP={sort.minPrize} maxP={sort.maxPrize} minPrizeSorting={minPrize} maxPrizeSorting={maxPrize} deleteProduct={deleteProduct} searchName={searchName} handleSelect={handleSelect}   thead ={th} td={td} tbody={product.data}/>
         </div>
     )
 }

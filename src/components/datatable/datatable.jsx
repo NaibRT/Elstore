@@ -11,7 +11,7 @@ var $  = require( 'jquery' );
 var dt = require( 'datatables.net' );
 
 
-function Datatable({minPrizeSorting,maxPrizeSorting,thead,tbody,deleteProduct,handleSelect,searchName,td}) {
+function Datatable({minP,maxP,minPrizeSorting,maxPrizeSorting,thead,tbody,deleteProduct,handleSelect,searchName,td}) {
 
 
     const [category,setCategory] = useState({
@@ -56,11 +56,11 @@ function Datatable({minPrizeSorting,maxPrizeSorting,thead,tbody,deleteProduct,ha
                 <InputGroup onChange={searchName}  placeholder='Məhsul axtar' formIcon={require('../../assets/images/icons/search.svg')} />
                 <SelectBox class='datatable_selectbox' handleChange={handleSelect} value={category.category.id} options={category.category}/>
                 <label >
-                <span> Sıra aralığı:</span>
+                <span> Qiymət aralığı:</span>
                    <div className="moneydiv">
-                   <InputGroup onChange={minPrizeSorting} classinout='money_search' />
+                   <InputGroup min='0' type='number' value={minP} onChange={minPrizeSorting} classinout='money_search' />
                    <span>-</span>
-                   <InputGroup onChange={maxPrizeSorting} classinout='money_search'/>
+                   <InputGroup min='0' type='number' value={maxP}  onChange={maxPrizeSorting} classinout='money_search'/>
                    </div>
                 </label>
             </div>

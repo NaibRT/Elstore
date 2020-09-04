@@ -55,11 +55,11 @@ useEffect(() => {
   }
 
     const PagenationHandling=(e,prop)=>{
-      console.log(prop)
-      console.log(e.target)
+
       let filterQuery='';
       let sellerId='';
       let pageUrl=document.location.pathname;
+      
     if(pageUrl.includes('company')){
         sellerId=Object.keys(prop.match.params).length!==0
         ?prop.match.params.id:null;
@@ -111,7 +111,6 @@ useEffect(() => {
 
 
     const PagenationHandling1=(e)=>{
-      
       let url=UrlGenerator('az',`users/buyer/orders/0`)
  fetch(url,{
      method:"GET",
