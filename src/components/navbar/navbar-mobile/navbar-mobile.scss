@@ -5,6 +5,9 @@
 .navbar-mobile{
   display: none;
   box-shadow: 0 0px 5px #d6d6d6;
+  background-color: white;
+  transition: 0.5s;
+  z-index: 2;
 
   .navbar-mobile-top{
          background-color:#32478A;

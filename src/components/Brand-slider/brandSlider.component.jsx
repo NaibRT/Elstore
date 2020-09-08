@@ -57,7 +57,7 @@ class BrandSlider extends Component {
             }
         })
 
-        let url=UrlGenerator('az','get-products-for-popularity/1')
+        let url=UrlGenerator('az','search/product?filter[popularity]=1')
         Axios(url)
         .then(res=>{
             this.setState({
@@ -117,7 +117,7 @@ class BrandSlider extends Component {
             <section className="brand_slider_section">
                             <div className="brand_slider_title display__flex">
                              <h4>{this.props.name}</h4>
-                             <Link to="/trends">Daha çox</Link>
+                             <Link to="/trends">Hamsını gör</Link>
                             </div>
                             <div id="brandSlider" className="swiper-container">
                                 <div className="swiper-wrapper">

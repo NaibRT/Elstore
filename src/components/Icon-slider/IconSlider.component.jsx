@@ -51,10 +51,12 @@ export class IconSlider extends Component {
                                 {
                                     this.props.brands.map(x=>{
                                         return <div key={x.id} className="swiper-slide isic">
+                                        <Link style={{'textDecoration':'none','color':'black'}} to={`/search/filter[brand_id]=${x.id}`}>
                                         <div className="swiper_slide_image">
                                             <img src={x.logo} alt=""/>
-                                        </div>  
-                                        <Link style={{'textDecoration':'none','color':'black'}} to='/search'><p>{x.name}</p></Link>
+                                        </div>
+                                        </Link>  
+                                        <Link style={{'textDecoration':'none','color':'black'}} to={`/search/filter[brand_id]=${x.id}`}><p>{x.name}</p></Link>
                                     </div>
                                     })
                                 }

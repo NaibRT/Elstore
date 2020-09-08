@@ -18,7 +18,7 @@ function Profile() {
 
   const acceptOrder=(checkoutId)=>{
     console.log(checkoutId)
-    let url=UrlGenerator('az','checkout/setCourierToCheckout');
+    let url=UrlGenerator('az','users/courier/acceptcheckout');
     fetch(url,{
       method:'Post',
       body:JSON.stringify({
@@ -64,9 +64,9 @@ function Profile() {
   </div>
   <div className='row'>
   <div className='col-lg-12 col-xs-12'>
-  <Route exact path='/profile' render={()=><DeliverOrder status='0' linkFucn={acceptOrder} linkName='Sifarişi qəbul et'/>}/>
-  <Route exact path='/profie/courier-current-orders' render={()=><DeliverOrder status='1' linkFucn={declineOrder} linkName='Sifarişidən imtina et'/>}/>
-  <Route exact path='/profie/courier-completed-orders' render={()=><DeliverOrder status='2'/>}/>
+  <Route exact path='/profile' render={()=><DeliverOrder status='0' urlLink={'users/lastDayOrders'} linkFucn={acceptOrder} linkName='Sifarişi qəbul et'/>}/>
+  <Route exact path='/profie/courier-current-orders' render={()=><DeliverOrder status='1' urlLink={'users/courier/orders'} linkFucn={declineOrder} linkName='Sifarişidən imtina et'/>}/>
+  <Route exact path='/profie/courier-completed-orders' render={()=><DeliverOrder urlLink={'users/courier/orders'} status='2'/>}/>
   <Route exact path='/profie/courier-info' component={Deliveyİnfo}/>
 </div>
 </div>

@@ -27,7 +27,7 @@ function Profile(){
   <div className='row'>
   <div className='col-lg-3'>
    <Card className='card-border'>
-    <NavLink to='/profie/profile-info' exact><ListItem name='Info'/></NavLink>
+    <NavLink to='/profie/profile-info' exact><ListItem name='Şəxsi məlumatlar'/></NavLink>
     <NavLink to='/profile' exact><ListItem name='Sifarislerim'/></NavLink>
     <NavLink to='/profie/liked-product' exact><ListItem name='Bəyənilən məhsullar'/></NavLink>
     <NavLink to='/profie/favorit-shop' exact><ListItem name='Beyenilen Magazalar'/></NavLink>

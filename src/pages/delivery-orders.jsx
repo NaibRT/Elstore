@@ -141,7 +141,7 @@ function Row(props) {
 //   createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
 // ];
 
-export default function CollapsibleTable({linkName,linkFucn}) {
+export default function CollapsibleTable({status,urlLink,linkName,linkFucn}) {
 
  const [state, setState] = useState({
   data:[
@@ -252,21 +252,21 @@ export default function CollapsibleTable({linkName,linkFucn}) {
 })
    const AppContext=useContext(appContext);
 
-  // useEffect(()=>{
-  //     let url=UrlGenerator('az','users/lastDayOrders?status=0');
-  //     fetch(url,{
-  //       headers:{
-  //         'Authorization':`${AppContext.app.token.token_type} ${AppContext.app.token.access_token}`
-  //       }
-  //     })
-  //     .then(async res=>{
-  //       let data=await res.json();
-  //       console.log("bla",data)
-  //       setState({
-  //           data:data.data
-  //       })
-  //     }).catch(err=>console.log(err))
-  // },[])
+  useEffect(()=>{
+      let url=UrlGenerator('az',`${urlLink}?status=${status}`);
+      fetch(url,{
+        headers:{
+          'Authorization':`${AppContext.app.token.token_type} ${AppContext.app.token.access_token}`
+        }
+      })
+      .then(async res=>{
+        let data=await res.json();
+        console.log("bla",data)
+        setState({
+            data:data.data
+        })
+      }).catch(err=>console.log(err))
+  },[])
 
 const InverDirection={
  asc:'asc',
@@ -334,7 +334,7 @@ const sorts={
           ))}
         </TableBody>
       </Table>
-      <Pagination meta={state.meta} paginationHandling={paginationHandling}/>
+      <Pagination meta={state.meta&&state.meta} paginationHandling={paginationHandling}/>
     </TableContainer>
   );
 }

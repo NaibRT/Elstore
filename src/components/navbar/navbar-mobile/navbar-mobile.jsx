@@ -1,17 +1,17 @@
-import React, { useState, useContext, useRef } from 'react'
+import React, { useState, useContext, useRef, useEffect } from 'react'
 import './navbar-mobile.scss'
 import {appContext} from '../../../contexts/appContext';
 import {searchContext} from '../../../contexts/search'
 import {Link } from "react-router-dom";
 import LangToggler from "../../lang_currency_toggler/lang_currency_toggler";
 
-function NavbarMobile() {
+function NavbarMobile({ref,scrollEvent}) {
  const [toggle, setToggle] = useState({
   active: false,
   scrActive:false
   });
 
-   
+  const MobilenavbarRef = useRef()
   const mobileNavbarSrcRef = useRef();
   let   mobileNavbarSrcRefEvent = (active) =>{
    setToggle({
@@ -44,9 +44,14 @@ function NavbarMobile() {
 // window.onclick = function(event){
 //    document.querySelector(".mobile_notification_wrapper").classList.remove('show_dropDown');
 // }
+  
+  useEffect(()=>{
+     console.log(ref)
+     scrollEvent(MobilenavbarRef)
+  },[])
 
  return (
-  <div className='navbar-mobile'>
+  <div className='navbar-mobile' ref={MobilenavbarRef}>
      <div className='navbar-mobile-top'>
         <div className='navbar-mobile-top-container'>
                    <div className='navbar-mobile-top-left'>
@@ -54,9 +59,9 @@ function NavbarMobile() {
                     <Link className="navbar_top_link navbar_top_link--end " to='/open-store'>Mağaza aç</Link>
         </div>
          <div className='navbar-mobile-top-right'>
-            <div className='navbar_select'>
+{/*            <div className='navbar_select'>
                <LangToggler firstopt="Azərbaycan"/>
-            </div>
+ </div>*/}
         </div>
         </div>
      </div>

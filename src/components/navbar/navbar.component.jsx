@@ -1,4 +1,4 @@
-import React,{useState, useEffect,useContext} from 'react';
+import React,{useState, useEffect,useContext, useRef} from 'react';
 import './navbar.component.scss';
 import {useHistory,Link } from "react-router-dom";
 import {searchContext} from '../../contexts/search';
@@ -25,6 +25,8 @@ function  Navbar(props) {
     const [visiblepp,setVisiblepp] =useState(false);
     const AppContext=useContext(appContext);
     const History=useHistory();
+
+    const navbarRef = useRef()
 
     const CategoryContext = useContext(categoryContext)
 
@@ -191,7 +193,16 @@ function  Navbar(props) {
     },[])
 
 
-     
+    function scrollScreen(ref) {
+        window.addEventListener('scroll',function (e){ 
+            if(this.scrollY > 120){
+                ref.current.classList.add('navbar-scroll-pos');
+             }else{
+                ref.current.classList.remove('navbar-scroll-pos')
+             }
+             
+             })
+    }
     useEffect(() => {
         let body=document.getElementsByTagName('body')[0];
 
@@ -199,7 +210,8 @@ function  Navbar(props) {
             body.addEventListener("click",function(e){
                 setVisiblepp(visiblepp)
            })
-        
+
+           scrollScreen(navbarRef)
     }, []);
         
      
@@ -247,9 +259,10 @@ const loginRegister = <>
     </> 
 
     console.log(AppContext.app.user)
+
     return (
         <>
-        <div className='navbar'>
+        <div className='navbar' ref={navbarRef}>
             <div className='navbar_top'>
             <div className='navbar_top_container'>
                 <div className='left_navbar__top'>
@@ -262,7 +275,7 @@ const loginRegister = <>
                     <Link className="navbar_top_link" to='/worked-delivery'>Kuryer olmaq istəyirsiniz?</Link>
                     <Link className="navbar_top_link navbar_top_link--end " to='/open-store'>Mağaza aç</Link>
                     <div className='navbar_select'>
-                    <LangToggler firstopt="Azərbaycan"/>
+                    {/*<LangToggler firstopt="Azərbaycan"/>*/}
                     </div>
 
                 </div>
@@ -321,7 +334,7 @@ const loginRegister = <>
             </div>
             {/*------------------responsive nav*/}
         </div>
-        <NavbarMobile/>
+        <NavbarMobile scrollEvent={scrollScreen}/>
         </>
     )
 }
