@@ -23,9 +23,9 @@ function Modal() {
     data: [],
   });
   const AppContext = useContext(appContext);
-  const [position,setPositon] = useState({
-    name:'',
-    position:{}
+  const [position, setPositon] = useState({
+    name: '',
+    position: {}
   })
   useEffect(() => {
     AppContext.events.mobileSideBarOFF();
@@ -116,7 +116,7 @@ function Modal() {
   };
 
   const registerSubmit = (data) => {
-       console.log("blabla",data)
+    console.log("blabla", data)
     let url = UrlGenerator('az', 'auth/buyer/register');
     fetch(url, {
       headers: {
@@ -131,7 +131,7 @@ function Modal() {
           //AppContext.events.AddToken(data)
           swal({
             title: 'Əməliyyat yerinə yetirildi!',
-            text: 'Zəhmət olmasa mail ünvanınızı yoxlayın', 
+            text: 'Zəhmət olmasa mail ünvanınızı yoxlayın',
             icon: 'success',
             timer: 6000,
             button: 'Ok',
@@ -160,13 +160,13 @@ function Modal() {
     document.getElementById('reset-password-modal').classList.toggle('d-flex');
   };
 
-  const getPosition = (name,position) => {
-     setPositon({
-       name:name,
-       position:position,
-     })
+  const getPosition = (name, position) => {
+    setPositon({
+      name: name,
+      position: position,
+    })
   }
-   console.log(position)
+  console.log(position)
   return ReactDom.createPortal(
     <div id='login__modal' className='modal__bacground'>
       <div className='modal__view'>
@@ -233,8 +233,8 @@ function Modal() {
               })}
               helper={errors2.name && errors2.name.message}
             />
-             {/*<MapAutocomplete/>*/}
-              <TTAutoInput
+            {/*<MapAutocomplete/>*/}
+            <TTAutoInput
               name="location_name"
               getPosition={getPosition}
               validation={register2({
@@ -244,35 +244,35 @@ function Modal() {
                 }
               })}
               helper={errors2.address && errors2.address.message}
-              />
+            />
 
             <input
               name='address'
               type='hidden'
               value={position.name}
               ref={register2({
-                required:{
-                  value:true,
+                required: {
+                  value: true,
                   message: 'adres daxil etməlisiniz',
                 }
               })}
             />
             <input
-            name='lat'
-            type='hidden'
-            value={position.position.lat}
-            ref={register2({
-              required:true
-            })}
-          />
+              name='lat'
+              type='hidden'
+              value={position.position.lat}
+              ref={register2({
+                required: true
+              })}
+            />
             <input
-            name='lng'
-            type='hidden'
-            value={position.position.lon}
-            ref={register2({
-              required:true
-            })}
-          />  
+              name='lng'
+              type='hidden'
+              value={position.position.lon}
+              ref={register2({
+                required: true
+              })}
+            />
             <Input
               id='reg_name'
               name='surname'
@@ -290,15 +290,16 @@ function Modal() {
               })}
               helper={errors2.surname && errors2.surname.message}
             />
-             
+
             <Input
               id='reg_name'
               name='phones[phone]'
               type='number'
               placeholder='Telefon'
               register={register2({
-                required: { 
-                  value: true, message: 'Telefon daxil etməlisiniz'},
+                required: {
+                  value: true, message: 'Telefon daxil etməlisiniz'
+                },
                 maxLength: {
                   value: 255,
                   message: 'maksimum  255 simvol qeyd oluna bilər',
