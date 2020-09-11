@@ -10,10 +10,14 @@ import swal from 'sweetalert';
 import UrlGenerator from '../../services/url-generator';
 import GoBack from '../go-back/go-back.component';
 import { useHistory } from 'react-router-dom';
-import SelectBox from '../Select-box/SelectBox.component';
-import GoogleMapAutoComplete from '../GoogleMapAutoComplete/GoogleMapAutoComplete';
+import TTAutoInput from '../tomtom-autocomplete-input/tt-autocomplete-input'
 
 const StoreRegistr = (props) => {
+  
+  const [position,setPositon] = useState({
+    name:'',
+    position:{}
+  })
 
   useEffect(()=>{
     AppContext.events.mobileSideBarOFF()
@@ -62,7 +66,6 @@ const StoreRegistr = (props) => {
 
   const registerSubmit = (data) => {
     let url = UrlGenerator('az', `auth/company/register`);
-    console.log(data);
     fetch(url, {
       headers: {
         'Content-Type': 'application/json',
@@ -82,7 +85,6 @@ const StoreRegistr = (props) => {
         }
       })
       .catch((err) => console.log(err));
-    console.log(errors2.email);
   };
 
   const [cities, setCities] = useState({
@@ -108,6 +110,13 @@ const StoreRegistr = (props) => {
       .then((response) => response.json())
       .then((data) => setVillages({ data: data }));
   }
+
+  const getPosition = (name,position) => {
+    setPositon({
+      name:name,
+      position:position,
+    })
+ }
   useEffect(() => {
     let url = UrlGenerator('az', 'cities');
     fetch(url)
@@ -199,7 +208,7 @@ const StoreRegistr = (props) => {
                 <Input
                   name='phones[phone]'
                   type='tel'
-                  placeholder='0707000007'
+                  placeholder='+994707000007'
                   register={register2({
                     required: {
                       value: true,
@@ -219,16 +228,52 @@ const StoreRegistr = (props) => {
                 <p>Ünvan</p>
               </div>
               <div className='select__city'>
-                <Selectbox
+   {/*             <Selectbox
                   register={register2({
-                    required: { value: true, value: 'can not be null' },
+                    required: { value: true, message: 'can not be null' },
                   })}
                   name='city_id'
                   firstopt='Şəhər'
                   handleChange={takeSelectboxValue}
                   class='selectboxcheckout'
                   options={cities.data.data}
+                />*/}
+                <TTAutoInput
+                name="location_name"
+                getPosition={getPosition}
+                validation={register2({
+                  required: {
+                    value: true,
+                    message: 'adres daxil etməlisiniz',
+                  }
+                })}
+                helper={errors2.address && errors2.address.message}
                 />
+  
+              <input
+                name='address'
+                type='hidden'
+                value={position.name}
+                ref={register2({
+                  required: { value: true, message: 'Adresinizi daxil edin' },
+                })}
+              />
+              <input
+              name='lat'
+              type='hidden'
+              value={position.position.lat}
+              ref={register2({
+                required:true
+              })}
+            />
+              <input
+              name='lng'
+              type='hidden'
+              value={position.position.lon}
+              ref={register2({
+                required:true
+              })}
+            />  
               </div>
               <br />
 
@@ -236,7 +281,7 @@ const StoreRegistr = (props) => {
                 <div className='select__city' id='region'>
                   <Selectbox
                   register={register2({
-                    required: { value: true, value: 'can not be null' },
+                    required: { value: true, message: 'can not be null' },
                   })}
                     firstopt='Rayon'
                     handleChange={takeSelectboxValue1}
@@ -263,7 +308,7 @@ const StoreRegistr = (props) => {
 
               <br />
 
-              <div className='select__city'>
+{/*              <div className='select__city'>
                 <Input
                   name='address'
                   type='text'
@@ -274,7 +319,7 @@ const StoreRegistr = (props) => {
                   })}
                   helper={errors2.name && errors2.name.message}
                 />
-              </div>
+                </div>*/}
                  
                    <Button className='registr__button ' name='Davam Et' />
                  

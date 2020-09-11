@@ -116,6 +116,7 @@ function Modal() {
   };
 
   const registerSubmit = (data) => {
+       console.log("blabla",data)
     let url = UrlGenerator('az', 'auth/buyer/register');
     fetch(url, {
       headers: {
@@ -130,7 +131,7 @@ function Modal() {
           //AppContext.events.AddToken(data)
           swal({
             title: 'Əməliyyat yerinə yetirildi!',
-            text: 'Zəhmət olmasa mail ünvanınızı yoxlayın',
+            text: 'Zəhmət olmasa mail ünvanınızı yoxlayın', 
             icon: 'success',
             timer: 6000,
             button: 'Ok',
@@ -165,7 +166,7 @@ function Modal() {
        position:position,
      })
   }
-
+   console.log(position)
   return ReactDom.createPortal(
     <div id='login__modal' className='modal__bacground'>
       <div className='modal__view'>
@@ -233,7 +234,8 @@ function Modal() {
               helper={errors2.name && errors2.name.message}
             />
              {/*<MapAutocomplete/>*/}
-              <TTAutoInput 
+              <TTAutoInput
+              name="location_name"
               getPosition={getPosition}
               validation={register2({
                 required: {
@@ -241,8 +243,36 @@ function Modal() {
                   message: 'adres daxil etməlisiniz',
                 }
               })}
-              helper={errors2.name && errors2.name.message}
+              helper={errors2.address && errors2.address.message}
               />
+
+            <input
+              name='address'
+              type='hidden'
+              value={position.name}
+              ref={register2({
+                required:{
+                  value:true,
+                  message: 'adres daxil etməlisiniz',
+                }
+              })}
+            />
+            <input
+            name='lat'
+            type='hidden'
+            value={position.position.lat}
+            ref={register2({
+              required:true
+            })}
+          />
+            <input
+            name='lng'
+            type='hidden'
+            value={position.position.lon}
+            ref={register2({
+              required:true
+            })}
+          />  
             <Input
               id='reg_name'
               name='surname'
