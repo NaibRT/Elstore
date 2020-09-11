@@ -127,16 +127,16 @@ function fetchSortig(sortdata) {
   let url=UrlGenerator('az',`search/product?`)
   console.log("sortdata.name",sortdata.name)
   if(sortdata.name!==''){
-     url+=`filter[product_name]=${sortdata.name}&`
+     url+=`filter[title]=${sortdata.name}&`
   }
   if(sortdata.category!==''){
     url+=`filter[category_id]=${sortdata.category}&`
   }
   if(sortdata.minPrize!==''){
-    url+=`filter[minPrize]=${sortdata.minPrize}&`
+    url+=`filter[min_price]=${sortdata.minPrize}&`
   }
   if(sortdata.maxPrize!==''){
-    url+=`filter[maxPrize]=${sortdata.maxPrize}`
+    url+=`filter[max_price]=${sortdata.maxPrize}`
   }
   axios.get(url)
   .then(res => {

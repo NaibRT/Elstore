@@ -11,6 +11,8 @@ function Search(props) {
   let AppContext = useContext(appContext);
   let SearchContext = useContext(searchContext);
   const [key,setKey] = useState('')
+
+  
   function clickHandler(e) {
     console.log(e.target.checked);
     let pageUrl = window.location.pathname;
@@ -158,6 +160,8 @@ function Search(props) {
         ? `&filter[order]=${e.target.value}`
         : `filter[order]=${e.target.value}`;
     console.log(filterQuery);
+
+    filterQuery +=`&${key}`;
     let url = UrlGenerator('az', `search/product?${filterQuery}`);
     fetch(url)
       .then(async (res) => {

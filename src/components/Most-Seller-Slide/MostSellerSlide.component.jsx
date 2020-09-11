@@ -15,7 +15,7 @@ export class MostSellerSlide extends Component {
         }
     }
     componentDidMount(){
-        let url=UrlGenerator('az','get-products-for-popularity/0')
+        let url=UrlGenerator('az','search/product?filter[popularity]=0')
         Axios(url).then(res=>{
             console.log(res.data)
             this.setState({
@@ -117,7 +117,7 @@ export class MostSellerSlide extends Component {
             <section className="most_seller_slider_section">
                             <div className="most_slider_title display__flex">
                              <h4>{this.props.name}</h4>
-                             <Link to="/mostsellers/">Hamsını gör</Link>
+                             <Link to="/mostsellers/filter[popularity]=0">Hamsını gör</Link>
                             </div>
                             <div id="mostSlider" className="swiper-container">
                                 <div className="swiper-wrapper">

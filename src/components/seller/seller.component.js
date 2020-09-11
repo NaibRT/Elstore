@@ -5,7 +5,14 @@ import './seller.scss';
 import { Link } from 'react-router-dom';
 
 function Seller({seller}){
-      
+  let stars=[];
+  if(seller!=undefined){
+      console.log('saalm',seller.store.rating)
+      for (let index = 0; index < seller.store.avg_rating; index++) {
+           stars.push(<img src={require('../../assets/images/heading/iconka.svg')} alt=""/>)   
+      }
+  }
+      console.log('seller',seller)
     return (
             <React.Fragment>
             <div className="box_1">
@@ -15,7 +22,7 @@ function Seller({seller}){
                                 <img src={seller!==undefined?seller.store.logo:null} alt=""/>
                                 </span>
                                 <div className="texture"><div className="text_1"><h2>{seller!==undefined?seller.name:null}</h2></div>
-                                <Chips rating="(0 rəy)" store="0" />
+                                <Chips store={seller&&seller.store} />
                                 </div>                               
                                 </div>                                                           
                                         <div className="line display__flex">
@@ -23,7 +30,7 @@ function Seller({seller}){
                                                      <br />   
                                         <div className="line__right display__flex">
                                                         {/*<h3>əlaqə</h3>*/}
-                                                        {/*<img src={require(`../../assets/images/heading/Chevron.svg`)} alt=""/>*/}
+                                                        
                                                         </div>
                                         </div>
                                            <div className="border__hr"></div> 

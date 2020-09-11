@@ -1,61 +1,38 @@
-import React,{useContext,Component} from 'react';
+import React,{useEffect} from 'react';
 import './chips.style.scss';
 
 
 
-class Chips extends Component{
-
-    constructor(){
-        super();
-        this.state={
-            stars:[]
+function Chips({store}){
+    let stars=[];
+    if(store!=undefined){
+        console.log('saalm',store.avg_rating)
+        for (let index = 0; index < store.avg_rating; index++) {
+             stars.push(<img src={require('../../assets/images/heading/iconka.svg')} alt=""/>)   
         }
     }
-
-    componentDidMount(){
-        // axios.get(`http://139.180.144.49/api/v1/az/products`)
-        // .then(res=>{
-        //     this.setState(this.state.stars = res.data.data);
-        console.log(this.props.stars)
-        // })
-    }
-
-    render(){
-        let stars=[];
-          if(this.props.stars!=undefined){
-              for (let index = 0; index < this.props.stars; index++) {
-                   stars.push(<img src={require('../../assets/images/heading/iconka.svg')} alt=""/>)   
-              }
-          }
-          console.log(stars)
+        useEffect(()=>{
+        },[])
         return(
             <React.Fragment>
                     <div className="star__chips display__flex">
                     
                      <div className="star__text display__flex"> 
                              {stars}
-                            <h2>{this.props.rating}</h2>
                             <span className="right-line">
                             <img src={require('../../assets/images/heading/Divider.svg')} alt=""/>
                             </span>
                         </div>
 
                         <div className="heart__text display__flex">
-                                             
                         <img src={require('../../assets/images/heading/Union.svg')} alt=""/>                                          
-                        <h2>{this.props.store}</h2>
-                    </div>
-                     
-                                   
+                        <h2>{store!==undefined&&store.likes}</h2>
+                    </div>            
                     </div>
                     </React.Fragment>  
         
 
                         )   }
-}
-
-
-
 
 
 export default Chips;

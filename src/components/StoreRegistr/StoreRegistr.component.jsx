@@ -59,6 +59,7 @@ const StoreRegistr = (props) => {
   //    }
 
   const AppContext = useContext(appContext);
+
   const registerSubmit = (data) => {
     let url = UrlGenerator('az', `auth/company/register`);
     console.log(data);
@@ -234,6 +235,9 @@ const StoreRegistr = (props) => {
               {region.data.data != undefined && region.data.data.length > 0 ? (
                 <div className='select__city' id='region'>
                   <Selectbox
+                  register={register2({
+                    required: { value: true, value: 'can not be null' },
+                  })}
                     firstopt='Rayon'
                     handleChange={takeSelectboxValue1}
                     class='selectboxcheckout'

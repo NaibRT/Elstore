@@ -9,6 +9,7 @@ import { appContext } from '../contexts/appContext';
 import { searchContext } from '../contexts/search';
 import SearchResultComp from '../components/search-result-component/SearchResultComp.component';
 import SearchResultFilt from '../components/Search-reasult-page/SearchResult.component'
+import Chips from '../components/chips/chips.component'
 
 
 function ProfileShopHome(props) {
@@ -46,6 +47,7 @@ function ProfileShopHome(props) {
        
                       }).catch(err=>console.log(err))
             },[])
+            
             const selectHandle = (e) => {
                 let pageUrl = window.location.pathname;
                 let filterQuery = '';
@@ -329,8 +331,8 @@ function ProfileShopHome(props) {
                             <div className="middle_side_text__content">
                                     <h4>{product.store!==undefined?product.name:null}</h4>
                                     <p>{product.store!==undefined?product.store.description:null}</p>
-                                    {/*<Chips />
-                                    <ButtonRating name='Yuksek rating' icon={require('../assets/images/icons/star.svg')} class='bg-gold'/>*/}
+                                    <Chips store={product.store}/>
+                                    <ButtonRating name='Yuksek rating' icon={require('../assets/images/icons/star.svg')} class='bg-gold'/>
                             </div>
                             <div className="right_side">
                                 <div className="right_side__content">

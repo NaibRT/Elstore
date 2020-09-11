@@ -3,7 +3,7 @@ import './InputGroup.styles.scss';
 
 
 
-function InputGroup({cls,onfocus,id,disabled,required,type,label,helper,countertext,min, max,name,formIcon,placeholder,otherProps,onChange,register,classinout,value}) {
+function InputGroup({cls,onfocus,onKeyDown,id,disabled,required,type,label,helper,countertext,min, max,name,formIcon,placeholder,otherProps,onChange,register,classinout,value}) {
 
     return (
         <div  className={`inputForm ${cls}`}>
@@ -13,7 +13,8 @@ function InputGroup({cls,onfocus,id,disabled,required,type,label,helper,countert
             id={id} 
             onFocus={onfocus} 
             disabled={disabled} 
-            onChange={onChange} 
+            onChange={onChange}
+            onKeyDown={onKeyDown} 
             required={required} 
             name={name} 
             min={min}  

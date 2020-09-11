@@ -20,8 +20,6 @@ function App() {
               <Header />
               <br />
               <br />
-              <br />
-              <br />
               <Main />
               <br />
               <br />

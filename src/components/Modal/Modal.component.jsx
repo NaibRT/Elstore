@@ -9,6 +9,8 @@ import swal from 'sweetalert';
 import { useForm } from 'react-hook-form';
 import { appContext } from '../../contexts/appContext';
 import Form from '../form/form.component';
+import MapAutocomplete from '../GoogleMapAutoComplete/GoogleMapAutoComplete'
+import TTAutoInput from '../tomtom-autocomplete-input/tt-autocomplete-input'
 
 function Modal() {
   const { register, handleSubmit, errors } = useForm();
@@ -21,7 +23,10 @@ function Modal() {
     data: [],
   });
   const AppContext = useContext(appContext);
-
+  const [position,setPositon] = useState({
+    name:'',
+    position:{}
+  })
   useEffect(() => {
     AppContext.events.mobileSideBarOFF();
   });
@@ -55,10 +60,6 @@ function Modal() {
     border__size.style.border = '2px solid #6472B8';
     border__size_active.style.border = '2px solid #D0D0D0';
   }
-  //  function emaliValidation(email){
-  //     const re = ;
-  //     return re.test(email);
-  //  }
 
   useEffect(() => {
     let body = document.getElementsByTagName('body')[0];
@@ -158,6 +159,13 @@ function Modal() {
     document.getElementById('reset-password-modal').classList.toggle('d-flex');
   };
 
+  const getPosition = (name,position) => {
+     setPositon({
+       name:name,
+       position:position,
+     })
+  }
+
   return ReactDom.createPortal(
     <div id='login__modal' className='modal__bacground'>
       <div className='modal__view'>
@@ -224,7 +232,17 @@ function Modal() {
               })}
               helper={errors2.name && errors2.name.message}
             />
-
+             {/*<MapAutocomplete/>*/}
+              <TTAutoInput 
+              getPosition={getPosition}
+              validation={register2({
+                required: {
+                  value: true,
+                  message: 'adres daxil etməlisiniz',
+                }
+              })}
+              helper={errors2.name && errors2.name.message}
+              />
             <Input
               id='reg_name'
               name='surname'
@@ -242,7 +260,7 @@ function Modal() {
               })}
               helper={errors2.surname && errors2.surname.message}
             />
-
+             
             <Input
               id='reg_name'
               name='phones[phone]'

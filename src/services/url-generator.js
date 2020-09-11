@@ -1,5 +1,4 @@
 import {URL as DEV_URL,API_VERSION as DEV_API_VERSION} from '../config/enviroment/development'
-import {URL as PRO_URL,API_VERSION as PRO_API_VERSION} from '../config/enviroment/development'
 
 
 export default function UrlGenerator(lang,source){

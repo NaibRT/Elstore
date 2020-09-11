@@ -79,15 +79,17 @@ function CheckoutThird(props) {
             ]
         };
 
-        order.products=AppContext.basket.map(x=>{
+         let products=AppContext.basket.map(x=>{
             return {id:x.id,count:x.count,product_price:x.price}
         })
-
+        order.products=JSON.stringify(products);
+        let data = JSON.stringify(order);
+        console.log(data)
         let url=UrlGenerator('az','checkout');
         let token=AppContext.events.getToken();
         fetch(url,{
             method:'Post',
-            body:JSON.stringify(order),
+            body:data,
             headers:{
                 'Authorization':`${token.token_type} ${token.access_token}`,
                 'Content-Type':'application/json'
@@ -95,6 +97,7 @@ function CheckoutThird(props) {
         })
         .then(async res=>{
             let data=await res.json();
+            console.log(res.ok)
             if(res.ok){
                 let data=await res.json();
                 History.push('/order-check')

@@ -33,7 +33,7 @@ function ProductInfo(props) {
       })
       .catch(err=>console.log(err))
   },[])
-
+  console.log('product',product)
  return (
   <section>
     <div className="slider_container container">
@@ -55,8 +55,9 @@ function ProductInfo(props) {
              <Link style={{'textDecoration':'none'}} to={`/basket/${product.id}`}><Button className="btn-buy-now txt--light" name='Indi Al'/></Link>
              </ButtonGroup>         
              <Delivery/>
-             <Seller seller={product.seller}/>
+             <Seller  seller={product.seller&&product.seller}/>
 
+             
          </div>
         </div>
         </div>
