@@ -193,7 +193,8 @@ function  Navbar(props) {
     },[])
 
 
-    function scrollScreen(ref) {
+    function scrollScreen(ref){
+        console.log(ref.current)
         window.addEventListener('scroll',function (e){ 
             if(this.scrollY > 120){
                 ref.current.classList.add('navbar-scroll-pos');

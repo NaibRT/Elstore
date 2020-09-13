@@ -87,10 +87,10 @@ function BuyerOrders() {
     </div>
     <br/>
   <section id='current-order-section'>
-     <OrderCard orders={currentOrders}/>
+     <OrderCard status={0} orders={currentOrders}/>
   </section>
   <section id='old-order-section'>
-    <OrderCard orders={oldOrders}/>
+    <OrderCard status={2} orders={oldOrders}/>
   </section>
 
 

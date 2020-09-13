@@ -27,18 +27,18 @@ function Profile(){
   <div className='row'>
   <div className='col-lg-3'>
    <Card className='card-border'>
-    <NavLink to='/profie/profile-info' exact><ListItem name='Şəxsi məlumatlar'/></NavLink>
-    <NavLink to='/profile' exact><ListItem name='Sifarislerim'/></NavLink>
-    <NavLink to='/profie/liked-product' exact><ListItem name='Bəyənilən məhsullar'/></NavLink>
-    <NavLink to='/profie/favorit-shop' exact><ListItem name='Beyenilen Magazalar'/></NavLink>
+    <NavLink to='/profile' exact><ListItem name='Şəxsi məlumatlar'/></NavLink>
+    <NavLink to='/profile/orders' exact><ListItem name='Sifarislerim'/></NavLink>
+    <NavLink to='/profile/liked-product' exact><ListItem name='Bəyənilən məhsullar'/></NavLink>
+    <NavLink to='/profile/favorit-shop' exact><ListItem name='Beyenilen Magazalar'/></NavLink>
    </Card>
   </div>
   <div className='col-lg-9'>
   <br/>
-    <Route exact path='/profile' component={Orders}/>
-    <Route exact  path='/profie/liked-product' component={LikedProducts}/>
-    <Route exact  path='/profie/favorit-shop' component={FavoritBrandShops}/>
-    <Route path='/profie/profile-info' component={ProfileInfo}/>
+    <Route exact path='/profile/orders' component={Orders}/>
+    <Route exact  path='/profile/liked-product' component={LikedProducts}/>
+    <Route exact  path='/profile/favorit-shop' component={FavoritBrandShops}/>
+    <Route exact path='/profile' component={ProfileInfo}/>
     <Route path='/company/:id/:name' component={ProfileShopeHome}/>
     <Route path='/product/:id/:name' component={ProductInfo}/>
   </div>

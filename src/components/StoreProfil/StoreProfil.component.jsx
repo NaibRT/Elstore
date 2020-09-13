@@ -6,11 +6,14 @@ import swal from 'sweetalert';
 import Input from '../InputGroup/InputGroup.component';
 import { appContext } from '../../contexts/appContext';
 import UrlGenerator from '../../services/url-generator';
+import TTAutoInput from '../../components/tomtom-autocomplete-input/tt-autocomplete-input'
+import { data } from 'jquery';
 
 const StoreProfil = () => {
   const [update, setUpdate] = useState([]);
 
   const [newupdate, setNewUpdate] = useState({});
+
   const [adress, setAdress] = useState([
       {
           cityAdress:'Baki Sheheri'
@@ -28,6 +31,9 @@ const StoreProfil = () => {
       old_password: '',
       password: '',
       email: '',
+      address:'',
+      lat:'',
+      lng:''
     },
   });
 
@@ -208,6 +214,15 @@ const StoreProfil = () => {
     });
   }
 
+   const getPosition = (name, position) => {
+    setNewUpdate({
+      ...newupdate,
+        address:name,
+        lat:position.lat,
+        lng:position.lon
+    })
+  }
+
   const onFo = (event) => {
     if (event.target.autocomplete) {
       event.target.autocomplete = 'whatever';
@@ -312,6 +327,22 @@ console.log('citypcitypcitypcityp',inputp)
               </div>
               <div className='borders'></div>
             </div>
+            <div className='profile--image_Username' >
+            <div className='userName_edit'>
+            <h5>Adres</h5>
+          </div>
+            <TTAutoInput
+            style={{'width':'300px'}}
+            name="location_name"
+            getPosition={getPosition}
+            validation={register({
+              required: {
+                value: true,
+                message: 'adres daxil etməlisiniz',
+              }
+            })}
+          />
+            </div>
             <div className='profile--image_Username pass '>
               <div className='userName_edit'>
                 <h5>Şİfrə</h5>
@@ -378,7 +409,7 @@ console.log('citypcitypcitypcityp',inputp)
             name='Hesabi sil'
           />
         </div>
-        <div className='col-lg-6 col-md-12 col-xs-12'>
+{/*        <div className='col-lg-6 col-md-12 col-xs-12'>
           <div id='Adress__Data'>
             <div className='delivery_mapping'>
               <div className='delivery__heading'>
@@ -386,11 +417,10 @@ console.log('citypcitypcitypcityp',inputp)
               </div>
               <div className='delivery__heading'>
                 <button onClick={handleUpdate}>Düzəliş et</button>
-                <button>Sil</button>
               </div>
               <div className='delivery__edit'>
                 {/* <a href="">Düzəliş et</a>
-                                    <a href="">Sil</a> */}
+                                    <a href="">Sil</a> 
               </div>
             </div>
             
@@ -400,7 +430,7 @@ console.log('citypcitypcitypcityp',inputp)
             </div>
             <Button type='submit' name='Yadda saxla' style={{display: "none"}} />
           </div>
-        </div>
+                                  </div>*/}
       </div>
     </div>
   );

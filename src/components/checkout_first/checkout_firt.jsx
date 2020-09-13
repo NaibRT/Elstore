@@ -11,6 +11,7 @@ import {appContext} from '../../contexts/appContext'
 import UrlGenerator from '../../services/url-generator'
 import TextArea from '../textarea/textarea'
 import Button from '../button/button.component';
+import TTAutoInput from '../tomtom-autocomplete-input/tt-autocomplete-input'
 
 function CheckoutFrist(props) {
     const AppContext=useContext(appContext)
@@ -199,6 +200,19 @@ function CheckoutFrist(props) {
           })
     }
 
+    const getPosition = (name, position) => {
+        console.log("position",position)
+        AppContext.events.setTotal({
+            ...AppContext.total,
+            user:{
+                ...AppContext.total.user,
+                address:name,
+                lat:position.lat,
+                lng:position.lon
+            } 
+          })
+      }
+
     function secoundAddres(e) {
         AppContext.events.setTotal({
             ...AppContext.total,
@@ -208,7 +222,7 @@ function CheckoutFrist(props) {
             } 
           })
     }
-    
+     console.log("total",AppContext.total)
     return (
         
         <>
@@ -263,14 +277,26 @@ function CheckoutFrist(props) {
             <Card.Header name='Çatdırılma ünvanı' />
                 <div className='row'>
                     <div className='col-sm-12 col-lg-6'>
-                        <Selectbox firstopt='Şəhərlər' handleChange={getRegions} class='selectboxcheckout' options={cities.data.data} />
+                    <TTAutoInput
+                    id="input__checks5"
+                    name="location_name"
+                    getPosition={getPosition}
+                    validation={register({
+                      required: {
+                        value: true,
+                        message: 'adres daxil etməlisiniz',
+                      }
+                    })}
+                    helper={errors.address && errors.address.message}
+                  />
+{/*                        <Selectbox firstopt='Şəhərlər' handleChange={getRegions} class='selectboxcheckout' options={cities.data.data} />
                         <br/>
                         <Selectbox handleChange={regionEventHandler} firstopt='Region' class='selectboxcheckout' options={region.data.data} />
                         <br/>
                         <Selectbox handleChange={villageEventHandler}  class='selectboxcheckout' options={village.data.data} />
                         <br/>
                         <br/>
-                        <InputGroup id="input__checks5" value={AppContext.app.user&&AppContext.app.user.address} onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />
+                        <InputGroup id="input__checks5" value={AppContext.app.user&&AppContext.app.user.address} onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />*/}
                     </div>
                     <div className='col-lg-6 col-sm-12'></div>
                 </div>

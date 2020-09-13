@@ -78,8 +78,8 @@ const StoreRegistr = (props) => {
         if (res.ok) {
           // AppContext.events.AddToken(data)
           history.push('/');
-          //swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı!", "success");
-          document.getElementById('login__modal').style.display = 'block';
+          swal("Təbriklər", "Qeydiyyatınız uğurla tamamlandı! Zəhmət olmasa emailinizi yoxlayin!", "success");
+          //document.getElementById('login__modal').style.display = 'block';
         } else {
           swal('Təəssüflər', `${data.error}`, 'error');
         }

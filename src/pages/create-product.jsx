@@ -52,6 +52,9 @@ function CreateProduct(props) {
     product_brand_id: '',
     discount: '',
     product_delivery_price: '',
+  });
+
+  const [description,setDescription] = useState({
     az: {
       product_name: '',
       product_description: '',
@@ -64,7 +67,7 @@ function CreateProduct(props) {
       product_name: '',
       product_description: '',
     },
-  });
+  })
 
   useEffect(() => {
     let categories = '';
@@ -119,14 +122,14 @@ function CreateProduct(props) {
         product.product_price = data.data.product_price;
         product.product_delivery_price = data.data.product_delivery_price;
         product.discount = data.data.discount;
-        product['az'].product_name = data.translates.az.product_name;
-        product['az'].product_description =
+        description['az'].product_name = data.translates.az.product_name;
+        description['az'].product_description =
           data.translates.az.product_description;
-        product['en'].product_description =
+          description['en'].product_description =
           data.translates.en.product_description;
-        product['en'].product_name = data.translates.en.product_name;
-        product['ru'].product_name = data.translates.ru.product_name;
-        product['ru'].product_description =
+          description['en'].product_name = data.translates.en.product_name;
+          description['ru'].product_name = data.translates.ru.product_name;
+          description['ru'].product_description =
           data.translates.ru.product_description;
       });
     }
@@ -180,9 +183,9 @@ function CreateProduct(props) {
 
   const getName_az = (e) => {
     //let lang=e.target.closest('.pro-name').getAttribute('data-lang');
-    let newProduct = product;
+    let newProduct = description;
     newProduct.az.product_name = e.target.value;
-    setProduct({
+    setDescription({
       ...newProduct,
     });
     //product['az'].product_name=e.target.value;
@@ -190,46 +193,47 @@ function CreateProduct(props) {
 
   const getName_en = (e) => {
     //let lang=e.target.closest('.pro-name').getAttribute('data-lang');
-    let newProduct = product;
+    let newProduct = description;
     newProduct.en.product_name = e.target.value;
-    setProduct({
+    setDescription({
       ...newProduct,
     });
   };
 
   const getName_ru = (e) => {
     //let lang=e.target.closest('.pro-name').getAttribute('data-lang');
-    let newProduct = product;
+    let newProduct = description;
     newProduct.ru.product_name = e.target.value;
-    setProduct({
+    setDescription({
       ...newProduct,
     });
     //product['ru'].product_name=e.target.value;
   };
 
-  const getDescription_az = (e) => {
+  const getDescription_az = (state,e) => {
     //product['az'].product_description=e
-    let newProduct = product;
+    let newProduct = description;
     newProduct.az.product_description = e;
-    setProduct({
+    console.log('after',newProduct)
+    setDescription({
       ...newProduct,
     });
   };
 
   const getDescription_en = (e) => {
     //product['en'].product_description=e
-    let newProduct = product;
+    let newProduct = description;
     newProduct.en.product_description = e;
-    setProduct({
+    setDescription({
       ...newProduct,
     });
   };
 
   const getDescription_ru = (e) => {
     //product['ru'].product_description=e
-    let newProduct = product;
+    let newProduct = description;
     newProduct.ru.product_description = e;
-    setProduct({
+    setDescription({
       ...newProduct,
     });
   };
@@ -318,19 +322,19 @@ function CreateProduct(props) {
     // newFormData.append('images[]',images)
     newFormData.append(
       'az[product_description]',
-      product.az['product_description']
+      description.az['product_description']
     );
-    newFormData.append('az[product_name]', product.az['product_name']);
+    newFormData.append('az[product_name]', description.az['product_name']);
     newFormData.append(
       'en[product_description]',
-      product.en['product_description']
+      description.en['product_description']
     );
-    newFormData.append('en[product_name]', product.en['product_name']);
+    newFormData.append('en[product_name]', description.en['product_name']);
     newFormData.append(
       'ru[product_description]',
-      product.ru['product_description']
+      description.ru['product_description']
     );
-    newFormData.append('ru[product_name]', product.ru['product_name']);
+    newFormData.append('ru[product_name]', description.ru['product_name']);
     newFormData.append('product_category_id', product.product_category_id);
     newFormData.append('product_brand_id', product.product_brand_id);
     newFormData.append('discount', product.discount);
@@ -395,6 +399,7 @@ function CreateProduct(props) {
     setImageURLs([]);
   };
   console.log(product);
+  console.log(description);
   return (
     <div className='container-fluid'>
       <Card>
@@ -406,7 +411,6 @@ function CreateProduct(props) {
               <Tab clas='pro-name' id='name'>
                 <Tab.Page id='az-name' clas='pro-name' lang='az'>
                   <InputGroup
-                    value={product.az.product_name}
                     name='produc_name'
                     register={register({
                       required: {
@@ -428,7 +432,6 @@ function CreateProduct(props) {
                   lang='en'
                 >
                   <InputGroup
-                    value={product.en.product_name}
                     label='Product Name'
                     onChange={getName_en}
                     type='text'
@@ -442,7 +445,6 @@ function CreateProduct(props) {
                   lang='ru'
                 >
                   <InputGroup
-                    value={product.ru.product_name}
                     label='Product Name'
                     onChange={getName_ru}
                     type='text'
@@ -459,14 +461,12 @@ function CreateProduct(props) {
                 name='brands'
                 firstopt="Seçin"
                 options={brands}
-                value={product.product_brand_id}
               />
               <SelectBox
                 register={register({
                   required: { value: true, message: 'kateqorya məcburidir' },
                 })}
                 label='Kateqoriyalar'
-                value={product.product_category_id}
                 handleChange={getCataegory}
                 name='categoriya'
                 firstopt="Seçin"
@@ -479,7 +479,6 @@ function CreateProduct(props) {
                   handleChange={getSubCataegory}
                   name='subcategory'
                   options={subcat}
-                  value={product.product_category_id}
                 />
               ) : null}
               {childcat.length > 1 ? (
@@ -488,12 +487,10 @@ function CreateProduct(props) {
                   handleChange={getChildCataegory}
                   name='subcategory'
                   options={childcat}
-                  value={product.product_category_id}
                 />
               ) : null}
 
               <InputGroup
-                value={product.product_price}
                 register={register({
                   required: {
                     value: true,
@@ -510,7 +507,6 @@ function CreateProduct(props) {
                 name='price'
               />
               <InputGroup
-                value={product.discount}
                 label='Endirim Faizi(%)'
                 min='0'
                 max='95'
@@ -523,12 +519,12 @@ function CreateProduct(props) {
               <Tab clas='pro-desc'  style={{position: 'relative', bottom: '18px'}}  id='desc'>
                 <Tab.Page id='az-desc' clas='pro-desc' lang='az'>
                   <JoditEditor
-                    value={product.az.product_description}
+                    value={description.az.product_description}
                     name='product_description'
                     ref={register({
                       required: { value: true, message: 'teyinat məcburidir' },
                     })}
-                    onChange={getDescription_az}
+                    onChange={(e)=>getDescription_az(description,e)}
                   />
                 </Tab.Page>
                 <Tab.Page
@@ -538,7 +534,7 @@ function CreateProduct(props) {
                   lang='az'
                 >
                   <JoditEditor
-                    value={product.en.product_description}
+                    value={description.en.product_description}
                     onChange={getDescription_en}
                   />
                 </Tab.Page>
@@ -549,7 +545,7 @@ function CreateProduct(props) {
                   lang='az'
                 >
                   <JoditEditor
-                    value={product.ru.product_description}
+                    value={description.ru.product_description}
                     onChange={getDescription_ru}
                   />
                 </Tab.Page>

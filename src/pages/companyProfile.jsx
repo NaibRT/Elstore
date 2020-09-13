@@ -21,8 +21,8 @@ function CompanyProfile() {
   <NavLink exact to='/profile' className='navbar_bottom_link' activeClassName="activeLink">Mağaza</NavLink>
   <NavLink exact to='/profile/products' className='navbar_bottom_link' activeClassName="activeLink">Məhsullar</NavLink>
   <NavLink exact to='/profile/orders' className='navbar_bottom_link' activeClassName="activeLink">Sifarişlər</NavLink>
-  <NavLink exact to='/profile/companies' className='navbar_bottom_link' activeClassName="activeLink">Kampaniyalar</NavLink>
-  <NavLink exact to='/profile/info' className='navbar_bottom_link' activeClassName="activeLink">Tənzimləmələr</NavLink>
+ {/*  <NavLink exact to='/profile/companies' className='navbar_bottom_link' activeClassName="activeLink">Kampaniyalar</NavLink>*/}  
+ <NavLink exact to='/profile/info' className='navbar_bottom_link' activeClassName="activeLink">Tənzimləmələr</NavLink>
   </div>
   
    <Route exact path='/profile' component={Home}/>

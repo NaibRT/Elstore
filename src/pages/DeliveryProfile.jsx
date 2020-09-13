@@ -19,14 +19,15 @@ function Profile() {
   const acceptOrder=(checkoutId)=>{
     console.log(checkoutId)
     let url=UrlGenerator('az','users/courier/acceptcheckout');
+    let token = AppContext.app.token;
     fetch(url,{
       method:'Post',
       body:JSON.stringify({
         checkout_id:checkoutId,
-        courier_id:AppContext.app.user.id
       }),
       headers:{
-        'Content-Type':"application/json"
+        'Content-Type':"application/json",
+        'Authorization':`${token.token_type} ${token.access_token}`
       }
     }).then(async res=>{
       let data=await res.json();

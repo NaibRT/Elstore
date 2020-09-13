@@ -53,28 +53,36 @@ function Row(props) {
   const [open, setOpen] = React.useState(false);
   const classes = useRowStyles();
   
-
+  console.log(row)
   return (
     <React.Fragment>
       <TableRow className={classes.root}>
-        <TableCell align="right">{row.checkout_code}</TableCell>
-        <TableCell>
+        <TableCell style={{'textAlign':'center!important'}}>{row.checkout_code}</TableCell>
+        <TableCell align="center">
         <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
           Adresler Bax {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
         </IconButton>
       </TableCell>
-        <TableCell align="right">
+        <TableCell align="center">
          <p>{row.buyer_address.city_name}</p>
          <p>{row.buyer_address.region_name}</p>
          <p>{row.buyer_address.village_name}</p>
         </TableCell>
-        <TableCell align="right">{row.payment_type}</TableCell>
-        <TableCell align="right">{row.price}</TableCell>
-        <TableCell align="right">
-        <Label className='lbl-waiting' name={row.status} />
+        <TableCell align="center">{row.payment_type===0?'Nağd':'Kredit kart'}</TableCell>
+        <TableCell align="center">{`${row.price} AZE`}</TableCell>
+        <TableCell align="center">
+        {
+          row.status===0?
+          <Label className='lbl-waiting' name='Gözləmədə' />
+          : row.status===1?
+          <Label className='lbl-waiting' name='Hazırlanır'/>
+          : row.status===1?
+          <Label className='lbl-waiting' name='Tamamlanıb'/>
+          : null
+        }
         </TableCell>
-        <TableCell align="right">
-         <a className='navbar_bottom_link' href="javascript:void(0)" onClick={()=>props.linkFucn(row.checkout_code)}>{props.linkName}</a>
+        <TableCell align="center">
+         <a className='navbar_bottom_link' href="javascript:void(0)" onClick={()=>props.linkFucn(row.id)}>{props.linkName}</a>
         </TableCell>
       </TableRow>
       <TableRow>
@@ -91,18 +99,18 @@ function Row(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.order_adresses.map((hr,i) => (
+                  {row.order_addresses!==undefined&&row.order_addresses.map((hr,i) => (
                     <TableRow key={i}>
-                      <TableCell>
+                      <TableCell align="center">
                         {hr.shop_name}
                       </TableCell>
-                      <TableCell>
+                      <TableCell align="center">
                       {hr.shop_address.city_name}<br/>
                         {hr.shop_address.region_name}<br/>
                        { hr.shop_address.village_name}<br/>
                       </TableCell>
-                      <TableCell>{hr.product_name}</TableCell>
-                      <TableCell>{hr.product_count}</TableCell>
+                      <TableCell align="center">{hr.product_name}</TableCell>
+                      <TableCell align="center">{hr.product_count}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -287,7 +295,18 @@ const sorts={
    def:list=>_.orderBy(list,'')
 }
   let srchandling=(e)=>{
-     
+     let url = UrlGenerator('az',`users/courier/search-order?checkout_code=${e.target.value}`);
+     fetch(url,{
+      headers:{
+        'Authorization':`${AppContext.app.token.token_type} ${AppContext.app.token.access_token}`
+      }
+     })
+     .then(async res => {
+       let data=await res.json();
+       setState({
+         data:[...data.data]});
+       console.log(data)
+     }).catch(err=>console.log(err))
   }
   let paginationHandling=(e)=>{
     let url=`${state.meta.path}?page=${e.target.innerHTML}`
@@ -319,7 +338,7 @@ const sorts={
         <InputGroup type='text' onChange={srchandling}/>
         <br/>
           <TableRow>
-            <TableCell onClick={() => handleSort('checkout_code')} align="center">Sifariş Kodu</TableCell>
+            <TableCell onClick={() => handleSort('checkout_code')} align="left">Sifariş Kodu</TableCell>
             <TableCell align="center">Mağaza Ünvanları</TableCell>
             <TableCell align="center">Alıcı Ünvanı</TableCell>
             <TableCell align="center">Ödəmə Ünvanı</TableCell>

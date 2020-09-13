@@ -4,7 +4,7 @@ import TTLIstItem from './tt-autocomplete-list-item'
 import mapUrlGenerator from '../../services/mapUrlGenerator';
 import Input from '../InputGroup/InputGroup.component'
 
-function TTAutocomplete({name,validation,getPosition,helper}) {
+function TTAutocomplete({style,name,validation,getPosition,helper,id}) {
 
    const [autocomplete,setavtocomplete]=useState([]);
 
@@ -77,6 +77,7 @@ function TTAutocomplete({name,validation,getPosition,helper}) {
     const itemEventListener=(ttInputRef,e)=>{
        let name = e.target.getAttribute('data-name')
        let position =JSON.parse(e.target.getAttribute('data-position'));
+       console.log("position",position)
        ttInputRef.current.value = name;
        getPosition(name,position)
         closeAllLists()
@@ -89,13 +90,13 @@ function TTAutocomplete({name,validation,getPosition,helper}) {
    })
    
  return (
-  <div className="autocomplete" style={{"width":"100%"}}>
+  <div className="autocomplete" style={{"width":"100%"},style}>
     <Input 
            register={(e)=>{ttInputRef.current=e;validation();}}
            helper={helper}
            onKeyDown={inputKeydown}
            onChange={searchchange}
-           id="myInput" 
+           id={id} 
            type="text" 
            name={name} 
            placeholder="adres"/>

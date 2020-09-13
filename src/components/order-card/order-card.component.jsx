@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import {appContext} from '../../contexts/appContext';
 
 
-function OrderCard({orders}) {
+function OrderCard({orders,status}) {
 
    
 
@@ -36,7 +36,14 @@ function OrderCard({orders}) {
                     :<h1 className='baskert_card_profile_price'>{x.price}</h1>
                 }
                 <div>
+                {
+                    status===0
+                    ?
+                    <ButtonRating class='text_profile_iconcard' icon={require("../../assets/images/icons/Vector 1 (Stroke).svg")} name="məhsul hazırlanır"/>
+                    :
                     <ButtonRating class='text_profile_iconcard' icon={require("../../assets/images/icons/Vector 1 (Stroke).svg")} name="məhsul çatdırıldı"/>
+                }
+                    
                 </div>
             </div>
             <div className='card_profile_right price_div '>

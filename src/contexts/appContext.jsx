@@ -24,12 +24,18 @@ function AppContextProvider(props) {
     totalAmount:'',
     totalDeliveryAmount:'',
     taxamount:18,
+    checkout:{
+      id:'',
+      date:''
+    },
     user:{
       name:'',
       surname:'',
       email:'',
       phone:'',
       address:'',
+      lat:'',
+      lng:'',
       note:'',
       payment_type:0,
       edv:'',
@@ -186,16 +192,15 @@ useEffect(()=>{
   console.log("appUser",currentUser)
   if(currentUser){
     let currentTotal=total;
-    currentTotal.user.name = currentUser.name;
-    currentTotal.user.surname = currentUser.surname;
-    currentTotal.user.email = currentUser.email;
-    currentTotal.user.phone = currentUser.phones['phone'];
-
+    currentTotal.user.name = app.user.name;
+    currentTotal.user.surname = app.user.surname;
+    currentTotal.user.email = app.user.email;
+    currentTotal.user.phone = app.user.phones&&app.user.phones['phone'];
     setTotal({
       ...currentTotal
     })
   }
-},[]);
+},[app]);
 
  useEffect(()=>{
    let curBasket=getBaskets();
@@ -269,7 +274,6 @@ useEffect(()=>{
  }
    
  function logout() {
-     console.log('click')
      localStorage.removeItem('token');
      localStorage.removeItem('user')
      setApp({

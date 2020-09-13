@@ -3,7 +3,7 @@ const versionNumber = 2;
 const routVersion = 1;
 const ext = 'JSON';
 const key = '8Zgts7iOpkPm7zmNGL2blaAGpuI6zfdy';
-const language = 'en-US';
+const language = 'NGT-Latn';
 
 
 
