@@ -46,6 +46,7 @@ function CheckoutThird(props) {
         let v_id=AppContext.total.user.village_id;
         let v_url=UrlGenerator('az',`villages/${v_id}`);
           
+        
         fetch(v_url)
         .then(async res=>{
             let data=await res.json();
