@@ -243,7 +243,7 @@ useEffect(()=>{
   function setlogoutInterval(){
     setTimeout(() => {
       logout()
-    }, 360000);
+    }, 350000);
   }
  function AddToken(token){
     window.localStorage.setItem('token',JSON.stringify({token_type:token.token_type,access_token:token.access_token}))

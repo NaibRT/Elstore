@@ -105,12 +105,13 @@ function Row(props) {
                         {hr.shop_name}
                       </TableCell>
                       <TableCell align="center">
+                      {hr.shop_address.address}<br/>
                       {hr.shop_address.city_name}<br/>
                         {hr.shop_address.region_name}<br/>
                        { hr.shop_address.village_name}<br/>
                       </TableCell>
-                      <TableCell align="center">{hr.product_name}</TableCell>
-                      <TableCell align="center">{hr.product_count}</TableCell>
+                      <TableCell align="right" style={{'textAlign':'center'}}>{hr.product_name}</TableCell>
+                      <TableCell align="right">{hr.count}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -149,7 +150,7 @@ function Row(props) {
 //   createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
 // ];
 
-export default function CollapsibleTable({status,urlLink,linkName,linkFucn}) {
+export default function CollapsibleTable({query,urlLink,linkName,linkFucn}) {
 
  const [state, setState] = useState({
   data:[
@@ -261,7 +262,7 @@ export default function CollapsibleTable({status,urlLink,linkName,linkFucn}) {
    const AppContext=useContext(appContext);
 
   useEffect(()=>{
-      let url=UrlGenerator('az',`${urlLink}?status=${status}`);
+      let url=UrlGenerator('az',`${urlLink}?${query}`);
       fetch(url,{
         headers:{
           'Authorization':`${AppContext.app.token.token_type} ${AppContext.app.token.access_token}`

@@ -22,6 +22,13 @@ function Modal() {
   const [cities, setCities] = useState({
     data: [],
   });
+  const [regions, setRegions] = useState({
+    data: [],
+  });
+  const [villages, setVillages] = useState({
+    data: [],
+  });
+  const [cityId,setCityId]=useState('')
   const AppContext = useContext(appContext);
   const [position, setPositon] = useState({
     name: '',
@@ -116,7 +123,8 @@ function Modal() {
   };
 
   const registerSubmit = (data) => {
-    console.log("blabla", data)
+    let newData={...data,cityId:cityId}
+    console.log("blabla", newData)
     let url = UrlGenerator('az', 'auth/buyer/register');
     fetch(url, {
       headers: {
@@ -166,7 +174,29 @@ function Modal() {
       position: position,
     })
   }
-  console.log(position)
+
+  const cityHandle=(e)=>{
+    let url=UrlGenerator('az',`regions?city_id=${e.target.value}`);
+  fetch(url)
+  .then(response => response.json())
+  .then(data =>{
+   setRegions({data:data})
+  });
+  setCityId(e.target.value)
+}
+  const regionHandle=(e)=>{
+    let url=UrlGenerator('az',`villages?region_id=${e.target.value}`);
+    fetch(url)
+    .then(response => response.json())
+    .then(data =>{
+     setVillages({data:data})
+    });
+    setCityId(e.target.value)    
+}
+const villageHandle=(e)=>{
+  setCityId(e.target.value)
+}
+
   return ReactDom.createPortal(
     <div id='login__modal' className='modal__bacground'>
       <div className='modal__view'>
@@ -235,6 +265,7 @@ function Modal() {
             />
             {/*<MapAutocomplete/>*/}
             <TTAutoInput
+              style={{'width':'100%'}}
               name="location_name"
               getPosition={getPosition}
               validation={register2({
@@ -322,7 +353,15 @@ function Modal() {
               })}
               helper={errors2.email && errors2.email.message}
             />
-            {/*                 <SelectBox options={cities.data.data} name='address' class='selectboxcheckout' register={register({required:'cannot be null'})} />*/}
+            <SelectBox options={cities.data.data} firstopt='şəhər seçin' handleChange={cityHandle} name='address' class='selectboxcheckout' register={register({required:'cannot be null'})} />
+            {
+              regions.data.data!==undefined&&
+              <SelectBox options={regions.data.data} firstopt='region seçin' handleChange={regionHandle} name='address' class='selectboxcheckout' />
+            }
+            {
+              villages.data.data!==undefined&&
+              <SelectBox options={villages.data.data} firstopt='kənd seçin' handleChange={villageHandle} name='address' class='selectboxcheckout'/>
+            }
             <Input
               id='reg_name'
               name='password'

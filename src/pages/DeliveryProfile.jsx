@@ -36,16 +36,17 @@ function Profile() {
   }
 
   const declineOrder=(checkoutId)=>{
+    let token = AppContext.app.token;
     console.log(checkoutId)
-    let url=UrlGenerator('az','checkout/');
+    let url=UrlGenerator('az','users/courier/rejectcheckout');
     fetch(url,{
       method:'Post',
       body:JSON.stringify({
         checkout_id:checkoutId,
-        courier_id:AppContext.app.user.id
       }),
       headers:{
-        'Content-Type':"application/json"
+        'Content-Type':"application/json",
+        'Authorization':`${token.token_type} ${token.access_token}`
       }
     }).then(async res=>{
       let data=await res.json();
@@ -65,9 +66,9 @@ function Profile() {
   </div>
   <div className='row'>
   <div className='col-lg-12 col-xs-12'>
-  <Route exact path='/profile' render={()=><DeliverOrder status='0' urlLink={'users/lastDayOrders'} linkFucn={acceptOrder} linkName='Sifarişi qəbul et'/>}/>
-  <Route exact path='/profie/courier-current-orders' render={()=><DeliverOrder status='1' urlLink={'users/courier/orders'} linkFucn={declineOrder} linkName='Sifarişidən imtina et'/>}/>
-  <Route exact path='/profie/courier-completed-orders' render={()=><DeliverOrder urlLink={'users/courier/orders'} status='2'/>}/>
+  <Route exact path='/profile' render={()=><DeliverOrder query='status=0' urlLink={'users/lastDayOrders'} linkFucn={acceptOrder} linkName='Sifarişi qəbul et'/>}/>
+  <Route exact path='/profie/courier-current-orders' render={()=><DeliverOrder  query='status=1' status='1' urlLink={'users/courier/orders'} linkFucn={declineOrder} linkName='Sifarişidən imtina et'/>}/>
+  <Route exact path='/profie/courier-completed-orders' render={()=><DeliverOrder urlLink={'users/courier/orders'} status='' query='complete_status=2'/>}/>
   <Route exact path='/profie/courier-info' component={Deliveyİnfo}/>
 </div>
 </div>

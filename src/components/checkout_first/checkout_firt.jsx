@@ -289,14 +289,14 @@ function CheckoutFrist(props) {
                     })}
                     helper={errors.address && errors.address.message}
                   />
-{/*                        <Selectbox firstopt='Şəhərlər' handleChange={getRegions} class='selectboxcheckout' options={cities.data.data} />
+                      <Selectbox firstopt='Şəhərlər' handleChange={getRegions} class='selectboxcheckout' options={cities.data.data} />
                         <br/>
                         <Selectbox handleChange={regionEventHandler} firstopt='Region' class='selectboxcheckout' options={region.data.data} />
                         <br/>
                         <Selectbox handleChange={villageEventHandler}  class='selectboxcheckout' options={village.data.data} />
                         <br/>
                         <br/>
-                        <InputGroup id="input__checks5" value={AppContext.app.user&&AppContext.app.user.address} onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />*/}
+                        <InputGroup id="input__checks5" value={AppContext.app.user&&AppContext.app.user.address} onChange={(e)=>{addressEventHandler(e)}}  placeholder='Ünvan' />
                     </div>
                     <div className='col-lg-6 col-sm-12'></div>
                 </div>
