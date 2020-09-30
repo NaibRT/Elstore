@@ -84,8 +84,8 @@ return(
                                     </div>
                         })
                     }
-                    <Pagination meta={shops.meta} paginationHandling={paginationHandling}  />
                     </div>
+                    <Pagination meta={shops.meta} paginationHandling={paginationHandling}  />
                     </div>
                 </div>
         </div>

@@ -204,6 +204,7 @@ const StoreRegistr = (props) => {
               {/* <div className='registr__input'>
                 <GoogleMapAutoComplete />
               </div> */}
+
               <div className='registr__input'>
                 <Input
                   name='phones[phone]'
@@ -227,8 +228,23 @@ const StoreRegistr = (props) => {
               <div className='add__adress'>
                 <p>Ünvan</p>
               </div>
+              <div className='registr__input'>
+              <TTAutoInput
+              style={{'width':'284px'}}
+              name="location_name"
+              getPosition={getPosition}
+              validation={register2({
+                required: {
+                  value: true,
+                  message: 'adres daxil etməlisiniz',
+                }
+              })}
+              helper={errors2.address && errors2.address.message}
+              />
+              </div>
+              <br/>
               <div className='select__city'>
-   {/*             <Selectbox
+            <Selectbox
                   register={register2({
                     required: { value: true, message: 'can not be null' },
                   })}
@@ -237,17 +253,6 @@ const StoreRegistr = (props) => {
                   handleChange={takeSelectboxValue}
                   class='selectboxcheckout'
                   options={cities.data.data}
-                />*/}
-                <TTAutoInput
-                name="location_name"
-                getPosition={getPosition}
-                validation={register2({
-                  required: {
-                    value: true,
-                    message: 'adres daxil etməlisiniz',
-                  }
-                })}
-                helper={errors2.address && errors2.address.message}
                 />
   
               <input
@@ -275,8 +280,7 @@ const StoreRegistr = (props) => {
               })}
             />  
               </div>
-              <br />
-
+              <br/>
               {region.data.data != undefined && region.data.data.length > 0 ? (
                 <div className='select__city' id='region'>
                   <Selectbox
@@ -290,9 +294,7 @@ const StoreRegistr = (props) => {
                   />
                 </div>
               ) : null}
-
-              <br />
-
+              <br/>
               {villages.data.data != undefined &&
               villages.data.data.length > 0 &&
               region.data.data.length > 0 ? (
@@ -306,8 +308,6 @@ const StoreRegistr = (props) => {
                 </div>
               ) : null}
 
-              <br />
-
 {/*              <div className='select__city'>
                 <Input
                   name='address'
@@ -320,10 +320,7 @@ const StoreRegistr = (props) => {
                   helper={errors2.name && errors2.name.message}
                 />
                 </div>*/}
-                 
                    <Button className='registr__button ' name='Davam Et' />
-                 
-                 
               <br />
               <br />
             </form>

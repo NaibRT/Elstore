@@ -68,13 +68,13 @@ function Search(props) {
       console.log(newqueries);
     }
 
-    if (SearchContext.filter.queryParams.length > 0) {
+{/*    if (SearchContext.filter.queryParams.length > 0) {
       query += query !== '' ? `&filter[category_id]=` : `filter[category_id]=`;
       SearchContext.filter.queryParams.forEach((x, k) => {
         console.log(k);
         k === queries.length - 1 ? (query += `${x}`) : (query += `${x},`);
       });
-    }
+    }*/}
     if (SearchContext.filter.priceFrom != '') {
       query +=
         query != ''
@@ -161,7 +161,6 @@ function Search(props) {
         : `filter[order]=${e.target.value}`;
     console.log(filterQuery);
 
-    filterQuery +=`&${key}`;
     let url = UrlGenerator('az', `search/product?${filterQuery}`);
     fetch(url)
       .then(async (res) => {

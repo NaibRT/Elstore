@@ -44,6 +44,7 @@ function AppContextProvider(props) {
       village_id:''
     }
  })
+ const [logoutState,setLogOutState]=useState({})
 
  function minus(e){
   let totalPrice=0;
@@ -241,10 +242,12 @@ useEffect(()=>{
 },[basket]);
 
   function setlogoutInterval(){
-    setTimeout(() => {
+   let logoutTimeOut= setTimeout(() => {
       logout()
-    }, 350000);
+    }, 30000);
+    setLogOutState(logoutTimeOut)
   }
+
  function AddToken(token){
     window.localStorage.setItem('token',JSON.stringify({token_type:token.token_type,access_token:token.access_token}))
     let url=UrlGenerator('az','auth/me');
@@ -282,6 +285,7 @@ useEffect(()=>{
        isAuthorized:false,
        user:''
      })
+     clearTimeout(logoutState)
    }
  function IsAuthorized(){
    let token=JSON.parse(window.localStorage.getItem('token'))
